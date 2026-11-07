@@ -12,7 +12,8 @@ from typing import Dict
 from src.rag import config
 
 
-async def run_and_persist(resume_input: str, jd_input: str, target_role: str = "", location: str = "") -> Dict:
+async def run_and_persist(resume_input: str, jd_input: str, target_role: str = "", location: str = "",
+                          user_id: str | None = None) -> Dict:
     from src.backend.main_runner import build_main_graph
     from src.rag.ingest import ingest_profile_safely
     import asyncio
@@ -20,12 +21,14 @@ async def run_and_persist(resume_input: str, jd_input: str, target_role: str = "
     state = {"resume_input": resume_input, "jd_input": jd_input, "target_role": target_role,
              "location": location, "status_messages": []}
     final_state = await build_main_graph().ainvoke(state)
+    path = config.memory_path(user_id)
     try:
-        with open(config.MEMORY_JSON, "w", encoding="utf-8") as f:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
             json.dump(final_state, f, indent=4, default=str)
     except Exception as e:  # noqa: BLE001
         print(f"Failed to save memory.json: {e}")
-    await asyncio.to_thread(ingest_profile_safely)  # re-embed profile for the chatbot; never raises
+    await asyncio.to_thread(ingest_profile_safely, user_id)  # re-embed profile for the chatbot; never raises
     return final_state
 
 

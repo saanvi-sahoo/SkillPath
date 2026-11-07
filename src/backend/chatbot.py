@@ -44,14 +44,21 @@ def _extract_text(content) -> str:
     return str(content)
 
 
-def load_profile_summary() -> str:
-    """Compact, always-included profile header (cheap and guarantees core facts are present)."""
-    if not config.MEMORY_JSON.exists():
-        return "No analysed profile yet. The user has not run 'Analyze Profile'."
+def load_memory(user_id: str | None = None) -> Dict | None:
+    path = config.memory_path(user_id)
+    if not path.exists():
+        return None
     try:
-        mem = json.loads(config.MEMORY_JSON.read_text(encoding="utf-8"))
+        return json.loads(path.read_text(encoding="utf-8"))
     except Exception:  # noqa: BLE001
-        return "Profile file could not be read."
+        return None
+
+
+def load_profile_summary(user_id: str | None = None) -> str:
+    """Compact, always-included profile header (cheap and guarantees core facts are present)."""
+    mem = load_memory(user_id)
+    if mem is None:
+        return "No analysed profile yet. The user has not run 'Analyze Profile'."
     return (
         f"- Target role: {mem.get('target_role') or 'not specified'}\n"
         f"- ATS match score: {mem.get('ats_score', 'n/a')}/100\n"
@@ -147,7 +154,7 @@ def build_messages(history: List[Dict], profile: str, context: str, system_versi
 
 def answer(chat_history: List[Dict], system_version: str | None = None, router_mode: str | None = None,
            profile_override: str | None = None, route_override: Dict | None = None,
-           quotas: Dict | None = None) -> Dict:
+           quotas: Dict | None = None, user_id: str | None = None) -> Dict:
     """Full turn with diagnostics (used by the eval harness and the API)."""
     t0 = time.perf_counter()
     history = [m for m in chat_history if m.get("role") in ("user", "assistant") and m.get("content")]
@@ -161,29 +168,44 @@ def answer(chat_history: List[Dict], system_version: str | None = None, router_m
         out["text"] = load_prompt("refusal").format(suggestion=_suggestion(message))
     else:
         from src.utilities.brain import get_robust_llm
+        from src.utilities.llm_provider import llm_provider
+        from src.backend.extractive_answer import compose_answer
 
+        uid = user_id or config.DEFAULT_USER_ID
         hits = []
         if decision["label"] == "career_study":
-            hits = retrieve(_retrieval_query(history), quotas=quotas)
+            hits = retrieve(_retrieval_query(history), quotas=quotas, user_id=uid)
         out["hits"] = hits
         context = format_context(hits) if hits else "(no retrieval for this message)"
         if decision["label"] == "career_study":
             context = match_strength(hits) + "\n\n" + context
-        profile = profile_override if profile_override is not None else load_profile_summary()
+        profile = profile_override if profile_override is not None else load_profile_summary(uid)
+        memory = None if profile_override is not None else load_memory(uid)
         msgs = build_messages(history, profile, context, system_version)
+
+        def _extractive(reason: str):
+            text = compose_answer(message, decision, hits, memory)
+            out["model"], out["generation"] = None, f"retrieval-only ({reason})"
+            out["text"] = text + _sources_footer(text, hits)
+
         try:
+            if llm_provider() == "none":
+                raise LookupError("no-llm")
             llm = get_robust_llm(primary_model=CHAT_MODEL, temperature=0.3)
             resp = llm.invoke(msgs)
             out["model"] = (getattr(resp, "response_metadata", {}) or {}).get("model_name")
             out["usage"] = getattr(resp, "usage_metadata", None)
             text = resp.text.strip()
+            out["generation"] = llm_provider()
             out["text"] = (text + _sources_footer(text, hits)) if text else "I couldn't generate an answer, please rephrase."
-        except Exception as e:  # noqa: BLE001
+        except LookupError:
+            _extractive("LLM_PROVIDER=none")
+        except Exception as e:  # noqa: BLE001 - every generator failed: degrade to retrieval-only, never a dead end
             out["error"] = str(e)[:300]
-            out["text"] = load_prompt("greeting") if decision["label"] == "greeting" else f"Sorry, the advisor model is unavailable right now ({str(e)[:120]})."
+            _extractive("all LLMs unavailable")
     out["latency_ms"] = round((time.perf_counter() - t0) * 1000, 1)
     _log({"ts": datetime.now(timezone.utc).isoformat(), "message": message, "route": decision,
-          "system_version": out["system_version"], "model": out.get("model"), "error": out.get("error"), "n_hits": len(out["hits"]),
+          "system_version": out["system_version"], "model": out.get("model"), "generation": out.get("generation"), "error": out.get("error"), "n_hits": len(out["hits"]),
           "hit_ids": [h.get("id") for h in out["hits"]], "top_score": out["hits"][0]["score"] if out["hits"] else None,
           "latency_ms": out["latency_ms"], "answer_chars": len(out["text"])})
     return out

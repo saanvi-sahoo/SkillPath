@@ -231,3 +231,6 @@ $null
 # Personal data / runtime state: never publish (project doc section 12)
 src/backend/memory.json
 src/backend/loaders/resume_data.json
+
+# per-session analysed profiles (personal data)
+src/backend/user_memory/

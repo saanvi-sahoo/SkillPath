@@ -60,7 +60,7 @@ from langgraph.graph import StateGraph, START, END
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage
 
-load_dotenv(override=True)
+from src.utilities.env import load_env; load_env()
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -241,6 +241,9 @@ def get_base_llm(model: str = GEMINI_MODEL, temperature: float = 0.2, api_key_en
     # Force max_retries to 0 so we fail instantly to the next model in the fallback chain instead of waiting
     kwargs.setdefault("max_retries", 0)
     
+    if model.startswith("ollama:"):
+        from src.utilities.llm_provider import get_local_llm
+        return get_local_llm(temperature)
     if model.startswith("groq:"):
         actual_model = model.replace("groq:", "")
         api_key = os.getenv(api_key_env)
@@ -268,6 +271,12 @@ def get_robust_llm(primary_model: str = GEMINI_MODEL, temperature: float = 0.2, 
     Returns an LLM bound with a multi-model fallback chain.
     If primary_model hits a quota exhaustion, it seamlessly falls back to the next models.
     """
+    from src.utilities.llm_provider import LLMUnavailable, get_local_llm, llm_provider, ollama_available
+    provider = llm_provider()
+    if provider == "none":
+        raise LLMUnavailable("LLM_PROVIDER=none (no generator configured)")
+    if provider == "local":
+        return get_local_llm(temperature)
     primary_llm = get_base_llm(primary_model, temperature=temperature, **kwargs)
     
     fallback_llms = []
@@ -278,6 +287,8 @@ def get_robust_llm(primary_model: str = GEMINI_MODEL, temperature: float = 0.2, 
         if fallback_model != primary_model:
             fallback_llms.append(get_base_llm(fallback_model, temperature=temperature, **kwargs))
             
+    if ollama_available():  # E26: offline last resort when every hosted model is capped
+        fallback_llms.append(get_local_llm(temperature))
     if fallback_llms:
         return primary_llm.with_fallbacks(fallback_llms)
     return primary_llm
@@ -286,6 +297,12 @@ def get_robust_structured_llm(schema, primary_model: str = GEMINI_MODEL, tempera
     """
     Returns an LLM bound with structured output and a multi-model fallback chain.
     """
+    from src.utilities.llm_provider import LLMUnavailable, get_local_llm, llm_provider, ollama_available
+    provider = llm_provider()
+    if provider == "none":
+        raise LLMUnavailable("LLM_PROVIDER=none (no generator configured)")
+    if provider == "local":
+        return get_local_llm(temperature).with_structured_output(schema)
     primary_llm = get_base_llm(primary_model, temperature=temperature, **kwargs).with_structured_output(schema)
     
     fallback_llms = []
@@ -378,7 +395,14 @@ def analyse_node(state: SkillBrainState) -> SkillBrainState:
     raw    = ""
     last_error: str = ""
 
-    for model in _FREE_TIER_MODELS:
+    from src.utilities.llm_provider import llm_provider, ollama_available, OLLAMA_MODEL
+    from src.skills.extractor import rule_based_analysis
+    provider = llm_provider()
+    if provider == "none":
+        return {**state, **rule_based_analysis(resume, jd)}
+    models = [f"ollama:{OLLAMA_MODEL}"] if provider == "local" else \
+        list(_FREE_TIER_MODELS) + ([f"ollama:{OLLAMA_MODEL}"] if ollama_available() else [])
+    for model in models:
         # Each model gets up to 2 attempts (handles transient 429 bursts)
         for attempt in range(2):
             try:
@@ -434,6 +458,9 @@ def analyse_node(state: SkillBrainState) -> SkillBrainState:
                 break  # move to next model in _FREE_TIER_MODELS
 
     # All models exhausted
+    # E26: every generator failed -> deterministic rule-based analysis instead of an empty result
+    print(f"  [brain] all models failed ({str(last_error)[:120]}); using rule-based analysis")
+    return {**state, **rule_based_analysis(resume, jd)}
     return {
         **state,
         "error": (

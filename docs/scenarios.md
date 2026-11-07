@@ -124,5 +124,7 @@ Example (live `/chat`, 2026-11-08): *"I enjoy protecting systems from hackers, w
 | F11 | Atlas is slower than local | Network round-trips (4 searches per turn) | Median 359 ms vs 9 ms locally. Fine for chat; batch searches if needed |
 | F13 | Every Groq model returns 429 TPD | Quotas are per Groq **organisation**, not per key | Gemini Flash-Lite (separate quota) is the last fallback; use keys from a *different* Groq org for real extra capacity |
 | F14 | Naukri scraper fails (no Chrome on the host) | Selenium needs a browser | That scraper returns []; LinkedIn results and the rest of the pipeline continue |
+| F16 | No API keys at all / every LLM capped | Keyless setup or quota exhaustion | `LLM_PROVIDER=auto` resolves to local Ollama or retrieval-only; at runtime the chatbot degrades to retrieval-only answers, the pipeline to rule-based analysis + template summary (keyless_mode.md) |
+| F17 | Two visitors use the app at the same time | Shared state | Per-visitor id, profile file and `user_id`-filtered retrieval; nobody sees another visitor's analysis |
 | F15 | No FastAPI server (Streamlit Cloud) | Only one process allowed | `PIPELINE_MODE=auto/inprocess` runs the pipeline inside Streamlit |
 | F12 | New teammate can't connect to Atlas | Their IP isn't in Network Access | `atlas accessLists create --currentIp` or add it in the UI |

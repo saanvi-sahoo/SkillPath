@@ -20,14 +20,16 @@ Updated **2026-11-08 (evening)**. This follows the evidence rule of the project 
 | **Prompt script training** | Versioned prompts v1–v4, 42-case eval set (doc §9.4 classes), paired same-model A/B, deterministic checks, offline rescoring, offline LLM judge | ✅ **v4 active**: paired A/B v4 1.0 vs v3 0.952 (weak evidence 2/2 vs 0/2). 🟡 Judge pass + 120b re-check wait for Groq quota | [prompt_scripting.md](prompt_scripting.md) §5 |
 | Skill normalisation + exact gap comparison | Aliases, categories, IMPLIES (MySQL ⇒ SQL), related ≠ equivalent | ✅ Verified (unit examples) | [skills_and_roadmap.md](skills_and_roadmap.md) |
 | **30-day roadmap** | Prioritised (prerequisites + market share), validated, LLM-filled, template fallback; `/roadmap` + Streamlit | ✅ Verified (1 profile) | `reports/roadmaps/roadmap_*.json` (valid, 0 repairs) |
-| Automated tests | `tests/test_core.py`: 12 offline unit tests (loader, ids, vector store, skills, roadmap, detectors) | ✅ 12/12 pass | `python -m pytest -q tests` |
+| Automated tests | `tests/test_core.py` + `tests/test_keyless.py`: 20 offline unit tests | ✅ 20/20 pass | `python -m pytest -q tests` |
+| **Keyless mode** | `LLM_PROVIDER=api/local/none/auto`; retrieval-only composer, rule-based analysis, template summary/roadmap; graceful runtime fallback | ✅ Retrieval-only 42/42 (0 tokens, 0.24 s); 🟡 local Mistral eval running | [keyless_mode.md](keyless_mode.md) |
+| **Per-visitor isolation** | Session id in URL, per-user memory files, `user_id`-filtered retrieval, API `user_id` | ✅ Verified (new visitor sees no one else's profile) | keyless_mode.md §4 |
 | Documentation | 15 docs: runbook (every process), scenarios (every case, real outputs), deployment, experiment log E0–E17 | ✅ | `docs/` |
 | GitHub (`saanvi-sahoo/SkillPath`) | Pushed (SSH key on saanvi-sahoo); personal data and secrets git-ignored; secret scan clean | ✅ | [deployment.md](deployment.md) |
 | Hosting | **Hugging Face blocked**: Docker Spaces now need HF PRO (402). **Streamlit Community Cloud ready** (in-process pipeline mode, CPU torch, scraper-failure tolerance); needs one GitHub login at share.streamlit.io | 🟡 One browser step left | [deployment.md](deployment.md) §3 |
 
 ## Open items (in priority order)
 1. LLM-judge pass on the v3/v4 answers + v4 re-check on gpt-oss-120b, when Groq quota resets.
-2. Deploy on Streamlit Community Cloud with the prefilled form (deployment.md §3a). Variant A works now; variant B (Atlas) needs the team to allow `0.0.0.0/0`. Build pre-tested in Linux (E23).
+2. Deploy on Streamlit Community Cloud with the prefilled form (deployment.md §3a). **Variant 0 needs no secrets at all** (keyless); variant B (Atlas) needs the team to allow `0.0.0.0/0`. Build pre-tested in Linux (E23).
 3. Rotate the credentials that were shared in chat (Groq ×2, HF token, Atlas/HF account password).
 4. Bigger held-out eval sets (100+ chat questions, 50+ career queries) from real usage.
 5. Roadmap progress tracking and regeneration; LLM fallback for categorising unknown skills; OCR for scanned PDFs.

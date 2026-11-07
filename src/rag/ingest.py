@@ -33,7 +33,8 @@ def _log_run(entry: Dict) -> None:
 
 
 def ingest(sources: List[str], backend: Optional[str] = None, limit: Optional[int] = None,
-           replace: bool = True, show_progress: bool = True) -> Dict:
+           replace: bool = True, show_progress: bool = True, user_id: Optional[str] = None) -> Dict:
+    uid = user_id or config.DEFAULT_USER_ID
     summary = {"started_at": datetime.now(timezone.utc).isoformat(), "backend": resolve_backend(backend),
                "model": config.EMBEDDING_MODEL, "dim": config.EMBEDDING_DIM,
                "chunk_max_words": config.CHUNK_MAX_WORDS, "chunk_overlap": config.CHUNK_OVERLAP_WORDS,
@@ -44,7 +45,12 @@ def ingest(sources: List[str], backend: Optional[str] = None, limit: Optional[in
         store.ensure_index(wait=False)
         touched.append((source, store))
         t0 = time.perf_counter()
-        chunks = build_career_chunks(limit=limit) if source == "careers" and limit else BUILDERS[source]()
+        if source == "careers" and limit:
+            chunks = build_career_chunks(limit=limit)
+        elif source == "profile":
+            chunks = build_profile_chunks(config.memory_path(uid), user_id=uid)
+        else:
+            chunks = BUILDERS[source]()
         n_raw = len(chunks)
         chunks = list({c.id: c for c in chunks}.values())  # dedupe identical natural keys (keep last)
         t_build = time.perf_counter() - t0
@@ -57,12 +63,12 @@ def ingest(sources: List[str], backend: Optional[str] = None, limit: Optional[in
         t_embed = time.perf_counter() - t1
         t2 = time.perf_counter()
         # profile data is per-run state: wipe the user's old chunks so stale gaps/jobs disappear
-        deleted = store.delete(source, user_id=config.DEFAULT_USER_ID) if (replace and source == "profile") else 0
+        deleted = store.delete(source, user_id=uid) if (replace and source == "profile") else 0
         written = store.upsert(chunks, vecs)
         # full-refresh semantics: records no longer produced by the builder are removed
         # (skipped for --limit runs, which are partial by design)
         pruned = 0 if limit else store.prune(source, [c.id for c in chunks],
-                                             user_id=config.DEFAULT_USER_ID if source == "profile" else None)
+                                             user_id=uid if source == "profile" else None)
         t_write = time.perf_counter() - t2
         words = [len(c.text.split()) for c in chunks]
         vec_ok = bool(np.isfinite(vecs).all()) and vecs.shape == (len(chunks), config.EMBEDDING_DIM)
@@ -82,12 +88,13 @@ def ingest(sources: List[str], backend: Optional[str] = None, limit: Optional[in
     return summary
 
 
-def ingest_profile_safely() -> Optional[Dict]:
-    """Called by the API after each pipeline run. Never raises (chat must not break the pipeline)."""
+def ingest_profile_safely(user_id: Optional[str] = None) -> Optional[Dict]:
+    """Called after each pipeline run. Never raises (chat must not break the pipeline)."""
+    uid = user_id or config.DEFAULT_USER_ID
     try:
-        if not build_profile_chunks():
+        if not build_profile_chunks(config.memory_path(uid), user_id=uid):
             return None
-        return ingest(["profile"], show_progress=False)
+        return ingest(["profile"], show_progress=False, user_id=uid)
     except Exception as e:  # noqa: BLE001
         print(f"[ingest] profile re-index failed: {e}")
         return None

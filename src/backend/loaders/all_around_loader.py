@@ -38,7 +38,7 @@ from langchain_experimental.utilities import PythonREPL
 from pydantic import BaseModel, Field
 
 # --- Initialize Environment ---
-load_dotenv(override=True)
+from src.utilities.env import load_env; load_env()
 
 
 from langgraph.graph import StateGraph, START, END

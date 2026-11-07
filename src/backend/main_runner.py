@@ -298,8 +298,16 @@ async def net_surf_node(state: GraphState) -> GraphState:
         "skill_gaps": state.get("skill_gaps", []),
         "learning_path": state.get("learning_path", [])
     }
-    dummy_state = await add_queries_to_state(dummy_state)
-    dummy_state = await get_skill_resources(dummy_state)
+    # E26: web resources are optional - no Tavily key / no LLM must not fail the whole pipeline
+    if not os.getenv("TAVILY_API_KEY"):
+        print("[net_surf] TAVILY_API_KEY not set -> skipping web resources (static course links still shown)")
+        return {"search_queries": [], "skill_resources": ""}
+    try:
+        dummy_state = await add_queries_to_state(dummy_state)
+        dummy_state = await get_skill_resources(dummy_state)
+    except Exception as e:  # noqa: BLE001
+        print(f"[net_surf] skipped: {str(e)[:200]}")
+        return {"search_queries": [], "skill_resources": ""}
     return {
         "search_queries": dummy_state.get("search_queries", []),
         "skill_resources": dummy_state.get("skill_resources", "")
@@ -338,12 +346,11 @@ async def summarise_node(state: GraphState) -> GraphState:
     Returns:
         GraphState: An updated state dict containing the `career_summary`.
     """
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        return {"career_summary": "Summary unavailable due to missing API key."}
-    
     from src.utilities.brain import get_robust_llm
-    llm = get_robust_llm(primary_model=GEMINI_MODEL)
+    try:
+        llm = get_robust_llm(primary_model=GEMINI_MODEL)
+    except Exception:  # noqa: BLE001 - LLM_PROVIDER=none
+        return {"career_summary": template_summary(state)}
     prompt = f"""
     Summarize the career prospects based on the following:
     Candidate Skills: {state.get('candidate_skills')}
@@ -356,8 +363,25 @@ async def summarise_node(state: GraphState) -> GraphState:
     try:
         res = await llm.ainvoke(prompt)
         return {"career_summary": res.text}
-    except Exception as e:
-        return {"career_summary": f"Could not generate summary: {str(e)}"}
+    except Exception as e:  # noqa: BLE001
+        print(f"[summarise] LLM failed ({str(e)[:120]}); using template summary")
+        return {"career_summary": template_summary(state)}
+
+def template_summary(state) -> str:
+    """No-LLM summary built from the analysis fields (E26)."""
+    have = state.get("candidate_skills") or []
+    gaps = state.get("skill_gaps") or []
+    role = state.get("target_role") or "your target role"
+    ats = state.get("ats_score")
+    s = f"For {role}, your profile already shows {len(have)} relevant skills"
+    s += f" ({', '.join(str(x) for x in have[:5])})" if have else ""
+    s += f", with an estimated keyword match of {ats}/100. " if ats is not None else ". "
+    if gaps:
+        s += f"Focus next on {', '.join(str(g) for g in gaps[:4])}: each has a learning path and course links below. "
+    else:
+        s += "No major skill gaps were found for this job description. "
+    return s + "Use the 30-day roadmap to turn these gaps into a weekly plan."
+
 
 def build_main_graph():
     """

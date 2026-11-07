@@ -45,7 +45,7 @@ logger.add(
 )
 
 
-load_dotenv(override=True)
+from src.utilities.env import load_env; load_env()
 
 api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
 if not api_key:
@@ -53,7 +53,10 @@ if not api_key:
     raise ValueError("GEMINI_API_KEY is missing from your .env file! Please add it.")
 
 from src.utilities.brain import get_robust_llm, GEMINI_MODEL
-gemini = get_robust_llm(primary_model=GEMINI_MODEL)
+try:  # E26: unused module-level client; must not fail import in keyless mode (LLM_PROVIDER=none)
+    gemini = get_robust_llm(primary_model=GEMINI_MODEL)
+except Exception:  # noqa: BLE001
+    gemini = None
 
 
 class ResourceItem(BaseModel):

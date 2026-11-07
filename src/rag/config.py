@@ -10,7 +10,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-load_dotenv()
+from src.utilities.env import load_env; load_env()
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
@@ -76,7 +76,17 @@ LINKEDIN_JOBS_JSON = PROJECT_ROOT / "master_jobs_detailed.json"
 NAUKRI_JOBS_JSON = PROJECT_ROOT / "src" / "backend" / "scraper" / "jobs.json"
 KNOWLEDGE_DIR = PROJECT_ROOT / "src" / "data" / "knowledge_base"
 
-# Default user id (the app is single-user today; the schema is multi-user ready).
+# Default user id. The Streamlit UI gives every browser session its own id (E26) so profiles of
+# different visitors never mix (memory file + private profile chunks are both keyed by user_id).
 DEFAULT_USER_ID = os.getenv("UPSKILL_USER_ID", "default")
+USER_MEMORY_DIR = PROJECT_ROOT / "src" / "backend" / "user_memory"
+
+
+def memory_path(user_id: str = None) -> Path:
+    """Analysed-profile file for a user: memory.json for the local default user, else user_memory/<id>.json."""
+    import re as _re
+    if not user_id or user_id == DEFAULT_USER_ID:
+        return MEMORY_JSON
+    return USER_MEMORY_DIR / (_re.sub(r"[^A-Za-z0-9_-]", "", user_id)[:64] + ".json")
 
 REPORTS_DIR = PROJECT_ROOT / "reports" / "embeddings"

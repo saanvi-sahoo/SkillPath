@@ -58,7 +58,7 @@ from reducto import Reducto
 # Or add it to your .env file and load with python-dotenv.
 from dotenv import load_dotenv
 
-load_dotenv(override=True)                        # reads your .env file
+from src.utilities.env import load_env; load_env()                        # reads your .env file
 API_KEY = os.getenv("REDUCTO_API_KEY")
 
 if not API_KEY:

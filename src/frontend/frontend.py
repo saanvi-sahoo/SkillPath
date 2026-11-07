@@ -6,7 +6,7 @@ import sys
 from dotenv import load_dotenv
 
 # Load environment variables
-load_dotenv(override=True)
+from src.utilities.env import load_env; load_env()
 
 # Add project root to sys.path so we can import from src
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
@@ -30,7 +30,15 @@ st.markdown("<p style='text-align: center; font-size: 1.1rem;'>Your AI career & 
 def get_persistent_state():
     return {}
 
-persistent_state = get_persistent_state()
+# E26: one id per visitor (kept in the URL so a refresh keeps your own data). Every profile file,
+# private vector chunk and cached result is keyed by it, so visitors never see each other's analysis.
+import uuid as _uuid
+if "uid" not in st.session_state:
+    st.session_state["uid"] = st.query_params.get("u") or _uuid.uuid4().hex[:16]
+if st.query_params.get("u") != st.session_state["uid"]:
+    st.query_params["u"] = st.session_state["uid"]
+UID = st.session_state["uid"]
+persistent_state = get_persistent_state().setdefault(UID, {})
 
 # Sync persistent state to session state so results survive page refresh
 if "pipeline_data" not in st.session_state and "pipeline_data" in persistent_state:
@@ -238,7 +246,8 @@ if analyze_btn:
             persistent_state["pipeline_data"] = data
             persistent_state["job_pref"] = job_pref
 
-        payload = {"resume_input": resume_input, "jd_input": jd_input_final, "target_role": job_pref, "location": ""}
+        payload = {"resume_input": resume_input, "jd_input": jd_input_final, "target_role": job_pref, "location": "",
+                   "user_id": UID}
         try:
             data, api_unreachable = None, False
             if PIPELINE_MODE in ("api", "auto"):
@@ -506,7 +515,7 @@ if "pipeline_data" in st.session_state:
                 st.session_state["roadmap"] = generate_roadmap(
                     data.get("target_role") or "", data.get("candidate_skills") or [],
                     required_skills=data.get("required_skills") or [], gaps=None if data.get("required_skills") else data.get("skill_gaps"),
-                    daily_minutes=rm_minutes, level=rm_level)
+                    daily_minutes=rm_minutes, level=rm_level, user_id=UID)
         rm = st.session_state.get("roadmap")
         if rm:
             v = rm["validation"]
@@ -626,4 +635,4 @@ else:
 
 # ---- CAREER ADVISOR (always available, first tab) ----
 with TABS[0]:
-    render_career_advisor(st.session_state.get("pipeline_data"))
+    render_career_advisor(st.session_state.get("pipeline_data"), UID)

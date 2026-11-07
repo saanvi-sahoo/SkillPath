@@ -10,6 +10,7 @@ SkillPath AI (built on the previous batch's UpskillxAI) analyses a candidate's r
 
 | Doc | What it covers |
 |---|---|
+| [keyless_mode.md](keyless_mode.md) | **Run without Groq/Gemini**: retrieval-only and local-LLM (Ollama) modes, what replaces the LLM, measured quality, per-visitor isolation |
 | [runbook.md](runbook.md) | **Every process step by step**: setup, run, ingest, Atlas, evals, prompt changes, roadmap, deploy |
 | [scenarios.md](scenarios.md) | **Every scenario**: student journeys, chat cases (with real outputs), embedding/data, RAG, prompt-training and failure cases |
 | [architecture.md](architecture.md) | End-to-end system, components, data flow, folder map |

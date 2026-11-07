@@ -824,6 +824,7 @@ class PipelineRequest(BaseModel):
     jd_input: str = Field(..., description="Job description text, URL, or local path.")
     target_role: str = Field(default="software engineer", description="Target role for scraping.")
     location: str = Field(default="", description="Location for scraping.")
+    user_id: str = Field(default="default", description="Owner of the analysed profile (keeps visitors' data separate).")
 
 @app.post(
     "/pipeline/run",
@@ -834,13 +835,14 @@ class PipelineRequest(BaseModel):
 async def run_pipeline(req: PipelineRequest):
     # shared with the Streamlit in-process mode: run graph -> save memory.json -> re-embed profile
     from src.backend.pipeline_service import run_and_persist
-    return await run_and_persist(req.resume_input, req.jd_input, req.target_role, req.location)
+    return await run_and_persist(req.resume_input, req.jd_input, req.target_role, req.location, req.user_id)
 #uv run uvicorn api_endpoint.py:app --reload
 
 
 class ChatRequest(BaseModel):
     messages: List[dict] = Field(..., description="Chat history: [{'role': 'user'|'assistant', 'content': str}]")
     debug: bool = Field(default=False, description="Include routing + retrieved chunks in the response.")
+    user_id: str = Field(default="default", description="Whose analysed profile to use.")
 
 
 @app.post(
@@ -852,7 +854,7 @@ class ChatRequest(BaseModel):
 async def chat(req: ChatRequest):
     import asyncio
     from src.backend.chatbot import answer
-    res = await asyncio.to_thread(answer, req.messages)
+    res = await asyncio.to_thread(lambda: answer(req.messages, user_id=req.user_id))
     if not req.debug:
         return {"reply": res["text"]}
     hits = [{k: v for k, v in h.items() if k != "embedding"} for h in res.get("hits", [])]
@@ -867,6 +869,7 @@ class RoadmapRequest(BaseModel):
     daily_minutes: int = Field(default=90, ge=15, le=480)
     level: str = Field(default="beginner")
     from_profile: bool = Field(default=False, description="Ignore the fields above and use the latest analysed profile.")
+    user_id: str = Field(default="default")
 
 
 @app.post("/roadmap", summary="Personalised 30-day roadmap", tags=["Roadmap"],
@@ -875,9 +878,9 @@ async def roadmap(req: RoadmapRequest):
     import asyncio
     from src.roadmap.generator import generate_roadmap, roadmap_from_profile
     if req.from_profile:
-        return await asyncio.to_thread(roadmap_from_profile, req.daily_minutes, req.level)
-    return await asyncio.to_thread(generate_roadmap, req.target_role, req.candidate_skills, req.required_skills,
-                                   req.gaps, req.daily_minutes, req.level)
+        return await asyncio.to_thread(lambda: roadmap_from_profile(req.daily_minutes, req.level, user_id=req.user_id))
+    return await asyncio.to_thread(lambda: generate_roadmap(req.target_role, req.candidate_skills, req.required_skills,
+                                   req.gaps, req.daily_minutes, req.level, user_id=req.user_id))
 
 
 @app.post("/skills/compare", summary="Exact skill-gap comparison", tags=["Roadmap"])

@@ -4,6 +4,20 @@ Add one entry for every change to models, prompts, thresholds, chunking or data.
 
 ---
 
+## 2026-11-08: E27 Local LLM (Mistral 7B via Ollama), keyless
+- `LLM_PROVIDER=local`, prompt v4, production router (kNN + Mistral for ambiguous messages), 42 cases. Measured latency **35–55 s per answer** (16 GB Mac, 3–4k-token prompts), too slow for a public demo, fine offline.
+- Results: [keyless_mode.md §5](keyless_mode.md#5-local-llm-results-mistral-7b-via-ollama) (run in progress at time of writing; the first 5 cases passed 4/5, cs04 had no citation).
+
+## 2026-11-08: E26 Keyless mode + per-visitor isolation
+- **Question asked:** can the system run without Gemini/Groq? Embeddings and retrieval never needed keys. Generation now has three modes: `api | local | none` (`src/utilities/llm_provider.py`, `LLM_PROVIDER=auto`).
+- **Retrieval-only replacements:** chat composer (`extractive_answer.py`), rule-based skill extractor (864-term vocabulary from aliases + dataset; case-sensitive for "Go"/"Excel"), template summary, Tavily skipped, template roadmap, no-LLM router (follow-ups classified together with the previous turn). Runtime fallback: `api` → … → Ollama → retrieval-only, so the chatbot never dead-ends.
+- **Keyless pipeline:** 15.2 s, the same 4 gaps as the LLM version (Tableau, Statistics, Data Visualization, Communication), ATS estimate 43 (the LLM said 65–70), 30 jobs, 12 course links.
+- **Keyless eval (42 cases):** first run 0.952 (doc07 Docker/Kubernetes, doc09 vague no-profile). Added an equivalence rule (IMPLIES/RELATED) and follow-up questions when no profile → **1.0, 0 tokens, 0.24 s/answer**, router allow/refuse 1.0. Optimistic: rules were tuned on this set.
+- **Privacy bug found and fixed:** all visitors shared `memory.json`, the `default` profile chunks and a process-wide cached result. Now there's a per-session id (URL `?u=`), `user_memory/<id>.json`, `user_id`-filtered retrieval, and `user_id` in the API. Verified: a new visitor's "What are my skill gaps?" → "I don't see an analysed profile yet".
+- `.env` loading is centralised (`src/utilities/env.py`); `SKILLPATH_NO_DOTENV=1` runs a keyless instance from the same checkout without picking up any keys.
+- Zero-secret Streamlit Cloud deploy verified by simulation (`auto` → none/local/in-process). A public cloudflared tunnel was blocked by the local safety policy and left to the team.
+- Tests: 12 → **20** (provider resolution, LLMUnavailable, extractor, ambiguous words, composer clarification/citations/equivalence, per-user memory path + traversal).
+
 ## 2026-11-08: E25 v4 re-check on gpt-oss-120b: attempted, quota-bound
 - Strict paired run (`--versions v4 --expect-model openai/gpt-oss-120b --sleep 30`): case 1 (cs01) passed on 120b, then case 2 was answered by the gpt-oss-20b fallback (120b at the org's daily/per-minute cap), so the run stopped with 1/42 cases. **Not conclusive. Still pending.**
 - Bug fixed: when a paired run stopped, the saved `_meta.stopped` stayed `None`. The stop reason is now written to the report.

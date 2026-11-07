@@ -54,6 +54,7 @@ def _log_feedback(idx: int, rating: int) -> None:
 def _status_chips(data) -> None:
     from src.prompts.registry import ACTIVE
     from src.rag.vector_store import resolve_backend
+    from src.utilities.llm_provider import provider_label
 
     backend = "MongoDB Atlas" if resolve_backend() == "mongo" else "Local vector store"
     if data:
@@ -63,7 +64,7 @@ def _status_chips(data) -> None:
         profile = ":orange-badge[:material/person_off: No profile yet: upload a CV in the sidebar for personal advice]"
     st.markdown(
         f"{profile} :blue-badge[:material/database: {backend} · 2,899 career records] "
-        f":violet-badge[:material/psychology: Prompt {ACTIVE['advisor_system']}] "
+        f":violet-badge[:material/psychology: Prompt {ACTIVE['advisor_system']} · {provider_label()}] "
         f":gray-badge[:material/verified_user: Career & study questions only]"
     )
 
@@ -84,7 +85,9 @@ def _render_answer(i: int, msg: dict, show_debug: bool) -> None:
             c1.metric("Route", r.get("label", "-"))
             c2.metric("Decided by", r.get("method", "-"))
             c3.metric("Latency", f"{(meta.get('latency_ms') or 0) / 1000:.1f}s")
-            c4.metric("Model", (meta.get("model") or "template").split("/")[-1])
+            c4.metric("Model", (meta.get("model") or "retrieval-only").split("/")[-1])
+            if meta.get("generation"):
+                st.caption(f"Generation: {meta['generation']}")
             if meta.get("hits"):
                 st.caption("Retrieved from the knowledge base (cosine similarity; floor 0.30, career weak-match floor 0.40)")
                 st.dataframe(meta["hits"], hide_index=True, use_container_width=True)
@@ -96,13 +99,13 @@ def _render_answer(i: int, msg: dict, show_debug: bool) -> None:
         _log_feedback(i, fb)
 
 
-def _ask(question: str) -> None:
+def _ask(question: str, uid: str) -> None:
     from src.backend.chatbot import answer
 
     msgs = st.session_state["advisor_messages"]
     msgs.append({"role": "user", "content": question})
     try:
-        res = answer([{"role": m["role"], "content": m["content"]} for m in msgs])
+        res = answer([{"role": m["role"], "content": m["content"]} for m in msgs], user_id=uid)
         hits = [{"#": f"S{k}", "source": h.get("source"), "type": h.get("doc_type"),
                  "score": round(float(h.get("score", 0)), 3),
                  "ref": (h.get("metadata") or {}).get("career_id") or (h.get("metadata") or {}).get("career_name")
@@ -110,7 +113,8 @@ def _ask(question: str) -> None:
                  "text": (h.get("text") or "")[:160]} for k, h in enumerate(res.get("hits") or [], 1)]
         msgs.append({"role": "assistant", "content": res.get("text") or "I couldn't generate an answer, please rephrase.",
                      "meta": {"route": res.get("route"), "model": res.get("model"), "latency_ms": res.get("latency_ms"),
-                              "system_version": res.get("system_version"), "hits": hits}})
+                              "system_version": res.get("system_version"), "hits": hits,
+                              "generation": res.get("generation")}})
     except Exception as e:  # noqa: BLE001
         msgs.append({"role": "assistant", "content": f"Sorry, something went wrong: {e}"})
 
@@ -122,7 +126,7 @@ def _transcript() -> str:
     return "\n".join(lines)
 
 
-def render_career_advisor(data) -> None:
+def render_career_advisor(data, uid: str = None) -> None:
     st.session_state.setdefault("advisor_messages", [])
     msgs = st.session_state["advisor_messages"]
 
@@ -173,5 +177,5 @@ def render_career_advisor(data) -> None:
             st.markdown(question)
         with st.chat_message("assistant", avatar=":material/school:"):
             with st.spinner("Checking the career knowledge base and your profile…"):
-                _ask(question)
+                _ask(question, uid)
         st.rerun()

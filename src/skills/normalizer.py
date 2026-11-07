@@ -46,7 +46,7 @@ ALIASES: Dict[str, str] = {
     "spark": "Apache Spark", "apache spark": "Apache Spark", "pyspark": "Apache Spark",
     "airflow": "Apache Airflow", "apache airflow": "Apache Airflow", "kafka": "Apache Kafka", "apache kafka": "Apache Kafka",
     "hadoop": "Hadoop", "etl": "ETL", "data warehousing": "Data Warehousing", "snowflake": "Snowflake",
-    "rest": "REST APIs", "rest api": "REST APIs", "restful api": "REST APIs", "restful api design": "REST APIs", "apis": "REST APIs",
+    "rest": "REST APIs", "rest api": "REST APIs", "rest apis": "REST APIs", "restful apis": "REST APIs", "restful api": "REST APIs", "restful api design": "REST APIs", "apis": "REST APIs",
     "microservices": "Microservices", "microservices concepts": "Microservices",
     "html": "HTML", "css": "CSS", "flask": "Flask", "django": "Django", "fastapi": "FastAPI",
     "communication": "Communication", "communication skills": "Communication",

@@ -102,6 +102,12 @@ def route(message: str, history: List[Dict] | None = None, mode: str | None = No
     if mode == "hybrid" and confident and not is_followup:
         return done({**knn, "method": "knn"})
 
+    from src.utilities.llm_provider import llm_provider
+    if llm_provider() == "none":
+        # E26: no LLM -> kNN on the follow-up expanded with the previous user turn
+        prev = next((m["content"] for m in reversed(history) if m["role"] == "user"), "")
+        k2 = knn_classify(f"{prev} {message}") if (is_followup and prev) else knn
+        return done({**k2, "method": "knn (no-LLM)"})
     try:
         llm = llm_classify(message, history)
         return done({**llm, "knn": knn, "method": "llm"})

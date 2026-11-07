@@ -39,6 +39,9 @@ Labels:
 - `out_of_scope`: refused.
 - `prompt_attack`: refused.
 
+## 2a. Without an LLM
+The advisor also runs with **no generator** (`LLM_PROVIDER=none`) or degrades to it when every LLM fails: answers are composed from the cited records (`src/backend/extractive_answer.py`). See [keyless_mode.md](keyless_mode.md).
+
 ## 2b. User interface (Streamlit, `src/frontend/advisor_ui.py`)
 The **Career Advisor is the first tab and is always available**, with or without an analysed CV. Before E24 it only appeared after Analyze Profile, which hid journey B entirely.
 

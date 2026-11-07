@@ -187,9 +187,9 @@ def validate_and_repair(days: List[Dict], skel: List[Dict], minutes: int) -> Dic
 
 
 # ── 6. resources ─────────────────────────────────────────────────────────────
-def profile_resources() -> Dict[str, List[str]]:
+def profile_resources(user_id: Optional[str] = None) -> Dict[str, List[str]]:
     try:
-        mem = json.loads(config.MEMORY_JSON.read_text(encoding="utf-8"))
+        mem = json.loads(config.memory_path(user_id).read_text(encoding="utf-8"))
     except Exception:  # noqa: BLE001
         return {}
     out: Dict[str, List[str]] = {}
@@ -202,7 +202,7 @@ def profile_resources() -> Dict[str, List[str]]:
 
 def generate_roadmap(target_role: str, candidate_skills: List[str], required_skills: Optional[List[str]] = None,
                      gaps: Optional[List[str]] = None, daily_minutes: int = 90, level: str = "beginner",
-                     use_llm: bool = True) -> Dict:
+                     use_llm: bool = True, user_id: Optional[str] = None) -> Dict:
     t0 = time.perf_counter()
     cmp = compare(candidate_skills, required_skills or []) if required_skills else None
     gap_list = normalize_all(gaps) if gaps else (cmp["gaps"] if cmp else [])
@@ -211,14 +211,15 @@ def generate_roadmap(target_role: str, candidate_skills: List[str], required_ski
     sk = build_skeleton(ordered, importance)
     source = "template"
     days: List[Dict] = []
-    if use_llm:
+    from src.utilities.llm_provider import llm_provider
+    if use_llm and llm_provider() != "none":
         try:
             days = fill_with_llm(sk["skeleton"], target_role, level, daily_minutes, normalize_all(candidate_skills))
             source = "llm"
         except Exception as e:  # noqa: BLE001
             print(f"[roadmap] LLM fill failed, using template: {str(e)[:150]}")
     val = validate_and_repair(days, sk["skeleton"], daily_minutes)
-    res = profile_resources()
+    res = profile_resources(user_id)
     for d in val["days"]:
         links = [r for k, v in res.items() if k.lower() in d["skill"].lower() or d["skill"].lower() in k.lower() for r in v]
         d["resources"] = links[:2]
@@ -232,11 +233,12 @@ def generate_roadmap(target_role: str, candidate_skills: List[str], required_ski
     }
 
 
-def roadmap_from_profile(daily_minutes: int = 90, level: str = "beginner", use_llm: bool = True) -> Dict:
-    mem = json.loads(config.MEMORY_JSON.read_text(encoding="utf-8"))
+def roadmap_from_profile(daily_minutes: int = 90, level: str = "beginner", use_llm: bool = True,
+                         user_id: Optional[str] = None) -> Dict:
+    mem = json.loads(config.memory_path(user_id).read_text(encoding="utf-8"))
     return generate_roadmap(mem.get("target_role") or "", mem.get("candidate_skills") or [],
                             required_skills=mem.get("required_skills") or [], daily_minutes=daily_minutes,
-                            level=level, use_llm=use_llm)
+                            level=level, use_llm=use_llm, user_id=user_id)
 
 
 def main():
