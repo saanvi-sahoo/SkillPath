@@ -13,6 +13,7 @@ ENV HOME=/home/user PATH=/home/user/.local/bin:$PATH PYTHONUNBUFFERED=1 \
 WORKDIR /home/user/app
 
 COPY --chown=user requirements.txt .
+# requirements.txt pins CPU-only torch on Linux (no CUDA libraries)
 RUN pip install --no-cache-dir --user -r requirements.txt
 # bake the embedding model into the image (no download at cold start)
 RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')"

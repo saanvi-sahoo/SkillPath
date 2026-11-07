@@ -146,14 +146,15 @@ def build_messages(history: List[Dict], profile: str, context: str, system_versi
 
 
 def answer(chat_history: List[Dict], system_version: str | None = None, router_mode: str | None = None,
-           profile_override: str | None = None) -> Dict:
+           profile_override: str | None = None, route_override: Dict | None = None,
+           quotas: Dict | None = None) -> Dict:
     """Full turn with diagnostics (used by the eval harness and the API)."""
     t0 = time.perf_counter()
     history = [m for m in chat_history if m.get("role") in ("user", "assistant") and m.get("content")]
     if not history or history[-1]["role"] != "user":
         return {"text": "Please ask a career or study question.", "route": None}
     message = history[-1]["content"]
-    decision = route(message, history[:-1], mode=router_mode)
+    decision = route_override or route(message, history[:-1], mode=router_mode)
     out: Dict = {"route": decision, "hits": [], "system_version": system_version or ACTIVE["advisor_system"]}
 
     if decision["label"] in ("out_of_scope", "prompt_attack"):
@@ -163,7 +164,7 @@ def answer(chat_history: List[Dict], system_version: str | None = None, router_m
 
         hits = []
         if decision["label"] == "career_study":
-            hits = retrieve(_retrieval_query(history))
+            hits = retrieve(_retrieval_query(history), quotas=quotas)
         out["hits"] = hits
         context = format_context(hits) if hits else "(no retrieval for this message)"
         if decision["label"] == "career_study":
@@ -174,6 +175,7 @@ def answer(chat_history: List[Dict], system_version: str | None = None, router_m
             llm = get_robust_llm(primary_model=CHAT_MODEL, temperature=0.3)
             resp = llm.invoke(msgs)
             out["model"] = (getattr(resp, "response_metadata", {}) or {}).get("model_name")
+            out["usage"] = getattr(resp, "usage_metadata", None)
             text = resp.text.strip()
             out["text"] = (text + _sources_footer(text, hits)) if text else "I couldn't generate an answer, please rephrase."
         except Exception as e:  # noqa: BLE001

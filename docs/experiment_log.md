@@ -4,6 +4,37 @@ Add one entry for every change to models, prompts, thresholds, chunking or data.
 
 ---
 
+## 2026-11-08: E22 v3 vs v4: paired A/B complete → **v4 activated**
+- Production config (hybrid router, Atlas), paired + strict model `gemini-3.1-flash-lite` (all Groq models capped, E21), 42/42 pairs, 0 errors. Router (hybrid, flash-lite as router LLM) 1.0 accuracy on 42 cases.
+- **Harness fix after reading answers:** `no_profile` cases still retrieved the stored profile from Atlas ("Based on your profile, you have Python, SQL…"), and `asks_question` accepted a single "?". Now no-profile also sets the profile quota to 0, and clarification needs at least 2 questions. doc06/doc09 were re-run.
+- **Result:** v3 0.952 (fails both weak-evidence cases), **v4 1.0**. All other categories 1.0 for both. v4 asks 3 clarifying questions; v3 guesses or only says "upload your resume". Salary: v3 refuses, v4 explains there's no data and gives verification sources. Cost: v4 +21% tokens/answer (3,116 vs 2,571).
+- Files: `reports/prompt_eval/ab_v3_v4_paired_gemini_lite.json`, `weak_evidence_fixed_harness.json`, logs in `reports/prompt_eval/logs/`.
+- Pending (quota-bound): LLM-judge pass with gpt-oss-120b; v4 re-check on gpt-oss-120b.
+
+## 2026-11-08: E21 Quotas are per Groq organisation; deployment constraints
+- **Finding:** both Groq keys belong to the same organisation (`org_01m5j33q…`). Groq daily limits are per org, so the second key added **no** capacity. By the evening every Groq model was at its 200k tokens/day: gpt-oss-120b 198,577, qwen3.8-27b 199,597, gpt-oss-20b 199,697. gemini-3.5-flash was also exhausted (RESOURCE_EXHAUSTED).
+- **Gemini Flash-Lite has a separate quota.** `gemini-3.1-flash-lite` was added as the last fallback in `brain._FREE_TIER_MODELS`, so the live chatbot keeps answering when Groq is exhausted.
+- **Hugging Face:** `402 Payment Required`, Docker/Gradio Spaces on free CPU now need HF PRO. Free route: Streamlit Community Cloud. The UI now runs the pipeline in-process when no API server is reachable (`src/backend/pipeline_service.py`, `PIPELINE_MODE`).
+- **Bug fixed:** `asyncio.gather` in `scrape_jobs_node` had no exception handling, so a Naukri/Selenium failure (e.g. no Chrome) crashed the whole pipeline. Each scraper now fails independently.
+- `requirements.txt`: CPU-only torch on Linux (`torch==2.15.0+cpu`); unused `torchvision` removed.
+
+## 2026-11-08: E20 MongoDB Atlas live
+- Created with the Atlas CLI: project **SkillPath AI**, cluster **skillpath-cluster** (M0, AWS Mumbai), DB user `skillpath_app` (random password, only in `.env`), current-IP access.
+- Ingested: careers (2899, 384), knowledge (17, 384), jobs (153, 384), profile (39, 384). All finite and aligned.
+- `check_atlas`: 3 indexes READY/queryable. "Python SQL data analyst" → career_0682 Data Analyst 0.520, career_0689 0.518, career_0662 0.515, career_0093 0.507, career_0306 0.505.
+- **Parity:** Atlas ANN top 5 = exact local top 5 (5/5) for "Which career fits Python, SQL and dashboards?".
+- **Latency:** full retrieval (4 searches) median **359 ms**, p95 419 ms (local: 9 ms).
+
+## 2026-11-08: E19 Atlas M0 allows at most 3 search indexes
+- The 4th index (`knowledge_vector_index`) failed: `The maximum number of FTS indexes has been reached for this instance size`.
+- **Change:** jobs moved into `knowledge_chunks_v1` (filtered by `source=jobs`); `job_listings_v1` dropped. Index deletion is asynchronous, so the retry needed about 30 s.
+
+## 2026-11-08: E18 Second Groq key + quota-aware evaluation
+- New `GROQ_API_KEY` (fresh 200k tokens/day); the exhausted key becomes `GROQ_API_KEY_2`. `get_robust_llm` now tries **the same model on key 2** before weaker models.
+- Measured cost: one in-scope answer ≈ **3.3k tokens** (2.4–2.9k input, 0.4–0.9k output). A full 84-call router-off A/B ≈ 280k tokens, more than one key's daily cap. gpt-oss-120b also has a per-minute token cap (~8k), so back-to-back calls fall back to gpt-oss-20b.
+- **New eval design:** `--paired --expect-model openai/gpt-oss-120b --sleep 30`. Versions alternate on each case; the run stops the moment another model answers, so every completed pair is a same-model comparison. It runs in production mode (hybrid router), so the 12 refusals cost no LLM calls (~60 LLM calls in total). Token usage is recorded per row.
+- Spot check doc09 ("I like music and painting…", no profile): v3 guessed careers; v4 asked 3 clarifying questions (answered by the 20b fallback, which is why the strict design was needed).
+
 ## 2026-11-08: E17 v3 on the 42-case set; v4 A/B paused by the daily token cap
 - **v3 (router off, gpt-oss-120b 35/42, qwen 7/42): pass rate 0.929**, citation rate 43%. Failures: cs04 (no citation), cs08 (flagged as a refusal, to inspect), doc09 (weak evidence: guessed careers instead of asking). weak_evidence 0.5.
 - v4 started, then Groq returned `429 tokens per day (TPD): Limit 200000, Used 199166`. Comparing v4 on fallback models against v3 on 120b would be confounded, so **the run was stopped**. v3 stays active.

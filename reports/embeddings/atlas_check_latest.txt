@@ -1,0 +1,18 @@
+[ok] connected - db=skillpath_ai
+[index] careers_embeddings_v1.career_vector_index status=READY queryable=True
+[counts] careers_embeddings_v1: {'careers': 2899}  model=sentence-transformers/all-MiniLM-L6-v2
+[index] knowledge_chunks_v1.knowledge_vector_index status=READY queryable=True
+[counts] knowledge_chunks_v1: {'knowledge': 17, 'jobs': 153}  model=sentence-transformers/all-MiniLM-L6-v2
+[index] knowledge_chunks_v1.knowledge_vector_index status=READY queryable=True
+[counts] knowledge_chunks_v1: {'knowledge': 17, 'jobs': 153}  model=sentence-transformers/all-MiniLM-L6-v2
+[index] user_profile_chunks_v1.profile_vector_index status=READY queryable=True
+[counts] user_profile_chunks_v1: {'profile': 39}  model=sentence-transformers/all-MiniLM-L6-v2
+  0.520 career_0682 Data Analyst [Data Analysis and BI]
+  0.518 career_0689 Data Analyst - Supply Chain [Data Analysis and BI]
+  0.515 career_0662 Data Analyst [Data Analysis and BI]
+  0.507 career_0093 Analyst, Data [Data Analysis and BI]
+  0.505 career_0306 Business Analyst [Data Engineering]
+ATLAS retrieve (4 collections searched) median ms 359.1 p95 419.3
+top-5 Atlas: ['career_2059', 'career_2061', 'career_2482', 'career_2060', 'career_0786']
+top-5 local: ['career_2059', 'career_2061', 'career_2482', 'career_2060', 'career_0786']
+overlap: 5 /5

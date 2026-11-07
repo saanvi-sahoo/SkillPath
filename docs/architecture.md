@@ -19,7 +19,7 @@ flowchart LR
     ING --> EMB[all-MiniLM-L6-v2 embedder]
     CSV[(emerging_tech_career_dataset_cleaned.csv<br/>source of truth)] --> ING
     RM[/roadmap/] --> RG[roadmap generator] --> RET
-    EMB --> VS[(MongoDB Atlas skillpath_ai<br/>careers_embeddings_v1 · knowledge_chunks_v1<br/>job_listings_v1 · user_profile_chunks_v1)]
+    EMB --> VS[(MongoDB Atlas skillpath_ai<br/>careers_embeddings_v1 · knowledge_chunks_v1 (+jobs)<br/>user_profile_chunks_v1)]
     BOT --> R[scope_router] --> RET[retriever] --> VS
     RET --> LLM[Groq gpt-oss-120b<br/>+ fallbacks]
 ```

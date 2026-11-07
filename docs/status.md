@@ -1,6 +1,6 @@
 # Progress ledger
 
-Updated **2026-11-08**. This follows the evidence rule of the project doc (§2, §14.4): an item is **Verified** only if it was executed and its output is saved in `reports/`. Code that exists but hasn't been run end to end is marked as such.
+Updated **2026-11-08 (evening)**. This follows the evidence rule of the project doc (§2, §14.4): an item is **Verified** only if it was executed and its output is saved in `reports/`. Code that exists but hasn't been run end to end is marked as such.
 
 | Area | What exists now | Status | Evidence |
 |---|---|---|---|
@@ -11,22 +11,23 @@ Updated **2026-11-08**. This follows the evidence rule of the project doc (§2, 
 | LLM availability | Groq retired llama-3.3/3.1 and Google retired gemini-2.5-flash. Migrated to gpt-oss-120b/20b and gemini-3.5-flash; the answering model is logged | ✅ Fixed | experiment_log E7, E14 |
 | **Career dataset (source of truth)** | `docs/emerging_tech_career_dataset_cleaned.csv`, 2,900 × 13, validated loader | ✅ Verified | `reports/data_quality/career_dataset_report.md` |
 | Data quality | Audit script: duplicates, placeholders (2,848 salaries), 1 junk title excluded | ✅ Verified | same report |
-| **Full-dataset embeddings** | MiniLM 384-d, "full" text variant, **2,899 × 384**, finite and ID-aligned | ✅ Verified (local store) | `reports/embeddings/ingestion_log.jsonl` |
+| **Full-dataset embeddings** | MiniLM 384-d, "full" text variant, **2,899 × 384**, finite and ID-aligned | ✅ Verified (local + Atlas) | `reports/embeddings/ingestion_log.jsonl` |
 | Embedding model selection | 3-model self-supervised test + 24-query labelled P@5 benchmark | ✅ Verified | `reports/embeddings/career_retrieval_latest.md` (strict-P@5 0.767) |
-| **MongoDB Atlas** | `skillpath_ai` with 4 collections and 4 vector indexes, created by code; idempotent upsert/prune; model guard; `check_atlas` verifier | 🟡 **Code ready, not executed.** No cluster exists yet. Atlas CLI is installed; needs a one-time `atlas auth login`, then `atlas setup` creates everything | [mongodb_atlas_setup.md](mongodb_atlas_setup.md) |
+| **MongoDB Atlas** | Cluster `skillpath-cluster` (M0, Mumbai), project SkillPath AI; `skillpath_ai` with 3 collections + 3 vector indexes (M0 maximum); idempotent upsert/prune; model guard | ✅ **Verified live**: 2,899 careers + 170 knowledge/jobs + 39 profile chunks; indexes READY; real query OK; Atlas = exact top-5 (5/5); 359 ms median | `reports/embeddings/atlas_check_latest.txt`, [mongodb_atlas_setup.md](mongodb_atlas_setup.md) §0 |
 | Career retrieval adapter | `retrieve_careers(query, top_k, domain)` + `CAREER_RAG_ENABLED` flag | ✅ Verified (local) | Smoke test: security query → career_2691 etc. (0.61–0.63) |
 | **RAG** | Per-collection quotas, score floor, MATCH STRENGTH signal, `[S#]` citations + sources footer | ✅ Verified (local) | `/chat` debug responses |
 | **Career Advisor chatbot** | Career/study-only scope guardrail (regex + kNN + LLM), RAG answers, `/chat` API, Streamlit tab | ✅ Verified | Router: hybrid 1.0 accuracy on 42 cases, 0 false refusals, 0 leaks |
-| **Prompt script training** | Versioned prompts v1–v4, 42-case eval set (doc §9.4 classes), deterministic checks, offline rescoring, offline LLM judge | ✅ v1→v3 measured (v3 active; 42-case pass rate 0.929); 🟡 v4 A/B paused by the Groq daily token cap, re-run when quota resets | [prompt_scripting.md](prompt_scripting.md) |
+| **Prompt script training** | Versioned prompts v1–v4, 42-case eval set (doc §9.4 classes), paired same-model A/B, deterministic checks, offline rescoring, offline LLM judge | ✅ **v4 active**: paired A/B v4 1.0 vs v3 0.952 (weak evidence 2/2 vs 0/2). 🟡 Judge pass + 120b re-check wait for Groq quota | [prompt_scripting.md](prompt_scripting.md) §5 |
 | Skill normalisation + exact gap comparison | Aliases, categories, IMPLIES (MySQL ⇒ SQL), related ≠ equivalent | ✅ Verified (unit examples) | [skills_and_roadmap.md](skills_and_roadmap.md) |
 | **30-day roadmap** | Prioritised (prerequisites + market share), validated, LLM-filled, template fallback; `/roadmap` + Streamlit | ✅ Verified (1 profile) | `reports/roadmaps/roadmap_*.json` (valid, 0 repairs) |
+| Automated tests | `tests/test_core.py`: 12 offline unit tests (loader, ids, vector store, skills, roadmap, detectors) | ✅ 12/12 pass | `python -m pytest -q tests` |
 | Documentation | 15 docs: runbook (every process), scenarios (every case, real outputs), deployment, experiment log E0–E17 | ✅ | `docs/` |
-| GitHub (`saanvi-sahoo/SkillPath`) | Local repo, personal data and secrets git-ignored, secret scan clean; SSH key created for SagarSwain05 | 🟡 Push waits for the SSH key to be added on GitHub | [deployment.md](deployment.md) |
-| Hugging Face deployment | Dockerfile, start script, Space README, `push_space.py` (private Space, secrets via API); token valid (user `saanvisahoo26`) | 🟡 Prepared; deploy after the GitHub push and Atlas | [deployment.md](deployment.md) |
+| GitHub (`saanvi-sahoo/SkillPath`) | Pushed (SSH key on saanvi-sahoo); personal data and secrets git-ignored; secret scan clean | ✅ | [deployment.md](deployment.md) |
+| Hosting | **Hugging Face blocked**: Docker Spaces now need HF PRO (402). **Streamlit Community Cloud ready** (in-process pipeline mode, CPU torch, scraper-failure tolerance); needs one GitHub login at share.streamlit.io | 🟡 One browser step left | [deployment.md](deployment.md) §3 |
 
 ## Open items (in priority order)
-1. Atlas connection string → `ingest --backend mongo` + `check_atlas --query ...` (doc §14.3 checkpoint).
-2. Finish the v4 A/B, activate the winner, judge offline (Gemini quota permitting).
-3. Push to GitHub, then optionally deploy to a Hugging Face Space.
+1. LLM-judge pass on the v3/v4 answers + v4 re-check on gpt-oss-120b, when Groq quota resets.
+2. Deploy on Streamlit Community Cloud (one browser login) and allow `0.0.0.0/0` in Atlas.
+3. Rotate the credentials that were shared in chat (Groq ×2, HF token, Atlas/HF account password).
 4. Bigger held-out eval sets (100+ chat questions, 50+ career queries) from real usage.
 5. Roadmap progress tracking and regeneration; LLM fallback for categorising unknown skills; OCR for scanned PDFs.

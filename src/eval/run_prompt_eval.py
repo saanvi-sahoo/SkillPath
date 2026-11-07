@@ -156,6 +156,8 @@ def judge_file(path: str, judge_model: str, sleep_s: float) -> Dict:
     report = json.loads(Path(path).read_text(encoding="utf-8"))
     profile = load_profile_summary()
     for v, block in report.get("answers", {}).items():
+        if v == "_meta":
+            continue
         for r in block["rows"]:
             if isinstance(r.get("judge"), dict) and "relevance" in r["judge"]:
                 continue  # resumable
@@ -197,7 +199,8 @@ def eval_answers(cases, versions, router_mode, use_judge, judge_model, sleep_s, 
         for c in cases:
             override = "No analysed profile yet. The user has not run 'Analyze Profile'." if c.get("no_profile") else None
             for attempt in range(4):  # free-tier rate limits: back off instead of scoring an outage as a failure
-                res = answer(c["messages"], system_version=v, router_mode=router_mode, profile_override=override)
+                q = {"profile": 0, "knowledge": 2, "careers": 4, "jobs": 1} if c.get("no_profile") else None  # E22
+                res = answer(c["messages"], system_version=v, router_mode=router_mode, profile_override=override, quotas=q)
                 if not res.get("error"):
                     break
                 print(f"   retry {attempt + 1} after error: {res['error'][:100]}")
@@ -212,7 +215,7 @@ def eval_answers(cases, versions, router_mode, use_judge, judge_model, sleep_s, 
             if c.get("expect_citation"):
                 checks["citation"] = bool(re.search(r"\[S\d+", text))
             if c.get("expect_question"):
-                checks["asks_question"] = text.count("?") >= 1
+                checks["asks_question"] = text.count("?") >= 2  # E22: real clarification = >=2 questions
             if "must_not_include" in c:
                 checks["must_not_include"] = not any(x.lower() in text.lower() for x in c["must_not_include"])
             if c.get("expect_refusal"):
@@ -221,7 +224,7 @@ def eval_answers(cases, versions, router_mode, use_judge, judge_model, sleep_s, 
                 checks["not_refused"] = not (REFUSAL_PAT.search(text) and len(text.split()) < 90)
             row = {"id": c["id"], "category": c["category"], "route": res["route"]["label"] if res.get("route") else None,
                    "checks": checks, "passed": all(x for x in checks.values() if x is not None),
-                   "model": res.get("model"), "error": res.get("error"),
+                   "model": res.get("model"), "error": res.get("error"), "usage": res.get("usage"),
                    "messages": c["messages"], "context": _ctx(res)[:4000],
                    "latency_ms": res.get("latency_ms"), "words": len(text.split()), "n_hits": len(res.get("hits", [])),
                    "answer": text}
@@ -244,6 +247,9 @@ def eval_answers(cases, versions, router_mode, use_judge, judge_model, sleep_s, 
             models[str(r.get("model"))] = models.get(str(r.get("model")), 0) + 1
         summary["answering_models"] = models  # with_fallbacks can silently change the model
         summary["errors"] = sum(bool(r.get("error")) for r in rows)
+        toks = [((r.get("usage") or {}).get("total_tokens") or 0) for r in rows]
+        summary["total_tokens"] = sum(toks)
+        summary["avg_tokens_per_llm_answer"] = round(sum(toks) / max(1, sum(t > 0 for t in toks)))
         by_cat: Dict[str, List[bool]] = {}
         for r in rows:
             by_cat.setdefault(r["category"], []).append(r["passed"])
@@ -259,6 +265,86 @@ def eval_answers(cases, versions, router_mode, use_judge, judge_model, sleep_s, 
     return out
 
 
+def eval_paired(cases, versions, router_mode, sleep_s, expect_model, checkpoint) -> Dict:
+    """E18: run all versions on case i before case i+1 (paired design) with a strict answering model.
+    If the intended model is unavailable (quota), stop: completed pairs remain a fair same-model comparison."""
+    from src.backend.chatbot import answer
+
+    pv = _profile_vars()
+    out = {v: {"summary": {}, "rows": []} for v in versions}
+    stopped = None
+    from src.backend.scope_router import route
+
+    for c in cases:
+        pair = {}
+        msgs = c["messages"]
+        decision = route(msgs[-1]["content"], msgs[:-1], mode=router_mode)  # same route for every version
+        for v in versions:
+            override = "No analysed profile yet. The user has not run 'Analyze Profile'." if c.get("no_profile") else None
+            q = {"profile": 0, "knowledge": 2, "careers": 4, "jobs": 1} if c.get("no_profile") else None  # E22
+            res = answer(msgs, system_version=v, router_mode=router_mode, profile_override=override, route_override=decision, quotas=q)
+            used_llm = res.get("model") is not None
+            if res.get("error") or (used_llm and expect_model and res.get("model") != expect_model):
+                stopped = f"case {c['id']} {v}: model={res.get('model')} error={str(res.get('error'))[:120]}"
+                break
+            pair[v] = res
+            time.sleep(sleep_s if used_llm else 0.5)
+        if stopped:
+            print(f"[paired] STOP ({stopped})")
+            break
+        for v, res in pair.items():
+            out[v]["rows"].append(_score_row(c, res, pv))
+            print(f"[paired:{v}] {c['id']:7s} passed={out[v]['rows'][-1]['passed']} {out[v]['rows'][-1]['checks']} tokens={(res.get('usage') or {}).get('total_tokens')}")
+        for v in versions:
+            out[v]["summary"] = _summarise(out[v]["rows"])
+        out["_meta"] = {"design": "paired", "expect_model": expect_model, "stopped": stopped,
+                        "completed_pairs": len(out[versions[0]]["rows"]), "n_cases": len(cases)}
+        checkpoint({k: v for k, v in out.items()})
+    return out
+
+
+def _score_row(c: Dict, res: Dict, pv: Dict) -> Dict:
+    text = res["text"]
+    checks = {}
+    if "must_include" in c:
+        checks["must_include"] = all(s and s in text for s in _resolve(c["must_include"], pv))
+    if "must_include_any" in c:
+        opts = _resolve(c["must_include_any"], pv)
+        checks["must_include_any"] = any(s.lower() in text.lower() for s in opts) if opts else None
+    if c.get("expect_citation"):
+        checks["citation"] = bool(re.search(r"\[S\d+", text))
+    if c.get("expect_question"):
+        checks["asks_question"] = text.count("?") >= 2  # E22: real clarification = >=2 questions
+    refused = bool(REFUSAL_PAT.search(text)) and len(text.split()) < 90
+    if c.get("expect_refusal"):
+        checks["refusal"] = refused
+    elif c["expected_label"] == "career_study":
+        checks["not_refused"] = not refused
+    return {"id": c["id"], "category": c["category"], "route": res["route"]["label"] if res.get("route") else None,
+            "checks": checks, "passed": all(x for x in checks.values() if x is not None),
+            "model": res.get("model"), "usage": res.get("usage"), "latency_ms": res.get("latency_ms"),
+            "words": len(text.split()), "n_hits": len(res.get("hits", [])), "messages": c["messages"],
+            "context": _ctx(res)[:4000], "answer": text}
+
+
+def _summarise(rows: List[Dict]) -> Dict:
+    n = max(1, len(rows))
+    by_cat: Dict[str, List[bool]] = {}
+    models: Dict[str, int] = {}
+    for r in rows:
+        by_cat.setdefault(r["category"], []).append(r["passed"])
+        models[str(r.get("model"))] = models.get(str(r.get("model")), 0) + 1
+    toks = [((r.get("usage") or {}).get("total_tokens") or 0) for r in rows]
+    insc = [r for r in rows if r["route"] == "career_study"]
+    return {"n": len(rows), "pass_rate": round(sum(r["passed"] for r in rows) / n, 3),
+            "pass_rate_by_category": {k: round(sum(x) / len(x), 3) for k, x in by_cat.items()},
+            "citation_rate_in_scope": round(sum(bool(re.search(r"\[S\d+", r["answer"])) for r in insc) / max(1, len(insc)), 3),
+            "avg_words": round(sum(r["words"] for r in rows) / n, 1),
+            "avg_latency_ms": round(sum(r["latency_ms"] or 0 for r in rows) / n, 1),
+            "answering_models": models, "total_tokens": sum(toks),
+            "avg_tokens_per_llm_answer": round(sum(toks) / max(1, sum(t > 0 for t in toks)))}
+
+
 def to_markdown(report: Dict) -> str:
     L = [f"# Prompt evaluation ({report['ts']})", "", f"Cases: {report['n_cases']} - router mode for answers: `{report.get('router_mode')}`", ""]
     if report.get("router"):
@@ -270,11 +356,22 @@ def to_markdown(report: Dict) -> str:
                 L.append(f"\n**{m} errors:** " + ", ".join(f"{e['id']} (exp {e['expected']}, got {e['got']})" for e in r["errors"]))
     if report.get("answers"):
         L += ["", "## Answers by system-prompt version", "", "| Version | Pass rate | Citation rate | Avg words | Avg ms | Judge rel | Judge grounded | Judge scope | Judge action |", "|---|---|---|---|---|---|---|---|---|"]
+        meta = report["answers"].get("_meta")
+        if meta:
+            L.insert(3, f"Design: paired, strict model `{meta['expect_model']}`, completed pairs {meta['completed_pairs']}/{meta['n_cases']}" + (f" (stopped: {meta['stopped']})" if meta['stopped'] else ""))
         for v, r in report["answers"].items():
+            if v == "_meta":
+                continue
             s = r["summary"]
+            if "pass_rate" not in s:
+                continue
             L.append(f"| {v} | {s['pass_rate']} | {s['citation_rate_in_scope']} | {s['avg_words']} | {s['avg_latency_ms']} | "
                      f"{s.get('judge_relevance', '-')} | {s.get('judge_groundedness', '-')} | {s.get('judge_scope', '-')} | {s.get('judge_actionability', '-')} |")
         for v, r in report["answers"].items():
+            if v == "_meta":
+                continue
+            if "pass_rate_by_category" not in r["summary"]:
+                continue
             L += ["", f"### {v} pass rate by category", "", json.dumps(r["summary"]["pass_rate_by_category"]),
                   "", f"Answering models: {json.dumps(r['summary'].get('answering_models'))} - errors: {r['summary'].get('errors')}"]
             fails = [x for x in r["rows"] if not x["passed"]]
@@ -289,6 +386,8 @@ def rescore(path: str) -> Dict:
     cases = {c["id"]: c for c in load_cases()}
     pv = _profile_vars()
     for v, block in report.get("answers", {}).items():
+        if v == "_meta":
+            continue
         for r in block["rows"]:
             c, text = cases[r["id"]], r["answer"]
             checks = {}
@@ -300,7 +399,7 @@ def rescore(path: str) -> Dict:
             if c.get("expect_citation"):
                 checks["citation"] = bool(re.search(r"\[S\d+", text))
             if c.get("expect_question"):
-                checks["asks_question"] = text.count("?") >= 1
+                checks["asks_question"] = text.count("?") >= 2  # E22: real clarification = >=2 questions
             if "must_not_include" in c:
                 checks["must_not_include"] = not any(x.lower() in text.lower() for x in c["must_not_include"])
             refused = bool(REFUSAL_PAT.search(text)) and len(text.split()) < 90
@@ -337,6 +436,8 @@ def main():
     p.add_argument("--judge-model", default="gemini-3.5-flash")
     p.add_argument("--sleep", type=float, default=2.0, help="seconds between LLM calls (free-tier rate limits)")
     p.add_argument("--ids", nargs="*", help="only run these case ids")
+    p.add_argument("--paired", action="store_true", help="paired design: all versions per case, stop on model change")
+    p.add_argument("--expect-model", default="openai/gpt-oss-120b")
     args = p.parse_args()
     if args.rescore:
         rescore(args.rescore)
@@ -358,7 +459,10 @@ def main():
             report["answers"] = partial
             (OUT_DIR / f"prompt_eval_{ts}.json").write_text(json.dumps(report, indent=2, ensure_ascii=False, default=str))
 
-        report["answers"] = eval_answers(cases, args.versions, args.router, args.judge, args.judge_model, args.sleep, _ckpt)
+        if args.paired:
+            report["answers"] = eval_paired(cases, args.versions, args.router, args.sleep, args.expect_model, _ckpt)
+        else:
+            report["answers"] = eval_answers(cases, args.versions, args.router, args.judge, args.judge_model, args.sleep, _ckpt)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     (OUT_DIR / f"prompt_eval_{ts}.json").write_text(json.dumps(report, indent=2, ensure_ascii=False, default=str))
     md = to_markdown(report)

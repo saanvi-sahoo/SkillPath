@@ -10,12 +10,21 @@ cp .env.example .env        # fill in GROQ_API_KEY, GEMINI_API_KEY, TAVILY_API_K
 ```
 **Check:** `python -c "import src.backend.main_runner, src.backend.chatbot"` prints nothing (no error).
 
+## 1b. Run the automated tests (offline, < 1 s, no API calls)
+```bash
+python -m pytest -q tests        # 12 tests: dataset loader/exclusions, ids, vector store (upsert/prune/filter/model guard),
+                                 # skills (aliases, related != equivalent, implication), roadmap (prereqs, skeleton, repair),
+                                 # refusal detector, citation footer, router injection regex
+```
+
 ## 2. Run the application
 ```bash
 uvicorn src.backend.fastapi_ends.api_endpoint:app --port 8000     # API: http://127.0.0.1:8000/docs
 streamlit run src/frontend/frontend.py                            # UI:  http://localhost:8501
 ```
 Restart the backend after any `.env` change, since environment variables are read at start-up.
+
+`PIPELINE_MODE` (default `auto`): the UI calls the API at `SKILLPATH_API_URL` (default `http://127.0.0.1:8000`). If nothing is listening, it runs the same pipeline in-process (`src/backend/pipeline_service.py`). Set `inprocess` on Streamlit Cloud.
 
 | Endpoint | Purpose |
 |---|---|

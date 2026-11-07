@@ -1,5 +1,30 @@
 # MongoDB Atlas setup (vector database + storage)
 
+## 0. Current live deployment (created 2026-11-08 with the Atlas CLI)
+| Item | Value |
+|---|---|
+| Atlas account / organisation | `sani260105@gmail.com` / "Saanvi's Org - 2026-11-07" |
+| Project | **SkillPath AI** (`6aef8bc9b64186873a8b7606`) |
+| Cluster | **skillpath-cluster**, M0 free, AWS Mumbai (`AP_SOUTH_1`), host `skillpath-cluster.fozgv6t.mongodb.net` |
+| Database user | `skillpath_app` (readWriteAnyDatabase). Random 32-char password, stored **only** in `.env` (`MONGODB_URI`) |
+| Network access | The project Mac's IP (added by `--currentIp`). Teammates: `atlas accessLists create --currentIp` |
+| Database | `skillpath_ai`: `careers_embeddings_v1` (2,899), `knowledge_chunks_v1` (17 guides + 153 jobs), `user_profile_chunks_v1` (39) |
+| Vector indexes | `career_vector_index`, `knowledge_vector_index`, `profile_vector_index`: all READY/queryable |
+| Verification | `python -m src.rag.check_atlas --query "Python SQL data analyst"` → top 5 = Data Analyst records (0.50–0.52); Atlas top 5 = exact local top 5 (5/5); retrieval median 359 ms. Saved in `reports/embeddings/atlas_check_latest.txt` |
+
+Commands that created it:
+```bash
+atlas auth login                                   # browser approval (UserAccount)
+atlas projects create "SkillPath AI" --orgId <org-id>
+atlas config set project_id <project-id>
+atlas setup --projectId <project-id> --clusterName skillpath-cluster --provider AWS --region AP_SOUTH_1 \
+  --tier M0 --username skillpath_app --password '<random>' --currentIp --skipSampleData --connectWith skip --force
+python -m src.rag.ingest --sources all --backend mongo
+```
+
+**Giving teammates access:** Atlas → Project *SkillPath AI* → **Project Identity & Access → Invite to Project** (their email, role *Project Data Access Read/Write* or *Project Owner*). For the app, they need the same `MONGODB_URI` (share it privately, never in Git or chat), and their IP added under Network Access.
+
+
 Until `MONGODB_URI` is set, the app uses a local numpy store with exactly the same collections, so everything runs offline. These steps switch it to Atlas.
 
 > **Account login ≠ database login.** The Atlas *website* account (email + password) is only for the web UI. The application connects with a **database user** inside a `mongodb+srv://` connection string, created in step 1. Never put the website password in code or `.env`.
@@ -56,9 +81,10 @@ URL-encode special characters in the password (`@` → `%40`, `#` → `%23`).
 | Collection | Contents | Vector index | Access |
 |---|---|---|---|
 | `careers_embeddings_v1` | 2,899 career records + vectors (source of truth) | `career_vector_index` | shared, read-mostly |
-| `knowledge_chunks_v1` | career and study guides | `knowledge_vector_index` | shared |
-| `job_listings_v1` | scraped LinkedIn/Naukri jobs | `jobs_vector_index` | shared |
+| `knowledge_chunks_v1` | career and study guides (`source=knowledge`) **and** scraped jobs (`source=jobs`) | `knowledge_vector_index` | shared |
 | `user_profile_chunks_v1` | a user's resume/JD analysis chunks | `profile_vector_index` | **private**, filtered by `user_id` |
+
+> **M0 limit: at most 3 Atlas Search / Vector Search indexes per cluster.** The first design used 4 collections and failed with `The maximum number of FTS indexes has been reached for this instance size`. Jobs therefore share the knowledge collection, separated by the indexed `source` filter (E19). A paid tier (M10+) would allow a separate `job_listings_v1`: set `MONGODB_JOBS_COLLECTION`.
 
 ```bash
 python -m src.rag.ingest --sources all --backend mongo     # embed + upsert + create indexes + wait until queryable
@@ -92,7 +118,7 @@ Atlas returns `(1 + cos) / 2`. The code converts it back to cosine, so the thres
 - **Privacy:** resume-derived chunks live only in `user_profile_chunks_v1`, tagged `user_id`, and every search filters by `user_id ∈ {global, current user}`.
 
 ## 6. Sizing
-About 3.1k vectors × (1.5 KB vector + ~0.7 KB text and metadata) ≈ **7 MB**, against M0's 512 MB.
+About 3.1k vectors × (1.5 KB vector + ~0.7 KB text and metadata) ≈ **7 MB**, against M0's 512 MB. M0 also limits throughput (about 100 ops/s) and allows 3 search indexes.
 
 ## 7. Troubleshooting
 | Symptom | Fix |
@@ -100,4 +126,5 @@ About 3.1k vectors × (1.5 KB vector + ~0.7 KB text and metadata) ≈ **7 MB**, 
 | `ServerSelectionTimeoutError` | Your IP isn't in Network Access, or the URI or password is wrong |
 | `bad auth : authentication failed` | You used the *website* password. Use the database user's password |
 | Search returns `[]` right after ingest | The index is still building. `check_atlas` waits until `queryable: true` |
+| `maximum number of FTS indexes has been reached` | M0 allows 3 search indexes. Don't add collections. After dropping one, wait about 30 s for its index to be deleted |
 | `holds vectors from <model>` error | The collection was written with another model. Re-ingest, or set `EMBEDDING_MODEL` to match |

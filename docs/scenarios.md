@@ -118,3 +118,10 @@ Example (live `/chat`, 2026-11-08): *"I enjoy protecting systems from hackers, w
 | F6 | Chat answers about the wrong profile | Stale `memory.json` | Re-run Analyze Profile (re-embeds automatically) |
 | F7 | Atlas `bad auth` | Website password used instead of the database-user password | See mongodb_atlas_setup.md |
 | F8 | Atlas search returns [] after ingest | Index still building | `check_atlas` waits until it's queryable |
+| F9 | `maximum number of FTS indexes has been reached` | Atlas M0 allows 3 search indexes | Jobs share the knowledge collection (E19) |
+| F10 | `429 … tokens per minute` / fallback model answered | gpt-oss-120b free tier ≈ 8k tokens/minute | The same model on `GROQ_API_KEY_2` is tried first (E18); the eval paces calls 30 s apart |
+| F11 | Atlas is slower than local | Network round-trips (4 searches per turn) | Median 359 ms vs 9 ms locally. Fine for chat; batch searches if needed |
+| F13 | Every Groq model returns 429 TPD | Quotas are per Groq **organisation**, not per key | Gemini Flash-Lite (separate quota) is the last fallback; use keys from a *different* Groq org for real extra capacity |
+| F14 | Naukri scraper fails (no Chrome on the host) | Selenium needs a browser | That scraper returns []; LinkedIn results and the rest of the pipeline continue |
+| F15 | No FastAPI server (Streamlit Cloud) | Only one process allowed | `PIPELINE_MODE=auto/inprocess` runs the pipeline inside Streamlit |
+| F12 | New teammate can't connect to Atlas | Their IP isn't in Network Access | `atlas accessLists create --currentIp` or add it in the UI |

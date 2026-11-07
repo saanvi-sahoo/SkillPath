@@ -231,7 +231,13 @@ Respond with ONLY the raw JSON string, no markdown blocks.
         )
     )
     
-    raw_linkedin_jobs, raw_naukri_jobs = await asyncio.gather(linkedin_task, naukri_task)
+    # Each scraper fails independently (e.g. no Chrome for Selenium on Streamlit Cloud): an error yields []
+    raw_linkedin_jobs, raw_naukri_jobs = await asyncio.gather(linkedin_task, naukri_task, return_exceptions=True)
+    for name, res in (("linkedin", raw_linkedin_jobs), ("naukri", raw_naukri_jobs)):
+        if isinstance(res, BaseException):
+            print(f"[scrape_jobs] {name} scraper failed, continuing without it: {str(res)[:200]}")
+    raw_linkedin_jobs = [] if isinstance(raw_linkedin_jobs, BaseException) or raw_linkedin_jobs is None else raw_linkedin_jobs
+    raw_naukri_jobs = [] if isinstance(raw_naukri_jobs, BaseException) or raw_naukri_jobs is None else raw_naukri_jobs
     
     # Map the LinkedIn scraper output
     linkedin_listings = []

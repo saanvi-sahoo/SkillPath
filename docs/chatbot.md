@@ -55,7 +55,7 @@ Labels:
 |---|---|---|
 | `CHAT_MODEL` | `groq:openai/gpt-oss-120b` | Answer model. Falls back through `brain._FREE_TIER_MODELS` (gpt-oss-20b → qwen3.8-27b → gemini-2.5-flash). The model that actually answered is logged per turn |
 | `ROUTER_MODEL` | `groq:openai/gpt-oss-20b` | LLM used by the scope classifier |
-| `PROMPT_ADVISOR_SYSTEM` | see `registry.ACTIVE` | System prompt version (`src/prompts/templates/advisor_system_vN.md`) |
+| `PROMPT_ADVISOR_SYSTEM` | `v4` (see `registry.ACTIVE`) | System prompt version (`src/prompts/templates/advisor_system_vN.md`) |
 | `SCOPE_ROUTER_MODE` | `hybrid` | `hybrid` \| `knn` \| `llm` \| `off` (`off` is eval only) |
 | `SCOPE_KNN_MIN_TOP_SIM` / `SCOPE_KNN_MIN_VOTE_SHARE` | 0.70 / 0.80 | kNN confidence gates |
 

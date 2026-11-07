@@ -46,7 +46,9 @@ COLLECTIONS = {
     #  source      (collection,                                         vector index name)
     "careers":   (os.getenv("MONGODB_CAREERS_COLLECTION", "careers_embeddings_v1"), "career_vector_index"),
     "knowledge": (os.getenv("MONGODB_KNOWLEDGE_COLLECTION", "knowledge_chunks_v1"), "knowledge_vector_index"),
-    "jobs":      (os.getenv("MONGODB_JOBS_COLLECTION", "job_listings_v1"), "jobs_vector_index"),
+    # Atlas M0 allows max 3 search indexes per cluster (E19): jobs share the knowledge collection,
+    # separated by the indexed `source` field.
+    "jobs":      (os.getenv("MONGODB_JOBS_COLLECTION", "knowledge_chunks_v1"), "knowledge_vector_index"),
     "profile":   (os.getenv("MONGODB_PROFILE_COLLECTION", "user_profile_chunks_v1"), "profile_vector_index"),
 }
 LOCAL_STORE_DIR = Path(os.getenv("LOCAL_STORE_DIR", PROJECT_ROOT / "src" / "data" / "vector_store"))

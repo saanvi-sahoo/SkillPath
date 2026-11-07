@@ -230,22 +230,33 @@ if analyze_btn:
         
         loading_placeholder.markdown(loading_html, unsafe_allow_html=True)
         
+        from src.backend.pipeline_service import API_URL, PIPELINE_MODE, run_and_persist_sync
+
+        def _store(data):
+            st.session_state["pipeline_data"] = data
+            persistent_state["pipeline_data"] = data
+            persistent_state["job_pref"] = job_pref
+
+        payload = {"resume_input": resume_input, "jd_input": jd_input_final, "target_role": job_pref, "location": ""}
         try:
-            response = requests.post("http://127.0.0.1:8000/pipeline/run", json={
-                "resume_input": resume_input,
-                "jd_input": jd_input_final,
-                "target_role": job_pref,
-                "location": ""
-            })
-            if response.status_code == 200:
-                data = response.json()
-                st.session_state["pipeline_data"] = data
-                persistent_state["pipeline_data"] = data
-                persistent_state["job_pref"] = job_pref
-            else:
-                st.error(f"Error from backend: {response.text}")
+            data, api_unreachable = None, False
+            if PIPELINE_MODE in ("api", "auto"):
+                try:
+                    response = requests.post(f"{API_URL}/pipeline/run", json=payload, timeout=600)
+                    if response.status_code == 200:
+                        data = response.json()
+                    else:
+                        st.error(f"Error from backend: {response.text}")
+                except requests.exceptions.ConnectionError:
+                    if PIPELINE_MODE == "api":
+                        raise
+                    api_unreachable = True
+            if PIPELINE_MODE == "inprocess" or (PIPELINE_MODE == "auto" and api_unreachable):
+                data = run_and_persist_sync(**payload)  # no API server reachable: run the pipeline here
+            if data is not None:
+                _store(data)
         except Exception as e:
-            st.error(f"Failed to connect to backend API: {e}. Make sure it is running on port 8000.")
+            st.error(f"Pipeline failed: {e}. Locally, make sure the API runs on {API_URL} (or set PIPELINE_MODE=inprocess).")
         finally:
             loading_placeholder.empty()
 

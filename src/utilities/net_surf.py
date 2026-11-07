@@ -112,7 +112,7 @@ async def get_skill_resources(state: SkillBrainState):
         else:
             raw_search_context += f"Query: {q}\nResults: {r}\n\n"
             
-    logger.info("Extracting and formatting resources using Gemini 2.5 Flash...")
+    logger.info("Extracting and formatting resources (GEMINI_MODEL + fallbacks)...")
     prompt = f"""
     Based on the following search results, extract the best learning resources for the skills.
     

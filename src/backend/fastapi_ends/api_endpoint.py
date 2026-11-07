@@ -832,33 +832,10 @@ class PipelineRequest(BaseModel):
     tags=["Pipeline"],
 )
 async def run_pipeline(req: PipelineRequest):
-    graph = build_main_graph()
-    initial_state = {
-        "resume_input": req.resume_input,
-        "jd_input": req.jd_input,
-        "target_role": req.target_role,
-        "location": req.location,
-        "status_messages": []
-    }
-    
-    # Run the graph asynchronously
-    final_state = await graph.ainvoke(initial_state)
-    
-    # Save the pipeline state to a permanent memory file
-    try:
-        import json
-        memory_path = os.path.join(os.path.dirname(__file__), "..", "memory.json")
-        with open(memory_path, "w", encoding="utf-8") as f:
-            json.dump(final_state, f, indent=4)
-    except Exception as e:
-        print(f"Failed to save memory.json: {e}")
-
-    # Re-embed the new profile into the vector store so the chatbot sees it (never fails the request)
-    import asyncio
-    from src.rag.ingest import ingest_profile_safely
-    await asyncio.to_thread(ingest_profile_safely)
-
-    return final_state
+    # shared with the Streamlit in-process mode: run graph -> save memory.json -> re-embed profile
+    from src.backend.pipeline_service import run_and_persist
+    return await run_and_persist(req.resume_input, req.jd_input, req.target_role, req.location)
+#uv run uvicorn api_endpoint.py:app --reload
 
 
 class ChatRequest(BaseModel):

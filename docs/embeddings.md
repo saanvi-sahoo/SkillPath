@@ -8,10 +8,12 @@ This file records **every decision about embeddings** so it can be analysed, rep
 |---|---|---|---|---|---|
 | **careers** (source of truth) | `careers_embeddings_v1` | `docs/emerging_tech_career_dataset_cleaned.csv` | one career record (`career_id`) | **2,899** (2,900 − 1 excluded, §3) | shared |
 | knowledge | `knowledge_chunks_v1` | `src/data/knowledge_base/*.md` | one `##` section | 17 | shared |
-| jobs | `job_listings_v1` | LinkedIn `master_jobs_detailed.json` + Naukri `scraper/jobs.json` | one listing piece | 153 | shared |
+| jobs | `knowledge_chunks_v1` (`source=jobs`; M0 3-index limit, E19) | LinkedIn `master_jobs_detailed.json` + Naukri `scraper/jobs.json` | one listing piece | 153 | shared |
 | profile | `user_profile_chunks_v1` | `src/backend/memory.json` (latest analysis) | overview, resume and JD parts, skill gap + resources, matched jobs, summary | ~39 per run | **private** (`user_id`) |
 
-**Why separate collections?** The project doc (§12) says to *never place sensitive resume contents in the shared career collection*. It also asks for a dedicated career collection that doesn't overwrite inherited collections (§8.1, step 17). Each collection has its own vector index (`career_vector_index`, `knowledge_vector_index`, `jobs_vector_index`, `profile_vector_index`).
+**Why separate collections?** The project doc (§12) says to *never place sensitive resume contents in the shared career collection*. It also asks for a dedicated career collection that doesn't overwrite inherited collections (§8.1, step 17). Each collection has its own vector index (`career_vector_index`, `knowledge_vector_index`, `profile_vector_index`). Atlas M0 allows only 3, so jobs live in the knowledge collection, filtered by `source`.
+
+**Live status (2026-11-08):** all 4 sources are ingested into Atlas `skillpath_ai` on `skillpath-cluster`; indexes READY; Atlas results equal exact local search (top-5 overlap 5/5). See mongodb_atlas_setup.md §0.
 
 ## 2. Model choice: `sentence-transformers/all-MiniLM-L6-v2` (384-d, cosine)
 

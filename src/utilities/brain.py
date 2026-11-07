@@ -231,17 +231,19 @@ GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
 _FREE_TIER_MODELS = [
      "groq:openai/gpt-oss-20b",
     "groq:qwen/qwen3.8-27b",
-    GEMINI_MODEL
+    GEMINI_MODEL,
+    # E21: separate Gemini quota bucket; last resort when every Groq model hits the org's daily cap
+    os.getenv("GEMINI_LITE_MODEL", "gemini-3.1-flash-lite"),
     ]
 
-def get_base_llm(model: str = GEMINI_MODEL, temperature: float = 0.2, **kwargs):
+def get_base_llm(model: str = GEMINI_MODEL, temperature: float = 0.2, api_key_env: str = "GROQ_API_KEY", **kwargs):
     """Return a base LLM client (Groq or Gemini) pinned to *model*."""
     # Force max_retries to 0 so we fail instantly to the next model in the fallback chain instead of waiting
     kwargs.setdefault("max_retries", 0)
     
     if model.startswith("groq:"):
         actual_model = model.replace("groq:", "")
-        api_key = os.getenv("GROQ_API_KEY")
+        api_key = os.getenv(api_key_env)
         if not api_key:
             raise EnvironmentError("GROQ_API_KEY not found in .env")
         return ChatGroq(
@@ -269,6 +271,9 @@ def get_robust_llm(primary_model: str = GEMINI_MODEL, temperature: float = 0.2, 
     primary_llm = get_base_llm(primary_model, temperature=temperature, **kwargs)
     
     fallback_llms = []
+    # E18: same Groq model on a second key (separate daily token quota) before weaker models
+    if primary_model.startswith("groq:") and os.getenv("GROQ_API_KEY_2"):
+        fallback_llms.append(get_base_llm(primary_model, temperature=temperature, api_key_env="GROQ_API_KEY_2", **kwargs))
     for fallback_model in _FREE_TIER_MODELS:
         if fallback_model != primary_model:
             fallback_llms.append(get_base_llm(fallback_model, temperature=temperature, **kwargs))
@@ -284,6 +289,8 @@ def get_robust_structured_llm(schema, primary_model: str = GEMINI_MODEL, tempera
     primary_llm = get_base_llm(primary_model, temperature=temperature, **kwargs).with_structured_output(schema)
     
     fallback_llms = []
+    if primary_model.startswith("groq:") and os.getenv("GROQ_API_KEY_2"):
+        fallback_llms.append(get_base_llm(primary_model, temperature=temperature, api_key_env="GROQ_API_KEY_2", **kwargs).with_structured_output(schema))
     for fallback_model in _FREE_TIER_MODELS:
         if fallback_model != primary_model:
             fallback_llms.append(get_base_llm(fallback_model, temperature=temperature, **kwargs).with_structured_output(schema))

@@ -1,0 +1,189 @@
+{
+  "ts": "20261107T210556Z",
+  "n_cases": 2,
+  "router_mode": "hybrid",
+  "router": {
+    "knn": {
+      "label_accuracy": 1.0,
+      "allow_refuse_accuracy": 1.0,
+      "false_refusals": 0,
+      "leaks": 0,
+      "confusion": {
+        "allow->allow": 2,
+        "allow->refuse": 0,
+        "refuse->refuse": 0,
+        "refuse->allow": 0
+      },
+      "llm_calls": 0,
+      "avg_latency_ms": 2625.8,
+      "errors": []
+    }
+  },
+  "answers": {
+    "v3": {
+      "summary": {
+        "n": 2,
+        "pass_rate": 0.0,
+        "pass_rate_by_category": {
+          "weak_evidence": 0.0
+        },
+        "citation_rate_in_scope": 1.0,
+        "avg_words": 246.0,
+        "avg_latency_ms": 19572.6,
+        "answering_models": {
+          "gemini-3.1-flash-lite": 2
+        },
+        "total_tokens": 4811,
+        "avg_tokens_per_llm_answer": 2406
+      },
+      "rows": [
+        {
+          "id": "doc06",
+          "category": "weak_evidence",
+          "route": "career_study",
+          "checks": {
+            "asks_question": false,
+            "not_refused": true
+          },
+          "passed": false,
+          "model": "gemini-3.1-flash-lite",
+          "usage": {
+            "input_tokens": 2084,
+            "output_tokens": 228,
+            "total_tokens": 2312,
+            "input_token_details": {
+              "cache_read": 0
+            }
+          },
+          "latency_ms": 36414.3,
+          "words": 200,
+          "n_hits": 7,
+          "messages": [
+            {
+              "role": "user",
+              "content": "Recommend a career for me"
+            }
+          ],
+          "context": "[S1] (source=knowledge/guide, score=0.55, ref=career_planning.md)\nCareer Planning - Choosing a career direction: Match three things: what you enjoy doing day to day, what you are or can become good at, and what the job market pays for. Read 10-20 real job descriptions for a role to see the skills that repeat, and talk to people already in the role (LinkedIn informational interviews).\n\n[S2] (source=knowledge/guide, score=0.48, ref=career_planning.md)\nCareer Planning - Entry-level tech and data career paths: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engineer (testing fundamentals, automation with Selenium or Playwright). Analyst roles often lead to data science or analytics engineering; developer roles lead to senior engineering, architecture or engineering management.\n\n[S3] (source=careers/career_profile, score=0.47, ref=career_0003)\nCareer: .NET Developer (Only Local Candidates - Detroit). Domain: Software and Web Development. Required skills: C#, ASP.NET MVC, MVC, MicroServices, Object-oriented design, HTML5, CSS3, JavaScript, Angular.JS. Description: .NET Developer (Only Local Candidates - Detroit) designs, develops, tests, and maintains software applications or web services. Work often includes translating requirements into code, integrating APIs or databases, debugging issues, reviewing code, and improving application quality. Relevant skills listed for this role include C#, ASP.NET MVC, MVC, MicroServices. Education: Object-oriented design.\n\n[S4] (source=careers/career_profile, score=0.47, ref=career_2870)\nCareer: Web Developer. Domain: Software and Web Development. Required skills: ASP.NET MVC, C#, JavaScript, jQuery, HTML, CSS, Entity Framework, Rest API, Vue.js, Bootstrap, Git, Continuous Integration/Continuous Deployment, Scrum. Description: Web Developer designs, develops, tests, and maintains software applications or web services. Work often includes translating requirements into code, integrating APIs or databases, debugging issues, reviewing code, and improving application quality. Relevant skills listed for this role include ASP.NET MVC, C#, JavaScript, jQuery. Education: Bachelor's degree or diploma in computer science, information technology, software engineering, or a related field.\n\n[S5] (source=careers/career_profile, score=0.46, ref=career_1054)\nCareer: Don't See an Exact Fit to Your Profile? Apply Here.. Domain: Machine Learning and AI. Required skills: G connectivity, K video, Augmented reality, Autonomous driving, Drone delivery, Inflight internet, Wireless network infrastructure, Broadband network infrastructure, Holographic Beam Forming (HBF), Electromagnetic physics, Software-defined antenna technology, Capacity and spectral efficiency, Patented antenna technology, Wireless access challenges, Artificial intelligence, Machine learning. Description: Don't See an Exact Fit to Your Profile? Apply Here. works on building, evaluating, or integrating AI and machine-learning solutions. The role commonly involves preparing data, selecting suitable methods, testing model performance, and collaborating with technical or business teams. Relevant skills listed for this role include G connectivity, K video, Augmented reality, Autonomous driving. Education: Degrees in engineering, computer science, or related fields.\n\n[S6] (source=jobs/job_listing, score=0.46, ref=https://in.linkedin.com/jobs/view/web-developer-sde-1-at-groww-4390932569)\nJob: Web Developer (SDE 1) at Groww (Bengaluru, Karnataka, India). Salary: Not Listed. Description: ensure code sanity.Occasionally maintaining and upgrading existing codebase with the team.Own what you do, and do what y",
+          "answer": "I don't see an analysed profile yet, so I don't have enough information about your background, skills, or interests to give you a personalized recommendation.\n\nTo get started, please upload your resume and a target job description in the sidebar, then click **Analyze Profile**. Once you do that, I can help you identify:\n\n*   **Career paths** that align with your current experience [S1].\n*   **Skill gaps** you need to bridge to reach your target role [S2].\n*   **Actionable learning paths** to make you a competitive candidate [S2].\n\nIn the meantime, you can explore common software development paths like **.NET Developer** [S3, S7] or **Web Developer** [S4, S6], which typically require strong foundations in C#, JavaScript, and database management [S2, S4].\n\n**Next steps:**\n1. Upload your resume and a job description to run **Analyze Profile**.\n2. Once analyzed, ask me: *\"What are the top 3 skills I should prioritize learning for this role?\"*\n\n---\n**Sources**\n- [S1] knowledge: Choosing a career direction\n- [S2] knowledge: Entry-level tech and data career paths\n- [S3] careers: .NET Developer (Only Local Candidates - Detroit)\n- [S4] careers: Web Developer\n- [S6] jobs: Web Developer (SDE 1) (https://in.linkedin.com/jobs/view/web-developer-sde-1-at-groww-4390932569)\n- [S7] careers: Full Stack .NET Developer"
+        },
+        {
+          "id": "doc09",
+          "category": "weak_evidence",
+          "route": "career_study",
+          "checks": {
+            "asks_question": false,
+            "not_refused": true
+          },
+          "passed": false,
+          "model": "gemini-3.1-flash-lite",
+          "usage": {
+            "input_tokens": 2131,
+            "output_tokens": 368,
+            "total_tokens": 2499,
+            "input_token_details": {
+              "cache_read": 0
+            }
+          },
+          "latency_ms": 2730.9,
+          "words": 292,
+          "n_hits": 7,
+          "messages": [
+            {
+              "role": "user",
+              "content": "I like music and painting, what tech career suits me?"
+            }
+          ],
+          "context": "[S1] (source=careers/career_profile, score=0.48, ref=career_1798)\nCareer: Multimedia Learning Developer. Domain: Software and Web Development. Required skills: Adobe Creative Cloud, Premiere, Audition, Captivate, Animate, Illustrator, Photoshop, InDesign, Acrobat Pro, Articulate Storyline, Video production, Green screen video production, Microlearning design, Mobile learning design, Responsive web design, HTML5, JavaScript, CSS, Adobe After Effects CC, Adobe Dreamweaver CC. Description: Multimedia Learning Developer designs, develops, tests, and maintains software applications or web services. Work often includes translating requirements into code, integrating APIs or databases, debugging issues, reviewing code, and improving application quality. Relevant skills listed for this role include Adobe Creative Cloud, Premiere, Audition, Captivate. Education: Bachelor's degree or diploma in computer science, information technology, software engineering, or a related field.\n\n[S2] (source=careers/career_profile, score=0.46, ref=career_0755)\nCareer: Data Designer. Domain: Data Engineering. Required skills: Microsoft Office, Adobe Creative Suite, Sketch, InVision, Axure, Confluence, JIRA, JavaScript (React, D3, Node), Python, Scala, R, Matlab, HTML, CSS, Git, AWS, Google Cloud Platform (GCP), SQL, Spark, Hadoop, Postgres, Cassandra. Description: Data Designer designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include Microsoft Office, Adobe Creative Suite, Sketch, InVision. Education: Bachelor's degree in Data Design or equivalent experience.\n\n[S3] (source=careers/career_profile, score=0.45, ref=career_2869)\nCareer: Web Designer/Developer. Domain: Cloud and DevOps. Required skills: HTML5, CSS3, Javascript, PHP, JQuery, Node.js, SASS/SCSS/Stylus, MySQL, CouchDB, Git, AWS, Photoshop, XML/JSON/YAML parsing, Social media APIs, GitHub, Accessibility and security compliance, Scalable application design. Description: Web Designer/Developer helps build, deploy, automate, and operate software or cloud infrastructure. Common responsibilities include environment configuration, CI/CD, infrastructure automation, monitoring, reliability, access management, and troubleshooting. Relevant skills listed for this role include HTML5, CSS3, Javascript, PHP. Education: BS/MS degree in Computer Science, Information Systems, Engineering, or related technical field.\n\n[S4] (source=careers/career_profile, score=0.45, ref=career_1605)\nCareer: Library Technician (Technical Services). Domain: Technology and Business Operations. Required skills: Acquisition, Cataloging, Integrated Library System (ILS), Automated cataloging resources (e.g., OCLC), Computer processing, Library equipment usage, Clerical tasks, Computer software proficiency. Description: Library Technician (Technical Services) supports technical or business workflows by coordinating tasks, maintaining information, solving operational problems, and helping teams use systems and processes effectively. Relevant skills listed for this role include Acquisition, Cataloging, Integrated Library System (ILS), Automated cataloging resources (e.g.. Education: Specialized experience in a library, Experience or training in computer processing, Typing experience.\n\n[S5] (source=knowledge/guide, score=0.42, ref=career_planning.md)\nCareer Planning - Entry-level tech and data career paths: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engine",
+          "answer": "It’s great that you’re looking to combine your creative passions with a tech career! While I don't have your specific background details yet, there are several paths where design, multimedia, and technology intersect.\n\nBased on common career paths in the industry, here are a few roles that might align with your interests in music and painting:\n\n*   **Multimedia Learning Developer:** This role focuses on creating engaging educational content [S1]. It heavily utilizes tools like **Adobe Creative Cloud (Photoshop, Illustrator, Premiere, Audition)** [S1], which directly relates to your interest in painting and audio/music production.\n*   **Data Designer:** If you enjoy the visual aspect of painting, this role involves creating visual representations of complex data [S2]. It requires skills in **Adobe Creative Suite, Sketch, and InVision** [S2], blending design aesthetics with technical data pipelines.\n*   **Web Designer/Developer:** This path allows you to build the visual and interactive layers of websites [S3]. You would use **HTML5, CSS3, and JavaScript** [S3] to bring creative designs to life, often requiring an \"obsessive attention to detail\" regarding design intricacies [S7].\n\n**Next steps to help you decide:**\n1. **Analyze your profile:** Upload your resume and a target job description in the dashboard and click **Analyze Profile**. This will help me identify your specific skill gaps.\n2. **Research roles:** Look up \"Multimedia Learning Developer\" or \"Front-end Designer\" on LinkedIn to see if the day-to-day tasks match what you enjoy [S6].\n3. **Build a project:** Try creating a small web project or a digital art portfolio to see if you enjoy the technical side of building creative assets.\n\n---\n**Sources**\n- [S1] careers: Multimedia Learning Developer\n- [S2] careers: Data Designer\n- [S3] careers: Web Designer/Developer\n- [S6] knowledge: Choosing a career direction\n- [S7] jobs: Web Developer (SDE 1) (https://in.linkedin.com/jobs/view/web-developer-sde-1-at-groww-4390932569)"
+        }
+      ]
+    },
+    "v4": {
+      "summary": {
+        "n": 2,
+        "pass_rate": 1.0,
+        "pass_rate_by_category": {
+          "weak_evidence": 1.0
+        },
+        "citation_rate_in_scope": 1.0,
+        "avg_words": 187.0,
+        "avg_latency_ms": 4856.7,
+        "answering_models": {
+          "gemini-3.1-flash-lite": 2
+        },
+        "total_tokens": 5787,
+        "avg_tokens_per_llm_answer": 2894
+      },
+      "rows": [
+        {
+          "id": "doc06",
+          "category": "weak_evidence",
+          "route": "career_study",
+          "checks": {
+            "asks_question": true,
+            "not_refused": true
+          },
+          "passed": true,
+          "model": "gemini-3.1-flash-lite",
+          "usage": {
+            "input_tokens": 2633,
+            "output_tokens": 223,
+            "total_tokens": 2856,
+            "input_token_details": {
+              "cache_read": 0
+            }
+          },
+          "latency_ms": 6857.1,
+          "words": 182,
+          "n_hits": 7,
+          "messages": [
+            {
+              "role": "user",
+              "content": "Recommend a career for me"
+            }
+          ],
+          "context": "[S1] (source=knowledge/guide, score=0.55, ref=career_planning.md)\nCareer Planning - Choosing a career direction: Match three things: what you enjoy doing day to day, what you are or can become good at, and what the job market pays for. Read 10-20 real job descriptions for a role to see the skills that repeat, and talk to people already in the role (LinkedIn informational interviews).\n\n[S2] (source=knowledge/guide, score=0.48, ref=career_planning.md)\nCareer Planning - Entry-level tech and data career paths: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engineer (testing fundamentals, automation with Selenium or Playwright). Analyst roles often lead to data science or analytics engineering; developer roles lead to senior engineering, architecture or engineering management.\n\n[S3] (source=careers/career_profile, score=0.47, ref=career_0003)\nCareer: .NET Developer (Only Local Candidates - Detroit). Domain: Software and Web Development. Required skills: C#, ASP.NET MVC, MVC, MicroServices, Object-oriented design, HTML5, CSS3, JavaScript, Angular.JS. Description: .NET Developer (Only Local Candidates - Detroit) designs, develops, tests, and maintains software applications or web services. Work often includes translating requirements into code, integrating APIs or databases, debugging issues, reviewing code, and improving application quality. Relevant skills listed for this role include C#, ASP.NET MVC, MVC, MicroServices. Education: Object-oriented design.\n\n[S4] (source=careers/career_profile, score=0.47, ref=career_2870)\nCareer: Web Developer. Domain: Software and Web Development. Required skills: ASP.NET MVC, C#, JavaScript, jQuery, HTML, CSS, Entity Framework, Rest API, Vue.js, Bootstrap, Git, Continuous Integration/Continuous Deployment, Scrum. Description: Web Developer designs, develops, tests, and maintains software applications or web services. Work often includes translating requirements into code, integrating APIs or databases, debugging issues, reviewing code, and improving application quality. Relevant skills listed for this role include ASP.NET MVC, C#, JavaScript, jQuery. Education: Bachelor's degree or diploma in computer science, information technology, software engineering, or a related field.\n\n[S5] (source=careers/career_profile, score=0.46, ref=career_1054)\nCareer: Don't See an Exact Fit to Your Profile? Apply Here.. Domain: Machine Learning and AI. Required skills: G connectivity, K video, Augmented reality, Autonomous driving, Drone delivery, Inflight internet, Wireless network infrastructure, Broadband network infrastructure, Holographic Beam Forming (HBF), Electromagnetic physics, Software-defined antenna technology, Capacity and spectral efficiency, Patented antenna technology, Wireless access challenges, Artificial intelligence, Machine learning. Description: Don't See an Exact Fit to Your Profile? Apply Here. works on building, evaluating, or integrating AI and machine-learning solutions. The role commonly involves preparing data, selecting suitable methods, testing model performance, and collaborating with technical or business teams. Relevant skills listed for this role include G connectivity, K video, Augmented reality, Autonomous driving. Education: Degrees in engineering, computer science, or related fields.\n\n[S6] (source=jobs/job_listing, score=0.46, ref=https://in.linkedin.com/jobs/view/web-developer-sde-1-at-groww-4390932569)\nJob: Web Developer (SDE 1) at Groww (Bengaluru, Karnataka, India). Salary: Not Listed. Description: ensure code sanity.Occasionally maintaining and upgrading existing codebase with the team.Own what you do, and do what y",
+          "answer": "I would love to help you explore career options, but I don't have enough information about your background yet to provide a tailored recommendation.\n\nTo help me match you with the right path, could you please tell me:\n\n1. **What is your current education or experience level?** (e.g., student, recent graduate, or working professional)\n2. **What are your primary skills or the tools you are most comfortable using?** (e.g., programming languages, design tools, data analysis, etc.)\n3. **What kind of work do you enjoy most?** (e.g., building software, analyzing data, managing projects, or creative design)\n\n**Next steps:**\n* Once you share these details, I can match you against our career records [S3, S4, S7] and explain why specific roles might be a good fit.\n* If you have a resume ready, you can also upload it and run **\"Analyze Profile\"** in the dashboard to get a more detailed assessment of your current skill gaps and potential career matches.\n\n---\n**Sources**\n- [S3] careers: .NET Developer (Only Local Candidates - Detroit)\n- [S4] careers: Web Developer\n- [S7] careers: Full Stack .NET Developer"
+        },
+        {
+          "id": "doc09",
+          "category": "weak_evidence",
+          "route": "career_study",
+          "checks": {
+            "asks_question": true,
+            "not_refused": true
+          },
+          "passed": true,
+          "model": "gemini-3.1-flash-lite",
+          "usage": {
+            "input_tokens": 2680,
+            "output_tokens": 251,
+            "total_tokens": 2931,
+            "input_token_details": {
+              "cache_read": 0
+            }
+          },
+          "latency_ms": 2856.3,
+          "words": 192,
+          "n_hits": 7,
+          "messages": [
+            {
+              "role": "user",
+              "content": "I like music and painting, what tech career suits me?"
+            }
+          ],
+          "context": "[S1] (source=careers/career_profile, score=0.48, ref=career_1798)\nCareer: Multimedia Learning Developer. Domain: Software and Web Development. Required skills: Adobe Creative Cloud, Premiere, Audition, Captivate, Animate, Illustrator, Photoshop, InDesign, Acrobat Pro, Articulate Storyline, Video production, Green screen video production, Microlearning design, Mobile learning design, Responsive web design, HTML5, JavaScript, CSS, Adobe After Effects CC, Adobe Dreamweaver CC. Description: Multimedia Learning Developer designs, develops, tests, and maintains software applications or web services. Work often includes translating requirements into code, integrating APIs or databases, debugging issues, reviewing code, and improving application quality. Relevant skills listed for this role include Adobe Creative Cloud, Premiere, Audition, Captivate. Education: Bachelor's degree or diploma in computer science, information technology, software engineering, or a related field.\n\n[S2] (source=careers/career_profile, score=0.46, ref=career_0755)\nCareer: Data Designer. Domain: Data Engineering. Required skills: Microsoft Office, Adobe Creative Suite, Sketch, InVision, Axure, Confluence, JIRA, JavaScript (React, D3, Node), Python, Scala, R, Matlab, HTML, CSS, Git, AWS, Google Cloud Platform (GCP), SQL, Spark, Hadoop, Postgres, Cassandra. Description: Data Designer designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include Microsoft Office, Adobe Creative Suite, Sketch, InVision. Education: Bachelor's degree in Data Design or equivalent experience.\n\n[S3] (source=careers/career_profile, score=0.45, ref=career_2869)\nCareer: Web Designer/Developer. Domain: Cloud and DevOps. Required skills: HTML5, CSS3, Javascript, PHP, JQuery, Node.js, SASS/SCSS/Stylus, MySQL, CouchDB, Git, AWS, Photoshop, XML/JSON/YAML parsing, Social media APIs, GitHub, Accessibility and security compliance, Scalable application design. Description: Web Designer/Developer helps build, deploy, automate, and operate software or cloud infrastructure. Common responsibilities include environment configuration, CI/CD, infrastructure automation, monitoring, reliability, access management, and troubleshooting. Relevant skills listed for this role include HTML5, CSS3, Javascript, PHP. Education: BS/MS degree in Computer Science, Information Systems, Engineering, or related technical field.\n\n[S4] (source=careers/career_profile, score=0.45, ref=career_1605)\nCareer: Library Technician (Technical Services). Domain: Technology and Business Operations. Required skills: Acquisition, Cataloging, Integrated Library System (ILS), Automated cataloging resources (e.g., OCLC), Computer processing, Library equipment usage, Clerical tasks, Computer software proficiency. Description: Library Technician (Technical Services) supports technical or business workflows by coordinating tasks, maintaining information, solving operational problems, and helping teams use systems and processes effectively. Relevant skills listed for this role include Acquisition, Cataloging, Integrated Library System (ILS), Automated cataloging resources (e.g.. Education: Specialized experience in a library, Experience or training in computer processing, Typing experience.\n\n[S5] (source=knowledge/guide, score=0.42, ref=career_planning.md)\nCareer Planning - Entry-level tech and data career paths: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engine",
+          "answer": "It is great that you are looking to combine your creative interests with a tech career! To give you the best advice, I first need to understand your current background. \n\nCould you please tell me:\n1. **What is your current education or experience level?** (e.g., student, recent graduate, or professional looking to switch fields?)\n2. **Do you have any existing technical skills?** (e.g., coding, design software, or data tools?)\n3. **What kind of work do you enjoy?** (e.g., do you prefer visual design, building functional software, or working with data?)\n\nOnce I have this, I can match your profile against our career records. Based on your interest in painting and design, roles like **Multimedia Learning Developer** [S1] (which involves creative design and development) or **Data Designer** [S2] (which blends design tools with data pipelines) might be interesting paths to explore.\n\n**Next steps:**\n1. Reply with a bit more about your background.\n2. Upload your resume and a target job description to the dashboard and click **Analyze Profile** so I can provide a more tailored assessment of your skill gaps.\n\n---\n**Sources**\n- [S1] careers: Multimedia Learning Developer\n- [S2] careers: Data Designer"
+        }
+      ]
+    },
+    "_meta": {
+      "design": "paired",
+      "expect_model": "gemini-3.1-flash-lite",
+      "stopped": null,
+      "completed_pairs": 2,
+      "n_cases": 2
+    }
+  }
+}

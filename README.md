@@ -1,3 +1,31 @@
+<h1 align="center">SkillPath AI</h1>
+<p align="center"><em>AI-powered career upskilling: resume ↔ JD analysis, a career-only RAG advisor over MongoDB Atlas, and validated 30-day roadmaps</em></p>
+
+Sabudh Foundation internship project (team: Saanvi Sahoo, Amrit Singh, Isa Ahmed Khan; mentor: Ms. Suparna Dutta), built on the previous batch's **UpskillxAI** (its original README is kept below).
+
+| What | How | Status |
+|---|---|---|
+| Resume/JD parsing + skill analysis | LangGraph pipeline, LLM structured output | ✅ verified end to end |
+| Career knowledge base (source of truth) | `docs/emerging_tech_career_dataset_cleaned.csv` → 2,899 × 384 MiniLM vectors | ✅ |
+| Vector database | **MongoDB Atlas Vector Search** (`skillpath_ai`, 3 collections) | ✅ live, verified |
+| Career Advisor chatbot | Career/study-only guardrail + RAG with citations | ✅ |
+| Prompt script training | Versioned prompts v1–v4 + 42-case evaluation | ✅ |
+| Skill gaps + 30-day roadmap | Exact canonical comparison, prioritised + validated plan | ✅ |
+
+**Start here: [docs/README.md](docs/README.md)** (runbook, scenarios, embeddings, RAG, Atlas, chatbot, prompt scripting, status, experiment log).
+
+```bash
+python3.12 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+cp .env.example .env                               # add keys + MONGODB_URI
+python -m src.rag.ingest --sources all             # embeddings -> Atlas (or local fallback)
+uvicorn src.backend.fastapi_ends.api_endpoint:app --port 8000
+streamlit run src/frontend/frontend.py
+```
+
+---
+
+# Inherited README (UpskillxAI, previous batch)
+
 <h1 align="center">
   UpskillxAI
 </h1>
@@ -114,12 +142,4 @@ fastapi dev src/backend/fastapi_ends/api_endpoint.py
 
 # Run the Streamlit Dashboard
 streamlit run src/frontend/frontend.py
-```
-## Career Advisor chatbot, embeddings and RAG
-
-Full documentation is in [docs/](docs/README.md): architecture, embeddings, RAG design, MongoDB Atlas setup, chatbot, prompt scripting, experiment log and roadmap.
-
-```bash
-python -m src.rag.ingest --sources all          # build the vector index (Atlas if MONGODB_URI is set, else local)
-python -m src.eval.run_prompt_eval --router-only # check the career/study scope guardrail
 ```

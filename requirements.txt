@@ -1,3 +1,7 @@
+# CPU-only PyTorch on Linux (Streamlit Cloud / Docker); default wheel elsewhere (macOS/Windows dev)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.15.0+cpu ; sys_platform == "linux"
+torch ; sys_platform != "linux"
 # --- Core API & Framework ---
 fastapi
 uvicorn
@@ -30,7 +34,7 @@ reducto
 docx2txt
 pymupdf
 pypdf
-torchvision
+# torchvision removed (unused; pulled ~1 GB of CUDA libs on Linux)
 
 # --- Additional Langchain & API ---
 langchain-openai
@@ -52,3 +56,4 @@ pymongo>=4.10
 sentence-transformers>=3.0
 pandas
 numpy
+pytest
