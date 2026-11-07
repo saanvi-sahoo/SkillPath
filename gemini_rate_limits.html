@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gemini API Rate Limits — Free Tier</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Sora:wght@400;600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #0d1117;
+    --surface:   #161b22;
+    --border:    #21262d;
+    --muted:     #8b949e;
+    --text:      #e6edf3;
+    --accent:    #4fc3f7;
+    --green:     #3fb950;
+    --yellow:    #d29922;
+    --red:       #f85149;
+    --purple:    #bc8cff;
+    --orange:    #ffa657;
+    --teal:      #39d353;
+    --cat-text:   #58a6ff;
+    --cat-multi:  #f0883e;
+    --cat-other:  #bc8cff;
+    --cat-live:   #3fb950;
+    --cat-agent:  #f85149;
+    --cat-tool:   #8b949e;
+    --zero:      #30363d;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 32px 24px 64px;
+  }
+
+  header {
+    max-width: 1400px;
+    margin: 0 auto 32px;
+  }
+
+  header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  header h1 span.badge {
+    font-size: 12px;
+    background: rgba(79,195,247,.15);
+    color: var(--accent);
+    border: 1px solid rgba(79,195,247,.3);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+
+  header p {
+    color: var(--muted);
+    margin-top: 6px;
+    font-size: 13px;
+  }
+
+  .legend {
+    max-width: 1400px;
+    margin: 0 auto 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 12px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted);
+  }
+
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .filter-bar {
+    max-width: 1400px;
+    margin: 0 auto 16px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'Sora', sans-serif;
+    transition: all .15s;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    background: rgba(79,195,247,.12);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 960px;
+  }
+
+  thead th {
+    background: var(--surface);
+    padding: 11px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  thead th:first-child { border-radius: 10px 0 0 0; }
+  thead th:last-child  { border-radius: 0 10px 0 0; }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background .1s;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(255,255,255,.03); }
+
+  /* category-section separator rows */
+  tr.section-header td {
+    background: rgba(255,255,255,.02);
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  td {
+    padding: 10px 14px;
+    vertical-align: middle;
+  }
+
+  /* Model name */
+  td.model-name {
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    min-width: 200px;
+  }
+
+  td.model-name .sub {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--muted);
+    display: block;
+  }
+
+  /* Category pill */
+  .cat-pill {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .cat-text   { background: rgba(88,166,255,.1);  color: var(--cat-text);  border: 1px solid rgba(88,166,255,.25);  }
+  .cat-multi  { background: rgba(240,136,62,.1);  color: var(--cat-multi); border: 1px solid rgba(240,136,62,.25);  }
+  .cat-other  { background: rgba(188,140,255,.1); color: var(--cat-other); border: 1px solid rgba(188,140,255,.25); }
+  .cat-live   { background: rgba(63,185,80,.1);   color: var(--cat-live);  border: 1px solid rgba(63,185,80,.25);   }
+  .cat-agent  { background: rgba(248,81,73,.1);   color: var(--cat-agent); border: 1px solid rgba(248,81,73,.25);   }
+  .cat-tool   { background: rgba(139,148,158,.1); color: var(--cat-tool);  border: 1px solid rgba(139,148,158,.25); }
+
+  /* Rate limit cells */
+  .rate {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .rate .val  { color: var(--green); font-weight: 600; }
+  .rate .sep  { color: var(--muted); margin: 0 2px; }
+  .rate .lim  { color: var(--muted); }
+  .rate.zero  { color: var(--zero); }
+  .rate.unlimited { color: var(--teal); font-weight: 600; }
+  .rate.dash  { color: var(--muted); }
+
+  /* Model string */
+  .model-str {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    background: rgba(79,195,247,.08);
+    color: var(--accent);
+    border: 1px solid rgba(79,195,247,.2);
+    border-radius: 5px;
+    padding: 3px 8px;
+    display: inline-block;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background .15s;
+    user-select: all;
+  }
+
+  .model-str:hover {
+    background: rgba(79,195,247,.18);
+  }
+
+  .model-str.na {
+    background: rgba(139,148,158,.06);
+    color: var(--muted);
+    border-color: transparent;
+  }
+
+  /* Description */
+  td.desc {
+    color: var(--muted);
+    font-size: 12.5px;
+    min-width: 260px;
+    max-width: 380px;
+    line-height: 1.5;
+  }
+
+  td.desc .tag {
+    display: inline-block;
+    font-size: 10px;
+    background: rgba(210,153,34,.12);
+    color: var(--yellow);
+    border: 1px solid rgba(210,153,34,.3);
+    border-radius: 4px;
+    padding: 1px 6px;
+    margin-left: 4px;
+    vertical-align: middle;
+    font-weight: 600;
+  }
+
+  td.desc .tag.new {
+    background: rgba(63,185,80,.12);
+    color: var(--green);
+    border-color: rgba(63,185,80,.3);
+  }
+
+  td.desc .tag.dep {
+    background: rgba(248,81,73,.10);
+    color: var(--red);
+    border-color: rgba(248,81,73,.25);
+  }
+
+  td.desc .tag.paid {
+    background: rgba(188,140,255,.1);
+    color: var(--purple);
+    border-color: rgba(188,140,255,.25);
+  }
+
+  .note {
+    max-width: 1400px;
+    margin: 18px auto 0;
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .note span { display: flex; align-items: center; gap: 5px; }
+
+  @media (max-width: 600px) {
+    body { padding: 16px 8px 40px; }
+    header h1 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Gemini API Rate Limits <span class="badge">Free Tier</span></h1>
+  <p>Extracted from Google AI Studio · May 2026 · All columns sorted by category as shown in AI Studio. Click a model string to select &amp; copy it.</p>
+</header>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#58a6ff"></div>Text-out models</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#f0883e"></div>Multi-modal generative</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#bc8cff"></div>Other models</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#3fb950"></div>Live API</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#f85149"></div>Agents</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#8b949e"></div>Tools / Map &amp; Search grounding</div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterRows('all',this)">All Models</button>
+  <button class="filter-btn" onclick="filterRows('text',this)">Text-out</button>
+  <button class="filter-btn" onclick="filterRows('multi',this)">Multi-modal</button>
+  <button class="filter-btn" onclick="filterRows('other',this)">Other</button>
+  <button class="filter-btn" onclick="filterRows('live',this)">Live API</button>
+  <button class="filter-btn" onclick="filterRows('agent',this)">Agents</button>
+  <button class="filter-btn" onclick="filterRows('has-limit',this)">Has Free Limit ✓</button>
+</div>
+
+<div class="wrapper">
+<table id="main-table">
+<thead>
+  <tr>
+    <th>Model Name</th>
+    <th>Category</th>
+    <th>RPM Limit</th>
+    <th>RPD Limit</th>
+    <th>TPM Limit</th>
+    <th>LangChain Model String</th>
+    <th>What it does</th>
+  </tr>
+</thead>
+<tbody>
+
+<!-- ───── TEXT-OUT MODELS ───── -->
+
+<tr data-cat="text" data-has-limit="1">
+  <td class="model-name">Gemini 2.5 Flash</td>
+  <td><span class="cat-pill cat-text">Text-out</span></td>
+  <td><span class="rate"><span class="val">5</span><span class="sep">/</span><span class="lim">5</span></span></td>
+  <td><span class="rate"><span class="val">20</span></span></td>
+  <td><span class="rate"><span class="val">250K</span></span></td>
+  <td><span class="model-str">gemini-2.5-flash</span></td>
+  <td class="desc">Best price-performance model. Adaptive thinking, agentic use, multimodal I/O. Great all-rounder for most production tasks. <span class="tag">Stable</span></td>
+</tr>
+
+<tr data-cat="text" data-has-limit="1">
+  <td class="model-name">Gemini 2.5 Flash Lite</td>
+  <td><span class="cat-pill cat-text">Text-out</span></td>
+  <td><span class="rate"><span class="val">10</span><span class="sep">/</span><span class="lim">10</span></span></td>
+  <td><span class="rate"><span class="val">20</span></span></td>
+  <td><span class="rate"><span class="val">250K</span></span></td>
+  <td><span class="model-str">gemini-2.5-flash-lite</span></td>
+  <td class="desc">Most cost-efficient text model. Optimised for high-throughput tasks like translation, classification, and extraction. <span class="tag">Stable</span></td>
+</tr>
+
+<tr data-cat="text" data-has-limit="1">
+  <td class="model-name">Gemini 3 Flash</td>
+  <td><span class="cat-pill cat-text">Text-out</span></td>
+  <td><span class="rate"><span class="val">5</span><span class="sep">/</span><span class="lim">5</span></span></td>
+  <td><span class="rate"><span class="val">20</span></span></td>
+  <td><span class="rate"><span class="val">250K</span></span></td>
+  <td><span class="model-str">gemini-3-flash-preview</span></td>
+  <td class="desc">Next-gen Flash model with improved multimodal capabilities and reasoning. Preview — subject to change. <span class="tag new">Preview</span></td>
+</tr>
+
+<tr data-cat="text" data-has-limit="1">
+  <td class="model-name">Gemini 3.1 Flash Lite</td>
+  <td><span class="cat-pill cat-text">Text-out</span></td>
+  <td><span class="rate"><span class="val">15</span><span class="sep">/</span><span class="lim">15</span></span></td>
+  <td><span class="rate"><span class="val">500</span></span></td>
+  <td><span class="rate"><span class="val">250K</span></span></td>
+  <td><span class="model-str">gemini-3.1-flash-lite-preview</span></td>
+  <td class="desc">Latest-generation lightweight Flash. Fastest RPM on free tier (15 RPM). Best for high-volume everyday queries. <span class="tag new">Newest</span> <span class="tag new">Preview</span></td>
+</tr>
+
+<tr data-cat="text">
+  <td class="model-name">Gemini 2.5 Pro</td>
+  <td><span class="cat-pill cat-text">Text-out</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="model-str">gemini-2.5-pro</span></td>
+  <td class="desc">Most capable reasoning model. Complex coding, math, advanced analysis. 1M token context. Not accessible on this free project. <span class="tag paid">Paid</span></td>
+</tr>
+
+<tr data-cat="text">
+  <td class="model-name">Gemini 3.1 Pro</td>
+  <td><span class="cat-pill cat-text">Text-out</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="model-str">gemini-3.1-pro-preview</span></td>
+  <td class="desc">State-of-the-art flagship model. Top multimodal understanding, agentic reasoning. Paid tier only. <span class="tag new">Newest</span> <span class="tag paid">Paid</span></td>
+</tr>
+
+<tr data-cat="text">
+  <td class="model-name">Gemini 2 Flash</td>
+  <td><span class="cat-pill cat-text">Text-out</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="model-str">gemini-2.0-flash</span></td>
+  <td class="desc">Previous-gen Flash. Fast with native tool use, 1M context. Superseded by 2.5 Flash. <span class="tag dep">Deprecated</span></td>
+</tr>
+
+<tr data-cat="text">
+  <td class="model-name">Gemini 2 Flash Lite</td>
+  <td><span class="cat-pill cat-text">Text-out</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="model-str">gemini-2.0-flash-lite</span></td>
+  <td class="desc">Lightest previous-gen model. Being shut down June 1 2026. Migrate to 2.5 Flash Lite. <span class="tag dep">Shutdown Jun 2026</span></td>
+</tr>
+
+<!-- ───── MULTI-MODAL GENERATIVE ───── -->
+
+<tr data-cat="multi" data-has-limit="1">
+  <td class="model-name">Gemini 2.5 Flash TTS</td>
+  <td><span class="cat-pill cat-multi">Multi-modal</span></td>
+  <td><span class="rate"><span class="val">3</span><span class="sep">/</span><span class="lim">3</span></span></td>
+  <td><span class="rate"><span class="val">10</span></span></td>
+  <td><span class="rate"><span class="val">10K</span></span></td>
+  <td><span class="model-str">gemini-2.5-flash-preview-tts</span></td>
+  <td class="desc">Text-to-speech model. Outputs audio only. 30 voices, multilingual, natural prosody. Use for voice apps. <span class="tag">Audio out</span></td>
+</tr>
+
+<tr data-cat="multi" data-has-limit="1">
+  <td class="model-name">Gemini 3.1 Flash TTS</td>
+  <td><span class="cat-pill cat-multi">Multi-modal</span></td>
+  <td><span class="rate"><span class="val">3</span><span class="sep">/</span><span class="lim">3</span></span></td>
+  <td><span class="rate"><span class="val">10</span></span></td>
+  <td><span class="rate"><span class="val">10K</span></span></td>
+  <td><span class="model-str">gemini-3.1-flash-tts-preview</span></td>
+  <td class="desc">Latest TTS model. Expressive multilingual speech generation. Outputs audio only. <span class="tag new">Newest</span> <span class="tag">Audio out</span></td>
+</tr>
+
+<tr data-cat="multi">
+  <td class="model-name">Gemini 2.5 Pro TTS</td>
+  <td><span class="cat-pill cat-multi">Multi-modal</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="model-str">gemini-2.5-pro-preview-tts</span></td>
+  <td class="desc">High-quality Pro TTS. Best voice quality, supports long-form audio. Paid tier only. <span class="tag paid">Paid</span> <span class="tag">Audio out</span></td>
+</tr>
+
+<tr data-cat="multi">
+  <td class="model-name">Nano Banana<span class="sub">(Gemini 2.5 Flash Preview Image)</span></td>
+  <td><span class="cat-pill cat-multi">Multi-modal</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="model-str">gemini-2.5-flash-preview-image-generation</span></td>
+  <td class="desc">Image generation via Gemini 2.5 Flash. Generates images inline in chat. Paid tier only. <span class="tag paid">Paid</span> <span class="tag">Image out</span></td>
+</tr>
+
+<tr data-cat="multi">
+  <td class="model-name">Nano Banana Pro<span class="sub">(Gemini 3 Pro Image)</span></td>
+  <td><span class="cat-pill cat-multi">Multi-modal</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="model-str">gemini-3-pro-image-preview</span></td>
+  <td class="desc">High-quality image generation via Gemini 3 Pro. Better text rendering, improved fidelity. <span class="tag paid">Paid</span> <span class="tag">Image out</span></td>
+</tr>
+
+<tr data-cat="multi">
+  <td class="model-name">Nano Banana 2<span class="sub">(Gemini 3.1 Flash Image)</span></td>
+  <td><span class="cat-pill cat-multi">Multi-modal</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="model-str">gemini-3.1-flash-image-preview</span></td>
+  <td class="desc">Latest image generation model. Pro quality at Flash speed. Uses native Gemini architecture. <span class="tag new">Newest</span> <span class="tag paid">Paid</span></td>
+</tr>
+
+<tr data-cat="multi" data-has-limit="1">
+  <td class="model-name">Imagen 4 Generate</td>
+  <td><span class="cat-pill cat-multi">Multi-modal</span></td>
+  <td><span class="rate dash">—</span></td>
+  <td><span class="rate"><span class="val">25</span></span></td>
+  <td><span class="rate dash">—</span></td>
+  <td><span class="model-str">imagen-4.0-generate-001</span></td>
+  <td class="desc">Dedicated image generation model. Significantly better text rendering. Use via <code style="font-size:11px;color:#f0883e">generate_images()</code>, not ChatGoogleGenerativeAI. <span class="tag paid">Paid</span></td>
+</tr>
+
+<tr data-cat="multi" data-has-limit="1">
+  <td class="model-name">Imagen 4 Ultra Generate</td>
+  <td><span class="cat-pill cat-multi">Multi-modal</span></td>
+  <td><span class="rate dash">—</span></td>
+  <td><span class="rate"><span class="val">25</span></span></td>
+  <td><span class="rate dash">—</span></td>
+  <td><span class="model-str">imagen-4.0-ultra-generate-001</span></td>
+  <td class="desc">Top-tier image quality. Highest detail and photorealism. Slowest and most expensive. <span class="tag paid">Paid</span></td>
+</tr>
+
+<tr data-cat="multi" data-has-limit="1">
+  <td class="model-name">Imagen 4 Fast Generate</td>
+  <td><span class="cat-pill cat-multi">Multi-modal</span></td>
+  <td><span class="rate dash">—</span></td>
+  <td><span class="rate"><span class="val">25</span></span></td>
+  <td><span class="rate dash">—</span></td>
+  <td><span class="model-str">imagen-4.0-fast-generate-001</span></td>
+  <td class="desc">Fast image generation. Lower cost than standard Imagen 4. Trade-off between speed and quality. <span class="tag paid">Paid</span></td>
+</tr>
+
+<tr data-cat="multi">
+  <td class="model-name">Lyria 3 Clip</td>
+  <td><span class="cat-pill cat-multi">Multi-modal</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="model-str">lyria-3-clip</span></td>
+  <td class="desc">Music generation model for short clips. Outputs audio. Not usable with ChatGoogleGenerativeAI. <span class="tag paid">Paid</span> <span class="tag">Audio out</span></td>
+</tr>
+
+<tr data-cat="multi">
+  <td class="model-name">Lyria 3 Pro</td>
+  <td><span class="cat-pill cat-multi">Multi-modal</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="model-str">lyria-3-pro</span></td>
+  <td class="desc">Professional music generation. Longer, higher-quality musical output. <span class="tag paid">Paid</span> <span class="tag">Audio out</span></td>
+</tr>
+
+<tr data-cat="multi">
+  <td class="model-name">Veo 3 Generate</td>
+  <td><span class="cat-pill cat-multi">Multi-modal</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate dash">—</span></td>
+  <td><span class="rate dash">—</span></td>
+  <td><span class="model-str">veo-3.1-generate-preview</span></td>
+  <td class="desc">State-of-the-art video generation. Outputs video files. Use via Gemini video generation API, not ChatGoogleGenerativeAI. <span class="tag paid">Paid</span> <span class="tag">Video out</span></td>
+</tr>
+
+<tr data-cat="multi">
+  <td class="model-name">Veo 3 Fast Generate</td>
+  <td><span class="cat-pill cat-multi">Multi-modal</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate dash">—</span></td>
+  <td><span class="rate dash">—</span></td>
+  <td><span class="model-str">veo-3.1-fast-generate-preview</span></td>
+  <td class="desc">Faster video generation at lower cost. Good balance between speed and quality. <span class="tag paid">Paid</span> <span class="tag">Video out</span></td>
+</tr>
+
+<tr data-cat="multi">
+  <td class="model-name">Veo 3 Lite Generate</td>
+  <td><span class="cat-pill cat-multi">Multi-modal</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate dash">—</span></td>
+  <td><span class="rate dash">—</span></td>
+  <td><span class="model-str">veo-3.1-lite-generate-preview</span></td>
+  <td class="desc">Lightest and fastest video generation model. For rapid prototyping and lower-fidelity output. <span class="tag paid">Paid</span> <span class="tag">Video out</span></td>
+</tr>
+
+<!-- ───── OTHER MODELS ───── -->
+
+<tr data-cat="other" data-has-limit="1">
+  <td class="model-name">Gemma 4 26B</td>
+  <td><span class="cat-pill cat-other">Other</span></td>
+  <td><span class="rate"><span class="val">15</span><span class="sep">/</span><span class="lim">15</span></span></td>
+  <td><span class="rate"><span class="val">1.5K</span></span></td>
+  <td><span class="rate unlimited">Unlimited</span></td>
+  <td><span class="model-str">gemma-4-26b-it</span></td>
+  <td class="desc">Open-weight model, 26B parameters. General-purpose reasoning and chat. Runs separately from Gemini quota pool. <span class="tag">Open</span></td>
+</tr>
+
+<tr data-cat="other" data-has-limit="1">
+  <td class="model-name">Gemma 4 31B</td>
+  <td><span class="cat-pill cat-other">Other</span></td>
+  <td><span class="rate"><span class="val">15</span><span class="sep">/</span><span class="lim">15</span></span></td>
+  <td><span class="rate"><span class="val">1.5K</span></span></td>
+  <td><span class="rate unlimited">Unlimited</span></td>
+  <td><span class="model-str">gemma-4-31b-it</span></td>
+  <td class="desc">Open-weight model, 31B parameters. Stronger reasoning than 26B. Unlimited TPM on free tier. <span class="tag">Open</span></td>
+</tr>
+
+<tr data-cat="other" data-has-limit="1">
+  <td class="model-name">Gemini Embedding 1</td>
+  <td><span class="cat-pill cat-other">Other</span></td>
+  <td><span class="rate"><span class="val">100</span><span class="sep">/</span><span class="lim">100</span></span></td>
+  <td><span class="rate"><span class="val">1K</span></span></td>
+  <td><span class="rate"><span class="val">30K</span></span></td>
+  <td><span class="model-str">text-embedding-004</span></td>
+  <td class="desc">Text embedding model. Use with <code style="font-size:11px;color:#f0883e">GoogleGenerativeAIEmbeddings</code>. Not for ChatGoogleGenerativeAI. 768-dim vectors. <span class="tag">Embedding</span></td>
+</tr>
+
+<tr data-cat="other" data-has-limit="1">
+  <td class="model-name">Gemini Embedding 2</td>
+  <td><span class="cat-pill cat-other">Other</span></td>
+  <td><span class="rate"><span class="val">100</span><span class="sep">/</span><span class="lim">100</span></span></td>
+  <td><span class="rate"><span class="val">1K</span></span></td>
+  <td><span class="rate"><span class="val">30K</span></span></td>
+  <td><span class="model-str">gemini-embedding-2-preview</span></td>
+  <td class="desc">Latest embedding model. 768-dim MRL embeddings. Separate RETRIEVAL_DOCUMENT / RETRIEVAL_QUERY task types. <span class="tag new">Newest</span> <span class="tag">Embedding</span></td>
+</tr>
+
+<tr data-cat="other" data-has-limit="1">
+  <td class="model-name">Gemini Robotics ER 1.5 Preview</td>
+  <td><span class="cat-pill cat-other">Other</span></td>
+  <td><span class="rate"><span class="val">10</span><span class="sep">/</span><span class="lim">10</span></span></td>
+  <td><span class="rate"><span class="val">20</span></span></td>
+  <td><span class="rate"><span class="val">250K</span></span></td>
+  <td><span class="model-str">gemini-robotics-er-1.5-preview</span></td>
+  <td class="desc">Embodied Reasoning model for robotics. Understands physical world, object manipulation, spatial reasoning. <span class="tag">Robotics</span></td>
+</tr>
+
+<tr data-cat="other" data-has-limit="1">
+  <td class="model-name">Gemini Robotics ER 1.6 Preview</td>
+  <td><span class="cat-pill cat-other">Other</span></td>
+  <td><span class="rate"><span class="val">5</span><span class="sep">/</span><span class="lim">5</span></span></td>
+  <td><span class="rate"><span class="val">20</span></span></td>
+  <td><span class="rate"><span class="val">250K</span></span></td>
+  <td><span class="model-str">gemini-robotics-er-1.6-preview</span></td>
+  <td class="desc">Latest Robotics ER. Improved physical reasoning and robot control tasks. <span class="tag new">Newest</span> <span class="tag">Robotics</span></td>
+</tr>
+
+<tr data-cat="other">
+  <td class="model-name">Computer Use Preview</td>
+  <td><span class="cat-pill cat-other">Other</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="model-str">gemini-computer-use-preview</span></td>
+  <td class="desc">Browser control agent. Automates tasks by controlling a virtual browser. Not usable as a standard chat model. <span class="tag paid">Paid</span> <span class="tag">Agent</span></td>
+</tr>
+
+<!-- ───── AGENTS ───── -->
+
+<tr data-cat="agent">
+  <td class="model-name">Deep Research Pro Preview</td>
+  <td><span class="cat-pill cat-agent">Agents</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="rate zero">0 / 0</span></td>
+  <td><span class="model-str na">Not a standalone model</span></td>
+  <td class="desc">Agentic deep research. Automatically searches the web, synthesises findings, and writes long reports. Accessed via AI Studio Agents UI. <span class="tag paid">Paid</span></td>
+</tr>
+
+<!-- ───── LIVE API ───── -->
+
+<tr data-cat="live" data-has-limit="1">
+  <td class="model-name">Gemini 2.5 Flash Native Audio Dialog</td>
+  <td><span class="cat-pill cat-live">Live API</span></td>
+  <td><span class="rate unlimited">Unlimited</span></td>
+  <td><span class="rate unlimited">Unlimited</span></td>
+  <td><span class="rate"><span class="val">1M</span></span></td>
+  <td><span class="model-str">gemini-2.5-flash-preview-native-audio-dialog</span></td>
+  <td class="desc">Real-time bidirectional audio + video conversation (Live API). Low latency. Not usable with ChatGoogleGenerativeAI — needs Gemini Live client. <span class="tag">Live API</span></td>
+</tr>
+
+<tr data-cat="live" data-has-limit="1">
+  <td class="model-name">Gemini 3 Flash Live</td>
+  <td><span class="cat-pill cat-live">Live API</span></td>
+  <td><span class="rate unlimited">Unlimited</span></td>
+  <td><span class="rate unlimited">Unlimited</span></td>
+  <td><span class="rate"><span class="val">65K</span></span></td>
+  <td><span class="model-str">gemini-live-3-flash-preview</span></td>
+  <td class="desc">Latest Live API model. Low-latency voice and video interactions in real time. 65K TPM cap. <span class="tag new">Newest</span> <span class="tag">Live API</span></td>
+</tr>
+
+<!-- ───── TOOLS (Map / Search grounding) ───── -->
+
+<tr data-cat="tool">
+  <td class="model-name" colspan="1">Map &amp; Search Grounding Tools</td>
+  <td><span class="cat-pill cat-tool">Tools</span></td>
+  <td><span class="rate dash">—</span></td>
+  <td><span class="rate dash">—</span></td>
+  <td><span class="rate dash">—</span></td>
+  <td><span class="model-str na">Tool, not a model</span></td>
+  <td class="desc">Map grounding and Search grounding are tools enabled on top of a model (e.g. Gemini 2.5 Flash). Pass them as tools in the API call, not as the model parameter. Billed per grounding call.</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="note">
+  <span>⬛ <strong>0 / 0</strong> = No free-tier quota for this model on your project</span>
+  <span>✅ <strong>RPM shown</strong> = Free tier access available</span>
+  <span>— = Rate-limited differently (e.g. by image or video count, not RPM/TPM)</span>
+  <span>💡 Click any model string to select it</span>
+</div>
+
+<script>
+  function filterRows(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const rows = document.querySelectorAll('#main-table tbody tr');
+    rows.forEach(row => {
+      if (cat === 'all') {
+        row.style.display = '';
+      } else if (cat === 'has-limit') {
+        row.style.display = row.dataset.hasLimit === '1' ? '' : 'none';
+      } else {
+        row.style.display = row.dataset.cat === cat ? '' : 'none';
+      }
+    });
+  }
+
+  // Click to copy model string
+  document.querySelectorAll('.model-str:not(.na)').forEach(el => {
+    el.title = 'Click to copy';
+    el.addEventListener('click', () => {
+      navigator.clipboard.writeText(el.textContent.trim()).then(() => {
+        const orig = el.textContent;
+        el.textContent = '✓ Copied!';
+        el.style.background = 'rgba(63,185,80,.2)';
+        el.style.color = '#3fb950';
+        setTimeout(() => {
+          el.textContent = orig;
+          el.style.background = '';
+          el.style.color = '';
+        }, 1200);
+      });
+    });
+  });
+</script>
+</body>
+</html>

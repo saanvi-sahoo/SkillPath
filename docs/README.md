@@ -1,0 +1,65 @@
+# SkillPath AI (formerly UpskillxAI) – Project Documentation
+
+SkillPath AI (built on the previous batch's UpskillxAI) analyses a candidate's resume against a job description and produces:
+- an ATS score
+- skill gaps
+- a learning path
+- matching jobs (LinkedIn and Naukri)
+- learning resources
+- a **Career Advisor chatbot** that answers only career and study questions, grounded in the candidate's own data through RAG over MongoDB Atlas Vector Search.
+
+| Doc | What it covers |
+|---|---|
+| [runbook.md](runbook.md) | **Every process step by step**: setup, run, ingest, Atlas, evals, prompt changes, roadmap, deploy |
+| [scenarios.md](scenarios.md) | **Every scenario**: student journeys, chat cases (with real outputs), embedding/data, RAG, prompt-training and failure cases |
+| [architecture.md](architecture.md) | End-to-end system, components, data flow, folder map |
+| [embeddings.md](embeddings.md) | **Everything about embeddings:** model choice and benchmark, chunking per source, document schema, ingestion stats, score calibration, reproduction |
+| [rag.md](rag.md) | Embedding search vs. RAG decision, retrieval strategy, context format, citations |
+| [skills_and_roadmap.md](skills_and_roadmap.md) | Skill normalisation, exact gap comparison, validated 30-day roadmap |
+| [status.md](status.md) | **Progress ledger**: what is done, verified, pending (mirrors the project doc's ledger) |
+| [mongodb_atlas_setup.md](mongodb_atlas_setup.md) | Creating the Atlas cluster, connection string, vector index, verification |
+| [chatbot.md](chatbot.md) | Career Advisor chatbot: turn flow, scope guardrail, API, logging |
+| [prompt_scripting.md](prompt_scripting.md) | Prompt engineering ("prompt script training"): versions, eval set, metrics, results, how to iterate |
+| [deployment.md](deployment.md) | GitHub push and Hugging Face Space deployment; what is never published |
+| [experiment_log.md](experiment_log.md) | Dated log of every experiment and parameter change |
+| [roadmap.md](roadmap.md) | Status of every workstream and next steps |
+
+## Quick start
+
+```bash
+python3.12 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env            # fill in GROQ, GEMINI, TAVILY (+ MONGODB_URI for Atlas)
+
+# 1. Build the vector index (local fallback if MONGODB_URI is empty)
+python -m src.rag.ingest --sources all
+# 2. Backend + frontend
+uvicorn src.backend.fastapi_ends.api_endpoint:app --port 8000
+streamlit run src/frontend/frontend.py
+```
+
+## Evaluations (re-run after any change)
+
+```bash
+python -m src.eval.career_data_quality              # dataset audit
+python -m src.eval.evaluate_career_retrieval        # labelled P@5 benchmark
+python -m src.eval.evaluate_embeddings --models BAAI/bge-small-en-v1.5 sentence-transformers/all-MiniLM-L6-v2
+python -m src.eval.run_prompt_eval --router-only            # fast, router only
+python -m src.eval.run_prompt_eval --versions v3 v4 --router off --judge --judge-model gemini-3.5-flash
+```
+
+Reports are written to `reports/embeddings/` and `reports/prompt_eval/`, and every ingestion run is appended to `reports/embeddings/ingestion_log.jsonl`.
+
+## Glossary
+| Term | Meaning here |
+|---|---|
+| Embedding | 384-number vector from all-MiniLM-L6-v2 representing a text's meaning |
+| Cosine similarity | Similarity of two normalised vectors (−1…1). A ranking signal, not a measure of fit |
+| Vector index | Atlas Vector Search index enabling fast nearest-neighbour search (`$vectorSearch`) |
+| RAG | Retrieve relevant records first, then let the LLM answer only from them, with citations |
+| Chunk | One embedded unit (a career record, a guide section, a job piece, a profile piece) |
+| MATCH STRENGTH | WEAK/OK signal from the best career similarity; WEAK → ask clarifying questions |
+| Scope router | Guardrail deciding career_study / greeting / out_of_scope / prompt_attack |
+| Prompt version | `advisor_system_vN.md`; changed only via a new version and an A/B eval |
+| P@5 | Share of the top 5 results labelled relevant |
+| ATS estimate | LLM-estimated keyword-match score. Not a validated ATS result |

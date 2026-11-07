@@ -1,0 +1,143 @@
+"""
+Embedding evaluation on the careers corpus (no labels needed - self-supervised).
+
+Tasks
+  A. skills -> career : query = a career's required_skills only (name hidden).
+                        Correct if that career is retrieved. Measures whether skill
+                        vectors carry enough signal to recommend careers from a resume.
+  B. intent -> career : query = "I want to become a <career name>" against the full
+                        career text. Measures robustness to natural phrasing.
+Metrics: Recall@1/5/10, MRR@10, query latency, cosine-score distribution,
+plus qualitative nearest-neighbour examples for a few real-life queries.
+
+Usage:
+  python -m src.eval.evaluate_embeddings                       # default model, 500 queries
+  python -m src.eval.evaluate_embeddings --models sentence-transformers/all-MiniLM-L6-v2 BAAI/bge-small-en-v1.5
+Outputs: reports/embeddings/embedding_eval_<timestamp>.json and embedding_eval_latest.md
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import time
+from datetime import datetime, timezone
+
+import numpy as np
+import pandas as pd
+
+from src.rag import config
+
+# BGE models expect an instruction prefix on queries (not on passages).
+QUERY_PREFIX = {"BAAI/bge-small-en-v1.5": "Represent this sentence for searching relevant passages: "}
+
+SAMPLE_QUERIES = [
+    "Python, SQL, Power BI, statistics",
+    "I like teaching children and explaining concepts",
+    "Java Spring Boot microservices backend",
+    "machine learning, deep learning, NLP",
+    "accounting, taxation, Tally, GST",
+    "nursing and patient care",
+]
+
+
+def _metrics(sim: np.ndarray, gold: np.ndarray) -> dict:
+    order = np.argsort(-sim, axis=1)[:, :10]
+    ranks = []
+    for row, g in zip(order, gold):
+        pos = np.where(row == g)[0]
+        ranks.append(int(pos[0]) + 1 if len(pos) else None)
+    found = [r for r in ranks if r]
+    n = len(ranks)
+    return {
+        "recall@1": round(sum(r == 1 for r in found) / n, 4),
+        "recall@5": round(sum(r <= 5 for r in found) / n, 4),
+        "recall@10": round(len(found) / n, 4),
+        "mrr@10": round(sum(1 / r for r in found) / n, 4),
+    }
+
+
+def evaluate_model(model_name: str, df: pd.DataFrame, n_queries: int, seed: int = 42) -> dict:
+    from sentence_transformers import SentenceTransformer
+
+    t0 = time.perf_counter()
+    model = SentenceTransformer(model_name)
+    load_s = time.perf_counter() - t0
+    prefix = QUERY_PREFIX.get(model_name, "")
+    enc = lambda texts: model.encode(texts, batch_size=64, normalize_embeddings=True, convert_to_numpy=True)  # noqa: E731
+
+    corpus_text = ("Career: " + df.career_name + ". Required skills: " + df.required_skills + ". Education required: " + df.education_required + ".").tolist()
+    name_skill_text = ("Career: " + df.career_name + ".").tolist()
+    t1 = time.perf_counter()
+    corpus = enc(corpus_text)
+    names = enc(name_skill_text)
+    embed_s = time.perf_counter() - t1
+
+    rng = np.random.default_rng(seed)
+    idx = rng.choice(len(df), size=min(n_queries, len(df)), replace=False)
+
+    # A: skills-only query vs career-name vectors (no lexical leak of the skills into the target)
+    qa = enc([prefix + s for s in df.required_skills.iloc[idx]])
+    t2 = time.perf_counter()
+    sim_a = qa @ names.T
+    lat_ms = (time.perf_counter() - t2) / len(idx) * 1000
+    task_a = _metrics(sim_a, idx)
+
+    # B: natural-language intent vs full career documents
+    qb = enc([f"{prefix}I want to become a {n}" for n in df.career_name.iloc[idx]])
+    task_b = _metrics(qb @ corpus.T, idx)
+
+    # score distribution: top-1 vs random pairs (separation = how discriminative the space is)
+    top1 = np.sort(qb @ corpus.T, axis=1)[:, -1]
+    rand = (corpus[rng.integers(0, len(df), 2000)] * corpus[rng.integers(0, len(df), 2000)]).sum(1)
+
+    examples = {}
+    qs = enc([prefix + q for q in SAMPLE_QUERIES])
+    for q, v in zip(SAMPLE_QUERIES, qs):
+        s = corpus @ v
+        top = np.argsort(-s)[:5]
+        examples[q] = [{"career": df.career_name.iloc[i], "score": round(float(s[i]), 3)} for i in top]
+
+    return {
+        "model": model_name, "dim": int(corpus.shape[1]), "corpus_size": len(df), "n_queries": len(idx),
+        "load_s": round(load_s, 2), "corpus_embed_s": round(embed_s, 2),
+        "docs_per_s": round(2 * len(df) / embed_s, 1), "search_latency_ms_per_query": round(lat_ms, 3),
+        "task_A_skills_to_career": task_a, "task_B_intent_to_career": task_b,
+        "score_distribution": {
+            "top1_mean": round(float(top1.mean()), 3), "top1_p10": round(float(np.percentile(top1, 10)), 3),
+            "random_pair_mean": round(float(rand.mean()), 3), "random_pair_p90": round(float(np.percentile(rand, 90)), 3),
+        },
+        "nearest_neighbour_examples": examples,
+    }
+
+
+def to_markdown(results: list, ts: str) -> str:
+    lines = [f"# Embedding evaluation ({ts})", "", "Generated by `python -m src.eval.evaluate_embeddings`.", "",
+             "| Model | Dim | A R@1 | A R@5 | A R@10 | A MRR | B R@1 | B R@5 | B MRR | Top-1 mean | Random mean | Embed docs/s |",
+             "|---|---|---|---|---|---|---|---|---|---|---|---|"]
+    for r in results:
+        a, b, d = r["task_A_skills_to_career"], r["task_B_intent_to_career"], r["score_distribution"]
+        lines.append(f"| {r['model']} | {r['dim']} | {a['recall@1']} | {a['recall@5']} | {a['recall@10']} | {a['mrr@10']} | "
+                     f"{b['recall@1']} | {b['recall@5']} | {b['mrr@10']} | {d['top1_mean']} | {d['random_pair_mean']} | {r['docs_per_s']} |")
+    for r in results:
+        lines += ["", f"## Nearest neighbours - {r['model']}"]
+        for q, hits in r["nearest_neighbour_examples"].items():
+            lines.append(f"- **{q}** -> " + "; ".join(f"{h['career']} ({h['score']})" for h in hits))
+    return "\n".join(lines) + "\n"
+
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument("--models", nargs="+", default=[config.EMBEDDING_MODEL])
+    p.add_argument("--n-queries", type=int, default=500)
+    args = p.parse_args()
+    df = pd.read_csv(config.CAREERS_CSV).drop_duplicates("career_name").fillna("").reset_index(drop=True)
+    results = [evaluate_model(m, df, args.n_queries) for m in args.models]
+    ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    config.REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    (config.REPORTS_DIR / f"embedding_eval_{ts}.json").write_text(json.dumps(results, indent=2))
+    (config.REPORTS_DIR / "embedding_eval_latest.md").write_text(to_markdown(results, ts))
+    print(to_markdown(results, ts))
+
+
+if __name__ == "__main__":
+    main()

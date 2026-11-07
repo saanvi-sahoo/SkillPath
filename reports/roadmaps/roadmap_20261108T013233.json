@@ -1,0 +1,514 @@
+{
+  "target_role": "data analyst",
+  "daily_minutes": 90,
+  "level": "beginner",
+  "gap_analysis": {
+    "candidate": [
+      "Python",
+      "SQL",
+      "Excel",
+      "Power BI",
+      "Pandas"
+    ],
+    "required": [
+      "Python",
+      "SQL",
+      "Power BI",
+      "Tableau",
+      "Statistics",
+      "Data Visualization",
+      "Communication"
+    ],
+    "matched": [
+      "Python",
+      "SQL",
+      "Power BI"
+    ],
+    "gaps": [
+      "Tableau",
+      "Statistics",
+      "Data Visualization",
+      "Communication"
+    ],
+    "matched_by_implication": {},
+    "related_background": {
+      "Tableau": [
+        "Power BI"
+      ]
+    },
+    "match_ratio": 0.429,
+    "gap_categories": {
+      "Tableau": "Data Analysis & BI",
+      "Statistics": "Data Analysis & BI",
+      "Data Visualization": "Data Analysis & BI",
+      "Communication": "Soft Skills"
+    }
+  },
+  "gaps_prioritised": [
+    "Data Visualization",
+    "Tableau",
+    "Statistics",
+    "Communication"
+  ],
+  "market_importance": {
+    "Tableau": 0.24,
+    "Statistics": 0.24,
+    "Data Visualization": 0.32,
+    "Communication": 0.0
+  },
+  "days_per_skill": {
+    "Data Visualization": 7,
+    "Tableau": 6,
+    "Statistics": 6,
+    "Communication": 5
+  },
+  "deferred_gaps": [],
+  "generation": "llm",
+  "validation": {
+    "valid": true,
+    "checks": {
+      "n_days": 30,
+      "days_numbered_1_30": true,
+      "all_gaps_covered": true,
+      "max_minutes": 90,
+      "budget_minutes": 90
+    },
+    "issues": []
+  },
+  "days": [
+    {
+      "day": 1,
+      "skill": "Data Visualization",
+      "kind": "learn",
+      "topic": "Chart Selection Principles",
+      "prerequisite": "none",
+      "learning_task": "Read guidelines on selecting bar charts, line charts, scatter plots, and pie charts based on data types.",
+      "practice_task": "Classify 10 analytical scenarios into the correct chart type using a reference worksheet.",
+      "estimated_minutes": 60,
+      "completion_criteria": "10 out of 10 scenario chart choices correctly identified.",
+      "resources": [
+        "article: The Ultimate Guide: How to Create Stunning Data Visualization in 2024 (Tands) : https://tands.com/en/news/data-visualization",
+        "article: Data Visualization Best Practices: Improve Your Storytelling With Data (Dot Analytics) : https://dotanalytics.ai/blog/data-visualization-best-practices-improve-your-storytelling-with-data"
+      ]
+    },
+    {
+      "day": 2,
+      "skill": "Data Visualization",
+      "kind": "learn",
+      "topic": "Matplotlib Scatter and Line Plots",
+      "prerequisite": "Chart Selection Principles",
+      "learning_task": "Study Matplotlib syntax for creating line graphs and scatter plots with title and axis labels.",
+      "practice_task": "Write a Python script using Matplotlib to plot a time-series line chart and a two-variable scatter plot.",
+      "estimated_minutes": 75,
+      "completion_criteria": "2 plots successfully rendered with labeled axes and titles.",
+      "resources": [
+        "article: The Ultimate Guide: How to Create Stunning Data Visualization in 2024 (Tands) : https://tands.com/en/news/data-visualization",
+        "article: Data Visualization Best Practices: Improve Your Storytelling With Data (Dot Analytics) : https://dotanalytics.ai/blog/data-visualization-best-practices-improve-your-storytelling-with-data"
+      ]
+    },
+    {
+      "day": 3,
+      "skill": "Data Visualization",
+      "kind": "learn",
+      "topic": "Seaborn Distribution and Box Plots",
+      "prerequisite": "Matplotlib Scatter and Line Plots",
+      "learning_task": "Learn Seaborn syntax for histograms, KDE plots, and box plots to analyze distribution and outliers.",
+      "practice_task": "Create a Seaborn box plot showing sales distribution across four product categories.",
+      "estimated_minutes": 75,
+      "completion_criteria": "1 box plot rendered displaying clear category distributions and outliers.",
+      "resources": [
+        "article: The Ultimate Guide: How to Create Stunning Data Visualization in 2024 (Tands) : https://tands.com/en/news/data-visualization",
+        "article: Data Visualization Best Practices: Improve Your Storytelling With Data (Dot Analytics) : https://dotanalytics.ai/blog/data-visualization-best-practices-improve-your-storytelling-with-data"
+      ]
+    },
+    {
+      "day": 4,
+      "skill": "Data Visualization",
+      "kind": "learn",
+      "topic": "Color Palettes and Contrast",
+      "prerequisite": "Chart Selection Principles",
+      "learning_task": "Understand sequential, diverging, and categorical color palettes and colorblind accessibility rules.",
+      "practice_task": "Refactor two existing Seaborn plots to use accessible palette palettes and contrasting highlight colors.",
+      "estimated_minutes": 60,
+      "completion_criteria": "2 plots updated with distinct colorblind-friendly visual palettes.",
+      "resources": [
+        "article: The Ultimate Guide: How to Create Stunning Data Visualization in 2024 (Tands) : https://tands.com/en/news/data-visualization",
+        "article: Data Visualization Best Practices: Improve Your Storytelling With Data (Dot Analytics) : https://dotanalytics.ai/blog/data-visualization-best-practices-improve-your-storytelling-with-data"
+      ]
+    },
+    {
+      "day": 5,
+      "skill": "Data Visualization",
+      "kind": "learn",
+      "topic": "Heatmaps and Categorical Plots",
+      "prerequisite": "Seaborn Distribution and Box Plots",
+      "learning_task": "Study Seaborn heatmap and catplot functions for correlation matrix and categorical analysis.",
+      "practice_task": "Generate a correlation heatmap for a numeric dataset and annotate correlation values.",
+      "estimated_minutes": 75,
+      "completion_criteria": "1 annotated correlation matrix heatmap accurately displayed.",
+      "resources": [
+        "article: The Ultimate Guide: How to Create Stunning Data Visualization in 2024 (Tands) : https://tands.com/en/news/data-visualization",
+        "article: Data Visualization Best Practices: Improve Your Storytelling With Data (Dot Analytics) : https://dotanalytics.ai/blog/data-visualization-best-practices-improve-your-storytelling-with-data"
+      ]
+    },
+    {
+      "day": 6,
+      "skill": "Data Visualization",
+      "kind": "learn",
+      "topic": "Visual Hierarchy and Grid Design",
+      "prerequisite": "Color Palettes and Contrast",
+      "learning_task": "Learn layout techniques including subplots, whitespace usage, and visual focal points.",
+      "practice_task": "Build a 2x2 grid panel of charts using Matplotlib subplots displaying varied metrics.",
+      "estimated_minutes": 80,
+      "completion_criteria": "1 multi-chart subplot layout rendered with consistent spacing and clear hierarchy.",
+      "resources": [
+        "article: The Ultimate Guide: How to Create Stunning Data Visualization in 2024 (Tands) : https://tands.com/en/news/data-visualization",
+        "article: Data Visualization Best Practices: Improve Your Storytelling With Data (Dot Analytics) : https://dotanalytics.ai/blog/data-visualization-best-practices-improve-your-storytelling-with-data"
+      ]
+    },
+    {
+      "day": 7,
+      "skill": "Review",
+      "kind": "review",
+      "topic": "Data Visualization Review",
+      "prerequisite": "Visual Hierarchy and Grid Design",
+      "learning_task": "Review chart selection rules, custom Seaborn plots, and Matplotlib subplot formatting.",
+      "practice_task": "Clean a sample retail dataset and build a 3-chart custom dashboard using Matplotlib and Seaborn.",
+      "estimated_minutes": 90,
+      "completion_criteria": "3 formatted charts correctly combined into a single clean figure.",
+      "resources": []
+    },
+    {
+      "day": 8,
+      "skill": "Data Visualization",
+      "kind": "learn",
+      "topic": "Annotations and Formatting in Matplotlib",
+      "prerequisite": "Matplotlib Scatter and Line Plots",
+      "learning_task": "Study text annotations, arrows, custom ticks, and axis limit configurations in Matplotlib.",
+      "practice_task": "Annotate the maximum point on a line graph with explanatory text and an arrow indicator.",
+      "estimated_minutes": 70,
+      "completion_criteria": "1 chart rendered featuring working text annotations pointing to data anomalies.",
+      "resources": [
+        "article: The Ultimate Guide: How to Create Stunning Data Visualization in 2024 (Tands) : https://tands.com/en/news/data-visualization",
+        "article: Data Visualization Best Practices: Improve Your Storytelling With Data (Dot Analytics) : https://dotanalytics.ai/blog/data-visualization-best-practices-improve-your-storytelling-with-data"
+      ]
+    },
+    {
+      "day": 9,
+      "skill": "Tableau",
+      "kind": "learn",
+      "topic": "Tableau Interface and Connecting Data",
+      "prerequisite": "none",
+      "learning_task": "Learn how to navigate the Tableau interface, import CSV files, and set up data joins.",
+      "practice_task": "Connect two CSV tables in Tableau and verify field data types in the data source tab.",
+      "estimated_minutes": 60,
+      "completion_criteria": "Data source connection configured with zero data join errors.",
+      "resources": [
+        "yt video: End-to-End Tableau for Beginners (Andy Kriebel) : https://www.youtube.com/watch?v=OmNeLFmyMJQ",
+        "yt video: Tableau Basics for Beginners - Tableau in Two Minutes (Penguin Analytics) : https://www.youtube.com/watch?v=jEgVto5QME8"
+      ]
+    },
+    {
+      "day": 10,
+      "skill": "Tableau",
+      "kind": "learn",
+      "topic": "Tableau Bar and Line Charts",
+      "prerequisite": "Tableau Interface and Connecting Data",
+      "learning_task": "Study creating basic worksheets in Tableau including horizontal bar charts and trend lines.",
+      "practice_task": "Build a worksheet displaying monthly revenue trends and a worksheet showing top 10 products.",
+      "estimated_minutes": 70,
+      "completion_criteria": "2 Tableau worksheets created displaying trend and ranking visualizations.",
+      "resources": [
+        "yt video: End-to-End Tableau for Beginners (Andy Kriebel) : https://www.youtube.com/watch?v=OmNeLFmyMJQ",
+        "yt video: Tableau Basics for Beginners - Tableau in Two Minutes (Penguin Analytics) : https://www.youtube.com/watch?v=jEgVto5QME8"
+      ]
+    },
+    {
+      "day": 11,
+      "skill": "Tableau",
+      "kind": "learn",
+      "topic": "Calculated Fields and Aggregations",
+      "prerequisite": "Tableau Bar and Line Charts",
+      "learning_task": "Learn how to write basic string, numeric, and IF-THEN calculated fields in Tableau.",
+      "practice_task": "Create calculated fields for Profit Margin percentage and a binary High Sales flag.",
+      "estimated_minutes": 80,
+      "completion_criteria": "2 calculated fields successfully used in a Tableau bar chart visual.",
+      "resources": [
+        "yt video: End-to-End Tableau for Beginners (Andy Kriebel) : https://www.youtube.com/watch?v=OmNeLFmyMJQ",
+        "yt video: Tableau Basics for Beginners - Tableau in Two Minutes (Penguin Analytics) : https://www.youtube.com/watch?v=jEgVto5QME8"
+      ]
+    },
+    {
+      "day": 12,
+      "skill": "Tableau",
+      "kind": "learn",
+      "topic": "Dashboard Filters and Actions",
+      "prerequisite": "Calculated Fields and Aggregations",
+      "learning_task": "Understand dashboard layout containers, global filters, and click-to-filter action triggers.",
+      "practice_task": "Assemble a interactive 2-sheet dashboard with global region filters and hover actions.",
+      "estimated_minutes": 85,
+      "completion_criteria": "1 interactive dashboard created where selecting a region updates all charts.",
+      "resources": [
+        "yt video: End-to-End Tableau for Beginners (Andy Kriebel) : https://www.youtube.com/watch?v=OmNeLFmyMJQ",
+        "yt video: Tableau Basics for Beginners - Tableau in Two Minutes (Penguin Analytics) : https://www.youtube.com/watch?v=jEgVto5QME8"
+      ]
+    },
+    {
+      "day": 13,
+      "skill": "Tableau",
+      "kind": "learn",
+      "topic": "Tableau Map Visualizations",
+      "prerequisite": "Tableau Bar and Line Charts",
+      "learning_task": "Study geographic roles, filled maps, symbol maps, and spatial aggregation in Tableau.",
+      "practice_task": "Create a symbol map displaying profit by state with size and color encodings.",
+      "estimated_minutes": 70,
+      "completion_criteria": "1 map worksheet displaying geographical distribution of revenue clearly.",
+      "resources": [
+        "yt video: End-to-End Tableau for Beginners (Andy Kriebel) : https://www.youtube.com/watch?v=OmNeLFmyMJQ",
+        "yt video: Tableau Basics for Beginners - Tableau in Two Minutes (Penguin Analytics) : https://www.youtube.com/watch?v=jEgVto5QME8"
+      ]
+    },
+    {
+      "day": 14,
+      "skill": "Review",
+      "kind": "review",
+      "topic": "Tableau Core Concepts Review",
+      "prerequisite": "Dashboard Filters and Actions",
+      "learning_task": "Review Tableau calculated fields, map visual setup, and interactive dashboard filtering.",
+      "practice_task": "Build a sales performance dashboard combining calculated fields, a map, and interactive filters.",
+      "estimated_minutes": 90,
+      "completion_criteria": "1 fully operational dashboard with 3 sheets and interactive filter actions.",
+      "resources": []
+    },
+    {
+      "day": 15,
+      "skill": "Tableau",
+      "kind": "learn",
+      "topic": "Tableau Stories and Publishing",
+      "prerequisite": "Tableau Map Visualizations",
+      "learning_task": "Learn how to organize dashboards into Tableau Story points and export outputs to PDF.",
+      "practice_task": "Create a 3-point Tableau Story summarizing quarterly business highlights and export to PDF.",
+      "estimated_minutes": 75,
+      "completion_criteria": "1 Tableau Story created containing 3 distinct annotated story points.",
+      "resources": [
+        "yt video: End-to-End Tableau for Beginners (Andy Kriebel) : https://www.youtube.com/watch?v=OmNeLFmyMJQ",
+        "yt video: Tableau Basics for Beginners - Tableau in Two Minutes (Penguin Analytics) : https://www.youtube.com/watch?v=jEgVto5QME8"
+      ]
+    },
+    {
+      "day": 16,
+      "skill": "Statistics",
+      "kind": "learn",
+      "topic": "Mean Median Mode Variance",
+      "prerequisite": "none",
+      "learning_task": "Study measures of central tendency and dispersion including variance and standard deviation.",
+      "practice_task": "Calculate mean, median, standard deviation, and IQR for a dataset column using Python.",
+      "estimated_minutes": 65,
+      "completion_criteria": "4 summary statistics accurately calculated and printed in Python output.",
+      "resources": [
+        "udemy course: Beginner Statistics for Data Analytics - Learn the Easy Way! : https://www.udemy.com/course/beginner-stats",
+        "yt video: What is Statistics? A Beginner's Guide to Statistics (Data Analytics) (numiqo) : https://www.youtube.com/watch?v=Gi4GxE4obAc"
+      ]
+    },
+    {
+      "day": 17,
+      "skill": "Statistics",
+      "kind": "learn",
+      "topic": "Normal and Binomial Distributions",
+      "prerequisite": "Mean Median Mode Variance",
+      "learning_task": "Learn properties of standard normal distribution, empirical rule, z-scores, and binomial events.",
+      "practice_task": "Compute z-scores for customer purchase values and identify values beyond 2 standard deviations.",
+      "estimated_minutes": 75,
+      "completion_criteria": "Z-scores computed correctly with extreme values accurately isolated.",
+      "resources": [
+        "udemy course: Beginner Statistics for Data Analytics - Learn the Easy Way! : https://www.udemy.com/course/beginner-stats",
+        "yt video: What is Statistics? A Beginner's Guide to Statistics (Data Analytics) (numiqo) : https://www.youtube.com/watch?v=Gi4GxE4obAc"
+      ]
+    },
+    {
+      "day": 18,
+      "skill": "Statistics",
+      "kind": "learn",
+      "topic": "Sampling Methods and Central Limit Theorem",
+      "prerequisite": "Normal and Binomial Distributions",
+      "learning_task": "Understand simple random sampling, stratified sampling, sample error, and Central Limit Theorem.",
+      "practice_task": "Simulate sampling distributions in Python by taking 500 sample means from a skewed dataset.",
+      "estimated_minutes": 80,
+      "completion_criteria": "Histogram plotted showing sample means forming a normal curve.",
+      "resources": [
+        "udemy course: Beginner Statistics for Data Analytics - Learn the Easy Way! : https://www.udemy.com/course/beginner-stats",
+        "yt video: What is Statistics? A Beginner's Guide to Statistics (Data Analytics) (numiqo) : https://www.youtube.com/watch?v=Gi4GxE4obAc"
+      ]
+    },
+    {
+      "day": 19,
+      "skill": "Statistics",
+      "kind": "learn",
+      "topic": "Estimating Confidence Intervals",
+      "prerequisite": "Sampling Methods and Central Limit Theorem",
+      "learning_task": "Study point estimates, margin of error, and formula for 95 percent confidence intervals.",
+      "practice_task": "Calculate the 95 percent confidence interval for average customer order value in Python.",
+      "estimated_minutes": 75,
+      "completion_criteria": "Upper and lower confidence interval bounds correctly calculated and documented.",
+      "resources": [
+        "udemy course: Beginner Statistics for Data Analytics - Learn the Easy Way! : https://www.udemy.com/course/beginner-stats",
+        "yt video: What is Statistics? A Beginner's Guide to Statistics (Data Analytics) (numiqo) : https://www.youtube.com/watch?v=Gi4GxE4obAc"
+      ]
+    },
+    {
+      "day": 20,
+      "skill": "Statistics",
+      "kind": "learn",
+      "topic": "Null Hypothesis and P-Values",
+      "prerequisite": "Estimating Confidence Intervals",
+      "learning_task": "Learn hypothesis formulation, null versus alternative hypotheses, alpha levels, and p-values.",
+      "practice_task": "Write null and alternative hypothesis statements for 5 real-world business test cases.",
+      "estimated_minutes": 70,
+      "completion_criteria": "5 pairs of null and alternative hypotheses clearly stated with metrics.",
+      "resources": [
+        "udemy course: Beginner Statistics for Data Analytics - Learn the Easy Way! : https://www.udemy.com/course/beginner-stats",
+        "yt video: What is Statistics? A Beginner's Guide to Statistics (Data Analytics) (numiqo) : https://www.youtube.com/watch?v=Gi4GxE4obAc"
+      ]
+    },
+    {
+      "day": 21,
+      "skill": "Review",
+      "kind": "review",
+      "topic": "Statistics Review",
+      "prerequisite": "Null Hypothesis and P-Values",
+      "learning_task": "Revise summary statistics, confidence interval formulas, and hypothesis setup rules.",
+      "practice_task": "Solve 4 statistical practice problems covering z-scores, confidence intervals, and hypothesis tests.",
+      "estimated_minutes": 90,
+      "completion_criteria": "4 out of 4 statistical problem solutions calculated accurately.",
+      "resources": []
+    },
+    {
+      "day": 22,
+      "skill": "Statistics",
+      "kind": "learn",
+      "topic": "A/B Testing and Z-Tests",
+      "prerequisite": "Null Hypothesis and P-Values",
+      "learning_task": "Study two-sample z-tests and t-tests to evaluate conversion rates in A/B test experiments.",
+      "practice_task": "Perform a two-sample t-test in Python on website version A versus B conversion rates.",
+      "estimated_minutes": 85,
+      "completion_criteria": "P-value calculated and statistical significance decision correctly documented.",
+      "resources": [
+        "udemy course: Beginner Statistics for Data Analytics - Learn the Easy Way! : https://www.udemy.com/course/beginner-stats",
+        "yt video: What is Statistics? A Beginner's Guide to Statistics (Data Analytics) (numiqo) : https://www.youtube.com/watch?v=Gi4GxE4obAc"
+      ]
+    },
+    {
+      "day": 23,
+      "skill": "Communication",
+      "kind": "learn",
+      "topic": "Framing Analytical Insights",
+      "prerequisite": "none",
+      "learning_task": "Study how to translate technical data outputs into actionable business recommendations.",
+      "practice_task": "Rewrite 3 statistical findings into clear business insights tailored for non-technical managers.",
+      "estimated_minutes": 60,
+      "completion_criteria": "3 technical findings converted into recommendations using plain business terms.",
+      "resources": [
+        "article: Key Data Analyst Skills Gained From Data Analytics Programs (UTC Blog) : https://blog.utc.edu/business/2023/12/14/data-analyst-soft-skills-from-data-analytics-programs",
+        "article: How Data Analysts Can Communicate Effectively with Team Members (Northeastern) : https://graduate.northeastern.edu/knowledge-hub/communicating-with-data"
+      ]
+    },
+    {
+      "day": 24,
+      "skill": "Communication",
+      "kind": "learn",
+      "topic": "Writing Executive Summaries",
+      "prerequisite": "Framing Analytical Insights",
+      "learning_task": "Learn the structure of effective executive summaries: situation, insight, impact, and action.",
+      "practice_task": "Draft a 1-page executive summary based on a provided data analysis case study.",
+      "estimated_minutes": 75,
+      "completion_criteria": "1-page summary written covering context, key metrics, and recommended next steps.",
+      "resources": [
+        "article: Key Data Analyst Skills Gained From Data Analytics Programs (UTC Blog) : https://blog.utc.edu/business/2023/12/14/data-analyst-soft-skills-from-data-analytics-programs",
+        "article: How Data Analysts Can Communicate Effectively with Team Members (Northeastern) : https://graduate.northeastern.edu/knowledge-hub/communicating-with-data"
+      ]
+    },
+    {
+      "day": 25,
+      "skill": "Communication",
+      "kind": "learn",
+      "topic": "Narrative Arc for Data Presentations",
+      "prerequisite": "Writing Executive Summaries",
+      "learning_task": "Understand narrative structure: setting context, presenting conflict/friction, and presenting solution.",
+      "practice_task": "Outline a 5-slide data presentation story arc addressing declining customer retention.",
+      "estimated_minutes": 70,
+      "completion_criteria": "5-slide outline detailed with storyline headers and supporting data requirements.",
+      "resources": [
+        "article: Key Data Analyst Skills Gained From Data Analytics Programs (UTC Blog) : https://blog.utc.edu/business/2023/12/14/data-analyst-soft-skills-from-data-analytics-programs",
+        "article: How Data Analysts Can Communicate Effectively with Team Members (Northeastern) : https://graduate.northeastern.edu/knowledge-hub/communicating-with-data"
+      ]
+    },
+    {
+      "day": 26,
+      "skill": "Communication",
+      "kind": "learn",
+      "topic": "Effective Slide Layouts",
+      "prerequisite": "Narrative Arc for Data Presentations",
+      "learning_task": "Learn visual slide design principles including visual clutter reduction and bold headlines.",
+      "practice_task": "Design 3 slide layouts using presentation software incorporating charts and takeaway callouts.",
+      "estimated_minutes": 75,
+      "completion_criteria": "3 slides created featuring minimal clutter and high-impact takeaway headlines.",
+      "resources": [
+        "article: Key Data Analyst Skills Gained From Data Analytics Programs (UTC Blog) : https://blog.utc.edu/business/2023/12/14/data-analyst-soft-skills-from-data-analytics-programs",
+        "article: How Data Analysts Can Communicate Effectively with Team Members (Northeastern) : https://graduate.northeastern.edu/knowledge-hub/communicating-with-data"
+      ]
+    },
+    {
+      "day": 27,
+      "skill": "Communication",
+      "kind": "learn",
+      "topic": "Stakeholder QA and Handling Objections",
+      "prerequisite": "Effective Slide Layouts",
+      "learning_task": "Study techniques for anticipating stakeholder questions, clarifying assumptions, and handling pushback.",
+      "practice_task": "Write responses to 4 common stakeholder objections regarding data sample size and methodology.",
+      "estimated_minutes": 65,
+      "completion_criteria": "4 objection response scripts drafted addressing sample bias and analytical limitations.",
+      "resources": [
+        "article: Key Data Analyst Skills Gained From Data Analytics Programs (UTC Blog) : https://blog.utc.edu/business/2023/12/14/data-analyst-soft-skills-from-data-analytics-programs",
+        "article: How Data Analysts Can Communicate Effectively with Team Members (Northeastern) : https://graduate.northeastern.edu/knowledge-hub/communicating-with-data"
+      ]
+    },
+    {
+      "day": 28,
+      "skill": "Review",
+      "kind": "review",
+      "topic": "Communication and Stats Review",
+      "prerequisite": "Stakeholder QA and Handling Objections",
+      "learning_task": "Review hypothesis testing interpretability, executive messaging, and slide deck flow.",
+      "practice_task": "Transform an A/B test analysis output into a 4-slide presentation deck for leadership.",
+      "estimated_minutes": 90,
+      "completion_criteria": "4-slide executive presentation completed incorporating statistics and visual charts.",
+      "resources": []
+    },
+    {
+      "day": 29,
+      "skill": "Capstone Project",
+      "kind": "project",
+      "topic": "Data Analysis and Visual Exploration",
+      "prerequisite": "none",
+      "learning_task": "Explore a multi-file e-commerce dataset, perform statistical testing, and create Seaborn visual plots.",
+      "practice_task": "Clean dataset, run hypothesis test on customer segment spending, and save key visualizations.",
+      "estimated_minutes": 90,
+      "completion_criteria": "Python notebook executed cleanly with 1 hypothesis test and 3 exploratory charts.",
+      "resources": []
+    },
+    {
+      "day": 30,
+      "skill": "Capstone Project",
+      "kind": "project",
+      "topic": "Dashboard Creation and Executive Presentation",
+      "prerequisite": "Data Analysis and Visual Exploration",
+      "learning_task": "Build a Tableau interactive dashboard from analysis results and write an executive summary slide.",
+      "practice_task": "Publish Tableau dashboard, create 3 slide presentation deck, and finalize project summary.",
+      "estimated_minutes": 90,
+      "completion_criteria": "1 published Tableau dashboard and a 3-slide executive presentation delivered.",
+      "resources": []
+    }
+  ],
+  "latency_ms": 41995,
+  "note": "A 30-day roadmap builds working familiarity; it does not guarantee mastery or a job."
+}

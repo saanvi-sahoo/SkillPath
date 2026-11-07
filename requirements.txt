@@ -1,0 +1,54 @@
+# --- Core API & Framework ---
+fastapi
+uvicorn
+
+# --- Frontend ---
+streamlit
+requests
+
+# --- LangChain & AI ---
+langchain-core
+langchain-community
+langchain-google-genai
+langchain-groq
+langchain-chroma
+langchain-experimental
+langgraph
+langgraph-checkpoint-sqlite
+chromadb
+faiss-cpu
+
+# --- Scraping & Web Search ---
+selenium
+webdriver-manager
+beautifulsoup4
+lxml
+tavily-python
+
+# --- Document Extraction ---
+reducto
+docx2txt
+pymupdf
+pypdf
+torchvision
+
+# --- Additional Langchain & API ---
+langchain-openai
+langchain-text-splitters
+httpx
+
+# --- Utilities & Validation ---
+pydantic
+python-dotenv
+loguru
+click
+Sphinx
+coverage
+flake8
+langfuse
+
+# --- RAG / embeddings (added for Career Advisor chatbot) ---
+pymongo>=4.10
+sentence-transformers>=3.0
+pandas
+numpy

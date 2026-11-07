@@ -1,0 +1,192 @@
+"""
+UpskillxAI Career Advisor chatbot (RAG).
+
+Flow per user turn (docs/chatbot.md):
+    message -> scope_router.route()
+        out_of_scope / prompt_attack -> refusal template (no LLM call)
+        greeting                     -> LLM with system prompt, no retrieval
+        career_study                 -> retrieve (MongoDB Atlas / local vectors)
+                                        -> system prompt (profile + [S#] context)
+                                        -> few-shots + recent history -> LLM -> answer + sources
+
+Public API (unchanged for the Streamlit frontend):
+    chat_with_agent(chat_history: list[dict]) -> str
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import os
+import re
+import time
+from datetime import datetime, timezone
+from typing import Dict, List
+
+from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
+
+from src.backend.scope_router import route
+from src.prompts.registry import ACTIVE, load_json, load_prompt
+from src.rag import config
+from src.rag.retriever import retrieve, format_context
+
+# llama-3.3-70b-versatile was retired by Groq (found 2026-11-08); every call had silently been
+# going to the fallback chain. gpt-oss-120b is the strongest model currently served on the free tier.
+CHAT_MODEL = os.getenv("CHAT_MODEL", "groq:openai/gpt-oss-120b")
+HISTORY_TURNS = 8
+CHAT_LOG = config.PROJECT_ROOT / "reports" / "chat_logs" / "chat_log.jsonl"
+
+
+def _extract_text(content) -> str:
+    if isinstance(content, str):
+        return content
+    if isinstance(content, list):
+        return "".join(i.get("text", "") if isinstance(i, dict) else str(i) for i in content)
+    return str(content)
+
+
+def load_profile_summary() -> str:
+    """Compact, always-included profile header (cheap and guarantees core facts are present)."""
+    if not config.MEMORY_JSON.exists():
+        return "No analysed profile yet. The user has not run 'Analyze Profile'."
+    try:
+        mem = json.loads(config.MEMORY_JSON.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return "Profile file could not be read."
+    return (
+        f"- Target role: {mem.get('target_role') or 'not specified'}\n"
+        f"- ATS match score: {mem.get('ats_score', 'n/a')}/100\n"
+        f"- Current skills: {', '.join(mem.get('candidate_skills') or []) or 'n/a'}\n"
+        f"- Skills required by JD: {', '.join(mem.get('required_skills') or []) or 'n/a'}\n"
+        f"- Skill gaps: {', '.join(mem.get('skill_gaps') or []) or 'none'}\n"
+        f"- Matched jobs found: {len(mem.get('job_listings') or [])}\n"
+        f"- Summary: {(mem.get('career_summary') or '')[:600]}"
+    )
+
+
+def _retrieval_query(history: List[Dict]) -> str:
+    """Short follow-ups ('and how long?') are expanded with the previous user turn."""
+    users = [m["content"] for m in history if m["role"] == "user"]
+    q = users[-1]
+    if len(q.split()) <= 6 and len(users) > 1:
+        q = f"{users[-2]} {q}"
+    return q
+
+
+def _suggestion(message: str) -> str:
+    examples = load_json("scope_examples.json")["career_study"]
+    return examples[int(hashlib.md5(message.encode()).hexdigest(), 16) % len(examples)]
+
+
+def _sources_footer(answer: str, hits: List[Dict]) -> str:
+    cited = set()
+    # accepts [S1], [S1][S2], [S1, S3] and ranges like [S1-S4] / [S1‑S4] (the model uses all of them)
+    for group in re.findall(r"\[(S\d+(?:\s*[,\-\u2010-\u2014]\s*S?\d+)*)\]", answer):
+        for a, b in re.findall(r"S?(\d+)(?:\s*[\-\u2010-\u2014]\s*S?(\d+))?", group):
+            lo, hi = int(a), int(b or a)
+            cited.update(range(lo, min(hi, len(hits)) + 1))
+    cited = sorted(n for n in cited if 0 < n <= len(hits))
+    if not cited:
+        return ""
+    lines = []
+    for n in cited:
+        h = hits[n - 1]
+        meta = h.get("metadata") or {}
+        label = meta.get("career_name") or meta.get("title") or meta.get("section") or h["doc_type"].replace("_", " ")
+        url = meta.get("url")
+        lines.append(f"- [S{n}] {h['source']}: {label}" + (f" ({url})" if url else ""))
+    return "\n\n---\n**Sources**\n" + "\n".join(lines)
+
+
+def _log(entry: Dict) -> None:
+    try:
+        CHAT_LOG.parent.mkdir(parents=True, exist_ok=True)
+        with open(CHAT_LOG, "a", encoding="utf-8") as f:
+            f.write(json.dumps(entry, default=str, ensure_ascii=False) + "\n")
+    except Exception:  # noqa: BLE001
+        pass
+
+
+def _few_shot_file(vnum: int) -> str:
+    from src.prompts.registry import PROMPT_DIR
+    for v in range(vnum, 2, -1):
+        if (PROMPT_DIR / f"few_shots_v{v}.json").exists():
+            return f"few_shots_v{v}.json"
+    return "few_shots_v3.json"
+
+
+def match_strength(hits: List[Dict]) -> str:
+    """Signal for prompt rule 9: weak career evidence -> ask clarifying questions, don't guess."""
+    careers = [h for h in hits if h["source"] == "careers"]
+    best = max((h["score"] for h in careers), default=0.0)
+    label = "WEAK" if best < config.CAREER_MIN_SCORE else "OK"
+    return f"MATCH STRENGTH: {label} (best career-record similarity {best:.2f}; floor {config.CAREER_MIN_SCORE})"
+
+
+def build_messages(history: List[Dict], profile: str, context: str, system_version: str | None = None) -> list:
+    version = system_version or ACTIVE["advisor_system"]
+    vnum = int(version.lstrip("v"))
+    template = load_prompt("advisor_system", version)
+    if vnum >= 3:
+        # v3: examples live INSIDE the system prompt, labelled as fictional users, so the
+        # model never mistakes them for its own earlier turns with this user (v2 failure mode).
+        examples = "\n\n".join(
+            f"### Example {i}: {ex['situation']}\nUser: {ex['user']}\nAdvisor: {ex['assistant']}"
+            for i, ex in enumerate(load_json(_few_shot_file(vnum)), 1)
+        )
+        system = template.format(profile=profile, context=context, examples=examples)
+    else:
+        system = template.format(profile=profile, context=context)
+    msgs = [SystemMessage(content=system)]
+    if vnum == 2:  # v2: few-shots injected as fake prior chat turns
+        for ex in load_json("few_shots.json"):
+            msgs += [HumanMessage(content=ex["user"]), AIMessage(content=ex["assistant"])]
+    for m in history[-HISTORY_TURNS:]:
+        msgs.append(HumanMessage(content=m["content"]) if m["role"] == "user" else AIMessage(content=m["content"]))
+    return msgs
+
+
+def answer(chat_history: List[Dict], system_version: str | None = None, router_mode: str | None = None,
+           profile_override: str | None = None) -> Dict:
+    """Full turn with diagnostics (used by the eval harness and the API)."""
+    t0 = time.perf_counter()
+    history = [m for m in chat_history if m.get("role") in ("user", "assistant") and m.get("content")]
+    if not history or history[-1]["role"] != "user":
+        return {"text": "Please ask a career or study question.", "route": None}
+    message = history[-1]["content"]
+    decision = route(message, history[:-1], mode=router_mode)
+    out: Dict = {"route": decision, "hits": [], "system_version": system_version or ACTIVE["advisor_system"]}
+
+    if decision["label"] in ("out_of_scope", "prompt_attack"):
+        out["text"] = load_prompt("refusal").format(suggestion=_suggestion(message))
+    else:
+        from src.utilities.brain import get_robust_llm
+
+        hits = []
+        if decision["label"] == "career_study":
+            hits = retrieve(_retrieval_query(history))
+        out["hits"] = hits
+        context = format_context(hits) if hits else "(no retrieval for this message)"
+        if decision["label"] == "career_study":
+            context = match_strength(hits) + "\n\n" + context
+        profile = profile_override if profile_override is not None else load_profile_summary()
+        msgs = build_messages(history, profile, context, system_version)
+        try:
+            llm = get_robust_llm(primary_model=CHAT_MODEL, temperature=0.3)
+            resp = llm.invoke(msgs)
+            out["model"] = (getattr(resp, "response_metadata", {}) or {}).get("model_name")
+            text = resp.text.strip()
+            out["text"] = (text + _sources_footer(text, hits)) if text else "I couldn't generate an answer, please rephrase."
+        except Exception as e:  # noqa: BLE001
+            out["error"] = str(e)[:300]
+            out["text"] = load_prompt("greeting") if decision["label"] == "greeting" else f"Sorry, the advisor model is unavailable right now ({str(e)[:120]})."
+    out["latency_ms"] = round((time.perf_counter() - t0) * 1000, 1)
+    _log({"ts": datetime.now(timezone.utc).isoformat(), "message": message, "route": decision,
+          "system_version": out["system_version"], "model": out.get("model"), "error": out.get("error"), "n_hits": len(out["hits"]),
+          "hit_ids": [h.get("id") for h in out["hits"]], "top_score": out["hits"][0]["score"] if out["hits"] else None,
+          "latency_ms": out["latency_ms"], "answer_chars": len(out["text"])})
+    return out
+
+
+def chat_with_agent(chat_history: list) -> str:
+    """Streamlit entry point: list of {'role','content'} dicts -> assistant reply string."""
+    return answer(chat_history)["text"]

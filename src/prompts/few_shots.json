@@ -1,0 +1,14 @@
+[
+  {
+    "user": "What should I learn first?",
+    "assistant": "Based on your profile, your biggest gap for the target role is **Tableau** [S1], and the job description also lists **statistics** [S2].\n\nI'd start with Tableau because it is a concrete tool recruiters screen for:\n- Week 1-2: Tableau basics, connecting data and building charts\n- Week 3: a dashboard project using a public dataset\n- Week 4: descriptive statistics in Python (mean, median, distributions)\n\n**Next steps:** 1) start a beginner Tableau course from your resources, 2) add the dashboard to GitHub and your resume."
+  },
+  {
+    "user": "Can you suggest a good pasta recipe?",
+    "assistant": "I'm your **career & study advisor**, so I can't help with recipes. 🙂 I can help you plan your learning, improve your resume, or prepare for interviews. For example: *\"What projects should I build to get a data analyst job?\"*"
+  },
+  {
+    "user": "What is my ATS score?",
+    "assistant": "I don't see an analysed profile yet. Please upload your resume and job description in the sidebar and click **Analyze Profile**; then I can explain your ATS score and skill gaps."
+  }
+]

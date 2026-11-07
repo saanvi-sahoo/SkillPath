@@ -1,0 +1,488 @@
+[
+  {
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "dim": 384,
+    "corpus_size": 2399,
+    "n_queries": 500,
+    "load_s": 1.9,
+    "corpus_embed_s": 5.4,
+    "docs_per_s": 888.0,
+    "search_latency_ms_per_query": 0.009,
+    "task_A_skills_to_career": {
+      "recall@1": 0.082,
+      "recall@5": 0.15,
+      "recall@10": 0.196,
+      "mrr@10": 0.1122
+    },
+    "task_B_intent_to_career": {
+      "recall@1": 0.7,
+      "recall@5": 0.866,
+      "recall@10": 0.914,
+      "mrr@10": 0.7682
+    },
+    "score_distribution": {
+      "top1_mean": 0.736,
+      "top1_p10": 0.658,
+      "random_pair_mean": 0.559,
+      "random_pair_p90": 0.69
+    },
+    "nearest_neighbour_examples": {
+      "Python, SQL, Power BI, statistics": [
+        {
+          "career": "Data & Applied Scientist-Analysis & Insights",
+          "score": 0.555
+        },
+        {
+          "career": "Consultant - Analytics (Microsoft Power BI and Data Science)",
+          "score": 0.496
+        },
+        {
+          "career": "Business Intelligence (BI) Analyst- Operations and Customer Experience",
+          "score": 0.494
+        },
+        {
+          "career": "Python Engineer for Data Analytics",
+          "score": 0.443
+        },
+        {
+          "career": "Manager 2 Data and Analytics",
+          "score": 0.437
+        }
+      ],
+      "I like teaching children and explaining concepts": [
+        {
+          "career": "Teacher Innovation Lead - East",
+          "score": 0.368
+        },
+        {
+          "career": "Interactive Developer",
+          "score": 0.352
+        },
+        {
+          "career": "Full Stack Web/Mobile Developer",
+          "score": 0.345
+        },
+        {
+          "career": "Software Developer - Tracer",
+          "score": 0.343
+        },
+        {
+          "career": "Learning Specialist",
+          "score": 0.342
+        }
+      ],
+      "Java Spring Boot microservices backend": [
+        {
+          "career": "Full stack developer",
+          "score": 0.412
+        },
+        {
+          "career": "Microservices Developer",
+          "score": 0.406
+        },
+        {
+          "career": "Integration Manager",
+          "score": 0.391
+        },
+        {
+          "career": "Microservices Architect",
+          "score": 0.36
+        },
+        {
+          "career": "Senior Integration Architect - Cloud/Middleware",
+          "score": 0.345
+        }
+      ],
+      "machine learning, deep learning, NLP": [
+        {
+          "career": "Deep Learning Scientist - Yield Analytics",
+          "score": 0.531
+        },
+        {
+          "career": "Applied Scientist - Alexa Deep Learning",
+          "score": 0.522
+        },
+        {
+          "career": "Los Angeles - Software Engineer, Machine Learning",
+          "score": 0.514
+        },
+        {
+          "career": "Research Scientist, Audio",
+          "score": 0.508
+        },
+        {
+          "career": "Researcher - Deep Learning",
+          "score": 0.503
+        }
+      ],
+      "accounting, taxation, Tally, GST": [
+        {
+          "career": "General Supervisor Quality (GSQ)",
+          "score": 0.436
+        },
+        {
+          "career": "Revenue Collector",
+          "score": 0.429
+        },
+        {
+          "career": "Fiscal Specialist",
+          "score": 0.406
+        },
+        {
+          "career": "Accounts Payable Clerk",
+          "score": 0.403
+        },
+        {
+          "career": "Accounting Administrator",
+          "score": 0.395
+        }
+      ],
+      "nursing and patient care": [
+        {
+          "career": "Clinical Quality Manager",
+          "score": 0.471
+        },
+        {
+          "career": "Patient Relations Specialist",
+          "score": 0.457
+        },
+        {
+          "career": "Quality Coordinator",
+          "score": 0.454
+        },
+        {
+          "career": "Quality Improvement Coordinator",
+          "score": 0.441
+        },
+        {
+          "career": "Patient Care Representative -- Weekends",
+          "score": 0.434
+        }
+      ]
+    }
+  },
+  {
+    "model": "BAAI/bge-small-en-v1.5",
+    "dim": 384,
+    "corpus_size": 2399,
+    "n_queries": 500,
+    "load_s": 54.36,
+    "corpus_embed_s": 10.11,
+    "docs_per_s": 474.4,
+    "search_latency_ms_per_query": 0.004,
+    "task_A_skills_to_career": {
+      "recall@1": 0.076,
+      "recall@5": 0.178,
+      "recall@10": 0.23,
+      "mrr@10": 0.1224
+    },
+    "task_B_intent_to_career": {
+      "recall@1": 0.834,
+      "recall@5": 0.964,
+      "recall@10": 0.976,
+      "mrr@10": 0.8888
+    },
+    "score_distribution": {
+      "top1_mean": 0.802,
+      "top1_p10": 0.756,
+      "random_pair_mean": 0.683,
+      "random_pair_p90": 0.764
+    },
+    "nearest_neighbour_examples": {
+      "Python, SQL, Power BI, statistics": [
+        {
+          "career": "Consultant - Analytics (Microsoft Power BI and Data Science)",
+          "score": 0.759
+        },
+        {
+          "career": "Business Intelligence Analyst w/ SQL & AWS",
+          "score": 0.74
+        },
+        {
+          "career": "Python Engineer for Data Analytics",
+          "score": 0.72
+        },
+        {
+          "career": "Data & Applied Scientist-Analysis & Insights",
+          "score": 0.715
+        },
+        {
+          "career": "Data Scientist / Analytic Consultant 4",
+          "score": 0.702
+        }
+      ],
+      "I like teaching children and explaining concepts": [
+        {
+          "career": "Research Scientist, Aristo",
+          "score": 0.511
+        },
+        {
+          "career": "Lecturer in Mathematics and Statistics",
+          "score": 0.5
+        },
+        {
+          "career": "Elementary NILD Educational Therapist",
+          "score": 0.499
+        },
+        {
+          "career": "Teaching and Learning Specialist",
+          "score": 0.497
+        },
+        {
+          "career": "Playroom Attendant (30 hrs/wk) Full Benefits",
+          "score": 0.495
+        }
+      ],
+      "Java Spring Boot microservices backend": [
+        {
+          "career": "Microservices Developer",
+          "score": 0.695
+        },
+        {
+          "career": "Full stack developer",
+          "score": 0.693
+        },
+        {
+          "career": "Java Full-Stack Engineer",
+          "score": 0.638
+        },
+        {
+          "career": "S. Cal presaes - Solutions Architect Qubole",
+          "score": 0.636
+        },
+        {
+          "career": "Developer Application Services",
+          "score": 0.631
+        }
+      ],
+      "machine learning, deep learning, NLP": [
+        {
+          "career": "Machine Learning",
+          "score": 0.801
+        },
+        {
+          "career": "D3- Sr. NLP Deep Learning Data Scientist",
+          "score": 0.77
+        },
+        {
+          "career": "Deep Learning Engineer",
+          "score": 0.758
+        },
+        {
+          "career": "Los Angeles - Software Engineer, Machine Learning",
+          "score": 0.755
+        },
+        {
+          "career": "Machine Learning Engineer & Researcher",
+          "score": 0.747
+        }
+      ],
+      "accounting, taxation, Tally, GST": [
+        {
+          "career": "Revenue Collector",
+          "score": 0.65
+        },
+        {
+          "career": "Census Recruiter, GG-0301-09/11/12, Census-EXT-JKP",
+          "score": 0.637
+        },
+        {
+          "career": "Accounts Payable Specialist",
+          "score": 0.636
+        },
+        {
+          "career": "Operations Analyst (Entry Level)",
+          "score": 0.613
+        },
+        {
+          "career": "Travel Consultant - Gov't / Military Accounts (EV)",
+          "score": 0.608
+        }
+      ],
+      "nursing and patient care": [
+        {
+          "career": "Patient Care Technician - Grade 279",
+          "score": 0.688
+        },
+        {
+          "career": "Patient Care Representative -- Weekends",
+          "score": 0.66
+        },
+        {
+          "career": "Patient Relations Specialist",
+          "score": 0.647
+        },
+        {
+          "career": "Standardized Patient",
+          "score": 0.634
+        },
+        {
+          "career": "Patient Account Liaison",
+          "score": 0.622
+        }
+      ]
+    }
+  },
+  {
+    "model": "sentence-transformers/multi-qa-MiniLM-L6-cos-v1",
+    "dim": 384,
+    "corpus_size": 2399,
+    "n_queries": 500,
+    "load_s": 50.25,
+    "corpus_embed_s": 5.54,
+    "docs_per_s": 866.7,
+    "search_latency_ms_per_query": 0.004,
+    "task_A_skills_to_career": {
+      "recall@1": 0.05,
+      "recall@5": 0.102,
+      "recall@10": 0.14,
+      "mrr@10": 0.0766
+    },
+    "task_B_intent_to_career": {
+      "recall@1": 0.814,
+      "recall@5": 0.94,
+      "recall@10": 0.956,
+      "mrr@10": 0.8669
+    },
+    "score_distribution": {
+      "top1_mean": 0.746,
+      "top1_p10": 0.667,
+      "random_pair_mean": 0.556,
+      "random_pair_p90": 0.684
+    },
+    "nearest_neighbour_examples": {
+      "Python, SQL, Power BI, statistics": [
+        {
+          "career": "Consultant - Analytics (Microsoft Power BI and Data Science)",
+          "score": 0.411
+        },
+        {
+          "career": "Data & Applied Scientist-Analysis & Insights",
+          "score": 0.407
+        },
+        {
+          "career": "Python Engineer for Data Analytics",
+          "score": 0.403
+        },
+        {
+          "career": "Internal Audit Analyst, Data Analytics and Automation",
+          "score": 0.371
+        },
+        {
+          "career": "Data Operations Engineer",
+          "score": 0.368
+        }
+      ],
+      "I like teaching children and explaining concepts": [
+        {
+          "career": "Full Stack PHP Developer",
+          "score": 0.323
+        },
+        {
+          "career": "Interactive Developer",
+          "score": 0.317
+        },
+        {
+          "career": "Software Developer - Tracer",
+          "score": 0.296
+        },
+        {
+          "career": "Junior Full Stack Developer",
+          "score": 0.274
+        },
+        {
+          "career": "Full-Stack Developer at a Stable and Growing Startup",
+          "score": 0.272
+        }
+      ],
+      "Java Spring Boot microservices backend": [
+        {
+          "career": "Full stack developer",
+          "score": 0.402
+        },
+        {
+          "career": "Integration Manager",
+          "score": 0.381
+        },
+        {
+          "career": "Microservices Developer",
+          "score": 0.377
+        },
+        {
+          "career": "Java Full-Stack Engineer",
+          "score": 0.344
+        },
+        {
+          "career": "Developer Application Services",
+          "score": 0.298
+        }
+      ],
+      "machine learning, deep learning, NLP": [
+        {
+          "career": "D3- Sr. NLP Deep Learning Data Scientist",
+          "score": 0.636
+        },
+        {
+          "career": "Principal Data Scientist(Clinical Data/EMR/NLP/Deep Learning)-PS10509",
+          "score": 0.579
+        },
+        {
+          "career": "Applied Scientist - Alexa Deep Learning",
+          "score": 0.578
+        },
+        {
+          "career": "Machine Learning",
+          "score": 0.563
+        },
+        {
+          "career": "Machine Learning/Hadoop Engineer",
+          "score": 0.558
+        }
+      ],
+      "accounting, taxation, Tally, GST": [
+        {
+          "career": "General Supervisor Quality (GSQ)",
+          "score": 0.367
+        },
+        {
+          "career": "Revenue Collector",
+          "score": 0.352
+        },
+        {
+          "career": "Utility Account Analyst",
+          "score": 0.304
+        },
+        {
+          "career": "Travel Consultant - Government Accounts (EV)",
+          "score": 0.301
+        },
+        {
+          "career": "Accounting Administrator",
+          "score": 0.3
+        }
+      ],
+      "nursing and patient care": [
+        {
+          "career": "Patient Care Representative -- Weekends",
+          "score": 0.453
+        },
+        {
+          "career": "Patient Relations Specialist",
+          "score": 0.394
+        },
+        {
+          "career": "Patient Care Technician - Grade 279",
+          "score": 0.371
+        },
+        {
+          "career": "Quality Coordinator",
+          "score": 0.367
+        },
+        {
+          "career": "Quality Improvement Coordinator",
+          "score": 0.36
+        }
+      ]
+    }
+  }
+]
