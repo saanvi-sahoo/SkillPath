@@ -45,20 +45,23 @@
   "answers": {
     "v4": {
       "summary": {
-        "n": 6,
-        "pass_rate": 0.833,
+        "n": 18,
+        "pass_rate": 0.889,
         "pass_rate_by_category": {
           "profile": 0.8,
-          "general_career": 1.0
+          "general_career": 0.8,
+          "study": 1.0,
+          "follow_up": 1.0,
+          "greeting": 1.0
         },
-        "citation_rate_in_scope": 0.167,
-        "avg_words": 175.5,
-        "avg_latency_ms": 43441.2,
+        "citation_rate_in_scope": 0.353,
+        "avg_words": 208.3,
+        "avg_latency_ms": 43050.9,
         "answering_models": {
-          "mistral": 6
+          "mistral": 18
         },
-        "total_tokens": 24244,
-        "avg_tokens_per_llm_answer": 4041
+        "total_tokens": 69217,
+        "avg_tokens_per_llm_answer": 3845
       },
       "rows": [
         {
@@ -233,6 +236,362 @@
           ],
           "context": "[S1] (source=knowledge/guide, score=0.68, ref=interview_preparation.md)\nInterview Preparation - Technical preparation: For software roles practise data structures and algorithms (arrays, strings, hashing, trees, graphs, dynamic programming) on platforms such as LeetCode or GeeksforGeeks, and be able to explain your own projects end to end. For data analyst roles practise SQL joins, GROUP BY, window functions and CTEs, Excel pivot tables and lookups, basic statistics (mean/median, distributions, hypothesis testing) and explaining a dashboard. For machine learning roles revise bias-variance, evaluation metrics, overfitting and regularisation, feature engineering, and one project you can defend in depth.\n\n[S2] (source=careers/career_profile, score=0.62, ref=career_0697)\nCareer: Data Analyst IV. Domain: Data Analysis and BI. Required skills: Statistical Analysis, Data Analysis, Enterprise Reporting, SQL, Microsoft Office (Excel, Access), Data Modeling, Data Warehousing, Business Intelligence Tools, Project Management, Healthcare Data (HEDIS, claims, provider data, member data, clinical data, pharmacy), Data Quality Audits. Description: Data Analyst IV analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Statistical Analysis, Data Analysis, Enterprise Reporting, SQL. Education: Bachelor's degree in related field.\n\n[S3] (source=careers/career_profile, score=0.62, ref=career_0681)\nCareer: Data Analyst. Domain: Data Analysis and BI. Required skills: SQL, Excel, Data visualization tools, Proficiency with development languages (e.g., Python), Background in statistics or a related field. Description: Data Analyst analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include SQL, Excel, Data visualization tools, Proficiency with development languages (e.g.. Education: Bachelor's degree in data analytics, business, economics, statistics, computer science, or a related field; equivalent practical experience may be accepted.\n\n[S4] (source=careers/career_profile, score=0.62, ref=career_2198)\nCareer: Risk Data Analyst. Domain: Data Analysis and BI. Required skills: Analytical skills, SQL queries, Excel, Data analysis, Data modeling, Data visualization, Segmentation techniques. Description: Risk Data Analyst analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Analytical skills, SQL queries, Excel, Data analysis. Education: BS in Mathematics, Economics, Computer Science, Information Management, Statistics or similar field, Advanced degree preferred.\n\n[S5] (source=careers/career_profile, score=0.61, ref=career_0663)\nCareer: Data Analyst. Domain: Data Analysis and BI. Required skills: Data accuracy and integrity, Data insights and analysis, Dashboard design and building, Business process documentation and improvement, SQL, MySQL, Amazon Redshift, Hive, Google Analytics, Tableau, R, Python, Statistical analysis and experiment design. Description: Data Analyst analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Data accuracy and integrity, Data insights and analysis, Dashboard design and building, Business process documentation and improvement. Education: Bachelor's degree ",
           "answer": "To prepare for a Data Analyst interview, focus on the following areas:\n\n- **Technical preparation**: Practice data structures and algorithms, SQL queries, and Excel functions [S1]. Platforms like LeetCode or GeeksforGeeks can help you with this. For your specific role, also revise topics such as data modeling, data warehousing, and business intelligence tools.\n- **Project experience**: Be ready to explain your own projects end-to-end, highlighting the data analysis, cleaning, and reporting aspects [S1]. Emphasize the insights you gained and how they impacted the organization.\n- **Data visualization**: Familiarize yourself with tools like Tableau or Power BI, as they are commonly used for creating dashboards and reports [S2, S3, S4, S5].\n- **Research**: Learn about the company's industry, products, and competitors to demonstrate your understanding during interviews [S9, S10].\n- **Soft skills**: Emphasize your analytical, problem-solving, and communication abilities in your responses. Highlight how you collaborate with others and adapt to new situations [CANDIDATE_PROFILE].\n\nGood luck with your interview preparation!\n\n---\n**Sources**\n- [S1] knowledge: Technical preparation\n- [S2] careers: Data Analyst IV\n- [S3] careers: Data Analyst\n- [S4] careers: Risk Data Analyst\n- [S5] careers: Data Analyst\n- [S9] profile: job description\n- [S10] profile: job description"
+        },
+        {
+          "id": "cs07",
+          "category": "general_career",
+          "route": "career_study",
+          "checks": {
+            "must_include_any": true,
+            "citation": false,
+            "not_refused": true
+          },
+          "passed": false,
+          "model": "mistral",
+          "usage": {
+            "input_tokens": 4096,
+            "output_tokens": 250,
+            "total_tokens": 4346,
+            "input_token_details": {},
+            "output_token_details": {}
+          },
+          "latency_ms": 45762.7,
+          "words": 172,
+          "n_hits": 10,
+          "messages": [
+            {
+              "role": "user",
+              "content": "How can I make my resume ATS friendly?"
+            }
+          ],
+          "context": "[S1] (source=knowledge/guide, score=0.71, ref=resume_and_ats.md)\nResume And Ats - Raising an ATS match score: Mirror the exact wording of the job description where it is truthful (for example \"Power BI\" not just \"BI tools\"). Put a dedicated Skills section near the top. Use standard section titles: Summary, Skills, Experience, Projects, Education, Certifications. Save as a text-based PDF or DOCX, never a scanned image. Spell out acronyms once, e.g. \"Natural Language Processing (NLP)\". Do not keyword-stuff or add skills you cannot discuss in an interview; recruiters verify.\n\n[S2] (source=knowledge/guide, score=0.61, ref=resume_and_ats.md)\nResume And Ats - Resume length and structure: Freshers and candidates with under 5 years of experience should keep one page. Order: contact line with LinkedIn/GitHub, 2-3 line summary targeted at the role, skills, experience or projects, education, certifications. Tailor the summary and the top skills for every application.\n\n[S3] (source=profile/career_summary, score=0.48, ref=career_summary)\nCareer summary for the candidate: Your strong technical foundation in full-stack development, AI frameworks, and Salesforce positions you as a highly capable candidate for a Senior Software Engineer role. While your current profile is heavily engineering-focused, you can significantly boost your ATS score by emphasizing your existing problem-solving and leadership skills rather than trying to bridge the unrelated marketing skill gaps. Focus your resume on highlighting your technical architecture experience and project impact to better align with the expectations of senior-level engineering positions.\n\n[S4] (source=careers/career_profile, score=0.41, ref=career_1476)\nCareer: Insights Analyst, Sales, Marketing, General and Administrative, Global Diversity and Inclusion. Domain: Data Analysis and BI. Required skills: Data analysis, SQL, Applicant tracking systems (ATS), Recruiting and sourcing techniques, Analytics tools, Database management and querying, Trend analysis, Data visualization. Description: Insights Analyst, Sales, Marketing, General and Administrative, Global Diversity and Inclusion analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Data analysis, SQL, Applicant tracking systems (ATS), Recruiting and sourcing techniques. Education: Business Administration, Computer Science, Economics, Finance, Mathematics, Statistics.\n\n[S5] (source=profile/resume, score=0.38, ref=resume)\nCandidate resume (part 3): farmer increase their income 25%. SAMS.AI Real-Time Attendance System Using Deep Built facial recognition-based student attendance management architecture YOLO object models PostgreSQL. Successfully 92% accuracy. Aura-Audit Career an AI-powered resume auditing tool integrating Google Gemini 1.5 Flash advanced semantic matching skill gap identification. Increased efficiency 45%. Future-focusedSoftware Developer Engineer hands-on experience full AI-driven Proven ability build impactful tools automation systems. Adept Python React SQL REST solid knowledge DSA OS DBMS. National Hackathon Winner 30+ hackathons 5+ case competitions. Strong communicator team player passionate about innovation. Education Trident Academy Of Technology(Under BPUT) Bachelor Computer Science GPA:8.5 Sri Aurobindo College Higher Secondary Secured: 87% Saraswati Vidya Mandir 83% Bhubaneswar Dec 2022- Cuttack Apr 2020- 2022 Paradip Mar 2020\n\n[S6] (source=careers/career_profile, score=0.37, ref=career_0027)\nCareer: ATSU - Network Security Analyst. Domain: Cybersecurity and Networking. Required skills: Endpoint security, Vulnerability management, Penetration testing, Active Directory, Anti-malware software, Desktop firewalls, Vulnerability scanning software, Cisco ISE infrastructure, Security logs monitoring, Bac",
+          "answer": "To make your resume ATS (Applicant Tracking System) friendly, consider the following tips:\n\n1. Use a simple and clean format with easy-to-read fonts and clear headings.\n2. Include relevant keywords from the job description in your resume to increase its visibility to ATS.\n3. Avoid using tables, images, or graphics as they can cause issues for ATS.\n4. Use bullet points to make it easier for ATS to scan your work experience and skills.\n5. Keep your resume concise and focused on relevant experience and qualifications.\n6. Include a professional summary at the top of your resume that highlights your most important skills and qualifications.\n7. Tailor your resume for each job application by customizing the summary and top skills to match the job description.\n8. Use action verbs to describe your work experience, such as \"developed,\" \"implemented,\" or \"managed.\"\n9. Include quantifiable achievements and results to demonstrate your impact in previous roles.\n10. Proofread your resume carefully for spelling and grammar errors, as these can also negatively affect its ATS score."
+        },
+        {
+          "id": "cs08",
+          "category": "general_career",
+          "route": "career_study",
+          "checks": {
+            "must_include_any": true,
+            "not_refused": true
+          },
+          "passed": true,
+          "model": "mistral",
+          "usage": {
+            "input_tokens": 3717,
+            "output_tokens": 256,
+            "total_tokens": 3973,
+            "input_token_details": {},
+            "output_token_details": {}
+          },
+          "latency_ms": 41881.3,
+          "words": 207,
+          "n_hits": 10,
+          "messages": [
+            {
+              "role": "user",
+              "content": "Which career suits me if I enjoy Java and backend development?"
+            }
+          ],
+          "context": "[S1] (source=careers/career_profile, score=0.69, ref=career_1525)\nCareer: Java Developer. Domain: Software and Web Development. Required skills: Backend development RESTful APIs Database integration Java EE (Enterprise Edition) Performance optimization Version control (e.g., Git). Description: Java Backend Developers specialize in building the server-side components of software applications using Java. They work on database integration, server logic, and performance optimization to ensure efficient and reliable backend functionality. Education: B.Com.\n\n[S2] (source=careers/career_profile, score=0.66, ref=career_1529)\nCareer: Java Full Stack Developer. Domain: Software and Web Development. Required skills: Java/J2EE, SQL, Hibernate, HTML5, JavaScript, CSS3, XML, Web services, Struts, Angular 2 or 4, Application servers (Tomcat, WebLogic), Software design. Description: Java Full Stack Developer designs, develops, tests, and maintains software applications or web services. Work often includes translating requirements into code, integrating APIs or databases, debugging issues, reviewing code, and improving application quality. Relevant skills listed for this role include Java/J2EE, SQL, Hibernate, HTML5. Education: Bachelor's degree or diploma in computer science, information technology, software engineering, or a related field.\n\n[S3] (source=careers/career_profile, score=0.65, ref=career_1207)\nCareer: Full Stack Java Developer. Domain: Software and Web Development. Required skills: Server-side Java development, HTML/CSS/JavaScript, SQL and relational database concepts, Oracle, Spring and Hibernate. Description: Full Stack Java Developer designs, develops, tests, and maintains software applications or web services. Work often includes translating requirements into code, integrating APIs or databases, debugging issues, reviewing code, and improving application quality. Relevant skills listed for this role include Server-side Java development, HTML/CSS/JavaScript, SQL and relational database concepts, Oracle. Education: B.S. or equivalent degree in Computer Science or related field.\n\n[S4] (source=careers/career_profile, score=0.65, ref=career_1205)\nCareer: Full Stack Java Developer. Domain: Software and Web Development. Required skills: Java (v7 - 8), Spring, Angular (versions 2+), SQL, JSON, REST, Web services, AngularJS, Java 8 Features (Streams or Lambda), Core Java/ J2EE, CICD methodology. Description: Full Stack Java Developer designs, develops, tests, and maintains software applications or web services. Work often includes translating requirements into code, integrating APIs or databases, debugging issues, reviewing code, and improving application quality. Relevant skills listed for this role include Java (v7 - 8), Spring, Angular (versions 2+), SQL. Education: Knowledge of Java programming.\n\n[S5] (source=profile/matched_job, score=0.58, ref=https://www.linkedin.com/jobs/view/4484633394/)\nJob: Senior Backend Software Engineer – Java at SAP (Bengaluru, Karnataka, India). Experience: 4 days ago. Salary: Not Listed. Description: Posted: 2026-11-03\n\n[S6] (source=jobs/job_listing, score=0.57, ref=https://in.linkedin.com/jobs/view/software-development-engineer-ii-backend-at-groww-4394750849)\nJob: Software Development Engineer -II (Backend) at Groww (Bengaluru, Karnataka, India). Salary: Not Listed. Description: experience in building scalable restful/soap microservice services.• Good at LLD/HLD and implementation. Understanding of design patterns.• Strong problem-solving skills.• Good understanding of data structures & algorithms and their space & time complexities.• Strong hands-on and practical working experience with Java and Springboot• Excellent coding skills - should be able to convert the design into code fluently.• Strong technical aptitude and a good knowledge of CS fundamentals.You are expected to demonstrate good learnability and adopt technologies that help build large-scale, performant, reliable, and sustainable systems",
+          "answer": "Based on your strong background in Java and backend development, I recommend considering the following careers:\n\n1. **Java Developer** [S1]: This role involves building server-side components of software applications using Java, focusing on database integration, server logic, and performance optimization. Your existing skills in Java align well with this career.\n\n2. **Java Full Stack Developer** [S2, S3, S4]: As a full stack developer, you would design, develop, test, and maintain software applications or web services using Java. This role requires knowledge of both frontend and backend technologies, which your profile suggests you have.\n\n3. **Software Development Engineer - II (Backend)** [S6]: This job listing emphasizes experience in building scalable RESTful/SOAP microservice services, problem-solving skills, understanding of design patterns, and hands-on experience with Java and Springboot. Your background aligns well with these requirements.\n\nTo further explore these options, I recommend researching each career to understand the day-to-day tasks, required soft skills, and long-term growth opportunities. Additionally, consider reaching out to professionals currently working in these roles for insights into their experiences.\n\n---\n**Sources**\n- [S1] careers: Java Developer\n- [S2] careers: Java Full Stack Developer\n- [S3] careers: Full Stack Java Developer\n- [S4] careers: Full Stack Java Developer\n- [S6] jobs: Software Development Engineer -II (Backend) (https://in.linkedin.com/jobs/view/software-development-engineer-ii-backend-at-groww-4394750849)"
+        },
+        {
+          "id": "cs09",
+          "category": "general_career",
+          "route": "career_study",
+          "checks": {
+            "not_refused": true
+          },
+          "passed": true,
+          "model": "mistral",
+          "usage": {
+            "input_tokens": 3795,
+            "output_tokens": 410,
+            "total_tokens": 4205,
+            "input_token_details": {},
+            "output_token_details": {}
+          },
+          "latency_ms": 53616.3,
+          "words": 275,
+          "n_hits": 10,
+          "messages": [
+            {
+              "role": "user",
+              "content": "How do I switch from a non-IT job into data analytics?"
+            }
+          ],
+          "context": "[S1] (source=careers/career_profile, score=0.63, ref=career_1358)\nCareer: IT Business Analytics & Data Warehousing - Officer Level. Domain: Data Analysis and BI. Required skills: Business Analytics, Data Warehousing, Project Management, Project Coordination, Troubleshooting, Project Tracking Tools, Software Skills. Description: IT Business Analytics & Data Warehousing - Officer Level analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Business Analytics, Data Warehousing, Project Management, Project Coordination. Education: Bachelor Degree in Information Technology, Business Management, or other relevant major..\n\n[S2] (source=careers/career_profile, score=0.63, ref=career_1685)\nCareer: Manager - Data & Analytics. Domain: Data Analysis and BI. Required skills: Data Management, Business Intelligence, Data Analytics, Program Management, Data Mining, Data Analysis, Data Engineering, Data Visualization, SQL, R Language, Python, SAS, Agile Methodologies. Description: Manager - Data & Analytics analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Data Management, Business Intelligence, Data Analytics, Program Management. Education: Bachelor's degree in Computer Science, Mathematics, Applied Statistics, or \"STEM\" Majors.\n\n[S3] (source=careers/career_profile, score=0.61, ref=career_1689)\nCareer: Manager 2 Data and Analytics. Domain: Data Analysis and BI. Required skills: SQL, Python, SAS, Hive, R, Tableau, A/B test design, Statistical modeling, Multivariate linear and logistic regression, Data cleansing, Data visualization. Description: Manager 2 Data and Analytics analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include SQL, Python, SAS, Hive. Education: Bachelor's degree in a relevant field; substantial related professional experience is typically important.\n\n[S4] (source=careers/career_profile, score=0.61, ref=career_1722)\nCareer: Manager, Data and Analytics. Domain: Data Engineering. Required skills: Analytics program management, Data centric mindset implementation, Analytics tagging strategy, Data integration into Enterprise Data Lake, Dashboard reporting, Data visualization, Analytics tracking, A/B testing, Data analysis, KPI tracking. Description: Manager, Data and Analytics designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include Analytics program management, Data centric mindset implementation, Analytics tagging strategy, Data integration into Enterprise Data Lake. Education: Bachelor's degree in a relevant field; substantial related professional experience is typically important.\n\n[S5] (source=jobs/job_listing, score=0.51, ref=https://www.naukri.com/job-listings-data-analyst-optum-global-solutions-india-private-limited-noida-2-to-5-years-170426921360)\nJob: Data Analyst at Optum (Noida). Skills: data analyst, snowflake, python, github, data analysis, data research, ai, databricks. Experience: 2-5 Yrs. Salary: Not Disclosed. Description: Proven handson experience with SQL Server Integration Services (SSIS), Azure Data Facto...\n\n[S6] (source=profile/job_description, score=0.49, ref=job_description)\nTarget job description (part 3): copy. • Analyt",
+          "answer": "To transition from a non-IT job to a Data Analytics role, you'll want to focus on building a strong foundation in data analysis skills while also highlighting transferable soft skills. Here are some steps to help you make the switch:\n\n1. **Acquire essential data analysis skills**: Familiarize yourself with tools like SQL, Python, R, and Excel for data manipulation and analysis. You can find free resources online such as Coursera, edX, and DataCamp. For visualization, consider learning Tableau or Power BI.\n\n2. **Learn about data analytics concepts**: Understand key concepts like statistical analysis, data modeling, and machine learning. Books like \"Data Analysis Using Excel\" by John W. Sweeney can be helpful for beginners.\n\n3. **Gain practical experience**: Apply your new skills to real-world projects or datasets. This could involve participating in Kaggle competitions, working on personal projects, or contributing to open-source projects on GitHub.\n\n4. **Highlight transferable skills**: Emphasize soft skills that are valuable in data analytics roles such as problem-solving, critical thinking, and communication. You can also demonstrate your ability to learn quickly by showcasing any relevant coursework or self-study efforts.\n\n5. **Tailor your resume for the target role**: Use action verbs, quantifiable results, and specific examples when describing your skills and experiences on your resume. Focus on projects that demonstrate your data analysis abilities and how they can be applied to a Data Analytics position.\n\n6. **Networking**: Connect with professionals in the field through LinkedIn or local meetups. They can provide valuable insights, advice, and potential job opportunities.\n\n7. **Prepare for interviews**: Brush up on common data analytics interview questions, practice problem-solving, and be prepared to discuss your projects and experiences in detail."
+        },
+        {
+          "id": "cs10",
+          "category": "general_career",
+          "route": "career_study",
+          "checks": {
+            "not_refused": true
+          },
+          "passed": true,
+          "model": "mistral",
+          "usage": {
+            "input_tokens": 2244,
+            "output_tokens": 389,
+            "total_tokens": 2633,
+            "input_token_details": {},
+            "output_token_details": {}
+          },
+          "latency_ms": 38826.4,
+          "words": 275,
+          "n_hits": 1,
+          "messages": [
+            {
+              "role": "user",
+              "content": "Is it okay to negotiate salary for my first job offer?"
+            }
+          ],
+          "context": "[S1] (source=knowledge/guide, score=0.37, ref=career_planning.md)\nCareer Planning - Salary and offers: Research ranges on Glassdoor, AmbitionBox, Levels.fyi or LinkedIn Salary for your role, city and experience. Consider total compensation (fixed, variable, benefits, learning opportunities). It is normal and professional to negotiate politely once you have a written offer.",
+          "answer": "Based on your current skills profile, it seems that your background is more technical rather than marketing-focused as required by the Senior Software Engineer role you're targeting. However, I can help you identify some career paths where your technical skills align well.\n\n1. **Full Stack Developer**: Your strong foundation in various programming languages and frameworks makes you a good fit for this role. You could focus on building a portfolio of projects that showcase your full-stack development abilities. [S1] (source=knowledge/guide, score=0.37, ref=career_planning.md) suggests researching salary ranges for Full Stack Developers in your city and experience level to help you negotiate effectively.\n2. **Machine Learning Engineer**: With your knowledge of AI frameworks like TensorFlow and PyTorch, you could explore opportunities in this field. You might want to learn more about specific projects that demonstrate your machine learning expertise. [S1] can also provide guidance on researching salary ranges for Machine Learning Engineers.\n3. **DevOps Engineer**: Given your experience with tools like Git, Postman, and Docker, you could consider a career in DevOps. This role involves managing the development, testing, deployment, and maintenance of applications, which aligns well with your current skillset. [S1] can help you find salary information for DevOps Engineers as well.\n\nSince your profile shows a weak match with our career records, I recommend clarifying your preferences:\n\n- Which kind of work do you prefer: frontend, backend, full stack, or AI?\n- Do you have a favorite programming language or framework that you'd like to focus on?\n- Are there specific industries or companies that interest you?\n\nWith this information, I can provide more tailored career recommendations.\n\n---\n**Sources**\n- [S1] knowledge: Salary and offers"
+        },
+        {
+          "id": "cs11",
+          "category": "study",
+          "route": "career_study",
+          "checks": {
+            "must_include_any": true,
+            "not_refused": true
+          },
+          "passed": true,
+          "model": "mistral",
+          "usage": {
+            "input_tokens": 2555,
+            "output_tokens": 369,
+            "total_tokens": 2924,
+            "input_token_details": {},
+            "output_token_details": {}
+          },
+          "latency_ms": 25684.7,
+          "words": 254,
+          "n_hits": 3,
+          "messages": [
+            {
+              "role": "user",
+              "content": "What are the most effective study techniques for exams?"
+            }
+          ],
+          "context": "[S1] (source=knowledge/guide, score=0.64, ref=study_strategies.md)\nStudy Strategies - Evidence-based learning techniques: Active recall (testing yourself instead of re-reading) and spaced repetition (reviewing at increasing intervals, e.g. with Anki) are the two most reliable techniques for long-term retention. Interleaving different problem types and explaining concepts in simple words (the Feynman technique) also improve understanding. Passive highlighting and re-reading feel productive but help little.\n\n[S2] (source=knowledge/guide, score=0.55, ref=study_strategies.md)\nStudy Strategies - Planning a study schedule: Break a skill into weekly milestones with a concrete output each week (a notebook, a mini project, a solved problem set). Use focused blocks such as the Pomodoro technique (25 minutes work, 5 minutes break). Reserve time every week for review of older topics. A realistic plan for a working student is 1-2 hours on weekdays and 3-4 hours on weekends.\n\n[S3] (source=careers/career_profile, score=0.30, ref=career_1585)\nCareer: Learning Specialist. Domain: Data Analysis and BI. Required skills: Instructional Design, Learning Management Systems, Survey Design and Analytics. Description: Learning Specialist analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Instructional Design, Learning Management Systems, Survey Design and Analytics. Education: Bachelor's degree, Instructional Design/Development experience.",
+          "answer": "Based on your profile, you have a strong foundation in software engineering, AI frameworks, and Salesforce. However, there seems to be a mismatch between your skills and the requirements of the Senior Software Engineer job you're targeting, which includes marketing-related skills such as Product Marketing, Go-To-Market Strategy, B2B SaaS, and various marketing tools like Mixpanel, Google Analytics, HubSpot, etc.\n\nTo improve your ATS score and better align with the expectations of senior-level engineering positions, I'd recommend focusing your resume on highlighting your technical architecture experience and project impact. Here are some effective study techniques for exams:\n\n1. **Active Recall**: Instead of re-reading materials, test yourself by answering questions based on what you've learned. This technique is more reliable for long-term retention [S1].\n2. **Spaced Repetition**: Review your notes at increasing intervals, such as with the help of a tool like Anki. This method helps reinforce learning over time [S1].\n3. **Interleaving**: Mix up different types of problems or topics during study sessions to improve understanding and retention [S1].\n4. **Feynman Technique**: Explain concepts in simple words as if you were teaching someone else. This technique can help clarify your understanding [S1].\n5. **Planning a Study Schedule**: Break down skills into weekly milestones with a concrete output each week, and use focused blocks like the Pomodoro technique (25 minutes work, 5 minutes break) [S2].\n6. **Regular Review**: Set aside time every week to review older topics to reinforce learning [S2].\n\n---\n**Sources**\n- [S1] knowledge: Evidence-based learning techniques\n- [S2] knowledge: Planning a study schedule"
+        },
+        {
+          "id": "cs12",
+          "category": "study",
+          "route": "career_study",
+          "checks": {
+            "not_refused": true
+          },
+          "passed": true,
+          "model": "mistral",
+          "usage": {
+            "input_tokens": 3132,
+            "output_tokens": 312,
+            "total_tokens": 3444,
+            "input_token_details": {},
+            "output_token_details": {}
+          },
+          "latency_ms": 26055.0,
+          "words": 230,
+          "n_hits": 6,
+          "messages": [
+            {
+              "role": "user",
+              "content": "I keep procrastinating while preparing for placements, any tips?"
+            }
+          ],
+          "context": "[S1] (source=knowledge/guide, score=0.52, ref=study_strategies.md)\nStudy Strategies - Planning a study schedule: Break a skill into weekly milestones with a concrete output each week (a notebook, a mini project, a solved problem set). Use focused blocks such as the Pomodoro technique (25 minutes work, 5 minutes break). Reserve time every week for review of older topics. A realistic plan for a working student is 1-2 hours on weekdays and 3-4 hours on weekends.\n\n[S2] (source=knowledge/guide, score=0.41, ref=study_strategies.md)\nStudy Strategies - Evidence-based learning techniques: Active recall (testing yourself instead of re-reading) and spaced repetition (reviewing at increasing intervals, e.g. with Anki) are the two most reliable techniques for long-term retention. Interleaving different problem types and explaining concepts in simple words (the Feynman technique) also improve understanding. Passive highlighting and re-reading feel productive but help little.\n\n[S3] (source=careers/career_profile, score=0.35, ref=career_2033)\nCareer: Project Coordinator. Domain: Project and Business Management. Required skills: Modern office methods and equipment including computer terminal and micro-computer usage and word processing applications., Facilities project and construction management software systems., Record keeping principles and procedures; business accounting and mathematics; acceptable business and office etiquette., Organization, time management and standard office procedures.. Description: Project Coordinator coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include Modern office methods and equipment including computer terminal and micro-computer usage and word processing applications., Facilities project and construction management software systems., Record keeping principles and procedures, business accounting and mathematics. Education: Bachelor's degree in a relevant business, management, finance, marketing, or related field; role-specific experience is often valued.\n\n[S4] (source=careers/career_profile, score=0.34, ref=career_1843)\nCareer: Office Administrator. Domain: Project and Business Management. Required skills: Facilities operations, Shipping and receiving, Room booking, Property management, Janitorial and maintenance, Event planning, Inventory management, Vendor management, Expense reporting, Supply ordering. Description: Office Administrator coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include Facilities operations, Shipping and receiving, Room booking, Property management. Education: Bachelor's degree.\n\n[S5] (source=careers/career_profile, score=0.33, ref=career_0616)\nCareer: Cutting Room Supervisor. Domain: Project and Business Management. Required skills: Production line capacity planning, Financial Acumen, Quality management, Data analysis, Inventory management, Knowledge of Microsoft Office (Excel), Basic arithmetic, Payroll processing, Maintenance issue reporting. Description: Cutting Room Supervisor coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include Production line capacity planning, Financial Acumen, Quality management, Data analysis. Education: Read and write effectively in English, Basic Computer and Typing Skills.\n\n[S6] (source=careers/career_profile, score=0.32, ref=career_1694)\nCareer: Manager I. Domain: Project and Business Manage",
+          "answer": "Based on your profile, you have a strong technical foundation in full-stack development and AI frameworks, which is valuable for a Senior Software Engineer role. However, your current ATS score suggests that your resume could be improved to better align with the expectations of senior-level engineering positions.\n\nTo help you prepare for placements, I'd like to share some study strategies:\n1. Break your preparation into weekly milestones with a concrete output each week (e.g., solving problems, building mini projects). Use focused blocks such as the Pomodoro technique (25 minutes work, 5 minutes break) [S1].\n2. Employ evidence-based learning techniques like active recall and spaced repetition (e.g., with Anki) for long-term retention [S2]. Interleaving different problem types and explaining concepts in simple words (the Feynman technique) also improve understanding.\n\nTo boost your ATS score, focus on highlighting your technical architecture experience and project impact in your resume to emphasize your existing problem-solving and leadership skills. Additionally, consider developing a strong understanding of the required marketing skills for the job descriptions you're targeting, as these gaps may affect your performance during interviews.\n\n**Next steps:** 1) Plan your study schedule using the strategies mentioned above, 2) Update your resume to better align with senior-level engineering positions, and 3) Research and practice common marketing skills for your target roles.\n\n---\n**Sources**\n- [S1] knowledge: Planning a study schedule\n- [S2] knowledge: Evidence-based learning techniques"
+        },
+        {
+          "id": "cs13",
+          "category": "study",
+          "route": "career_study",
+          "checks": {
+            "must_include_any": true,
+            "not_refused": true
+          },
+          "passed": true,
+          "model": "mistral",
+          "usage": {
+            "input_tokens": 3305,
+            "output_tokens": 527,
+            "total_tokens": 3832,
+            "input_token_details": {},
+            "output_token_details": {}
+          },
+          "latency_ms": 41219.1,
+          "words": 284,
+          "n_hits": 6,
+          "messages": [
+            {
+              "role": "user",
+              "content": "Explain SQL joins briefly, I need it for my interview"
+            }
+          ],
+          "context": "[S1] (source=careers/career_profile, score=0.45, ref=career_0952)\nCareer: Database Developer. Domain: Data Engineering. Required skills: SQL (Structured Query Language) Database design Query optimization Data modeling Database maintenance Problem-solving skills. Description: SQL Database Developers design, implement, and maintain relational databases using SQL (Structured Query Language). They write queries, optimize database performance, and ensure data integrity and security. Education: MCA.\n\n[S2] (source=jobs/job_listing, score=0.37, ref=https://www.naukri.com/job-listings-looking-for-immediate-joiners-lab-data-analyst-python-programming-iqvia-bengaluru-0-to-1-years-051125000118)\nJob: Looking For immediate joiners - Lab Data Analyst-Python Programming at IQVIA (Hybrid - Bengaluru). Skills: PYTHON PROGRAMMING, Pyspark, Logical Approach, Python Data Analytics, Python Data, PYTHON SCRIPTING, Numpy, Logic. Experience: 0-1 Yrs. Salary: Not Disclosed. Description: Job Title : Lab Data Analyst-Python ProgrammingSkill : Python programming, data analys...\n\n[S3] (source=careers/career_profile, score=0.36, ref=career_0936)\nCareer: Database Administrator - SQL. Domain: Project and Business Management. Required skills: Database Installation and Maintenance, System Software and Hardware Functions, Analytic Functions, Project Planning, Monitoring and Troubleshooting, Script Development, Incident Management, Backup and Recovery, SQL Server Integration Services (SSIS), Always ON Availability Groups (AAG), Windows Clustering. Description: Database Administrator - SQL coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include Database Installation and Maintenance, System Software and Hardware Functions, Analytic Functions, Project Planning. Education: Associate's or Bachelor's degree in Computer Science or related field.\n\n[S4] (source=careers/career_profile, score=0.36, ref=career_0214)\nCareer: BI & Reporting: Data Architect / DBA. Domain: Data Analysis and BI. Required skills: Data warehousing, Data modeling, SQL/RDBMS technologies, Oracle PL/SQL, Predictive modeling, Data visualization, Market research. Description: BI & Reporting: Data Architect / DBA analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Data warehousing, Data modeling, SQL/RDBMS technologies, Oracle PL/SQL. Education: Bachelor's or Master's degree in Computer Science, Information Technology, Business Administration or related field.\n\n[S5] (source=careers/career_profile, score=0.36, ref=career_0215)\nCareer: BI Developer. Domain: Data Engineering. Required skills: Microsoft SQL development, SSRS, SSIS, SSAS, ETL, Reporting models, Table functions, Stored procedures, SQL query capabilities, UNIX, Data warehousing concepts, Data warehousing terminology, Data warehousing architecture. Description: BI Developer designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include Microsoft SQL development, SSRS, SSIS, SSAS. Education: Bachelor's degree in computer science, information systems, data engineering, or a related technical field. Dataset average salary: 110,000 (unverified; Source values retained; verify currency, time period, geography, and growth definition before interpretation).\n\n[S6] (source=knowledge/guide, score=0.34, ref=interview_preparation.md)\nInterview Preparation - Technical preparation: For software roles",
+          "answer": "In SQL, joins are used to combine rows from two or more tables based on a related column between them. There are four main types of SQL joins: INNER JOIN, OUTER JOIN (LEFT JOIN and RIGHT JOIN), CROSS JOIN, and SELF JOIN.\n\n- **INNER JOIN**: Returns only the matching rows from both tables. For example:\n```sql\nSELECT Orders.OrderID, Customers.CustomerName\nFROM Orders\nINNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;\n```\n- **LEFT (OUTER) JOIN**: Returns all the rows from the left table and the matching rows from the right table. If there is no match, NULL values are used for the right table columns. For example:\n```sql\nSELECT Orders.OrderID, Customers.CustomerName\nFROM Orders\nLEFT JOIN Customers ON Orders.CustomerID = Customers.CustomerID;\n```\n- **RIGHT (OUTER) JOIN**: Returns all the rows from the right table and the matching rows from the left table. If there is no match, NULL values are used for the left table columns. For example:\n```sql\nSELECT Orders.OrderID, Customers.CustomerName\nFROM Orders\nRIGHT JOIN Customers ON Orders.CustomerID = Customers.CustomerID;\n```\n- **CROSS JOIN**: Returns the Cartesian product of both tables, meaning every row in one table is paired with every row in the other table. For example:\n```sql\nSELECT Orders.OrderID, Customers.CustomerName\nFROM Orders\nCROSS JOIN Customers;\n```\n- **SELF JOIN**: Joins a table to itself based on a related column. For example:\n```sql\nSELECT Employees.EmployeeName, Managers.ManagerName\nFROM Employees\nJOIN Employees AS Managers ON Employees.ManagerID = Managers.EmployeeID;\n```\n\nFor your interview preparation, I recommend practicing SQL joins on platforms like LeetCode or HackerRank to get comfortable with them. Good luck!\n\n**Next steps:** 1) Practice SQL joins on a platform like LeetCode, 2) Review the SQL join examples in this answer and try writing your own queries."
+        },
+        {
+          "id": "cs14",
+          "category": "study",
+          "route": "career_study",
+          "checks": {
+            "must_include_any": true,
+            "not_refused": true
+          },
+          "passed": true,
+          "model": "mistral",
+          "usage": {
+            "input_tokens": 4096,
+            "output_tokens": 203,
+            "total_tokens": 4299,
+            "input_token_details": {},
+            "output_token_details": {}
+          },
+          "latency_ms": 45873.0,
+          "words": 117,
+          "n_hits": 10,
+          "messages": [
+            {
+              "role": "user",
+              "content": "Which certification is good for Power BI?"
+            }
+          ],
+          "context": "[S1] (source=knowledge/guide, score=0.55, ref=study_strategies.md)\nStudy Strategies - Choosing courses and certifications: Prefer one structured course per skill over many partial ones. Free options include YouTube playlists, freeCodeCamp, Kaggle Learn, Google and Microsoft learning paths, and audited Coursera courses. Certifications such as Google Data Analytics, Microsoft PL-300 (Power BI) or AWS Cloud Practitioner help most at entry level when paired with projects.\n\n[S2] (source=jobs/job_listing, score=0.53, ref=https://in.linkedin.com/jobs/view/software-engineer-at-microsoft-4364800054)\nJob: Software Engineer at Microsoft (Bengaluru, Karnataka, India). Salary: Not Listed. Description: data-first applications and driving a data culture.Within Azure Data, the business intelligence team builds and maintains Power BI which is the undisputed leader in BI tool in the industry today and serves as the bridge between data professionals & Office users. Power BI’s core value proposition is to enable end users to get answers & insights from their data through data visualization.As a Software Engineer I, you will contribute to the quality and reliability of Power BI Desktop and Service by developing and maintaining automation frameworks, test strategies, and engineering tools. You will work alongside experienced engineers to integrate AI and GenAI technologies into testing and development workflows, helping improve engineering efficiency and compliance. You’ll participate in live site operations, telemetry instrumentation, and secure troubleshooting practices. This role offers opportunities to learn modern testing architectures, collaborate across global teams, and support high-quality weekly releases for Power BI Service and monthly\n\n[S3] (source=careers/career_profile, score=0.49, ref=career_1162)\nCareer: Financial Business Analyst (PowerApps). Domain: Data Analysis and BI. Required skills: PowerApps, Power BI, SharePoint, Excel, SQL. Description: Financial Business Analyst (PowerApps) analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include PowerApps, Power BI, SharePoint, Excel. Education: BS Degree in Finance, Analytics or related discipline.\n\n[S4] (source=careers/career_profile, score=0.48, ref=career_0557)\nCareer: Consultant - Analytics (Microsoft Power BI and Data Science). Domain: Machine Learning and AI. Required skills: Business Intelligence, Analytics, Data Platform, Data Science, Microsoft Analytics Stack, Power BI, SQL Server Analysis Services, Python, Tableau, Spark, Dimensional Data Warehouses, Machine Learning, Data Integration, Descriptive, Predictive, and Prescriptive Studies, Apache Tools, ERP Systems, Data Visualization Tools, Relational and Dimensional Modeling, Kimball Data Warehousing, DAX, T-SQL. Description: Consultant - Analytics (Microsoft Power BI and Data Science) works on building, evaluating, or integrating AI and machine-learning solutions. The role commonly involves preparing data, selecting suitable methods, testing model performance, and collaborating with technical or business teams. Relevant skills listed for this role include Business Intelligence, Analytics, Data Platform, Data Science. Education: Bachelor's degree in computer science, data science, statistics, mathematics, engineering, or a related quantitative field; postgraduate study can be advantageous.\n\n[S5] (source=careers/career_profile, score=0.48, ref=career_0141)\nCareer: Architect, Compliance. Domain: Data Engineering. Required skills: Compliance and audit environment (SOX/SOC, PCI, PII, HIPAA, etc.), Windows Server, Active Directory, Authentication and Domain Administration, Network components and security, SCIM Specification, SSO, SAML, OAUTH, Linux Administration, Database platforms (Oracle Exadata, SQLServer, Mongo",
+          "answer": "Based on the information provided, it seems that the career profiles and learning path suggest Power BI as a data visualization and reporting software. To improve skills in this area, you might consider the Power BI Certification offered by Microsoft. However, to get the most accurate and up-to-date information about the certification, I would recommend visiting Microsoft's official website or consulting with a career counselor specializing in data analytics and business intelligence.\n\nHere is a link to the Power BI certification page on Microsoft's website:\nhttps://www.microsoft.com/en-us/learning/certified-systems-engineer-mcse-business-applications-expert.aspx?tab=overview\n\nAdditionally, you can find free resources and courses for learning Power BI by searching terms like \"HubSpot marketing certification free course\" or \"how to use HubSpot for B2B SaaS marketing automation.\""
+        },
+        {
+          "id": "cs15",
+          "category": "study",
+          "route": "career_study",
+          "checks": {
+            "not_refused": true
+          },
+          "passed": true,
+          "model": "mistral",
+          "usage": {
+            "input_tokens": 3945,
+            "output_tokens": 283,
+            "total_tokens": 4228,
+            "input_token_details": {},
+            "output_token_details": {}
+          },
+          "latency_ms": 50690.9,
+          "words": 219,
+          "n_hits": 9,
+          "messages": [
+            {
+              "role": "user",
+              "content": "Should I do an MBA or an MS after engineering?"
+            }
+          ],
+          "context": "[S1] (source=careers/career_profile, score=0.38, ref=career_0315)\nCareer: Business Analyst (M). Domain: Data Analysis and BI. Required skills: Skill Types:, Technical skills are related to experience., Soft skills are related to both education and experience.. Description: Business Analyst (M) analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Skill Types:, Technical skills are related to experience., Soft skills are related to both education and experience.. Education: Bachelor's degree in data analytics, business, economics, statistics, computer science, or a related field; equivalent practical experience may be accepted.\n\n[S2] (source=careers/career_profile, score=0.37, ref=career_2389)\nCareer: Senior Solutions Design Engineer. Domain: Data Analysis and BI. Required skills: Industrial Engineering, Supply Chain Management, Transportation Design, Warehouse Design, Data organization, Design applications, Simulation tools, Transportation & warehouse management systems, ERPs, Automation, Material Handling Equipment (MHE), Visibility Tools, Database programming, Visualization tools (Tableau, Microsoft), Network design tools (Llamasoft, JDA, OTM), Transportation design tools (JDA, Appian), Mapping Software (Tableau), Warehouse Management Systems (e.g., Manhattan Scale), Labor Management Systems, Microsoft Office Suite, Data Analytics Software, MOST (Predetermined Motion and Time Systems), Simulation Software. Description: Senior Solutions Design Engineer analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Industrial Engineering, Supply Chain Management, Transportation Design, Warehouse Design. Education: Bachelor's degree in data analytics, business, economics, statistics, computer science, or a related field; equivalent practical experience may be accepted.\n\n[S3] (source=profile/career_summary, score=0.36, ref=career_summary)\nCareer summary for the candidate: Your strong technical foundation in full-stack development, AI frameworks, and Salesforce positions you as a highly capable candidate for a Senior Software Engineer role. While your current profile is heavily engineering-focused, you can significantly boost your ATS score by emphasizing your existing problem-solving and leadership skills rather than trying to bridge the unrelated marketing skill gaps. Focus your resume on highlighting your technical architecture experience and project impact to better align with the expectations of senior-level engineering positions.\n\n[S4] (source=careers/career_profile, score=0.36, ref=career_1091)\nCareer: Engineer. Domain: Project and Business Management. Required skills: CAD software, Industry standards knowledge (ASME, CRN, ASME BPE, 3-A), Product application and sizing, Lab-scale testing, Quality issue resolution, Technical content creation, Project management. Description: Engineer coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include CAD software, Industry standards knowledge (ASME, CRN, ASME BPE. Education: Bachelor's degree in a relevant business, management, finance, marketing, or related field; role-specific experience is often valued.\n\n[S5] (source=careers/career_profile, score=0.36, ref=career_1128)\nCareer: Entry-level Engineer (ME or EE). Domain: Product, UX and Design. Required skills: Engineering knowledge, Product design, Prototype testing, Root cause analysi",
+          "answer": "Based on your current skills profile, it appears that you have a strong technical background in full-stack development, AI frameworks, and Salesforce. However, there are some skill gaps related to marketing and business communication that could be beneficial for a Senior Software Engineer role.\n\nAn MBA or MS might help you develop the necessary business acumen and soft skills required for senior engineering positions, but it's important to consider which program aligns best with your career goals. Here are two options:\n\n1. **MS in Computer Science (MSCS)**: This degree can provide a deeper understanding of computer science principles, algorithms, and software development methodologies. With your existing technical skills, an MSCS could help you specialize further and potentially bridge some of the marketing skill gaps.\n\n2. **MBA with a concentration in Technology Management**: An MBA program with a focus on technology management can provide a strong foundation in business strategy, leadership, and management principles. This degree might be more suitable if you're interested in moving into senior engineering roles or taking on more managerial responsibilities within your current field.\n\nUltimately, the choice between an MBA and MS depends on your specific career goals and interests. It may also be beneficial to speak with professionals in your desired industry to gain insights about the most valuable skills and qualifications for success."
+        },
+        {
+          "id": "fu01",
+          "category": "follow_up",
+          "route": "career_study",
+          "checks": {
+            "not_refused": true
+          },
+          "passed": true,
+          "model": "mistral",
+          "usage": {
+            "input_tokens": 3882,
+            "output_tokens": 349,
+            "total_tokens": 4231,
+            "input_token_details": {},
+            "output_token_details": {}
+          },
+          "latency_ms": 56221.9,
+          "words": 240,
+          "n_hits": 10,
+          "messages": [
+            {
+              "role": "user",
+              "content": "What skills do I need for a data analyst job?"
+            },
+            {
+              "role": "assistant",
+              "content": "Key skills are SQL, Excel, Power BI or Tableau, statistics and communication."
+            },
+            {
+              "role": "user",
+              "content": "how long to learn them?"
+            }
+          ],
+          "context": "[S1] (source=careers/career_profile, score=0.80, ref=career_0681)\nCareer: Data Analyst. Domain: Data Analysis and BI. Required skills: SQL, Excel, Data visualization tools, Proficiency with development languages (e.g., Python), Background in statistics or a related field. Description: Data Analyst analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include SQL, Excel, Data visualization tools, Proficiency with development languages (e.g.. Education: Bachelor's degree in data analytics, business, economics, statistics, computer science, or a related field; equivalent practical experience may be accepted.\n\n[S2] (source=careers/career_profile, score=0.79, ref=career_0694)\nCareer: Data Analyst I. Domain: Data Analysis and BI. Required skills: Data Analysis, Reporting, Microsoft Access, Microsoft Excel, Program Evaluation, Statistical Analysis, Research Skills, Management Information Systems, Database Design and Analysis, Statistical Software (e.g., SPSS, SAS), Seagate Crystal Reports, Microsoft SQL. Description: Data Analyst I analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Data Analysis, Reporting, Microsoft Access, Microsoft Excel. Education: Bachelor's degree in data analytics, business, economics, statistics, computer science, or a related field; equivalent practical experience may be accepted.\n\n[S3] (source=careers/career_profile, score=0.78, ref=career_0682)\nCareer: Data Analyst. Domain: Data Analysis and BI. Required skills: SQL, Python, Data management, Technology modeling, Regression analysis, Econometric modeling, Visual techniques for data analysis, Excel, SAS, R, Looker, scikit-learn. Description: Data Analyst analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include SQL, Python, Data management, Technology modeling. Education: Bachelor's degree in data analytics, business, economics, statistics, computer science, or a related field; equivalent practical experience may be accepted.\n\n[S4] (source=careers/career_profile, score=0.78, ref=career_0674)\nCareer: Data Analyst. Domain: Data Analysis and BI. Required skills: Data analysis, Working with large datasets, Building solutions, Developing and delivering data reports, SQL Server, GreenPlum, Excel, Python, Web analytics, Web development, Technical documentation, Data collection and integration techniques.. Description: Data Analyst analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Data analysis, Working with large datasets, Building solutions, Developing and delivering data reports. Education: Bachelor's degree in data analytics, business, economics, statistics, computer science, or a related field; equivalent practical experience may be accepted.\n\n[S5] (source=jobs/job_listing, score=0.67, ref=https://www.naukri.com/job-listings-data-analyst-3i-infotech-mumbai-all-areas-2-to-3-years-170426015705)\nJob: Data Analyst at 3i Infotech (Mumbai (All Areas)(Vashi)). Skills: Basic Sql, Advance Excel, Transunion, Back Office Support, Data Entry, Data Entry Operation, Back office, Basic. Experience: 2-3 Yrs. Salary: 4-5 Lacs PA. Description: We are looking for a Data Analyst to analyze large datasets, e",
+          "answer": "Based on your profile, you have a strong foundation in programming languages such as Python, JavaScript, Java, C, TypeScript, and frameworks like React.js, Node.js, Next.js, MERN, Bootstrap, Tailwind CSS, TensorFlow, PyTorch. However, there are some skill gaps related to marketing and data analysis that could be beneficial for a Senior Software Engineer role.\n\nHere's a suggested learning path to help you fill those gaps:\n\n1. **Data Analysis**: Since you have SQL skills, focus on honing your data analysis abilities by learning advanced SQL techniques like joins, GROUP BY, window functions, and CTEs. Additionally, practice using Excel for data manipulation and visualization, including pivot tables and lookups [S6].\n2. **Data Visualization**: Familiarize yourself with tools like Power BI or Tableau to create interactive dashboards and reports [S7].\n3. **Marketing Concepts**: Learn about marketing metrics, product analytics, and CRM/Marketing automation platforms such as Mixpanel, Google Analytics, and HubSpot [S9].\n4. **Data Science Fundamentals**: If you're interested in diving deeper into data analysis, consider learning machine learning concepts like bias-variance, evaluation metrics, overfitting, and regularization [S6].\n\nThe time it takes to learn these skills can vary depending on your current knowledge level and the amount of time you dedicate. However, with consistent practice and effort, you should be able to become proficient in these areas within a few months to a year.\n\n---\n**Sources**\n- [S6] knowledge: Technical preparation\n- [S7] knowledge: Entry-level tech and data career paths\n- [S9] profile: job description"
+        },
+        {
+          "id": "fu02",
+          "category": "follow_up",
+          "route": "career_study",
+          "checks": {
+            "not_refused": true
+          },
+          "passed": true,
+          "model": "mistral",
+          "usage": {
+            "input_tokens": 4096,
+            "output_tokens": 259,
+            "total_tokens": 4355,
+            "input_token_details": {},
+            "output_token_details": {}
+          },
+          "latency_ms": 47260.8,
+          "words": 153,
+          "n_hits": 10,
+          "messages": [
+            {
+              "role": "user",
+              "content": "Suggest a course for Tableau"
+            },
+            {
+              "role": "assistant",
+              "content": "Try the free Tableau training videos and a beginner Udemy course."
+            },
+            {
+              "role": "user",
+              "content": "any free ones?"
+            }
+          ],
+          "context": "[S1] (source=knowledge/guide, score=0.51, ref=study_strategies.md)\nStudy Strategies - Choosing courses and certifications: Prefer one structured course per skill over many partial ones. Free options include YouTube playlists, freeCodeCamp, Kaggle Learn, Google and Microsoft learning paths, and audited Coursera courses. Certifications such as Google Data Analytics, Microsoft PL-300 (Power BI) or AWS Cloud Practitioner help most at entry level when paired with projects.\n\n[S2] (source=careers/career_profile, score=0.49, ref=career_2397)\nCareer: Senior Tableau Developer. Domain: Data Analysis and BI. Required skills: Tableau development, Researching source data, Data visualization best practices, Relational databases, Tableau server administration, Troubleshooting performance issues, Debugging code, SQL. Description: Senior Tableau Developer analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Tableau development, Researching source data, Data visualization best practices, Relational databases. Education: Bachelor's degree in Computer Science or related field.\n\n[S3] (source=careers/career_profile, score=0.47, ref=career_1544)\nCareer: Junior Data Scientist. Domain: Machine Learning and AI. Required skills: SQL, Tableau, Excel, R, Python, Machine Learning, Data Wrangling, Data Visualization. Description: Junior Data Scientist works on building, evaluating, or integrating AI and machine-learning solutions. The role commonly involves preparing data, selecting suitable methods, testing model performance, and collaborating with technical or business teams. Relevant skills listed for this role include SQL, Tableau, Excel, R. Education: Bachelor's degree in Computer Science, Information Systems, Mathematics, Statistics, or related quantitative discipline, Some data-related expertise.\n\n[S4] (source=careers/career_profile, score=0.47, ref=career_1929)\nCareer: Planner. Domain: Data Analysis and BI. Required skills: Retail math concepts, Excel, Data analysis, Reporting tools (Tableau, Looker). Description: Planner analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Retail math concepts, Excel, Data analysis, Reporting tools (Tableau. Education: Bachelor's degree in data analytics, business, economics, statistics, computer science, or a related field; equivalent practical experience may be accepted.\n\n[S5] (source=careers/career_profile, score=0.47, ref=career_0909)\nCareer: Data Visualization Specialist - Consultant (Tableau or Alteryx) - San Francisco, CA. Domain: Data Engineering. Required skills: Data visualization, Tableau, Alteryx, Business intelligence, Data modeling, Relational databases (Oracle, SQL Server, Netezza, Teradata), SQL, Hadoop, Data integration. Description: Data Visualization Specialist - Consultant (Tableau or Alteryx) - San Francisco, CA designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include Data visualization, Tableau, Alteryx, Business intelligence. Education: Note: Some skills may fall under both education-related and experience-related categories..\n\n[S6] (source=profile/static_resource, score=0.44, ref=static_resource)\nCourse search links: - Udemy Courses: https://www.udemy.com/courses/search/?q=Skills%3A%20Marketing%20Copywriting | Skills: Marketing Copywriting - YouTube Tutorials: https://www.youtube.com/results?search_query=Skills%3A%20Marketing%",
+          "answer": "To address the skill gaps in Marketing Automation (HubSpot), Positioning & Messaging, Sales Enablement, Market & Competitive Intelligence, and Customer Advocacy, you can find free resources by following these suggested searches:\n\n1. HubSpot marketing certification free course\n2. How to use HubSpot for B2B SaaS marketing automation (YouTube tutorials)\n3. HubSpot vs Salesforce marketing automation comparison (YouTube tutorials or articles)\n4. Free resources for learning Marketing Automation with HubSpot\n5. HubSpot marketing automation best practices (articles or videos)\n6. HubSpot marketing automation case studies (to learn from real-world examples)\n7. HubSpot marketing automation templates and examples (to get inspiration for your own projects)\n8. HubSpot marketing automation workshops or webinars (free events to learn directly from experts)\n9. Online communities or forums dedicated to HubSpot marketing automation (to connect with other users and learn from their experiences)\n10. Free courses on platforms like Coursera, Udemy, or edX that cover Marketing Automation with HubSpot."
+        },
+        {
+          "id": "gr01",
+          "category": "greeting",
+          "route": "greeting",
+          "checks": {},
+          "passed": true,
+          "model": "mistral",
+          "usage": {
+            "input_tokens": 2111,
+            "output_tokens": 392,
+            "total_tokens": 2503,
+            "input_token_details": {},
+            "output_token_details": {}
+          },
+          "latency_ms": 41176.6,
+          "words": 271,
+          "n_hits": 0,
+          "messages": [
+            {
+              "role": "user",
+              "content": "hi"
+            }
+          ],
+          "context": "(none)",
+          "answer": "Hello! As a SkillPath AI Career Advisor, I'm here to help you with career and study topics such as career choice and planning, job search, resumes/ATS, interviews, skill gaps, learning paths, courses and certifications, study techniques, exam/academic planning, and workplace growth.\n\nBased on your current skills profile, it seems that you have a strong foundation in full-stack development, AI frameworks, and Salesforce. However, the context suggests that there might be some skill gaps related to marketing, product management, and B2B SaaS experience.\n\nHere are two career options that align with your technical skills:\n\n1. **Software Engineer**: Your strong background in programming languages, frameworks, and databases makes you a great fit for this role. You can focus on developing and maintaining software systems, working closely with product teams to ensure the successful delivery of projects.\n   - Next steps: Start by researching job openings for Software Engineer roles that match your skills and interests. Tailor your resume to highlight your technical achievements and problem-solving skills.\n\n2. **AI Specialist**: Given your experience with AI frameworks like TensorFlow and PyTorch, you could consider a career as an AI Specialist. In this role, you would be responsible for designing, developing, and implementing AI solutions for various industries.\n   - Next steps: Look for job openings for AI Specialist roles that align with your interests and technical skills. Consider gaining additional certifications in AI to strengthen your profile.\n\nTo address the marketing skill gaps, consider taking online courses or workshops focused on topics like product marketing, go-to-market strategies, and B2B SaaS. This will help you expand your skillset and become a more well-rounded candidate for senior-level engineering positions."
         }
       ]
     },
@@ -240,7 +599,7 @@
       "design": "paired",
       "expect_model": "",
       "stopped": null,
-      "completed_pairs": 6,
+      "completed_pairs": 18,
       "n_cases": 42
     }
   }

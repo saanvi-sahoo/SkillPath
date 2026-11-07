@@ -4,6 +4,12 @@ Add one entry for every change to models, prompts, thresholds, chunking or data.
 
 ---
 
+## 2026-11-08: E28 Bug: app failed to start (`ModuleNotFoundError: No module named 'src'`)
+- **Cause:** the E26 refactor that centralised `.env` loading placed `from src.utilities.env import load_env` *above* the line that adds the project root to `sys.path` in `frontend.py`. `streamlit run` (and Streamlit Cloud) only put the script's own folder on `sys.path`, so every page load failed. The headless tests missed it because they ran from the repo root.
+- **Fix:** `sys.path.insert(0, <root>)` is now the first thing in `frontend.py`.
+- **Regression test:** `tests/test_app_boot.py` boots the real script with AppTest from a temporary directory (like Streamlit Cloud). Verified it **fails without the fix** and passes with it. 21/21 tests pass.
+- **Verified in a real browser** (headless Chrome via Selenium) on both instances: page renders, the starter question returns cited career answers with a Sources panel, and the off-topic question is refused. No tracebacks in either server log.
+
 ## 2026-11-08: E27 Local LLM (Mistral 7B via Ollama), keyless
 - `LLM_PROVIDER=local`, prompt v4, production router (kNN + Mistral for ambiguous messages), 42 cases. Measured latency **35–55 s per answer** (16 GB Mac, 3–4k-token prompts), too slow for a public demo, fine offline.
 - Results: [keyless_mode.md §5](keyless_mode.md#5-local-llm-results-mistral-7b-via-ollama) (run in progress at time of writing; the first 5 cases passed 4/5, cs04 had no citation).

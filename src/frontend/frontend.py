@@ -5,11 +5,12 @@ import os
 import sys
 from dotenv import load_dotenv
 
+# Add project root to sys.path so we can import from src (must come BEFORE any `from src...` import:
+# `streamlit run` and Streamlit Cloud only put the script's own folder on sys.path)
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+
 # Load environment variables
 from src.utilities.env import load_env; load_env()
-
-# Add project root to sys.path so we can import from src
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
 # --- MONKEY PATCH FOR LANGCHAIN VERSION BUG ---
 import langchain_core.exceptions
