@@ -16,7 +16,7 @@ Updated **2026-11-08 (evening)**. This follows the evidence rule of the project 
 | **MongoDB Atlas** | Cluster `skillpath-cluster` (M0, Mumbai), project SkillPath AI; `skillpath_ai` with 3 collections + 3 vector indexes (M0 maximum); idempotent upsert/prune; model guard | ✅ **Verified live**: 2,899 careers + 170 knowledge/jobs + 39 profile chunks; indexes READY; real query OK; Atlas = exact top-5 (5/5); 359 ms median | `reports/embeddings/atlas_check_latest.txt`, [mongodb_atlas_setup.md](mongodb_atlas_setup.md) §0 |
 | Career retrieval adapter | `retrieve_careers(query, top_k, domain)` + `CAREER_RAG_ENABLED` flag | ✅ Verified (local) | Smoke test: security query → career_2691 etc. (0.61–0.63) |
 | **RAG** | Per-collection quotas, score floor, MATCH STRENGTH signal, `[S#]` citations + sources footer | ✅ Verified (local) | `/chat` debug responses |
-| **Career Advisor chatbot** | Career/study-only scope guardrail (regex + kNN + LLM), RAG answers, `/chat` API, Streamlit tab | ✅ Verified | Router: hybrid 1.0 accuracy on 42 cases, 0 false refusals, 0 leaks |
+| **Career Advisor chatbot** | Career/study-only scope guardrail (regex + kNN + LLM), RAG answers, `/chat` API; **always-visible first tab** with starters, sources, Explain panel, feedback | ✅ Verified | Router: hybrid 1.0 accuracy on 42 cases, 0 false refusals, 0 leaks |
 | **Prompt script training** | Versioned prompts v1–v4, 42-case eval set (doc §9.4 classes), paired same-model A/B, deterministic checks, offline rescoring, offline LLM judge | ✅ **v4 active**: paired A/B v4 1.0 vs v3 0.952 (weak evidence 2/2 vs 0/2). 🟡 Judge pass + 120b re-check wait for Groq quota | [prompt_scripting.md](prompt_scripting.md) §5 |
 | Skill normalisation + exact gap comparison | Aliases, categories, IMPLIES (MySQL ⇒ SQL), related ≠ equivalent | ✅ Verified (unit examples) | [skills_and_roadmap.md](skills_and_roadmap.md) |
 | **30-day roadmap** | Prioritised (prerequisites + market share), validated, LLM-filled, template fallback; `/roadmap` + Streamlit | ✅ Verified (1 profile) | `reports/roadmaps/roadmap_*.json` (valid, 0 repairs) |
@@ -27,7 +27,7 @@ Updated **2026-11-08 (evening)**. This follows the evidence rule of the project 
 
 ## Open items (in priority order)
 1. LLM-judge pass on the v3/v4 answers + v4 re-check on gpt-oss-120b, when Groq quota resets.
-2. Deploy on Streamlit Community Cloud (one browser login) and allow `0.0.0.0/0` in Atlas.
+2. Deploy on Streamlit Community Cloud with the prefilled form (deployment.md §3a). Variant A works now; variant B (Atlas) needs the team to allow `0.0.0.0/0`. Build pre-tested in Linux (E23).
 3. Rotate the credentials that were shared in chat (Groq ×2, HF token, Atlas/HF account password).
 4. Bigger held-out eval sets (100+ chat questions, 50+ career queries) from real usage.
 5. Roadmap progress tracking and regeneration; LLM fallback for categorising unknown skills; OCR for scanned PDFs.

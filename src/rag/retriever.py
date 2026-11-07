@@ -10,19 +10,44 @@ Strategy (see docs/rag.md#retrieval-strategy):
 """
 from __future__ import annotations
 
+import threading
 import time
 from typing import Dict, List, Optional
 
 from src.rag import config
 from src.rag.embedder import embed_query
-from src.rag.vector_store import get_vector_store
+from src.rag.vector_store import get_vector_store, resolve_backend
 
 # per-source quotas for a single question; tuned in docs/experiment_log.md
 DEFAULT_QUOTAS: Dict[str, int] = {"profile": 3, "knowledge": 2, "careers": 4, "jobs": 1}  # E13: careers 2->4 (source of truth)
 
 
+_corpus_checked = False
+_corpus_lock = threading.Lock()
+
+
+def ensure_local_corpus() -> None:
+    """Local backend only: build the shared corpora once if the store is empty (fresh cloud container,
+    e.g. Streamlit Community Cloud without MONGODB_URI). No-op on Atlas or when already built."""
+    global _corpus_checked
+    if _corpus_checked:
+        return
+    with _corpus_lock:
+        if _corpus_checked:
+            return
+        _corpus_checked = True
+        if resolve_backend() != "local":
+            return
+        missing = [s for s in ("careers", "knowledge", "jobs") if not get_vector_store(s).count().get(s)]
+        if missing:
+            from src.rag.ingest import ingest
+            print(f"[retriever] local store empty for {missing} -> building it now (one-time, ~20 s)")
+            ingest(missing, backend="local", show_progress=False)
+
+
 def retrieve(query: str, quotas: Optional[Dict[str, int]] = None, user_id: str = config.DEFAULT_USER_ID,
              min_score: float = config.MIN_SCORE) -> List[Dict]:
+    ensure_local_corpus()
     quotas = quotas or DEFAULT_QUOTAS
     qv = embed_query(query)
     hits: List[Dict] = []
@@ -70,6 +95,7 @@ def retrieve_careers(query: str, top_k: int = 5, domain: Optional[str] = None, m
     """
     if not config.CAREER_RAG_ENABLED:
         return []
+    ensure_local_corpus()
     floor = config.CAREER_MIN_SCORE if min_score is None else min_score
     store = get_vector_store("careers")
     hits = store.search(embed_query(query), k=top_k * (3 if domain else 1), sources=["careers"])

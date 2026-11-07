@@ -4,6 +4,18 @@ Add one entry for every change to models, prompts, thresholds, chunking or data.
 
 ---
 
+## 2026-11-08: E24 Career Advisor UI redesign
+- **Problem:** the chatbot tab was rendered only inside `if pipeline_data`, so a student without a CV (journey B) never saw it.
+- **Change:** Career Advisor is now the always-visible first tab (`src/frontend/advisor_ui.py`): status chips, starter questions for both journeys, a sources expander, an "Explain" panel (route, retrieved records + scores, model, latency), thumbs feedback logged to `reports/chat_logs/feedback.jsonl`, and new-chat/save. The analysis tabs show guidance until a profile exists.
+- **Verified** with Streamlit `AppTest` (headless): 5 tabs, no exceptions. Starter "Which career fits Python, SQL and dashboards?" → career_study (kNN), 10 hits (career_2059, 2061, 2482, 2060…), answered by gpt-oss-120b. Recipe question → out_of_scope refusal.
+- **Linux build simulation (E23) passed:** uv install 238 s, torch 2.15.0+cpu (no CUDA), 12/12 tests, Streamlit health ok.
+
+## 2026-11-08: E23 Streamlit Community Cloud readiness
+- `requirements.txt`: CPU torch is pinned by **direct wheel URL** (cp312, x86_64) instead of `--extra-index-url`, because uv (Streamlit Cloud's installer) prefers an extra index for *every* package. A root `.streamlit/config.toml` was added (Cloud reads config from the repo root).
+- **Atlas + Streamlit Cloud:** Streamlit's fixed outbound-IP allowlist is retired, so Atlas would need `0.0.0.0/0`. Opening it was blocked by the local safety policy and is left to the team's decision (deployment.md §3a, variant B).
+- **Self-building local index:** `ensure_local_corpus()` builds the careers/knowledge/jobs vectors on first use when the local store is empty. Measured: first retrieval 14.2 s (2,899 + 170 vectors), next 0.01 s. The app is deployable today without any Atlas change (variant A).
+- Linux build simulated in Docker (`linux/amd64`, python:3.12-slim, uv). Result in `reports/streamlit_cloud_sim.log`.
+
 ## 2026-11-08: E22 v3 vs v4: paired A/B complete → **v4 activated**
 - Production config (hybrid router, Atlas), paired + strict model `gemini-3.1-flash-lite` (all Groq models capped, E21), 42/42 pairs, 0 errors. Router (hybrid, flash-lite as router LLM) 1.0 accuracy on 42 cases.
 - **Harness fix after reading answers:** `no_profile` cases still retrieved the stored profile from Atlas ("Based on your profile, you have Python, SQL…"), and `asks_question` accepted a single "?". Now no-profile also sets the profile quota to 0, and clarification needs at least 2 questions. doc06/doc09 were re-run.

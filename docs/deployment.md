@@ -34,26 +34,30 @@ Day-to-day: create a branch per feature (`git checkout -b feature/<name>`), push
 | Local / college server | free | ✅ | `uvicorn` + `streamlit` (runbook §2) |
 
 ### 3a. Streamlit Community Cloud (free), step by step
-1. Open https://share.streamlit.io and **Continue with GitHub** (an account with access to `saanvi-sahoo/SkillPath`). Authorise Streamlit.
-2. **Create app → Deploy a public app from GitHub**:
-   - Repository `saanvi-sahoo/SkillPath`, branch `main`
-   - Main file path `src/frontend/frontend.py`
-   - App URL e.g. `skillpath-ai`
-3. **Advanced settings**: Python **3.12**. **Secrets** (TOML; root-level keys become environment variables):
+1. Sign in at https://share.streamlit.io with GitHub (an account with access to `saanvi-sahoo/SkillPath`).
+2. Open the **prefilled deploy form**:
+   https://share.streamlit.io/deploy?repository=saanvi-sahoo/SkillPath&branch=main&mainModule=src/frontend/frontend.py
+   (or **Create app → Deploy a public app from GitHub** → repo `saanvi-sahoo/SkillPath`, branch `main`, main file `src/frontend/frontend.py`). Pick an App URL, e.g. `skillpath-ai`.
+3. **Advanced settings** → Python **3.12** (required: the CPU torch wheel in `requirements.txt` is pinned for cp312 x86_64). Paste the **Secrets** (TOML; root-level keys become environment variables). Choose one variant:
+
+   **Variant A: works immediately, no Atlas network change.** The app builds its career/guide/job index locally on the first chat (~15–20 s, then cached for the container's life). Profile chunks live in the container and are lost on restart.
    ```toml
    GROQ_API_KEY = "..."
-   GROQ_API_KEY_2 = "..."
    GEMINI_API_KEY = "..."
    TAVILY_API_KEY = "..."
-   MONGODB_URI = "mongodb+srv://skillpath_app:...@skillpath-cluster.fozgv6t.mongodb.net/?retryWrites=true&w=majority&appName=SkillPath"
    PIPELINE_MODE = "inprocess"
+   VECTOR_BACKEND = "local"
    ```
-4. **Atlas network access:** Streamlit Cloud IPs are dynamic, so allow `0.0.0.0/0`. Access is still protected by the 32-character database password:
+   **Variant B: shared MongoDB Atlas.** The same keys plus `MONGODB_URI` and `MONGODB_DB = "skillpath_ai"`, without `VECTOR_BACKEND`. This needs Atlas Network Access to allow `0.0.0.0/0`, because **Streamlit Cloud has no stable outbound IPs** (its fixed-IP allowlist was retired; see the Streamlit forum threads "IP addresses of Streamlit community cloud servers" and "What IP address range can I whitelist for my DB connection?"). The database stays protected by the 32-character database-user password, but anyone who obtains the URI could connect from anywhere, so keep it only in Streamlit secrets and rotate it if it ever leaks:
    ```bash
-   atlas accessLists create 0.0.0.0/0 --comment "Streamlit Cloud"
+   atlas accessLists create 0.0.0.0/0 --comment "Streamlit Community Cloud" --projectId 6aef8bc9b64186873a8b7606
    ```
-5. **Deploy.** The first build installs the requirements (CPU torch on Linux) in about 5–10 minutes.
-6. Known limit: the Naukri scraper needs Chrome, which Streamlit Cloud doesn't provide, so the job list then comes from LinkedIn only. The rest of the pipeline is unaffected.
+   Or in the UI: Atlas → Security → Network Access → Add IP Address → *Allow access from anywhere*.
+4. Click **Deploy**. The first build takes about 5–10 minutes (uv installs the requirements; the torch CPU wheel is 210 MB).
+5. **Verify:** open the app, then go to the Career Advisor tab → "Which career fits Python, SQL and dashboards?" → it answers with cited `career_XXXX` records. Then upload a resume/JD → Analyze Profile.
+6. Known limits on Streamlit Cloud: no Chrome, so the Naukri scraper is skipped (LinkedIn still works); the container sleeps after inactivity, and the first request after waking takes about 30 s.
+
+The build was **pre-tested locally** in a `linux/amd64` `python:3.12-slim` container with uv (the same installer Streamlit Cloud uses). Log: `reports/streamlit_cloud_sim.log`.
 
 ### 3b. Hugging Face Space (if a PRO account is available)
 1. `python deploy/huggingface/push_space.py --space <hf-user>/skillpath-ai` (uses `HF_TOKEN` from `.env`). It creates a private Docker Space, sets the API keys as Space secrets, and uploads the code (personal data and `.env` excluded).

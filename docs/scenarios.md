@@ -19,6 +19,7 @@ Every scenario below says **what triggers it**, **what the system does**, and **
 Measured: 12.5 s end to end; ATS 70, 4 gaps, 30 jobs and 12 resources for the test profile.
 
 ### A2. Target role unknown: student talks to the Career Advisor
+Open the app → the **Career Advisor** tab is first and works without any upload (starter questions under *Exploring careers & studies*).
 1. The student describes their interests and skills.
 2. Router → `career_study`.
 3. `retrieve_careers` and per-collection retrieval → MATCH STRENGTH computed.

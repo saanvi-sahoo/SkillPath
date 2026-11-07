@@ -18,12 +18,12 @@ if not hasattr(langchain_core.exceptions, "ContextOverflowError"):
     langchain_core.exceptions.ContextOverflowError = ContextOverflowError
 # ----------------------------------------------
 
-from src.backend.chatbot import chat_with_agent
-st.set_page_config(page_title="UpskillxAI", layout="wide")
+from src.frontend.advisor_ui import render_career_advisor
+st.set_page_config(page_title="SkillPath AI", page_icon=":material/school:", layout="wide")
 
-st.markdown("<h1 style='text-align: center;'>UpskillxAI</h1>", unsafe_allow_html=True)
-st.markdown("<h3 style='text-align: center;'>AI Powered Upskilling</h3>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center;'>Upload your CV and JD to match with top jobs and uncover your skill gaps.</p>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; margin-bottom: 0;'>SkillPath AI</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; font-size: 1.1rem;'>Your AI career & study advisor: chat about careers anytime, "
+            "or upload your CV and a job description for skill gaps, job matches and a 30-day roadmap.</p>", unsafe_allow_html=True)
 
 # ---- PERSISTENT STATE
 @st.cache_resource
@@ -38,8 +38,9 @@ if "pipeline_data" not in st.session_state and "pipeline_data" in persistent_sta
 
 # ---- SIDEBAR (INPUT)
 with st.sidebar:
-    st.header("Document Upload")
-    st.markdown("Provide your details below to get started.")
+    st.header("Profile Analysis")
+    st.caption("Optional. The Career Advisor works without it, but with your CV and a target job it can give "
+               "personal advice (ATS estimate, skill gaps, matched jobs, 30-day roadmap).")
     
     uploaded_files = st.file_uploader(
         "Upload CV",
@@ -293,13 +294,14 @@ if "pipeline_data" in st.session_state:
     st.markdown("<br>", unsafe_allow_html=True)
     
     # ---- TABS ----
-    tab1, tab2, tab3, tab4, tab5 = st.tabs([
-        ":material/query_stats: Skills Analysis", 
-        ":material/work: Job Matches", 
-        ":material/school: Learning Paths",
+    TABS = st.tabs([
         ":material/forum: Career Advisor",
-        ":material/edit_document: Resume Builder"
+        ":material/query_stats: Skills Analysis",
+        ":material/work: Job Matches",
+        ":material/school: Learning Paths & 30-Day Roadmap",
+        ":material/edit_document: Resume Builder",
     ])
+    tab1, tab2, tab3, tab5 = TABS[1], TABS[2], TABS[3], TABS[4]
     
     with tab1:
         st.markdown("#### Skill Match Breakdown")
@@ -517,136 +519,111 @@ if "pipeline_data" in st.session_state:
                                                    "estimated_minutes", "completion_criteria"]],
                          hide_index=True, use_container_width=True)
 
-    with tab4:
-        st.markdown("#### AI Career Advisor")
-        st.markdown("Ask questions about your career path, recommended courses, or skill gaps. Your AI Advisor has full access to your memory!")
-        
-        # Initialize chat history for the session if it doesn't exist
-        if "chat_messages" not in st.session_state:
-            st.session_state["chat_messages"] = [
-                {"role": "assistant", "content": "Hello! I am your AI Career Advisor. I have access to your parsed resume, targeted jobs, and learning resources. How can I help you today?"}
-            ]
-            
-        # Create a container for the chat history
-        chat_container = st.container()
-            
-        # Display chat messages from history inside the container
-        with chat_container:
-            for msg in st.session_state["chat_messages"]:
-                with st.chat_message(msg["role"]):
-                    st.markdown(msg["content"])
-                
-        # Accept user input (always pinned to the bottom)
-        if prompt := st.chat_input("Ask your Career Advisor..."):
-            # Add user message to chat history
-            st.session_state["chat_messages"].append({"role": "user", "content": prompt})
-            
-            with chat_container:
-                # Display user message dynamically
-                with st.chat_message("user"):
-                    st.markdown(prompt)
-                
-                # Display assistant response with a spinner
-                with st.chat_message("assistant"):
-                    with st.spinner("Consulting your permanent memory..."):
-                        try:
-                            response_text = chat_with_agent(st.session_state["chat_messages"])
-                            if not response_text or not response_text.strip():
-                                response_text = "I wasn't able to generate a response. Please try rephrasing your question."
-                            st.markdown(response_text)
-                            # Add assistant response to chat history
-                            st.session_state["chat_messages"].append({"role": "assistant", "content": response_text})
-                        except Exception as e:
-                            st.error(f"Error communicating with agent: {str(e)}")
-
     with tab5:
         st.markdown("#### Resume Builder")
         st.info("Coming soon: AI-powered resume builder to help you dynamically update your resume with missing skills.")
 
-elif not analyze_btn and "pipeline_data" not in st.session_state:
-    st.info("Please upload your CV and JD in the sidebar, then click 'Analyze Profile'.")
+else:
+    TABS = st.tabs([
+        ":material/forum: Career Advisor",
+        ":material/query_stats: Skills Analysis",
+        ":material/work: Job Matches",
+        ":material/school: Learning Paths & 30-Day Roadmap",
+        ":material/edit_document: Resume Builder",
+    ])
+    for _t, _what in ((TABS[2], "matched LinkedIn/Naukri jobs"), (TABS[3], "learning paths and your 30-day roadmap")):
+        with _t:
+            st.info(f"Upload your CV and a job description in the sidebar, then click **Analyze Profile** to see {_what}.")
+    with TABS[4]:
+        st.info("Coming soon: AI-powered resume builder to help you dynamically update your resume with missing skills.")
+    with TABS[1]:
+        st.info("Upload your CV and JD in the sidebar, then click **Analyze Profile**. Meanwhile, the **Career Advisor** tab is ready for questions.")
     
-    graph_svg = """
-    <div style='display: flex; justify-content: center; padding: 40px; background-color: #F8FAFC; border-radius: 12px; border: 1px solid #E2E8F0; margin-top: 20px; margin-bottom: 30px;'>
-        <svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Paths / Edges -->
-            <path d="M 300 50 L 200 120" stroke="#CBD5E1" stroke-width="2" />
-            <path d="M 300 50 L 400 120" stroke="#CBD5E1" stroke-width="2" />
-            <path d="M 200 160 L 300 230" stroke="#CBD5E1" stroke-width="2" />
-            <path d="M 400 160 L 300 230" stroke="#CBD5E1" stroke-width="2" />
-            <path d="M 300 270 L 150 340" stroke="#CBD5E1" stroke-width="2" />
-            <path d="M 300 270 L 300 340" stroke="#CBD5E1" stroke-width="2" />
-            <path d="M 300 270 L 450 340" stroke="#CBD5E1" stroke-width="2" />
-            <!-- Animated Data Flow -->
-            <path d="M 300 50 L 200 120" stroke="#3B82F6" stroke-width="3" stroke-dasharray="10 10">
-                <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
-            </path>
-            <path d="M 300 50 L 400 120" stroke="#3B82F6" stroke-width="3" stroke-dasharray="10 10">
-                <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
-            </path>
-            <path d="M 200 160 L 300 230" stroke="#10B981" stroke-width="3" stroke-dasharray="10 10">
-                <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
-            </path>
-            <path d="M 400 160 L 300 230" stroke="#10B981" stroke-width="3" stroke-dasharray="10 10">
-                <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
-            </path>
-            <path d="M 300 270 L 150 340" stroke="#8B5CF6" stroke-width="3" stroke-dasharray="10 10">
-                <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
-            </path>
-            <path d="M 300 270 L 300 340" stroke="#8B5CF6" stroke-width="3" stroke-dasharray="10 10">
-                <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
-            </path>
-            <path d="M 300 270 L 450 340" stroke="#8B5CF6" stroke-width="3" stroke-dasharray="10 10">
-                <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
-            </path>
-            <!-- Nodes -->
-            <!-- START -->
-            <rect x="240" y="10" width="120" height="40" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
-            <text x="300" y="35" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#334155">START</text>
-            <!-- Load Docs -->
-            <rect x="140" y="120" width="120" height="40" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
-            <text x="200" y="145" text-anchor="middle" font-family="sans-serif" font-weight="600" font-size="12" fill="#1E3A8A">Load Resume</text>
-            <rect x="340" y="120" width="120" height="40" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
-            <text x="400" y="145" text-anchor="middle" font-family="sans-serif" font-weight="600" font-size="12" fill="#1E3A8A">Load JD</text>
-            <!-- Analyze -->
-            <rect x="220" y="230" width="160" height="40" rx="8" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
-            <text x="300" y="255" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#064E3B">AI Brain Analysis</text>
-            <!-- Fetching -->
-            <rect x="90" y="340" width="120" height="40" rx="8" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
-            <text x="150" y="365" text-anchor="middle" font-family="sans-serif" font-weight="600" font-size="12" fill="#4C1D95">Scrape Jobs</text>
-            <rect x="240" y="340" width="120" height="40" rx="8" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
-            <text x="300" y="365" text-anchor="middle" font-family="sans-serif" font-weight="600" font-size="12" fill="#4C1D95">Web Search</text>
-            <rect x="390" y="340" width="120" height="40" rx="8" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
-            <text x="450" y="365" text-anchor="middle" font-family="sans-serif" font-weight="600" font-size="12" fill="#4C1D95">Static Resources</text>
-        </svg>
-    </div>
-    """
-    st.markdown(graph_svg.replace('\n', ''), unsafe_allow_html=True)
+        graph_svg = """
+        <div style='display: flex; justify-content: center; padding: 40px; background-color: #F8FAFC; border-radius: 12px; border: 1px solid #E2E8F0; margin-top: 20px; margin-bottom: 30px;'>
+            <svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Paths / Edges -->
+                <path d="M 300 50 L 200 120" stroke="#CBD5E1" stroke-width="2" />
+                <path d="M 300 50 L 400 120" stroke="#CBD5E1" stroke-width="2" />
+                <path d="M 200 160 L 300 230" stroke="#CBD5E1" stroke-width="2" />
+                <path d="M 400 160 L 300 230" stroke="#CBD5E1" stroke-width="2" />
+                <path d="M 300 270 L 150 340" stroke="#CBD5E1" stroke-width="2" />
+                <path d="M 300 270 L 300 340" stroke="#CBD5E1" stroke-width="2" />
+                <path d="M 300 270 L 450 340" stroke="#CBD5E1" stroke-width="2" />
+                <!-- Animated Data Flow -->
+                <path d="M 300 50 L 200 120" stroke="#3B82F6" stroke-width="3" stroke-dasharray="10 10">
+                    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
+                </path>
+                <path d="M 300 50 L 400 120" stroke="#3B82F6" stroke-width="3" stroke-dasharray="10 10">
+                    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
+                </path>
+                <path d="M 200 160 L 300 230" stroke="#10B981" stroke-width="3" stroke-dasharray="10 10">
+                    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
+                </path>
+                <path d="M 400 160 L 300 230" stroke="#10B981" stroke-width="3" stroke-dasharray="10 10">
+                    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
+                </path>
+                <path d="M 300 270 L 150 340" stroke="#8B5CF6" stroke-width="3" stroke-dasharray="10 10">
+                    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
+                </path>
+                <path d="M 300 270 L 300 340" stroke="#8B5CF6" stroke-width="3" stroke-dasharray="10 10">
+                    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
+                </path>
+                <path d="M 300 270 L 450 340" stroke="#8B5CF6" stroke-width="3" stroke-dasharray="10 10">
+                    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
+                </path>
+                <!-- Nodes -->
+                <!-- START -->
+                <rect x="240" y="10" width="120" height="40" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+                <text x="300" y="35" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#334155">START</text>
+                <!-- Load Docs -->
+                <rect x="140" y="120" width="120" height="40" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+                <text x="200" y="145" text-anchor="middle" font-family="sans-serif" font-weight="600" font-size="12" fill="#1E3A8A">Load Resume</text>
+                <rect x="340" y="120" width="120" height="40" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+                <text x="400" y="145" text-anchor="middle" font-family="sans-serif" font-weight="600" font-size="12" fill="#1E3A8A">Load JD</text>
+                <!-- Analyze -->
+                <rect x="220" y="230" width="160" height="40" rx="8" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+                <text x="300" y="255" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#064E3B">AI Brain Analysis</text>
+                <!-- Fetching -->
+                <rect x="90" y="340" width="120" height="40" rx="8" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+                <text x="150" y="365" text-anchor="middle" font-family="sans-serif" font-weight="600" font-size="12" fill="#4C1D95">Scrape Jobs</text>
+                <rect x="240" y="340" width="120" height="40" rx="8" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+                <text x="300" y="365" text-anchor="middle" font-family="sans-serif" font-weight="600" font-size="12" fill="#4C1D95">Web Search</text>
+                <rect x="390" y="340" width="120" height="40" rx="8" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+                <text x="450" y="365" text-anchor="middle" font-family="sans-serif" font-weight="600" font-size="12" fill="#4C1D95">Static Resources</text>
+            </svg>
+        </div>
+        """
+        st.markdown(graph_svg.replace('\n', ''), unsafe_allow_html=True)
     
-    st.markdown("### :material/help: Frequently Asked Questions")
+        st.markdown("### :material/help: Frequently Asked Questions")
     
-    with st.expander(":material/bar_chart: How is the ATS Score calculated?"):
-        st.markdown("""
-        The **ATS (Applicant Tracking System) Score** is an AI-generated metric (0-100) reflecting how well your resume matches the target job description. It evaluates three key areas:
+        with st.expander(":material/bar_chart: How is the ATS Score calculated?"):
+            st.markdown("""
+            The **ATS (Applicant Tracking System) Score** is an AI-generated metric (0-100) reflecting how well your resume matches the target job description. It evaluates three key areas:
         
-        1. **Keyword Match**: The overlap between the technical/soft skills extracted from your resume and the explicit/implicit requirements in the Job Description.
-        2. **Contextual Relevance**: How well your past experience aligns with the requested domain.
-        3. **Formatting**: Checks for unreadable data blocks or missing standard sections (like Education or Experience).
+            1. **Keyword Match**: The overlap between the technical/soft skills extracted from your resume and the explicit/implicit requirements in the Job Description.
+            2. **Contextual Relevance**: How well your past experience aligns with the requested domain.
+            3. **Formatting**: Checks for unreadable data blocks or missing standard sections (like Education or Experience).
         
-        *A score above 75% typically indicates a strong match.*
-        """)
+            *A score above 75% typically indicates a strong match.*
+            """)
         
-    with st.expander(":material/psychology: How does the AI Skill Gap Analysis work?"):
-        st.markdown("""
-        We use Google's **Gemini AI** to act as an expert career coach. The AI reads your formatted resume alongside the target job description. It extracts the skills you possess and compares them to the skills implicitly and explicitly demanded by the role, outputting a highly accurate "Gap List" of what you need to learn.
-        """)
+        with st.expander(":material/psychology: How does the AI Skill Gap Analysis work?"):
+            st.markdown("""
+            We use Google's **Gemini AI** to act as an expert career coach. The AI reads your formatted resume alongside the target job description. It extracts the skills you possess and compares them to the skills implicitly and explicitly demanded by the role, outputting a highly accurate "Gap List" of what you need to learn.
+            """)
         
-    with st.expander(":material/travel_explore: How do you scrape jobs in real-time?"):
-        st.markdown("""
-        When you submit your target role, our backend spins up a **Selenium-powered web scraper**. It actively navigates to top job boards (like Naukri) and extracts live, current job postings that match your desired title and location. This ensures you aren't looking at stale, cached job data.
-        """)
+        with st.expander(":material/travel_explore: How do you scrape jobs in real-time?"):
+            st.markdown("""
+            When you submit your target role, our backend spins up a **Selenium-powered web scraper**. It actively navigates to top job boards (like Naukri) and extracts live, current job postings that match your desired title and location. This ensures you aren't looking at stale, cached job data.
+            """)
         
-    with st.expander(":material/school: How are Learning Resources found?"):
-        st.markdown("""
-        For every skill gap identified by the AI, our graph uses **Tavily Web Search** to dynamically find the best, most up-to-date tutorials, articles, and courses on the internet. We also cross-reference these with a curated list of static high-quality learning platforms.
-        """)
+        with st.expander(":material/school: How are Learning Resources found?"):
+            st.markdown("""
+            For every skill gap identified by the AI, our graph uses **Tavily Web Search** to dynamically find the best, most up-to-date tutorials, articles, and courses on the internet. We also cross-reference these with a curated list of static high-quality learning platforms.
+            """)
+
+# ---- CAREER ADVISOR (always available, first tab) ----
+with TABS[0]:
+    render_career_advisor(st.session_state.get("pipeline_data"))

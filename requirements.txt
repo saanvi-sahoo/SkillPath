@@ -1,7 +1,7 @@
 # CPU-only PyTorch on Linux (Streamlit Cloud / Docker); default wheel elsewhere (macOS/Windows dev)
---extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.15.0+cpu ; sys_platform == "linux"
-torch ; sys_platform != "linux"
+# Direct wheel URL (not --extra-index-url: uv, used by Streamlit Cloud, would prefer that index for ALL packages)
+torch @ https://download.pytorch.org/whl/cpu/torch-2.15.0%2Bcpu-cp312-cp312-manylinux_2_28_x86_64.whl ; sys_platform == "linux" and platform_machine == "x86_64" and python_version == "3.12"
+torch ; sys_platform != "linux" or platform_machine != "x86_64" or python_version != "3.12"
 # --- Core API & Framework ---
 fastapi
 uvicorn

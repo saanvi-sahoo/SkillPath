@@ -39,6 +39,18 @@ Labels:
 - `out_of_scope`: refused.
 - `prompt_attack`: refused.
 
+## 2b. User interface (Streamlit, `src/frontend/advisor_ui.py`)
+The **Career Advisor is the first tab and is always available**, with or without an analysed CV. Before E24 it only appeared after Analyze Profile, which hid journey B entirely.
+
+| Element | Purpose |
+|---|---|
+| Status chips | Profile state (loaded: role + ATS / not analysed), knowledge base (MongoDB Atlas or local, 2,899 careers), live prompt version, "career & study questions only" |
+| Starter questions | *Using your profile* (gaps, ATS, matching jobs; shown only when a profile exists) and *Exploring careers & studies* (career fit, creative interests, interview prep, study techniques) |
+| Answer + **Sources** expander | The `[S#]` citations are listed under each answer (career ids, guide sections, job URLs) |
+| **Explain** toggle → "How this answer was built" | Router label + method (regex/kNN/LLM), latency, answering model, and a table of retrieved records with similarity scores. Made for team discussions, mentor demos and debugging |
+| 👍 / 👎 per answer | Appended to `reports/chat_logs/feedback.jsonl` (question, answer, route, prompt version). Down-voted answers become new eval cases or router anchors (prompt_scripting.md §7) |
+| New chat / Save | Clear the conversation / download it as Markdown |
+
 ## 3. Interfaces
 
 **Streamlit**: the "Career Advisor" tab calls `chat_with_agent(st.session_state["chat_messages"])`. The signature is unchanged from the old chatbot.
