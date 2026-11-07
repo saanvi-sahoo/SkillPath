@@ -291,6 +291,9 @@ def eval_paired(cases, versions, router_mode, sleep_s, expect_model, checkpoint)
             time.sleep(sleep_s if used_llm else 0.5)
         if stopped:
             print(f"[paired] STOP ({stopped})")
+            out["_meta"] = {"design": "paired", "expect_model": expect_model, "stopped": stopped,
+                            "completed_pairs": len(out[versions[0]]["rows"]), "n_cases": len(cases)}
+            checkpoint({k: v for k, v in out.items()})  # record the stop reason in the saved report
             break
         for v, res in pair.items():
             out[v]["rows"].append(_score_row(c, res, pv))

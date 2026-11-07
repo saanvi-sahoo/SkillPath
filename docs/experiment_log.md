@@ -4,6 +4,12 @@ Add one entry for every change to models, prompts, thresholds, chunking or data.
 
 ---
 
+## 2026-11-08: E25 v4 re-check on gpt-oss-120b: attempted, quota-bound
+- Strict paired run (`--versions v4 --expect-model openai/gpt-oss-120b --sleep 30`): case 1 (cs01) passed on 120b, then case 2 was answered by the gpt-oss-20b fallback (120b at the org's daily/per-minute cap), so the run stopped with 1/42 cases. **Not conclusive. Still pending.**
+- Bug fixed: when a paired run stopped, the saved `_meta.stopped` stayed `None`. The stop reason is now written to the report.
+- Re-run when the Groq org quota is fresh (about 100k tokens for the 30 LLM-answered cases):
+  `python -m src.eval.run_prompt_eval --router-modes knn --versions v4 --router hybrid --paired --expect-model openai/gpt-oss-120b --sleep 30`
+
 ## 2026-11-08: E24 Career Advisor UI redesign
 - **Problem:** the chatbot tab was rendered only inside `if pipeline_data`, so a student without a CV (journey B) never saw it.
 - **Change:** Career Advisor is now the always-visible first tab (`src/frontend/advisor_ui.py`): status chips, starter questions for both journeys, a sources expander, an "Explain" panel (route, retrieved records + scores, model, latency), thumbs feedback logged to `reports/chat_logs/feedback.jsonl`, and new-chat/save. The analysis tabs show guidance until a profile exists.
