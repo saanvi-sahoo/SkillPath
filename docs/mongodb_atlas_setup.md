@@ -43,6 +43,11 @@ atlas accessLists create 0.0.0.0/0 --comment "Deployed SkillPath app + team devi
 ```
 or Atlas → project *SkillPath AI* → **Security → Network Access → + Add IP Address → Allow access from anywhere → Confirm**.
 
+> ⚠️ **Select the right project first** (top-left project dropdown = **SkillPath AI**). The organisation also contains an empty **"Project 0"**. An entry added there shows **Inactive** (that project has no cluster) and does nothing for `skillpath-cluster`. This happened on 2026-11-08. Check with:
+> `atlas accessLists list --projectId 6aef8bc9b64186873a8b7606` (the SkillPath AI project). It must list `0.0.0.0/0`.
+
+**Secrets:** paste the **contents** of the generated TOML (3 `KEY = "value"` lines), not the file path. A path gives *"Invalid format: please enter valid TOML"*.
+
 **Step 2: give the deployed app the connection string.** In Streamlit Cloud → your app → **⋮ → Settings → Secrets**, paste:
 ```toml
 MONGODB_URI = "mongodb+srv://skillpath_cloud:<password>@skillpath-cluster.fozgv6t.mongodb.net/?retryWrites=true&w=majority&appName=SkillPathCloud"
