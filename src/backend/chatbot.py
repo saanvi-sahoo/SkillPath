@@ -24,6 +24,8 @@ from typing import Dict, List
 
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 
+from src.backend.feedback_store import learned_guidance
+from src.backend.question_profile import QUOTAS, answer_contract, profile_question
 from src.backend.scope_router import route
 from src.prompts.registry import ACTIVE, load_json, load_prompt
 from src.rag import config
@@ -66,7 +68,10 @@ def load_profile_summary(user_id: str | None = None) -> str:
         f"- Skills required by JD: {', '.join(mem.get('required_skills') or []) or 'n/a'}\n"
         f"- Skill gaps: {', '.join(mem.get('skill_gaps') or []) or 'none'}\n"
         f"- Matched jobs found: {len(mem.get('job_listings') or [])}\n"
-        f"- Summary: {(mem.get('career_summary') or '')[:600]}"
+        f"- Summary: {(mem.get('career_summary') or '')[:600]}\n"
+        # E33: short excerpts so questions about the JD or the resume can be answered from the actual text
+        f"- Target job description (excerpt): {' '.join(str(mem.get('job_description') or '').split()[:110])}\n"
+        f"- Resume (excerpt): {' '.join(str(mem.get('resume_text') or '').split()[:110])}"
     )
 
 
@@ -113,6 +118,14 @@ def _log(entry: Dict) -> None:
         pass
 
 
+def _relevance_filter(hits: List[Dict], margin: float = 0.15) -> List[Dict]:
+    """E32: per source, drop chunks far below that source's best match (noise that diluted answers)."""
+    best: Dict[str, float] = {}
+    for h in hits:
+        best[h["source"]] = max(best.get(h["source"], 0.0), h["score"])
+    return [h for h in hits if h["score"] >= best[h["source"]] - margin]
+
+
 def _few_shot_file(vnum: int) -> str:
     from src.prompts.registry import PROMPT_DIR
     for v in range(vnum, 2, -1):
@@ -129,7 +142,8 @@ def match_strength(hits: List[Dict]) -> str:
     return f"MATCH STRENGTH: {label} (best career-record similarity {best:.2f}; floor {config.CAREER_MIN_SCORE})"
 
 
-def build_messages(history: List[Dict], profile: str, context: str, system_version: str | None = None) -> list:
+def build_messages(history: List[Dict], profile: str, context: str, system_version: str | None = None,
+                   contract: str = "", learned: str = "") -> list:
     version = system_version or ACTIVE["advisor_system"]
     vnum = int(version.lstrip("v"))
     template = load_prompt("advisor_system", version)
@@ -140,7 +154,11 @@ def build_messages(history: List[Dict], profile: str, context: str, system_versi
             f"### Example {i}: {ex['situation']}\nUser: {ex['user']}\nAdvisor: {ex['assistant']}"
             for i, ex in enumerate(load_json(_few_shot_file(vnum)), 1)
         )
-        system = template.format(profile=profile, context=context, examples=examples)
+        fields = {"profile": profile, "context": context, "examples": examples}
+        if vnum >= 5:  # v5: per-question answer contract + guidance learned from user feedback
+            fields.update(contract=contract or "- Answer the question directly in the first sentence.",
+                          learned=learned or "(no feedback on similar questions yet)")
+        system = template.format(**fields)
     else:
         system = template.format(profile=profile, context=context)
     msgs = [SystemMessage(content=system)]
@@ -172,16 +190,33 @@ def answer(chat_history: List[Dict], system_version: str | None = None, router_m
         from src.backend.extractive_answer import compose_answer
 
         uid = user_id or config.DEFAULT_USER_ID
+        version = system_version or ACTIVE["advisor_system"]
+        v5 = int(version.lstrip("v")) >= 5
+        qp = profile_question(message)
+        out["question_profile"] = qp
         hits = []
         if decision["label"] == "career_study":
-            hits = retrieve(_retrieval_query(history), quotas=quotas, user_id=uid)
+            q_quotas = quotas or (QUOTAS[qp["type"]] if v5 else None)  # E32: retrieve what THIS question needs
+            hits = retrieve(_retrieval_query(history), quotas=q_quotas, user_id=uid)
+            if v5:
+                hits = _relevance_filter(hits)
         out["hits"] = hits
         context = format_context(hits) if hits else "(no retrieval for this message)"
         if decision["label"] == "career_study":
             context = match_strength(hits) + "\n\n" + context
         profile = profile_override if profile_override is not None else load_profile_summary(uid)
         memory = None if profile_override is not None else load_memory(uid)
-        msgs = build_messages(history, profile, context, system_version)
+        contract, learned = "", ""
+        if v5 and decision["label"] == "career_study":
+            contract = answer_contract(qp)
+            try:
+                g = learned_guidance(message, uid)
+                out["learned"] = {k: g[k] for k in ("n_similar", "n_good", "n_bad")}
+                learned = "\n".join(x for x in (g["avoid"], ("Answers users rated helpful for similar questions (follow their focus "
+                                                              "and level of detail, not their facts):\n" + g["examples"]) if g["examples"] else "") if x)
+            except Exception as e:  # noqa: BLE001 - learning must never break answering
+                print(f"[chatbot] feedback guidance unavailable: {e}")
+        msgs = build_messages(history, profile, context, system_version, contract=contract, learned=learned)
 
         def _extractive(reason: str):
             text = compose_answer(message, decision, hits, memory)
@@ -207,7 +242,8 @@ def answer(chat_history: List[Dict], system_version: str | None = None, router_m
     _log({"ts": datetime.now(timezone.utc).isoformat(), "message": message, "route": decision,
           "system_version": out["system_version"], "model": out.get("model"), "generation": out.get("generation"), "error": out.get("error"), "n_hits": len(out["hits"]),
           "hit_ids": [h.get("id") for h in out["hits"]], "top_score": out["hits"][0]["score"] if out["hits"] else None,
-          "latency_ms": out["latency_ms"], "answer_chars": len(out["text"])})
+          "latency_ms": out["latency_ms"], "answer_chars": len(out["text"]),
+          "question_type": (out.get("question_profile") or {}).get("type"), "learned": out.get("learned")})
     return out
 
 

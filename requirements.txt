@@ -1,7 +1,9 @@
 # CPU-only PyTorch on Linux (Streamlit Cloud / Docker); default wheel elsewhere (macOS/Windows dev)
 # Direct wheel URL (not --extra-index-url: uv, used by Streamlit Cloud, would prefer that index for ALL packages)
 torch @ https://download.pytorch.org/whl/cpu/torch-2.15.0%2Bcpu-cp312-cp312-manylinux_2_28_x86_64.whl ; sys_platform == "linux" and platform_machine == "x86_64" and python_version == "3.12"
-torch ; sys_platform != "linux" or platform_machine != "x86_64" or python_version != "3.12"
+# E32: Streamlit Cloud actually runs Python 3.14 unless 3.12 is chosen at deploy time -> CPU wheel for 3.14 too
+torch @ https://download.pytorch.org/whl/cpu/torch-2.15.0%2Bcpu-cp314-cp314-manylinux_2_28_x86_64.whl ; sys_platform == "linux" and platform_machine == "x86_64" and python_version == "3.14"
+torch ; sys_platform != "linux" or platform_machine != "x86_64" or (python_version != "3.12" and python_version != "3.14")
 # --- Core API & Framework ---
 fastapi
 uvicorn

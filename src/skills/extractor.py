@@ -75,9 +75,35 @@ def extract_skills(text: str) -> List[str]:
     return out
 
 
+# E33: not skills - degree fields and generic words that the dataset vocabulary contains
+NOT_SKILLS = {"computer science", "information technology", "mechanical engineering", "electrical engineering",
+              "electronics", "civil engineering", "engineering", "science", "commerce", "arts", "analysis", "design",
+              "reporting", "sales", "development", "research", "management", "support", "operations", "documentation",
+              "planning", "dashboards", "containers", "data entry", "regression", "responsibilities"}
+
+_REQ_HEAD = re.compile(r"(required|requirements|must[- ]have|skills( required)?|qualifications|key skills|tech stack)\s*[:\-]", re.I)
+_OTHER_HEAD = re.compile(r"\b(responsibilities|duties|what you(?:'ll| will) do|about (us|the company)|benefits|education|"
+                         r"nice[- ]to[- ]have|preferred)\s*[:\-]", re.I)
+
+
+def requirements_section(jd_text: str) -> str:
+    """E33: if the JD has a requirements/skills section, only that text lists *required* skills
+    (responsibilities like "build dashboards" or "design microservices" are not requirements)."""
+    m = _REQ_HEAD.search(jd_text or "")
+    if not m:
+        return jd_text or ""
+    rest = jd_text[m.end():]
+    end = _OTHER_HEAD.search(rest)
+    return rest[: end.start()] if end else rest
+
+
+def _clean(skills: List[str]) -> List[str]:
+    return [x for x in skills if x.lower() not in NOT_SKILLS]
+
+
 def rule_based_analysis(resume_text: str, jd_text: str) -> Dict:
-    cand = extract_skills(resume_text)
-    req = extract_skills(jd_text)
+    cand = _clean(extract_skills(resume_text))
+    req = _clean(extract_skills(requirements_section(jd_text)))
     cmp = compare(cand, req)
     ats = round(100 * (cmp["match_ratio"] or 0))
     return {

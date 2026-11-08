@@ -4,6 +4,14 @@ Add one entry for every change to models, prompts, thresholds, chunking or data.
 
 ---
 
+## 2026-11-08: E33 Profile lifecycle, fast roadmap, cleaner skill extraction, JD-aware questions
+- **Roadmap "not generating":** locally the 30-day plan was written by Mistral as one large JSON (**216 s**, looked broken). Now there's a curriculum-based template (ordered topics per skill in `src/roadmap/syllabus.py` + mini project + interview readiness): **0.7 s**. Hosted or visitor-key models still write the plan, with a 75 s hard timeout and template fallback. The deployed crash was the Python 3.14 magic issue (E32).
+- **"Profile summary not changing":** re-analysis did update. But removing CV/JD left the old profile (and the chatbot's memory of it), changed uploads showed no hint, and the old roadmap survived. Added input fingerprints, a stale banner with **Re-analyse now**, auto-clear on removal (not on refresh), **Clear profile** (memory file + profile chunks), provenance, per-visitor upload names and roadmap reset. Verified end to end with AppTest (5 steps).
+- **Rule-based extractor quality:** degree names ("Computer Science"), generic words ("Analysis", "Design") and JD *responsibilities* ("build dashboards") were counted as skills or requirements. Now the requirements section is parsed when present, plus a NOT_SKILLS list. Persona gaps went from 5–7 noisy entries to the exact ones (e.g. Microservices, Docker, Kubernetes, AWS).
+- **JD-aware question types:** `fit_analysis` (resume vs JD) and `jd_requirements`, with their own retrieval mix and answer contracts. The profile header now includes JD and resume excerpts.
+- **Atlas:** this Mac's IP rotated (49.37.117.224 → 49.37.113.161) and was added. A circuit breaker now serves the local copy while Atlas is unreachable.
+- **v5 vs v4** (51 cases, paired, gemini-3.1-flash-lite): **pass 0.98 vs 0.922**, precision 0.889 vs 0.667, avg 156 vs 201 words, citation rate 0.78 vs 0.89. **v5 activated.**
+
 ## 2026-11-08: E31 Deployed app: ImportError after redeploy (stale modules)
 - **Symptom (live, Streamlit Cloud):** `ImportError` at `byok_ui.py` line 11, `from src.utilities.llm_provider import (BYOK_PROVIDERS, …)`. The GitHub code was correct (all names present).
 - **Cause:** Streamlit Cloud pulls new code on push but keeps the same Python process. `src.utilities.llm_provider` was cached from the pre-BYOK version, while `frontend.py`/`byok_ui.py` were new, so the new names were missing from the cached module.

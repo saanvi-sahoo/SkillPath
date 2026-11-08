@@ -40,15 +40,27 @@ _ATTACK_PATTERNS = re.compile(
 )
 
 
-@lru_cache(maxsize=1)
-def _anchors():
+@lru_cache(maxsize=4)
+def _anchors_for(learned: tuple):
     data = load_json("scope_examples.json")
     texts, labels = [], []
     for label in LABELS:
         for t in data.get(label, []):
             texts.append(t)
             labels.append(label)
+    for t in learned:  # E32: questions >= 2 users reported as wrongly refused become career_study anchors
+        texts.append(t)
+        labels.append("career_study")
     return embed_texts(texts), labels
+
+
+def _anchors():
+    try:
+        from src.backend.feedback_store import learned_scope_anchors
+        learned = tuple(sorted(learned_scope_anchors()))
+    except Exception:  # noqa: BLE001
+        learned = ()
+    return _anchors_for(learned)
 
 
 def knn_classify(message: str) -> Dict:
@@ -91,6 +103,17 @@ def route(message: str, history: List[Dict] | None = None, mode: str | None = No
 
     if _ATTACK_PATTERNS.search(message):
         return done({"label": "prompt_attack", "method": "regex"})
+
+    # E32: questions that >= 2 users reported as wrongly refused are accepted when a new message matches them
+    try:
+        from src.backend.feedback_store import learned_scope_anchors
+        learned = learned_scope_anchors()
+        if learned:
+            sims = embed_texts(learned) @ embed_symmetric(message)
+            if float(sims.max()) >= 0.90:
+                return done({"label": "career_study", "method": "learned-from-feedback", "top_sim": round(float(sims.max()), 3)})
+    except Exception:  # noqa: BLE001
+        pass
 
     knn = knn_classify(message)
     if mode == "knn":

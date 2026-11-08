@@ -90,3 +90,34 @@ docs/             this documentation
 - **Google retired `gemini-2.5-flash`** (404, 2026-11-08). The pipeline's analyse, net_surf and summarise nodes had silently been running on Groq fallbacks. They now use `GEMINI_MODEL=gemini-3.5-flash` (in `brain.py`) and read `.text`, because Gemini 3.x returns content as a list.
 - **Groq retired `llama-3.3-70b-versatile` and `llama-3.1-8b-instant`** (checked against the Groq `/models` API on 2026-11-08). The old chatbot's primary model therefore always failed over silently. The chatbot now uses `gpt-oss-120b` and the router `gpt-oss-20b`. Models served at the time: gpt-oss-120b, gpt-oss-20b, gpt-oss-safeguard-20b, qwen3.8-27b, llama-prompt-guard-2 (22m/86m), allam-2-7b and whisper. 
 - `embedding_experiment/.venv` is a broken Python 3.13 venv from another machine (1.1 GB) and is safe to delete.
+
+## 6. User-experience architecture (E33)
+
+### 6.1 Profile lifecycle (one profile per visitor)
+```mermaid
+stateDiagram-v2
+    [*] --> NoProfile
+    NoProfile --> Analysed: Analyze Profile (CV + JD)
+    Analysed --> Stale: CV / JD / target role changed (fingerprint differs)
+    Stale --> Analysed: "Re-analyse now" (old roadmap discarded)
+    Analysed --> NoProfile: both CV and JD removed in this session<br/>or "Clear profile"
+    Stale --> NoProfile: "Clear profile"
+```
+| Mechanism | Implementation |
+|---|---|
+| **Input fingerprint** | sha1 of CV bytes/text + JD bytes/text + target role (`pipeline_service.input_fingerprint`). Stored with the analysis |
+| **Stale banner** | Shown when the current inputs differ from the analysed ones: *"…the profile below still shows the previous inputs"* + **Re-analyse now** |
+| **Auto-clear** | Removing both CV and JD in the same session clears the profile. A plain page refresh does **not** (inputs reset but `_had_inputs` is unset) |
+| **Clear profile** button | Removes session + cached state, the visitor's memory file and their private profile chunks (Atlas + local) via `clear_profile(uid)`, so the chatbot forgets it too |
+| **Provenance** | *"Analysed 08 Nov 14:05 from CV (file 'resume.pdf') and JD (pasted text)"* |
+| **Upload precedence** | If both an uploaded file and pasted text exist, a hint says the file is used |
+| **Upload isolation** | Temp files are named `skillpath_<visitor>_<fingerprint>_cv_<name>` (no collisions between visitors or versions) |
+| **Roadmap reset** | Every new analysis discards the previous roadmap |
+
+### 6.2 Response-time budget
+| Action | Local (Mistral) | Deployed keyless | Hosted / visitor key |
+|---|---|---|---|
+| Chat answer | 35–55 s (Mistral) | 0.2–1 s | 2–4 s |
+| Analyze Profile | ~15–30 s (rule-based analysis + Mistral summary + scraping) | ~15 s | ~20 s |
+| 30-day roadmap | **< 1 s** (curriculum template; was 216 s with Mistral JSON) | < 1 s | ≤ 75 s (AI-written, hard timeout → template) |
+| Atlas down | local copy after one 5–10 s timeout, then instant for 5 min (circuit breaker) | — | — |

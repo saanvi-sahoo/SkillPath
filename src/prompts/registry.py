@@ -17,7 +17,7 @@ PROMPT_DIR = Path(__file__).resolve().parent
 TEMPLATE_DIR = PROMPT_DIR / "templates"
 
 ACTIVE = {
-    "advisor_system": os.getenv("PROMPT_ADVISOR_SYSTEM", "v4"),  # E22: v4 > v3 (paired A/B) > v2 > v1
+    "advisor_system": os.getenv("PROMPT_ADVISOR_SYSTEM", "v5"),  # E32: v5 > v4 (paired, 51 cases) > v3 > v2 > v1
     "scope_router": os.getenv("PROMPT_SCOPE_ROUTER", "v1"),
     "refusal": "v1",
     "greeting": "v1",

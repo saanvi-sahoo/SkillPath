@@ -70,6 +70,8 @@ persistent_state = get_persistent_state().setdefault(UID, {})
 # Sync persistent state to session state so results survive page refresh
 if "pipeline_data" not in st.session_state and "pipeline_data" in persistent_state:
     st.session_state["pipeline_data"] = persistent_state["pipeline_data"]
+    st.session_state["analyzed_fp"] = persistent_state.get("analyzed_fp")
+    st.session_state["analyzed_meta"] = persistent_state.get("analyzed_meta")
 
 # ---- SIDEBAR (INPUT)
 with st.sidebar:
@@ -104,8 +106,44 @@ with st.sidebar:
     analyze_btn = st.button("Analyze Profile", type="primary", use_container_width=True)
 render_byok_sidebar()
 
+# ---- PROFILE LIFECYCLE (E33): fingerprint inputs, detect stale / removed inputs, clear on request ----
+from src.backend.pipeline_service import clear_profile as _clear_profile, input_fingerprint as _fingerprint
+_cv_part = uploaded_files.getvalue() if uploaded_files else (user_text or "")
+_jd_part = uploaded_jd_file.getvalue() if uploaded_jd_file else (jd_input or "")
+INPUT_FP = _fingerprint(_cv_part, _jd_part, job_pref)
+_has_inputs = bool(_cv_part) or bool(_jd_part)
+
+
+def _forget_profile(reason: str):
+    for k in ("pipeline_data", "roadmap", "analyzed_fp", "analyzed_meta"):
+        st.session_state.pop(k, None)
+    for k in ("pipeline_data", "job_pref", "analyzed_fp", "analyzed_meta"):
+        persistent_state.pop(k, None)
+    _clear_profile(UID)
+    st.session_state["_profile_notice"] = reason
+
+
+with st.sidebar:
+    if uploaded_files and user_text:
+        st.caption(":material/info: Using the **uploaded CV file**; remove it to analyse the pasted text instead.")
+    if uploaded_jd_file and jd_input:
+        st.caption(":material/info: Using the **uploaded JD file**; remove it to analyse the pasted text instead.")
+    if "pipeline_data" in st.session_state and st.button(":material/delete: Clear profile", use_container_width=True,
+                                                          help="Forget this analysis (also removes it from the chatbot's memory)"):
+        _forget_profile("Profile cleared.")
+        st.rerun()
+
+if _has_inputs:
+    st.session_state["_had_inputs"] = True
+elif st.session_state.get("_had_inputs") and "pipeline_data" in st.session_state:
+    # the visitor removed both CV and JD in this session (not just a page refresh) -> drop the old profile
+    st.session_state["_had_inputs"] = False
+    _forget_profile("The CV and job description were removed, so the previous profile was cleared.")
+if st.session_state.get("_profile_notice"):
+    st.info(st.session_state.pop("_profile_notice"))
+
 # ---- MAIN AREA
-if analyze_btn:
+if analyze_btn or st.session_state.pop("_reanalyze", False):
     if not (uploaded_files or user_text):
         st.warning("Please upload a CV or paste CV text.")
     elif not (uploaded_jd_file or jd_input):
@@ -114,7 +152,7 @@ if analyze_btn:
         resume_input = ""
         temp_dir = tempfile.gettempdir()
         if uploaded_files:
-            temp_path = os.path.join(temp_dir, uploaded_files.name)
+            temp_path = os.path.join(temp_dir, f"skillpath_{UID}_{INPUT_FP}_cv_{os.path.basename(uploaded_files.name)}")  # E33: no cross-visitor collisions
             with open(temp_path, "wb") as f:
                 f.write(uploaded_files.getvalue())
             resume_input = temp_path
@@ -123,7 +161,7 @@ if analyze_btn:
             
         jd_input_final = ""
         if uploaded_jd_file:
-            temp_path_jd = os.path.join(temp_dir, uploaded_jd_file.name)
+            temp_path_jd = os.path.join(temp_dir, f"skillpath_{UID}_{INPUT_FP}_jd_{os.path.basename(uploaded_jd_file.name)}")
             with open(temp_path_jd, "wb") as f:
                 f.write(uploaded_jd_file.getvalue())
             jd_input_final = temp_path_jd
@@ -270,9 +308,15 @@ if analyze_btn:
         from src.backend.pipeline_service import API_URL, PIPELINE_MODE, run_and_persist_sync
 
         def _store(data):
+            import datetime as _dt
+            meta = {"at": _dt.datetime.now().strftime("%d %b %H:%M"),
+                    "cv": f"file '{uploaded_files.name}'" if uploaded_files else "pasted text",
+                    "jd": f"file '{uploaded_jd_file.name}'" if uploaded_jd_file else ("URL" if str(jd_input).strip().startswith("http") else "pasted text")}
             st.session_state["pipeline_data"] = data
-            persistent_state["pipeline_data"] = data
-            persistent_state["job_pref"] = job_pref
+            st.session_state["analyzed_fp"] = INPUT_FP
+            st.session_state["analyzed_meta"] = meta
+            st.session_state.pop("roadmap", None)  # E33: an old roadmap must not survive a new analysis
+            persistent_state.update(pipeline_data=data, job_pref=job_pref, analyzed_fp=INPUT_FP, analyzed_meta=meta)
 
         payload = {"resume_input": resume_input, "jd_input": jd_input_final, "target_role": job_pref, "location": "",
                    "user_id": UID}
@@ -315,6 +359,16 @@ if "pipeline_data" in st.session_state:
     st.markdown("---")
     
     st.subheader("Profile Overview")
+    _meta = st.session_state.get("analyzed_meta") or {}
+    if _meta:
+        st.caption(f":material/history: Analysed {_meta.get('at')} from CV ({_meta.get('cv')}) and JD ({_meta.get('jd')}).")
+    if _has_inputs and st.session_state.get("analyzed_fp") and st.session_state["analyzed_fp"] != INPUT_FP:
+        _c1, _c2 = st.columns([4, 1], vertical_alignment="center")
+        _c1.warning("Your CV, job description or target role changed since this analysis. "
+                    "The profile below still shows the **previous** inputs.")
+        if _c2.button(":material/refresh: Re-analyse now", type="primary", use_container_width=True):
+            st.session_state["_reanalyze"] = True
+            st.rerun()
     
     # Career Summary
     if career_summary:
@@ -339,9 +393,8 @@ if "pipeline_data" in st.session_state:
         ":material/query_stats: Skills Analysis",
         ":material/work: Job Matches",
         ":material/school: Learning Paths & 30-Day Roadmap",
-        ":material/edit_document: Resume Builder",
     ])
-    tab1, tab2, tab3, tab5 = TABS[1], TABS[2], TABS[3], TABS[4]
+    tab1, tab2, tab3 = TABS[1], TABS[2], TABS[3]
     
     with tab1:
         st.markdown("#### Skill Match Breakdown")
@@ -542,7 +595,9 @@ if "pipeline_data" in st.session_state:
         rm_level = rc2.selectbox("Your current level", ["beginner", "intermediate", "advanced"], key="rm_level")
         if st.button("Generate 30-day roadmap", type="primary", key="rm_btn"):
             from src.roadmap.generator import generate_roadmap
-            with st.spinner("Planning your 30 days (about 40 s)..."):
+            from src.utilities.llm_provider import llm_provider as _lp
+            _eta = "up to ~75 s (AI-written plan)" if _lp() in ("api", "byok") else "a few seconds"
+            with st.spinner(f"Planning your 30 days ({_eta})..."):
                 st.session_state["roadmap"] = generate_roadmap(
                     data.get("target_role") or "", data.get("candidate_skills") or [],
                     required_skills=data.get("required_skills") or [], gaps=None if data.get("required_skills") else data.get("skill_gaps"),
@@ -550,8 +605,13 @@ if "pipeline_data" in st.session_state:
         rm = st.session_state.get("roadmap")
         if rm:
             v = rm["validation"]
-            st.success(f"Valid plan: {v['checks']['n_days']} days, all gaps covered, max {v['checks']['max_minutes']} min/day") if v["valid"] \
-                else st.warning(f"Plan repaired: {'; '.join(v['issues'][:3])}")
+            # E32: a plain statement, not a bare `a if c else b` expression. Streamlit "magic" tried to display
+            # the returned element and crashed under Python 3.14 on Streamlit Cloud (SyntaxError via ast.parse).
+            if v["valid"]:
+                _how = "written by the AI model" if rm.get("generation") == "llm" else "built from our skill curricula"
+                st.success(f"Valid plan: {v['checks']['n_days']} days, all gaps covered, max {v['checks']['max_minutes']} min/day ({_how})")
+            else:
+                st.warning("Plan repaired: " + "; ".join(v["issues"][:3]))
             if rm.get("deferred_gaps"):
                 st.info("Deferred to a second month: " + ", ".join(rm["deferred_gaps"]))
             import pandas as _pd
@@ -559,23 +619,16 @@ if "pipeline_data" in st.session_state:
                                                    "estimated_minutes", "completion_criteria"]],
                          hide_index=True, use_container_width=True)
 
-    with tab5:
-        st.markdown("#### Resume Builder")
-        st.info("Coming soon: AI-powered resume builder to help you dynamically update your resume with missing skills.")
-
 else:
     TABS = st.tabs([
         ":material/forum: Career Advisor",
         ":material/query_stats: Skills Analysis",
         ":material/work: Job Matches",
         ":material/school: Learning Paths & 30-Day Roadmap",
-        ":material/edit_document: Resume Builder",
     ])
     for _t, _what in ((TABS[2], "matched LinkedIn/Naukri jobs"), (TABS[3], "learning paths and your 30-day roadmap")):
         with _t:
             st.info(f"Upload your CV and a job description in the sidebar, then click **Analyze Profile** to see {_what}.")
-    with TABS[4]:
-        st.info("Coming soon: AI-powered resume builder to help you dynamically update your resume with missing skills.")
     with TABS[1]:
         st.info("Upload your CV and JD in the sidebar, then click **Analyze Profile**. Meanwhile, the **Career Advisor** tab is ready for questions.")
     

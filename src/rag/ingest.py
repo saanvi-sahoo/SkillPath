@@ -94,7 +94,11 @@ def ingest_profile_safely(user_id: Optional[str] = None) -> Optional[Dict]:
     try:
         if not build_profile_chunks(config.memory_path(uid), user_id=uid):
             return None
-        return ingest(["profile"], show_progress=False, user_id=uid)
+        try:
+            return ingest(["profile"], show_progress=False, user_id=uid)
+        except Exception as e:  # noqa: BLE001 - E32: Atlas unreachable -> keep the profile searchable locally
+            print(f"[ingest] Atlas profile write failed ({str(e)[:100]}); writing the local store instead")
+            return ingest(["profile"], backend="local", show_progress=False, user_id=uid)
     except Exception as e:  # noqa: BLE001
         print(f"[ingest] profile re-index failed: {e}")
         return None

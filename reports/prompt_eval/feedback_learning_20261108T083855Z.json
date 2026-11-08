@@ -1,0 +1,25 @@
+{
+  "ts": "2026-11-08T08:34:35.710672+00:00",
+  "store": "/var/folders/06/4wlkzhc53js6mtk_v_khnvg40000gn/T/tmploxo3cww/feedback.jsonl",
+  "tests": {
+    "negative_feedback_followed": {
+      "before_has_marker": false,
+      "after_has_marker": true,
+      "after_used_feedback": true,
+      "passed": true,
+      "before": "I recommend starting with the **Microsoft Certified: Power BI Data Analyst Associate (PL-300)**, as it is the industry-standard certification for validating your ability to model, visualize, and analyze data using Power BI.\n\nSince I don't have your profile details yet, I suggest running **\"Analyze Profile\"** on the dashboard after uploading your resume and a target job description. This will allow me to confirm if this certification aligns with your specific career goals or if there are other skill gaps you should prioritize first. \n\n**Next steps:**\n1. Review the official [Microsoft PL-300 exa",
+      "after": "The best certification to get for Power BI is the **Microsoft Certified: Power BI Data Analyst Associate (Exam PL-300)**.\n\n*   **Industry Standard:** It is the official Microsoft certification that validates your ability to model, visualize, and analyze data using Power BI.\n*   **Comprehensive Coverage:** The exam tests your proficiency in preparing data, modeling, visualizing, and deploying assets, which are core requirements for most data-related roles.\n*   **Preparation Path:** You can prepare for free using the official **Microsoft Learn** PL-300 learning path, which provides structured mo"
+    },
+    "positive_feedback_reused": {
+      "after_n_good": 1,
+      "passed": true
+    },
+    "router_learns_wrong_refusal": {
+      "before": "career_study",
+      "after": "career_study",
+      "passed": false
+    }
+  },
+  "model": "gemini-3.1-flash-lite",
+  "passed": 2
+}

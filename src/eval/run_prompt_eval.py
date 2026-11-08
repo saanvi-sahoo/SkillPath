@@ -65,6 +65,41 @@ def _resolve(spec, pv):
     return spec
 
 
+def _body(text: str) -> str:
+    return text.split("\n\n---\n**Sources**")[0]
+
+
+def _first_sentence(text: str) -> str:
+    b = re.sub(r"^[#>*\s_]+", "", _body(text).strip())
+    m = re.search(r"(.+?[.!?])(\s|$)", b, re.S)
+    return (m.group(1) if m else b)[:400]
+
+
+def _list_items(text: str) -> int:
+    lines = _body(text).splitlines()
+    numbered = [l for l in lines if re.match(r"^\s*\d+[.)]\s+\S", l)]
+    if numbered:
+        return len(numbered)
+    rows = [l for l in lines if re.match(r"^\s*\|", l) and not re.match(r"^\s*\|\s*:?-", l)]
+    if len(rows) >= 2:
+        return len(rows) - 1  # table rows minus header
+    return len([l for l in lines if re.match(r"^\s*[-*•]\s+\S", l) and not l.strip().startswith("- [S")])
+
+
+def _precision_checks(c: Dict, text: str, pv: Dict) -> Dict:
+    """E32: does the answer have the exact form the question asked for?"""
+    checks = {}
+    if c.get("list_count"):
+        checks["list_count"] = _list_items(text) == c["list_count"]
+    if c.get("max_words"):
+        checks["max_words"] = len(_body(text).split()) <= c["max_words"]
+    if c.get("first_sentence_any"):
+        opts = _resolve(c["first_sentence_any"], pv)
+        fs = _first_sentence(text).lower()
+        checks["first_sentence"] = any(str(o).lower() in fs for o in opts) if opts else None
+    return checks
+
+
 # ── Stage 1: router ─────────────────────────────────────────────────────────
 def eval_router(cases, modes, sleep_s=0.0) -> Dict:
     from src.backend.scope_router import route
@@ -214,6 +249,7 @@ def eval_answers(cases, versions, router_mode, use_judge, judge_model, sleep_s, 
                 checks["must_include_any"] = any(s.lower() in text.lower() for s in opts) if opts else None
             if c.get("expect_citation"):
                 checks["citation"] = bool(re.search(r"\[S\d+", text))
+            checks.update(_precision_checks(c, text, pv))
             if c.get("expect_question"):
                 checks["asks_question"] = text.count("?") >= 2  # E22: real clarification = >=2 questions
             if "must_not_include" in c:
@@ -316,6 +352,7 @@ def _score_row(c: Dict, res: Dict, pv: Dict) -> Dict:
         checks["must_include_any"] = any(s.lower() in text.lower() for s in opts) if opts else None
     if c.get("expect_citation"):
         checks["citation"] = bool(re.search(r"\[S\d+", text))
+    checks.update(_precision_checks(c, text, pv))
     if c.get("expect_question"):
         checks["asks_question"] = text.count("?") >= 2  # E22: real clarification = >=2 questions
     refused = bool(REFUSAL_PAT.search(text)) and len(text.split()) < 90
@@ -401,6 +438,7 @@ def rescore(path: str) -> Dict:
                 checks["must_include_any"] = any(s.lower() in text.lower() for s in opts) if opts else None
             if c.get("expect_citation"):
                 checks["citation"] = bool(re.search(r"\[S\d+", text))
+            checks.update(_precision_checks(c, text, pv))
             if c.get("expect_question"):
                 checks["asks_question"] = text.count("?") >= 2  # E22: real clarification = >=2 questions
             if "must_not_include" in c:

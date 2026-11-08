@@ -1,0 +1,25 @@
+{
+  "ts": "2026-11-08T08:40:57.099008+00:00",
+  "store": "/var/folders/06/4wlkzhc53js6mtk_v_khnvg40000gn/T/tmpv8v33csk/feedback.jsonl",
+  "tests": {
+    "negative_feedback_followed": {
+      "before_has_marker": true,
+      "after_has_marker": true,
+      "after_used_feedback": true,
+      "passed": true,
+      "before": "The **Microsoft PL-300 (Power BI Data Analyst Associate)** is the industry-standard certification for Power BI [S2].\n\n*   **Microsoft PL-300:** This is the primary certification for validating your ability to model, visualize, and analyze data using Power BI, which is highly relevant for roles like Financial Business Analyst [S3] or Analytics Consultant [S4].\n\n**Next steps:**\n1. Visit the official Microsoft Learn portal to review the exam skills outline.\n2. Pair your study with a hands-on project, such as building a dashboard for a public dataset, to apply the concepts you learn.\n3. If you hav",
+      "after": "The Microsoft PL-300: Power BI Data Analyst certification is the industry-standard choice for validating your skills in data visualization and business intelligence [S1].\n\n*   **Microsoft PL-300:** This is the primary certification for Power BI, covering data preparation, modeling, visualization, and deployment [S1].\n*   **Preparation Path:** Use the free \"Microsoft Learn\" PL-300 learning path, which provides structured modules directly from the source [S1].\n*   **Practical Application:** Pair this certification with a hands-on project to demonstrate your ability to turn data into actionable i"
+    },
+    "positive_feedback_reused": {
+      "after_n_good": 1,
+      "passed": true
+    },
+    "router_learns_wrong_refusal": {
+      "before": "out_of_scope",
+      "after": "career_study",
+      "passed": true
+    }
+  },
+  "model": "gemini-3.1-flash-lite",
+  "passed": 3
+}

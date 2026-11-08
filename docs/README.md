@@ -10,6 +10,7 @@ SkillPath AI (built on the previous batch's UpskillxAI) analyses a candidate's r
 
 | Doc | What it covers |
 |---|---|
+| [feedback_learning.md](feedback_learning.md) | **Precise answers + learning from 👍/👎**: question profiler, answer contract (prompt v5), feedback memory, router learning, verified tests |
 | [byok.md](byok.md) | **Bring your own API key** on the deployed app (Groq / Gemini / OpenAI / OpenRouter), per-session and never stored; engine resolution; deployment fixes |
 | [keyless_mode.md](keyless_mode.md) | **Run without Groq/Gemini**: retrieval-only and local-LLM (Ollama) modes, what replaces the LLM, measured quality, per-visitor isolation |
 | [runbook.md](runbook.md) | **Every process step by step**: setup, run, ingest, Atlas, evals, prompt changes, roadmap, deploy |

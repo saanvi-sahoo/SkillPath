@@ -35,20 +35,22 @@ STARTERS_EXPLORE = [
 ]
 
 
-def _log_feedback(idx: int, rating: int) -> None:
+def _qa(idx: int):
     msgs = st.session_state["advisor_messages"]
-    answer = msgs[idx]
     question = next((m["content"] for m in reversed(msgs[:idx]) if m["role"] == "user"), "")
+    return question, msgs[idx]
+
+
+def _save_feedback(idx: int, rating: str, reason: str = "", comment: str = "") -> None:
+    """E32: feedback goes to the learning store (Atlas when configured) used by prompt v5 for similar questions."""
+    question, ans = _qa(idx)
+    meta = ans.get("meta") or {}
     try:
-        FEEDBACK_LOG.parent.mkdir(parents=True, exist_ok=True)
-        with open(FEEDBACK_LOG, "a", encoding="utf-8") as f:
-            f.write(json.dumps({"ts": datetime.now(timezone.utc).isoformat(), "rating": "up" if rating == 1 else "down",
-                                "question": question, "answer": answer["content"],
-                                "route": (answer.get("meta") or {}).get("route"),
-                                "prompt_version": (answer.get("meta") or {}).get("system_version")},
-                               ensure_ascii=False) + "\n")
-    except Exception:  # noqa: BLE001
-        pass
+        from src.backend.feedback_store import record
+        record(question, ans["content"], rating, st.session_state.get("uid", "default"), reason=reason, comment=comment,
+               route=meta.get("route"), prompt_version=meta.get("system_version") or "")
+    except Exception as e:  # noqa: BLE001
+        st.caption(f"(feedback not saved: {e})")
 
 
 def _status_chips(data) -> None:
@@ -87,16 +89,38 @@ def _render_answer(i: int, msg: dict, show_debug: bool) -> None:
             c3.metric("Latency", f"{(meta.get('latency_ms') or 0) / 1000:.1f}s")
             c4.metric("Model", (meta.get("model") or "retrieval-only").split("/")[-1])
             if meta.get("generation"):
-                st.caption(f"Generation: {meta['generation']}")
+                st.caption(f"Generation: {meta['generation']} · question type: {meta.get('question_type') or '-'}")
             if meta.get("hits"):
                 st.caption("Retrieved from the knowledge base (cosine similarity; floor 0.30, career weak-match floor 0.40)")
                 st.dataframe(meta["hits"], hide_index=True, use_container_width=True)
             elif r.get("label") in ("out_of_scope", "prompt_attack"):
                 st.caption("Refused by the scope guardrail before any retrieval or LLM call.")
+    if meta.get("learned", {}).get("n_similar"):
+        lg = meta["learned"]
+        st.caption(f":material/school: Improved using feedback on {lg['n_similar']} similar question(s) "
+                   f"({lg['n_good']} helpful, {lg['n_bad']} not helpful).")
     fb = st.feedback("thumbs", key=f"advisor_fb_{i}")
-    if fb is not None and st.session_state.get(f"advisor_fb_logged_{i}") != fb:
-        st.session_state[f"advisor_fb_logged_{i}"] = fb
-        _log_feedback(i, fb)
+    done = st.session_state.get(f"advisor_fb_done_{i}")
+    if fb == 1 and done != "up":
+        _save_feedback(i, "up")
+        st.session_state[f"advisor_fb_done_{i}"] = "up"
+        st.toast("Thanks! Similar questions will learn from this answer.")
+    elif fb == 0 and done is None:
+        from src.backend.feedback_store import REASONS
+        with st.form(key=f"advisor_fb_form_{i}", border=True):
+            st.caption("What went wrong? Your feedback teaches the advisor for similar questions.")
+            reason = st.radio("Reason", list(REASONS), horizontal=True, key=f"advisor_fb_reason_{i}",
+                              format_func=lambda r: {"not_answered": "Didn't answer my question", "inaccurate": "Wrong / inaccurate",
+                                                     "too_long": "Too long / unfocused", "no_sources": "Not specific enough",
+                                                     "wrong_refusal": "Wrongly refused", "other": "Other"}[r])
+            comment = st.text_input("What should a good answer include? (optional)", key=f"advisor_fb_comment_{i}")
+            if st.form_submit_button("Send feedback"):
+                _save_feedback(i, "down", reason, comment)
+                st.session_state[f"advisor_fb_done_{i}"] = "down"
+                st.toast("Thanks! The advisor will use this for similar questions.")
+                st.rerun()
+    elif done == "down":
+        st.caption(":material/check: Feedback recorded. Similar questions will avoid this.")
 
 
 def _ask(question: str, uid: str) -> None:
@@ -114,7 +138,8 @@ def _ask(question: str, uid: str) -> None:
         msgs.append({"role": "assistant", "content": res.get("text") or "I couldn't generate an answer, please rephrase.",
                      "meta": {"route": res.get("route"), "model": res.get("model"), "latency_ms": res.get("latency_ms"),
                               "system_version": res.get("system_version"), "hits": hits,
-                              "generation": res.get("generation")}})
+                              "generation": res.get("generation"), "learned": res.get("learned") or {},
+                              "question_type": (res.get("question_profile") or {}).get("type")}})
     except Exception as e:  # noqa: BLE001
         msgs.append({"role": "assistant", "content": f"Sorry, something went wrong: {e}"})
 

@@ -26,6 +26,42 @@ _corpus_checked = False
 _corpus_lock = threading.Lock()
 
 
+# E32: circuit breaker. If Atlas is unreachable (e.g. this machine's IP is not in the Atlas access list ->
+# "SSL handshake failed / TLSV1_ALERT_INTERNAL_ERROR"), use the local copy of the same vectors for 5 minutes
+# instead of waiting for a timeout on every search.
+_atlas_down_until = 0.0
+BREAKER_S = 300
+
+
+def atlas_degraded() -> bool:
+    return time.time() < _atlas_down_until
+
+
+def _search(source: str, qv, k: int, user_id) -> List[Dict]:
+    global _atlas_down_until
+    backend = resolve_backend()
+    if backend == "mongo" and not atlas_degraded():
+        try:
+            return get_vector_store(source).search(qv, k=k, sources=[source], user_id=user_id)
+        except Exception as e:  # noqa: BLE001
+            _atlas_down_until = time.time() + BREAKER_S
+            print(f"[retriever] Atlas unavailable ({str(e)[:120]}) -> local vector store for {BREAKER_S}s")
+    try:
+        if backend == "mongo":
+            _ensure_local_fallback()
+        return get_vector_store(source, backend="local").search(qv, k=k, sources=[source], user_id=user_id)
+    except Exception as e:  # noqa: BLE001 - one bad source must not kill retrieval
+        print(f"[retriever] search failed for {source}: {e}")
+        return []
+
+
+def _ensure_local_fallback() -> None:
+    """Build the shared local corpora once if Atlas is down and no local copy exists yet."""
+    if not get_vector_store("careers", backend="local").count().get("careers"):
+        from src.rag.ingest import ingest
+        ingest(["careers", "knowledge", "jobs"], backend="local", show_progress=False)
+
+
 def ensure_local_corpus() -> None:
     """Local backend only: build the shared corpora once if the store is empty (fresh cloud container,
     e.g. Streamlit Community Cloud without MONGODB_URI). No-op on Atlas or when already built."""
@@ -54,10 +90,7 @@ def retrieve(query: str, quotas: Optional[Dict[str, int]] = None, user_id: str =
     for source, k in quotas.items():
         if k <= 0:
             continue
-        try:
-            hits.extend(get_vector_store(source).search(qv, k=k, sources=[source], user_id=user_id))
-        except Exception as e:  # noqa: BLE001 - one bad source must not kill retrieval
-            print(f"[retriever] search failed for {source}: {e}")
+        hits.extend(_search(source, qv, k, user_id))
     hits = [h for h in hits if h.get("score", 0) >= min_score]
     hits.sort(key=lambda h: h["score"], reverse=True)
     return hits
@@ -97,8 +130,7 @@ def retrieve_careers(query: str, top_k: int = 5, domain: Optional[str] = None, m
         return []
     ensure_local_corpus()
     floor = config.CAREER_MIN_SCORE if min_score is None else min_score
-    store = get_vector_store("careers")
-    hits = store.search(embed_query(query), k=top_k * (3 if domain else 1), sources=["careers"])
+    hits = _search("careers", embed_query(query), top_k * (3 if domain else 1), None)
     out = []
     for h in hits:
         m = h.get("metadata") or {}

@@ -1,2 +1,6 @@
 [theme]
 base="light"
+
+# E32: no Streamlit "magic" auto-display of bare expressions (crashed on Python 3.14)
+[runner]
+magicEnabled = false

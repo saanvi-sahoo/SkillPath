@@ -39,6 +39,9 @@ Labels:
 - `out_of_scope`: refused.
 - `prompt_attack`: refused.
 
+## 2-v5. Precise answers and feedback learning
+Since E32 every question is profiled (type, item count, length, format). Retrieval is tuned to the type, weakly related chunks are filtered out, and prompt v5 receives a per-question **answer contract** plus guidance learned from 👍/👎 on similar questions. Details: [feedback_learning.md](feedback_learning.md).
+
 ## 2a. Without an LLM
 The advisor also runs with **no generator** (`LLM_PROVIDER=none`) or degrades to it when every LLM fails: answers are composed from the cited records (`src/backend/extractive_answer.py`). See [keyless_mode.md](keyless_mode.md).
 
@@ -51,7 +54,7 @@ The **Career Advisor is the first tab and is always available**, with or without
 | Starter questions | *Using your profile* (gaps, ATS, matching jobs; shown only when a profile exists) and *Exploring careers & studies* (career fit, creative interests, interview prep, study techniques) |
 | Answer + **Sources** expander | The `[S#]` citations are listed under each answer (career ids, guide sections, job URLs) |
 | **Explain** toggle → "How this answer was built" | Router label + method (regex/kNN/LLM), latency, answering model, and a table of retrieved records with similarity scores. Made for team discussions, mentor demos and debugging |
-| 👍 / 👎 per answer | Appended to `reports/chat_logs/feedback.jsonl` (question, answer, route, prompt version). Down-voted answers become new eval cases or router anchors (prompt_scripting.md §7) |
+| 👍 / 👎 per answer | 👍 saved; 👎 asks *what went wrong* + *what a good answer should include*. Stored in Atlas `feedback_v1` (or a local file) and **used immediately for similar questions** (feedback_learning.md) |
 | New chat / Save | Clear the conversation / download it as Markdown |
 
 ## 3. Interfaces

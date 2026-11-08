@@ -42,7 +42,7 @@ ALIASES: Dict[str, str] = {
     "gcp": "GCP", "google cloud": "GCP", "google cloud platform": "GCP",
     "docker": "Docker", "k8s": "Kubernetes", "kubernetes": "Kubernetes",
     "ci/cd": "CI/CD", "cicd": "CI/CD", "ci cd": "CI/CD", "jenkins": "Jenkins", "terraform": "Terraform",
-    "git": "Git", "github": "GitHub", "linux": "Linux", "bash": "Bash", "shell scripting": "Bash",
+    "autocad": "AutoCAD", "matlab": "MATLAB", "git": "Git", "github": "GitHub", "linux": "Linux", "bash": "Bash", "shell scripting": "Bash",
     "spark": "Apache Spark", "apache spark": "Apache Spark", "pyspark": "Apache Spark",
     "airflow": "Apache Airflow", "apache airflow": "Apache Airflow", "kafka": "Apache Kafka", "apache kafka": "Apache Kafka",
     "hadoop": "Hadoop", "etl": "ETL", "data warehousing": "Data Warehousing", "snowflake": "Snowflake",

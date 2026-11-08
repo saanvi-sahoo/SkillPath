@@ -129,5 +129,8 @@ Example (live `/chat`, 2026-11-08): *"I enjoy protecting systems from hackers, w
 | F18 | Deployed app: "GEMINI_API_KEY is missing from your .env file!" | `net_surf.py` required the key at import time | Fixed (E29): the key is optional; the web-resource node is skipped without keys |
 | F19 | A visitor wants full AI answers on the free deployment | No server keys | Sidebar → *Use your own API key* (byok.md); their key, their session only |
 | F20 | Deployed app: `ImportError … cannot import name X` right after a push | Streamlit Cloud keeps the process; old `src.*` modules stay cached | Stale-module guard in `frontend.py` (E31) re-imports `src.*` when the code fingerprint changes; or ⋮ → Reboot app |
+| F21 | Deployed app: roadmap button → `SyntaxError` (ast.parse) on Python 3.14 | A bare `st.success(...) if ok else st.warning(...)` expression was auto-displayed by Streamlit "magic" | Plain if/else; magic disabled in `.streamlit/config.toml`; test forbids bare expressions (E32) |
+| F22 | Atlas: `SSL handshake failed … TLSV1_ALERT_INTERNAL_ERROR` | This machine's public IP is not in the Atlas access list (IP changed) | Retrieval falls back to the local vector copy for 5 min (circuit breaker); fix by adding the IP in Atlas → Network Access |
+| F23 | Answer ignores what was asked (too long, wrong count, padding) | Generic prompt | Prompt v5 answer contract + per-type retrieval; users can 👎 "Didn't answer my question", which shapes similar answers |
 | F15 | No FastAPI server (Streamlit Cloud) | Only one process allowed | `PIPELINE_MODE=auto/inprocess` runs the pipeline inside Streamlit |
 | F12 | New teammate can't connect to Atlas | Their IP isn't in Network Access | `atlas accessLists create --currentIp` or add it in the UI |

@@ -42,3 +42,29 @@ API_URL = os.getenv("SKILLPATH_API_URL", "http://127.0.0.1:8000")
 # inprocess: run the LangGraph pipeline inside the Streamlit process (Streamlit Cloud)
 # auto     : try the API, fall back to in-process if it is unreachable
 PIPELINE_MODE = os.getenv("PIPELINE_MODE", "auto").lower()
+
+
+def clear_profile(user_id: str) -> Dict:
+    """E33: forget a visitor's analysis everywhere: memory file + private profile chunks (Atlas and local),
+    so the chatbot and roadmap stop using an old CV/JD."""
+    out = {"memory_file": False, "chunks_deleted": 0}
+    path = config.memory_path(user_id)
+    if path.exists():
+        path.unlink()
+        out["memory_file"] = True
+    from src.rag.vector_store import get_vector_store, resolve_backend
+    for backend in {"local", resolve_backend()}:
+        try:
+            out["chunks_deleted"] += get_vector_store("profile", backend).delete("profile", user_id=user_id)
+        except Exception as e:  # noqa: BLE001
+            print(f"[clear_profile] {backend}: {e}")
+    return out
+
+
+def input_fingerprint(cv_bytes_or_text, jd_bytes_or_text, role: str) -> str:
+    import hashlib
+    h = hashlib.sha1()
+    for part in (cv_bytes_or_text, jd_bytes_or_text, (role or "").strip().lower()):
+        h.update(part if isinstance(part, bytes) else str(part or "").strip().encode())
+        h.update(b"|")
+    return h.hexdigest()[:16]

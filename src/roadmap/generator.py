@@ -42,6 +42,7 @@ PREREQS: Dict[str, List[str]] = {
 REVIEW_DAYS = (7, 14, 21, 28)
 PROJECT_DAYS = (29, 30)
 MAX_GAPS = 8
+LLM_TIMEOUT_S = 75
 
 
 class RoadmapDay(BaseModel):
@@ -130,10 +131,16 @@ def _fallback_day(s: Dict, minutes: int, idx_in_skill: int) -> Dict:
                 "learning_task": "Plan a small project that uses the skills from this roadmap",
                 "practice_task": "Build and push the project to GitHub with a README",
                 "estimated_minutes": minutes, "completion_criteria": "Project runs and README explains it"}
-    return {**s, "topic": f"{skill} - part {idx_in_skill}", "prerequisite": "none" if idx_in_skill == 1 else f"{skill} - part {idx_in_skill - 1}",
-            "learning_task": f"Study {skill} fundamentals (part {idx_in_skill}) from one structured course",
-            "practice_task": f"Complete 3 hands-on {skill} exercises", "estimated_minutes": minutes,
-            "completion_criteria": f"3 {skill} exercises completed and notes written"}
+    # E33: curriculum-based template (ordered topics per skill) instead of "part 1/2/3" placeholders
+    from src.roadmap.syllabus import topics_for
+    topics = topics_for(skill)
+    t = topics[min(idx_in_skill - 1, len(topics) - 1)]
+    extra = idx_in_skill - len(topics)
+    topic = t[0] if extra <= 0 else f"{t[0]} (deeper practice {extra})"
+    prev = "none" if idx_in_skill == 1 else topics[min(idx_in_skill - 2, len(topics) - 1)][0]
+    return {**s, "topic": topic, "prerequisite": prev, "learning_task": t[1],
+            "practice_task": t[2] if extra <= 0 else f"Extend the previous {skill} exercise with a harder variant",
+            "estimated_minutes": minutes, "completion_criteria": t[3]}
 
 
 def fill_with_llm(skel: List[Dict], target_role: str, level: str, minutes: int, candidate: List[str]) -> List[Dict]:
@@ -212,12 +219,22 @@ def generate_roadmap(target_role: str, candidate_skills: List[str], required_ski
     source = "template"
     days: List[Dict] = []
     from src.utilities.llm_provider import llm_provider
-    if use_llm and llm_provider() != "none":
+    # E33: local Mistral needed ~216 s for the 30-day JSON (looked broken in the UI) -> curriculum template.
+    # Hosted / visitor-key models still write the days, with a hard time limit and template fallback.
+    if use_llm and llm_provider() in ("api", "byok"):
+        import concurrent.futures
+        import contextvars
+        ctx = contextvars.copy_context()  # carries the visitor's own key (BYOK) into the worker thread
+        ex = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+        fut = ex.submit(ctx.run, fill_with_llm, sk["skeleton"], target_role, level, daily_minutes, normalize_all(candidate_skills))
         try:
-            days = fill_with_llm(sk["skeleton"], target_role, level, daily_minutes, normalize_all(candidate_skills))
+            days = fut.result(timeout=LLM_TIMEOUT_S)
             source = "llm"
-        except Exception as e:  # noqa: BLE001
-            print(f"[roadmap] LLM fill failed, using template: {str(e)[:150]}")
+        except Exception as e:  # noqa: BLE001 - timeout or model error
+            print(f"[roadmap] LLM fill unavailable ({type(e).__name__}: {str(e)[:120]}); using curriculum template")
+            source = "template (LLM timed out)" if isinstance(e, concurrent.futures.TimeoutError) else "template"
+        finally:
+            ex.shutdown(wait=False, cancel_futures=True)
     val = validate_and_repair(days, sk["skeleton"], daily_minutes)
     res = profile_resources(user_id)
     for d in val["days"]:

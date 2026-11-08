@@ -39,7 +39,7 @@ Day-to-day: create a branch per feature (`git checkout -b feature/<name>`), push
 2. Open the **prefilled deploy form**:
    https://share.streamlit.io/deploy?repository=saanvi-sahoo/SkillPath&branch=main&mainModule=src/frontend/frontend.py
    (or **Create app → Deploy a public app from GitHub** → repo `saanvi-sahoo/SkillPath`, branch `main`, main file `src/frontend/frontend.py`). Pick an App URL, e.g. `skillpath-ai`.
-3. **Advanced settings** → Python **3.12** (required: the CPU torch wheel in `requirements.txt` is pinned for cp312 x86_64). Paste the **Secrets** (TOML; root-level keys become environment variables). Choose one variant:
+3. **Advanced settings** → Python **3.12** recommended. If the default **3.14** was used (as in our live deployment), it also works: `requirements.txt` pins CPU torch wheels for both cp312 and cp314 (E32). Paste the **Secrets** (TOML; root-level keys become environment variables). Choose one variant:
 
    **Variant 0: zero secrets (keyless, E26) + visitors' own keys (E29).** Leave Secrets **empty**. Visitors can still turn on full AI answers with their own Groq/Gemini/OpenAI/OpenRouter key in the sidebar ([byok.md](byok.md)). With no keys, the app resolves to `LLM_PROVIDER=none` (retrieval-only answers, rule-based analysis, template roadmap), a local vector store built on first use, and the in-process pipeline. No API key ever leaves your machine. See [keyless_mode.md](keyless_mode.md).
 

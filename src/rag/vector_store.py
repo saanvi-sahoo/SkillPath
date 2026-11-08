@@ -266,7 +266,7 @@ def _mongo_client():
 
         if not config.MONGODB_URI:
             raise ValueError("MONGODB_URI is not set. Add it to .env (see docs/mongodb_atlas_setup.md).")
-        _client = MongoClient(config.MONGODB_URI, serverSelectionTimeoutMS=10000, appname="skillpath-ai-rag")
+        _client = MongoClient(config.MONGODB_URI, serverSelectionTimeoutMS=5000, connectTimeoutMS=5000, appname="skillpath-ai-rag")
     return _client
 
 
