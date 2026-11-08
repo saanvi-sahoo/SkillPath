@@ -126,5 +126,7 @@ Example (live `/chat`, 2026-11-08): *"I enjoy protecting systems from hackers, w
 | F14 | Naukri scraper fails (no Chrome on the host) | Selenium needs a browser | That scraper returns []; LinkedIn results and the rest of the pipeline continue |
 | F16 | No API keys at all / every LLM capped | Keyless setup or quota exhaustion | `LLM_PROVIDER=auto` resolves to local Ollama or retrieval-only; at runtime the chatbot degrades to retrieval-only answers, the pipeline to rule-based analysis + template summary (keyless_mode.md) |
 | F17 | Two visitors use the app at the same time | Shared state | Per-visitor id, profile file and `user_id`-filtered retrieval; nobody sees another visitor's analysis |
+| F18 | Deployed app: "GEMINI_API_KEY is missing from your .env file!" | `net_surf.py` required the key at import time | Fixed (E29): the key is optional; the web-resource node is skipped without keys |
+| F19 | A visitor wants full AI answers on the free deployment | No server keys | Sidebar → *Use your own API key* (byok.md); their key, their session only |
 | F15 | No FastAPI server (Streamlit Cloud) | Only one process allowed | `PIPELINE_MODE=auto/inprocess` runs the pipeline inside Streamlit |
 | F12 | New teammate can't connect to Atlas | Their IP isn't in Network Access | `atlas accessLists create --currentIp` or add it in the UI |

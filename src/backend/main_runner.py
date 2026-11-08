@@ -66,7 +66,8 @@ class GraphState(TypedDict):
 
 
 # Dynamically import the scraper because the file name contains a dot
-spec = importlib.util.spec_from_file_location("naukri_scraper", "src/backend/scraper/naukri.com_scraper.py")
+spec = importlib.util.spec_from_file_location(  # E29: path relative to this file, not the working directory
+    "naukri_scraper", os.path.join(os.path.dirname(os.path.abspath(__file__)), "scraper", "naukri.com_scraper.py"))
 naukri_scraper = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(naukri_scraper)
 
@@ -299,7 +300,8 @@ async def net_surf_node(state: GraphState) -> GraphState:
         "learning_path": state.get("learning_path", [])
     }
     # E26: web resources are optional - no Tavily key / no LLM must not fail the whole pipeline
-    if not os.getenv("TAVILY_API_KEY"):
+    from src.utilities.llm_provider import get_secret
+    if not get_secret("TAVILY_API_KEY"):
         print("[net_surf] TAVILY_API_KEY not set -> skipping web resources (static course links still shown)")
         return {"search_queries": [], "skill_resources": ""}
     try:

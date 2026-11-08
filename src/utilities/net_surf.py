@@ -47,10 +47,9 @@ logger.add(
 
 from src.utilities.env import load_env; load_env()
 
+# E29: no import-time key requirement. Deployed keyless apps have no GEMINI key; the LLM used here comes
+# from brain.get_robust_llm (server keys, the visitor's own key, local Ollama) and the node is optional.
 api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
-if not api_key:
-    logger.error("GEMINI_API_KEY is missing from your .env file!")
-    raise ValueError("GEMINI_API_KEY is missing from your .env file! Please add it.")
 
 from src.utilities.brain import get_robust_llm, GEMINI_MODEL
 try:  # E26: unused module-level client; must not fail import in keyless mode (LLM_PROVIDER=none)
@@ -96,10 +95,10 @@ async def add_queries_to_state(state: SkillBrainState):
 async def get_skill_resources(state: SkillBrainState):
     queries = state.get("search_queries", [])
     
-    tavily_key = os.getenv("TAVILY_API_KEY")
+    from src.utilities.llm_provider import get_secret
+    tavily_key = get_secret("TAVILY_API_KEY")  # visitor's own Tavily key first, then server env
     if not tavily_key:
-        logger.error("TAVILY_API_KEY is missing from your .env file!")
-        raise ValueError("TAVILY_API_KEY is missing from your .env file! Please add it.")
+        raise ValueError("TAVILY_API_KEY not configured (web resources skipped)")
         
     search_tool = TavilySearchResults(max_results=3, tavily_api_key=tavily_key)
     

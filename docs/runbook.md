@@ -34,6 +34,11 @@ Restart the backend after any `.env` change, since environment variables are rea
 | `POST /skills/compare` | Exact skill-gap comparison |
 | `/jobs`, `/profiles`, … | Inherited scraping endpoints |
 
+## 2b. Choose the AI engine
+- Local (default for this project): `.env` → `LLM_PROVIDER=local`, `OLLAMA_MODEL=mistral` (needs `ollama serve` + `ollama pull mistral`).
+- No LLM: `LLM_PROVIDER=none`. Hosted: `LLM_PROVIDER=api` + keys.
+- Any visitor: sidebar → *AI engine & your own API key* (docs/byok.md).
+
 ## 3. Audit the career dataset
 ```bash
 python -m src.eval.career_data_quality

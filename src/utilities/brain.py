@@ -241,6 +241,9 @@ def get_base_llm(model: str = GEMINI_MODEL, temperature: float = 0.2, api_key_en
     # Force max_retries to 0 so we fail instantly to the next model in the fallback chain instead of waiting
     kwargs.setdefault("max_retries", 0)
     
+    if model == "byok":
+        from src.utilities.llm_provider import build_user_llm, session_llm
+        return build_user_llm(session_llm(), temperature)
     if model.startswith("ollama:"):
         from src.utilities.llm_provider import get_local_llm
         return get_local_llm(temperature)
@@ -275,6 +278,9 @@ def get_robust_llm(primary_model: str = GEMINI_MODEL, temperature: float = 0.2, 
     provider = llm_provider()
     if provider == "none":
         raise LLMUnavailable("LLM_PROVIDER=none (no generator configured)")
+    if provider == "byok":  # visitor's own key: their model only, no server keys spent (E29)
+        from src.utilities.llm_provider import build_user_llm, session_llm
+        return build_user_llm(session_llm(), temperature)
     if provider == "local":
         return get_local_llm(temperature)
     primary_llm = get_base_llm(primary_model, temperature=temperature, **kwargs)
@@ -301,6 +307,9 @@ def get_robust_structured_llm(schema, primary_model: str = GEMINI_MODEL, tempera
     provider = llm_provider()
     if provider == "none":
         raise LLMUnavailable("LLM_PROVIDER=none (no generator configured)")
+    if provider == "byok":
+        from src.utilities.llm_provider import build_user_llm, session_llm
+        return build_user_llm(session_llm(), temperature).with_structured_output(schema)
     if provider == "local":
         return get_local_llm(temperature).with_structured_output(schema)
     primary_llm = get_base_llm(primary_model, temperature=temperature, **kwargs).with_structured_output(schema)
@@ -398,9 +407,12 @@ def analyse_node(state: SkillBrainState) -> SkillBrainState:
     from src.utilities.llm_provider import llm_provider, ollama_available, OLLAMA_MODEL
     from src.skills.extractor import rule_based_analysis
     provider = llm_provider()
-    if provider == "none":
+    if provider in ("none", "local"):
+        # E29: with local Mistral 7B the extraction hallucinated JD requirements (e.g. a "Kubernetes" gap for a
+        # data-analyst JD that never mentions it). Skill gaps must be exact, so local mode uses the deterministic
+        # extractor; Mistral is still used for chat answers and the summary.
         return {**state, **rule_based_analysis(resume, jd)}
-    models = [f"ollama:{OLLAMA_MODEL}"] if provider == "local" else \
+    models = ["byok"] if provider == "byok" else [f"ollama:{OLLAMA_MODEL}"] if provider == "local" else \
         list(_FREE_TIER_MODELS) + ([f"ollama:{OLLAMA_MODEL}"] if ollama_available() else [])
     for model in models:
         # Each model gets up to 2 attempts (handles transient 429 bursts)

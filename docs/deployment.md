@@ -41,7 +41,7 @@ Day-to-day: create a branch per feature (`git checkout -b feature/<name>`), push
    (or **Create app → Deploy a public app from GitHub** → repo `saanvi-sahoo/SkillPath`, branch `main`, main file `src/frontend/frontend.py`). Pick an App URL, e.g. `skillpath-ai`.
 3. **Advanced settings** → Python **3.12** (required: the CPU torch wheel in `requirements.txt` is pinned for cp312 x86_64). Paste the **Secrets** (TOML; root-level keys become environment variables). Choose one variant:
 
-   **Variant 0: zero secrets (keyless, E26).** Leave Secrets **empty**. With no keys, the app resolves to `LLM_PROVIDER=none` (retrieval-only answers, rule-based analysis, template roadmap), a local vector store built on first use, and the in-process pipeline. No API key ever leaves your machine. See [keyless_mode.md](keyless_mode.md).
+   **Variant 0: zero secrets (keyless, E26) + visitors' own keys (E29).** Leave Secrets **empty**. Visitors can still turn on full AI answers with their own Groq/Gemini/OpenAI/OpenRouter key in the sidebar ([byok.md](byok.md)). With no keys, the app resolves to `LLM_PROVIDER=none` (retrieval-only answers, rule-based analysis, template roadmap), a local vector store built on first use, and the in-process pipeline. No API key ever leaves your machine. See [keyless_mode.md](keyless_mode.md).
 
    **Variant A: works immediately, no Atlas network change.** The app builds its career/guide/job index locally on the first chat (~15–20 s, then cached for the container's life). Profile chunks live in the container and are lost on restart.
    ```toml

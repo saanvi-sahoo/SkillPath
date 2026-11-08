@@ -103,8 +103,9 @@ def route(message: str, history: List[Dict] | None = None, mode: str | None = No
         return done({**knn, "method": "knn"})
 
     from src.utilities.llm_provider import llm_provider
-    if llm_provider() == "none":
-        # E26: no LLM -> kNN on the follow-up expanded with the previous user turn
+    if llm_provider() in ("none", "local"):
+        # E26: no LLM -> kNN on the follow-up expanded with the previous user turn.
+        # E29: also for local Ollama (a 7B router call adds 10-40 s; kNN allow/refuse accuracy is 1.0 on 42 cases)
         prev = next((m["content"] for m in reversed(history) if m["role"] == "user"), "")
         k2 = knn_classify(f"{prev} {message}") if (is_followup and prev) else knn
         return done({**k2, "method": "knn (no-LLM)"})

@@ -4,6 +4,15 @@ Add one entry for every change to models, prompts, thresholds, chunking or data.
 
 ---
 
+## 2026-11-08: E29 Bring-your-own-key + deployed-app fixes
+- **Reported:** the deployed app showed `Pipeline failed: GEMINI_API_KEY is missing from your .env file!` → `net_surf.py` raised at import time. Fixed (now optional).
+- **Also found and fixed:** a working-directory-relative Naukri scraper path; `webdriver_manager` calling `load_dotenv()` at import (keyless instances silently got the repo keys; now `PYTHON_DOTENV_DISABLED=1` under `SKILLPATH_NO_DOTENV=1`); `.env` overriding real env vars (now `override=False`).
+- **BYOK:** sidebar provider choice (Groq / Gemini / OpenAI / OpenRouter), key, live "Load models", optional Tavily key, "Test & use". The key is per session via a ContextVar, never in os.environ, disk or logs, and errors are redacted. Used for chat, router, analysis, summary, roadmap and web resources, with no server-key fallback.
+- **Local default:** `LLM_PROVIDER=local` (Mistral via Ollama) in the local `.env`. The router uses kNN only with local/none. **Skill analysis uses the rule-based extractor in local mode**, because Mistral 7B invented a "Kubernetes" gap for a JD without it.
+- **Deployed path end to end** (no keys/.env, in-process, AppTest from another folder): Analyze Profile 15.2 s, no errors, exact gaps, 20 jobs.
+- **Verified:** Gemini key → 31 models, test `OK`. Visitor A answers via `gemini-3.1-flash-lite`, Analyze Profile via the key (19 s), LLM roadmap valid. Visitor B (no key) is retrieval-only and unaffected. Key absent from os.environ and the chat log.
+- **Tests:** 21 → **25** (thread isolation, label/secret/redaction, model builders, no-key/no-dotenv pipeline import).
+
 ## 2026-11-08: E28 Bug: app failed to start (`ModuleNotFoundError: No module named 'src'`)
 - **Cause:** the E26 refactor that centralised `.env` loading placed `from src.utilities.env import load_env` *above* the line that adds the project root to `sys.path` in `frontend.py`. `streamlit run` (and Streamlit Cloud) only put the script's own folder on `sys.path`, so every page load failed. The headless tests missed it because they ran from the repo root.
 - **Fix:** `sys.path.insert(0, <root>)` is now the first thing in `frontend.py`.

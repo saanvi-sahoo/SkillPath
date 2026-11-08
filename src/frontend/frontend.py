@@ -20,6 +20,7 @@ if not hasattr(langchain_core.exceptions, "ContextOverflowError"):
 # ----------------------------------------------
 
 from src.frontend.advisor_ui import render_career_advisor
+from src.frontend.byok_ui import apply_session_llm, render_byok_sidebar
 st.set_page_config(page_title="SkillPath AI", page_icon=":material/school:", layout="wide")
 
 st.markdown("<h1 style='text-align: center; margin-bottom: 0;'>SkillPath AI</h1>", unsafe_allow_html=True)
@@ -39,6 +40,7 @@ if "uid" not in st.session_state:
 if st.query_params.get("u") != st.session_state["uid"]:
     st.query_params["u"] = st.session_state["uid"]
 UID = st.session_state["uid"]
+apply_session_llm()  # E29: this visitor's own API key (if any) for this run only
 persistent_state = get_persistent_state().setdefault(UID, {})
 
 # Sync persistent state to session state so results survive page refresh
@@ -76,6 +78,7 @@ with st.sidebar:
     job_pref = st.text_input("Target Role", placeholder="e.g., Senior Software Engineer")
     
     analyze_btn = st.button("Analyze Profile", type="primary", use_container_width=True)
+render_byok_sidebar()
 
 # ---- MAIN AREA
 if analyze_btn:
@@ -251,7 +254,9 @@ if analyze_btn:
                    "user_id": UID}
         try:
             data, api_unreachable = None, False
-            if PIPELINE_MODE in ("api", "auto"):
+            from src.utilities.llm_provider import session_llm as _sess
+            mode = "inprocess" if _sess() else PIPELINE_MODE  # E29: the API server can't see this visitor's key
+            if mode in ("api", "auto"):
                 try:
                     response = requests.post(f"{API_URL}/pipeline/run", json=payload, timeout=600)
                     if response.status_code == 200:
@@ -259,15 +264,16 @@ if analyze_btn:
                     else:
                         st.error(f"Error from backend: {response.text}")
                 except requests.exceptions.ConnectionError:
-                    if PIPELINE_MODE == "api":
+                    if mode == "api":
                         raise
                     api_unreachable = True
-            if PIPELINE_MODE == "inprocess" or (PIPELINE_MODE == "auto" and api_unreachable):
+            if mode == "inprocess" or (mode == "auto" and api_unreachable):
                 data = run_and_persist_sync(**payload)  # no API server reachable: run the pipeline here
             if data is not None:
                 _store(data)
         except Exception as e:
-            st.error(f"Pipeline failed: {e}. Locally, make sure the API runs on {API_URL} (or set PIPELINE_MODE=inprocess).")
+            from src.utilities.llm_provider import redact as _redact, session_llm as _sess2
+            st.error(f"Pipeline failed: {_redact(str(e), (_sess2() or {}).get('api_key', ''))}")
         finally:
             loading_placeholder.empty()
 
