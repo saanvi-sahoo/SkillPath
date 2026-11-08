@@ -234,3 +234,6 @@ src/backend/loaders/resume_data.json
 
 # per-session analysed profiles (personal data)
 src/backend/user_memory/
+
+# local run logs (run_local.sh)
+logs/

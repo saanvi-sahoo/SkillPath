@@ -2,6 +2,16 @@
 
 Commands run from the repository root with the virtualenv active (`source .venv/bin/activate`). Every process says what it **reads**, what it **writes**, and **how to check** it worked.
 
+## 0. Start everything after a restart (one command)
+```bash
+cd "/Users/sagarswain/passion-project-ai_for_education_batch_16-master 2" && ./run_local.sh
+```
+- Opens **http://localhost:8501** (full app: Mistral via Ollama + MongoDB Atlas) and the API at http://127.0.0.1:8000/docs.
+- `./run_local.sh --keyless` opens **http://localhost:8502**, identical to the deployed app (no `.env`, no keys).
+- **Ctrl+C** stops everything the script started. Logs: `logs/api.log`, `logs/ollama.log`.
+- What it does: creates `.venv` on the first run only, starts Ollama and pulls `mistral` if missing, frees ports 8000/8501(8502) left over from a previous run, starts the API and the app, and opens the browser.
+- Works with macOS's built-in bash 3.2.
+
 ## 1. Set up a machine
 ```bash
 python3.12 -m venv .venv && source .venv/bin/activate

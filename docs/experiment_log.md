@@ -4,6 +4,10 @@ Add one entry for every change to models, prompts, thresholds, chunking or data.
 
 ---
 
+## 2026-11-08: E30 One-command local start (`run_local.sh`)
+- Starts Ollama (pulls mistral if missing), frees stale ports, starts the API (:8000) and the app (:8501), and opens the browser. `--keyless` gives the deployment-identical instance (:8502).
+- Bug found while testing: macOS bash 3.2 treats an empty array as unbound under `set -u` (`ENVV[@]: unbound variable`). Fixed with the `${ENVV[@]+"${ENVV[@]}"}` form. Both modes verified: health 200, and pages render the Career Advisor in headless Chrome.
+
 ## 2026-11-08: E29 Bring-your-own-key + deployed-app fixes
 - **Reported:** the deployed app showed `Pipeline failed: GEMINI_API_KEY is missing from your .env file!` → `net_surf.py` raised at import time. Fixed (now optional).
 - **Also found and fixed:** a working-directory-relative Naukri scraper path; `webdriver_manager` calling `load_dotenv()` at import (keyless instances silently got the repo keys; now `PYTHON_DOTENV_DISABLED=1` under `SKILLPATH_NO_DOTENV=1`); `.env` overriding real env vars (now `override=False`).

@@ -12,6 +12,8 @@ Sabudh Foundation internship project (team: Saanvi Sahoo, Amrit Singh, Isa Ahmed
 | Prompt script training | Versioned prompts v1–v4 + 42-case evaluation | ✅ |
 | Skill gaps + 30-day roadmap | Exact canonical comparison, prioritised + validated plan | ✅ |
 
+**Run locally (one command):** `./run_local.sh` → http://localhost:8501 (or `./run_local.sh --keyless` → http://localhost:8502, same as the deployed app).
+
 **Start here: [docs/README.md](docs/README.md)** (runbook, scenarios, embeddings, RAG, Atlas, chatbot, prompt scripting, status, experiment log).
 
 ```bash
