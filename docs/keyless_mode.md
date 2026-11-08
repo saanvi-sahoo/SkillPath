@@ -32,7 +32,7 @@ Even in `api` mode, if every hosted model fails at runtime (quota, outage), the 
 |---|---|---|---|---|---|---|
 | v4 on gemini-3.1-flash-lite (`api`) | 1.0 | 2/2 | 1/1 | 93% | 3.3 s | 93k |
 | **Retrieval-only (`none`)** | **1.0** (first run 0.952 → rules added for doc07/doc09) | 2/2 | 1/1 | 93% | **0.24 s** | **0** |
-| v4 on local Mistral 7B (`local`) | see §5 | | | | 35–55 s | local |
+| v4 on local Mistral 7B (`local`) | 0.881 (37/42) | 1/2 | 1/1 | **30%** | 38.6 s avg (LLM answers: median 46.5 s, max 148 s) | local (~4.4k/answer) |
 
 **Honest caveats**
 - The retrieval-only rules were refined *while looking at these 42 cases* (two fixes after the first run), so its 1.0 is optimistic. A held-out set is needed for a fair comparison.
@@ -48,7 +48,22 @@ Before E26, every visitor shared one `memory.json`, the private chunks of `user_
 - Tests: `tests/test_keyless.py::test_memory_path_is_per_user_and_sanitised` (also blocks path traversal like `../../etc/passwd`).
 
 ## 5. Local LLM results (Mistral 7B via Ollama)
-_Filled in from `reports/prompt_eval/keyless_local_mistral.json` when the run finishes (see experiment_log E27)._
+Run: `LLM_PROVIDER=local`, prompt v4, production router, 42/42 cases completed (`reports/prompt_eval/keyless_local_mistral.json`).
+
+| Metric | Value |
+|---|---|
+| Pass rate | **0.881** (37/42) |
+| By category | 1.0: study, follow-up, greeting, all 12 refusals, edge, ambiguous, skill equivalence, salary. 0.8: profile, general career. 0.5: weak evidence. **0.0: career recommendation** |
+| Failures | cs04, cs07, doc01, doc10: **no `[S#]` citations**; doc09 guessed careers instead of asking |
+| Citation rate (in-scope) | **30%** (gemini-flash-lite with v4: 93%) |
+| Latency | median 46.5 s per LLM answer, max 148 s (16 GB Mac); refusals are instant |
+
+**Reading:** Mistral 7B follows the scope rules (every refusal correct) but largely ignores the citation contract and the weak-evidence rule. Recommendation by use case:
+- public or free hosting → **retrieval-only**
+- private offline use → **local** (fluent but slow, weak on citations)
+- best quality → **api**
+
+A stronger local model (e.g. `qwen2.5:7b-instruct` or `llama3.1:8b`) and a shorter context would be the next experiment.
 
 ## 6. How to run
 ```bash

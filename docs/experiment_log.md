@@ -12,7 +12,7 @@ Add one entry for every change to models, prompts, thresholds, chunking or data.
 
 ## 2026-11-08: E27 Local LLM (Mistral 7B via Ollama), keyless
 - `LLM_PROVIDER=local`, prompt v4, production router (kNN + Mistral for ambiguous messages), 42 cases. Measured latency **35–55 s per answer** (16 GB Mac, 3–4k-token prompts), too slow for a public demo, fine offline.
-- Results: [keyless_mode.md §5](keyless_mode.md#5-local-llm-results-mistral-7b-via-ollama) (run in progress at time of writing; the first 5 cases passed 4/5, cs04 had no citation).
+- **Result (42/42 cases): pass 0.881**. All 12 refusals and the equivalence/salary cases are correct, but there are **no citations in 4 answers (citation rate 30%)**, career_reco 0/2 and weak evidence 1/2. Median 46.5 s per LLM answer. Conclusion: local mode is usable offline but weaker than v4 on a hosted model (1.0) and retrieval-only (1.0, with the tuning caveat). Details in [keyless_mode.md §5](keyless_mode.md#5-local-llm-results-mistral-7b-via-ollama).
 
 ## 2026-11-08: E26 Keyless mode + per-visitor isolation
 - **Question asked:** can the system run without Gemini/Groq? Embeddings and retrieval never needed keys. Generation now has three modes: `api | local | none` (`src/utilities/llm_provider.py`, `LLM_PROVIDER=auto`).
