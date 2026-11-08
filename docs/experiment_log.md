@@ -4,6 +4,14 @@ Add one entry for every change to models, prompts, thresholds, chunking or data.
 
 ---
 
+## 2026-11-08: E31 Deployed app: ImportError after redeploy (stale modules)
+- **Symptom (live, Streamlit Cloud):** `ImportError` at `byok_ui.py` line 11, `from src.utilities.llm_provider import (BYOK_PROVIDERS, …)`. The GitHub code was correct (all names present).
+- **Cause:** Streamlit Cloud pulls new code on push but keeps the same Python process. `src.utilities.llm_provider` was cached from the pre-BYOK version, while `frontend.py`/`byok_ui.py` were new, so the new names were missing from the cached module.
+- **Reproduced locally:** worktree at the pre-BYOK commit, Streamlit with `--server.fileWatcherType none`, files swapped in place without restarting → the same ImportError.
+- **Fix:** `frontend.py` fingerprints `src/**/*.py` (path, mtime, size) on every run and drops cached `src.*` modules when it differs from the last run (including when no fingerprint exists yet). Verified in the same stale process: the next page load works, and later reloads work.
+- **Regression test:** `tests/test_app_boot.py::test_frontend_survives_stale_modules_after_redeploy` plants an old module in `sys.modules`. It fails without the guard with the exact live error and passes with it. 26/26 tests.
+- Deploying this commit repairs the running app on its next page load (no reboot needed). If Streamlit Cloud hasn't pulled yet: ⋮ → Reboot app.
+
 ## 2026-11-08: E30 One-command local start (`run_local.sh`)
 - Starts Ollama (pulls mistral if missing), frees stale ports, starts the API (:8000) and the app (:8501), and opens the browser. `--keyless` gives the deployment-identical instance (:8502).
 - Bug found while testing: macOS bash 3.2 treats an empty array as unbound under `set -u` (`ENVV[@]: unbound variable`). Fixed with the `${ENVV[@]+"${ENVV[@]}"}` form. Both modes verified: health 200, and pages render the Career Advisor in headless Chrome.

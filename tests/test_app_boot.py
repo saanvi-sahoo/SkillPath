@@ -27,3 +27,30 @@ def test_frontend_boots_outside_repo(tmp_path):
                        cwd=tmp_path, env=env, capture_output=True, text=True, timeout=600)
     assert r.returncode == 0, r.stdout[-2000:] + r.stderr[-2000:]
     assert "Career Advisor" in r.stdout
+
+
+STALE = r'''
+import sys, types
+sys.path.insert(0, sys.argv[2])
+# Simulate Streamlit Cloud after a git pull: an OLD version of a module (without the new names) is still
+# cached in sys.modules of the long-running process, and an older fingerprint is recorded.
+old = types.ModuleType("src.utilities.llm_provider")
+old.llm_provider = lambda: "none"
+sys.modules["src.utilities.llm_provider"] = old
+sys._skillpath_src_fp = "fingerprint-of-the-previous-deploy"
+from streamlit.testing.v1 import AppTest
+at = AppTest.from_file(sys.argv[1], default_timeout=300)
+at.run()
+errs = [e.value for e in at.exception]
+print("EXCEPTIONS:", errs)
+sys.exit(1 if errs else 0)
+'''
+
+
+def test_frontend_survives_stale_modules_after_redeploy(tmp_path):
+    """E31: the live ImportError (byok_ui -> llm_provider) came from stale cached modules after a redeploy."""
+    env = {**os.environ, "SKILLPATH_NO_DOTENV": "1", "LLM_PROVIDER": "none", "VECTOR_BACKEND": "local",
+           "MONGODB_URI": "", "GROQ_API_KEY": "", "GEMINI_API_KEY": "", "PYTHONPATH": ""}
+    r = subprocess.run([sys.executable, "-c", STALE, str(ROOT / "src" / "frontend" / "frontend.py"), str(ROOT)],
+                       cwd=tmp_path, env=env, capture_output=True, text=True, timeout=600)
+    assert r.returncode == 0, r.stdout[-2000:] + r.stderr[-2000:]

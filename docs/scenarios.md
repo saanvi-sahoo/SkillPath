@@ -128,5 +128,6 @@ Example (live `/chat`, 2026-11-08): *"I enjoy protecting systems from hackers, w
 | F17 | Two visitors use the app at the same time | Shared state | Per-visitor id, profile file and `user_id`-filtered retrieval; nobody sees another visitor's analysis |
 | F18 | Deployed app: "GEMINI_API_KEY is missing from your .env file!" | `net_surf.py` required the key at import time | Fixed (E29): the key is optional; the web-resource node is skipped without keys |
 | F19 | A visitor wants full AI answers on the free deployment | No server keys | Sidebar → *Use your own API key* (byok.md); their key, their session only |
+| F20 | Deployed app: `ImportError … cannot import name X` right after a push | Streamlit Cloud keeps the process; old `src.*` modules stay cached | Stale-module guard in `frontend.py` (E31) re-imports `src.*` when the code fingerprint changes; or ⋮ → Reboot app |
 | F15 | No FastAPI server (Streamlit Cloud) | Only one process allowed | `PIPELINE_MODE=auto/inprocess` runs the pipeline inside Streamlit |
 | F12 | New teammate can't connect to Atlas | Their IP isn't in Network Access | `atlas accessLists create --currentIp` or add it in the UI |

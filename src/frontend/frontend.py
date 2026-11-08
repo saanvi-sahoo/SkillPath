@@ -9,6 +9,30 @@ from dotenv import load_dotenv
 # `streamlit run` and Streamlit Cloud only put the script's own folder on sys.path)
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
+# E31: Streamlit Cloud pulls new code on every push but keeps the same Python process. Modules imported by
+# an earlier version stay cached in sys.modules, so new code importing new names from them fails with
+# ImportError (seen live: byok_ui -> llm_provider). Fingerprint src/ and drop stale `src.*` modules when it changes.
+def _src_fingerprint() -> str:
+    import hashlib
+    root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+    h = hashlib.sha1()
+    for dirpath, _, files in os.walk(root):
+        for f in sorted(files):
+            if f.endswith(".py"):
+                p = os.path.join(dirpath, f)
+                st_ = os.stat(p)
+                h.update(f"{p}:{st_.st_mtime_ns}:{st_.st_size}".encode())
+    return h.hexdigest()
+
+
+_fp = _src_fingerprint()
+# At this point of a run no `src.*` module has been imported by THIS run yet, so any already in sys.modules
+# come from an earlier run; if the code changed (or the earlier version predates this guard) drop them all.
+if getattr(sys, "_skillpath_src_fp", None) != _fp:
+    for _name in [m for m in list(sys.modules) if m == "src" or m.startswith("src.")]:
+        del sys.modules[_name]
+sys._skillpath_src_fp = _fp
+
 # Load environment variables
 from src.utilities.env import load_env; load_env()
 

@@ -58,7 +58,8 @@ Day-to-day: create a branch per feature (`git checkout -b feature/<name>`), push
    Or in the UI: Atlas → Security → Network Access → Add IP Address → *Allow access from anywhere*.
 4. Click **Deploy**. The first build takes about 5–10 minutes (uv installs the requirements; the torch CPU wheel is 210 MB).
 5. **Verify:** open the app, then go to the Career Advisor tab → "Which career fits Python, SQL and dashboards?" → it answers with cited `career_XXXX` records. Then upload a resume/JD → Analyze Profile.
-6. Known limits on Streamlit Cloud: no Chrome, so the Naukri scraper is skipped (LinkedIn still works); the container sleeps after inactivity, and the first request after waking takes about 30 s.
+6. **Updates:** every push to `main` is pulled automatically. `frontend.py` drops stale cached modules after a code change (E31), so no reboot is needed. If the app still shows an old error, use ⋮ → **Reboot app**.
+7. Known limits on Streamlit Cloud: no Chrome, so the Naukri scraper is skipped (LinkedIn still works); the container sleeps after inactivity, and the first request after waking takes about 30 s.
 
 The build was **pre-tested locally** in a `linux/amd64` `python:3.12-slim` container with uv (the same installer Streamlit Cloud uses). Log: `reports/streamlit_cloud_sim.log`.
 
