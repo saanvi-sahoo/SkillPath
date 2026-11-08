@@ -1,0 +1,88 @@
+[
+  {
+    "persona": "persona_da",
+    "role": "Data Analyst",
+    "gaps": [
+      "Data Visualization",
+      "Tableau",
+      "Statistics",
+      "Communication"
+    ],
+    "days_per_skill": {
+      "Data Visualization": 7,
+      "Tableau": 6,
+      "Statistics": 6,
+      "Communication": 5
+    },
+    "capstone": "End-to-end analysis: clean a public dataset with SQL/Python, build a dashboard using Data Visualization, Tableau, Statistics, Communication and present 3 business recommendations",
+    "checks": {
+      "valid_30_days": true,
+      "all_gaps_covered": true,
+      "prereqs_before_dependants": true,
+      "within_time_budget": true,
+      "resources_on_known_skill_days": true,
+      "role_specific_capstone": true,
+      "no_generic_part_topics": true
+    },
+    "passed": true,
+    "latency_ms": 5134
+  },
+  {
+    "persona": "persona_be",
+    "role": "Backend Developer",
+    "gaps": [
+      "AWS",
+      "Docker",
+      "Microservices",
+      "Kubernetes"
+    ],
+    "days_per_skill": {
+      "AWS": 6,
+      "Docker": 6,
+      "Microservices": 6,
+      "Kubernetes": 6
+    },
+    "capstone": "Build a REST service using AWS, Docker, Microservices, Kubernetes, add tests, containerise it and deploy it with a CI/CD pipeline",
+    "checks": {
+      "valid_30_days": true,
+      "all_gaps_covered": true,
+      "prereqs_before_dependants": true,
+      "within_time_budget": true,
+      "resources_on_known_skill_days": true,
+      "role_specific_capstone": true,
+      "no_generic_part_topics": true
+    },
+    "passed": true,
+    "latency_ms": 170
+  },
+  {
+    "persona": "persona_ml",
+    "role": "Machine Learning Engineer",
+    "gaps": [
+      "TensorFlow",
+      "SQL",
+      "Docker",
+      "Statistics",
+      "Machine Learning"
+    ],
+    "days_per_skill": {
+      "TensorFlow": 5,
+      "SQL": 3,
+      "Docker": 3,
+      "Statistics": 3,
+      "Machine Learning": 10
+    },
+    "capstone": "Train and evaluate a model on a real dataset using TensorFlow, SQL, Docker, Statistics, then serve predictions through a small API",
+    "checks": {
+      "valid_30_days": true,
+      "all_gaps_covered": true,
+      "prereqs_before_dependants": true,
+      "within_time_budget": true,
+      "resources_on_known_skill_days": true,
+      "role_specific_capstone": true,
+      "no_generic_part_topics": true
+    },
+    "passed": true,
+    "latency_ms": 79
+  }
+]

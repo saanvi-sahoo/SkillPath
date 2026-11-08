@@ -7,7 +7,7 @@ This file records **every decision about embeddings** so it can be analysed, rep
 | Source | Collection (`skillpath_ai.*`) | File | Unit = 1 vector | Count | Shared? |
 |---|---|---|---|---|---|
 | **careers** (source of truth) | `careers_embeddings_v1` | `docs/emerging_tech_career_dataset_cleaned.csv` | one career record (`career_id`) | **2,899** (2,900 − 1 excluded, §3) | shared |
-| knowledge | `knowledge_chunks_v1` | `src/data/knowledge_base/*.md` | one `##` section | 17 | shared |
+| knowledge | `knowledge_chunks_v1` | `src/data/knowledge_base/*.md` (9 guides) | one `##` section | 37 (17 before E35) | shared |
 | jobs | `knowledge_chunks_v1` (`source=jobs`; M0 3-index limit, E19) | LinkedIn `master_jobs_detailed.json` + Naukri `scraper/jobs.json` | one listing piece | 153 | shared |
 | profile | `user_profile_chunks_v1` | `src/backend/memory.json` (latest analysis) | overview, resume and JD parts, skill gap + resources, matched jobs, summary | ~39 per run | **private** (`user_id`) |
 

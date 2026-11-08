@@ -123,3 +123,49 @@ def topics_for(skill: str):
             tail = [g for g in generic[-2:] if not any(g[0].split()[0].lower() in i[0].lower() for i in items)]
             return list(items) + tail
     return generic
+
+
+# E35: free, official / widely used learning resources per skill (attached to every learning day of that skill)
+RESOURCES = {
+    "SQL": ["SQLBolt interactive lessons: https://sqlbolt.com/", "Mode SQL tutorial: https://mode.com/sql-tutorial/"],
+    "Python": ["Official Python tutorial: https://docs.python.org/3/tutorial/"],
+    "Pandas": ["pandas getting started: https://pandas.pydata.org/docs/getting_started/index.html"],
+    "Excel": ["Exceljet formulas & functions: https://exceljet.net/"],
+    "Power BI": ["Microsoft Learn Power BI docs & training: https://learn.microsoft.com/en-us/power-bi/"],
+    "Tableau": ["Tableau free training videos: https://www.tableau.com/learn/training"],
+    "Statistics": ["Khan Academy statistics & probability: https://www.khanacademy.org/math/statistics-probability"],
+    "Data Visualization": ["Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/"],
+    "Communication": ["Toastmasters (public speaking practice): https://www.toastmasters.org/"],
+    "Machine Learning": ["Google Machine Learning Crash Course: https://developers.google.com/machine-learning/crash-course"],
+    "Deep Learning": ["fast.ai Practical Deep Learning: https://course.fast.ai/"],
+    "Docker": ["Docker get started: https://docs.docker.com/get-started/"],
+    "Kubernetes": ["Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/"],
+    "AWS": ["AWS Skill Builder (free courses): https://skillbuilder.aws/"],
+    "Git": ["Pro Git book (free): https://git-scm.com/book/en/v2"],
+    "Java": ["dev.java learning path: https://dev.java/learn/"],
+    "Spring Boot": ["Spring guides: https://spring.io/guides"],
+    "Microservices": ["microservices.io patterns: https://microservices.io/"],
+    "REST APIs": ["REST API tutorial: https://restfulapi.net/"],
+    "Linux": ["Linux Journey: https://linuxjourney.com/"],
+}
+
+# E35: capstone project tailored to the target role (days 29-30)
+CAPSTONES = [
+    (("analyst", "bi ", "business intelligence", "analytics"),
+     "End-to-end analysis: clean a public dataset with SQL/Python, build a dashboard{using} and present 3 business recommendations"),
+    (("backend", "developer", "software", "java", "engineer (backend)"),
+     "Build a REST service{using}, add tests, containerise it and deploy it with a CI/CD pipeline"),
+    (("machine learning", "ml ", "ml engineer", "data scientist", "ai "),
+     "Train and evaluate a model on a real dataset{using}, then serve predictions through a small API"),
+    (("cloud", "devops", "sre"),
+     "Provision infrastructure as code and deploy a containerised app through a CI/CD pipeline{using}"),
+]
+
+
+def capstone_for(role: str, gaps) -> str:
+    using = f" using {', '.join(list(gaps)[:4])}" if gaps else ""
+    r = f" {(role or '').lower()} "
+    for keys, text in CAPSTONES:
+        if any(k in r for k in keys):
+            return text.format(using=using)
+    return f"Portfolio project for {role or 'your target role'}{using}: plan, build and document it on GitHub"

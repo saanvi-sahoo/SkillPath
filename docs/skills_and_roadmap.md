@@ -56,3 +56,13 @@ Day schema (doc §11.1):
 - `IMPLIES`, `RELATED` and `PREREQS` are hand-written and small. Extend them with care, and review changes as a team.
 - An LLM fallback for categorising unknown skills (doc §10) isn't implemented yet. Unknown skills show as `Other`.
 - Progress tracking and regenerating the remaining days (doc §11.2 step 36) are still to do.
+
+## 4. Roadmap specificity (E33–E35)
+| Improvement | Before | After |
+|---|---|---|
+| Daily topics | "SQL - part 1/2/3" placeholders, or a 216 s Mistral JSON | Curriculum per skill (`src/roadmap/syllabus.py`, ~25 skills): ordered topics with a learning task, a hands-on task and a checkable completion criterion; then a mini project and interview readiness |
+| Resources | Only when the profile analysis found links (needs Tavily) | Curated **free official resources** for every learning day of a known skill (SQLBolt, Python tutorial, Microsoft Learn Power BI, Tableau training, Khan Academy, Google ML Crash Course, Docker/Kubernetes docs, AWS Skill Builder, Spring guides, …) |
+| Capstone (days 29–30) | Generic "mini project" | **Role-specific:** analyst → end-to-end dashboard with 3 recommendations; backend → REST service, tests, container, CI/CD deploy; ML → model trained and served via API; cloud/DevOps → IaC + pipeline. Each names the person's gap skills. Day 29 = plan & build, day 30 = README, resume line, 2-minute walkthrough |
+| Speed | 216 s locally | < 1 s (template); AI-written plans ≤ 75 s with fallback |
+
+**Evaluation** (`python -m src.eval.roadmap_eval`, 3 personas, deterministic): valid 30 days, every gap covered, prerequisites before dependants, within the time budget, resources on every known-skill day, role-specific capstone, no generic topics → **3/3 personas pass all 7 checks** (`reports/roadmaps/roadmap_eval_*.json`).

@@ -209,6 +209,7 @@ def main():
     ap.add_argument("--rounds", action="store_true", help="recursive feedback-learning rounds on the last version")
     ap.add_argument("--sleep", type=float, default=3.0)
     ap.add_argument("--expect-model", default="")
+    ap.add_argument("--qidx", type=int, default=0, help="0 = original questions, 1/2 = paraphrase sets (unseen wording)")
     a = ap.parse_args()
     global EXPECT_MODEL
     EXPECT_MODEL = a.expect_model
@@ -218,8 +219,8 @@ def main():
     rep = {"ts": datetime.now(timezone.utc).isoformat(), "facts": facts, "versions": {}, "rounds": {}}
     for v in a.versions:  # A/B on the original questions, empty feedback store
         isolated_store(tmp / f"empty_{v}.jsonl")
-        rows = run_set(facts, v, 0, a.sleep)
-        rep["versions"][v] = {"summary": summarise(rows), "rows": rows}
+        rows = run_set(facts, v, a.qidx, a.sleep)
+        rep["versions"][v] = {"summary": summarise(rows), "rows": rows, "qidx": a.qidx}
     if a.rounds:
         v = a.versions[-1]
         fs = isolated_store(tmp / "learning.jsonl")

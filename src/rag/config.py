@@ -60,6 +60,14 @@ NUM_CANDIDATES_MULTIPLIER = int(os.getenv("RAG_NUM_CANDIDATES_MULTIPLIER", "20")
 # Chunks below this cosine score are dropped as irrelevant noise. MODEL-SPECIFIC:
 # MiniLM: 0.30 (E12 calibration). bge-small would need ~0.60 (scores compressed high).
 MIN_SCORE = float(os.getenv("RAG_MIN_SCORE", "0.30"))
+# E35: cross-encoder re-ranking of a 20-candidate vector pool (careers strict-P@5 0.767 -> 0.858, knowledge
+# Hit@3 0.90 -> 0.967 on the labelled benchmarks; +40-65 ms). Hybrid BM25 was tested and NOT adopted (it lowered
+# knowledge Hit@1 0.767 -> 0.667): student wording rarely shares exact words with the guides.
+RAG_RERANK = os.getenv("RAG_RERANK", "true").lower() == "true"
+RERANK_SOURCES = ("careers", "knowledge", "jobs")
+RERANK_POOL = int(os.getenv("RAG_RERANK_POOL", "20"))
+# Calibrated on both labelled sets: cut-off -6 keeps 91% of relevant chunks and drops 73% of non-relevant ones.
+RERANK_MIN = float(os.getenv("RAG_RERANK_MIN", "-6.0"))
 # Career results below this are flagged weak_match (ask a clarifying question instead).
 CAREER_MIN_SCORE = float(os.getenv("CAREER_MIN_SCORE", "0.40"))
 

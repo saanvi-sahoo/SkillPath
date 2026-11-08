@@ -4,6 +4,15 @@ Add one entry for every change to models, prompts, thresholds, chunking or data.
 
 ---
 
+## 2026-11-08: E35 Retrieval precision (re-ranking), knowledge coverage, specific roadmaps
+- **RAG benchmark** (`src/eval/rag_benchmark.py`, no LLM): 30 labelled guide questions + 24 labelled career queries. **Vector + cross-encoder re-rank adopted**: guide Hit@1 0.767 → 0.800, Hit@3 0.900 → 0.967, MRR 0.842 → 0.884; **career strict-P@5 0.767 → 0.858**; +40–65 ms. Hybrid BM25 rejected (guide Hit@1 0.667). Query expansion rejected (profile Hit@3 already 1.0).
+- **Re-rank noise cut-off −6**, calibrated: keeps 91% relevant, drops 73% non-relevant (e.g. "Recruiter" job records for a LinkedIn question, −7).
+- **Knowledge base 17 → 37 sections** (5 new guides: higher education & exams, applications & networking, student well-being, first job, portfolio & projects). Ingested to the local store and Atlas. "How should I prepare for GATE…" now retrieves the GATE guide.
+- **Roadmap:** curated free resources per skill on every learning day; role-specific capstone (analyst / backend / ML / cloud) naming the person's gaps; plan & build + polish & present days. `roadmap_eval`: **3/3 personas pass 7/7 checks**.
+- **Deployment:** Atlas access list now has 0.0.0.0/0 in the *SkillPath AI* project (first added to the empty "Project 0" by mistake → "Inactive"); the deployed app uses the least-privilege `skillpath_cloud` user via Streamlit secrets.
+- **Model quotas:** gemini-3.1-flash-lite exhausted its daily free quota during the evals (E34's v5/v6 run stopped cleanly at 30/65 pairs: both 1.0, v6 citation rate 1.0 vs 0.94). gpt-oss-120b and gemini-3.5-flash recovered.
+- Tests: 35 → **40**.
+
 ## 2026-11-08: E34 Question queue, scope v2, self-revising answers (v6), Atlas for other devices
 - **Chat:** while an answer was generating, a new question interrupted the run and was lost. Now there's a **question queue** (answered in order; a question leaves the queue only after its answer is stored). AppTest: 2 queued questions answered in order, then a typed one.
 - **Scope:** one written definition for router v2 + advisor v6 (study-adjacent topics in, everything else out). +8 in-scope / +8 out-of-scope router anchors (worded differently from the tests). +14 scope eval cases (65 total). **Router v1 vs v2 on 65 cases: both hybrid 1.0 label and allow/refuse accuracy, 0 false refusals, 0 leaks** → v2 active (aligned definition).

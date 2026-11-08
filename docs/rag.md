@@ -70,3 +70,25 @@ Retrieval latency, measured over 20 queries with 4 searches each: **median 9.0 m
 - Re-ranking with a cross-encoder (`BAAI/bge-reranker-base`) over the top 20.
 - Query rewriting with the LLM for multi-turn conversations, replacing the current word-count heuristic.
 - Per-user conversation memory as another `profile` doc type.
+
+## 8. Retrieval precision upgrades (E35, measured, no LLM involved)
+
+Benchmark: `python -m src.eval.rag_benchmark`, with 30 labelled student questions → expected guide section, plus the 24 labelled career queries (E11). Report: `reports/embeddings/rag_benchmark_latest.md`.
+
+| Config | Guide Hit@1 | Guide Hit@3 | Guide MRR@5 | Career strict-P@5 | Median latency |
+|---|---|---|---|---|---|
+| vector (before) | 0.767 | 0.900 | 0.842 | 0.767 | 5–8 ms |
+| hybrid BM25 + vector (RRF) | 0.667 | 0.800 | 0.740 | 0.800 | 4–5 ms |
+| **vector + cross-encoder re-rank (adopted)** | **0.800** | **0.967** | **0.884** | **0.858** | 47–69 ms |
+| hybrid + re-rank | 0.800 | 0.967 | 0.878 | 0.792 | 51–76 ms |
+
+- **Adopted:** cosine search fetches a **20-candidate pool**, and the cross-encoder `cross-encoder/ms-marco-MiniLM-L-6-v2` reads (question, passage) pairs and keeps the best per source quota (careers, knowledge, jobs). The cosine `score` is kept, so MIN_SCORE and MATCH STRENGTH are unchanged. `RAG_RERANK=false` disables it.
+- **Noise cut-off:** re-ranker score below **−6** → the chunk is dropped. Calibrated on both labelled sets: it keeps 91% of relevant chunks and drops 73% of non-relevant ones (−3 would keep only 80% of relevant ones).
+- **Rejected: hybrid BM25.** It helps exact career titles slightly but lowers guide Hit@1 from 0.767 to 0.667, because student wording rarely shares words with the guides. The code stays in `src/rag/hybrid.py` for future experiments.
+- **Rejected: profile-aware query expansion.** Profile retrieval is already Hit@3 = 1.0 (18/18 persona questions) without it.
+- **Remaining guide misses** (6/30 at rank 1) are near-misses: in 4 of them the expected section is rank 2, after a closely related one (e.g. "Time management…" vs "Planning a study schedule"). The prompt receives 2–4 guide chunks, so they still reach the model.
+
+## 9. Knowledge base coverage (E35)
+The scope (study + career, including exams, SOPs, cover letters, first job and well-being) needed sources. 5 guides were added (now 9 guides, **37 sections**, one chunk each):
+`higher_education_and_exams.md` (job vs MS/MBA, GATE/CAT/GRE prep, SOP, applying abroad + LORs), `applications_and_networking.md` (cover letters, LinkedIn, referrals and cold emails, rejections), `student_wellbeing_and_productivity.md` (exam stress, procrastination, time management, long-term exam study), `first_job_and_workplace.md` (first weeks, communicating with managers, raises, growth), `portfolio_and_projects.md` (why projects, ideas by role, READMEs, presenting projects).
+Example: "How should I prepare for GATE in six months?" now retrieves *Preparing for GATE, CAT and GRE* (re-rank score 4.6). Before, no guide covered it.

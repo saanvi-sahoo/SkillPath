@@ -111,7 +111,7 @@ def build_skeleton(ordered_gaps: List[str], importance: Dict[str, float]) -> Dic
         if d in REVIEW_DAYS:
             skeleton.append({"day": d, "skill": "Review", "kind": "review"})
         elif d in PROJECT_DAYS:
-            skeleton.append({"day": d, "skill": "Capstone Project", "kind": "project"})
+            skeleton.append({"day": d, "skill": "Capstone Project", "kind": "project"})  # capstone text added later
         else:
             skeleton.append({"day": d, "skill": next(it), "kind": "learn"})
     return {"skeleton": skeleton, "scheduled": scheduled, "deferred": deferred,
@@ -127,10 +127,15 @@ def _fallback_day(s: Dict, minutes: int, idx_in_skill: int) -> Dict:
                 "practice_task": "Redo one exercise from each skill studied this week without notes",
                 "estimated_minutes": minutes, "completion_criteria": "All redo exercises completed; doubts written down"}
     if k == "project":
-        return {**s, "topic": "Mini project", "prerequisite": "days 1-28",
-                "learning_task": "Plan a small project that uses the skills from this roadmap",
-                "practice_task": "Build and push the project to GitHub with a README",
-                "estimated_minutes": minutes, "completion_criteria": "Project runs and README explains it"}
+        cap = s.get("capstone") or "Portfolio project using the skills from this roadmap"
+        if s["day"] == PROJECT_DAYS[0]:
+            return {**s, "topic": "Capstone: plan & build", "prerequisite": "days 1-28", "learning_task": cap,
+                    "practice_task": "Define the problem and data, then build a working first version",
+                    "estimated_minutes": minutes, "completion_criteria": "A working first version runs end to end"}
+        return {**s, "topic": "Capstone: polish & present", "prerequisite": "Capstone: plan & build",
+                "learning_task": "Write the README (problem, approach, results, how to run) and add screenshots",
+                "practice_task": "Push to GitHub, add it to your resume and practise a 2-minute walkthrough",
+                "estimated_minutes": minutes, "completion_criteria": "Public repo + resume line + recorded walkthrough"}
     # E33: curriculum-based template (ordered topics per skill) instead of "part 1/2/3" placeholders
     from src.roadmap.syllabus import topics_for
     topics = topics_for(skill)
@@ -216,6 +221,11 @@ def generate_roadmap(target_role: str, candidate_skills: List[str], required_ski
     importance = market_importance(gap_list, target_role)
     ordered = prioritise(gap_list, importance)
     sk = build_skeleton(ordered, importance)
+    from src.roadmap.syllabus import RESOURCES, capstone_for
+    capstone = capstone_for(target_role, sk["scheduled"])
+    for d in sk["skeleton"]:
+        if d["kind"] == "project":
+            d["capstone"] = capstone
     source = "template"
     days: List[Dict] = []
     from src.utilities.llm_provider import llm_provider
@@ -239,13 +249,15 @@ def generate_roadmap(target_role: str, candidate_skills: List[str], required_ski
     res = profile_resources(user_id)
     for d in val["days"]:
         links = [r for k, v in res.items() if k.lower() in d["skill"].lower() or d["skill"].lower() in k.lower() for r in v]
+        if not links:  # E35: curated free resource for the skill when the profile analysis had none
+            links = next((v for k2, v in RESOURCES.items() if k2.lower() == d["skill"].lower()), [])
         d["resources"] = links[:2]
     return {
         "target_role": target_role, "daily_minutes": daily_minutes, "level": level,
         "gap_analysis": cmp, "gaps_prioritised": ordered, "market_importance": importance,
         "days_per_skill": sk["days_per_skill"], "deferred_gaps": sk["deferred"],
         "generation": source, "validation": {k: val[k] for k in ("valid", "checks", "issues")},
-        "days": val["days"], "latency_ms": round((time.perf_counter() - t0) * 1000),
+        "capstone": capstone, "days": val["days"], "latency_ms": round((time.perf_counter() - t0) * 1000),
         "note": "A 30-day roadmap builds working familiarity; it does not guarantee mastery or a job.",
     }
 

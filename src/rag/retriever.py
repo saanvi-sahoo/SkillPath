@@ -90,7 +90,16 @@ def retrieve(query: str, quotas: Optional[Dict[str, int]] = None, user_id: str =
     for source, k in quotas.items():
         if k <= 0:
             continue
-        hits.extend(_search(source, qv, k, user_id))
+        if config.RAG_RERANK and source in config.RERANK_SOURCES:
+            pool = _search(source, qv, max(config.RERANK_POOL, k), user_id)
+            try:
+                from src.rag.hybrid import rerank
+                hits.extend(h for h in rerank(query, pool, top=k) if h.get("rerank", 0) >= config.RERANK_MIN)
+            except Exception as e:  # noqa: BLE001 - re-ranker unavailable -> plain vector order
+                print(f"[retriever] rerank skipped: {e}")
+                hits.extend(pool[:k])
+        else:
+            hits.extend(_search(source, qv, k, user_id))
     hits = [h for h in hits if h.get("score", 0) >= min_score]
     hits.sort(key=lambda h: h["score"], reverse=True)
     return hits
