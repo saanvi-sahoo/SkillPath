@@ -4,6 +4,13 @@ Add one entry for every change to models, prompts, thresholds, chunking or data.
 
 ---
 
+## 2026-11-08: E34 Question queue, scope v2, self-revising answers (v6), Atlas for other devices
+- **Chat:** while an answer was generating, a new question interrupted the run and was lost. Now there's a **question queue** (answered in order; a question leaves the queue only after its answer is stored). AppTest: 2 queued questions answered in order, then a typed one.
+- **Scope:** one written definition for router v2 + advisor v6 (study-adjacent topics in, everything else out). +8 in-scope / +8 out-of-scope router anchors (worded differently from the tests). +14 scope eval cases (65 total). **Router v1 vs v2 on 65 cases: both hybrid 1.0 label and allow/refuse accuracy, 0 false refusals, 0 leaks** → v2 active (aligned definition).
+- **Persona eval (profile / JD / both, 3 personas × 10 questions):** v4 0.90 vs **v5 1.00** (v4 failed only the "am I a fit" verdict). Recursive rounds: R1 learned 0.867 vs control 0.967 was **confounded** (fallback models answered the learned arm), R2 learned 0.933 vs control 0.90. Root cause of the paraphrase failures: question-type misclassification ("Should I apply…" → profile_fact; "first gap" → definition). Fixed in the profiler; the persona runner now has a strict-model guard.
+- **v6 = v5 + generate → verify → revise** (`answer_check.py`, max 1 revision, only when the draft breaks the contract) + the explicit scope text.
+- **Atlas for other devices:** least-privilege user `skillpath_cloud` (readWrite@skillpath_ai only; writes elsewhere verified denied). Opening `0.0.0.0/0` was refused by the automation safety policy, so it's left to the project owner (one command, mongodb_atlas_setup.md §0b).
+
 ## 2026-11-08: E33 Profile lifecycle, fast roadmap, cleaner skill extraction, JD-aware questions
 - **Roadmap "not generating":** locally the 30-day plan was written by Mistral as one large JSON (**216 s**, looked broken). Now there's a curriculum-based template (ordered topics per skill in `src/roadmap/syllabus.py` + mini project + interview readiness): **0.7 s**. Hosted or visitor-key models still write the plan, with a 75 s hard timeout and template fallback. The deployed crash was the Python 3.14 magic issue (E32).
 - **"Profile summary not changing":** re-analysis did update. But removing CV/JD left the old profile (and the chatbot's memory of it), changed uploads showed no hint, and the old roadmap survived. Added input fingerprints, a stale banner with **Re-analyse now**, auto-clear on removal (not on refresh), **Clear profile** (memory file + profile chunks), provenance, per-visitor upload names and roadmap reset. Verified end to end with AppTest (5 steps).

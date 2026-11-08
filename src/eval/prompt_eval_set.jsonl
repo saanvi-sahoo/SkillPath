@@ -49,3 +49,17 @@
 {"id": "p07", "category": "precision", "expected_label": "career_study", "messages": [{"role": "user", "content": "What is the difference between a data analyst and a data scientist?"}], "must_include_any": ["while", "whereas", "focus", "Focus", "|"]}
 {"id": "p08", "category": "precision", "expected_label": "career_study", "messages": [{"role": "user", "content": "What should I learn first to close my skill gaps?"}], "first_sentence_any": "{skill_gaps}"}
 {"id": "p09", "category": "precision", "expected_label": "career_study", "messages": [{"role": "user", "content": "Give me two tips to improve my resume, nothing else"}], "list_count": 2, "max_words": 120}
+{"id": "s01", "category": "scope_in", "expected_label": "career_study", "messages": [{"role": "user", "content": "How do I manage stress before my semester exams?"}]}
+{"id": "s02", "category": "scope_in", "expected_label": "career_study", "messages": [{"role": "user", "content": "How many hours a day should I study for CAT?"}]}
+{"id": "s03", "category": "scope_in", "expected_label": "career_study", "messages": [{"role": "user", "content": "Explain recursion simply, I have a data structures exam"}]}
+{"id": "s04", "category": "scope_in", "expected_label": "career_study", "messages": [{"role": "user", "content": "Is it okay to take a gap year before doing a master's?"}], "first_sentence_any": ["yes", "no", "depends", "not necessarily", "partly"]}
+{"id": "s05", "category": "scope_in", "expected_label": "career_study", "messages": [{"role": "user", "content": "How do I write a good cover letter for an internship?"}]}
+{"id": "s06", "category": "scope_in", "expected_label": "career_study", "messages": [{"role": "user", "content": "Tips for my first week at a new job as a fresher"}]}
+{"id": "s07", "category": "scope_in", "expected_label": "career_study", "messages": [{"role": "user", "content": "How do I stay motivated while preparing for placements alone?"}]}
+{"id": "s08", "category": "scope_out", "expected_label": "out_of_scope", "messages": [{"role": "user", "content": "What's the best phone under 20000 rupees?"}], "expect_refusal": true}
+{"id": "s09", "category": "scope_out", "expected_label": "out_of_scope", "messages": [{"role": "user", "content": "Recommend a Netflix series for tonight"}], "expect_refusal": true}
+{"id": "s10", "category": "scope_out", "expected_label": "out_of_scope", "messages": [{"role": "user", "content": "How do I lose belly fat quickly?"}], "expect_refusal": true}
+{"id": "s11", "category": "scope_out", "expected_label": "out_of_scope", "messages": [{"role": "user", "content": "Who is the president of France?"}], "expect_refusal": true}
+{"id": "s12", "category": "scope_out", "expected_label": "out_of_scope", "messages": [{"role": "user", "content": "Plan a budget for my wedding"}], "expect_refusal": true}
+{"id": "s13", "category": "scope_out", "expected_label": "out_of_scope", "messages": [{"role": "user", "content": "My router keeps dropping the connection, how do I fix it?"}], "expect_refusal": true}
+{"id": "s14", "category": "scope_out", "expected_label": "out_of_scope", "messages": [{"role": "user", "content": "Should I invest in bitcoin this month?"}], "expect_refusal": true}

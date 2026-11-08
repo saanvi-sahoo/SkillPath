@@ -66,3 +66,11 @@ Reports: `reports/prompt_eval/feedback_learning_*.json`.
 4. A/B the new version against the live one (paired, same model) before activating it.
 
 Feedback guidance fixes recurring problems **immediately and locally** (similar questions only). The offline loop turns the patterns into **permanent** prompt improvements.
+
+## 6. Recursive learning at answer time (prompt v6, E34)
+Learning from users (§2) works **across** conversations. v6 adds a loop **inside** each answer:
+```
+draft = LLM(prompt v6)  ->  problems = check_answer(draft, question profile, user profile)
+if problems:  answer = LLM(prompt + draft + "fix only these problems: …")      # max 1 revision
+```
+The checks are deterministic and specific to the user. For example, for "What am I missing for this job?" the draft must name every gap in *this user's* analysed profile, and for "Which gap first?" the first sentence must name one of their gaps.

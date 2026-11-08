@@ -29,6 +29,30 @@ Until `MONGODB_URI` is set, the app uses a local numpy store with exactly the sa
 
 > **Account login ≠ database login.** The Atlas *website* account (email + password) is only for the web UI. The application connects with a **database user** inside a `mongodb+srv://` connection string, created in step 1. Never put the website password in code or `.env`.
 
+## 0b. Access from other devices and the deployed app (E34)
+
+| Who connects | Database user | Network access needed |
+|---|---|---|
+| Project Mac (development) | `skillpath_app` (readWriteAnyDatabase) | its own IP (added with `--currentIp`; re-add when the ISP rotates it, e.g. 49.37.117.224 → 49.37.113.161 on 2026-11-08) |
+| **Deployed app (Streamlit Cloud)** | **`skillpath_cloud`**: read/write on **`skillpath_ai` only** (verified: writes to any other database are denied) | **`0.0.0.0/0`** (Streamlit Cloud has no fixed outbound IPs) |
+| Teammates' laptops | `skillpath_cloud` (or their own user) | their IPs, or covered by `0.0.0.0/0` |
+
+**Step 1: allow access from anywhere** (done by the project owner. Our automation policy does not open a database to the internet by itself):
+```bash
+atlas accessLists create 0.0.0.0/0 --comment "Deployed SkillPath app + team devices" --projectId 6aef8bc9b64186873a8b7606
+```
+or Atlas → project *SkillPath AI* → **Security → Network Access → + Add IP Address → Allow access from anywhere → Confirm**.
+
+**Step 2: give the deployed app the connection string.** In Streamlit Cloud → your app → **⋮ → Settings → Secrets**, paste:
+```toml
+MONGODB_URI = "mongodb+srv://skillpath_cloud:<password>@skillpath-cluster.fozgv6t.mongodb.net/?retryWrites=true&w=majority&appName=SkillPathCloud"
+MONGODB_DB = "skillpath_ai"
+PIPELINE_MODE = "inprocess"
+```
+(The exact text with the password was generated locally and handed over privately. It is never committed.) Save. The app restarts and the status chip shows **MongoDB Atlas · 2,899 career records**. Feedback (👍/👎) is then stored in `feedback_v1` and survives redeploys.
+
+**Why this is acceptable:** with `0.0.0.0/0`, security rests on the credentials. `skillpath_cloud` has a random 32-character password and can only touch `skillpath_ai`. Rotate it (Atlas → Database Access → Edit → Autogenerate) if it ever leaks. The app keeps working without Atlas (local vector copy + circuit breaker).
+
 ## 1. Create the cluster and get the connection string
 
 There are two ways. **Path A** is fastest: one browser approval, then everything runs from the terminal. **Path B** is the same thing done by clicking through the website.

@@ -1,0 +1,272 @@
+{
+  "ts": "20261108T092839Z",
+  "n_cases": 65,
+  "router_mode": "hybrid",
+  "router": {
+    "knn": {
+      "label_accuracy": 0.969,
+      "allow_refuse_accuracy": 1.0,
+      "false_refusals": 0,
+      "leaks": 0,
+      "confusion": {
+        "allow->allow": 46,
+        "allow->refuse": 0,
+        "refuse->refuse": 19,
+        "refuse->allow": 0
+      },
+      "llm_calls": 0,
+      "avg_latency_ms": 80.0,
+      "errors": [
+        {
+          "id": "gr02",
+          "expected": "greeting",
+          "got": "career_study",
+          "method": "knn",
+          "latency_ms": 5.2,
+          "knn": {
+            "top_sim": 0.447,
+            "vote_share": 0.364
+          }
+        },
+        {
+          "id": "doc05",
+          "expected": "prompt_attack",
+          "got": "out_of_scope",
+          "method": "knn",
+          "latency_ms": 4.1,
+          "knn": {
+            "top_sim": 0.65,
+            "vote_share": 0.327
+          }
+        }
+      ]
+    }
+  },
+  "answers": {
+    "v5": {
+      "summary": {
+        "n": 3,
+        "pass_rate": 1.0,
+        "pass_rate_by_category": {
+          "profile": 1.0
+        },
+        "citation_rate_in_scope": 1.0,
+        "avg_words": 272.0,
+        "avg_latency_ms": 3259.6,
+        "answering_models": {
+          "gemini-3.1-flash-lite": 3
+        },
+        "total_tokens": 11257,
+        "avg_tokens_per_llm_answer": 3752
+      },
+      "rows": [
+        {
+          "id": "cs01",
+          "category": "profile",
+          "route": "career_study",
+          "checks": {
+            "must_include": true,
+            "not_refused": true
+          },
+          "passed": true,
+          "model": "gemini-3.1-flash-lite",
+          "usage": {
+            "input_tokens": 2922,
+            "output_tokens": 297,
+            "total_tokens": 3219,
+            "input_token_details": {
+              "cache_read": 0
+            }
+          },
+          "latency_ms": 3078.9,
+          "words": 215,
+          "n_hits": 3,
+          "messages": [
+            {
+              "role": "user",
+              "content": "What is my ATS score and why?"
+            }
+          ],
+          "context": "[S1] (source=knowledge/guide, score=0.41, ref=resume_and_ats.md)\nResume And Ats - How Applicant Tracking Systems work: An Applicant Tracking System (ATS) parses a resume into fields (contact, education, experience, skills) and ranks candidates by how closely their text matches the job description. Keyword overlap with the job description's required skills, job titles and tools is the strongest signal. Unusual layouts (tables, text boxes, multi-column designs, images, headers/footers) often break parsing, so key information can be lost before a human ever reads it.\n\n[S2] (source=profile/career_summary, score=0.39, ref=career_summary)\nCareer summary for the candidate: Your strong technical foundation in full-stack development, AI frameworks, and Salesforce positions you as a highly capable candidate for a Senior Software Engineer role. While your current profile is heavily engineering-focused, you can significantly boost your ATS score by emphasizing your existing problem-solving and leadership skills rather than trying to bridge the unrelated marketing skill gaps. Focus your resume on highlighting your technical architecture experience and project impact to better align with the expectations of senior-level engineering positions.\n\n[S3] (source=profile/resume, score=0.31, ref=resume)\nCandidate resume (part 3): farmer increase their income 25%. SAMS.AI Real-Time Attendance System Using Deep Built facial recognition-based student attendance management architecture YOLO object models PostgreSQL. Successfully 92% accuracy. Aura-Audit Career an AI-powered resume auditing tool integrating Google Gemini 1.5 Flash advanced semantic matching skill gap identification. Increased efficiency 45%. Future-focusedSoftware Developer Engineer hands-on experience full AI-driven Proven ability build impactful tools automation systems. Adept Python React SQL REST solid knowledge DSA OS DBMS. National Hackathon Winner 30+ hackathons 5+ case competitions. Strong communicator team player passionate about innovation. Education Trident Academy Of Technology(Under BPUT) Bachelor Computer Science GPA:8.5 Sri Aurobindo College Higher Secondary Secured: 87% Saraswati Vidya Mandir 83% Bhubaneswar Dec 2022- Cuttack Apr 2020- 2022 Paradip Mar 2020",
+          "answer": "Your current ATS match score is 12/100.\n\nThis low score is primarily because your profile is heavily focused on software engineering, while the job description you are targeting is for a **Senior Product Marketing Manager** [S2]. \n\nThe ATS evaluates your candidacy based on keyword overlap with the job description [S1]. Because your background is in full-stack development, AI frameworks, and Salesforce, you are missing almost all the required marketing-specific skills, such as:\n*   **Experience:** Product Marketing, Go-To-Market Strategy, and B2B SaaS [Profile].\n*   **Skills:** Positioning & Messaging, Sales Enablement, and Market Intelligence [Profile].\n*   **Tools:** Product Analytics (Mixpanel/Google Analytics) and Marketing Automation (HubSpot) [Profile].\n\n**Next Steps:**\n1. **Re-evaluate your target:** Since your expertise is in engineering, you will likely have much higher ATS scores for Senior Software Engineer roles.\n2. **Optimize for your actual field:** If you want to pursue engineering roles, focus your resume on your technical architecture experience and the impact of your projects (like the 45% efficiency increase mentioned in your resume) [S2, S3].\n3. **Avoid \"keyword stuffing\":** Do not try to bridge the marketing skill gaps for this specific role, as your profile is fundamentally aligned with a different career path [S2].\n\n---\n**Sources**\n- [S1] knowledge: How Applicant Tracking Systems work\n- [S2] profile: career summary\n- [S3] profile: resume"
+        },
+        {
+          "id": "cs02",
+          "category": "profile",
+          "route": "career_study",
+          "checks": {
+            "must_include_any": true,
+            "not_refused": true
+          },
+          "passed": true,
+          "model": "gemini-3.1-flash-lite",
+          "usage": {
+            "input_tokens": 3949,
+            "output_tokens": 319,
+            "total_tokens": 4268,
+            "input_token_details": {
+              "cache_read": 0
+            }
+          },
+          "latency_ms": 3080.9,
+          "words": 243,
+          "n_hits": 7,
+          "messages": [
+            {
+              "role": "user",
+              "content": "Which skills am I missing for my target job?"
+            }
+          ],
+          "context": "[S1] (source=profile/job_description, score=0.56, ref=job_description)\nTarget job description (part 3): copy. • Analytical Skills: Strong ability to analyze data track launch metrics (KPIs) and distill qualitative user feedback into actionable insights. • Tools: Proficiency with product analytics tools (e.g. Mixpanel Google Analytics) and CRM/Marketing automation platforms (HubSpot Salesforce). • Education: Bachelor’s degree in Marketing Business Communications or a related field (or equivalent practical experience).\n\n[S2] (source=careers/career_profile, score=0.53, ref=career_2134)\nCareer: Recruiting Associate. Domain: Project and Business Management. Required skills: Data Analysis, Change Management, Project Management, Microsoft Excel, Power Point, Microsoft Office Suite. Description: Recruiting Associate coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include Data Analysis, Change Management, Project Management, Microsoft Excel. Education: Bachelor's degree in a relevant business, management, finance, marketing, or related field; role-specific experience is often valued.\n\n[S3] (source=profile/job_description, score=0.51, ref=job_description)\nTarget job description (part 2): support. • Positioning & Messaging: Develop clear differentiated product positioning and messaging that resonates with our target enterprise personas. • Sales Enablement: Create high-impact collateral including pitch decks case studies product sheets and competitive battle cards to accelerate the sales cycle. • Market & Competitive Intelligence: Conduct continuous research on market trends competitor movements and buyer behavior to influence the product roadmap. • Customer Advocacy: Partner with customer success to identify power users and build a library of testimonials reviews and success stories. 🎓 Required Qualifications • Experience: 5+ years of dedicated product marketing experience ideally within a B2B SaaS or technology environment. • Communication: Exceptional written and verbal communication skills with a proven track record of writing high-converting marketing copy. • Analytical Skills: Strong ability to analyze data track launch metrics (KPIs) and distill qualitative user feedback into actionable insights. • Tools: Proficiency with product analytics tools (e.g. Mixpanel\n\n[S4] (source=profile/profile_overview, score=0.49, ref=profile_overview)\nCandidate profile overview. Target role: Senior Software Engineer. ATS match score: 12/100. Candidate skills: Languages: Python, Languages: Java, Languages: Apex, Languages: JavaScript, Languages: C, Languages: TypeScript, Frameworks: React.js, Frameworks: Node.js, Frameworks: Next.js, Frameworks: MERN, Frameworks: Bootstrap, Frameworks: Tailwind CSS, Frameworks: TensorFlow, Frameworks: PyTorch, Tools: Salesforce, Tools: Git, Tools: Postman, Tools: Visual Code, Tools: Roboflow, Tools: Wix Studio, Tools: Google Gemini, Databases: MySQL, Databases: MongoDB, Databases: PostgreSQL, Soft Skills: Analytical Thinking, Soft Skills: Problem Solving, Soft Skills: Communication, Soft Skills: Team Collaboration, Soft Skills: Adaptability, Soft Skills: Leadership, Concepts: RESTful APIs, Concepts: Prompt Engineering, Concepts: SEO, Concepts: Agile, Concepts: Computer Vision, Concepts: DSA, Concepts: OS, Concepts: DBMS. Skills required by the job description: Experience: Product Marketing, Experience: Go-To-Market Strategy, Experience: B2B SaaS, Skills: Positioning & Messaging, Skills: Sales Enablement, Skills: Market & Competitive Intelligence, Skills: Customer Advocacy, Skills: Marketing Copywriting, Skills: Data Analysis, Skills: KPI Tracking, Tools: Product Analytics (Mixpanel/Google Analytics), Tools: CRM (Salesforce), Tools: Marketing Automation (HubSpot), Education: Marketing or Business Co",
+          "answer": "Your profile shows that you are missing the following skills for your target role of Senior Product Marketing Manager: **Product Marketing, Go-To-Market Strategy, B2B SaaS experience, Positioning & Messaging, Sales Enablement, Market & Competitive Intelligence, Customer Advocacy, Marketing Copywriting, Data Analysis, and KPI Tracking** [S4].\n\nAdditionally, you lack proficiency in specific tools like **Product Analytics (Mixpanel/Google Analytics)** and **Marketing Automation (HubSpot)**, as well as the required **Education in Marketing or Business Communications** [S4].\n\n**Important Note:** Your current profile is heavily focused on software engineering (Full-stack, AI, and Salesforce development) [S4, S6, S7]. The job description you provided is for a **Senior Product Marketing Manager**, which is a different career path than your target role of **Senior Software Engineer** [S4]. \n\nIf you intend to pursue a Senior Software Engineer role, I recommend ignoring these marketing-specific gaps and instead focusing your resume on your technical architecture, leadership, and project impact [S4]. If you are considering a pivot to Product Marketing, please note that you would need to acquire significant experience in the areas listed above to be a competitive candidate. \n\n**Next steps:**\n1. Confirm if your target role is indeed Senior Software Engineer or if you are interested in transitioning to Product Marketing.\n2. If staying in engineering, run \"Analyze Profile\" again with a **Senior Software Engineer** job description to get a more accurate assessment of your technical skill gaps.\n\n---\n**Sources**\n- [S4] profile: profile overview\n- [S6] profile: resume\n- [S7] profile: resume"
+        },
+        {
+          "id": "cs03",
+          "category": "profile",
+          "route": "career_study",
+          "checks": {
+            "must_include_any": true,
+            "not_refused": true
+          },
+          "passed": true,
+          "model": "gemini-3.1-flash-lite",
+          "usage": {
+            "input_tokens": 3249,
+            "output_tokens": 521,
+            "total_tokens": 3770,
+            "input_token_details": {
+              "cache_read": 0
+            }
+          },
+          "latency_ms": 3618.9,
+          "words": 358,
+          "n_hits": 7,
+          "messages": [
+            {
+              "role": "user",
+              "content": "Create a 4 week learning plan to close my skill gaps"
+            }
+          ],
+          "context": "[S1] (source=knowledge/guide, score=0.57, ref=study_strategies.md)\nStudy Strategies - Planning a study schedule: Break a skill into weekly milestones with a concrete output each week (a notebook, a mini project, a solved problem set). Use focused blocks such as the Pomodoro technique (25 minutes work, 5 minutes break). Reserve time every week for review of older topics. A realistic plan for a working student is 1-2 hours on weekdays and 3-4 hours on weekends.\n\n[S2] (source=knowledge/guide, score=0.50, ref=study_strategies.md)\nStudy Strategies - Learning by building projects: Employers value proof of skill. After learning fundamentals, build small end-to-end projects: clean a real dataset, analyse it, and publish a dashboard or write-up; or build and deploy a small web app or API. Put the code on GitHub with a clear README describing the problem, approach, results and how to run it.\n\n[S3] (source=careers/career_profile, score=0.39, ref=career_1683)\nCareer: Manager (226 Days). Domain: Technology and Business Operations. Required skills: Proficient in Word, Excel, PowerPoint, Moodle, Google, Ability to create and edit written communication, Ability to script, record, edit, and produce training videos, Experience in developing online training modules, Knowledge of data analysis and intervention strategies, Familiarity with MyData Portal, Powerschool Unified Classroom, and other assessment tools, Ability to develop instructional resources and training materials, Ability to document and progress monitor intervention plans, Knowledge of local and state policies related to education. Description: Manager (226 Days) supports technical or business workflows by coordinating tasks, maintaining information, solving operational problems, and helping teams use systems and processes effectively. Relevant skills listed for this role include Proficient in Word, Excel, PowerPoint, Moodle. Education: Bachelor's degree (required), Master's degree (required), years teaching experience, Understanding of K-12 education principles.\n\n[S4] (source=profile/learning_path, score=0.38, ref=learning_path)\nSkill gap 'Data Analysis': learning path and free/curated resources. Suggested searches: data analysis for marketing managers course; how to use data to drive product marketing decisions; qualitative user feedback analysis techniques.\n\n[S5] (source=profile/learning_path, score=0.35, ref=learning_path)\nSkill gap 'Product Marketing': learning path and free/curated resources. Suggested searches: best free online course for product marketing manager 2024; product marketing manager certification hubspot academy; how to transition from software engineering to product marketing. Recommended resources: Article: The Best Online Course for Product Marketing Managers [2024] : https://productschool.com/blog/career-development/best-online-course-product-marketing-managers | YouTube Video: Product Marketing Full Course 2026 : https://www.youtube.com/watch?v=EURmKW58dYs\n\n[S6] (source=profile/learning_path, score=0.34, ref=learning_path)\nSkill gap 'Customer Advocacy': learning path and free/curated resources. Suggested searches: how to build a customer advocacy program for SaaS; collecting and using customer testimonials for marketing; identifying power users for product marketing.\n\n[S7] (source=profile/learning_path, score=0.33, ref=learning_path)\nSkill gap 'Marketing or Business Communications': learning path and free/curated resources. Suggested searches: online bachelor's degree in marketing or business communications; equivalent practical experience for marketing roles; certifications to complement a CS degree for marketing jobs.",
+          "answer": "To close your skill gaps for the **Senior Product Marketing Manager** role, you need to pivot from pure engineering to business-centric strategy. Since your current profile is heavily technical, this 4-week plan focuses on bridging the gap between your development experience and market-facing responsibilities [S5].\n\n**Week 1: Foundations of Product Marketing (PMM)**\n*   **Goal:** Understand the GTM lifecycle and core PMM terminology.\n*   **Tasks:** Complete the HubSpot Academy Product Marketing certification [S5]. Research \"B2B SaaS GTM strategies\" and document how they differ from standard software development lifecycles.\n*   **Outcome:** A 2-page summary document outlining a GTM strategy for a hypothetical feature you previously built.\n\n**Week 2: Data Analysis & KPI Tracking**\n*   **Goal:** Learn to measure product success beyond code performance.\n*   **Tasks:** Study how to use Mixpanel or Google Analytics for product insights [S4]. Focus on metrics like Churn Rate, Customer Acquisition Cost (CAC), and Monthly Recurring Revenue (MRR).\n*   **Outcome:** A mock dashboard report using a sample dataset that tracks user engagement metrics for a SaaS application.\n\n**Week 3: Positioning, Messaging & Copywriting**\n*   **Goal:** Translate technical features into value-driven narratives.\n*   **Tasks:** Practice \"Positioning & Messaging\" by rewriting your existing project descriptions on your resume to focus on business value rather than the tech stack [S5]. Study customer advocacy programs [S6].\n*   **Outcome:** A \"Value Proposition\" document for one of your GitHub projects, targeting a specific business persona.\n\n**Week 4: Sales Enablement & Competitive Intelligence**\n*   **Goal:** Learn how to support revenue teams.\n*   **Tasks:** Research how to build \"Sales Enablement\" materials (e.g., battlecards, one-pagers). Conduct a competitive analysis of a tool you use (e.g., Salesforce vs. a competitor).\n*   **Outcome:** A competitive battlecard comparing two SaaS products in your domain.\n\n**Next Steps:**\n1.  **Update your LinkedIn:** Highlight your \"Digital Strategist\" experience alongside your engineering work to signal your interest in business operations.\n2.  **Apply the \"Build\" method:** Use your existing GitHub projects to create a \"Product Case Study\" portfolio that explains the *why* and *business impact* behind your code [S2].\n\n---\n**Sources**\n- [S2] knowledge: Learning by building projects\n- [S4] profile: learning path\n- [S5] profile: learning path\n- [S6] profile: learning path"
+        }
+      ]
+    },
+    "v6": {
+      "summary": {
+        "n": 3,
+        "pass_rate": 1.0,
+        "pass_rate_by_category": {
+          "profile": 1.0
+        },
+        "citation_rate_in_scope": 1.0,
+        "avg_words": 261.0,
+        "avg_latency_ms": 2938.9,
+        "answering_models": {
+          "gemini-3.1-flash-lite": 3
+        },
+        "total_tokens": 11771,
+        "avg_tokens_per_llm_answer": 3924
+      },
+      "rows": [
+        {
+          "id": "cs01",
+          "category": "profile",
+          "route": "career_study",
+          "checks": {
+            "must_include": true,
+            "not_refused": true
+          },
+          "passed": true,
+          "model": "gemini-3.1-flash-lite",
+          "usage": {
+            "input_tokens": 3093,
+            "output_tokens": 292,
+            "total_tokens": 3385,
+            "input_token_details": {
+              "cache_read": 0
+            }
+          },
+          "latency_ms": 2491.9,
+          "words": 222,
+          "n_hits": 3,
+          "messages": [
+            {
+              "role": "user",
+              "content": "What is my ATS score and why?"
+            }
+          ],
+          "context": "[S1] (source=knowledge/guide, score=0.41, ref=resume_and_ats.md)\nResume And Ats - How Applicant Tracking Systems work: An Applicant Tracking System (ATS) parses a resume into fields (contact, education, experience, skills) and ranks candidates by how closely their text matches the job description. Keyword overlap with the job description's required skills, job titles and tools is the strongest signal. Unusual layouts (tables, text boxes, multi-column designs, images, headers/footers) often break parsing, so key information can be lost before a human ever reads it.\n\n[S2] (source=profile/career_summary, score=0.39, ref=career_summary)\nCareer summary for the candidate: Your strong technical foundation in full-stack development, AI frameworks, and Salesforce positions you as a highly capable candidate for a Senior Software Engineer role. While your current profile is heavily engineering-focused, you can significantly boost your ATS score by emphasizing your existing problem-solving and leadership skills rather than trying to bridge the unrelated marketing skill gaps. Focus your resume on highlighting your technical architecture experience and project impact to better align with the expectations of senior-level engineering positions.\n\n[S3] (source=profile/resume, score=0.31, ref=resume)\nCandidate resume (part 3): farmer increase their income 25%. SAMS.AI Real-Time Attendance System Using Deep Built facial recognition-based student attendance management architecture YOLO object models PostgreSQL. Successfully 92% accuracy. Aura-Audit Career an AI-powered resume auditing tool integrating Google Gemini 1.5 Flash advanced semantic matching skill gap identification. Increased efficiency 45%. Future-focusedSoftware Developer Engineer hands-on experience full AI-driven Proven ability build impactful tools automation systems. Adept Python React SQL REST solid knowledge DSA OS DBMS. National Hackathon Winner 30+ hackathons 5+ case competitions. Strong communicator team player passionate about innovation. Education Trident Academy Of Technology(Under BPUT) Bachelor Computer Science GPA:8.5 Sri Aurobindo College Higher Secondary Secured: 87% Saraswati Vidya Mandir 83% Bhubaneswar Dec 2022- Cuttack Apr 2020- 2022 Paradip Mar 2020",
+          "answer": "Your ATS match score is **12/100** [Profile].\n\nThis low score is primarily because your profile is heavily focused on **Software Engineering** (Full-stack, AI, and Salesforce development), while the job description you are targeting is for a **Senior Product Marketing Manager** [Profile]. \n\nHere is why your score is currently low:\n\n*   **Skill Mismatch:** The job requires marketing-specific expertise like Go-To-Market strategy, positioning, and marketing automation (HubSpot), which are not present in your technical skill set [Profile].\n*   **Keyword Disconnect:** ATS systems rank candidates based on how closely their resume keywords match the job description [S1]. Since your resume highlights technical architecture and coding projects rather than marketing KPIs or sales enablement, the system does not recognize you as a strong match for this specific role [S2].\n\n**Next Steps:**\n1.  **Re-evaluate your target:** Given your strong technical background, you will likely see a much higher ATS score if you apply for **Senior Software Engineer** roles rather than Product Marketing roles [S2].\n2.  **Optimize for Engineering:** If you choose to pursue engineering roles, focus your resume on your technical architecture experience and the specific business impact of your projects (like the 45% efficiency increase mentioned in your resume) to better align with senior-level expectations [S2, S3].\n\n---\n**Sources**\n- [S1] knowledge: How Applicant Tracking Systems work\n- [S2] profile: career summary\n- [S3] profile: resume"
+        },
+        {
+          "id": "cs02",
+          "category": "profile",
+          "route": "career_study",
+          "checks": {
+            "must_include_any": true,
+            "not_refused": true
+          },
+          "passed": true,
+          "model": "gemini-3.1-flash-lite",
+          "usage": {
+            "input_tokens": 4120,
+            "output_tokens": 265,
+            "total_tokens": 4385,
+            "input_token_details": {
+              "cache_read": 0
+            }
+          },
+          "latency_ms": 2235.9,
+          "words": 183,
+          "n_hits": 7,
+          "messages": [
+            {
+              "role": "user",
+              "content": "Which skills am I missing for my target job?"
+            }
+          ],
+          "context": "[S1] (source=profile/job_description, score=0.56, ref=job_description)\nTarget job description (part 3): copy. • Analytical Skills: Strong ability to analyze data track launch metrics (KPIs) and distill qualitative user feedback into actionable insights. • Tools: Proficiency with product analytics tools (e.g. Mixpanel Google Analytics) and CRM/Marketing automation platforms (HubSpot Salesforce). • Education: Bachelor’s degree in Marketing Business Communications or a related field (or equivalent practical experience).\n\n[S2] (source=careers/career_profile, score=0.53, ref=career_2134)\nCareer: Recruiting Associate. Domain: Project and Business Management. Required skills: Data Analysis, Change Management, Project Management, Microsoft Excel, Power Point, Microsoft Office Suite. Description: Recruiting Associate coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include Data Analysis, Change Management, Project Management, Microsoft Excel. Education: Bachelor's degree in a relevant business, management, finance, marketing, or related field; role-specific experience is often valued.\n\n[S3] (source=profile/job_description, score=0.51, ref=job_description)\nTarget job description (part 2): support. • Positioning & Messaging: Develop clear differentiated product positioning and messaging that resonates with our target enterprise personas. • Sales Enablement: Create high-impact collateral including pitch decks case studies product sheets and competitive battle cards to accelerate the sales cycle. • Market & Competitive Intelligence: Conduct continuous research on market trends competitor movements and buyer behavior to influence the product roadmap. • Customer Advocacy: Partner with customer success to identify power users and build a library of testimonials reviews and success stories. 🎓 Required Qualifications • Experience: 5+ years of dedicated product marketing experience ideally within a B2B SaaS or technology environment. • Communication: Exceptional written and verbal communication skills with a proven track record of writing high-converting marketing copy. • Analytical Skills: Strong ability to analyze data track launch metrics (KPIs) and distill qualitative user feedback into actionable insights. • Tools: Proficiency with product analytics tools (e.g. Mixpanel\n\n[S4] (source=profile/profile_overview, score=0.49, ref=profile_overview)\nCandidate profile overview. Target role: Senior Software Engineer. ATS match score: 12/100. Candidate skills: Languages: Python, Languages: Java, Languages: Apex, Languages: JavaScript, Languages: C, Languages: TypeScript, Frameworks: React.js, Frameworks: Node.js, Frameworks: Next.js, Frameworks: MERN, Frameworks: Bootstrap, Frameworks: Tailwind CSS, Frameworks: TensorFlow, Frameworks: PyTorch, Tools: Salesforce, Tools: Git, Tools: Postman, Tools: Visual Code, Tools: Roboflow, Tools: Wix Studio, Tools: Google Gemini, Databases: MySQL, Databases: MongoDB, Databases: PostgreSQL, Soft Skills: Analytical Thinking, Soft Skills: Problem Solving, Soft Skills: Communication, Soft Skills: Team Collaboration, Soft Skills: Adaptability, Soft Skills: Leadership, Concepts: RESTful APIs, Concepts: Prompt Engineering, Concepts: SEO, Concepts: Agile, Concepts: Computer Vision, Concepts: DSA, Concepts: OS, Concepts: DBMS. Skills required by the job description: Experience: Product Marketing, Experience: Go-To-Market Strategy, Experience: B2B SaaS, Skills: Positioning & Messaging, Skills: Sales Enablement, Skills: Market & Competitive Intelligence, Skills: Customer Advocacy, Skills: Marketing Copywriting, Skills: Data Analysis, Skills: KPI Tracking, Tools: Product Analytics (Mixpanel/Google Analytics), Tools: CRM (Salesforce), Tools: Marketing Automation (HubSpot), Education: Marketing or Business Co",
+          "answer": "Your target job is a **Senior Product Marketing Manager** [S3], and your profile shows that you are missing the following skills and qualifications:\n\n*   **Core Experience:** Product Marketing, Go-To-Market (GTM) Strategy, and B2B SaaS experience [S4].\n*   **Marketing-Specific Skills:** Positioning & Messaging, Sales Enablement, Market & Competitive Intelligence, Customer Advocacy, Marketing Copywriting, Data Analysis, and KPI Tracking [S4].\n*   **Tools:** Product Analytics (e.g., Mixpanel, Google Analytics) and Marketing Automation (e.g., HubSpot) [S4].\n*   **Education:** A degree in Marketing or Business Communications [S4].\n\n**Important Note:** Your current profile is heavily focused on software engineering (e.g., Full Stack, AI, Salesforce) [S4, S6]. Because your target role is in Product Marketing, there is a significant mismatch between your technical background and the requirements of this specific job description [S4]. \n\nIf your goal is to transition into a **Senior Software Engineer** role (your stated target role in your profile), I recommend focusing your efforts on engineering-specific job descriptions, as your current skills align much more closely with that career path [S4].\n\n---\n**Sources**\n- [S3] profile: job description\n- [S4] profile: profile overview\n- [S6] profile: resume"
+        },
+        {
+          "id": "cs03",
+          "category": "profile",
+          "route": "career_study",
+          "checks": {
+            "must_include_any": true,
+            "not_refused": true
+          },
+          "passed": true,
+          "model": "gemini-3.1-flash-lite",
+          "usage": {
+            "input_tokens": 3420,
+            "output_tokens": 581,
+            "total_tokens": 4001,
+            "input_token_details": {
+              "cache_read": 0
+            }
+          },
+          "latency_ms": 4089.0,
+          "words": 378,
+          "n_hits": 7,
+          "messages": [
+            {
+              "role": "user",
+              "content": "Create a 4 week learning plan to close my skill gaps"
+            }
+          ],
+          "context": "[S1] (source=knowledge/guide, score=0.57, ref=study_strategies.md)\nStudy Strategies - Planning a study schedule: Break a skill into weekly milestones with a concrete output each week (a notebook, a mini project, a solved problem set). Use focused blocks such as the Pomodoro technique (25 minutes work, 5 minutes break). Reserve time every week for review of older topics. A realistic plan for a working student is 1-2 hours on weekdays and 3-4 hours on weekends.\n\n[S2] (source=knowledge/guide, score=0.50, ref=study_strategies.md)\nStudy Strategies - Learning by building projects: Employers value proof of skill. After learning fundamentals, build small end-to-end projects: clean a real dataset, analyse it, and publish a dashboard or write-up; or build and deploy a small web app or API. Put the code on GitHub with a clear README describing the problem, approach, results and how to run it.\n\n[S3] (source=careers/career_profile, score=0.39, ref=career_1683)\nCareer: Manager (226 Days). Domain: Technology and Business Operations. Required skills: Proficient in Word, Excel, PowerPoint, Moodle, Google, Ability to create and edit written communication, Ability to script, record, edit, and produce training videos, Experience in developing online training modules, Knowledge of data analysis and intervention strategies, Familiarity with MyData Portal, Powerschool Unified Classroom, and other assessment tools, Ability to develop instructional resources and training materials, Ability to document and progress monitor intervention plans, Knowledge of local and state policies related to education. Description: Manager (226 Days) supports technical or business workflows by coordinating tasks, maintaining information, solving operational problems, and helping teams use systems and processes effectively. Relevant skills listed for this role include Proficient in Word, Excel, PowerPoint, Moodle. Education: Bachelor's degree (required), Master's degree (required), years teaching experience, Understanding of K-12 education principles.\n\n[S4] (source=profile/learning_path, score=0.38, ref=learning_path)\nSkill gap 'Data Analysis': learning path and free/curated resources. Suggested searches: data analysis for marketing managers course; how to use data to drive product marketing decisions; qualitative user feedback analysis techniques.\n\n[S5] (source=profile/learning_path, score=0.35, ref=learning_path)\nSkill gap 'Product Marketing': learning path and free/curated resources. Suggested searches: best free online course for product marketing manager 2024; product marketing manager certification hubspot academy; how to transition from software engineering to product marketing. Recommended resources: Article: The Best Online Course for Product Marketing Managers [2024] : https://productschool.com/blog/career-development/best-online-course-product-marketing-managers | YouTube Video: Product Marketing Full Course 2026 : https://www.youtube.com/watch?v=EURmKW58dYs\n\n[S6] (source=profile/learning_path, score=0.34, ref=learning_path)\nSkill gap 'Customer Advocacy': learning path and free/curated resources. Suggested searches: how to build a customer advocacy program for SaaS; collecting and using customer testimonials for marketing; identifying power users for product marketing.\n\n[S7] (source=profile/learning_path, score=0.33, ref=learning_path)\nSkill gap 'Marketing or Business Communications': learning path and free/curated resources. Suggested searches: online bachelor's degree in marketing or business communications; equivalent practical experience for marketing roles; certifications to complement a CS degree for marketing jobs.",
+          "answer": "To close your skill gaps for a Product Marketing Manager role, you must bridge your technical engineering background with marketing strategy and data-driven decision-making [S5].\n\nThis 4-week plan focuses on the core competencies required for the role [S4, S5].\n\n### **4-Week Product Marketing Transition Plan**\n\n*   **Week 1: Foundations of Product Marketing (PMM)**\n    *   **Focus:** Understand the GTM strategy and PMM lifecycle [S5].\n    *   **Tasks:** Complete the HubSpot Academy Product Marketing certification [S5]. Research \"B2B SaaS GTM frameworks\" and write a 1-page summary of how a technical feature (like an API) is marketed to non-technical stakeholders.\n    *   **Outcome:** A foundational understanding of PMM terminology and strategy.\n\n*   **Week 2: Data Analysis & KPI Tracking**\n    *   **Focus:** Using data to drive product decisions [S4].\n    *   **Tasks:** Take a course on \"Product Analytics\" (focus on Mixpanel or Google Analytics) [S4]. Analyze a dataset from one of your past projects (e.g., your Deloitte work) and create a report identifying \"user pain points\" and \"feature adoption rates.\"\n    *   **Outcome:** A data-backed case study you can discuss in interviews.\n\n*   **Week 3: Positioning, Messaging & Copywriting**\n    *   **Focus:** Translating technical features into value-driven narratives [S5].\n    *   **Tasks:** Practice \"Positioning & Messaging\" by rewriting the README files of your existing GitHub projects to focus on *customer benefits* rather than *technical implementation*. Study \"Marketing Copywriting\" best practices for SaaS landing pages.\n    *   **Outcome:** A portfolio of \"Marketing-focused\" project descriptions.\n\n*   **Week 4: Customer Advocacy & Sales Enablement**\n    *   **Focus:** Building programs that help sales teams win [S6].\n    *   **Tasks:** Research \"Sales Enablement\" and \"Customer Advocacy\" programs [S6]. Draft a sample \"Sales One-Pager\" or \"Feature Launch Email\" for a tool you have built.\n    *   **Outcome:** Concrete samples of sales enablement collateral.\n\n**Next Steps:**\n1. **Update your LinkedIn:** Highlight your \"Technical Strategy\" and \"Business Transformation\" experience from your Deloitte internship to align with PMM requirements.\n2. **Build a Portfolio:** Create a dedicated section on your GitHub or a personal site that hosts these marketing-focused case studies [S2].\n3. **Consistency:** Dedicate 1-2 hours on weekdays and 3-4 hours on weekends to these tasks to maintain momentum [S1].\n\n---\n**Sources**\n- [S1] knowledge: Planning a study schedule\n- [S2] knowledge: Learning by building projects\n- [S4] profile: learning path\n- [S5] profile: learning path\n- [S6] profile: learning path"
+        }
+      ]
+    },
+    "_meta": {
+      "design": "paired",
+      "expect_model": "gemini-3.1-flash-lite",
+      "stopped": null,
+      "completed_pairs": 3,
+      "n_cases": 65
+    }
+  }
+}

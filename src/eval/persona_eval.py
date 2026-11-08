@@ -144,10 +144,20 @@ def feedback_from_failure(checks: Dict, failed: Dict, f: Dict) -> (str, str):
     return "other", ""
 
 
+EXPECT_MODEL = ""
+
+
 def ask(q: str, uid: str, version: str) -> Dict:
+    """E34: strict model. If a fallback model answered (rate limit), wait and retry; rows that still came from
+    another model are flagged `excluded` and left out of the statistics (the R1 confound of the first run)."""
     from src.backend.chatbot import answer
-    r = answer([{"role": "user", "content": q}], system_version=version, user_id=uid)
-    return {"text": r["text"], "model": r.get("model"), "learned": r.get("learned") or {},
+    for attempt in range(4):
+        r = answer([{"role": "user", "content": q}], system_version=version, user_id=uid)
+        if not EXPECT_MODEL or r.get("model") in (EXPECT_MODEL, None):
+            break
+        time.sleep(20 * (attempt + 1))
+    return {"text": r["text"], "model": r.get("model"), "learned": r.get("learned") or {}, "revised": r.get("revised"),
+            "excluded": bool(EXPECT_MODEL and r.get("model") not in (EXPECT_MODEL, None)),
             "qtype": (r.get("question_profile") or {}).get("type"), "route": (r.get("route") or {}).get("label")}
 
 
@@ -161,6 +171,7 @@ def run_set(facts, version, qidx, sleep_s, store_feedback=False, fs=None) -> Lis
             c = check(res["text"], checks, f)
             failed = {k: v for k, v in c.items() if not v}
             rows.append({"persona": uid, "id": cid, "kind": kind, "q": q, "qtype": res["qtype"], "route": res["route"],
+                         "excluded": res["excluded"], "revised": res["revised"],
                          "checks": c, "passed": not failed, "model": res["model"], "learned": res["learned"],
                          "answer": res["text"][:1500]})
             print(f"[{version} q{qidx}] {uid:10s} {cid:9s} {kind:7s} {res['qtype'] or '-':15s} passed={not failed} {failed or ''}")
@@ -174,13 +185,14 @@ def run_set(facts, version, qidx, sleep_s, store_feedback=False, fs=None) -> Lis
 
 
 def summarise(rows):
+    rows = [r for r in rows if not r.get("excluded")]
     n = len(rows) or 1
     by_kind = {}
     for r in rows:
         by_kind.setdefault(r["kind"], []).append(r["passed"])
     return {"n": len(rows), "pass_rate": round(sum(r["passed"] for r in rows) / n, 3),
             "by_kind": {k: round(sum(v) / len(v), 3) for k, v in by_kind.items()},
-            "models": sorted({str(r["model"]) for r in rows})}
+            "models": sorted({str(r["model"]) for r in rows}), "revised": sum(bool(r.get("revised")) for r in rows)}
 
 
 def isolated_store(path: Path):
@@ -196,7 +208,10 @@ def main():
     ap.add_argument("--versions", nargs="+", default=["v4", "v5"])
     ap.add_argument("--rounds", action="store_true", help="recursive feedback-learning rounds on the last version")
     ap.add_argument("--sleep", type=float, default=3.0)
+    ap.add_argument("--expect-model", default="")
     a = ap.parse_args()
+    global EXPECT_MODEL
+    EXPECT_MODEL = a.expect_model
     facts = setup_personas()
     print("facts:", json.dumps(facts))
     tmp = Path(tempfile.mkdtemp())

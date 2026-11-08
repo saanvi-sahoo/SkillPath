@@ -231,6 +231,19 @@ def answer(chat_history: List[Dict], system_version: str | None = None, router_m
             out["model"] = (getattr(resp, "response_metadata", {}) or {}).get("model_name")
             out["usage"] = getattr(resp, "usage_metadata", None)
             text = resp.text.strip()
+            # E34 (v6): generate -> verify against the answer contract -> revise once if needed
+            if text and int(version.lstrip("v")) >= 6 and decision["label"] == "career_study":
+                from src.backend.answer_check import REVISE_INSTRUCTION, check_answer
+                problems = check_answer(text, qp, message, memory)
+                if problems:
+                    try:
+                        rev = llm.invoke(msgs + [AIMessage(content=text),
+                                                 HumanMessage(content=REVISE_INSTRUCTION + "\n".join(f"- {p}" for p in problems))])
+                        if rev.text.strip():
+                            text = rev.text.strip()
+                            out["revised"] = problems
+                    except Exception as e:  # noqa: BLE001 - keep the draft if the revision call fails
+                        print(f"[chatbot] revision skipped: {e}")
             out["generation"] = llm_provider()
             out["text"] = (text + _sources_footer(text, hits)) if text else "I couldn't generate an answer, please rephrase."
         except LookupError:

@@ -124,24 +124,29 @@ def _render_answer(i: int, msg: dict, show_debug: bool) -> None:
 
 
 def _ask(question: str, uid: str) -> None:
+    """Answer one question. The user + assistant turn is appended only when the answer is complete, so a run
+    interrupted by a newly submitted question leaves no half-finished turn (the question stays queued)."""
     from src.backend.chatbot import answer
 
     msgs = st.session_state["advisor_messages"]
-    msgs.append({"role": "user", "content": question})
+    history = [{"role": m["role"], "content": m["content"]} for m in msgs] + [{"role": "user", "content": question}]
     try:
-        res = answer([{"role": m["role"], "content": m["content"]} for m in msgs], user_id=uid)
+        res = answer(history, user_id=uid)
         hits = [{"#": f"S{k}", "source": h.get("source"), "type": h.get("doc_type"),
                  "score": round(float(h.get("score", 0)), 3),
                  "ref": (h.get("metadata") or {}).get("career_id") or (h.get("metadata") or {}).get("career_name")
                  or (h.get("metadata") or {}).get("title") or (h.get("metadata") or {}).get("section") or "",
                  "text": (h.get("text") or "")[:160]} for k, h in enumerate(res.get("hits") or [], 1)]
-        msgs.append({"role": "assistant", "content": res.get("text") or "I couldn't generate an answer, please rephrase.",
-                     "meta": {"route": res.get("route"), "model": res.get("model"), "latency_ms": res.get("latency_ms"),
-                              "system_version": res.get("system_version"), "hits": hits,
-                              "generation": res.get("generation"), "learned": res.get("learned") or {},
-                              "question_type": (res.get("question_profile") or {}).get("type")}})
+        reply = {"role": "assistant", "content": res.get("text") or "I couldn't generate an answer, please rephrase.",
+                 "meta": {"route": res.get("route"), "model": res.get("model"), "latency_ms": res.get("latency_ms"),
+                          "system_version": res.get("system_version"), "hits": hits,
+                          "generation": res.get("generation"), "learned": res.get("learned") or {},
+                          "question_type": (res.get("question_profile") or {}).get("type"),
+                          "revised": res.get("revised")}}
     except Exception as e:  # noqa: BLE001
-        msgs.append({"role": "assistant", "content": f"Sorry, something went wrong: {e}"})
+        reply = {"role": "assistant", "content": f"Sorry, something went wrong: {e}"}
+    msgs.append({"role": "user", "content": question})
+    msgs.append(reply)
 
 
 def _transcript() -> str:
@@ -194,13 +199,24 @@ def render_career_advisor(data, uid: str = None) -> None:
             else:
                 _render_answer(i, m, show_debug)
 
+    # E34: question QUEUE. The input box stays usable while an answer is being generated: a new submission
+    # interrupts the run, joins the queue, and every queued question is answered in order. A question leaves
+    # the queue only after its answer has been stored, so an interrupted answer is simply redone.
+    queue = st.session_state.setdefault("advisor_queue", [])
     pending = st.session_state.pop("advisor_pending", None)
-    typed = st.chat_input("Ask about careers, skills, interviews or studies…")
-    question = typed or pending
-    if question:
-        with st.chat_message("user", avatar=":material/person:"):
-            st.markdown(question)
+    if pending:
+        queue.append(pending)
+    typed = st.chat_input("Ask about careers, skills, interviews or studies… (you can send the next question anytime)")
+    if typed and (not queue or queue[-1] != typed):
+        queue.append(typed)
+    if queue:
+        for i, q in enumerate(queue):
+            with st.chat_message("user", avatar=":material/person:"):
+                st.markdown(q)
+                if i > 0:
+                    st.caption(":material/schedule: queued, will be answered next")
         with st.chat_message("assistant", avatar=":material/school:"):
-            with st.spinner("Checking the career knowledge base and your profile…"):
-                _ask(question, uid)
+            with st.spinner(f"Answering… ({len(queue)} question{'s' if len(queue) > 1 else ''} in the queue)"):
+                _ask(queue[0], uid)
+        queue.pop(0)
         st.rerun()

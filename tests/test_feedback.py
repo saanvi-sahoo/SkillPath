@@ -76,3 +76,28 @@ def test_frontend_has_no_bare_non_call_expressions_and_no_resume_builder():
         assert bad == [], f"{f}: bare expressions at lines {bad}"
     assert "Resume Builder" not in (ROOT / "src/frontend/frontend.py").read_text()
     assert "magicEnabled = false" in (ROOT / ".streamlit/config.toml").read_text()
+
+
+def test_answer_self_check_finds_contract_violations():
+    from src.backend.answer_check import check_answer
+    from src.backend.question_profile import profile_question as p
+    mem = {"skill_gaps": ["Tools: Tableau", "Statistics"], "required_skills": ["Python", "Tableau", "Statistics"], "ats_score": 50}
+    q = "Give me 3 certifications for cloud"
+    assert any("exactly 3" in i for i in check_answer("1. AWS\n2. Azure", p(q), q, None))
+    assert check_answer("1. AWS\n2. Azure\n3. GCP", p(q), q, None) == []
+    q = "What am I missing for this job?"
+    assert any("Statistics" in i for i in check_answer("You are missing Tableau.", p(q), q, mem))
+    q = "Should I apply for this job with my current profile?"
+    assert any("verdict" in i for i in check_answer("Here is an overview of the role.", p(q), q, mem))
+    q = "Which skill gap should I prioritise first?"
+    assert any("FIRST sentence" in i for i in check_answer("Learning is a journey.", p(q), q, mem))
+    assert check_answer("Start with Tableau, because it appears in most analyst JDs.", p(q), q, mem) == []
+
+
+def test_question_profile_paraphrases_map_consistently():
+    from src.backend.question_profile import profile_question as p
+    assert {p(q)["type"] for q in ["Am I a good fit for this role?", "Should I apply for this job with my current profile?",
+                                   "Is my profile suitable for this position?"]} == {"fit_analysis"}
+    assert {p(q)["type"] for q in ["What does the job description require?", "What would I do day to day in this job according to the JD?"]} == {"jd_requirements"}
+    assert p("Make a 4-week plan to close my gaps for this job")["type"] == "plan"
+    assert p("Which skill gap should I prioritise first?")["type"] == "profile_fact"

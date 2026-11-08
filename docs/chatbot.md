@@ -42,6 +42,21 @@ Labels:
 ## 2-v5. Precise answers and feedback learning
 Since E32 every question is profiled (type, item count, length, format). Retrieval is tuned to the type, weakly related chunks are filtered out, and prompt v5 receives a per-question **answer contract** plus guidance learned from 👍/👎 on similar questions. Details: [feedback_learning.md](feedback_learning.md).
 
+## 2-v6. Self-check, scope and the question queue (E34)
+- **Generate → verify → revise (prompt v6).** After the first draft, `src/backend/answer_check.py` checks it against the question:
+  - exact item count
+  - word limit
+  - Yes/No verdict for yes/no questions
+  - a one-line verdict for "am I a fit / should I apply"
+  - the ATS number for ATS questions
+  - every real skill gap for "what am I missing"
+  - the JD's requirements for JD questions
+  - the gap's name in the first sentence for "what should I learn first"
+
+  On any violation the model revises **once** with the exact problems listed, so only failing drafts cost a second call. The Explain panel shows when an answer was revised.
+- **Scope (advisor v6 + router v2):** one shared definition. *In scope:* careers, job search, resumes, interviews, salaries, skills, learning, higher education (degrees, admissions, SOPs, entrance exams), studying (techniques, exam prep, explaining concepts to learn them) and student/workplace life as it affects study or career (exam stress, time management, first job). *Out of scope:* everything else. Graded homework gets help understanding and outlining, but isn't written for the student.
+- **Question queue:** the chat box stays usable while an answer is being generated. A newly sent question interrupts the run, joins the queue, and all queued questions are answered in order ("queued, will be answered next"). A question leaves the queue only after its answer has been stored, so an interrupted answer is redone, never lost.
+
 ## 2a. Without an LLM
 The advisor also runs with **no generator** (`LLM_PROVIDER=none`) or degrades to it when every LLM fails: answers are composed from the cited records (`src/backend/extractive_answer.py`). See [keyless_mode.md](keyless_mode.md).
 

@@ -21,11 +21,16 @@ _TYPES = [
                      r"\b(skills?)\b.*\b(i (already )?(have|meet|match))\b.*\b(job|role|jd|position)\b|"
                      r"\b(missing|lack|gaps?)\b.*\b(this|the|that) (job|role|position|jd)\b|"
                      r"\b(match|fit|alignment) (between|with)\b.*\b(resume|cv|job|jd|role)\b|"
-                     r"\bhighlight\b.*\b(resume|cv)\b|\btailor\b.*\b(resume|cv)\b|\b(chances|shortlisted)\b"),
+                     r"\bhighlight\b.*\b(resume|cv)\b|\btailor\b.*\b(resume|cv)\b|\b(chances|shortlisted)\b|"
+                     r"\bshould i apply\b|\b(my )?(current )?profile\b.*\b(suitable|enough|good enough|ready|fit|match)\b|"
+                     r"\b(suitable|ready|qualified|eligible) for (this|the|that) (job|role|position)\b|\bjob[- ]ready\b|"
+                     r"\b(emphasi[sz]e|showcase)\b.*\b(experience|skills?|resume)\b|\b(experience|skills?|resume)\b.*\b(emphasi[sz]e|showcase)\b|"
+                     r"\b(the )?(jd|job)'s (skills|requirements)\b|\bof the (jd|job description|job)\b.*\b(i|my)\b"),
     # E33: questions about the job description itself
     ("jd_requirements", r"\b(jd|job description|this job|this role|the role|the job|the position)\b.*\b(require|requires|required|requirements?|ask(ing)? for|want|looking for|need|mention|responsibilit\w*|qualifications?|experience)\b|"
                         r"\b(what|which)\b.*\b(does|do) (the|this) (jd|job|role|position|company)\b"),
-    ("profile_fact", r"\b(my|mine)\b.*\b(ats|score|gap|gaps|skills?|resume|cv|profile|summary|missing)\b|\bam i\b|\bwhat should i learn first\b|\b(skills|tools|experience) do i (already )?(have|know)\b|\bwhat do i (already )?know\b"),
+    ("profile_fact", r"\b(first|prioriti[sz]e|start with|focus on first|most important)\b.*\b(gap|gaps|missing skill|skill gap)\b|\bwhich (skill )?(gap|missing skill)\b|"
+                     r"\b(my|mine)\b.*\b(ats|score|gap|gaps|skills?|resume|cv|profile|summary|missing)\b|\bam i\b|\bwhat should i learn first\b|\b(skills|tools|experience) do i (already )?(have|know)\b|\bwhat do i (already )?know\b"),
     ("comparison", r"\b(vs\.?|versus|difference between|compare|comparison|better than|which is better|or)\b.*\?|\bdifference\b"),
     ("plan", r"\b(plan|roadmap|schedule|week|weeks|month|months|days?)\b.*\b(learn|study|prepare|become|plan)\b|\b(study|learning) plan\b"),
     ("list", r"\b(list|top|best|which|what are( the)?|suggest|name|give me|recommend some)\b.*\b(courses?|certifications?|skills?|tools?|resources?|books?|projects?|websites?|companies|questions?|techniques|platforms)\b"),
@@ -41,7 +46,7 @@ def profile_question(message: str) -> Dict:
     low = m.lower()
     jd_first = [t for t in _TYPES if t[0] in ("fit_analysis", "jd_requirements")]
     qtype = next((t for t, pat in jd_first if re.search(pat, low)), None)  # E33: resume-vs-JD / JD questions first
-    if qtype is None and re.search(r"\b(in|from) the (jd|job description)\b|\b(jd|job description) (mentions?|lists?)\b", low):
+    if qtype is None and re.search(r"\b(in|from|according to) the (jd|job description)\b|\b(jd|job description) (mentions?|lists?)\b", low):
         qtype = "jd_requirements"
     if qtype is None:
         if re.match(r"^\s*how\b", low):  # "How can I make my resume ATS friendly?" is a how-to, not a profile lookup
@@ -50,6 +55,8 @@ def profile_question(message: str) -> Dict:
             qtype = next((t for t, pat in _TYPES if re.search(pat, low)), "other")
     if re.search(r"\b(salary|salaries|ctc|lpa|package|pay)\b", low):
         qtype = "salary"
+    elif qtype in ("fit_analysis", "other", "profile_fact") and re.search(r"\b(plan|schedule|roadmap)\b|\b\d+[- ]weeks?\b|\bnext \d+ (weeks|days|months)\b|\bone[- ]month\b", low):
+        qtype = "plan"  # "4-week plan to close my gaps" is a plan (gaps come from the profile anyway)
 
     n_items: Optional[int] = None
     mm = re.search(r"\b(top|list|give me|suggest|name|any)?\s*(\d{1,2}|" + "|".join(_WORDNUM) + r")\s+(\w+\s+)?"
