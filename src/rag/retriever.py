@@ -82,7 +82,7 @@ def ensure_local_corpus() -> None:
 
 
 def retrieve(query: str, quotas: Optional[Dict[str, int]] = None, user_id: str = config.DEFAULT_USER_ID,
-             min_score: float = config.MIN_SCORE) -> List[Dict]:
+             min_score: float = config.MIN_SCORE, user_skills: Optional[List[str]] = None) -> List[Dict]:
     ensure_local_corpus()
     quotas = quotas or DEFAULT_QUOTAS
     qv = embed_query(query)
@@ -91,10 +91,22 @@ def retrieve(query: str, quotas: Optional[Dict[str, int]] = None, user_id: str =
         if k <= 0:
             continue
         if config.RAG_RERANK and source in config.RERANK_SOURCES:
-            pool = _search(source, qv, max(config.RERANK_POOL, k), user_id)
+            src_query, src_qv = query, qv
+            if source == "careers" and config.RAG_SKILL_RERANK:
+                from src.rag.skill_rerank import expand_career_query
+                src_query = expand_career_query(query)  # E37: interests / career change -> career-area words
+                if src_query != query:
+                    src_qv = embed_query(src_query)
+            pool = _search(source, src_qv, max(config.RERANK_POOL, k), user_id)
             try:
                 from src.rag.hybrid import rerank
-                hits.extend(h for h in rerank(query, pool, top=k) if h.get("rerank", 0) >= config.RERANK_MIN)
+                if source == "careers" and config.RAG_SKILL_RERANK:
+                    # E36: cross-encoder over the whole pool, then career-intent + exact/related skill evidence
+                    from src.rag.skill_rerank import skill_rerank
+                    ranked = skill_rerank(src_query, rerank(src_query, pool, top=len(pool)), top=k, user_skills=user_skills)
+                else:
+                    ranked = rerank(query, pool, top=k)
+                hits.extend(h for h in ranked if h.get("rerank", 0) >= config.RERANK_MIN)
             except Exception as e:  # noqa: BLE001 - re-ranker unavailable -> plain vector order
                 print(f"[retriever] rerank skipped: {e}")
                 hits.extend(pool[:k])

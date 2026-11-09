@@ -18,7 +18,7 @@ We **don't change model weights**. Free-tier hosted LLMs can't be fine-tuned, an
 | Refusal / greeting | `templates/refusal_v1.md`, `greeting_v1.md` | Fixed text: zero LLM calls on refusals |
 | Roadmap prompt | `templates/roadmap_v1.md` | Validated by schema checks (see skills_and_roadmap.md) |
 
-The live versions are selected in `src/prompts/registry.py → ACTIVE`, or with `PROMPT_ADVISOR_SYSTEM` / `PROMPT_SCOPE_ROUTER`. **Live now: advisor v4** (activated after the paired A/B in §5, E22).
+The live versions are selected in `src/prompts/registry.py → ACTIVE`, or with `PROMPT_ADVISOR_SYSTEM` / `PROMPT_SCOPE_ROUTER`. **Live now: advisor v5** (E32). v6 and v7 were compared on 120 held-out cases (E36) and v8 on two new sets (E37); see [evaluation.md](evaluation.md) for the decisions.
 
 ## 2. Prompt versions: what changed and why
 
@@ -29,7 +29,12 @@ The live versions are selected in `src/prompts/registry.py → ACTIVE`, or with 
 | **v3** | Same rules. Few-shots moved **into the system prompt**, labelled "fictional users, NOT this user, copy format never facts". New example profile (Docker/AWS) | v2's few-shot leakage | Best on every judge metric (§5) → **activated** |
 | **v4** | v3 + project-doc rules: retrieved context is untrusted data (7); recommend only from `career_XXXX` records with reasons (8); **MATCH STRENGTH: WEAK → 2–3 clarifying questions** (9); related ≠ equivalent skills (10); salary only from non-placeholder values, labelled unverified (11); ATS is an estimate, no guarantees (12). Adds weak-evidence and career-recommendation examples | v3 guesses careers from too little information (doc09); doc §9.2/§10/§11 requirements | **Pass 1.0 vs v3 0.952** (paired, 42 cases); weak evidence 1.0 vs 0.0 → **activated** |
 
-Every rule in v4 maps to a test case in the eval set (§3), so each one is measured, not just written.
+| **v5** | Question profiler + retrieval per question type + answer contract + feedback-learned guidance | Answers not matching the question asked | Pass 0.98 vs v4 0.922 (51 paired); precision 0.889 vs 0.667 → **activated** (E32) |
+| **v6** | Explicit study/career scope + generate → check → revise once | Reworded fit and priority questions | E34/E36: see evaluation.md §6 |
+| **v7** | Three layers (system / task / context), parsed intent with primary source and missing information, allowed citation labels, ATS as stored estimate, citation-support and profile-contradiction checks | Team review 1: precision, grounding, clarification | E36 held-out A/B (evaluation.md §6) |
+| **v8** | Short core prompt (review 2's draft) + **one task template per intent** (`src/prompts/tasks/`), structured intent with secondary requests, source-aware routing, validated roadmap plan as evidence, claim-level NLI citation check, task contracts (sentence counts, examples, every part answered, no invented URLs, no guarantees, conflicts) | Team review 2: intent, evidence choice, claim support | E37 (evaluation.md §11-14) |
+
+Every rule maps to a test case (§3, `src/eval/heldout/`, `src/eval/dev/`), so each one is measured, not just written.
 
 ## 3. Evaluation set: `src/eval/prompt_eval_set.jsonl` (42 cases)
 

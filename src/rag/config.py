@@ -68,6 +68,7 @@ RERANK_SOURCES = ("careers", "knowledge", "jobs")
 RERANK_POOL = int(os.getenv("RAG_RERANK_POOL", "20"))
 # Calibrated on both labelled sets: cut-off -6 keeps 91% of relevant chunks and drops 73% of non-relevant ones.
 RERANK_MIN = float(os.getenv("RAG_RERANK_MIN", "-6.0"))
+RAG_SKILL_RERANK = os.getenv("RAG_SKILL_RERANK", "true").lower() == "true"  # E36: domain consensus + skill evidence for careers
 # Career results below this are flagged weak_match (ask a clarifying question instead).
 CAREER_MIN_SCORE = float(os.getenv("CAREER_MIN_SCORE", "0.40"))
 

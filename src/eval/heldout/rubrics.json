@@ -1,0 +1,9 @@
+{
+  "_doc": "Scoring rubrics for cases whose label was ambiguous (review 2 §1). The frozen case file is unchanged; a rubric replaces the case's checks for BOTH versions, and reports show results with and without rubric cases.",
+  "h-sc04": {
+    "question": "Is MySQL experience the same as knowing SQL?",
+    "rubric": "Correct if the answer (a) says MySQL experience demonstrates / is evidence of using SQL, and (b) distinguishes MySQL (a database system) from SQL (the language). A plain 'yes, identical' or a plain 'no, unrelated' fails.",
+    "checks": {"must_include_any": ["evidence", "demonstrat", "proves", "shows", "means you", "uses sql", "use sql", "using sql", "you know sql", "you do know sql", "implies"],
+               "must_include_any2": ["database management system", "dbms", "database system", "rdbms", "relational database", "language"]}
+  }
+}

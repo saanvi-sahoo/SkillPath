@@ -198,6 +198,7 @@ def summarise(rows):
 def isolated_store(path: Path):
     from src.backend import feedback_store as fs
     fs.LOCAL_FILE = path
+    fs.REQUIRE_APPROVAL = False  # isolated experiment: simulated feedback counts as reviewed
     fs._mongo = lambda: None
     fs._cache.update(t=0.0, rows=None)
     return fs

@@ -25,7 +25,7 @@ from typing import Dict, List
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 
 from src.backend.feedback_store import learned_guidance
-from src.backend.question_profile import QUOTAS, answer_contract, profile_question
+from src.backend.question_profile import QUOTAS, answer_contract, answer_contract_v7, parsed_intent, profile_question
 from src.backend.scope_router import route
 from src.prompts.registry import ACTIVE, load_json, load_prompt
 from src.rag import config
@@ -56,14 +56,15 @@ def load_memory(user_id: str | None = None) -> Dict | None:
         return None
 
 
-def load_profile_summary(user_id: str | None = None) -> str:
+def load_profile_summary(user_id: str | None = None, v7: bool = False) -> str:
     """Compact, always-included profile header (cheap and guarantees core facts are present)."""
     mem = load_memory(user_id)
     if mem is None:
         return "No analysed profile yet. The user has not run 'Analyze Profile'."
+    ats_note = " (stored AI estimate from the last analysis, not an official ATS result)" if v7 else ""
     return (
         f"- Target role: {mem.get('target_role') or 'not specified'}\n"
-        f"- ATS match score: {mem.get('ats_score', 'n/a')}/100\n"
+        f"- ATS match score: {mem.get('ats_score', 'n/a')}/100{ats_note}\n"
         f"- Current skills: {', '.join(mem.get('candidate_skills') or []) or 'n/a'}\n"
         f"- Skills required by JD: {', '.join(mem.get('required_skills') or []) or 'n/a'}\n"
         f"- Skill gaps: {', '.join(mem.get('skill_gaps') or []) or 'none'}\n"
@@ -143,7 +144,7 @@ def match_strength(hits: List[Dict]) -> str:
 
 
 def build_messages(history: List[Dict], profile: str, context: str, system_version: str | None = None,
-                   contract: str = "", learned: str = "") -> list:
+                   contract: str = "", learned: str = "", labels: str = "", intent: Dict | None = None) -> list:
     version = system_version or ACTIVE["advisor_system"]
     vnum = int(version.lstrip("v"))
     template = load_prompt("advisor_system", version)
@@ -158,6 +159,13 @@ def build_messages(history: List[Dict], profile: str, context: str, system_versi
         if vnum >= 5:  # v5: per-question answer contract + guidance learned from user feedback
             fields.update(contract=contract or "- Answer the question directly in the first sentence.",
                           learned=learned or "(no feedback on similar questions yet)")
+        if vnum >= 7:  # v7: layered prompt; the model sees exactly which citation labels exist
+            fields["labels"] = labels or "none"
+        if vnum >= 8:  # v8: short core + only this intent's task template and matching examples
+            from src.backend.task_contract import pick_examples, task_prompt
+            it = intent or {"primary_intent": "career_discovery", "secondary_intents": []}
+            fields["task"] = task_prompt(it)
+            fields["examples"] = pick_examples(it, load_json(_few_shot_file(vnum)))
         system = template.format(**fields)
     else:
         system = template.format(profile=profile, context=context)
@@ -172,7 +180,7 @@ def build_messages(history: List[Dict], profile: str, context: str, system_versi
 
 def answer(chat_history: List[Dict], system_version: str | None = None, router_mode: str | None = None,
            profile_override: str | None = None, route_override: Dict | None = None,
-           quotas: Dict | None = None, user_id: str | None = None) -> Dict:
+           quotas: Dict | None = None, user_id: str | None = None, extra_hits: List[Dict] | None = None) -> Dict:
     """Full turn with diagnostics (used by the eval harness and the API)."""
     t0 = time.perf_counter()
     history = [m for m in chat_history if m.get("role") in ("user", "assistant") and m.get("content")]
@@ -191,24 +199,61 @@ def answer(chat_history: List[Dict], system_version: str | None = None, router_m
 
         uid = user_id or config.DEFAULT_USER_ID
         version = system_version or ACTIVE["advisor_system"]
-        v5 = int(version.lstrip("v")) >= 5
+        vnum = int(version.lstrip("v"))
+        v5, v7, v8 = vnum >= 5, vnum >= 7, vnum >= 8
+        if llm_provider() == "none" and os.getenv("KEYLESS_INTENT_ROUTING", "true") == "true":  # keyless: no prompt is used -> v8 routing
+            v8 = v7 = v5 = True
         qp = profile_question(message)
+        memory = None if profile_override is not None else load_memory(uid)
+        intent = None
+        if v8:  # E37: structured intent + source-aware routing (review 2 §2-3)
+            from src.backend.intent import classify, quotas_for
+            has_profile = memory is not None or (profile_override is not None and "No analysed profile" not in profile_override)
+            intent = classify(message, history[:-1], has_profile, decision["label"])
+            qp = intent["question_profile"]
+            out["intent"] = {k: v for k, v in intent.items() if k not in ("question_profile", "route")}
+        elif v7:  # E36: parsed intent = task + primary source + missing information
+            has_profile = memory is not None or (profile_override is not None and "No analysed profile" not in profile_override)
+            qp = parsed_intent(qp, message, has_profile, history_len=len(history) - 1)
         out["question_profile"] = qp
         hits = []
         if decision["label"] == "career_study":
             q_quotas = quotas or (QUOTAS[qp["type"]] if v5 else None)  # E32: retrieve what THIS question needs
-            hits = retrieve(_retrieval_query(history), quotas=q_quotas, user_id=uid)
+            user_skills = None
+            if v7:
+                q_quotas = dict(q_quotas or QUOTAS[qp["type"]])
+                if not has_profile and q_quotas.get("profile"):  # source routing: no profile -> spend the slots elsewhere
+                    spare = q_quotas.pop("profile")
+                    q_quotas["knowledge"] = q_quotas.get("knowledge", 0) + (spare + 1) // 2
+                    q_quotas["careers"] = q_quotas.get("careers", 0) + spare // 2
+                if memory and qp["type"] in ("recommendation", "list", "other"):
+                    user_skills = memory.get("candidate_skills") or None  # career records matching the student's skills rank higher
+            if v8:
+                q_quotas = quotas or quotas_for(intent, has_profile)
+                user_skills = (memory.get("candidate_skills") or None) if memory and intent["primary_intent"] == "career_discovery" else None
+            hits = retrieve(_retrieval_query(history), quotas=q_quotas, user_id=uid, user_skills=user_skills) if q_quotas else []
             if v5:
                 hits = _relevance_filter(hits)
+            if v8:
+                from src.backend.task_contract import roadmap_evidence
+                plan = roadmap_evidence(message, intent, memory)
+                if plan:
+                    out["roadmap"] = {k: plan["plan"][k] for k in ("gaps_prioritised", "days_per_skill", "capstone", "daily_minutes")}
+                    hits = [{k: v for k, v in plan.items() if k != "plan"}] + hits
+        if extra_hits:  # evaluation hook (e.g. prompt-injection fixture inside a retrieved record)
+            hits = hits + extra_hits
         out["hits"] = hits
         context = format_context(hits) if hits else "(no retrieval for this message)"
-        if decision["label"] == "career_study":
-            context = match_strength(hits) + "\n\n" + context
-        profile = profile_override if profile_override is not None else load_profile_summary(uid)
-        memory = None if profile_override is not None else load_memory(uid)
+        if decision["label"] == "career_study" and not (v8 and intent["primary_intent"] not in ("career_discovery",)):
+            context = match_strength(hits) + "\n\n" + context  # v8: the career-evidence signal only where careers are the evidence
+        profile = profile_override if profile_override is not None else load_profile_summary(uid, v7=v7)
         contract, learned = "", ""
         if v5 and decision["label"] == "career_study":
-            contract = answer_contract(qp)
+            if v8:
+                from src.backend.task_contract import contract_v8
+                contract = contract_v8(intent)
+            else:
+                contract = answer_contract_v7(qp) if v7 else answer_contract(qp)
             try:
                 g = learned_guidance(message, uid)
                 out["learned"] = {k: g[k] for k in ("n_similar", "n_good", "n_bad")}
@@ -216,7 +261,8 @@ def answer(chat_history: List[Dict], system_version: str | None = None, router_m
                                                               "and level of detail, not their facts):\n" + g["examples"]) if g["examples"] else "") if x)
             except Exception as e:  # noqa: BLE001 - learning must never break answering
                 print(f"[chatbot] feedback guidance unavailable: {e}")
-        msgs = build_messages(history, profile, context, system_version, contract=contract, learned=learned)
+        labels = f"S1-S{len(hits)}" if hits else "none (do not cite)"
+        msgs = build_messages(history, profile, context, system_version, contract=contract, learned=learned, labels=labels, intent=intent)
 
         def _extractive(reason: str):
             text = compose_answer(message, decision, hits, memory)
@@ -233,8 +279,12 @@ def answer(chat_history: List[Dict], system_version: str | None = None, router_m
             text = resp.text.strip()
             # E34 (v6): generate -> verify against the answer contract -> revise once if needed
             if text and int(version.lstrip("v")) >= 6 and decision["label"] == "career_study":
-                from src.backend.answer_check import REVISE_INSTRUCTION, check_answer
-                problems = check_answer(text, qp, message, memory)
+                from src.backend.answer_check import REVISE_INSTRUCTION, check_answer, check_answer_v7
+                if v8:
+                    from src.backend.task_contract import check_v8
+                    problems = check_v8(text, intent, message, memory, hits)
+                else:
+                    problems = check_answer_v7(text, qp, message, memory, hits) if v7 else check_answer(text, qp, message, memory)
                 if problems:
                     try:
                         rev = llm.invoke(msgs + [AIMessage(content=text),

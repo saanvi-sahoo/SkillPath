@@ -66,3 +66,11 @@ Day schema (doc §11.1):
 | Speed | 216 s locally | < 1 s (template); AI-written plans ≤ 75 s with fallback |
 
 **Evaluation** (`python -m src.eval.roadmap_eval`, 3 personas, deterministic): valid 30 days, every gap covered, prerequisites before dependants, within the time budget, resources on every known-skill day, role-specific capstone, no generic topics → **3/3 personas pass all 7 checks** (`reports/roadmaps/roadmap_eval_*.json`).
+
+## 5. Held-out roadmap checks and chat plans (E36-E37)
+- 20 roadmap cases (`src/eval/heldout_offline.py`): 30 valid days, exact gaps (MySQL proves SQL, so SQL is never
+  taught), no known skill taught, prerequisites first, time budget, resources, role-specific capstone: **20/20** after
+  adding capstones for data engineering, cybersecurity, frontend/full stack and PM/BA roles (most specific first, so
+  "Cybersecurity Analyst" no longer gets the analyst dashboard project).
+- In the chat, "make me a 30-day … plan" runs this generator first (time budget from "45 minutes daily", known skills
+  from "I know Python…", starter skills when only a role is named) and gives the plan to the model as a source.

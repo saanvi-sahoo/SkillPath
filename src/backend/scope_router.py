@@ -103,6 +103,9 @@ def route(message: str, history: List[Dict] | None = None, mode: str | None = No
 
     if _ATTACK_PATTERNS.search(message):
         return done({"label": "prompt_attack", "method": "regex"})
+    # E37: questions about the assistant itself are greetings (the hosted router model started refusing gr02)
+    if re.search(r"^\W*(what can you (help( me)? with|do)|how can you help|who are you|what do you do|what are you)\W*$", message.strip(), re.I):
+        return done({"label": "greeting", "method": "regex"})
 
     # E32: questions that >= 2 users reported as wrongly refused are accepted when a new message matches them
     try:
@@ -124,6 +127,15 @@ def route(message: str, history: List[Dict] | None = None, mode: str | None = No
     # follow-ups ("any free ones?") are meaningless without history -> always ask the LLM
     if mode == "hybrid" and confident and not is_followup:
         return done({**knn, "method": "knn"})
+
+    # E37: a short follow-up inside an in-scope conversation inherits that scope ("Give me two examples." after
+    # "Explain cloud computing" was refused by the LLM router), unless the follow-up alone is clearly off-topic.
+    if is_followup:
+        prev = next((m["content"] for m in reversed(history) if m["role"] == "user"), "")
+        if prev:
+            pk = knn_classify(prev)
+            if pk["label"] == "career_study" and pk["top_sim"] >= 0.45 and pk["vote_share"] >= 0.8 and not (knn["label"] in ("out_of_scope", "prompt_attack") and knn["top_sim"] >= 0.5):
+                return done({**knn, "label": "career_study", "method": "follow-up inherits scope", "prev_top_sim": pk["top_sim"]})
 
     from src.utilities.llm_provider import llm_provider
     if llm_provider() in ("none", "local"):

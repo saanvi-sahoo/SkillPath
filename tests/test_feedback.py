@@ -35,6 +35,7 @@ def _isolated_store(tmp_path, monkeypatch):
     from src.backend import feedback_store as fs
     monkeypatch.setattr(fs, "LOCAL_FILE", tmp_path / "fb.jsonl")
     monkeypatch.setattr(fs, "_mongo", lambda: None)
+    monkeypatch.setattr(fs, "REQUIRE_APPROVAL", False)
     fs._cache.update(t=0.0, rows=None)
     return fs
 

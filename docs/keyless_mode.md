@@ -77,3 +77,10 @@ SKILLPATH_NO_DOTENV=1 LLM_PROVIDER=none VECTOR_BACKEND=local streamlit run src/f
 LLM_PROVIDER=none python -m src.eval.run_prompt_eval --router-modes hybrid --versions v4 --router hybrid --paired --expect-model "" --sleep 0
 ```
 `SKILLPATH_NO_DOTENV=1` makes every module skip `.env` (`src/utilities/env.py`).
+
+## Intent routing in keyless mode (E37)
+Keyless answers now use the same deterministic intent routing as prompt v8 (`src/backend/intent.py`): concept and
+study questions retrieve guides only (no career records), profile questions only this student's analysis, and
+"30-day plan" requests show the validated roadmap generator's plan directly. 65-case regression: 0.877 before and
+after (same 8 failures: exact item counts and word limits, which a retrieval-only answer can't meet). Turn it off with
+`KEYLESS_INTENT_ROUTING=false`.

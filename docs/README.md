@@ -10,6 +10,7 @@ SkillPath AI (built on the previous batch's UpskillxAI) analyses a candidate's r
 
 | Doc | What it covers |
 |---|---|
+| [evaluation.md](evaluation.md) | **Prompt training v7 + held-out evaluation (E36)**: 170 frozen unseen tests, metrics vs targets, skill-aware career re-ranking, citation correctness, profile isolation, v6 vs v7 A/B, shared results table, team workflow |
 | [feedback_learning.md](feedback_learning.md) | **Precise answers + learning from 👍/👎**: question profiler, answer contract (prompt v5), feedback memory, router learning, verified tests |
 | [byok.md](byok.md) | **Bring your own API key** on the deployed app (Groq / Gemini / OpenAI / OpenRouter), per-session and never stored; engine resolution; deployment fixes |
 | [keyless_mode.md](keyless_mode.md) | **Run without Groq/Gemini**: retrieval-only and local-LLM (Ollama) modes, what replaces the LLM, measured quality, per-visitor isolation |
@@ -49,6 +50,8 @@ python -m src.eval.evaluate_career_retrieval        # labelled P@5 benchmark
 python -m src.eval.evaluate_embeddings --models BAAI/bge-small-en-v1.5 sentence-transformers/all-MiniLM-L6-v2
 python -m src.eval.run_prompt_eval --router-only            # fast, router only
 python -m src.eval.run_prompt_eval --versions v3 v4 --router off --judge --judge-model gemini-3.5-flash
+python -m src.eval.heldout_offline                  # held-out: career P@5, 20 roadmaps, profile isolation (no LLM)
+LLM_PROVIDER=api CHAT_MODEL=gemini-3.5-flash python -m src.eval.heldout_eval --versions v6 v7 --expect-model gemini-3.6-flash --workers 3
 ```
 
 Reports are written to `reports/embeddings/` and `reports/prompt_eval/`, and every ingestion run is appended to `reports/embeddings/ingestion_log.jsonl`.

@@ -92,3 +92,29 @@ Benchmark: `python -m src.eval.rag_benchmark`, with 30 labelled student question
 The scope (study + career, including exams, SOPs, cover letters, first job and well-being) needed sources. 5 guides were added (now 9 guides, **37 sections**, one chunk each):
 `higher_education_and_exams.md` (job vs MS/MBA, GATE/CAT/GRE prep, SOP, applying abroad + LORs), `applications_and_networking.md` (cover letters, LinkedIn, referrals and cold emails, rejections), `student_wellbeing_and_productivity.md` (exam stress, procrastination, time management, long-term exam study), `first_job_and_workplace.md` (first weeks, communicating with managers, raises, growth), `portfolio_and_projects.md` (why projects, ideas by role, READMEs, presenting projects).
 Example: "How should I prepare for GATE in six months?" now retrieves *Preparing for GATE, CAT and GRE* (re-rank score 4.6). Before, no guide covered it.
+
+## 10. Skill-aware career re-ranking and the held-out check (E36)
+Full method and numbers: [evaluation.md §4](evaluation.md#4-retrieval-experiment-prompt-out-of-the-loop-no-llm).
+
+Careers now go: cosine pool of 20 → cross-encoder scores all 20 → **`src/rag/skill_rerank.py`** → top k → −6 noise cut-off.
+```
+final = cross-encoder logit
+      + 6.0 × career-intent consensus   (share of the top-10 cosine matches in this record's domain)
+      + 1.0 × exact skills              (question skills the record requires; MySQL counts as SQL via IMPLIES)
+      + 0.5 × related-only skills       (Docker for a Kubernetes record: partial credit, never a match)
+      + 1.0 × the student's own skills  (recommendation/list questions with an analysed profile)
+```
+| Strict career P@5 | Vector | + cross-encoder | + skill-aware (adopted) |
+|---|---|---|---|
+| Tuning set (24) | 0.767 | 0.858 | 0.933 |
+| **Held-out (30, unseen)** | 0.727 | 0.713 | **0.773** |
+
+The held-out set showed that the E35 cross-encoder gain on careers was overfitted to the tuning queries; the new stage
+recovers +6 points on unseen queries but is still below the 0.90 target. `RAG_SKILL_RERANK=false` turns it off;
+weights are `SKILL_RERANK_ALPHA/BETA/GAMMA/DELTA`. Guide (knowledge) retrieval is unchanged.
+
+**E37 update** ([evaluation.md §14](evaluation.md#14-retrieval-per-type-results-audit-changes)): interest / career-change
+queries get career-area words added (`expand_career_query`), implied skills count 0.75, and only one record per career
+title is kept. Questions are now routed by intent first (`src/backend/intent.py`), so concept and study questions don't
+retrieve career records at all. Final strict P@5 on the frozen v2 career set: 0.73 (titles 0.88, skills 0.80,
+interests 0.68, career changes 0.56).

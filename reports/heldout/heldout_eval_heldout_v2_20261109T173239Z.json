@@ -1,0 +1,2892 @@
+{
+  "ts": "20261109T173239Z",
+  "versions": [
+    "v7",
+    "v8"
+  ],
+  "n_cases": 40,
+  "rows": [
+    {
+      "id": "v2-s02",
+      "category": "concept",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Explain the difference between TCP and UDP in a table.",
+      "expected_behavior": "table",
+      "answer": "| Feature          | TCP                                                                     | UDP                                                                     |\n|-------------------|------------------------------------------------------------------------|------------------------------------------------------------------------|\n| Connection Type   | **Reliable, connection-oriented** (three-way handshake)                | **Unreliable, connectionless** (no handshake or acknowledgement required)|\n| Order of Packets  | Packets are delivered in the order they were sent                      | Packets may arrive out of order and must be reassembled               |\n| Error Handling    | Retransmits lost packets to ensure data integrity                     | Does not guarantee data integrity; discards lost packets              |\n| Flow Control      | Sends only as much data as the receiver can handle (slow start, congestion avoidance)  | Sends all available data at once                                        |\n| Example Uses     | File transfers, email, HTTP                                            | Real-time applications like VoIP, video streaming, online gaming       |",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 22081.8,
+      "intent_got": null,
+      "intent_expected": "concept_explanation",
+      "tokens": 2214,
+      "revised": null,
+      "intent": {
+        "type": "comparison",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "table": true,
+        "must_include_any": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s02",
+      "category": "concept",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Explain the difference between TCP and UDP in a table.",
+      "expected_behavior": "table",
+      "answer": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two different transport layer protocols used in internet communication. Here's a comparison of their key differences:\n\n| Feature                     | TCP                                                                  | UDP                                                                  |\n|-----------------------------|---------------------------------------------------------------------|----------------------------------------------------------------------|\n| Connection-oriented        | Yes                                                                   | No                                                                    |\n| Reliability                | Guarantees delivery, retransmits lost packets                          | Does not guarantee delivery or order of packets                       |\n| Flow Control               | Yes (slows down data flow if congestion)                              | No                                                                    |\n| Error Checking             | Yes (checksum for each packet to detect errors)                        | Minimal error checking (only checksum for large datagrams)          |\n| Order of Packets           | Preserves order of packets                                            | Does not guarantee order of packets                                   |\n| Overhead                   | Higher due to additional handshaking and acknowledgement messages      | Lower due to less overhead (no connection setup or teardown)          |\n| Suitable for               | Real-time applications that require reliable data transfer, such as VoIP and file transfers | Applications where speed is more important than reliability, such as video streaming and online gaming. |",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 19784.1,
+      "intent_got": "concept_explanation",
+      "intent_expected": "concept_explanation",
+      "tokens": 1240,
+      "revised": null,
+      "intent": {
+        "type": "comparison",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "table": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s01",
+      "category": "concept",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "What is an API, explained simply?",
+      "expected_behavior": "plain definition + example",
+      "answer": "An Application Programming Interface (API) is a set of rules and protocols that allows different software applications to communicate with each other. In simpler terms, it acts as a bridge between two systems, enabling them to exchange data and interact in a standardized way.\n\nFor careers and study, APIs are crucial because they enable the integration of various software components, making it possible to build complex systems by combining existing functionalities. For instance, an API can be used to connect a mobile app with a backend database, allowing users to access their data from multiple devices.\n\nIn the context of the Chief Architect of APIs role, understanding and designing APIs is essential for managing software architecture, coordinating different components, and ensuring seamless communication between various systems.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 23371.3,
+      "intent_got": null,
+      "intent_expected": "concept_explanation",
+      "tokens": 2324,
+      "revised": null,
+      "intent": {
+        "type": "definition",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:careers:Chief Architect of APIs"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.50, ref=career_0452)\nCareer: Chief Architect of APIs. Domain: Project and Business Management. Required skills: API design, Cloud-native architecture, Software lifecycle management, Modeling (UML, SysUML, DSM, DSL), Software system architecture, Architecture description, Software refactoring, API lifecycle management, Cloud system architecture. Description: Chief Architect of APIs coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include API design, Cloud-native architecture, Software lifecycle management, Modeling (UML. Education: Master's degree in Information/Computer Science or related fields.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "no_career_citations": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s01",
+      "category": "concept",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "What is an API, explained simply?",
+      "expected_behavior": "plain definition + example",
+      "answer": "An Application Programming Interface (API) is a set of rules and protocols that allows different software applications to communicate with each other. It defines how data should be requested from and sent to the application, making it easier for developers to build new programs that can work seamlessly with existing ones.\n\nFor example, when you use an app on your phone to check the weather, the app sends a request to the weather service's API to get the current weather data. This is why APIs are crucial in today's digital world as they enable various services and devices to interact and exchange information efficiently.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 11103.8,
+      "intent_got": "concept_explanation",
+      "intent_expected": "concept_explanation",
+      "tokens": 1060,
+      "revised": null,
+      "intent": {
+        "type": "definition",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "no_career_citations": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s03",
+      "category": "concept",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Explain polymorphism with a Java example.",
+      "expected_behavior": "Java code example",
+      "answer": "Polymorphism is a key concept in object-oriented programming that allows objects of different types to be treated as if they were of the same type, based on their common base class or interface. This enables code reusability and flexibility.\n\nIn Java, polymorphism can be achieved through method overriding and method overloading. Here's a simple example using inheritance and method overriding:\n\n```java\nclass Animal {\n    public void makeSound() {\n        System.out.println(\"The animal makes a sound\");\n    }\n}\n\nclass Dog extends Animal {\n    @Override\n    public void makeSound() {\n        System.out.println(\"Woof!\");\n    }\n}\n\nclass Cat extends Animal {\n    @Override\n    public void makeSound() {\n        System.out.println(\"Meow!\");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Animal myAnimal = new Dog(); // Polymorphism in action!\n        myAnimal.makeSound();       // Output: Woof!\n\n        Animal anotherAnimal = new Cat();\n        anotherAnimal.makeSound();  // Output: Meow!\n    }\n}\n```\n\nIn this example, the `Dog` and `Cat` classes inherit from the `Animal` class and override its `makeSound()` method. In the `main` method, we create instances of both `Dog` and `Cat`, but assign them to an `Animal` variable (polymorphism). When we call the `makeSound()` method on these variables, Java knows which specific implementation to use based on the actual object's type at runtime.\n\nThis example demonstrates how polymorphism allows us to write more flexible and reusable code by treating different objects as if they were of the same type.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 31838.5,
+      "intent_got": null,
+      "intent_expected": "concept_explanation",
+      "tokens": 2405,
+      "revised": null,
+      "intent": {
+        "type": "definition",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "code_block": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s03",
+      "category": "concept",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Explain polymorphism with a Java example.",
+      "expected_behavior": "Java code example",
+      "answer": "Polymorphism is a programming concept that allows objects of different classes to be treated as objects of a common superclass, enabling objects to take on many forms. This feature is crucial in object-oriented programming (OOP) for code reusability and flexibility.\n\nFor instance, consider the following Java example with a `Shape` class and its subclasses `Circle` and `Square`. Polymorphism allows us to create an array of `Shape` objects and store both `Circle` and `Square` instances in it:\n\n```java\npublic abstract class Shape {\n    public abstract double area();\n}\n\npublic class Circle extends Shape {\n    private final double radius;\n\n    public Circle(double radius) {\n        this.radius = radius;\n    }\n\n    @Override\n    public double area() {\n        return Math.PI * Math.pow(radius, 2);\n    }\n}\n\npublic class Square extends Shape {\n    private final double sideLength;\n\n    public Square(double sideLength) {\n        this.sideLength = sideLength;\n    }\n\n    @Override\n    public double area() {\n        return Math.pow(sideLength, 2);\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Shape[] shapes = new Shape[2];\n        shapes[0] = new Circle(5);\n        shapes[1] = new Square(4);\n\n        for (Shape shape : shapes) {\n            System.out.println(\"Area: \" + shape.area());\n        }\n    }\n}\n```\n\nIn this example, the `main` method creates an array of `Shape` objects and initializes it with a `Circle` and a `Square`. The polymorphic nature of Java enables us to call the `area()` method on both objects without explicitly checking their types. This demonstrates how polymorphism makes our code more flexible and reusable.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 27142.1,
+      "intent_got": "concept_explanation",
+      "intent_expected": "concept_explanation",
+      "tokens": 1378,
+      "revised": null,
+      "intent": {
+        "type": "definition",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "code_block": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s04",
+      "category": "study",
+      "user": null,
+      "version": "v7",
+      "route": "out_of_scope",
+      "question": "Explain Big-O notation in exactly two sentences.",
+      "expected_behavior": "exactly two sentences",
+      "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"I panic during exams, how do I stay calm and perform?\"*\n",
+      "model": null,
+      "model_configured": "local",
+      "latency_ms": 0.8,
+      "intent_got": null,
+      "intent_expected": "study_help",
+      "tokens": null,
+      "revised": null,
+      "intent": {
+        "type": null,
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": false,
+        "n_sentences": false,
+        "profile_consistent": null
+      },
+      "passed": false,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": "scope_router (valid question refused)"
+    },
+    {
+      "id": "v2-s04",
+      "category": "study",
+      "user": null,
+      "version": "v8",
+      "route": "out_of_scope",
+      "question": "Explain Big-O notation in exactly two sentences.",
+      "expected_behavior": "exactly two sentences",
+      "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"I panic during exams, how do I stay calm and perform?\"*\n",
+      "model": null,
+      "model_configured": "local",
+      "latency_ms": 0.1,
+      "intent_got": null,
+      "intent_expected": "study_help",
+      "tokens": null,
+      "revised": null,
+      "intent": {
+        "type": null,
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": false,
+        "n_sentences": false,
+        "profile_consistent": null
+      },
+      "passed": false,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": "scope_router (valid question refused)"
+    },
+    {
+      "id": "v2-s05",
+      "category": "study",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "My DBMS exam is in 3 days and I haven't started. What should I study first?",
+      "expected_behavior": "prioritised revision",
+      "answer": "Given that your DBMS exam is in three days and you haven't started yet, here's a time-boxed plan to help you prepare:\n\n**Days 1-2:**\n1. Revise the fundamentals of database management systems (DBMS), including their architecture, data modeling, and SQL queries.\n2. Practice common DBMS operations such as creating, altering, and deleting tables, indexes, and views.\n3. Review database normalization and denormalization techniques.\n4. Study transaction processing concepts like ACID properties, isolation levels, and deadlocks.\n5. Practice writing SQL queries to perform various operations on a database, such as selecting, inserting, updating, and deleting data.\n\n**Day 3:**\n1. Review any difficult topics or areas you struggled with during the first two days.\n2. Solve practice problems related to DBMS concepts and SQL queries.\n3. Take mock exams to assess your understanding and identify areas for improvement.\n4. Revise any remaining topics quickly, focusing on areas where you are weakest.\n5. On the day of the exam, arrive early, review key points, and stay calm. Good luck!",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 25962.6,
+      "intent_got": null,
+      "intent_expected": "study_help",
+      "tokens": 2430,
+      "revised": null,
+      "intent": {
+        "type": "plan",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Choosing between a job, MS, MTech or MBA"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.41, ref=higher_education_and_exams.md)\nHigher Education And Exams - Choosing between a job, MS, MTech or MBA: Decide by the role you want in 3-5 years. Research and specialised roles (ML research, VLSI, core engineering design) often value an MS/MTech; management, consulting and product-strategy roles value an MBA, which works best after 2-4 years of work experience. For most software, data and cloud roles, skills and projects matter more than a second degree, so working first and studying later is a common, low-risk path. Compare total cost, expected salary change and visa or placement outcomes before deciding.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s05",
+      "category": "study",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "My DBMS exam is in 3 days and I haven't started. What should I study first?",
+      "expected_behavior": "prioritised revision",
+      "answer": "Based on the retrieved source [S1], it suggests that for software, data, and cloud roles, skills and projects matter more than a second degree. Given your DBMS exam is in 3 days, here's a suggested study plan:\n\n- **Day 1**: Review key concepts and formulas related to the DBMS you are studying (e.g., SQL, indexing, normalization).\n- **Day 2**: Practice solving problems based on these concepts using online resources or textbooks.\n- **Day 3**: Revise and focus on areas where you struggled during practice.\n\nIt's important to prioritize understanding the core concepts and practicing problem-solving rather than trying to memorize everything in a short time. Good luck with your exam!\n\n---\n**Sources**\n- [S1] knowledge: Choosing between a job, MS, MTech or MBA",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 15175.8,
+      "intent_got": "learning_plan",
+      "intent_expected": "study_help",
+      "tokens": 1325,
+      "revised": null,
+      "intent": {
+        "type": "plan",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Choosing between a job, MS, MTech or MBA"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.41, ref=higher_education_and_exams.md)\nHigher Education And Exams - Choosing between a job, MS, MTech or MBA: Decide by the role you want in 3-5 years. Research and specialised roles (ML research, VLSI, core engineering design) often value an MS/MTech; management, consulting and product-strategy roles value an MBA, which works best after 2-4 years of work experience. For most software, data and cloud roles, skills and projects matter more than a second degree, so working first and studying later is a common, low-risk path. Compare total cost, expected salary change and visa or placement outcomes before deciding.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": false,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 1,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s06",
+      "category": "concept",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "What is gradient descent?",
+      "expected_behavior": "definition, no career records",
+      "answer": "Gradient Descent is a popular optimization algorithm used in machine learning and artificial intelligence to minimize the error or cost function of a model by iteratively adjusting its parameters. It works by finding the direction of steepest descent of the cost function, moving along that direction, and repeating this process until convergence.\n\nGradient Descent matters for careers and study because it is essential in various machine learning algorithms such as linear regression, logistic regression, support vector machines (SVM), neural networks, and deep learning models. Mastering Gradient Descent can help students and professionals to build more accurate predictive models and make data-driven decisions in their respective fields.\n\nFor example, a Data Scientist or Machine Learning Engineer might use Gradient Descent to optimize the parameters of a model for predicting customer churn, fraud detection, or recommendation systems. A student interested in AI or machine learning can learn about Gradient Descent as part of their curriculum and apply it in projects or capstone courses.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 24292.3,
+      "intent_got": null,
+      "intent_expected": "concept_explanation",
+      "tokens": 2191,
+      "revised": null,
+      "intent": {
+        "type": "definition",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "no_career_citations": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s06",
+      "category": "concept",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "What is gradient descent?",
+      "expected_behavior": "definition, no career records",
+      "answer": "Gradient Descent is a mathematical optimization algorithm used to minimize some function by iteratively moving in the direction of steepest descent as defined by the negative of the gradient. In simpler terms, it's a method for finding the best solution (minimum error) for a given problem by continuously adjusting its parameters based on the errors it makes.\n\nGradient Descent matters significantly in careers and study, especially in machine learning and artificial intelligence, as it is essential for training models to make accurate predictions or classifications. For example, when building a model to predict house prices, Gradient Descent can help find the optimal weights for each feature (like number of rooms, location, etc.) that minimize the error between predicted and actual prices.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 14074.4,
+      "intent_got": "concept_explanation",
+      "intent_expected": "concept_explanation",
+      "tokens": 1057,
+      "revised": null,
+      "intent": {
+        "type": "definition",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "no_career_citations": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s07",
+      "category": "concept",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Give two examples each of classification and regression problems.",
+      "expected_behavior": "2 examples each",
+      "answer": "Based on the provided context, I don't have a student profile or any specific job description to reference. Here are general examples of classification and regression problems:\n\n1. Classification Problems:\n   - **Email Spam Detection**: Given an email, classify it as either spam or not spam.\n   - **Customer Churn Prediction**: Determine whether a customer is likely to cancel their subscription (churn) or continue using the service.\n\n2. Regression Problems:\n   - **House Price Prediction**: Estimate the price of a house based on features such as its size, location, and number of rooms.\n   - **Stock Price Forecasting**: Predict future stock prices for a specific company based on historical data.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 24192.9,
+      "intent_got": null,
+      "intent_expected": "concept_explanation",
+      "tokens": 2159,
+      "revised": null,
+      "intent": {
+        "type": "list",
+        "missing": null,
+        "n_items": 2,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_all": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s07",
+      "category": "concept",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Give two examples each of classification and regression problems.",
+      "expected_behavior": "2 examples each",
+      "answer": "Based on the available career records, here are two career options that align with your skills or interests:\n\n1. **Data Analyst** - This role requires strong analytical and problem-solving skills, which you demonstrated through your work. However, it would benefit from additional expertise in programming languages like Python [S#] or R [S#].\n\n2. **Business Intelligence (BI) Developer** - Your experience with SQL [S#] and dashboards suggests that this career might be a good fit. To further enhance your qualifications, consider learning tools such as Power BI [S#] or Tableau [S#].\n\nTo help narrow down the best option for you, do you prefer working with large datasets to uncover patterns and trends, or creating interactive dashboards to visualize data for business teams?",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 39456.8,
+      "intent_got": "career_discovery",
+      "intent_expected": "concept_explanation",
+      "tokens": 1301,
+      "revised": [
+        "The user asked for exactly 2 items but the draft has 1. Give exactly 2 numbered items."
+      ],
+      "intent": {
+        "type": "list",
+        "missing": null,
+        "n_items": 2,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_all": false,
+        "intent": false,
+        "profile_consistent": null
+      },
+      "passed": false,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": "retrieval (expected facts not in retrieved context)"
+    },
+    {
+      "id": "v2-s08",
+      "category": "study",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "How can I stop procrastinating while studying for semester exams?",
+      "expected_behavior": "practical techniques",
+      "answer": "To overcome procrastination while studying for semester exams, follow these steps:\n\n1. Start with a 10-minute task to overcome the starting barrier.\n2. Use time blocks (Pomodoro technique: 25 minutes focus, 5 minutes break).\n3. Keep your phone out of reach during study sessions.\n4. Track visible progress (use a checklist or streak system).\n5. Study with a peer for accountability.\n6. Remember that motivation follows action; small daily wins matter more than occasional long sessions.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 22651.7,
+      "intent_got": null,
+      "intent_expected": "study_help",
+      "tokens": 2222,
+      "revised": null,
+      "intent": {
+        "type": "how_to",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Beating procrastination and staying motivated"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.70, ref=student_wellbeing_and_productivity.md)\nStudent Wellbeing And Productivity - Beating procrastination and staying motivated: Start with a 10-minute task to overcome the starting barrier, use time blocks (Pomodoro: 25 minutes focus, 5 minutes break), and keep your phone out of reach while studying. Track visible progress (a checklist or streak) and study with a peer for accountability. Motivation follows action: small daily wins matter more than occasional long sessions.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s08",
+      "category": "study",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "How can I stop procrastinating while studying for semester exams?",
+      "expected_behavior": "practical techniques",
+      "answer": "To effectively manage your study time and reduce procrastination during semester exam preparations:\n\n1. Start with a 10-minute task to overcome the starting barrier (Source: Student Wellbeing And Productivity).\n2. Use time blocks, such as the Pomodoro Technique (25 minutes focus, 5 minutes break), to maintain your concentration and productivity (Source: Student Wellbeing And Productivity).\n3. Keep your phone out of reach while studying to minimize distractions (Source: Student Wellbeing And Productivity).\n4. Track visible progress by creating a checklist or using a streak system to keep yourself motivated (Source: Student Wellbeing And Productivity).\n5. Study with a peer for accountability and additional motivation (Source: Student Wellbeing And Productivity).\n6. Remember that small daily wins matter more than occasional long sessions, so aim to make consistent progress each day (Source: Student Wellbeing And Productivity).\n\nIf your current semester syllabus is available, I can help you create a study plan tailored to the topics covered in the syllabus. Can you provide me with the syllabus for your current semester?",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 58789.8,
+      "intent_got": "study_help",
+      "intent_expected": "study_help",
+      "tokens": 1076,
+      "revised": [
+        "[S1] does not support \"If so, I can help you create a study plan tailored to the topics covered in the syllabus.\". Cite the source that does, or present it as general advice without a citation."
+      ],
+      "intent": {
+        "type": "how_to",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Beating procrastination and staying motivated"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.70, ref=student_wellbeing_and_productivity.md)\nStudent Wellbeing And Productivity - Beating procrastination and staying motivated: Start with a 10-minute task to overcome the starting barrier, use time blocks (Pomodoro: 25 minutes focus, 5 minutes break), and keep your phone out of reach while studying. Track visible progress (a checklist or streak) and study with a peer for accountability. Motivation follows action: small daily wins matter more than occasional long sessions.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c01",
+      "category": "career",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Name two careers that combine finance and programming.",
+      "expected_behavior": "exactly two",
+      "answer": "Based on the provided career records, here are two careers that combine finance and programming:\n\n1) **Data Analyst - Finance**: This role designs, builds, or maintains reliable data pipelines and data platforms, with a focus on financial data. Required skills include SQL, Relational Data, Financial and Accounting Concepts, SaaS Metrics, Python (numpy, pandas, scikit), R, Excel, ERP Systems, Business Intelligence Tools (Looker, Tableau, Business Objects, Microstrategy), MPP Databases (Snowflake, Redshift, BigQuery, Vertica), ETL Pipelines, Data Debugging, Automating Processes [S1].\n\n2) **Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance**: This role analyzes business or operational data and turns it into clear insights, focusing on financial analysis and using reporting platforms like Tableau, Power BI, Alteryx. Relevant skills include Finance, Accounting, Data analytics, Reporting platforms [S4].\n\nBoth careers require a strong understanding of finance concepts and programming skills such as SQL, Python, R, and Excel.\n\n---\n**Sources**\n- [S1] careers: Data Analyst - Finance\n- [S4] careers: Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 74294.3,
+      "intent_got": null,
+      "intent_expected": "career_discovery",
+      "tokens": 3100,
+      "revised": null,
+      "intent": {
+        "type": "list",
+        "missing": null,
+        "n_items": 2,
+        "max_words": null
+      },
+      "sources": [
+        "S1:careers:Data Analyst - Finance",
+        "S2:knowledge:Entry-level tech and data career paths",
+        "S3:careers:Director, People Finance",
+        "S4:careers:Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.49, ref=career_0686)\nCareer: Data Analyst - Finance. Domain: Data Engineering. Required skills: SQL, Relational Data, Financial and Accounting Concepts, SaaS Metrics, Python (numpy, pandas, scikit), R, Scripting Languages (Python, Ruby, Perl, Bash), Excel, ERP Systems, Financial Planning Tools, Business Intelligence Tools (Looker, Tableau, Business Objects, Microstrategy), MPP Databases (Snowflake, Redshift, BigQuery, Vertica), ETL Pipelines, Data Debugging, Automating Processes. Description: Data Analyst - Finance designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include SQL, Relational Data, Financial and Accounting Concepts, SaaS Metrics. Education: Bachelor's degree in computer science, information systems, data engineering, or a related technical field.\n\n[S2] (source=knowledge/guide, score=0.48, ref=career_planning.md)\nCareer Planning - Entry-level tech and data career paths: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engineer (testing fundamentals, automation with Selenium or Playwright). Analyst roles often lead to data science or analytics engineering; developer roles lead to senior engineering, architecture or engineering management.\n\n[S3] (source=careers/career_profile, score=0.48, ref=career_1042)\nCareer: Director, People Finance. Domain: Machine Learning and AI. Required skills: Payroll, Compliance, Reporting, Finance technologies, Automation, Advanced digital finance technologies, Analytics, Machine learning, Robotic process automation, Project management, Systems implementation. Description: Director, People Finance works on building, evaluating, or integrating AI and machine-learning solutions. The role commonly involves preparing data, selecting suitable methods, testing model performance, and collaborating with technical or business teams. Relevant skills listed for this role include Payroll, Compliance, Reporting, Finance technologies. Education: Bachelors degree in Accounting, Finance, or related discipline.\n\n[S4] (source=careers/career_profile, score=0.43, ref=career_2600)\nCareer: Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance. Domain: Data Analysis and BI. Required skills: Finance, Accounting, Data analytics, Reporting platforms, Automation processes, Financial analysis, Business intelligence ecosystems, SQL, SSIS, SSAS, MDX, DAX, Tableau, Power BI, Alteryx, Programming languages (M",
+      "checks": {
+        "not_refused": true,
+        "n_items": true,
+        "must_include_any": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 2,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 2,
+        "counts": {
+          "supported": 2,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": 1.0,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Required skills include SQL, Relational Data, Financial and Accounting Concepts, SaaS Metrics, Python (numpy, pandas, scikit), R, Excel, ERP Systems, Business Intelligence Tools (Looker, Tableau, Business Objects, Microstrategy), MPP Databases (Snowflake, Redshift, BigQuery, Vertica), ETL Pipelines, Data Debugging, Automating Processes .",
+            "id": 1,
+            "label": "supported"
+          },
+          {
+            "claim": "Relevant skills include Finance, Accounting, Data analytics, Reporting platforms .",
+            "id": 4,
+            "label": "supported"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c01",
+      "category": "career",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Name two careers that combine finance and programming.",
+      "expected_behavior": "exactly two",
+      "answer": "Two career options that involve both finance and programming are:\n\n1. **Data Analyst - Finance** [S1]: This role requires SQL, Relational Data, Financial and Accounting Concepts, SaaS Metrics, Python (numpy, pandas, scikit), R, Scripting Languages (Python, Ruby, Perl, Bash), Excel, ERP Systems, Financial Planning Tools, Business Intelligence Tools (Looker, Tableau, Business Objects, Microstrategy), MPP Databases (Snowflake, Redshift, BigQuery, Vertica), ETL Pipelines, Data Debugging, Automating Processes. Your skills in SQL and Python align well with this role.\n\n2. **Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance** [S4]: This position involves finance, accounting, data analytics, reporting platforms, and programming languages like Microsoft's M and DAX. Additionally, the use of tools such as Tableau, Power BI, Alteryx is also required. Your skills in SQL and Python, along with your interest in data analysis, could be beneficial for this role.\n\nBoth careers require a strong foundation in finance concepts and programming languages, which you seem to have based on the stated skills. To make an informed decision, it would be helpful to consider which area of finance interests you more: general finance or manufacturing specifically.\n\n---\n**Sources**\n- [S1] careers: Data Analyst - Finance\n- [S4] careers: Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 52048.4,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 2469,
+      "revised": null,
+      "intent": {
+        "type": "list",
+        "missing": null,
+        "n_items": 2,
+        "max_words": null
+      },
+      "sources": [
+        "S1:careers:Data Analyst - Finance",
+        "S2:careers:Director, People Finance",
+        "S3:careers:Intern Program",
+        "S4:careers:Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance",
+        "S5:careers:A/P and A/R Associate",
+        "S6:knowledge:Switching careers"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.49, ref=career_0686)\nCareer: Data Analyst - Finance. Domain: Data Engineering. Required skills: SQL, Relational Data, Financial and Accounting Concepts, SaaS Metrics, Python (numpy, pandas, scikit), R, Scripting Languages (Python, Ruby, Perl, Bash), Excel, ERP Systems, Financial Planning Tools, Business Intelligence Tools (Looker, Tableau, Business Objects, Microstrategy), MPP Databases (Snowflake, Redshift, BigQuery, Vertica), ETL Pipelines, Data Debugging, Automating Processes. Description: Data Analyst - Finance designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include SQL, Relational Data, Financial and Accounting Concepts, SaaS Metrics. Education: Bachelor's degree in computer science, information systems, data engineering, or a related technical field.\n\n[S2] (source=careers/career_profile, score=0.48, ref=career_1042)\nCareer: Director, People Finance. Domain: Machine Learning and AI. Required skills: Payroll, Compliance, Reporting, Finance technologies, Automation, Advanced digital finance technologies, Analytics, Machine learning, Robotic process automation, Project management, Systems implementation. Description: Director, People Finance works on building, evaluating, or integrating AI and machine-learning solutions. The role commonly involves preparing data, selecting suitable methods, testing model performance, and collaborating with technical or business teams. Relevant skills listed for this role include Payroll, Compliance, Reporting, Finance technologies. Education: Bachelors degree in Accounting, Finance, or related discipline.\n\n[S3] (source=careers/career_profile, score=0.45, ref=career_1495)\nCareer: Intern Program. Domain: Finance and Risk. Required skills: Data analysis, Research skills, Financial analysis. Description: Intern Program supports financial planning, reporting, control, or risk-related decisions. Common tasks include reviewing financial or operational data, preparing analyses, monitoring compliance, identifying exceptions, and communicating findings. Relevant skills listed for this role include Data analysis, Research skills, Financial analysis. Education: Pursuing undergraduate or master's degree.\n\n[S4] (source=careers/career_profile, score=0.43, ref=career_2600)\nCareer: Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance. Domain: Data Analysis and BI. Required skills: Finance, Accounting, Data analytics, Reporting platforms, Automation processes, Financial analysis, Business intelligence ecosystems, SQL, SSIS, SSAS, MDX, DAX, Tableau, Power BI, Alteryx, Programming languages (Microsoft's M and DAX). Description: Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance analyzes business or operational data and turns it into clear in",
+      "checks": {
+        "not_refused": true,
+        "n_items": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 2,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 2,
+        "counts": {
+          "supported": 2,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": 1.0,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Data Analyst - Finance : This role requires SQL, Relational Data, Financial and Accounting Concepts, SaaS Metrics, Python (numpy, pandas, scikit), R, Scripting Languages (Python, Ruby, Perl, Bash), Excel, ERP Systems, Financial Planning Tools, Business Intelligence Tools (Looker, Tableau, Business Objects, Microstrategy), MPP Databases (Snowflake, Redshift, BigQuery, Vertica), ETL Pipelines, Data Debugging, Automating Processes.",
+            "id": 1,
+            "label": "supported"
+          },
+          {
+            "claim": "Manufacturing Business Intelligence/FP&A Analyst, Finance : This position involves finance, accounting, data analytics, reporting platforms, and programming languages like Microsoft's M and DAX.",
+            "id": 4,
+            "label": "supported"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c02",
+      "category": "career",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Is DevOps a good career for a fresher?",
+      "expected_behavior": "direct answer first",
+      "answer": "No, DevOps is not a good career for a fresher based on the provided context. The student profile does not have an analysed profile yet, so there's no information about the student's skills or experience. However, the careers retrieved from the sources require substantial professional experience and specific skills such as Cloud infrastructure technologies, Enterprise security, Networking, Virtualization, DevOps practices, Splunk deployment, Regular Expressions, Splunk Dashboards, Cloud computing, Monitoring tools integration, Terraform, Deployment Manager, CloudFormation, Chef, Ansible, Docker, Kubernetes, and Relational databases. These skills and experience are typically not available for freshers.\n\nTo prepare for a career in DevOps, the student should consider gaining relevant education, building projects that demonstrate their understanding of the required skills, and acquiring experience through internships or entry-level positions. It's also essential to keep up with industry trends and continuously learn new technologies and best practices.\n\nFor more personalized advice, the student can run the 'Analyze Profile' feature in the sidebar, uploading their resume and a job description for a DevOps role. This will provide an ATS score and identify skill gaps that need to be addressed before pursuing a career in this field.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 48180.5,
+      "intent_got": null,
+      "intent_expected": "career_discovery",
+      "tokens": 3032,
+      "revised": null,
+      "intent": {
+        "type": "yes_no",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:careers:Cloud Services Engineer (DevOps)",
+        "S2:careers:Software Program Manager, Cloud Services",
+        "S3:careers:Solutions Architect, DevOps, Google Cloud",
+        "S4:knowledge:Why projects matter"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.57, ref=career_0515)\nCareer: Cloud Services Engineer (DevOps). Domain: Cloud and DevOps. Required skills: Cloud infrastructure technologies, Enterprise security, Networking, Virtualization, Data center architecture, Integration architecture, Orchestration technologies, OSS/BSS management, Service delivery, Application development lifecycle management, Scripting languages (Perl, Ruby, Python, BASH), Public/Private Cloud experience (AWS/Azure/VMware), DevOps practices, Splunk deployment, Regular Expressions, Splunk Dashboards, Cloud computing, Monitoring tools integration. Description: Cloud Services Engineer (DevOps) helps build, deploy, automate, and operate software or cloud infrastructure. Common responsibilities include environment configuration, CI/CD, infrastructure automation, monitoring, reliability, access management, and troubleshooting. Relevant skills listed for this role include Cloud infrastructure technologies, Enterprise security, Networking, Virtualization. Education: Bachelor's degree or diploma in computer science, IT, or a related field; relevant cloud and infrastructure certifications can be advantageous.\n\n[S2] (source=careers/career_profile, score=0.56, ref=career_2496)\nCareer: Software Program Manager, Cloud Services. Domain: Cloud and DevOps. Required skills: Cloud architecture, DevOps, Micro-service architecture, Program/project management, Agile software development, Software engineering, Web technologies, Mobile platforms, IaaS/PaaS, DevOps automation, SaaS platforms, Software test methodologies. Description: Software Program Manager, Cloud Services helps build, deploy, automate, and operate software or cloud infrastructure. Common responsibilities include environment configuration, CI/CD, infrastructure automation, monitoring, reliability, access management, and troubleshooting. Relevant skills listed for this role include Cloud architecture, DevOps, Micro-service architecture, Program/project management. Education: Bachelor's degree in a relevant field; substantial related professional experience is typically important.\n\n[S3] (source=careers/career_profile, score=0.56, ref=career_2523)\nCareer: Solutions Architect, DevOps, Google Cloud. Domain: Cloud and DevOps. Required skills: DevOps, Automating infrastructure deployment, Terraform, Deployment Manager, CloudFormation, Chef, Ansible, Docker, Kubernetes, Cloud technology, Enterprise technology, Relational databases, Infrastructure automation, Continuous integration/deployment, SQL/NoSQL. Description: Solutions Architect, DevOps, Google Cloud helps build, deploy, automate, and operate software or cloud infrastructure. Common responsibilities include environment configuration, CI/CD, infrastructure automation, monitoring, reliability, access management, and troubleshooting. Relevant skills listed for this role include DevOps, Automating infrastructure deployment, Terraform, Deployment Manager. Education: BA/BS degree in Compute",
+      "checks": {
+        "not_refused": true,
+        "first_sentence_any": false,
+        "profile_consistent": null
+      },
+      "passed": false,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": "instruction_following (first_sentence_any)"
+    },
+    {
+      "id": "v2-c02",
+      "category": "career",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Is DevOps a good career for a fresher?",
+      "expected_behavior": "direct answer first",
+      "answer": "Yes, DevOps is a good career choice for a fresher. From our career records, several roles related to Cloud and DevOps have been identified as suitable:\n\n1. **Software Engineer** [S1]: Requires Full Stack Development, Software Design, Coding, Efficient Data Structures, Object-Oriented Programming, Algorithms, Azure or Other Cloud Services, Web Technologies (React, CSS, Typescript, Flux), Debugging and Optimization, Distributed Systems, Computer Science Fundamentals, Algorithm Design, Web Experience Development. You have experience with Full Stack Development, Coding, and Web Technologies, so this role could be a good fit.\n\n2. **Cloud Services Engineer (DevOps)** [S2]: Requires Cloud infrastructure technologies, Enterprise security, Networking, Virtualization, Data center architecture, Integration architecture, Orchestration technologies, OSS/BSS management, Service delivery, Application development lifecycle management, Scripting languages (Perl, Ruby, Python, BASH), Public/Private Cloud experience (AWS/Azure/VMware), DevOps practices. You have some relevant skills like Networking and Scripting languages, but you might need to learn more about Cloud infrastructure technologies and Data center architecture for this role.\n\n3. **Software Program Manager, Cloud Services** [S3]: Requires Cloud architecture, DevOps, Micro-service architecture, Program/project management, Agile software development, Software engineering, Web technologies, Mobile platforms, IaaS/PaaS, DevOps automation, SaaS platforms, Software test methodologies. You have some relevant skills like Web technologies and Agile software development, but you might need to learn more about Cloud architecture, DevOps, and Micro-service architecture for this role.\n\n4. **Full-Stack Software Developer** [S4]: Requires Full-stack development, Open-source projects, Git repositories, JavaScript, Node.js, React, ECMAScript 6+, Browser debugging tools, UX/UI patterns, Agile methodology, DevOps, Software versioning tools (Git, SVN). You have some relevant skills like Full-stack development, JavaScript, and Agile methodology, but you might need to learn more about Open-source projects, Git repositories, React, Node.js, and DevOps for this role.\n\n5. **Solutions Architect, DevOps, Google Cloud** [S5]: Requires DevOps, Automating infrastructure deployment, Terraform, Deployment Manager, CloudFormation, Chef, Ansible, Docker, Kubernetes, Cloud technology, Enterprise technology, Relational databases, Infrastructure automation, Continuous integration/deployment, SQL/NoSQL. You have some relevant skills like DevOps and Automating infrastructure deployment, but you might need to learn more about Terraform, Deployment Manager, CloudFormation, Chef, Ansible, Docker, Kubernetes, Relational databases, Infrastructure automation, Continuous integration/deployment for this role.\n\nTo help you decide which career path is best suited for you, consider your interests and preferences in terms of the technologies you want to work with, the type of projects you enjoy, and the working style that suits you best (e.g., team collaboration, independent work, etc.).\n\n---\n**Sources**\n- [S1] careers: Software Engineer\n- [S2] careers: Cloud Services Engineer (DevOps)\n- [S3] careers: Software Program Manager, Cloud Services\n- [S4] careers: Full-Stack Software Developer\n- [S5] careers: Solutions Architect, DevOps, Google Cloud",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 65006.1,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 3019,
+      "revised": null,
+      "intent": {
+        "type": "yes_no",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:careers:Software Engineer",
+        "S2:careers:Cloud Services Engineer (DevOps)",
+        "S3:careers:Software Program Manager, Cloud Services",
+        "S4:careers:Full-Stack Software Developer",
+        "S5:careers:Solutions Architect, DevOps, Google Cloud",
+        "S6:knowledge:Why projects matter"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.58, ref=career_2454)\nCareer: Software Engineer. Domain: Cloud and DevOps. Required skills: Full Stack Development, Software Design, Coding, Efficient Data Structures, Object-Oriented Programming, Algorithms, Azure or Other Cloud Services, Web Technologies (React, CSS, Typescript, Flux), Debugging and Optimization, Distributed Systems, Computer Science Fundamentals, Algorithm Design, Web Experience Development, DevOps. Description: Software Engineer helps build, deploy, automate, and operate software or cloud infrastructure. Common responsibilities include environment configuration, CI/CD, infrastructure automation, monitoring, reliability, access management, and troubleshooting. Relevant skills listed for this role include Full Stack Development, Software Design, Coding, Efficient Data Structures. Education: Bachelor's degree or diploma in computer science, IT, or a related field; relevant cloud and infrastructure certifications can be advantageous.\n\n[S2] (source=careers/career_profile, score=0.57, ref=career_0515)\nCareer: Cloud Services Engineer (DevOps). Domain: Cloud and DevOps. Required skills: Cloud infrastructure technologies, Enterprise security, Networking, Virtualization, Data center architecture, Integration architecture, Orchestration technologies, OSS/BSS management, Service delivery, Application development lifecycle management, Scripting languages (Perl, Ruby, Python, BASH), Public/Private Cloud experience (AWS/Azure/VMware), DevOps practices, Splunk deployment, Regular Expressions, Splunk Dashboards, Cloud computing, Monitoring tools integration. Description: Cloud Services Engineer (DevOps) helps build, deploy, automate, and operate software or cloud infrastructure. Common responsibilities include environment configuration, CI/CD, infrastructure automation, monitoring, reliability, access management, and troubleshooting. Relevant skills listed for this role include Cloud infrastructure technologies, Enterprise security, Networking, Virtualization. Education: Bachelor's degree or diploma in computer science, IT, or a related field; relevant cloud and infrastructure certifications can be advantageous.\n\n[S3] (source=careers/career_profile, score=0.56, ref=career_2496)\nCareer: Software Program Manager, Cloud Services. Domain: Cloud and DevOps. Required skills: Cloud architecture, DevOps, Micro-service architecture, Program/project management, Agile software development, Software engineering, Web technologies, Mobile platforms, IaaS/PaaS, DevOps automation, SaaS platforms, Software test methodologies. Description: Software Program Manager, Cloud Services helps build, deploy, automate, and operate software or cloud infrastructure. Common responsibilities include environment configuration, CI/CD, infrastructure automation, monitoring, reliability, access management, and troubleshooting. Relevant skills listed for this role include Cloud architecture, DevOps, Micro-service architecture, Program",
+      "checks": {
+        "not_refused": true,
+        "first_sentence_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 5,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 5,
+        "counts": {
+          "supported": 5,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": 1.0,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Software Engineer : Requires Full Stack Development, Software Design, Coding, Efficient Data Structures, Object-Oriented Programming, Algorithms, Azure or Other Cloud Services, Web Technologies (React, CSS, Typescript, Flux), Debugging and Optimization, Distributed Systems, Computer Science Fundamentals, Algorithm Design, Web Experience Development.",
+            "id": 1,
+            "label": "supported"
+          },
+          {
+            "claim": "Requires Cloud infrastructure technologies, Enterprise security, Networking, Virtualization, Data center architecture, Integration architecture, Orchestration technologies, OSS/BSS management, Service delivery, Application development lifecycle management, Scripting languages (Perl, Ruby, Python, BASH), Public/Private Cloud experience (AWS/Azure/VMware), DevOps practices.",
+            "id": 2,
+            "label": "supported"
+          },
+          {
+            "claim": "Software Program Manager, Cloud Services : Requires Cloud architecture, DevOps, Micro-service architecture, Program/project management, Agile software development, Software engineering, Web technologies, Mobile platforms, IaaS/PaaS, DevOps automation, SaaS platforms, Software test methodologies.",
+            "id": 3,
+            "label": "supported"
+          },
+          {
+            "claim": "Full-Stack Software Developer : Requires Full-stack development, Open-source projects, Git repositories, JavaScript, Node.js, React, ECMAScript 6+, Browser debugging tools, UX/UI patterns, Agile methodology, DevOps, Software versioning tools (Git, SVN).",
+            "id": 4,
+            "label": "supported"
+          },
+          {
+            "claim": "Solutions Architect, DevOps, Google Cloud : Requires DevOps, Automating infrastructure deployment, Terraform, Deployment Manager, CloudFormation, Chef, Ansible, Docker, Kubernetes, Cloud technology, Enterprise technology, Relational databases, Infrastructure automation, Continuous integration/deployment, SQL/NoSQL.",
+            "id": 5,
+            "label": "supported"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c03",
+      "category": "career",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Compare a business analyst and a data analyst briefly.",
+      "expected_behavior": "brief comparison",
+      "answer": "**Business Data Analyst** ([S1]) requires strong analytical skills, proficiency in Microsoft Office products, and excellent writing and verbal skills. Your current skills include SQL and Excel, but you lack Power BI or Tableau for data visualization. To bridge the gap, learn either Power BI or Tableau to improve your chances for this career.\n\n---\n**Sources**\n- [S1] careers: Business Data Analyst",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 84072.4,
+      "intent_got": null,
+      "intent_expected": "career_discovery",
+      "tokens": 3752,
+      "revised": [
+        "The user asked for a short answer: cut it to at most 120 words."
+      ],
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": 120
+      },
+      "sources": [
+        "S1:careers:Business Data Analyst",
+        "S2:careers:Data Analyst",
+        "S3:careers:Business Intelligence Analyst",
+        "S4:careers:Business Analyst",
+        "S5:careers:Investment Business Analyst",
+        "S6:knowledge:Entry-level tech and data career paths",
+        "S7:knowledge:Technical preparation",
+        "S8:jobs:job_listing"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.67, ref=career_0347)\nCareer: Business Data Analyst. Domain: Data Analysis and BI. Required skills: Non, Excellent writing and verbal skills, Proficiency in Microsoft Office products, Strong analytical skills, Attention to detail, Ability to work independently, High energy and an inquisitive mind. Description: Business Data Analyst analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Non, Excellent writing and verbal skills, Proficiency in Microsoft Office products, Strong analytical skills. Education: Bachelor's degree in data analytics, business, economics, statistics, computer science, or a related field; equivalent practical experience may be accepted.\n\n[S2] (source=careers/career_profile, score=0.65, ref=career_0664)\nCareer: Data Analyst. Domain: Data Analysis and BI. Required skills: Data analysis and visualization tools (e.g., Tableau, Power BI) SQL and database querying Business intelligence concepts Data modeling and reporting Strong analytical and problem-solving skills Data-driven decision-making. Description: Business Intelligence Analysts gather and analyze data to provide valuable insights to support decision-making within an organization. They create reports, dashboards, and data visualizations to help stakeholders understand trends, patterns, and opportunities in the data. Education: M.Com. Dataset average salary: 105,320 (unverified; Source values retained; verify currency, time period, geography, and growth definition before interpretation).\n\n[S3] (source=careers/career_profile, score=0.65, ref=career_0374)\nCareer: Business Intelligence Analyst. Domain: Data Analysis and BI. Required skills: Excel, MS Access, VBA, Business Objects, Cognos, SAS, Tableau. Description: Business Intelligence Analyst analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Excel, MS Access, VBA, Business Objects. Education: Bachelor's degree in data analytics, business, economics, statistics, computer science, or a related field; equivalent practical experience may be accepted. Dataset average salary: 124,400 (unverified; Source values retained; verify currency, time period, geography, and growth definition before interpretation).\n\n[S4] (source=careers/career_profile, score=0.64, ref=career_0308)\nCareer: Business Analyst. Domain: Data Analysis and BI. Required skills: SQL, PLX, Excel/Google Sheets, Javascript/GoogleScript, HTML, Python, Data visualization, Automation, Project management. Description: Business Analyst analyzes business or operational data and turns it in",
+      "checks": {
+        "not_refused": true,
+        "max_words": true,
+        "must_include_any": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 1,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 1,
+        "counts": {
+          "supported": 1,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": 1.0,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Business Data Analyst () requires strong analytical skills, proficiency in Microsoft Office products, and excellent writing and verbal skills.",
+            "id": 1,
+            "label": "supported"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c03",
+      "category": "career",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Compare a business analyst and a data analyst briefly.",
+      "expected_behavior": "brief comparison",
+      "answer": "Two suitable career options from our records are Business Data Analyst [S1] and Data Analyst [S2]. Both roles match your skills in Microsoft Office products, strong analytical skills, and attention to detail. However, the main difference is that a **Business Data Analyst** focuses on business or operational data analysis specifically, while a **Data Analyst** works with a broader range of data sources. The missing skill for Business Data Analyst is excellent writing and verbal skills, while Data Analyst requires data analysis and visualization tools like Tableau or Power BI.\n\n---\n**Sources**\n- [S1] careers: Business Data Analyst\n- [S2] careers: Data Analyst",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 72952.5,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 2472,
+      "revised": [
+        "The user asked for a short answer: cut it to at most 120 words."
+      ],
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": 120
+      },
+      "sources": [
+        "S1:careers:Business Data Analyst",
+        "S2:careers:Data Analyst",
+        "S3:careers:Business Intelligence Analyst",
+        "S4:careers:Business Analyst",
+        "S5:careers:Investment Business Analyst",
+        "S6:knowledge:Entry-level tech and data career paths"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.67, ref=career_0347)\nCareer: Business Data Analyst. Domain: Data Analysis and BI. Required skills: Non, Excellent writing and verbal skills, Proficiency in Microsoft Office products, Strong analytical skills, Attention to detail, Ability to work independently, High energy and an inquisitive mind. Description: Business Data Analyst analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Non, Excellent writing and verbal skills, Proficiency in Microsoft Office products, Strong analytical skills. Education: Bachelor's degree in data analytics, business, economics, statistics, computer science, or a related field; equivalent practical experience may be accepted.\n\n[S2] (source=careers/career_profile, score=0.65, ref=career_0664)\nCareer: Data Analyst. Domain: Data Analysis and BI. Required skills: Data analysis and visualization tools (e.g., Tableau, Power BI) SQL and database querying Business intelligence concepts Data modeling and reporting Strong analytical and problem-solving skills Data-driven decision-making. Description: Business Intelligence Analysts gather and analyze data to provide valuable insights to support decision-making within an organization. They create reports, dashboards, and data visualizations to help stakeholders understand trends, patterns, and opportunities in the data. Education: M.Com. Dataset average salary: 105,320 (unverified; Source values retained; verify currency, time period, geography, and growth definition before interpretation).\n\n[S3] (source=careers/career_profile, score=0.65, ref=career_0374)\nCareer: Business Intelligence Analyst. Domain: Data Analysis and BI. Required skills: Excel, MS Access, VBA, Business Objects, Cognos, SAS, Tableau. Description: Business Intelligence Analyst analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Excel, MS Access, VBA, Business Objects. Education: Bachelor's degree in data analytics, business, economics, statistics, computer science, or a related field; equivalent practical experience may be accepted. Dataset average salary: 124,400 (unverified; Source values retained; verify currency, time period, geography, and growth definition before interpretation).\n\n[S4] (source=careers/career_profile, score=0.64, ref=career_0308)\nCareer: Business Analyst. Domain: Data Analysis and BI. Required skills: SQL, PLX, Excel/Google Sheets, Javascript/GoogleScript, HTML, Python, Data visualization, Automation, Project management. Description: Business Analyst analyzes business or operational data and turns it in",
+      "checks": {
+        "not_refused": true,
+        "max_words": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 2,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 2,
+        "counts": {
+          "supported": 1,
+          "contradicted": 0,
+          "insufficient": 1,
+          "invalid_id": 0
+        },
+        "support_rate": 0.5,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Two suitable career options from our records are Business Data Analyst and Data Analyst .",
+            "id": 1,
+            "label": "insufficient"
+          },
+          {
+            "claim": "Two suitable career options from our records are Business Data Analyst and Data Analyst .",
+            "id": 2,
+            "label": "supported"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c04",
+      "category": "career",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "What should I do with my life?",
+      "expected_behavior": "clarify",
+      "answer": "To help you find a fulfilling career path, let's first identify your interests and skills. Could you please share the subjects or kinds of work that you enjoy most (for example building things, analyzing numbers, designing, or helping people)? This will help me provide personalized career recommendations based on your preferences.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 23410.0,
+      "intent_got": null,
+      "intent_expected": "career_discovery",
+      "tokens": 2092,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": "the student's skills, interests or goal (needed to personalise the answer)",
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "asks_question": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c04",
+      "category": "career",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "What should I do with my life?",
+      "expected_behavior": "clarify",
+      "answer": "It seems that you haven't provided me with your skills, interests, or goals yet. To help you find a suitable career, I would like to know more about the subjects or kinds of work that you enjoy most. For example, do you prefer roles involving building things, analyzing numbers, designing, or helping people? This will help me provide a more personalized recommendation.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 15153.3,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 1160,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": "the student's skills, interests or goal (needed to personalise the answer)",
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "asks_question": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c05",
+      "category": "career",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Which careers use both Excel and SQL?",
+      "expected_behavior": "careers from records",
+      "answer": "Based on the student's profile, two career options that require both Excel and SQL are:\n\n1. Business Performance Analyst [S1]: This role involves designing, building, or maintaining reliable data pipelines and data platforms, including data modeling, quality checks, performance optimization, and making data accessible for analytics.\n\n2. Associate, Analytics [S3]: In this position, the analyst analyzes business or operational data and turns it into clear insights, with typical responsibilities including cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders.\n\nBoth careers require additional skills such as Database Management for the Business Performance Analyst role and PowerPoint for the Associate, Analytics role, but Excel and SQL are shared requirements for both positions.\n\n---\n**Sources**\n- [S1] careers: Business Performance Analyst\n- [S3] careers: Associate, Analytics",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 49177.2,
+      "intent_got": null,
+      "intent_expected": "career_discovery",
+      "tokens": 3674,
+      "revised": null,
+      "intent": {
+        "type": "recommendation",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:careers:Business Performance Analyst",
+        "S2:careers:Business Analyst",
+        "S3:careers:Associate, Analytics",
+        "S4:careers:Business Analyst Medicare",
+        "S5:careers:Business Intelligence Analyst",
+        "S6:jobs:job_listing",
+        "S7:knowledge:Entry-level tech and data career paths",
+        "S8:careers:SQL Application Developer"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.62, ref=career_0399)\nCareer: Business Performance Analyst. Domain: Data Engineering. Required skills: Microsoft Office Suite, Advanced MS-Excel, Microsoft SQL Server, Database Management, Stored Procedures, Power BI, SSRS, Tableau, Enterprise Data Warehouse (Star Schema). Description: Business Performance Analyst designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include Microsoft Office Suite, Advanced MS-Excel, Microsoft SQL Server, Database Management. Education: Bachelor's degree in Information Technology, Economics, Finance, a quantitative discipline or equivalent work experience.\n\n[S2] (source=careers/career_profile, score=0.61, ref=career_0306)\nCareer: Business Analyst. Domain: Data Engineering. Required skills: SQL, Data analysis, Data visualization, Excel, Tableau, Python, R, Big Data, BI tools. Description: Business Analyst designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include SQL, Data analysis, Data visualization, Excel. Education: Bachelor's degree in computer science, information systems, data engineering, or a related technical field.\n\n[S3] (source=careers/career_profile, score=0.60, ref=career_0187)\nCareer: Associate, Analytics. Domain: Data Analysis and BI. Required skills: MS Excel, PowerPoint, SQL, Tableau, Cognos, Salesforce. Description: Associate, Analytics analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include MS Excel, PowerPoint, SQL, Tableau. Education: Bachelor's degree in data analytics, business, economics, statistics, computer science, or a related field; equivalent practical experience may be accepted.\n\n[S4] (source=careers/career_profile, score=0.60, ref=career_0332)\nCareer: Business Analyst Medicare. Domain: Data Engineering. Required skills: Technical skills:, Automated report building, Data manipulation, Database management, SQL, ETL (Extract, Transform, Load), SSIS (SQL Server Integrated Services), SQL Server Business Intelligence Development Studio, SQL Server Management Studio, Microsoft Office (Excel, Access, Word, Visio), SAS, Procedures and scripts creation. Description: Business Analyst Medicare designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, a",
+      "checks": {
+        "not_refused": true,
+        "citation": true,
+        "must_include_any": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 2,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 1,
+        "counts": {
+          "supported": 1,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": 1.0,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Business Performance Analyst : This role involves designing, building, or maintaining reliable data pipelines and data platforms, including data modeling, quality checks, performance optimization, and making data accessible for analytics.",
+            "id": 1,
+            "label": "supported"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c05",
+      "category": "career",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Which careers use both Excel and SQL?",
+      "expected_behavior": "careers from records",
+      "answer": "Two suitable career options from our records that require both Excel and SQL are:\n- **Business Performance Analyst** [S1]: This role involves designing, building, or maintaining reliable data platforms using Microsoft Office Suite, including Excel, and requires skills in Database Management and Stored Procedures.\n- **Associate, Analytics** [S3]: In this position, you'll analyze business or operational data and prepare reports or dashboards using MS Excel.\n\nFor a more specialized role that also uses Excel and SQL, consider the **SQL Application Developer** [S6]. However, this career requires additional skills in Database Programming, Microsoft SQL Stack, and Source Control Tools.\n\n---\n**Sources**\n- [S1] careers: Business Performance Analyst\n- [S3] careers: Associate, Analytics\n- [S6] careers: SQL Application Developer",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 34124.2,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 2312,
+      "revised": null,
+      "intent": {
+        "type": "recommendation",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:careers:Business Performance Analyst",
+        "S2:careers:Business Analyst",
+        "S3:careers:Associate, Analytics",
+        "S4:careers:Business Intelligence Analyst",
+        "S5:knowledge:Entry-level tech and data career paths",
+        "S6:careers:SQL Application Developer"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.62, ref=career_0399)\nCareer: Business Performance Analyst. Domain: Data Engineering. Required skills: Microsoft Office Suite, Advanced MS-Excel, Microsoft SQL Server, Database Management, Stored Procedures, Power BI, SSRS, Tableau, Enterprise Data Warehouse (Star Schema). Description: Business Performance Analyst designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include Microsoft Office Suite, Advanced MS-Excel, Microsoft SQL Server, Database Management. Education: Bachelor's degree in Information Technology, Economics, Finance, a quantitative discipline or equivalent work experience.\n\n[S2] (source=careers/career_profile, score=0.61, ref=career_0306)\nCareer: Business Analyst. Domain: Data Engineering. Required skills: SQL, Data analysis, Data visualization, Excel, Tableau, Python, R, Big Data, BI tools. Description: Business Analyst designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include SQL, Data analysis, Data visualization, Excel. Education: Bachelor's degree in computer science, information systems, data engineering, or a related technical field.\n\n[S3] (source=careers/career_profile, score=0.60, ref=career_0187)\nCareer: Associate, Analytics. Domain: Data Analysis and BI. Required skills: MS Excel, PowerPoint, SQL, Tableau, Cognos, Salesforce. Description: Associate, Analytics analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include MS Excel, PowerPoint, SQL, Tableau. Education: Bachelor's degree in data analytics, business, economics, statistics, computer science, or a related field; equivalent practical experience may be accepted.\n\n[S4] (source=careers/career_profile, score=0.58, ref=career_0378)\nCareer: Business Intelligence Analyst. Domain: Data Engineering. Required skills: SQL, Microsoft Access, Microsoft Excel, Tableau, SAP Business Objects, Data Warehouse Structures, Transportation Management Systems, Relational Database Design. Description: Business Intelligence Analyst designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include SQL, Microsoft Access, Microsoft Excel, Tableau. Education: Bachelor of Sci",
+      "checks": {
+        "not_refused": true,
+        "citation": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 3,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 2,
+        "counts": {
+          "supported": 1,
+          "contradicted": 0,
+          "insufficient": 1,
+          "invalid_id": 0
+        },
+        "support_rate": 0.5,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Business Performance Analyst : This role involves designing, building, or maintaining reliable data platforms using Microsoft Office Suite, including Excel, and requires skills in Database Management and Stored Procedures.",
+            "id": 1,
+            "label": "supported"
+          },
+          {
+            "claim": "For a more specialized role that also uses Excel and SQL, consider the SQL Application Developer .",
+            "id": 6,
+            "label": "insufficient"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c06",
+      "category": "career",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Will learning AI guarantee me a high salary?",
+      "expected_behavior": "no guarantee",
+      "answer": "The salary information for the Software Engineer 2 position at Microsoft is not listed in the provided job description. To find out more about potential salaries for this role, you can check Glassdoor, AmbitionBox, or LinkedIn Salary.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 27061.8,
+      "intent_got": null,
+      "intent_expected": "career_discovery",
+      "tokens": 2339,
+      "revised": null,
+      "intent": {
+        "type": "salary",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:jobs:job_listing"
+      ],
+      "context": "[S1] (source=jobs/job_listing, score=0.47, ref=https://in.linkedin.com/jobs/view/software-engineer-2-at-microsoft-4384169764)\nJob: Software Engineer 2 at Microsoft (Bengaluru, Karnataka, India). Salary: Not Listed. Description: software and application development. You will shape how developers interact with our platform—from programming models and user experiences to the design of a managed, distributed runtime that orchestrates agent-based AI applications at scale with enterprise-grade guarantees. You’ll work at the cutting edge of AI research, collaborating with some of the brightest minds in generative AI, and integrating the latest breakthroughs in multi-modal capabilities (text, audio, video) into real-world agentic applications.At Microsoft, our mission is to empower every person and every organization on the planet to achieve more. We live this mission every day through a culture that embraces a growth mindset, values diverse perspectives, and encourages continuous learning. We believe in creating an environment where individuals bring their best selves to work, collaborate openly, and build technology that makes a meaningful impact. Join us and help shape the future of the world.ResponsibilitiesCreates and implements code for a product, service, or",
+      "checks": {
+        "not_refused": true,
+        "no_guarantee": false,
+        "profile_consistent": null
+      },
+      "passed": false,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": "prompt (forbidden content: no_guarantee)"
+    },
+    {
+      "id": "v2-c06",
+      "category": "career",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Will learning AI guarantee me a high salary?",
+      "expected_behavior": "no guarantee",
+      "answer": "I'm sorry to disappoint, but learning AI does not guarantee a high salary. While AI skills are in demand and can lead to well-paying jobs, there are many factors that influence salary such as location, experience level, company size, and more. To increase your chances of earning a higher salary, focus on gaining practical experience, building a strong portfolio, and networking within the industry. You can find job opportunities and salary information on platforms like Glassdoor, AmbitionBox, and LinkedIn Salary.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 17668.5,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 1198,
+      "revised": null,
+      "intent": {
+        "type": "salary",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "no_guarantee": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c07",
+      "category": "career",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "What is the average salary of a blockchain developer in Pune according to your data?",
+      "expected_behavior": "no invented numbers",
+      "answer": "The average salary for a Blockchain Developer in Pune isn't available in the provided context. You can check Glassdoor, AmbitionBox, or LinkedIn Salary for more information.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 24855.2,
+      "intent_got": null,
+      "intent_expected": "career_discovery",
+      "tokens": 2363,
+      "revised": null,
+      "intent": {
+        "type": "salary",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:jobs:job_listing",
+        "S2:jobs:job_listing"
+      ],
+      "context": "[S1] (source=jobs/job_listing, score=0.54, ref=https://www.naukri.com/job-listings-data-analyst-hackajob-pune-15-to-24-years-170426019369)\nJob: Data Analyst at HSBC (Pune). Skills: Data Analysis, Data Quality, Data Analytics, Analytics, Analysis, Data, Quality. Experience: 15-24 Yrs. Salary: 1-1.25 Cr PA. Description: Previous experience partnering with business stakeholders to design or implement IT pla...\n\n[S2] (source=jobs/job_listing, score=0.53, ref=https://www.naukri.com/job-listings-data-analyst-loantap-pune-2-to-5-years-160426021592)\nJob: Data Analyst at LoanTap (Pune(Kalyani Nagar)). Skills: Power Bi, Data Analysis, Data Analytics, Bi, Bi Tools, Data Visualization, Tableau, Dashboards. Experience: 2-5 Yrs. Salary: 4-5 Lacs PA. Description: Strong proficiency in SQL for data extraction and manipulation B Tech / BE or prior exp...",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c07",
+      "category": "career",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "What is the average salary of a blockchain developer in Pune according to your data?",
+      "expected_behavior": "no invented numbers",
+      "answer": "The average salary for a Blockchain Developer in Pune, as per our non-verified dataset, is not available. You can check Glassdoor, AmbitionBox, or LinkedIn Salary for more information.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 13796.6,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 1119,
+      "revised": null,
+      "intent": {
+        "type": "salary",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c08",
+      "category": "career",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "I'm a mechanical engineer who likes coding. Suggest three career paths.",
+      "expected_behavior": "exactly three",
+      "answer": "Based on your interest in engineering and coding, here are three career paths that might suit you:\n\n1. **Software Engineer**: This role typically requires experience with programming languages such as C#, Java, TypeScript, JavaScript, or Python, as well as strong communication and collaboration skills across disciplines and global teams [S2]. Familiarity with testing frameworks and engineering systems is also important.\n\n2. **Data Analyst**: Data Analyst roles often require SQL, Excel, Power BI/Tableau, statistics, and communication skills [S1]. This career path can lead to data science or analytics engineering if you develop a strong foundation in statistics and machine learning.\n\n3. **DevOps Engineer**: DevOps Engineers are responsible for the development and implementation of tools that automate the processes between software development and IT teams [S1]. This role often involves Linux, networking, a cloud provider, CI/CD, containers, and experience with PowerShell, Azure DevOps (ADO), GitHub, and Kusto can be beneficial [S2].\n\n---\n**Sources**\n- [S1] knowledge: Entry-level tech and data career paths\n- [S2] jobs: Software Engineer (https://in.linkedin.com/jobs/view/software-engineer-at-microsoft-4364800054)",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 51030.2,
+      "intent_got": null,
+      "intent_expected": "career_discovery",
+      "tokens": 2712,
+      "revised": null,
+      "intent": {
+        "type": "list",
+        "missing": null,
+        "n_items": 3,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Entry-level tech and data career paths",
+        "S2:jobs:job_listing"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.51, ref=career_planning.md)\nCareer Planning - Entry-level tech and data career paths: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engineer (testing fundamentals, automation with Selenium or Playwright). Analyst roles often lead to data science or analytics engineering; developer roles lead to senior engineering, architecture or engineering management.\n\n[S2] (source=jobs/job_listing, score=0.46, ref=https://in.linkedin.com/jobs/view/software-engineer-at-microsoft-4364800054)\nJob: Software Engineer at Microsoft (Bengaluru, Karnataka, India). Salary: Not Listed. Description: years of technical engineering experience with coding in languages including, but not limited to, C#, Java, TypeScript, JavaScript, or Python. Familiarity with testing frameworks OR engineering systems. Strong communication and collaboration skills across disciplines and global teams. Other QualificationsMasters’s degree in Computer Science Exposure to Power BI or other business intelligence technologies is a plus. Experience with PowerShell, Azure DevOps (ADO), GitHub, Kusto. Interest in quality, automation, and engineering efficiency through data-driven insights and GenAI integration.Handson experience with AI, Data Modelling, power query, DAX Top 3 Priorities for This PositionRamp up in Power BI, team expectations, and systems related to quality and engineering efficiency. Contribute to automation and engineering systems that support high-quality releases and secure development workflows. Grow technical depth and collaboration skills while supporting the broader team’s goals and learning from senior engineers. This position will be open for a minimum of 5 days, with applications accepted on",
+      "checks": {
+        "not_refused": true,
+        "n_items": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 4,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 4,
+        "counts": {
+          "supported": 2,
+          "contradicted": 0,
+          "insufficient": 2,
+          "invalid_id": 0
+        },
+        "support_rate": 0.5,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Software Engineer : This role typically requires experience with programming languages such as C , Java, TypeScript, JavaScript, or Python, as well as strong communication and collaboration skills across disciplines and global teams .",
+            "id": 2,
+            "label": "supported"
+          },
+          {
+            "claim": "Data Analyst : Data Analyst roles often require SQL, Excel, Power BI/Tableau, statistics, and communication skills .",
+            "id": 1,
+            "label": "supported"
+          },
+          {
+            "claim": "DevOps Engineer : DevOps Engineers are responsible for the development and implementation of tools that automate the processes between software development and IT teams .",
+            "id": 1,
+            "label": "insufficient"
+          },
+          {
+            "claim": "This role often involves Linux, networking, a cloud provider, CI/CD, containers, and experience with PowerShell, Azure DevOps (ADO), GitHub, and Kusto can be beneficial .",
+            "id": 2,
+            "label": "insufficient"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c08",
+      "category": "career",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "I'm a mechanical engineer who likes coding. Suggest three career paths.",
+      "expected_behavior": "exactly three",
+      "answer": "Based on your interest in mechanical engineering and coding, here are three potential career paths from our records:\n\n1. **Data Analyst** [S1]: This role requires SQL, Excel, Power BI/Tableau, statistics, and communication skills, which aligns with your background in engineering and your interest in coding.\n\n2. **Software Developer** [S1]: As a mechanical engineer who enjoys coding, you might find success as a Software Developer. This role typically requires proficiency in one programming language deeply, Data Structures and Algorithms (DSA), Git, a framework, and databases.\n\n3. **Data Scientist** [S1]: If you're interested in using your engineering problem-solving skills to analyze data and make predictions, a career as a Data Scientist could be suitable. This role requires Python, statistics, machine learning, and experimentation skills.\n\n---\n**Sources**\n- [S1] knowledge: Entry-level tech and data career paths",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 32463.2,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 1443,
+      "revised": null,
+      "intent": {
+        "type": "list",
+        "missing": null,
+        "n_items": 3,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Entry-level tech and data career paths"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.51, ref=career_planning.md)\nCareer Planning - Entry-level tech and data career paths: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engineer (testing fundamentals, automation with Selenium or Playwright). Analyst roles often lead to data science or analytics engineering; developer roles lead to senior engineering, architecture or engineering management.",
+      "checks": {
+        "not_refused": true,
+        "n_items": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 3,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 2,
+        "counts": {
+          "supported": 1,
+          "contradicted": 0,
+          "insufficient": 1,
+          "invalid_id": 0
+        },
+        "support_rate": 0.5,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Data Analyst : This role requires SQL, Excel, Power BI/Tableau, statistics, and communication skills, which aligns with your background in engineering and your interest in coding.",
+            "id": 1,
+            "label": "supported"
+          },
+          {
+            "claim": "Data Scientist : If you're interested in using your engineering problem-solving skills to analyze data and make predictions, a career as a Data Scientist could be suitable.",
+            "id": 1,
+            "label": "insufficient"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p01",
+      "category": "profile",
+      "user": "persona_be",
+      "version": "v7",
+      "route": "career_study",
+      "question": "Which of my skills match the job?",
+      "expected_behavior": "matched skills",
+      "answer": "Your profile shows that you have Java, Spring Boot, MySQL, Git, and REST APIs, which are 4 out of the 7 required skills for the Backend Developer role (Java, Spring Boot, Microservices, Docker, Kubernetes, AWS, REST APIs). The missing skills from your profile that are required by the job description are **Microservices**, Docker, Kubernetes, and AWS.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 88470.2,
+      "intent_got": null,
+      "intent_expected": "profile_analysis",
+      "tokens": 3037,
+      "revised": [
+        "The draft says the student has Microservices, Docker, Kubernetes, AWS, but the profile lists it as a gap. Correct this."
+      ],
+      "intent": {
+        "type": "profile_fact",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:careers:Software Engineer, Product (Full Stack)",
+        "S2:profile:resume",
+        "S3:profile:profile_overview",
+        "S4:knowledge:Raising an ATS match score",
+        "S5:profile:career_summary"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.54, ref=career_2491)\nCareer: Software Engineer, Product (Full Stack). Domain: Software and Web Development. Required skills: Full stack web/mobile application development, Programming languages such as PHP, JavaScript, HTML, Internal programming language Hack, Web/mobile interfaces using XHTML, CSS, JavaScript, Frameworks like React & React Native, Relational databases and SQL, Web technologies (JavaScript, XHTML, CSS), MySQL. Description: Software Engineer, Product (Full Stack) designs, develops, tests, and maintains software applications or web services. Work often includes translating requirements into code, integrating APIs or databases, debugging issues, reviewing code, and improving application quality. Relevant skills listed for this role include Full stack web/mobile application development, Programming languages such as PHP, JavaScript, HTML. Education: B.S. or M.S. in Computer Science or related field.\n\n[S2] (source=profile/resume, score=0.49, ref=resume)\nCandidate resume (part 1): Arjun Mehta. B.E. Information Technology 2023. 1.5 years as Java developer. Skills: Java, Spring Boot, MySQL, Git, REST APIs. Built an order-management REST API with Spring Boot and MySQL.\n\n[S3] (source=profile/profile_overview, score=0.49, ref=profile_overview)\nCandidate profile overview. Target role: Backend Developer. ATS match score: 43/100. Candidate skills: Java, Spring Boot, MySQL, Git, REST APIs. Skills required by the job description: Java, Spring Boot, Microservices, Docker, Kubernetes, AWS, REST APIs. Skill gaps (missing skills): Microservices, Docker, Kubernetes, AWS.\n\n[S4] (source=knowledge/guide, score=0.44, ref=resume_and_ats.md)\nResume And Ats - Raising an ATS match score: Mirror the exact wording of the job description where it is truthful (for example \"Power BI\" not just \"BI tools\"). Put a dedicated Skills section near the top. Use standard section titles: Summary, Skills, Experience, Projects, Education, Certifications. Save as a text-based PDF or DOCX, never a scanned image. Spell out acronyms once, e.g. \"Natural Language Processing (NLP)\". Do not keyword-stuff or add skills you cannot discuss in an interview; recruiters verify.\n\n[S5] (source=profile/career_summary, score=0.40, ref=career_summary)\nCareer summary for the candidate: Profile for Backend Developer: has Java, Spring Boot, MySQL, Git, REST APIs; gaps Microservices, Docker, Kubernetes, AWS.",
+      "checks": {
+        "not_refused": true,
+        "include_frac": true,
+        "profile_consistent": false
+      },
+      "passed": false,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [
+        "The draft says the student has Microservices, Docker, Kubernetes, AWS, but the profile lists it as a gap. Correct this."
+      ],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": "grounding (contradicts the student's profile)"
+    },
+    {
+      "id": "v2-p01",
+      "category": "profile",
+      "user": "persona_be",
+      "version": "v8",
+      "route": "career_study",
+      "question": "Which of my skills match the job?",
+      "expected_behavior": "matched skills",
+      "answer": "Two career options from our records that align with your current skills are:\n\n1. **Full Stack Developer, Online Operations** [S1]: needs Web development, Back end development, and MySQL, which you have experience with. The main missing skill is Front end development.\n2. **Software Development Engineer I** [S5]: requires Java, JavaScript, Git, and relational databases, all skills you possess. The key missing skill is NoSQL databases (Cassandra).\n\nTo progress towards a Backend Developer role, you might need to learn Microservices, Docker, Kubernetes, and AWS.\n\nComparing the two options:\n- **Full Stack Developer, Online Operations** focuses on both front end and back end development, while also working with web technologies like XHTML, CSS, JavaScript, and frameworks such as React & React Native.\n- **Software Development Engineer I** primarily works on Java, JavaScript, Git, and relational databases, but also includes skills like Scala, JavaScript frameworks (D3.js, AngularJS), R, and Python.\n\nTo help you decide, consider whether you prefer a role that focuses more on front end development or one that leans towards back end development with additional languages.\n\n---\n**Sources**\n- [S1] careers: Full Stack Developer, Online Operations\n- [S5] careers: Software Development Engineer I",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 57801.5,
+      "intent_got": "career_discovery",
+      "intent_expected": "profile_analysis",
+      "tokens": 2974,
+      "revised": null,
+      "intent": {
+        "type": "profile_fact",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:careers:Full Stack Developer, Online Operations",
+        "S2:careers:Software Engineer, Product (Full Stack)",
+        "S3:careers:Full Stack Software Engineer",
+        "S4:careers:Software Developer",
+        "S5:careers:Software Development Engineer I",
+        "S6:profile:resume",
+        "S7:profile:profile_overview",
+        "S8:knowledge:Raising an ATS match score"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.55, ref=career_1195)\nCareer: Full Stack Developer, Online Operations. Domain: Software and Web Development. Required skills: Web development, Front end development, Back end development, Python, JavaScript, MySQL, User interface design, Flask framework for Python, JQuery, C/C++. Description: Full Stack Developer, Online Operations designs, develops, tests, and maintains software applications or web services. Work often includes translating requirements into code, integrating APIs or databases, debugging issues, reviewing code, and improving application quality. Relevant skills listed for this role include Web development, Front end development, Back end development, Python. Education: Not applicable.\n\n[S2] (source=careers/career_profile, score=0.54, ref=career_2491)\nCareer: Software Engineer, Product (Full Stack). Domain: Software and Web Development. Required skills: Full stack web/mobile application development, Programming languages such as PHP, JavaScript, HTML, Internal programming language Hack, Web/mobile interfaces using XHTML, CSS, JavaScript, Frameworks like React & React Native, Relational databases and SQL, Web technologies (JavaScript, XHTML, CSS), MySQL. Description: Software Engineer, Product (Full Stack) designs, develops, tests, and maintains software applications or web services. Work often includes translating requirements into code, integrating APIs or databases, debugging issues, reviewing code, and improving application quality. Relevant skills listed for this role include Full stack web/mobile application development, Programming languages such as PHP, JavaScript, HTML. Education: B.S. or M.S. in Computer Science or related field.\n\n[S3] (source=careers/career_profile, score=0.54, ref=career_1223)\nCareer: Full Stack Software Engineer. Domain: Software and Web Development. Required skills: PHP, MySQL, algorithms, design patterns, clean code, agile processes, data structures, HTML, CSS, jQuery, MVC. Description: Full Stack Software Engineer designs, develops, tests, and maintains software applications or web services. Work often includes translating requirements into code, integrating APIs or databases, debugging issues, reviewing code, and improving application quality. Relevant skills listed for this role include PHP, MySQL, algorithms, design patterns. Education: Not specified, Experience: Extensive experience in PHP development.\n\n[S4] (source=careers/career_profile, score=0.54, ref=career_2440)\nCareer: Software Developer. Domain: Software and Web Development. Required skills: Web/API development in the .NET Framework (C#, VB, .NET Core), Strong relational database knowledge, SQL Server (Scripting, Indices, Views, Stored Procedures), Microsoft IIS, Windows/Web Services, Microsoft Team Foundation Server (TFS), JavaScript, jQuery, CSS3, HTML5. Description: Software Developer designs, develops, tests, and maintains software applications or web services. Work often includes translati",
+      "checks": {
+        "not_refused": true,
+        "include_frac": false,
+        "intent": false,
+        "profile_consistent": true
+      },
+      "passed": false,
+      "citations": {
+        "citations": 2,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 2,
+        "counts": {
+          "supported": 2,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": 1.0,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Full Stack Developer, Online Operations : needs Web development, Back end development, and MySQL, which you have experience with.",
+            "id": 1,
+            "label": "supported"
+          },
+          {
+            "claim": "Software Development Engineer I : requires Java, JavaScript, Git, and relational databases, all skills you possess.",
+            "id": 5,
+            "label": "supported"
+          }
+        ]
+      },
+      "root_cause": "prompt (facts available but not used)"
+    },
+    {
+      "id": "v2-p02",
+      "category": "profile",
+      "user": "persona_da",
+      "version": "v7",
+      "route": "career_study",
+      "question": "Tell me my ATS estimate in one line.",
+      "expected_behavior": "stored value, short",
+      "answer": "Your current ATS score is 43/100 (an AI estimate, not an official ATS result).",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 26128.3,
+      "intent_got": null,
+      "intent_expected": "profile_progress",
+      "tokens": 2405,
+      "revised": null,
+      "intent": {
+        "type": "profile_fact",
+        "missing": null,
+        "n_items": null,
+        "max_words": 40
+      },
+      "sources": [
+        "S1:knowledge:Resume length and structure"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.37, ref=resume_and_ats.md)\nResume And Ats - Resume length and structure: Freshers and candidates with under 5 years of experience should keep one page. Order: contact line with LinkedIn/GitHub, 2-3 line summary targeted at the role, skills, experience or projects, education, certifications. Tailor the summary and the top skills for every application.",
+      "checks": {
+        "not_refused": true,
+        "first_sentence_any": true,
+        "max_words": true,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p02",
+      "category": "profile",
+      "user": "persona_da",
+      "version": "v8",
+      "route": "career_study",
+      "question": "Tell me my ATS estimate in one line.",
+      "expected_behavior": "stored value, short",
+      "answer": "Your current ATS score is 43/100, based on the last analysis of your profile.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 13400.4,
+      "intent_got": "profile_progress",
+      "intent_expected": "profile_progress",
+      "tokens": 1176,
+      "revised": null,
+      "intent": {
+        "type": "profile_fact",
+        "missing": null,
+        "n_items": null,
+        "max_words": 40
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "first_sentence_any": true,
+        "max_words": true,
+        "intent": true,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p03",
+      "category": "profile",
+      "user": "persona_ml",
+      "version": "v7",
+      "route": "career_study",
+      "question": "Do I know enough to apply for this job?",
+      "expected_behavior": "verdict + gaps",
+      "answer": "No, you do not know enough to apply for this job as your profile shows gaps in the required skills: Machine Learning, TensorFlow, SQL, Statistics, and Docker. To improve your chances, focus on learning these skills and tailoring your resume and LinkedIn profile to highlight your relevant experience with Python. Consider applying for internships or networking opportunities to increase your chances of getting noticed by potential employers.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 37879.6,
+      "intent_got": null,
+      "intent_expected": "profile_analysis",
+      "tokens": 2764,
+      "revised": null,
+      "intent": {
+        "type": "yes_no",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:profile:resume",
+        "S2:knowledge:Job search strategy",
+        "S3:knowledge:Referrals, cold emails and internships",
+        "S4:profile:profile_overview"
+      ],
+      "context": "[S1] (source=profile/resume, score=0.36, ref=resume)\nCandidate resume (part 1): Kavya Rao. B.Tech Mechanical Engineering 2022. 2 years design engineer. Skills: AutoCAD, MATLAB, Excel, Python. Completed an online Python course and a regression project on fuel efficiency.\n\n[S2] (source=knowledge/guide, score=0.36, ref=career_planning.md)\nCareer Planning - Job search strategy: Apply to roles where you meet roughly 60-70% of the listed requirements. Combine job boards (LinkedIn, Naukri, company career pages) with referrals, which have much higher response rates. Keep your LinkedIn headline and skills aligned with your target role, and post about your projects. Quality and tailoring beat mass applying.\n\n[S3] (source=knowledge/guide, score=0.36, ref=applications_and_networking.md)\nApplications And Networking - Referrals, cold emails and internships: Referrals have much higher response rates than cold applications. Ask alumni or connections for a referral with a short message that names the exact job ID and why you fit. Cold emails to founders or hiring managers should be under 120 words: who you are, one relevant achievement, a specific ask, and a link to your portfolio. Apply for internships 2-4 months before the season and track every application in a spreadsheet.\n\n[S4] (source=profile/profile_overview, score=0.35, ref=profile_overview)\nCandidate profile overview. Target role: Machine Learning Engineer. ATS match score: 17/100. Candidate skills: AutoCAD, MATLAB, Excel, Python. Skills required by the job description: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Skill gaps (missing skills): Machine Learning, TensorFlow, SQL, Statistics, Docker.",
+      "checks": {
+        "not_refused": true,
+        "first_sentence_any": true,
+        "must_include_any": true,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p03",
+      "category": "profile",
+      "user": "persona_ml",
+      "version": "v8",
+      "route": "career_study",
+      "question": "Do I know enough to apply for this job?",
+      "expected_behavior": "verdict + gaps",
+      "answer": "No, it depends. The student's current skills include AutoCAD, MATLAB, Excel, and Python, but the target job requires experience in Machine Learning, TensorFlow, SQL, Statistics, and Docker. While the student has some relevant skills like Python, they have skill gaps that may affect their application for this role. It would be beneficial to focus on gaining experience or learning these missing skills before applying for similar jobs.\n\nHere are some steps to prepare for applications and interviews:\n1. Identify the required skills and experience for your target job.\n2. Assess your current skills and identify any gaps.\n3. Develop a plan to gain experience or learn the necessary skills through online courses, projects, or internships.\n4. Update your resume to highlight relevant skills and experiences.\n5. Apply to roles where you meet roughly 60-70% of the listed requirements (as per career planning guide).\n6. Utilize job boards like LinkedIn, Naukri, and company career pages.\n7. Leverage referrals for higher response rates (as per career planning guide).\n8. Consider applying for internships 2-4 months before the season to gain practical experience.\n9. Track every application in a spreadsheet.\n10. Tailor your applications and cover letters to each job, emphasizing how you meet the specific requirements.\n11. Prepare for interviews by researching the company and role, practicing common interview questions, and reviewing your skills and experiences.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 45462.5,
+      "intent_got": "job_preparation",
+      "intent_expected": "profile_analysis",
+      "tokens": 1739,
+      "revised": null,
+      "intent": {
+        "type": "yes_no",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:profile:resume",
+        "S2:knowledge:Job search strategy",
+        "S3:knowledge:Referrals, cold emails and internships",
+        "S4:profile:profile_overview"
+      ],
+      "context": "[S1] (source=profile/resume, score=0.36, ref=resume)\nCandidate resume (part 1): Kavya Rao. B.Tech Mechanical Engineering 2022. 2 years design engineer. Skills: AutoCAD, MATLAB, Excel, Python. Completed an online Python course and a regression project on fuel efficiency.\n\n[S2] (source=knowledge/guide, score=0.36, ref=career_planning.md)\nCareer Planning - Job search strategy: Apply to roles where you meet roughly 60-70% of the listed requirements. Combine job boards (LinkedIn, Naukri, company career pages) with referrals, which have much higher response rates. Keep your LinkedIn headline and skills aligned with your target role, and post about your projects. Quality and tailoring beat mass applying.\n\n[S3] (source=knowledge/guide, score=0.36, ref=applications_and_networking.md)\nApplications And Networking - Referrals, cold emails and internships: Referrals have much higher response rates than cold applications. Ask alumni or connections for a referral with a short message that names the exact job ID and why you fit. Cold emails to founders or hiring managers should be under 120 words: who you are, one relevant achievement, a specific ask, and a link to your portfolio. Apply for internships 2-4 months before the season and track every application in a spreadsheet.\n\n[S4] (source=profile/profile_overview, score=0.35, ref=profile_overview)\nCandidate profile overview. Target role: Machine Learning Engineer. ATS match score: 17/100. Candidate skills: AutoCAD, MATLAB, Excel, Python. Skills required by the job description: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Skill gaps (missing skills): Machine Learning, TensorFlow, SQL, Statistics, Docker.",
+      "checks": {
+        "not_refused": true,
+        "first_sentence_any": true,
+        "must_include_any": true,
+        "intent": false,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p04",
+      "category": "profile",
+      "user": "persona_be",
+      "version": "v7",
+      "route": "career_study",
+      "question": "Does my MySQL experience cover the SQL requirement?",
+      "expected_behavior": "evidence of SQL use",
+      "answer": "Yes, your MySQL experience does cover the SQL requirement for the Backend Developer role as it is a related skill. However, you still have gaps in Microservices, Docker, Kubernetes, and AWS that are required by the job description. To strengthen your profile, consider learning these skills to increase your chances of being considered for this role.\n\nHere's a suggested learning roadmap:\n\n- **Microservices**: Start with understanding the principles of microservices architecture and then learn Spring Cloud Netflix Eureka for service discovery and Spring Cloud Config for configuration management.\n- **Docker**: Begin with Docker basics such as creating images, containers, and networks. Then, learn how to use Docker Compose for managing multiple containers in a single project.\n- **Kubernetes**: Learn Kubernetes fundamentals like deploying applications, scaling, and managing clusters. You can start with Minikube for local development and then move on to cloud providers like AWS EKS or Google GKE.\n- **AWS**: Familiarize yourself with AWS services relevant to backend development such as EC2, S3, IAM, RDS (for MySQL), and CodePipeline for CI/CD.\n\nOnce you have gained some experience with these technologies, update your resume and reanalyze your profile to see the impact on your ATS score. Good luck with your learning journey!",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 56244.4,
+      "intent_got": null,
+      "intent_expected": "profile_analysis",
+      "tokens": 2688,
+      "revised": null,
+      "intent": {
+        "type": "yes_no",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:careers:MySQL Database Administrator"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.54, ref=career_1800)\nCareer: MySQL Database Administrator. Domain: Project and Business Management. Required skills: MySQL Administration, Large-scale high-performance distributed systems, Automation, Architecting services, Replication management, CentOS, Hardware performance. Description: MySQL Database Administrator coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include MySQL Administration, Large-scale high-performance distributed systems, Automation, Architecting services. Education: BS in Computer Science.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p04",
+      "category": "profile",
+      "user": "persona_be",
+      "version": "v8",
+      "route": "career_study",
+      "question": "Does my MySQL experience cover the SQL requirement?",
+      "expected_behavior": "evidence of SQL use",
+      "answer": "No, your MySQL experience does not cover the SQL requirement as stated in the Backend Developer job description. SQL is a programming language used for managing and manipulating data, while MySQL is a specific relational database management system that uses SQL. To meet the SQL requirement, you should demonstrate proficiency in SQL programming outside of your MySQL experience. You can do this by listing SQL on your resume and providing examples of SQL queries or projects you've completed using SQL.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 23596.8,
+      "intent_got": "profile_analysis",
+      "intent_expected": "profile_analysis",
+      "tokens": 1462,
+      "revised": null,
+      "intent": {
+        "type": "yes_no",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p05",
+      "category": "profile",
+      "user": "persona_ml",
+      "version": "v7",
+      "route": "career_study",
+      "question": "List the requirements in the job description, nothing else.",
+      "expected_behavior": "JD requirements only",
+      "answer": "The job description for a Machine Learning Engineer requires:\n- Python\n- Machine Learning\n- TensorFlow\n- SQL\n- Statistics\n- Docker\n- Responsibilities include training and deploying ML models, building data pipelines. Education: Bachelor's in a technical field.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 45532.3,
+      "intent_got": null,
+      "intent_expected": "profile_analysis",
+      "tokens": 2832,
+      "revised": null,
+      "intent": {
+        "type": "jd_requirements",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:profile:profile_overview",
+        "S2:profile:job_description",
+        "S3:careers:Office Administrator",
+        "S4:profile:resume"
+      ],
+      "context": "[S1] (source=profile/profile_overview, score=0.56, ref=profile_overview)\nCandidate profile overview. Target role: Machine Learning Engineer. ATS match score: 17/100. Candidate skills: AutoCAD, MATLAB, Excel, Python. Skills required by the job description: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Skill gaps (missing skills): Machine Learning, TensorFlow, SQL, Statistics, Docker.\n\n[S2] (source=profile/job_description, score=0.56, ref=job_description)\nTarget job description (part 1): Machine Learning Engineer. Required: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Responsibilities: train and deploy ML models, build data pipelines. Education: Bachelor's in a technical field.\n\n[S3] (source=careers/career_profile, score=0.52, ref=career_1844)\nCareer: Office Administrator. Domain: Project and Business Management. Required skills: Human Resource Administration, Personnel Policies Development, Recruitment, New Employee Orientation, Employee Relations, HR Information System Management, Compliance with Employment Laws, Administrative Tasks, Documentation Management, Taleo, Excel, Google Docs. Description: Office Administrator coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include Human Resource Administration, Personnel Policies Development, Recruitment, New Employee Orientation. Education: Bachelor's degree in a relevant business, management, finance, marketing, or related field; role-specific experience is often valued.\n\n[S4] (source=profile/resume, score=0.43, ref=resume)\nCandidate resume (part 1): Kavya Rao. B.Tech Mechanical Engineering 2022. 2 years design engineer. Skills: AutoCAD, MATLAB, Excel, Python. Completed an online Python course and a regression project on fuel efficiency.",
+      "checks": {
+        "not_refused": true,
+        "include_frac": true,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p05",
+      "category": "profile",
+      "user": "persona_ml",
+      "version": "v8",
+      "route": "career_study",
+      "question": "List the requirements in the job description, nothing else.",
+      "expected_behavior": "JD requirements only",
+      "answer": "Two career options from our records that match some of your skills are:\n- **Starts Coordinator** [S4]: needs Accuracy in data management, Organizational skills, Efficient communication with various parties, which match your Excel and organizational work. Missing skill: Machine Learning, TensorFlow, SQL, Statistics, Docker.\n- **Office Administrator** [S6]: lists Human Resource Administration, Personnel Policies Development, Recruitment, New Employee Orientation, which are not part of your current skills, but you could consider learning these to transition into this role. Missing skill: Machine Learning, TensorFlow, SQL, Statistics, Docker.\n\nTo narrow it down: do you prefer coordinating people and processes in a business environment, or working with data and models in a technical field?\n\n---\n**Sources**\n- [S4] careers: Starts Coordinator\n- [S6] careers: Office Administrator",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 108916.4,
+      "intent_got": "career_discovery",
+      "intent_expected": "profile_analysis",
+      "tokens": 2912,
+      "revised": [
+        "The draft says the student has Machine Learning, TensorFlow, SQL, Statistics, Docker, but the profile lists it as a gap. Correct this."
+      ],
+      "intent": {
+        "type": "jd_requirements",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:careers:Permitting Associate",
+        "S2:profile:profile_overview",
+        "S3:profile:job_description",
+        "S4:careers:Starts Coordinator",
+        "S5:knowledge:Writing a cover letter",
+        "S6:careers:Office Administrator",
+        "S7:careers:Recruiting Associate",
+        "S8:careers:Admissions and Database Administrator"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.58, ref=career_1927)\nCareer: Permitting Associate. Domain: Project and Business Management. Required skills: Code compliance, Permit coordination, Research skills, Interpretation of municipal regulations, Legal background, Technical writing, Zoning administration, Reading and interpreting codified ordinances, Site plan review, Shop drawing review, Computer literacy (Microsoft Office, Google Docs, Maps, Gmail), Problem-solving, Critical thinking, Negotiation skills, Organization, Deadline management. Description: Permitting Associate coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include Code compliance, Permit coordination, Research skills, Interpretation of municipal regulations. Education: Bachelor's degree in a relevant business, management, finance, marketing, or related field; role-specific experience is often valued.\n\n[S2] (source=profile/profile_overview, score=0.56, ref=profile_overview)\nCandidate profile overview. Target role: Machine Learning Engineer. ATS match score: 17/100. Candidate skills: AutoCAD, MATLAB, Excel, Python. Skills required by the job description: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Skill gaps (missing skills): Machine Learning, TensorFlow, SQL, Statistics, Docker.\n\n[S3] (source=profile/job_description, score=0.56, ref=job_description)\nTarget job description (part 1): Machine Learning Engineer. Required: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Responsibilities: train and deploy ML models, build data pipelines. Education: Bachelor's in a technical field.\n\n[S4] (source=careers/career_profile, score=0.53, ref=career_2618)\nCareer: Starts Coordinator. Domain: Project and Business Management. Required skills: Permitting process, Accuracy in data management, Organizational skills, Efficient communication with various parties, Proficiency in MS Word, Excel, and Outlook. Description: Starts Coordinator coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include Permitting process, Accuracy in data management, Organizational skills, Efficient communication with various parties. Education: No skills explicitly related to education were mentioned..\n\n[S5] (source=knowledge/guide, score=0.52, ref=applications_and_networking.md)\nApplications And Networking - Writing a cover letter: Keep it to one page and three short parts: why this company and role (be specific), two achievements that match the job description's top requirements with numbers, and a closing line asking for a conversation. Reuse the job d",
+      "checks": {
+        "not_refused": true,
+        "include_frac": true,
+        "intent": false,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 2,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 2,
+        "counts": {
+          "supported": 2,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": 1.0,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Starts Coordinator : needs Accuracy in data management, Organizational skills, Efficient communication with various parties, which match your Excel and organizational work.",
+            "id": 4,
+            "label": "supported"
+          },
+          {
+            "claim": "Office Administrator : lists Human Resource Administration, Personnel Policies Development, Recruitment, New Employee Orientation, which are not part of your current skills, but you could consider learning these to transition into this role.",
+            "id": 6,
+            "label": "supported"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p06",
+      "category": "profile",
+      "user": "persona_ml",
+      "version": "v7",
+      "route": "career_study",
+      "question": "Which skills on my resume are not needed for this job?",
+      "expected_behavior": "AutoCAD/MATLAB",
+      "answer": "The skills on your resume that are not required for a Machine Learning Engineer are AutoCAD and MATLAB. These skills do not appear in the job description or match with any of the required skills for the role.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 39712.8,
+      "intent_got": null,
+      "intent_expected": "profile_analysis",
+      "tokens": 3071,
+      "revised": null,
+      "intent": {
+        "type": "profile_fact",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Raising an ATS match score",
+        "S2:profile:profile_overview",
+        "S3:careers:Analyst, Business",
+        "S4:profile:job_description",
+        "S5:profile:resume",
+        "S6:profile:career_summary"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.55, ref=resume_and_ats.md)\nResume And Ats - Raising an ATS match score: Mirror the exact wording of the job description where it is truthful (for example \"Power BI\" not just \"BI tools\"). Put a dedicated Skills section near the top. Use standard section titles: Summary, Skills, Experience, Projects, Education, Certifications. Save as a text-based PDF or DOCX, never a scanned image. Spell out acronyms once, e.g. \"Natural Language Processing (NLP)\". Do not keyword-stuff or add skills you cannot discuss in an interview; recruiters verify.\n\n[S2] (source=profile/profile_overview, score=0.53, ref=profile_overview)\nCandidate profile overview. Target role: Machine Learning Engineer. ATS match score: 17/100. Candidate skills: AutoCAD, MATLAB, Excel, Python. Skills required by the job description: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Skill gaps (missing skills): Machine Learning, TensorFlow, SQL, Statistics, Docker.\n\n[S3] (source=careers/career_profile, score=0.52, ref=career_0087)\nCareer: Analyst, Business. Domain: Software and Web Development. Required skills: Systems Design, Systems Analysis, Reporting, Business Process Analysis, Requirements Documentation, Software Development, Data Analysis (Alteryx, PowerBI, PowerPivot, PowerQuery), User Interface Design, User Acceptance Testing, Project Management, Compliance (Sarbanes/Oxley), IT Environment Experience, Application Development, Supply Chain Systems, ERP Systems, Supplier Relationship Management, Quality Management Systems. Description: Analyst, Business designs, develops, tests, and maintains software applications or web services. Work often includes translating requirements into code, integrating APIs or databases, debugging issues, reviewing code, and improving application quality. Relevant skills listed for this role include Systems Design, Systems Analysis, Reporting, Business Process Analysis. Education: Bachelor's degree or diploma in computer science, information technology, software engineering, or a related field.\n\n[S4] (source=profile/job_description, score=0.43, ref=job_description)\nTarget job description (part 1): Machine Learning Engineer. Required: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Responsibilities: train and deploy ML models, build data pipelines. Education: Bachelor's in a technical field.\n\n[S5] (source=profile/resume, score=0.40, ref=resume)\nCandidate resume (part 1): Kavya Rao. B.Tech Mechanical Engineering 2022. 2 years design engineer. Skills: AutoCAD, MATLAB, Excel, Python. Completed an online Python course and a regression project on fuel efficiency.\n\n[S6] (source=profile/career_summary, score=0.38, ref=career_summary)\nCareer summary for the candidate: Profile for Machine Learning Engineer: has AutoCAD, MATLAB, Excel, Python; gaps Machine Learning, TensorFlow, SQL, Statistics, Docker.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p06",
+      "category": "profile",
+      "user": "persona_ml",
+      "version": "v8",
+      "route": "career_study",
+      "question": "Which skills on my resume are not needed for this job?",
+      "expected_behavior": "AutoCAD/MATLAB",
+      "answer": "The student's profile shows they have gaps in Machine Learning, TensorFlow, SQL, and Statistics, despite the draft stating otherwise. To improve their ATS score, they should mirror the exact wording of the job description where it is truthful, put a dedicated Skills section near the top, and save their resume as a text-based PDF or DOCX.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 57042.6,
+      "intent_got": "profile_progress",
+      "intent_expected": "profile_analysis",
+      "tokens": 1806,
+      "revised": [
+        "The draft says the student has Machine Learning, TensorFlow, SQL, Statistics, but the profile lists it as a gap. Correct this."
+      ],
+      "intent": {
+        "type": "profile_fact",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Raising an ATS match score",
+        "S2:profile:profile_overview",
+        "S3:profile:job_description",
+        "S4:profile:resume",
+        "S5:profile:career_summary"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.55, ref=resume_and_ats.md)\nResume And Ats - Raising an ATS match score: Mirror the exact wording of the job description where it is truthful (for example \"Power BI\" not just \"BI tools\"). Put a dedicated Skills section near the top. Use standard section titles: Summary, Skills, Experience, Projects, Education, Certifications. Save as a text-based PDF or DOCX, never a scanned image. Spell out acronyms once, e.g. \"Natural Language Processing (NLP)\". Do not keyword-stuff or add skills you cannot discuss in an interview; recruiters verify.\n\n[S2] (source=profile/profile_overview, score=0.53, ref=profile_overview)\nCandidate profile overview. Target role: Machine Learning Engineer. ATS match score: 17/100. Candidate skills: AutoCAD, MATLAB, Excel, Python. Skills required by the job description: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Skill gaps (missing skills): Machine Learning, TensorFlow, SQL, Statistics, Docker.\n\n[S3] (source=profile/job_description, score=0.43, ref=job_description)\nTarget job description (part 1): Machine Learning Engineer. Required: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Responsibilities: train and deploy ML models, build data pipelines. Education: Bachelor's in a technical field.\n\n[S4] (source=profile/resume, score=0.40, ref=resume)\nCandidate resume (part 1): Kavya Rao. B.Tech Mechanical Engineering 2022. 2 years design engineer. Skills: AutoCAD, MATLAB, Excel, Python. Completed an online Python course and a regression project on fuel efficiency.\n\n[S5] (source=profile/career_summary, score=0.38, ref=career_summary)\nCareer summary for the candidate: Profile for Machine Learning Engineer: has AutoCAD, MATLAB, Excel, Python; gaps Machine Learning, TensorFlow, SQL, Statistics, Docker.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": false,
+        "intent": false,
+        "profile_consistent": true
+      },
+      "passed": false,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": "prompt (facts available but not used)"
+    },
+    {
+      "id": "v2-p07",
+      "category": "profile",
+      "user": "persona_be",
+      "version": "v7",
+      "route": "career_study",
+      "question": "Show me what you know about my background.",
+      "expected_behavior": "own data only",
+      "answer": "Based on your student profile, you are a Backend Developer with skills in Java, Spring Boot, MySQL, Git, and REST APIs. However, there are gaps in Microservices, Docker, Kubernetes, and AWS. The target job description requires these skills for the Backend Developer role.\n\n- **Already met:** Java, Spring Boot, MySQL, Git, REST APIs are on your resume.\n- **Missing:** Microservices, Docker, Kubernetes, AWS.\n- **Related background:** Your experience with Java and Spring Boot can help you learn Microservices more quickly. Building projects using Docker and deploying them on AWS will also be beneficial in filling the gaps.\n\nTo improve your chances of getting a Backend Developer role, consider focusing on learning Microservices, Docker, Kubernetes, and AWS. Once you have gained some experience with these technologies, update your resume to reflect your new skills.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 43508.5,
+      "intent_got": null,
+      "intent_expected": "profile_progress",
+      "tokens": 2436,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "must_not_include": true,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p07",
+      "category": "profile",
+      "user": "persona_be",
+      "version": "v8",
+      "route": "career_study",
+      "question": "Show me what you know about my background.",
+      "expected_behavior": "own data only",
+      "answer": "Based on your profile, you are a Backend Developer with skills in Java, Spring Boot, MySQL, Git, and REST APIs. However, the job description you're targeting requires additional skills such as Microservices, Docker, Kubernetes, and AWS.\n\nHere are two career options that align with your current skills:\n- **Backend Developer** (as per your profile): You have Java, Spring Boot, MySQL, Git, and REST APIs.\n- **Java Developer** (career_0101): Lists Java, Spring Framework, and JDBC (which can be related to MySQL).\n\nTo progress towards the Backend Developer role you're targeting, consider focusing on learning Microservices, Docker, Kubernetes, and AWS. This will help you meet the requirements of the job description you provided.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 32942.5,
+      "intent_got": "career_discovery",
+      "intent_expected": "profile_progress",
+      "tokens": 1489,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "must_not_include": true,
+        "intent": false,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p08",
+      "category": "profile",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "What is my skill gap?",
+      "expected_behavior": "no profile -> say so",
+      "answer": "I don't see an analysed profile yet, so I can't tell you about your skills or any skill gaps. Upload your resume and the job description in the sidebar and click **Analyze Profile**; I'll then explain the main skills that are missing for your career goals (an AI estimate, not an official ATS result).\n\nAs a suggestion, you might consider starting with a role that requires skills similar to those you already have. For example:\n\n* If you have experience in data analysis or programming, you could look into roles such as Data Analyst or Business Intelligence Analyst.\n* If you have experience in project management, you could explore roles like Project Coordinator or Operations Manager.\n* If you have a background in marketing or communications, consider roles such as Marketing Coordinator or Public Relations Specialist.\n\nOnce you've identified a role that aligns with your current skills, you can create a focused learning plan to fill any gaps and build a portfolio of projects in the new field. This will make it easier for you to transition into a career that better suits your interests and goals.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 91238.9,
+      "intent_got": null,
+      "intent_expected": "profile_analysis",
+      "tokens": 2227,
+      "revised": [
+        "Essential information is missing (the student has no analysed profile (resume/JD) yet). Ask ONE short clarifying question instead of guessing."
+      ],
+      "intent": {
+        "type": "profile_fact",
+        "missing": "the student has no analysed profile (resume/JD) yet",
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Switching careers"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.38, ref=career_planning.md)\nCareer Planning - Switching careers: Identify transferable skills from your current role (domain knowledge, communication, project management). Close the gap with a focused 3-6 month learning plan and 2-3 portfolio projects in the new field, ideally using data or problems from your current domain. Consider bridge roles that combine old and new expertise.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p08",
+      "category": "profile",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "What is my skill gap?",
+      "expected_behavior": "no profile -> say so",
+      "answer": "The student's CV has not been analyzed against a specific job yet. To help identify any skill gaps, please run the 'Analyze Profile' command followed by the job title or job description you are interested in. In the meantime, consider reviewing the career planning guide (S1) which suggests identifying transferable skills from your current role, closing the gap with focused learning, and building portfolio projects in the new field. Once you have run 'Analyze Profile', I can provide a detailed analysis of any gaps that need to be addressed.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 74207.8,
+      "intent_got": "profile_analysis",
+      "intent_expected": "profile_analysis",
+      "tokens": 1384,
+      "revised": [
+        "Essential information is missing (the student has no analysed profile (resume/JD) yet). Ask one focused question instead of guessing."
+      ],
+      "intent": {
+        "type": "profile_fact",
+        "missing": "the student has no analysed profile (resume/JD) yet",
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Switching careers"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.38, ref=career_planning.md)\nCareer Planning - Switching careers: Identify transferable skills from your current role (domain knowledge, communication, project management). Close the gap with a focused 3-6 month learning plan and 2-3 portfolio projects in the new field, ideally using data or problems from your current domain. Consider bridge roles that combine old and new expertise.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    }
+  ],
+  "set": "heldout_v2",
+  "facts": {
+    "persona_da": {
+      "have": [
+        "Python",
+        "Excel",
+        "SQL",
+        "Pandas",
+        "Power BI"
+      ],
+      "required": [
+        "Python",
+        "SQL",
+        "Power BI",
+        "Tableau",
+        "Statistics",
+        "Data Visualization",
+        "Communication"
+      ],
+      "gaps": [
+        "Tableau",
+        "Statistics",
+        "Data Visualization",
+        "Communication"
+      ],
+      "matched": [
+        "Python",
+        "SQL",
+        "Power BI"
+      ],
+      "ats": "43",
+      "role": "Data Analyst",
+      "n_matched": "3",
+      "n_required": "7"
+    },
+    "persona_be": {
+      "have": [
+        "Java",
+        "Spring Boot",
+        "MySQL",
+        "Git",
+        "REST APIs"
+      ],
+      "required": [
+        "Java",
+        "Spring Boot",
+        "Microservices",
+        "Docker",
+        "Kubernetes",
+        "AWS",
+        "REST APIs"
+      ],
+      "gaps": [
+        "Microservices",
+        "Docker",
+        "Kubernetes",
+        "AWS"
+      ],
+      "matched": [
+        "Java",
+        "Spring Boot",
+        "REST APIs"
+      ],
+      "ats": "43",
+      "role": "Backend Developer",
+      "n_matched": "3",
+      "n_required": "7"
+    },
+    "persona_ml": {
+      "have": [
+        "AutoCAD",
+        "MATLAB",
+        "Excel",
+        "Python"
+      ],
+      "required": [
+        "Python",
+        "Machine Learning",
+        "TensorFlow",
+        "SQL",
+        "Statistics",
+        "Docker"
+      ],
+      "gaps": [
+        "Machine Learning",
+        "TensorFlow",
+        "SQL",
+        "Statistics",
+        "Docker"
+      ],
+      "matched": [
+        "Python"
+      ],
+      "ats": "17",
+      "role": "Machine Learning Engineer",
+      "n_matched": "1",
+      "n_required": "6"
+    }
+  }
+}

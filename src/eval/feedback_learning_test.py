@@ -31,6 +31,7 @@ def main():
     tmp = Path(tempfile.mkdtemp()) / "feedback.jsonl"
     fs.LOCAL_FILE = tmp
     fs._mongo = lambda: None          # isolated: never write the real Atlas/local store
+    fs.REQUIRE_APPROVAL = False       # simulated feedback counts as reviewed
     fs._cache.update(t=0.0, rows=None)
     out = {"ts": datetime.now(timezone.utc).isoformat(), "store": str(tmp), "tests": {}}
 

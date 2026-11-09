@@ -150,7 +150,15 @@ RESOURCES = {
 }
 
 # E35: capstone project tailored to the target role (days 29-30)
-CAPSTONES = [
+CAPSTONES = [  # E36: most specific roles first ("cybersecurity analyst" must not match the generic "analyst")
+    (("security", "cyber", "soc ", "penetration", "ethical hacker"),
+     "Set up a small lab, run a vulnerability assessment{using}, and write an incident-style report with fixes ranked by risk"),
+    (("data engineer", "etl", "big data", "pipeline"),
+     "Build a batch data pipeline: ingest a public dataset, transform and load it into a warehouse table{using}, schedule it and document data quality checks"),
+    (("frontend", "front-end", "front end", "full stack", "full-stack", "web developer", "ui developer"),
+     "Build and deploy a responsive web app{using} with at least 3 pages, form validation, an API call and Lighthouse score above 90"),
+    (("product manager", "project manager", "scrum", "business analyst"),
+     "Write a product/requirements document for a real problem{using}: user stories, prioritised backlog, success metrics and a 2-sprint plan"),
     (("analyst", "bi ", "business intelligence", "analytics"),
      "End-to-end analysis: clean a public dataset with SQL/Python, build a dashboard{using} and present 3 business recommendations"),
     (("backend", "developer", "software", "java", "engineer (backend)"),

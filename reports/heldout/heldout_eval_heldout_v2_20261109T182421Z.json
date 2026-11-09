@@ -1,0 +1,2631 @@
+{
+  "ts": "20261109T182421Z",
+  "versions": [
+    "v8"
+  ],
+  "n_cases": 40,
+  "rows": [
+    {
+      "id": "v2-s01",
+      "category": "concept",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "What is an API, explained simply?",
+      "expected_behavior": "plain definition + example",
+      "answer": "An API (Application Programming Interface) is a set of rules that allows two different software programs to communicate and exchange information with each other. It acts as a digital messenger that takes a request from one system, delivers it to another, and brings the response back.\n\nThis concept is essential for modern careers and study because most professional software development involves connecting different services, such as integrating a payment processor into a website or pulling weather data into a mobile app. For example, when you use a travel website to search for flights, the site uses an API to send your search criteria to various airline databases and then displays the combined results on your screen.",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 9939.8,
+      "intent_got": "concept_explanation",
+      "intent_expected": "concept_explanation",
+      "tokens": 969,
+      "revised": null,
+      "intent": {
+        "type": "definition",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "no_career_citations": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s02",
+      "category": "concept",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Explain the difference between TCP and UDP in a table.",
+      "expected_behavior": "table",
+      "answer": "TCP is a connection-oriented protocol that prioritizes reliable, ordered data delivery, whereas UDP is a connectionless protocol that prioritizes speed and low latency by sending data without verifying receipt.\n\n| Feature | TCP (Transmission Control Protocol) | UDP (User Datagram Protocol) |\n| :--- | :--- | :--- |\n| **Connection** | Connection-oriented (requires a handshake) | Connectionless (no handshake) |\n| **Reliability** | Guaranteed delivery and error checking | No guarantee of delivery |\n| **Ordering** | Data arrives in the exact order sent | Data may arrive out of order |\n| **Speed** | Slower due to overhead and flow control | Faster due to minimal overhead |\n| **Use Case** | Web browsing (HTTP), Email (SMTP) | Streaming, Online gaming, VoIP |",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 8542.5,
+      "intent_got": "concept_explanation",
+      "intent_expected": "concept_explanation",
+      "tokens": 1010,
+      "revised": null,
+      "intent": {
+        "type": "comparison",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "table": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s03",
+      "category": "concept",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Explain polymorphism with a Java example.",
+      "expected_behavior": "Java code example",
+      "answer": "Polymorphism is a core object-oriented programming concept that allows objects of different classes to be treated as instances of a common superclass, enabling a single interface to represent different underlying forms. It matters for careers and study because it allows developers to write flexible, reusable code that can handle new data types without modifying existing logic; for example, a payment processing system can use a single `processPayment()` method to handle various types like `CreditCard` or `PayPal` seamlessly.\n\n```java\n// Polymorphism example in Java\nclass Payment {\n    void process() {\n        System.out.println(\"Processing generic payment...\");\n    }\n}\n\nclass CreditCard extends Payment {\n    @Override\n    void process() {\n        System.out.println(\"Processing credit card payment.\");\n    }\n}\n\nclass PayPal extends Payment {\n    @Override\n    void process() {\n        System.out.println(\"Processing PayPal payment.\");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Payment myPayment = new CreditCard(); // Polymorphic reference\n        myPayment.process(); // Calls CreditCard's version\n    }\n}\n```",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 7366.1,
+      "intent_got": "concept_explanation",
+      "intent_expected": "concept_explanation",
+      "tokens": 1084,
+      "revised": null,
+      "intent": {
+        "type": "definition",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "code_block": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s04",
+      "category": "study",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Explain Big-O notation in exactly two sentences.",
+      "expected_behavior": "exactly two sentences",
+      "answer": "Big-O notation is a mathematical framework used to describe the efficiency of an algorithm by measuring how its execution time or memory requirements grow as the input size increases. This concept is essential for software engineering careers because it allows developers to compare different approaches and select the most scalable solution for high-performance applications, such as choosing an efficient sorting algorithm over a slower one when processing large datasets.",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 6141.2,
+      "intent_got": "study_help",
+      "intent_expected": "study_help",
+      "tokens": 753,
+      "revised": null,
+      "intent": {
+        "type": "definition",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "n_sentences": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s05",
+      "category": "study",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "My DBMS exam is in 3 days and I haven't started. What should I study first?",
+      "expected_behavior": "prioritised revision",
+      "answer": "To pass your DBMS exam in three days, you should prioritize studying Relational Algebra and SQL queries first, as these are the most frequently tested practical components. On day one, master SQL syntax and normalization (1NF to BCNF) to secure high-weightage marks; on day two, focus on Transaction Management, ACID properties, and Concurrency Control; on day three, review indexing, B-trees, and solve previous year question papers to verify your understanding. Please provide your specific syllabus or course outline so I can refine this plan to match your curriculum.",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 6732.2,
+      "intent_got": "study_help",
+      "intent_expected": "study_help",
+      "tokens": 943,
+      "revised": null,
+      "intent": {
+        "type": "plan",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Choosing between a job, MS, MTech or MBA"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.41, ref=higher_education_and_exams.md)\nHigher Education And Exams - Choosing between a job, MS, MTech or MBA: Decide by the role you want in 3-5 years. Research and specialised roles (ML research, VLSI, core engineering design) often value an MS/MTech; management, consulting and product-strategy roles value an MBA, which works best after 2-4 years of work experience. For most software, data and cloud roles, skills and projects matter more than a second degree, so working first and studying later is a common, low-risk path. Compare total cost, expected salary change and visa or placement outcomes before deciding.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s06",
+      "category": "concept",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "What is gradient descent?",
+      "expected_behavior": "definition, no career records",
+      "answer": "Gradient descent is an iterative optimization algorithm used to minimize a function by repeatedly moving in the direction of the steepest descent, defined by the negative of the gradient. It matters for careers and study because it is the fundamental engine used to train machine learning models, allowing them to adjust their internal parameters to reduce prediction errors.\n\nFor example, in linear regression, gradient descent is used to find the specific values for the slope and intercept that result in the smallest possible difference between the model's predictions and the actual data points.",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 6746.3,
+      "intent_got": "concept_explanation",
+      "intent_expected": "concept_explanation",
+      "tokens": 917,
+      "revised": null,
+      "intent": {
+        "type": "definition",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "no_career_citations": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s07",
+      "category": "concept",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Give two examples each of classification and regression problems.",
+      "expected_behavior": "2 examples each",
+      "answer": "Classification and regression are two fundamental types of supervised machine learning problems.\n\n1. Classification: Predicting a categorical label, such as identifying if an email is \"spam\" or \"not spam,\" or classifying an image as a \"cat\" or \"dog.\"\n2. Regression: Predicting a continuous numerical value, such as estimating the future price of a house based on its square footage, or forecasting the temperature for the next day.\n\nI am a career and education assistant; if you would like to explore how these concepts apply to data science roles, please let me know your current skill level or interests.",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 19977.5,
+      "intent_got": "career_discovery",
+      "intent_expected": "concept_explanation",
+      "tokens": 1015,
+      "revised": [
+        "The user asked for exactly 2 items but the draft has 0. Give exactly 2 numbered items."
+      ],
+      "intent": {
+        "type": "list",
+        "missing": null,
+        "n_items": 2,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_all": true,
+        "intent": false,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s08",
+      "category": "study",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "How can I stop procrastinating while studying for semester exams?",
+      "expected_behavior": "practical techniques",
+      "answer": "To stop procrastinating while studying, you should immediately start with a small 10-minute task to overcome the initial barrier to action [S1]. \n\n1. Use time-blocking techniques like the Pomodoro method, which consists of 25 minutes of focused study followed by a 5-minute break [S1].\n2. Eliminate distractions by keeping your phone completely out of reach during your study sessions [S1].\n3. Maintain motivation by tracking your visible progress with a checklist and studying with a peer for added accountability [S1].\n\n---\n**Sources**\n- [S1] knowledge: Beating procrastination and staying motivated",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 9446.0,
+      "intent_got": "study_help",
+      "intent_expected": "study_help",
+      "tokens": 885,
+      "revised": null,
+      "intent": {
+        "type": "how_to",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Beating procrastination and staying motivated"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.70, ref=student_wellbeing_and_productivity.md)\nStudent Wellbeing And Productivity - Beating procrastination and staying motivated: Start with a 10-minute task to overcome the starting barrier, use time blocks (Pomodoro: 25 minutes focus, 5 minutes break), and keep your phone out of reach while studying. Track visible progress (a checklist or streak) and study with a peer for accountability. Motivation follows action: small daily wins matter more than occasional long sessions.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 4,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 1,
+        "counts": {
+          "supported": 1,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": 1.0,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "To stop procrastinating while studying, you should immediately start with a small 10-minute task to overcome the initial barrier to action .",
+            "id": 1,
+            "label": "supported"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c01",
+      "category": "career",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Name two careers that combine finance and programming.",
+      "expected_behavior": "exactly two",
+      "answer": "Two careers that combine finance and programming are Data Analyst - Finance and Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance.\n\n1. **Data Analyst - Finance** [S1]: This role aligns with your interest in finance and programming by requiring Python and SQL for building data pipelines, though it often requires a Bachelor's degree in a technical field.\n2. **Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance** [S4]: This position combines financial analysis with programming skills like SQL and DAX to create dashboards, though it typically requires proficiency in specific reporting platforms like Tableau or Power BI.\n\n---\n**Sources**\n- [S1] careers: Data Analyst - Finance\n- [S4] careers: Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 7388.7,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 2039,
+      "revised": null,
+      "intent": {
+        "type": "list",
+        "missing": null,
+        "n_items": 2,
+        "max_words": null
+      },
+      "sources": [
+        "S1:careers:Data Analyst - Finance",
+        "S2:careers:Director, People Finance",
+        "S3:careers:Intern Program",
+        "S4:careers:Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance",
+        "S5:careers:A/P and A/R Associate",
+        "S6:knowledge:Switching careers"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.49, ref=career_0686)\nCareer: Data Analyst - Finance. Domain: Data Engineering. Required skills: SQL, Relational Data, Financial and Accounting Concepts, SaaS Metrics, Python (numpy, pandas, scikit), R, Scripting Languages (Python, Ruby, Perl, Bash), Excel, ERP Systems, Financial Planning Tools, Business Intelligence Tools (Looker, Tableau, Business Objects, Microstrategy), MPP Databases (Snowflake, Redshift, BigQuery, Vertica), ETL Pipelines, Data Debugging, Automating Processes. Description: Data Analyst - Finance designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include SQL, Relational Data, Financial and Accounting Concepts, SaaS Metrics. Education: Bachelor's degree in computer science, information systems, data engineering, or a related technical field.\n\n[S2] (source=careers/career_profile, score=0.48, ref=career_1042)\nCareer: Director, People Finance. Domain: Machine Learning and AI. Required skills: Payroll, Compliance, Reporting, Finance technologies, Automation, Advanced digital finance technologies, Analytics, Machine learning, Robotic process automation, Project management, Systems implementation. Description: Director, People Finance works on building, evaluating, or integrating AI and machine-learning solutions. The role commonly involves preparing data, selecting suitable methods, testing model performance, and collaborating with technical or business teams. Relevant skills listed for this role include Payroll, Compliance, Reporting, Finance technologies. Education: Bachelors degree in Accounting, Finance, or related discipline.\n\n[S3] (source=careers/career_profile, score=0.45, ref=career_1495)\nCareer: Intern Program. Domain: Finance and Risk. Required skills: Data analysis, Research skills, Financial analysis. Description: Intern Program supports financial planning, reporting, control, or risk-related decisions. Common tasks include reviewing financial or operational data, preparing analyses, monitoring compliance, identifying exceptions, and communicating findings. Relevant skills listed for this role include Data analysis, Research skills, Financial analysis. Education: Pursuing undergraduate or master's degree.\n\n[S4] (source=careers/career_profile, score=0.43, ref=career_2600)\nCareer: Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance. Domain: Data Analysis and BI. Required skills: Finance, Accounting, Data analytics, Reporting platforms, Automation processes, Financial analysis, Business intelligence ecosystems, SQL, SSIS, SSAS, MDX, DAX, Tableau, Power BI, Alteryx, Programming languages (Microsoft's M and DAX). Description: Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance analyzes business or operational data and turns it into clear in",
+      "checks": {
+        "not_refused": true,
+        "n_items": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 2,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 2,
+        "counts": {
+          "supported": 1,
+          "contradicted": 0,
+          "insufficient": 1,
+          "invalid_id": 0
+        },
+        "support_rate": 0.5,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Data Analyst - Finance : This role aligns with your interest in finance and programming by requiring Python and SQL for building data pipelines, though it often requires a Bachelor's degree in a technical field.",
+            "id": 1,
+            "label": "insufficient"
+          },
+          {
+            "claim": "Manufacturing Business Intelligence/FP&A Analyst, Finance : This position combines financial analysis with programming skills like SQL and DAX to create dashboards, though it typically requires proficiency in specific reporting platforms like Tableau or Power BI.",
+            "id": 4,
+            "label": "supported"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c02",
+      "category": "career",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Is DevOps a good career for a fresher?",
+      "expected_behavior": "direct answer first",
+      "answer": "It depends on your interest in building and automating infrastructure, as DevOps roles are highly technical and often require a strong foundation in software development or systems administration.\n\nI don't know enough about your current background to suggest if this is the right path for you yet. To help me provide a more tailored recommendation, could you tell me a bit more about your experience: do you prefer writing application code, managing servers and networks, or coordinating project workflows and architecture?\n\nHere are some relevant career paths from our records:\n\n*   **Software Engineer** [S1]: Focuses on building and operating software; requires strong coding and data structure skills, with DevOps as a key supporting competency.\n*   **Cloud Services Engineer (DevOps)** [S2]: Focuses on infrastructure automation and cloud technologies; requires scripting (Python/Ruby) and networking knowledge.\n*   **Software Program Manager, Cloud Services** [S3]: Focuses on the lifecycle and delivery of cloud projects; requires project management and agile methodology skills.\n*   **Full-Stack Software Developer** [S4]: Focuses on end-to-end web application development; requires JavaScript and React, with DevOps as a secondary requirement.\n*   **Solutions Architect, DevOps (Google Cloud)** [S5]: Focuses on high-level infrastructure design and automation; requires expertise in tools like Terraform, Kubernetes, and Docker.\n\n*Note: Salary data is not available for these roles.*\n\n---\n**Sources**\n- [S1] careers: Software Engineer\n- [S2] careers: Cloud Services Engineer (DevOps)\n- [S3] careers: Software Program Manager, Cloud Services\n- [S4] careers: Full-Stack Software Developer\n- [S5] careers: Solutions Architect, DevOps, Google Cloud",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 8075.8,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 2317,
+      "revised": null,
+      "intent": {
+        "type": "yes_no",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:careers:Software Engineer",
+        "S2:careers:Cloud Services Engineer (DevOps)",
+        "S3:careers:Software Program Manager, Cloud Services",
+        "S4:careers:Full-Stack Software Developer",
+        "S5:careers:Solutions Architect, DevOps, Google Cloud",
+        "S6:knowledge:Why projects matter"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.58, ref=career_2454)\nCareer: Software Engineer. Domain: Cloud and DevOps. Required skills: Full Stack Development, Software Design, Coding, Efficient Data Structures, Object-Oriented Programming, Algorithms, Azure or Other Cloud Services, Web Technologies (React, CSS, Typescript, Flux), Debugging and Optimization, Distributed Systems, Computer Science Fundamentals, Algorithm Design, Web Experience Development, DevOps. Description: Software Engineer helps build, deploy, automate, and operate software or cloud infrastructure. Common responsibilities include environment configuration, CI/CD, infrastructure automation, monitoring, reliability, access management, and troubleshooting. Relevant skills listed for this role include Full Stack Development, Software Design, Coding, Efficient Data Structures. Education: Bachelor's degree or diploma in computer science, IT, or a related field; relevant cloud and infrastructure certifications can be advantageous.\n\n[S2] (source=careers/career_profile, score=0.57, ref=career_0515)\nCareer: Cloud Services Engineer (DevOps). Domain: Cloud and DevOps. Required skills: Cloud infrastructure technologies, Enterprise security, Networking, Virtualization, Data center architecture, Integration architecture, Orchestration technologies, OSS/BSS management, Service delivery, Application development lifecycle management, Scripting languages (Perl, Ruby, Python, BASH), Public/Private Cloud experience (AWS/Azure/VMware), DevOps practices, Splunk deployment, Regular Expressions, Splunk Dashboards, Cloud computing, Monitoring tools integration. Description: Cloud Services Engineer (DevOps) helps build, deploy, automate, and operate software or cloud infrastructure. Common responsibilities include environment configuration, CI/CD, infrastructure automation, monitoring, reliability, access management, and troubleshooting. Relevant skills listed for this role include Cloud infrastructure technologies, Enterprise security, Networking, Virtualization. Education: Bachelor's degree or diploma in computer science, IT, or a related field; relevant cloud and infrastructure certifications can be advantageous.\n\n[S3] (source=careers/career_profile, score=0.56, ref=career_2496)\nCareer: Software Program Manager, Cloud Services. Domain: Cloud and DevOps. Required skills: Cloud architecture, DevOps, Micro-service architecture, Program/project management, Agile software development, Software engineering, Web technologies, Mobile platforms, IaaS/PaaS, DevOps automation, SaaS platforms, Software test methodologies. Description: Software Program Manager, Cloud Services helps build, deploy, automate, and operate software or cloud infrastructure. Common responsibilities include environment configuration, CI/CD, infrastructure automation, monitoring, reliability, access management, and troubleshooting. Relevant skills listed for this role include Cloud architecture, DevOps, Micro-service architecture, Program",
+      "checks": {
+        "not_refused": true,
+        "first_sentence_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 5,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 5,
+        "counts": {
+          "supported": 5,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": 1.0,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Software Engineer : Focuses on building and operating software; requires strong coding and data structure skills, with DevOps as a key supporting competency.",
+            "id": 1,
+            "label": "supported"
+          },
+          {
+            "claim": "Focuses on infrastructure automation and cloud technologies; requires scripting (Python/Ruby) and networking knowledge.",
+            "id": 2,
+            "label": "supported"
+          },
+          {
+            "claim": "Software Program Manager, Cloud Services : Focuses on the lifecycle and delivery of cloud projects; requires project management and agile methodology skills.",
+            "id": 3,
+            "label": "supported"
+          },
+          {
+            "claim": "Full-Stack Software Developer : Focuses on end-to-end web application development; requires JavaScript and React, with DevOps as a secondary requirement.",
+            "id": 4,
+            "label": "supported"
+          },
+          {
+            "claim": "Focuses on high-level infrastructure design and automation; requires expertise in tools like Terraform, Kubernetes, and Docker.",
+            "id": 5,
+            "label": "supported"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c03",
+      "category": "career",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Compare a business analyst and a data analyst briefly.",
+      "expected_behavior": "brief comparison",
+      "answer": "A Business Analyst focuses on process mapping and stakeholder requirements, while a Data Analyst prioritizes technical data modeling and visualization.\n\n*   **Responsibilities**: Business Analysts bridge business needs with technical solutions, whereas Data Analysts clean data and build dashboards to identify trends [S2, S3].\n*   **Skills**: Business Analysts require project management and process mapping [S4, S5, S6]; Data Analysts require SQL, database querying, and visualization tools like Tableau or Power BI [S2, S6].\n*   **Working Style**: Business Analysts often work independently on operational improvements [S1], while Data Analysts focus on data-driven decision-making for stakeholders [S2].\n\nData Analyst salary: 105,320 (dataset value, unverified). Business Analyst salary: data not available.\n\n---\n**Sources**\n- [S1] careers: Business Data Analyst\n- [S2] careers: Data Analyst\n- [S3] careers: Business Intelligence Analyst\n- [S4] careers: Business Analyst\n- [S5] careers: Investment Business Analyst\n- [S6] knowledge: Entry-level tech and data career paths",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 13228.8,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 2141,
+      "revised": [
+        "[S6] does not support \"Responsibilities : Business Analysts bridge business needs with technical solutions , whereas Data Analysts clean data and build dashboards to identif\". Cite the source that does, or present it as general advice without a citation."
+      ],
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": 120
+      },
+      "sources": [
+        "S1:careers:Business Data Analyst",
+        "S2:careers:Data Analyst",
+        "S3:careers:Business Intelligence Analyst",
+        "S4:careers:Business Analyst",
+        "S5:careers:Investment Business Analyst",
+        "S6:knowledge:Entry-level tech and data career paths"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.67, ref=career_0347)\nCareer: Business Data Analyst. Domain: Data Analysis and BI. Required skills: Non, Excellent writing and verbal skills, Proficiency in Microsoft Office products, Strong analytical skills, Attention to detail, Ability to work independently, High energy and an inquisitive mind. Description: Business Data Analyst analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Non, Excellent writing and verbal skills, Proficiency in Microsoft Office products, Strong analytical skills. Education: Bachelor's degree in data analytics, business, economics, statistics, computer science, or a related field; equivalent practical experience may be accepted.\n\n[S2] (source=careers/career_profile, score=0.65, ref=career_0664)\nCareer: Data Analyst. Domain: Data Analysis and BI. Required skills: Data analysis and visualization tools (e.g., Tableau, Power BI) SQL and database querying Business intelligence concepts Data modeling and reporting Strong analytical and problem-solving skills Data-driven decision-making. Description: Business Intelligence Analysts gather and analyze data to provide valuable insights to support decision-making within an organization. They create reports, dashboards, and data visualizations to help stakeholders understand trends, patterns, and opportunities in the data. Education: M.Com. Dataset average salary: 105,320 (unverified; Source values retained; verify currency, time period, geography, and growth definition before interpretation).\n\n[S3] (source=careers/career_profile, score=0.65, ref=career_0374)\nCareer: Business Intelligence Analyst. Domain: Data Analysis and BI. Required skills: Excel, MS Access, VBA, Business Objects, Cognos, SAS, Tableau. Description: Business Intelligence Analyst analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include Excel, MS Access, VBA, Business Objects. Education: Bachelor's degree in data analytics, business, economics, statistics, computer science, or a related field; equivalent practical experience may be accepted. Dataset average salary: 124,400 (unverified; Source values retained; verify currency, time period, geography, and growth definition before interpretation).\n\n[S4] (source=careers/career_profile, score=0.64, ref=career_0308)\nCareer: Business Analyst. Domain: Data Analysis and BI. Required skills: SQL, PLX, Excel/Google Sheets, Javascript/GoogleScript, HTML, Python, Data visualization, Automation, Project management. Description: Business Analyst analyzes business or operational data and turns it in",
+      "checks": {
+        "not_refused": true,
+        "max_words": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 9,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 9,
+        "counts": {
+          "supported": 6,
+          "contradicted": 0,
+          "insufficient": 3,
+          "invalid_id": 0
+        },
+        "support_rate": 0.667,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Responsibilities : Business Analysts bridge business needs with technical solutions, whereas Data Analysts clean data and build dashboards to identify trends .",
+            "id": 2,
+            "label": "insufficient"
+          },
+          {
+            "claim": "Responsibilities : Business Analysts bridge business needs with technical solutions, whereas Data Analysts clean data and build dashboards to identify trends .",
+            "id": 3,
+            "label": "supported"
+          },
+          {
+            "claim": "Skills : Business Analysts require project management and process mapping ; Data Analysts require SQL, database querying, and visualization tools like Tableau or Power BI .",
+            "id": 4,
+            "label": "insufficient"
+          },
+          {
+            "claim": "Skills : Business Analysts require project management and process mapping ; Data Analysts require SQL, database querying, and visualization tools like Tableau or Power BI .",
+            "id": 5,
+            "label": "supported"
+          },
+          {
+            "claim": "Skills : Business Analysts require project management and process mapping ; Data Analysts require SQL, database querying, and visualization tools like Tableau or Power BI .",
+            "id": 6,
+            "label": "supported"
+          },
+          {
+            "claim": "Skills : Business Analysts require project management and process mapping ; Data Analysts require SQL, database querying, and visualization tools like Tableau or Power BI .",
+            "id": 2,
+            "label": "supported"
+          },
+          {
+            "claim": "Skills : Business Analysts require project management and process mapping ; Data Analysts require SQL, database querying, and visualization tools like Tableau or Power BI .",
+            "id": 6,
+            "label": "supported"
+          },
+          {
+            "claim": "Working Style : Business Analysts often work independently on operational improvements , while Data Analysts focus on data-driven decision-making for stakeholders .",
+            "id": 1,
+            "label": "supported"
+          },
+          {
+            "claim": "Working Style : Business Analysts often work independently on operational improvements , while Data Analysts focus on data-driven decision-making for stakeholders .",
+            "id": 2,
+            "label": "insufficient"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c04",
+      "category": "career",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "What should I do with my life?",
+      "expected_behavior": "clarify",
+      "answer": "I cannot provide a responsible career recommendation without knowing more about your background and interests. To help me narrow down your options, which of these areas do you find most engaging: solving technical or logical problems, working creatively with design or media, or helping and managing people?",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 5313.2,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 1028,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": "the student's skills, interests or goal (needed to personalise the answer)",
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "asks_question": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c05",
+      "category": "career",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Which careers use both Excel and SQL?",
+      "expected_behavior": "careers from records",
+      "answer": "Several careers from our records utilize both Excel and SQL:\n\n*   **Business Performance Analyst** [S1]: Uses your Excel and SQL skills for data pipeline and platform maintenance, though it requires additional expertise in Power BI or Tableau.\n*   **Business Analyst** [S2]: Leverages Excel and SQL for data analysis and visualization, with Python or R often listed as a required skill.\n*   **Associate, Analytics** [S3]: Combines Excel and SQL for reporting and data cleaning, though it typically requires proficiency in presentation tools like PowerPoint.\n*   **Business Intelligence Analyst** [S4]: Utilizes Excel and SQL for data modeling and quality checks, often requiring specific knowledge of relational database design.\n\nTo help me provide more tailored advice, could you tell me if you prefer roles focused on building data infrastructure (like pipelines and databases) or roles focused on analyzing data to provide business insights?\n\n---\n**Sources**\n- [S1] careers: Business Performance Analyst\n- [S2] careers: Business Analyst\n- [S3] careers: Associate, Analytics\n- [S4] careers: Business Intelligence Analyst",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 6506.5,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 2097,
+      "revised": null,
+      "intent": {
+        "type": "recommendation",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:careers:Business Performance Analyst",
+        "S2:careers:Business Analyst",
+        "S3:careers:Associate, Analytics",
+        "S4:careers:Business Intelligence Analyst",
+        "S5:knowledge:Entry-level tech and data career paths",
+        "S6:careers:SQL Application Developer"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.62, ref=career_0399)\nCareer: Business Performance Analyst. Domain: Data Engineering. Required skills: Microsoft Office Suite, Advanced MS-Excel, Microsoft SQL Server, Database Management, Stored Procedures, Power BI, SSRS, Tableau, Enterprise Data Warehouse (Star Schema). Description: Business Performance Analyst designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include Microsoft Office Suite, Advanced MS-Excel, Microsoft SQL Server, Database Management. Education: Bachelor's degree in Information Technology, Economics, Finance, a quantitative discipline or equivalent work experience.\n\n[S2] (source=careers/career_profile, score=0.61, ref=career_0306)\nCareer: Business Analyst. Domain: Data Engineering. Required skills: SQL, Data analysis, Data visualization, Excel, Tableau, Python, R, Big Data, BI tools. Description: Business Analyst designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include SQL, Data analysis, Data visualization, Excel. Education: Bachelor's degree in computer science, information systems, data engineering, or a related technical field.\n\n[S3] (source=careers/career_profile, score=0.60, ref=career_0187)\nCareer: Associate, Analytics. Domain: Data Analysis and BI. Required skills: MS Excel, PowerPoint, SQL, Tableau, Cognos, Salesforce. Description: Associate, Analytics analyzes business or operational data and turns it into clear insights. Typical responsibilities include cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders. Relevant skills listed for this role include MS Excel, PowerPoint, SQL, Tableau. Education: Bachelor's degree in data analytics, business, economics, statistics, computer science, or a related field; equivalent practical experience may be accepted.\n\n[S4] (source=careers/career_profile, score=0.58, ref=career_0378)\nCareer: Business Intelligence Analyst. Domain: Data Engineering. Required skills: SQL, Microsoft Access, Microsoft Excel, Tableau, SAP Business Objects, Data Warehouse Structures, Transportation Management Systems, Relational Database Design. Description: Business Intelligence Analyst designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include SQL, Microsoft Access, Microsoft Excel, Tableau. Education: Bachelor of Sci",
+      "checks": {
+        "not_refused": true,
+        "citation": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 4,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 3,
+        "counts": {
+          "supported": 3,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": 1.0,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Business Performance Analyst : Uses your Excel and SQL skills for data pipeline and platform maintenance, though it requires additional expertise in Power BI or Tableau.",
+            "id": 1,
+            "label": "supported"
+          },
+          {
+            "claim": "Business Analyst : Leverages Excel and SQL for data analysis and visualization, with Python or R often listed as a required skill.",
+            "id": 2,
+            "label": "supported"
+          },
+          {
+            "claim": "Associate, Analytics : Combines Excel and SQL for reporting and data cleaning, though it typically requires proficiency in presentation tools like PowerPoint.",
+            "id": 3,
+            "label": "supported"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c06",
+      "category": "career",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Will learning AI guarantee me a high salary?",
+      "expected_behavior": "no guarantee",
+      "answer": "No, learning AI cannot guarantee you a high salary, as job outcomes depend on market demand, your specific experience, and your ability to apply skills in a professional setting. You can improve your chances of securing a competitive role by building a strong portfolio of projects, gaining relevant internships, and networking within the industry. \n\nSince I do not have your profile details, I cannot provide specific salary data or career matches; would you like to share your current skills or interests so I can help you explore relevant career paths?",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 5072.8,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 1087,
+      "revised": null,
+      "intent": {
+        "type": "salary",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "no_guarantee": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c07",
+      "category": "career",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "What is the average salary of a blockchain developer in Pune according to your data?",
+      "expected_behavior": "no invented numbers",
+      "answer": "I do not have access to specific salary data for blockchain developers in Pune in my current records. For reliable and current compensation information, I recommend checking platforms like Glassdoor, AmbitionBox, or LinkedIn Salary.",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 5705.2,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 1006,
+      "revised": null,
+      "intent": {
+        "type": "salary",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-c08",
+      "category": "career",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "I'm a mechanical engineer who likes coding. Suggest three career paths.",
+      "expected_behavior": "exactly three",
+      "answer": "Three career paths that bridge mechanical engineering and coding are Software Developer, Data Analyst, and QA/Test Engineer.\n\n1. **Software Developer** [S1]: Your coding interest supports the requirement for deep language knowledge, though you may need to learn specific frameworks or data structures.\n2. **Data Analyst** [S1]: Your engineering background likely includes statistics and logic, which support this role, while you may need to gain proficiency in specific tools like Power BI or Tableau.\n3. **QA/Test Engineer** [S1]: Your mechanical engineering experience with systems and precision supports the testing fundamentals required, though you would need to learn automation tools like Selenium or Playwright.\n\n---\n**Sources**\n- [S1] knowledge: Entry-level tech and data career paths",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 5565.7,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 1254,
+      "revised": null,
+      "intent": {
+        "type": "list",
+        "missing": null,
+        "n_items": 3,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Entry-level tech and data career paths"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.51, ref=career_planning.md)\nCareer Planning - Entry-level tech and data career paths: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engineer (testing fundamentals, automation with Selenium or Playwright). Analyst roles often lead to data science or analytics engineering; developer roles lead to senior engineering, architecture or engineering management.",
+      "checks": {
+        "not_refused": true,
+        "n_items": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 3,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 3,
+        "counts": {
+          "supported": 1,
+          "contradicted": 0,
+          "insufficient": 2,
+          "invalid_id": 0
+        },
+        "support_rate": 0.333,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Software Developer : Your coding interest supports the requirement for deep language knowledge, though you may need to learn specific frameworks or data structures.",
+            "id": 1,
+            "label": "insufficient"
+          },
+          {
+            "claim": "Data Analyst : Your engineering background likely includes statistics and logic, which support this role, while you may need to gain proficiency in specific tools like Power BI or Tableau.",
+            "id": 1,
+            "label": "insufficient"
+          },
+          {
+            "claim": "QA/Test Engineer : Your mechanical engineering experience with systems and precision supports the testing fundamentals required, though you would need to learn automation tools like Selenium or Playwright.",
+            "id": 1,
+            "label": "supported"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p01",
+      "category": "profile",
+      "user": "persona_be",
+      "version": "v8",
+      "route": "career_study",
+      "question": "Which of my skills match the job?",
+      "expected_behavior": "matched skills",
+      "answer": "You meet 3 of the 7 required skills for the Backend Developer role: Java, Spring Boot, and REST APIs [S2, S4].\n\n*   **Already met:** Java, Spring Boot, and REST APIs are listed in your resume [S1, S2].\n*   **Missing:** Microservices, Docker, Kubernetes, and AWS [S2, S4].\n*   **Related background:** Your experience building an order-management REST API with Spring Boot provides a strong foundation for learning microservices, though it does not replace the requirement for containerization and cloud deployment skills [S1].\n\nFocusing your next project on deploying a Spring Boot application using Docker on AWS would help bridge these specific gaps.\n\n---\n**Sources**\n- [S1] profile: resume\n- [S2] profile: profile overview\n- [S4] profile: career summary",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 5434.4,
+      "intent_got": "profile_analysis",
+      "intent_expected": "profile_analysis",
+      "tokens": 1747,
+      "revised": null,
+      "intent": {
+        "type": "profile_fact",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:profile:resume",
+        "S2:profile:profile_overview",
+        "S3:knowledge:Raising an ATS match score",
+        "S4:profile:career_summary"
+      ],
+      "context": "[S1] (source=profile/resume, score=0.49, ref=resume)\nCandidate resume (part 1): Arjun Mehta. B.E. Information Technology 2023. 1.5 years as Java developer. Skills: Java, Spring Boot, MySQL, Git, REST APIs. Built an order-management REST API with Spring Boot and MySQL.\n\n[S2] (source=profile/profile_overview, score=0.49, ref=profile_overview)\nCandidate profile overview. Target role: Backend Developer. ATS match score: 43/100. Candidate skills: Java, Spring Boot, MySQL, Git, REST APIs. Skills required by the job description: Java, Spring Boot, Microservices, Docker, Kubernetes, AWS, REST APIs. Skill gaps (missing skills): Microservices, Docker, Kubernetes, AWS.\n\n[S3] (source=knowledge/guide, score=0.44, ref=resume_and_ats.md)\nResume And Ats - Raising an ATS match score: Mirror the exact wording of the job description where it is truthful (for example \"Power BI\" not just \"BI tools\"). Put a dedicated Skills section near the top. Use standard section titles: Summary, Skills, Experience, Projects, Education, Certifications. Save as a text-based PDF or DOCX, never a scanned image. Spell out acronyms once, e.g. \"Natural Language Processing (NLP)\". Do not keyword-stuff or add skills you cannot discuss in an interview; recruiters verify.\n\n[S4] (source=profile/career_summary, score=0.40, ref=career_summary)\nCareer summary for the candidate: Profile for Backend Developer: has Java, Spring Boot, MySQL, Git, REST APIs; gaps Microservices, Docker, Kubernetes, AWS.",
+      "checks": {
+        "not_refused": true,
+        "include_frac": true,
+        "intent": true,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 7,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 5,
+        "counts": {
+          "supported": 2,
+          "contradicted": 0,
+          "insufficient": 3,
+          "invalid_id": 0
+        },
+        "support_rate": 0.4,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "You meet 3 of the 7 required skills for the Backend Developer role: Java, Spring Boot, and REST APIs .",
+            "id": 2,
+            "label": "supported"
+          },
+          {
+            "claim": "You meet 3 of the 7 required skills for the Backend Developer role: Java, Spring Boot, and REST APIs .",
+            "id": 4,
+            "label": "supported"
+          },
+          {
+            "claim": "Already met: Java, Spring Boot, and REST APIs are listed in your resume .",
+            "id": 1,
+            "label": "insufficient"
+          },
+          {
+            "claim": "Already met: Java, Spring Boot, and REST APIs are listed in your resume .",
+            "id": 2,
+            "label": "insufficient"
+          },
+          {
+            "claim": "Related background: Your experience building an order-management REST API with Spring Boot provides a strong foundation for learning microservices, though it does not replace the requirement for containerization and cloud deployment skills .",
+            "id": 1,
+            "label": "insufficient"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p02",
+      "category": "profile",
+      "user": "persona_da",
+      "version": "v8",
+      "route": "career_study",
+      "question": "Tell me my ATS estimate in one line.",
+      "expected_behavior": "stored value, short",
+      "answer": "Your ATS match score is 43/100, which is an AI estimate based on your last analysis and not an official ATS result.",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 4280.8,
+      "intent_got": "profile_progress",
+      "intent_expected": "profile_progress",
+      "tokens": 1044,
+      "revised": null,
+      "intent": {
+        "type": "profile_fact",
+        "missing": null,
+        "n_items": null,
+        "max_words": 40
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "first_sentence_any": true,
+        "max_words": true,
+        "intent": true,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p03",
+      "category": "profile",
+      "user": "persona_ml",
+      "version": "v8",
+      "route": "career_study",
+      "question": "Do I know enough to apply for this job?",
+      "expected_behavior": "verdict + gaps",
+      "answer": "No, you are not ready to apply for this role yet: you meet 1 of the 6 required skills [S3].\n\n*   **Already met:** Python [S1, S3].\n*   **Missing:** Machine Learning, TensorFlow, SQL, Statistics, and Docker [S3, S4].\n*   **Related background:** Your MATLAB experience and regression project show a foundation in data analysis, but they do not replace the specific requirements for Machine Learning, TensorFlow, SQL, Statistics, or Docker [S1, S4].\n\nFocus on building projects that incorporate these missing skills to better align your profile with the target role requirements [S2].\n\n---\n**Sources**\n- [S1] profile: resume\n- [S2] knowledge: Job search strategy\n- [S3] profile: profile overview\n- [S4] profile: job description",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 8563.6,
+      "intent_got": "profile_analysis",
+      "intent_expected": "profile_analysis",
+      "tokens": 1698,
+      "revised": [
+        "\"No, you are not ready to apply for this role yet: you meet only 1 of the 6 required skills, and your current ATS match score is 17/100 .\" CONTRADICTS [S3]. Correct the claim to match the source, or remove it.",
+        "\"To improve your chances, focus on building projects that incorporate these missing skills, as you currently meet well below the 60-70% threshold recom\" CONTRADICTS [S2]. Correct the claim to match the source, or remove it."
+      ],
+      "intent": {
+        "type": "yes_no",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:profile:resume",
+        "S2:knowledge:Job search strategy",
+        "S3:profile:profile_overview",
+        "S4:profile:job_description"
+      ],
+      "context": "[S1] (source=profile/resume, score=0.36, ref=resume)\nCandidate resume (part 1): Kavya Rao. B.Tech Mechanical Engineering 2022. 2 years design engineer. Skills: AutoCAD, MATLAB, Excel, Python. Completed an online Python course and a regression project on fuel efficiency.\n\n[S2] (source=knowledge/guide, score=0.36, ref=career_planning.md)\nCareer Planning - Job search strategy: Apply to roles where you meet roughly 60-70% of the listed requirements. Combine job boards (LinkedIn, Naukri, company career pages) with referrals, which have much higher response rates. Keep your LinkedIn headline and skills aligned with your target role, and post about your projects. Quality and tailoring beat mass applying.\n\n[S3] (source=profile/profile_overview, score=0.35, ref=profile_overview)\nCandidate profile overview. Target role: Machine Learning Engineer. ATS match score: 17/100. Candidate skills: AutoCAD, MATLAB, Excel, Python. Skills required by the job description: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Skill gaps (missing skills): Machine Learning, TensorFlow, SQL, Statistics, Docker.\n\n[S4] (source=profile/job_description, score=0.34, ref=job_description)\nTarget job description (part 1): Machine Learning Engineer. Required: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Responsibilities: train and deploy ML models, build data pipelines. Education: Bachelor's in a technical field.",
+      "checks": {
+        "not_refused": true,
+        "first_sentence_any": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 8,
+        "invalid": [],
+        "unsupported": [
+          [
+            3,
+            "No, you are not ready to apply for this role yet: you meet 1 of the 6 required skills [S3]."
+          ]
+        ],
+        "correct_rate": 0.875
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 3,
+        "counts": {
+          "supported": 0,
+          "contradicted": 1,
+          "insufficient": 2,
+          "invalid_id": 0
+        },
+        "support_rate": 0.0,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "No, you are not ready to apply for this role yet: you meet 1 of the 6 required skills .",
+            "id": 3,
+            "label": "contradicted"
+          },
+          {
+            "claim": "Related background: Your MATLAB experience and regression project show a foundation in data analysis, but they do not replace the specific requirements for Machine Learning, TensorFlow, SQL, Statistics, or Docker .",
+            "id": 1,
+            "label": "insufficient"
+          },
+          {
+            "claim": "Related background: Your MATLAB experience and regression project show a foundation in data analysis, but they do not replace the specific requirements for Machine Learning, TensorFlow, SQL, Statistics, or Docker .",
+            "id": 4,
+            "label": "insufficient"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p04",
+      "category": "profile",
+      "user": "persona_be",
+      "version": "v8",
+      "route": "career_study",
+      "question": "Does my MySQL experience cover the SQL requirement?",
+      "expected_behavior": "evidence of SQL use",
+      "answer": "Yes, your MySQL experience covers the SQL requirement because MySQL is a relational database management system that utilizes the SQL language.\n\n*   **Already met:** Your experience with MySQL demonstrates proficiency in SQL, which is the foundational language for the database requirements in your target role.\n*   **Missing:** While MySQL covers SQL, you still have gaps in Microservices, Docker, Kubernetes, and AWS.\n*   **Related background:** Your work on the order-management REST API shows you can apply SQL within a Spring Boot environment, which is highly relevant to the backend responsibilities listed in the job description.\n\nFocusing on containerization (Docker/Kubernetes) and cloud deployment (AWS) will be your next priority to bridge the remaining gaps.",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 4487.9,
+      "intent_got": "profile_analysis",
+      "intent_expected": "profile_analysis",
+      "tokens": 1348,
+      "revised": null,
+      "intent": {
+        "type": "yes_no",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p05",
+      "category": "profile",
+      "user": "persona_ml",
+      "version": "v8",
+      "route": "career_study",
+      "question": "List the requirements in the job description, nothing else.",
+      "expected_behavior": "JD requirements only",
+      "answer": "The job description for the Machine Learning Engineer role requires the following:\n\n*   **Skills/Tools:** Python, Machine Learning, TensorFlow, SQL, Statistics, and Docker [S2].\n*   **Responsibilities:** Train and deploy ML models and build data pipelines [S2].\n*   **Education:** Bachelor's in a technical field [S2].\n\n---\n**Sources**\n- [S2] profile: job description",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 5861.7,
+      "intent_got": "profile_analysis",
+      "intent_expected": "profile_analysis",
+      "tokens": 1665,
+      "revised": null,
+      "intent": {
+        "type": "jd_requirements",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:profile:profile_overview",
+        "S2:profile:job_description",
+        "S3:knowledge:Writing a cover letter",
+        "S4:profile:resume"
+      ],
+      "context": "[S1] (source=profile/profile_overview, score=0.56, ref=profile_overview)\nCandidate profile overview. Target role: Machine Learning Engineer. ATS match score: 17/100. Candidate skills: AutoCAD, MATLAB, Excel, Python. Skills required by the job description: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Skill gaps (missing skills): Machine Learning, TensorFlow, SQL, Statistics, Docker.\n\n[S2] (source=profile/job_description, score=0.56, ref=job_description)\nTarget job description (part 1): Machine Learning Engineer. Required: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Responsibilities: train and deploy ML models, build data pipelines. Education: Bachelor's in a technical field.\n\n[S3] (source=knowledge/guide, score=0.52, ref=applications_and_networking.md)\nApplications And Networking - Writing a cover letter: Keep it to one page and three short parts: why this company and role (be specific), two achievements that match the job description's top requirements with numbers, and a closing line asking for a conversation. Reuse the job description's exact skill names where they are true for you. For internships, projects and coursework can replace work experience.\n\n[S4] (source=profile/resume, score=0.43, ref=resume)\nCandidate resume (part 1): Kavya Rao. B.Tech Mechanical Engineering 2022. 2 years design engineer. Skills: AutoCAD, MATLAB, Excel, Python. Completed an online Python course and a regression project on fuel efficiency.",
+      "checks": {
+        "not_refused": true,
+        "include_frac": true,
+        "intent": true,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 3,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 1,
+        "counts": {
+          "supported": 1,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": 1.0,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Responsibilities: Train and deploy ML models and build data pipelines .",
+            "id": 2,
+            "label": "supported"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p06",
+      "category": "profile",
+      "user": "persona_ml",
+      "version": "v8",
+      "route": "career_study",
+      "question": "Which skills on my resume are not needed for this job?",
+      "expected_behavior": "AutoCAD/MATLAB",
+      "answer": "The skills on your resume that are not listed in the job description requirements are AutoCAD, MATLAB, and Excel [S2, S4].\n\nThese three skills are not among the requirements for the Machine Learning Engineer role, which specifies Python, Machine Learning, TensorFlow, SQL, Statistics, and Docker [S2, S3].\n\n---\n**Sources**\n- [S2] profile: profile overview\n- [S3] profile: job description\n- [S4] profile: resume",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 10300.9,
+      "intent_got": "profile_progress",
+      "intent_expected": "profile_analysis",
+      "tokens": 1596,
+      "revised": [
+        "\"The skills on your resume that are not required for the Machine Learning Engineer role are AutoCAD, MATLAB, and Excel .\" CONTRADICTS [S2]. Correct the claim to match the source, or remove it.",
+        "\"These skills are not listed in the job description's requirements for Python, Machine Learning, TensorFlow, SQL, Statistics, and Docker .\" CONTRADICTS [S2]. Correct the claim to match the source, or remove it.",
+        "\"These skills are not listed in the job description's requirements for Python, Machine Learning, TensorFlow, SQL, Statistics, and Docker .\" CONTRADICTS [S3]. Correct the claim to match the source, or remove it."
+      ],
+      "intent": {
+        "type": "profile_fact",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Raising an ATS match score",
+        "S2:profile:profile_overview",
+        "S3:profile:job_description",
+        "S4:profile:resume",
+        "S5:profile:career_summary"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.55, ref=resume_and_ats.md)\nResume And Ats - Raising an ATS match score: Mirror the exact wording of the job description where it is truthful (for example \"Power BI\" not just \"BI tools\"). Put a dedicated Skills section near the top. Use standard section titles: Summary, Skills, Experience, Projects, Education, Certifications. Save as a text-based PDF or DOCX, never a scanned image. Spell out acronyms once, e.g. \"Natural Language Processing (NLP)\". Do not keyword-stuff or add skills you cannot discuss in an interview; recruiters verify.\n\n[S2] (source=profile/profile_overview, score=0.53, ref=profile_overview)\nCandidate profile overview. Target role: Machine Learning Engineer. ATS match score: 17/100. Candidate skills: AutoCAD, MATLAB, Excel, Python. Skills required by the job description: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Skill gaps (missing skills): Machine Learning, TensorFlow, SQL, Statistics, Docker.\n\n[S3] (source=profile/job_description, score=0.43, ref=job_description)\nTarget job description (part 1): Machine Learning Engineer. Required: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Responsibilities: train and deploy ML models, build data pipelines. Education: Bachelor's in a technical field.\n\n[S4] (source=profile/resume, score=0.40, ref=resume)\nCandidate resume (part 1): Kavya Rao. B.Tech Mechanical Engineering 2022. 2 years design engineer. Skills: AutoCAD, MATLAB, Excel, Python. Completed an online Python course and a regression project on fuel efficiency.\n\n[S5] (source=profile/career_summary, score=0.38, ref=career_summary)\nCareer summary for the candidate: Profile for Machine Learning Engineer: has AutoCAD, MATLAB, Excel, Python; gaps Machine Learning, TensorFlow, SQL, Statistics, Docker.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": false,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 4,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 4,
+        "counts": {
+          "supported": 0,
+          "contradicted": 4,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": 0.0,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "The skills on your resume that are not listed in the job description requirements are AutoCAD, MATLAB, and Excel .",
+            "id": 2,
+            "label": "contradicted"
+          },
+          {
+            "claim": "The skills on your resume that are not listed in the job description requirements are AutoCAD, MATLAB, and Excel .",
+            "id": 4,
+            "label": "contradicted"
+          },
+          {
+            "claim": "These three skills are not among the requirements for the Machine Learning Engineer role, which specifies Python, Machine Learning, TensorFlow, SQL, Statistics, and Docker .",
+            "id": 2,
+            "label": "contradicted"
+          },
+          {
+            "claim": "These three skills are not among the requirements for the Machine Learning Engineer role, which specifies Python, Machine Learning, TensorFlow, SQL, Statistics, and Docker .",
+            "id": 3,
+            "label": "contradicted"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p07",
+      "category": "profile",
+      "user": "persona_be",
+      "version": "v8",
+      "route": "career_study",
+      "question": "Show me what you know about my background.",
+      "expected_behavior": "own data only",
+      "answer": "Your stored profile information for the target role of Backend Developer indicates an ATS match score of 43/100, which is an AI estimate and not an official ATS result.\n\nYour current skills are listed as Java, Spring Boot, MySQL, Git, and REST APIs. Your profile notes that you have 1.5 years of experience as a Java developer and hold a B.E. in Information Technology from 2023. The target job description requires Microservices, Docker, Kubernetes, and AWS, which are currently identified as your skill gaps.",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 5742.5,
+      "intent_got": "profile_progress",
+      "intent_expected": "profile_progress",
+      "tokens": 1086,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "must_not_include": true,
+        "intent": true,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-p08",
+      "category": "profile",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "What is my skill gap?",
+      "expected_behavior": "no profile -> say so",
+      "answer": "You have no analysed profile yet, so I cannot identify your specific skill gaps. Please upload your resume and the job description you are targeting so I can perform an analysis for you.",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 13182.7,
+      "intent_got": "profile_analysis",
+      "intent_expected": "profile_analysis",
+      "tokens": 1175,
+      "revised": [
+        "Essential information is missing (the student has no analysed profile (resume/JD) yet). Ask one focused question instead of guessing."
+      ],
+      "intent": {
+        "type": "profile_fact",
+        "missing": "the student has no analysed profile (resume/JD) yet",
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Switching careers"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.38, ref=career_planning.md)\nCareer Planning - Switching careers: Identify transferable skills from your current role (domain knowledge, communication, project management). Close the gap with a focused 3-6 month learning plan and 2-3 portfolio projects in the new field, ideally using data or problems from your current domain. Consider bridge roles that combine old and new expertise.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-r01",
+      "category": "roadmap",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Make a 30-day Python plan for a beginner with 1 hour a day.",
+      "expected_behavior": "30 days, 60 min",
+      "answer": "This 30-day Python learning plan is designed for a beginner with a 60-minute daily time budget [S1].\n\n### 30-Day Python Plan\n*   **Day 1:** Syntax, variables & types (10 exercises) [S1].\n*   **Day 2:** Control flow & functions (5 functions) [S1].\n*   **Day 3:** Files, errors & modules (CSV script) [S1].\n*   **Day 4:** Pandas basics (Clean/summarise dataset) [S1].\n*   **Day 5:** Visualising data (4 charts) [S1].\n*   **Day 6:** Mini project (GitHub repo + README) [S1].\n*   **Day 7:** Weekly review (Redo exercises) [S1].\n*   **Day 8:** Interview readiness (10 answers) [S1].\n*   **Day 9:** Interview readiness (Harder variant 1) [S1].\n*   **Day 10:** Interview readiness (Harder variant 2) [S1].\n*   **Day 11:** Interview readiness (Harder variant 3) [S1].\n*   **Day 12:** Interview readiness (Harder variant 4) [S1].\n*   **Day 13:** Interview readiness (Harder variant 5) [S1].\n*   **Day 14:** Weekly review (Redo exercises) [S1].\n*   **Day 15:** Interview readiness (Harder variant 6) [S1].\n*   **Day 16:** Interview readiness (Harder variant 7) [S1].\n*   **Day 17:** Interview readiness (Harder variant 8) [S1].\n*   **Day 18:** Interview readiness (Harder variant 9) [S1].\n*   **Day 19:** Interview readiness (Harder variant 10) [S1].\n*   **Day 20:** Interview readiness (Harder variant 11) [S1].\n*   **Day 21:** Weekly review (Redo exercises) [S1].\n*   **Day 22:** Interview readiness (Harder variant 12) [S1].\n*   **Day 23:** Interview readiness (Harder variant 13) [S1].\n*   **Day 24:** Interview readiness (Harder variant 14) [S1].\n*   **Day 25:** Interview readiness (Harder variant 15) [S1].\n*   **Day 26:** Interview readiness (Harder variant 16) [S1].\n*   **Day 27:** Interview readiness (Harder variant 17) [S1].\n*   **Day 28:** Weekly review (Redo exercises) [S1].\n*   **Day 29:** Capstone: plan & build (First version) [S1].\n*   **Day 30:** Capstone: polish & present (GitHub + resume) [S1].\n\n**Resources:** Use the [Official Python Tutorial](https://docs.python.org/3/tutorial/) for all technical tasks [S1]. Use the Pomodoro technique (25 minutes work, 5 minutes break) to maintain focus [S2].\n\n---\n**Sources**\n- [S1] roadmap: Validated 30-day plan (roadmap generator)\n- [S2] knowledge: Planning a study schedule",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 15428.3,
+      "intent_got": "learning_plan",
+      "intent_expected": "learning_plan",
+      "tokens": 3282,
+      "revised": [
+        "Present the generated 30-day plan through Day 30 (all 30 days, compactly)."
+      ],
+      "intent": {
+        "type": "plan",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:roadmap:generated_plan",
+        "S2:knowledge:Planning a study schedule"
+      ],
+      "context": "[S1] (source=roadmap/generated_plan, score=1.00, ref=src/roadmap/generator.py)\nGENERATED PLAN (validated, 60 min/day, role: Python learner). Skills in order: Python (24 days). Capstone: Portfolio project for Python learner using Python: plan, build and document it on GitHub.\nDay 1: Python - Syntax, variables & types. Task: Write 10 small exercises (60 min). Done when: 10 exercises run without errors. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 2: Python - Control flow & functions. Task: Write 5 reusable functions with docstrings (60 min). Done when: 5 functions tested with sample inputs. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 3: Python - Files, errors & modules. Task: Build a script that reads a CSV and handles bad rows (60 min). Done when: Script processes a messy CSV. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 4: Python - Pandas basics. Task: Clean and summarise a Kaggle dataset (60 min). Done when: Notebook with 5 summary tables. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 5: Python - Visualising data. Task: Make 4 charts answering 4 questions (60 min). Done when: 4 labelled charts. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 6: Python - Mini project. Task: Build it and push to GitHub with a README (60 min). Done when: Repo with README. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 7: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\nDay 8: Python - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 9: Python - Interview readiness (deeper practice 1). Task: Extend the previous Python exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 10: Python - Interview readiness (deeper practice 2). Task: Extend the previous Python exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 11: Python - Interview readiness (deeper practice 3). Task: Extend the previous Python exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 12: Python - Interview readiness (deeper practice 4). Task: Extend the previous Python exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 13: Python - Interview readiness (deeper practice 5). Task: Extend the",
+      "checks": {
+        "not_refused": true,
+        "mentions_day30": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 33,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 2,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 2,
+          "invalid_id": 0
+        },
+        "support_rate": 0.0,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "This 30-day Python learning plan is designed for a beginner with a 60-minute daily time budget .",
+            "id": 1,
+            "label": "insufficient"
+          },
+          {
+            "claim": "Day 29: Capstone: plan & build (First version) .",
+            "id": 1,
+            "label": "insufficient"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-r02",
+      "category": "roadmap",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Give me a 2-week plan to learn Git.",
+      "expected_behavior": "2 weeks",
+      "answer": "This 14-day learning plan focuses on mastering Git fundamentals and interview readiness, requiring 90 minutes of study per day [S1].\n\n*   **Day 1:** Git Basics – Track a project with 10 commits [S1].\n*   **Day 2:** Branching & Merging – Resolve a merge conflict [S1].\n*   **Day 3:** GitHub Workflow – Open a pull request on your own repository [S1].\n*   **Day 4:** Mini Project – Build a project and push it to GitHub with a README [S1].\n*   **Day 5:** Interview Readiness – Answer 10 Git questions and revisit 3 weak spots [S1].\n*   **Day 6:** Interview Readiness (Deeper Practice 1) – Extend a previous Git exercise with a harder variant [S1].\n*   **Day 7:** Weekly Review – Redo one exercise from each skill studied this week without notes [S1].\n*   **Day 8:** Interview Readiness (Deeper Practice 2) – Extend a previous Git exercise with a harder variant [S1].\n*   **Day 9:** Interview Readiness (Deeper Practice 3) – Extend a previous Git exercise with a harder variant [S1].\n*   **Day 10:** Interview Readiness (Deeper Practice 4) – Extend a previous Git exercise with a harder variant [S1].\n*   **Day 11:** Interview Readiness (Deeper Practice 5) – Extend a previous Git exercise with a harder variant [S1].\n*   **Day 12:** Interview Readiness (Deeper Practice 6) – Extend a previous Git exercise with a harder variant [S1].\n*   **Day 13:** Interview Readiness (Deeper Practice 7) – Extend a previous Git exercise with a harder variant [S1].\n*   **Day 14:** Weekly Review – Redo one exercise from each skill studied this week without notes [S1].\n\n**Resource:** Use the *Pro Git* book for all technical tasks: https://git-scm.com/book/en/v2 [S1].\n\n---\n**Sources**\n- [S1] roadmap: Validated 30-day plan (roadmap generator)",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 8120.6,
+      "intent_got": "learning_plan",
+      "intent_expected": "learning_plan",
+      "tokens": 3371,
+      "revised": null,
+      "intent": {
+        "type": "plan",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:roadmap:generated_plan",
+        "S2:knowledge:Switching careers"
+      ],
+      "context": "[S1] (source=roadmap/generated_plan, score=1.00, ref=src/roadmap/generator.py)\nGENERATED PLAN (validated, 90 min/day, role: Git learner). Skills in order: Git (24 days). Capstone: Portfolio project for Git learner using Git: plan, build and document it on GitHub.\nDay 1: Git - Basics. Task: Track a project with 10 commits (90 min). Done when: Clean history. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 2: Git - Branching & merging. Task: Resolve a merge conflict (90 min). Done when: Conflict resolved. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 3: Git - GitHub workflow. Task: Open a PR on your own repo (90 min). Done when: PR merged. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 4: Git - Mini project. Task: Build the mini project and push it to GitHub with a README (90 min). Done when: Repository with README and screenshots. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 5: Git - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 6: Git - Interview readiness (deeper practice 1). Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 7: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (90 min). Done when: All redo exercises completed; doubts written down.\nDay 8: Git - Interview readiness (deeper practice 2). Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 9: Git - Interview readiness (deeper practice 3). Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 10: Git - Interview readiness (deeper practice 4). Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 11: Git - Interview readiness (deeper practice 5). Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 12: Git - Interview readiness (deeper practice 6). Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 13: Git - Interview readiness (deeper practice 7). Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): ht",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 16,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 2,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 2,
+          "invalid_id": 0
+        },
+        "support_rate": 0.0,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "This 14-day learning plan focuses on mastering Git fundamentals and interview readiness, requiring 90 minutes of study per day .",
+            "id": 1,
+            "label": "insufficient"
+          },
+          {
+            "claim": "Day 4: Mini Project – Build a project and push it to GitHub with a README .",
+            "id": 1,
+            "label": "insufficient"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-r03",
+      "category": "roadmap",
+      "user": "persona_da",
+      "version": "v8",
+      "route": "career_study",
+      "question": "Make a 30-day plan to close my gaps.",
+      "expected_behavior": "uses real gaps",
+      "answer": "To close your gaps in Tableau, Statistics, Data Visualization, and Communication, follow this 30-day plan [S1].\n\n### 30-Day Data Analyst Learning Plan (90 min/day)\n\n*   **Days 1–8: Data Visualization**\n    *   **Days 1–5:** Focus on chart selection, design principles, building charts, dashboards, and storytelling using *Storytelling with Data* resources [S1].\n    *   **Day 6:** Build a mini-project and push to GitHub [S1].\n    *   **Day 7:** Weekly review [S1].\n    *   **Day 8:** Interview readiness practice [S1].\n*   **Days 9–15: Tableau**\n    *   **Days 9–13:** Learn interface, filters, calculated fields, and dashboard actions using *Tableau free training videos* [S1].\n    *   **Day 14:** Weekly review [S1].\n    *   **Day 15:** Build a Tableau mini-project and push to GitHub [S1].\n*   **Days 16–22: Statistics**\n    *   **Days 16–20:** Study descriptive statistics, distributions, probability, hypothesis testing, and regression using *Khan Academy* [S1].\n    *   **Day 21:** Weekly review [S1].\n    *   **Day 22:** Analyze an A/B test dataset [S1].\n*   **Days 23–28: Communication**\n    *   **Days 23–26:** Practice explaining technical work, writing status updates, and role-playing stakeholder meetings using *Toastmasters* resources [S1].\n    *   **Day 27:** Build a communication-focused mini-project for GitHub [S1].\n    *   **Day 28:** Weekly review [S1].\n*   **Days 29–30: Capstone Project**\n    *   **Day 29:** Define a problem, clean a dataset, and build an end-to-end analysis [S1].\n    *   **Day 30:** Polish the project, add it to your resume, and record a 2-minute walkthrough [S1].\n\n***\n\n### CV Analysis\nYour resume currently matches the Data Analyst role in Python, SQL, and Power BI. To improve your 43/100 ATS score, you must address the following gaps identified in the job description:\n*   **Tableau:** You have Power BI experience, but the JD specifically requires Tableau; you must add a Tableau project to your resume [S1].\n*   **Statistics:** This is a core requirement missing from your profile; completing the statistics modules will help bridge this gap.\n*   **Data Visualization:** While you have dashboard experience, you need to demonstrate advanced design and storytelling principles [S1].\n*   **Communication:** The JD requires presenting insights to business teams; you should highlight any experience explaining technical findings to non-technical stakeholders [S1].\n\n---\n**Sources**\n- [S1] roadmap: Validated 30-day plan (roadmap generator)",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 16737.8,
+      "intent_got": "learning_plan",
+      "intent_expected": "learning_plan",
+      "tokens": 3645,
+      "revised": [
+        "[S1] does not support \"Statistics: This is a core requirement missing from your profile; completing the statistics modules will help bridge this gap .\". Cite the source that does, or present it as general advice without a citation."
+      ],
+      "intent": {
+        "type": "plan",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:roadmap:generated_plan",
+        "S2:knowledge:Switching careers"
+      ],
+      "context": "[S1] (source=roadmap/generated_plan, score=1.00, ref=src/roadmap/generator.py)\nGENERATED PLAN (validated, 90 min/day, role: Data Analyst). Skills in order: Data Visualization (7 days), Tableau (6 days), Statistics (6 days), Communication (5 days). Capstone: End-to-end analysis: clean a public dataset with SQL/Python, build a dashboard using Data Visualization, Tableau, Statistics, Communication and present 3 business recommendations.\nDay 1: Data Visualization - Chart selection. Task: Classify 10 scenarios to chart types (90 min). Done when: 10/10 justified. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\nDay 2: Data Visualization - Design principles. Task: Redesign 3 bad charts (90 min). Done when: Before/after for 3 charts. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\nDay 3: Data Visualization - Building charts. Task: Create 5 charts on one dataset (90 min). Done when: 5 clean charts. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\nDay 4: Data Visualization - Dashboards. Task: Build a 1-page dashboard (90 min). Done when: Dashboard answers 3 questions. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\nDay 5: Data Visualization - Data storytelling. Task: Present the dashboard in 3 minutes (record it) (90 min). Done when: Recording made. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\nDay 6: Data Visualization - Mini project. Task: Build the mini project and push it to GitHub with a README (90 min). Done when: Repository with README and screenshots. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\nDay 7: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (90 min). Done when: All redo exercises completed; doubts written down.\nDay 8: Data Visualization - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\nDay 9: Tableau - Interface & connecting data. Task: Connect a CSV and make 3 charts (90 min). Done when: 3 charts built. Resource: Tableau free training videos: https://www.tableau.com/learn/training\nDay 10: Tableau - Dimensions, measures & filters. Task: Build 4 filtered views (90 min). Done when: Filters work correctly. Resource: Tableau free training videos: https://www.tableau.com/learn/training\nDay 11: Tableau - Calculated fields & LOD. Task: Create 5 calculated fields (90 min). Done when: 5 calcs validated. Resource: Tableau free training videos: https://www.tableau.com/learn/training\nDay 12: Tableau - Dashboards & actions. Task: Build an interactive dashboard (90 min). Done when: Dashboard with 2 actions. Resource: Tableau free training videos: https://www.tableau.co",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "mentions_day30": true,
+        "intent": true,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 19,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 6,
+        "counts": {
+          "supported": 2,
+          "contradicted": 0,
+          "insufficient": 4,
+          "invalid_id": 0
+        },
+        "support_rate": 0.333,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Days 1–5: Focus on chart selection, design principles, building charts, dashboards, and storytelling using Storytelling with Data resources .",
+            "id": 1,
+            "label": "supported"
+          },
+          {
+            "claim": "Days 23–26: Practice explaining technical work, writing status updates, and role-playing stakeholder meetings using Toastmasters resources .",
+            "id": 1,
+            "label": "supported"
+          },
+          {
+            "claim": "Day 29: Define a problem, clean a dataset, and build an end-to-end analysis .",
+            "id": 1,
+            "label": "insufficient"
+          },
+          {
+            "claim": "Tableau: You have Power BI experience, but the JD specifically requires Tableau; you must add a Tableau project to your resume .",
+            "id": 1,
+            "label": "insufficient"
+          },
+          {
+            "claim": "Data Visualization: While you have dashboard experience, you need to demonstrate advanced design and storytelling principles .",
+            "id": 1,
+            "label": "insufficient"
+          },
+          {
+            "claim": "Communication: The JD requires presenting insights to business teams; you should highlight any experience explaining technical findings to non-technical stakeholders .",
+            "id": 1,
+            "label": "insufficient"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-r04",
+      "category": "roadmap",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Where can I learn Docker for free? Give links.",
+      "expected_behavior": "no invented URLs",
+      "answer": "You can learn Docker for free through official documentation and reputable educational platforms by visiting the links provided below.\n\n1. **Docker Official Documentation:** [https://docs.docker.com/get-started/](https://docs.docker.com/get-started/) – The official \"Get Started\" guide provides a comprehensive, hands-on introduction to containerizing applications.\n2. **Docker YouTube Channel:** [https://www.youtube.com/@Docker](https://www.youtube.com/@Docker) – Their official channel features tutorials ranging from basic concepts to advanced orchestration.\n3. **FreeCodeCamp:** [https://www.freecodecamp.org/](https://www.freecodecamp.org/) – This platform offers long-form video courses and articles that cover Docker fundamentals and practical deployment scenarios.\n4. **Play with Docker:** [https://labs.play-with-docker.com/](https://labs.play-with-docker.com/) – This is an official interactive browser-based playground that allows you to run Docker commands without installing anything on your local machine.\n\nIf you would like a structured learning plan, please provide your current technical background and daily time availability.",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 11918.7,
+      "intent_got": "learning_plan",
+      "intent_expected": "learning_plan",
+      "tokens": 1125,
+      "revised": [
+        "Part of the request is not answered: \"Give links\"."
+      ],
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "no_invented_urls": false,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": false,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": "prompt (forbidden content: no_invented_urls)"
+    },
+    {
+      "id": "v2-o01",
+      "category": "scope",
+      "user": null,
+      "version": "v8",
+      "route": "out_of_scope",
+      "question": "Write a birthday poem for my mom",
+      "expected_behavior": "refuse",
+      "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"Give me tips to study effectively for exams\"*\n",
+      "model": null,
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 1.6,
+      "intent_got": null,
+      "intent_expected": "out_of_scope",
+      "tokens": null,
+      "revised": null,
+      "intent": {
+        "type": null,
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "refusal": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {},
+        "support_rate": null,
+        "method": null,
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-o02",
+      "category": "scope",
+      "user": null,
+      "version": "v8",
+      "route": "out_of_scope",
+      "question": "What's the best smartphone under 20000?",
+      "expected_behavior": "refuse",
+      "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"Explain SQL window functions for my interview preparation\"*\n",
+      "model": null,
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 0.1,
+      "intent_got": null,
+      "intent_expected": "out_of_scope",
+      "tokens": null,
+      "revised": null,
+      "intent": {
+        "type": null,
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "refusal": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {},
+        "support_rate": null,
+        "method": null,
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-o03",
+      "category": "scope",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "How do I become a football coach?",
+      "expected_behavior": "accept: career question",
+      "answer": "To become a football coach, you should follow these actionable steps to build your credentials and experience.\n\n1. **Obtain formal coaching licenses:** Start with introductory grassroots or \"Level 1\" coaching badges offered by your national football association to learn the fundamentals of player development and safety.\n2. **Gain practical experience:** Volunteer at local youth clubs, schools, or community programs to log coaching hours and develop your personal coaching philosophy.\n3. **Build a professional network:** Attend coaching clinics, workshops, and association events to connect with experienced mentors and learn about job openings.\n4. **Specialize and advance:** Pursue higher-level UEFA or equivalent licenses (e.g., C, B, A, and Pro licenses) as you gain experience and decide if you want to focus on youth development, tactical analysis, or senior team management.\n5. **Maintain certifications:** Ensure your first aid, safeguarding, and background check certifications remain current, as these are mandatory requirements for all coaching roles.\n\nSince I do not have your profile details, I cannot determine which level of coaching best suits your current background; would you like to focus on youth development, semi-professional coaching, or the tactical analysis side of the game?",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 7030.9,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 1186,
+      "revised": null,
+      "intent": {
+        "type": "how_to",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-o04",
+      "category": "scope",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Can you explain probability using dice examples for my exam?",
+      "expected_behavior": "accept: study",
+      "answer": "Yes, probability is the measure of how likely an event is to occur, calculated by dividing the number of favorable outcomes by the total number of possible outcomes. For example, when rolling a fair six-sided die, the probability of rolling a four is 1/6 because there is only one \"four\" face out of six total possibilities. To prepare for your exam, I recommend prioritizing the study of independent events, conditional probability, and the addition rule for mutually exclusive outcomes. Could you please share your specific exam syllabus so I can refine this study plan for you?",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 5785.5,
+      "intent_got": "study_help",
+      "intent_expected": "study_help",
+      "tokens": 770,
+      "revised": null,
+      "intent": {
+        "type": "yes_no",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-m01",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Which of these needs the least maths?",
+      "expected_behavior": "picks among the three",
+      "answer": "Data Analyst typically requires the least advanced mathematics among these three roles, as it focuses more on descriptive statistics and business reporting than the complex algorithmic or architectural mathematics required for Data Science or Data Engineering.\n\nTo provide more tailored advice, could you tell me more about your background—are you currently studying a quantitative subject, or are you looking to transition into data from a different field?",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 5928.2,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 1058,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "first_sentence_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-m02",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Give me two examples.",
+      "expected_behavior": "two examples",
+      "answer": "1. Infrastructure as a Service (IaaS) provides virtualized computing resources like servers and storage, allowing you to manage your own operating systems and applications.\n2. Software as a Service (SaaS) delivers fully functional applications over the internet, enabling users to access software directly through a web browser without managing the underlying infrastructure.",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 5496.4,
+      "intent_got": "concept_explanation",
+      "intent_expected": "concept_explanation",
+      "tokens": 946,
+      "revised": null,
+      "intent": {
+        "type": "list",
+        "missing": null,
+        "n_items": 2,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": false,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": false,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": "retrieval (expected facts not in retrieved context)"
+    },
+    {
+      "id": "v2-m03",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "No, I'm a complete beginner. Where do I start?",
+      "expected_behavior": "beginner start",
+      "answer": "To become a UX designer as a complete beginner, you should start by mastering the core principles of user-centered design and learning industry-standard prototyping tools.\n\nSince you are starting from scratch, here is a recommended 4-week foundational roadmap:\n\n*   **Week 1: UX Fundamentals.** Study the design thinking process (Empathize, Define, Ideate, Prototype, Test) and learn the basics of user research, such as how to conduct interviews and create user personas.\n*   **Week 2: Interaction Design & Wireframing.** Learn the principles of visual hierarchy, layout, and navigation; practice creating low-fidelity wireframes using tools like Figma or Adobe XD.\n*   **Week 3: Prototyping.** Transition your wireframes into interactive, high-fidelity prototypes to simulate how a user would navigate through a digital product.\n*   **Week 4: Portfolio Building.** Begin documenting your first project, focusing on the \"why\" behind your design decisions rather than just the final aesthetic.\n\n**Next steps:** \n1) Download Figma (it has a free tier) to begin exploring the interface.\n2) If you would like a more structured path, I can help you analyze specific courses or bootcamps if you provide your weekly time budget. \n\nWould you like to focus on the research side of UX or the visual interface design side first?",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 6849.3,
+      "intent_got": "learning_plan",
+      "intent_expected": "learning_plan",
+      "tokens": 1172,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-m04",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Which should I pick for Android?",
+      "expected_behavior": "Java/Kotlin",
+      "answer": "You should pick Java for Android development, as it is one of the two official languages supported by Google for building Android applications.\n\nWhile Python is excellent for data science and automation, it is not natively supported for Android app development; Java (or Kotlin) is required to interact with the Android SDK and build functional mobile interfaces. Java is a statically-typed, object-oriented language that provides the structure and performance necessary for mobile environments, whereas Python is dynamically-typed and typically used for backend logic or scripting rather than mobile UI development.",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 7209.6,
+      "intent_got": "concept_explanation",
+      "intent_expected": "concept_explanation",
+      "tokens": 968,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-m05",
+      "category": "multi_turn",
+      "user": "persona_ml",
+      "version": "v8",
+      "route": "career_study",
+      "question": "Why is it so low?",
+      "expected_behavior": "explain via gaps",
+      "answer": "Your ATS score is 17/100 because your resume currently lacks five of the six key skills required by the Machine Learning Engineer job description [S2].\n\nWhile your resume meets the requirement for **Python** [S2], you have significant skill gaps in **Machine Learning, TensorFlow, SQL, Statistics, and Docker** [S2]. Your background in Mechanical Engineering and design work partly helps demonstrate technical proficiency, but these specific requirements remain gaps that prevent a higher match [S2]. To improve your score, you should gain and document experience in these missing areas and ensure your resume mirrors the exact terminology used in the job description [S1].\n\n---\n**Sources**\n- [S1] knowledge: Raising an ATS match score\n- [S2] profile: profile overview",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 6857.0,
+      "intent_got": "profile_progress",
+      "intent_expected": "profile_analysis",
+      "tokens": 1455,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Raising an ATS match score",
+        "S2:profile:profile_overview"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.33, ref=resume_and_ats.md)\nResume And Ats - Raising an ATS match score: Mirror the exact wording of the job description where it is truthful (for example \"Power BI\" not just \"BI tools\"). Put a dedicated Skills section near the top. Use standard section titles: Summary, Skills, Experience, Projects, Education, Certifications. Save as a text-based PDF or DOCX, never a scanned image. Spell out acronyms once, e.g. \"Natural Language Processing (NLP)\". Do not keyword-stuff or add skills you cannot discuss in an interview; recruiters verify.\n\n[S2] (source=profile/profile_overview, score=0.31, ref=profile_overview)\nCandidate profile overview. Target role: Machine Learning Engineer. ATS match score: 17/100. Candidate skills: AutoCAD, MATLAB, Excel, Python. Skills required by the job description: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Skill gaps (missing skills): Machine Learning, TensorFlow, SQL, Statistics, Docker.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": false,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 5,
+        "invalid": [],
+        "unsupported": [
+          [
+            2,
+            "Your background in Mechanical Engineering and design work partly helps demonstrate technical proficiency, but these specific requirements remain gaps that preve"
+          ]
+        ],
+        "correct_rate": 0.8
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 5,
+        "counts": {
+          "supported": 1,
+          "contradicted": 0,
+          "insufficient": 4,
+          "invalid_id": 0
+        },
+        "support_rate": 0.2,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Your ATS score is 17/100 because your resume currently lacks five of the six key skills required by the Machine Learning Engineer job description .",
+            "id": 2,
+            "label": "insufficient"
+          },
+          {
+            "claim": "While your resume meets the requirement for Python , you have significant skill gaps in Machine Learning, TensorFlow, SQL, Statistics, and Docker .",
+            "id": 2,
+            "label": "insufficient"
+          },
+          {
+            "claim": "While your resume meets the requirement for Python , you have significant skill gaps in Machine Learning, TensorFlow, SQL, Statistics, and Docker .",
+            "id": 2,
+            "label": "insufficient"
+          },
+          {
+            "claim": "Your background in Mechanical Engineering and design work partly helps demonstrate technical proficiency, but these specific requirements remain gaps that prevent a higher match .",
+            "id": 2,
+            "label": "insufficient"
+          },
+          {
+            "claim": "To improve your score, you should gain and document experience in these missing areas and ensure your resume mirrors the exact terminology used in the job description .",
+            "id": 1,
+            "label": "supported"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-m06",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Technical, backend.",
+      "expected_behavior": "backend interview prep",
+      "answer": "To prepare for your backend technical interview tomorrow, you should focus on reviewing your core programming language (Go, Java, or Python), system design fundamentals, and the specific company's products [S1, S3].\n\nFollow these steps to make the most of your remaining time:\n\n1.  **Review Technical Fundamentals:** Since you are interviewing for a backend role, ensure you are comfortable discussing how to build and operate systems in production, as well as core computer science concepts [S3].\n2.  **Research the Company:** Spend time understanding the startup’s products and recent news to demonstrate genuine interest [S1].\n3.  **Prepare Questions:** Have two or three thoughtful questions ready for your interviewers, such as asking about their current technical challenges or how they manage data infrastructure [S1, S3].\n4.  **Test Your Setup:** If the interview is online, verify your internet connection, camera, and microphone today to avoid last-minute technical issues [S1].\n5.  **Follow Up:** Plan to send a short, professional thank-you note to your interviewers within 24 hours after the meeting [S1].\n\n*Note: As this is a startup, be prepared for questions regarding scalability and efficiency, as these are often critical for backend roles [S3].*\n\n---\n**Sources**\n- [S1] knowledge: Before and after the interview\n- [S3] jobs: Software Engineer, Backend (https://in.linkedin.com/jobs/view/software-engineer-backend-at-doordash-4084261319)",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 7571.1,
+      "intent_got": "job_preparation",
+      "intent_expected": "job_preparation",
+      "tokens": 1432,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Before and after the interview",
+        "S2:knowledge:Typical hiring stages",
+        "S3:jobs:job_listing"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.53, ref=interview_preparation.md)\nInterview Preparation - Before and after the interview: Research the company's products and recent news, re-read the job description, and prepare two or three thoughtful questions for the interviewer. Test your setup for online interviews. Send a short thank-you note within 24 hours. Track every application, stage and outcome in a spreadsheet to spot patterns.\n\n[S2] (source=knowledge/guide, score=0.53, ref=interview_preparation.md)\nInterview Preparation - Typical hiring stages: Most tech hiring follows: resume screen, online assessment (aptitude/coding/SQL), one or two technical interviews, a managerial or behavioural round, and HR discussion (compensation, joining date). Data roles often add a take-home case study or dashboard task.\n\n[S3] (source=jobs/job_listing, score=0.41, ref=https://in.linkedin.com/jobs/view/software-engineer-backend-at-doordash-4084261319)\nJob: Software Engineer, Backend at DoorDash (Pune/Pimpri-Chinchwad Area). Salary: Not Listed. Description: encourage reuse over duplicationInstrumenting usage and cost signals into platform servicesSupporting safe deprecation and cleanup of stale data assetsPartner with cross-functional teams in a fast-moving, product-driven environmentWe're excited about you because…B.E./B.Tech., M.E./M.Tech, or Ph.D. in Computer Science or equivalent3+ years of experience with CS fundamental concepts and experience with at least one of the programming languages of Go, Java, and PythonPrior technical experience in Big Data infrastructure, Cost Efficiency & Governance, you've built meaningful pieces of data infrastructure. Bonus if those were open-sourced technologies like Spark, Clickhouse, Iceberg and AirflowExperience improving efficiency, scalability, and stability of data platformsExperience building or operating backend systems in production environmentsNotice to Applicants for Jobs Located in NYC or Remote Jobs Associated With Office in NYC OnlyWe use Covey as part of our hiring and/or promotional process for jobs in NYC and certain features may qualify it as an AEDT in NYC. As part of",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 9,
+        "invalid": [],
+        "unsupported": [
+          [
+            3,
+            "**Prepare Questions:** Have two or three thoughtful questions ready for your interviewers, such as asking about their current technical challenges or how they m"
+          ]
+        ],
+        "correct_rate": 0.889
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 4,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 4,
+          "invalid_id": 0
+        },
+        "support_rate": 0.0,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "To prepare for your backend technical interview tomorrow, you should focus on reviewing your core programming language (Go, Java, or Python), system design fundamentals, and the specific company's products .",
+            "id": 1,
+            "label": "insufficient"
+          },
+          {
+            "claim": "To prepare for your backend technical interview tomorrow, you should focus on reviewing your core programming language (Go, Java, or Python), system design fundamentals, and the specific company's products .",
+            "id": 3,
+            "label": "insufficient"
+          },
+          {
+            "claim": "Test Your Setup: If the interview is online, verify your internet connection, camera, and microphone today to avoid last-minute technical issues .",
+            "id": 1,
+            "label": "insufficient"
+          },
+          {
+            "claim": "Note: As this is a startup, be prepared for questions regarding scalability and efficiency, as these are often critical for backend roles .",
+            "id": 3,
+            "label": "insufficient"
+          }
+        ]
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-m07",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Is it worth it for a CSE student who wants a job?",
+      "expected_behavior": "it depends answer",
+      "answer": "It depends, as GATE is highly beneficial if you are targeting prestigious Public Sector Undertaking (PSU) jobs or top-tier research institutes, but it may be less efficient if your primary goal is an immediate role in the private software industry. While the rigorous preparation strengthens your core computer science fundamentals, private companies typically prioritize practical coding skills, projects, and internships over a GATE score. To provide a more tailored recommendation, could you clarify whether you are currently aiming for government-sector roles or private-sector software engineering positions?",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 7344.4,
+      "intent_got": "study_help",
+      "intent_expected": "study_help",
+      "tokens": 816,
+      "revised": null,
+      "intent": {
+        "type": "yes_no",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "first_sentence_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-m08",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Explain the second one.",
+      "expected_behavior": "explains Featured/projects",
+      "answer": "Adding projects to your LinkedIn \"Featured\" section allows you to showcase tangible evidence of your skills and work, which helps recruiters and hiring managers verify your practical experience beyond just a list of job titles [S1]. This matters for your career because it provides concrete proof of your capabilities; for example, linking a GitHub repository or a portfolio site to a specific project allows a recruiter to see your actual code or design process, making you a more compelling candidate.\n\n---\n**Sources**\n- [S1] knowledge: LinkedIn profile that recruiters find",
+      "model": "gemini-3.1-flash-lite",
+      "model_configured": "gemini-3.1-flash-lite",
+      "latency_ms": 7202.3,
+      "intent_got": "job_preparation",
+      "intent_expected": "job_preparation",
+      "tokens": 892,
+      "revised": null,
+      "intent": {
+        "type": "definition",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:LinkedIn profile that recruiters find"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.57, ref=applications_and_networking.md)\nApplications And Networking - LinkedIn profile that recruiters find: Use a headline with your target role and top skills (for example \"Aspiring Data Analyst | SQL, Power BI, Python\"), a professional photo, an About section in 4-5 lines, and the Skills section filled with the keywords recruiters search. Add projects with links, request two or three recommendations, and post occasionally about what you are learning.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 1,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 1,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 1,
+          "invalid_id": 0
+        },
+        "support_rate": 0.0,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "Adding projects to your LinkedIn \"Featured\" section allows you to showcase tangible evidence of your skills and work, which helps recruiters and hiring managers verify your practical experience beyond just a list of job titles .",
+            "id": 1,
+            "label": "insufficient"
+          }
+        ]
+      },
+      "root_cause": null
+    }
+  ],
+  "set": "heldout_v2",
+  "facts": {
+    "persona_da": {
+      "have": [
+        "Python",
+        "Excel",
+        "SQL",
+        "Pandas",
+        "Power BI"
+      ],
+      "required": [
+        "Python",
+        "SQL",
+        "Power BI",
+        "Tableau",
+        "Statistics",
+        "Data Visualization",
+        "Communication"
+      ],
+      "gaps": [
+        "Tableau",
+        "Statistics",
+        "Data Visualization",
+        "Communication"
+      ],
+      "matched": [
+        "Python",
+        "SQL",
+        "Power BI"
+      ],
+      "ats": "43",
+      "role": "Data Analyst",
+      "n_matched": "3",
+      "n_required": "7"
+    },
+    "persona_be": {
+      "have": [
+        "Java",
+        "Spring Boot",
+        "MySQL",
+        "Git",
+        "REST APIs"
+      ],
+      "required": [
+        "Java",
+        "Spring Boot",
+        "Microservices",
+        "Docker",
+        "Kubernetes",
+        "AWS",
+        "REST APIs"
+      ],
+      "gaps": [
+        "Microservices",
+        "Docker",
+        "Kubernetes",
+        "AWS"
+      ],
+      "matched": [
+        "Java",
+        "Spring Boot",
+        "REST APIs"
+      ],
+      "ats": "43",
+      "role": "Backend Developer",
+      "n_matched": "3",
+      "n_required": "7"
+    },
+    "persona_ml": {
+      "have": [
+        "AutoCAD",
+        "MATLAB",
+        "Excel",
+        "Python"
+      ],
+      "required": [
+        "Python",
+        "Machine Learning",
+        "TensorFlow",
+        "SQL",
+        "Statistics",
+        "Docker"
+      ],
+      "gaps": [
+        "Machine Learning",
+        "TensorFlow",
+        "SQL",
+        "Statistics",
+        "Docker"
+      ],
+      "matched": [
+        "Python"
+      ],
+      "ats": "17",
+      "role": "Machine Learning Engineer",
+      "n_matched": "1",
+      "n_required": "6"
+    }
+  },
+  "summary": {
+    "v8": {
+      "n": 40,
+      "pass_rate": 0.95,
+      "pass_rate_by_category": {
+        "concept": 1.0,
+        "study": 1.0,
+        "career": 1.0,
+        "profile": 1.0,
+        "roadmap": 0.75,
+        "scope": 1.0,
+        "multi_turn": 0.875
+      },
+      "scope_accuracy": 0.95,
+      "false_refusals": 0,
+      "out_of_scope_leaks": 0,
+      "constraint_compliance": 1.0,
+      "factual_correctness": 0.938,
+      "citation_rate": 0.4,
+      "citation_correctness": 0.977,
+      "citations": 132,
+      "profile_consistency": 1.0,
+      "revised": 8,
+      "avg_latency_ms": 7727,
+      "avg_tokens": 1422,
+      "models": [
+        "None",
+        "gemini-3.1-flash-lite"
+      ],
+      "root_causes": {
+        "prompt": 1,
+        "retrieval": 1
+      },
+      "claim_support_rate": 0.411,
+      "claim_contradiction_rate": 0.089,
+      "intent_accuracy": 0.921,
+      "pass_rate_by_model": {
+        "gemini-3.1-flash-lite": 0.947,
+        "None": 1.0
+      }
+    }
+  }
+}

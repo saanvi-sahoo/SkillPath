@@ -1,0 +1,20 @@
+{
+ "tuning_24": {
+  "all": 0.925,
+  "interest": 0.89,
+  "skill": 1.0
+ },
+ "heldout_30 (audited)": {
+  "all": 0.773,
+  "interest": 0.8,
+  "skill": 0.83,
+  "title": 0.63
+ },
+ "heldout_v2_20 (final)": {
+  "all": 0.73,
+  "interest": 0.68,
+  "skill": 0.8,
+  "title": 0.88,
+  "transition": 0.56
+ }
+}

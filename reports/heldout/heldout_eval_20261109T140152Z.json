@@ -1,0 +1,575 @@
+{
+  "ts": "20261109T140152Z",
+  "versions": [
+    "v6",
+    "v7"
+  ],
+  "n_cases": 5,
+  "rows": [
+    {
+      "id": "h-cs01",
+      "category": "career_study",
+      "user": null,
+      "version": "v6",
+      "route": "career_study",
+      "question": "Which two careers suit someone who knows Python and SQL? Explain each briefly.",
+      "expected_behavior": "exactly 2 careers from career records, cited",
+      "answer": "Based on our career records, two roles that suit someone skilled in Python and SQL are **Python Integration Engineer** and **Data Engineer**.\n\n1. **Python Integration Engineer** [S1]: Uses Python and SQL to design data pipelines, manage database ORMs, and integrate backend data services.\n2. **Data Engineer** [S3]: Leverages Python and SQL to build data platforms, manage ETL processes, and structure data for warehousing and analytics.\n\n---\n**Sources**\n- [S1] careers: Python Integration Engineer\n- [S3] careers: Data Engineer",
+      "model": "gemini-3.6-flash",
+      "latency_ms": 15843.9,
+      "tokens": 3654,
+      "revised": null,
+      "intent": {
+        "type": "recommendation",
+        "missing": null,
+        "n_items": 2,
+        "max_words": 120
+      },
+      "sources": [
+        "S1:careers:Python Integration Engineer",
+        "S2:careers:Python Developer - Data Analysis",
+        "S3:careers:Data Engineer",
+        "S4:careers:Data Engineer",
+        "S5:knowledge:Entry-level tech and data career paths",
+        "S6:careers:Data Analyst, Stitcher",
+        "S7:jobs:job_listing"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.67, ref=career_2061)\nCareer: Python Integration Engineer. Domain: Data Engineering. Required skills: Python, SQL, ORM (SQLAlchemy or Django ORM), ETL, SFTP/SSH, Unix/Linux, Git, Software engineering best practices, Coding standards, Source control, Build processes, Testing, Operations, Web frameworks (e.g. Django), Pandas, Heroku, Postgres, JavaScript, jQuery. Description: Python Integration Engineer designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include Python, SQL, ORM (SQLAlchemy or Django ORM), ETL. Education: Bachelor's degree in computer science, information systems, data engineering, or a related technical field.\n\n[S2] (source=careers/career_profile, score=0.66, ref=career_2059)\nCareer: Python Developer - Data Analysis. Domain: Software and Web Development. Required skills: Python, Perl, SQL, Database Management, Web Development, JavaScript (AngularJS, JQuery), Bootstrap, HTML/CSS, MVC Frameworks, JSP, UI Design. Description: Python Developer - Data Analysis designs, develops, tests, and maintains software applications or web services. Work often includes translating requirements into code, integrating APIs or databases, debugging issues, reviewing code, and improving application quality. Relevant skills listed for this role include Python, Perl, SQL, Database Management. Education: Bachelor's degree or diploma in computer science, information technology, software engineering, or a related field.\n\n[S3] (source=careers/career_profile, score=0.60, ref=career_0779)\nCareer: Data Engineer. Domain: Data Engineering. Required skills: Python, SQL, ETL, Data Warehousing, Postgres, Elasticsearch, AWS, Apache Spark. Description: Data Engineer designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include Python, SQL, ETL, Data Warehousing. Education: Bachelor's degree in computer science, information systems, data engineering, or a related technical field.\n\n[S4] (source=careers/career_profile, score=0.57, ref=career_0781)\nCareer: Data Engineer. Domain: Data Engineering. Required skills: SQL, Database Programming, Linux, Python, AWS, ETL tools like Talend, Visualization tools like Tableau. Description: Data Engineer designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include SQL, Database Programming, Linux, Python. Education: BS degree in ",
+      "checks": {
+        "not_refused": true,
+        "n_items": true,
+        "citation": true,
+        "must_include_any": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 2,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "root_cause": null
+    },
+    {
+      "id": "h-cs01",
+      "category": "career_study",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Which two careers suit someone who knows Python and SQL? Explain each briefly.",
+      "expected_behavior": "exactly 2 careers from career records, cited",
+      "answer": "Data Engineer and Data Analyst are two careers that strongly suit someone skilled in Python and SQL.\n\n1. **Data Engineer**: Uses Python and SQL to build reliable data pipelines, write ETL workflows, and model databases to make data accessible for platforms and analytics [S4].\n2. **Data Analyst**: Uses SQL to extract and query backend data, alongside Python to clean, analyze, and visualize datasets for business insights [S7].\n\n---\n**Sources**\n- [S4] careers: Data Engineer\n- [S7] careers: Data Analyst, Stitcher",
+      "model": "gemini-3.6-flash",
+      "latency_ms": 11461.7,
+      "tokens": 3961,
+      "revised": null,
+      "intent": {
+        "type": "recommendation",
+        "missing": null,
+        "n_items": 2,
+        "max_words": 120
+      },
+      "sources": [
+        "S1:careers:Python Integration Engineer",
+        "S2:careers:Python Developer - Data Analysis",
+        "S3:careers:Software Engineer, Database",
+        "S4:careers:Data Engineer",
+        "S5:careers:Data Engineer",
+        "S6:knowledge:Entry-level tech and data career paths",
+        "S7:careers:Data Analyst, Stitcher",
+        "S8:jobs:job_listing"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.67, ref=career_2061)\nCareer: Python Integration Engineer. Domain: Data Engineering. Required skills: Python, SQL, ORM (SQLAlchemy or Django ORM), ETL, SFTP/SSH, Unix/Linux, Git, Software engineering best practices, Coding standards, Source control, Build processes, Testing, Operations, Web frameworks (e.g. Django), Pandas, Heroku, Postgres, JavaScript, jQuery. Description: Python Integration Engineer designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include Python, SQL, ORM (SQLAlchemy or Django ORM), ETL. Education: Bachelor's degree in computer science, information systems, data engineering, or a related technical field.\n\n[S2] (source=careers/career_profile, score=0.66, ref=career_2059)\nCareer: Python Developer - Data Analysis. Domain: Software and Web Development. Required skills: Python, Perl, SQL, Database Management, Web Development, JavaScript (AngularJS, JQuery), Bootstrap, HTML/CSS, MVC Frameworks, JSP, UI Design. Description: Python Developer - Data Analysis designs, develops, tests, and maintains software applications or web services. Work often includes translating requirements into code, integrating APIs or databases, debugging issues, reviewing code, and improving application quality. Relevant skills listed for this role include Python, Perl, SQL, Database Management. Education: Bachelor's degree or diploma in computer science, information technology, software engineering, or a related field.\n\n[S3] (source=careers/career_profile, score=0.60, ref=career_2483)\nCareer: Software Engineer, Database. Domain: Software and Web Development. Required skills: Python, C++, Testing, Database design, Schema design, Front-end design, Documentation. Description: Software Engineer, Database designs, develops, tests, and maintains software applications or web services. Work often includes translating requirements into code, integrating APIs or databases, debugging issues, reviewing code, and improving application quality. Relevant skills listed for this role include Python, C++, Testing, Database design. Education: Bachelor's degree or diploma in computer science, information technology, software engineering, or a related field.\n\n[S4] (source=careers/career_profile, score=0.60, ref=career_0779)\nCareer: Data Engineer. Domain: Data Engineering. Required skills: Python, SQL, ETL, Data Warehousing, Postgres, Elasticsearch, AWS, Apache Spark. Description: Data Engineer designs, builds, or maintains reliable data pipelines and data platforms. The work commonly includes data ingestion, transformation, storage, data modeling, quality checks, performance optimization, and making data accessible for analytics. Relevant skills listed for this role include Python, SQL, ETL, Data Warehousing. Ed",
+      "checks": {
+        "not_refused": true,
+        "n_items": true,
+        "citation": true,
+        "must_include_any": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 2,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "root_cause": null
+    },
+    {
+      "id": "h-oos03",
+      "category": "out_of_scope",
+      "user": null,
+      "version": "v6",
+      "route": "out_of_scope",
+      "question": "Who won the last Formula 1 race?",
+      "expected_behavior": "fixed polite refusal, no partial answer",
+      "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"What projects should I put on my GitHub to get hired?\"*\n",
+      "model": null,
+      "latency_ms": 1.5,
+      "tokens": null,
+      "revised": null,
+      "intent": {
+        "type": null,
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "refusal": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "root_cause": null
+    },
+    {
+      "id": "h-oos03",
+      "category": "out_of_scope",
+      "user": null,
+      "version": "v7",
+      "route": "out_of_scope",
+      "question": "Who won the last Formula 1 race?",
+      "expected_behavior": "fixed polite refusal, no partial answer",
+      "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"What projects should I put on my GitHub to get hired?\"*\n",
+      "model": null,
+      "latency_ms": 0.1,
+      "tokens": null,
+      "revised": null,
+      "intent": {
+        "type": null,
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "refusal": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "root_cause": null
+    },
+    {
+      "id": "h-af03",
+      "category": "ambiguous_followup",
+      "user": null,
+      "version": "v6",
+      "route": "career_study",
+      "question": "Suggest a career for me",
+      "expected_behavior": "no profile -> ask a clarifying question",
+      "answer": "I need a little more information about your background and interests before I can responsibly suggest specific career paths for you.\n\nCould you share:\n1. **What subjects, tasks, or tools do you enjoy most?** (e.g., writing, problem-solving, coding, designing, analyzing data, or helping people)\n2. **What skills or experience do you already have?** (including basic coursework, projects, or transferable skills)\n3. **What is your current stage?** (e.g., high school student, college student, recent graduate, or working professional looking to switch careers)\n\nSharing these details will allow me to match your profile against target roles and explain why each option fits. (If you already have a resume, you can also upload it in the sidebar and click **Analyze Profile** to get customized recommendations!)",
+      "model": "gemini-3.6-flash",
+      "latency_ms": 55170.9,
+      "tokens": 2643,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Choosing a career direction",
+        "S2:knowledge:Switching careers"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.51, ref=career_planning.md)\nCareer Planning - Choosing a career direction: Match three things: what you enjoy doing day to day, what you are or can become good at, and what the job market pays for. Read 10-20 real job descriptions for a role to see the skills that repeat, and talk to people already in the role (LinkedIn informational interviews).\n\n[S2] (source=knowledge/guide, score=0.44, ref=career_planning.md)\nCareer Planning - Switching careers: Identify transferable skills from your current role (domain knowledge, communication, project management). Close the gap with a focused 3-6 month learning plan and 2-3 portfolio projects in the new field, ideally using data or problems from your current domain. Consider bridge roles that combine old and new expertise.",
+      "checks": {
+        "not_refused": true,
+        "asks_question": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "root_cause": null
+    },
+    {
+      "id": "h-af03",
+      "category": "ambiguous_followup",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Suggest a career for me",
+      "expected_behavior": "no profile -> ask a clarifying question",
+      "answer": "I need to know more about your background and interests before I can suggest a personalized career path. A good starting point is identifying roles that align with what you enjoy doing, what skills you have or want to build, and what the job market demands [S1]. \n\nTo help me give you tailored recommendations, what subjects, tools, or types of work do you enjoy most (for example, writing software, analyzing data, creative design, or management)?\n\n---\n**Sources**\n- [S1] knowledge: Choosing a career direction",
+      "model": "gemini-3.6-flash",
+      "latency_ms": 7886.7,
+      "tokens": 2742,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": "the student's skills, interests or goal (needed to personalise the answer)",
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Choosing a career direction",
+        "S2:knowledge:Growing your career while working",
+        "S3:knowledge:Switching careers"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.51, ref=career_planning.md)\nCareer Planning - Choosing a career direction: Match three things: what you enjoy doing day to day, what you are or can become good at, and what the job market pays for. Read 10-20 real job descriptions for a role to see the skills that repeat, and talk to people already in the role (LinkedIn informational interviews).\n\n[S2] (source=knowledge/guide, score=0.45, ref=first_job_and_workplace.md)\nFirst Job And Workplace - Growing your career while working: Keep learning one skill aligned with the next role you want, volunteer for projects that use it, find a mentor inside or outside the company, and update your resume every six months with new achievements so you are ready for opportunities.\n\n[S3] (source=knowledge/guide, score=0.44, ref=career_planning.md)\nCareer Planning - Switching careers: Identify transferable skills from your current role (domain knowledge, communication, project management). Close the gap with a focused 3-6 month learning plan and 2-3 portfolio projects in the new field, ideally using data or problems from your current domain. Consider bridge roles that combine old and new expertise.",
+      "checks": {
+        "not_refused": true,
+        "asks_question": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 1,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "root_cause": null
+    },
+    {
+      "id": "h-rj-da05",
+      "category": "resume_jd",
+      "user": "persona_da",
+      "version": "v6",
+      "route": "career_study",
+      "question": "Do I meet the requirements for this job? Answer in one sentence.",
+      "expected_behavior": "verdict, <=40 words",
+      "answer": "You partially meet the role's requirements with an estimated ATS score of 43/100 [S3], having proven skills in Python, SQL, and Power BI [S2], but missing Tableau, Statistics, Data Visualization, and Communication [S3].\n\n---\n**Sources**\n- [S2] profile: resume\n- [S3] profile: profile overview",
+      "model": "gemini-3.6-flash",
+      "latency_ms": 30158.7,
+      "tokens": 3120,
+      "revised": null,
+      "intent": {
+        "type": "fit_analysis",
+        "missing": null,
+        "n_items": null,
+        "max_words": 40
+      },
+      "sources": [
+        "S1:profile:job_description",
+        "S2:profile:resume",
+        "S3:profile:profile_overview",
+        "S4:knowledge:Job search strategy"
+      ],
+      "context": "[S1] (source=profile/job_description, score=0.51, ref=job_description)\nTarget job description (part 1): Data Analyst (0-2 years). Required: Python, SQL, Power BI, Tableau, Statistics, Data Visualization, Communication. Responsibilities: build dashboards, write SQL reports, present insights to business teams. Education: Bachelor's degree.\n\n[S2] (source=profile/resume, score=0.44, ref=resume)\nCandidate resume (part 1): Riya Sharma. B.Tech Computer Science 2025. Skills: Python, Excel, SQL, Pandas. Projects: sales dashboard in Power BI for a college fest; Excel pivot-table analysis of hostel expenses. Internship: 2 months data entry and reporting.\n\n[S3] (source=profile/profile_overview, score=0.43, ref=profile_overview)\nCandidate profile overview. Target role: Data Analyst. ATS match score: 43/100. Candidate skills: Python, Excel, SQL, Pandas, Power BI. Skills required by the job description: Python, SQL, Power BI, Tableau, Statistics, Data Visualization, Communication. Skill gaps (missing skills): Tableau, Statistics, Data Visualization, Communication.\n\n[S4] (source=knowledge/guide, score=0.42, ref=career_planning.md)\nCareer Planning - Job search strategy: Apply to roles where you meet roughly 60-70% of the listed requirements. Combine job boards (LinkedIn, Naukri, company career pages) with referrals, which have much higher response rates. Keep your LinkedIn headline and skills aligned with your target role, and post about your projects. Quality and tailoring beat mass applying.",
+      "checks": {
+        "not_refused": true,
+        "max_words": true,
+        "first_sentence_any": true,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 3,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "root_cause": null
+    },
+    {
+      "id": "h-rj-da05",
+      "category": "resume_jd",
+      "user": "persona_da",
+      "version": "v7",
+      "route": "career_study",
+      "question": "Do I meet the requirements for this job? Answer in one sentence.",
+      "expected_behavior": "verdict, <=40 words",
+      "answer": "You partially meet the requirements with Python, SQL, and Power BI [S2], but Tableau, Statistics, Data Visualization, and Communication remain gaps [S3], resulting in an AI-estimated ATS score of 43/100 (not an official result).\n\n---\n**Sources**\n- [S2] profile: resume\n- [S3] profile: profile overview",
+      "model": "gemini-3.6-flash",
+      "latency_ms": 11069.0,
+      "tokens": 3573,
+      "revised": null,
+      "intent": {
+        "type": "fit_analysis",
+        "missing": null,
+        "n_items": null,
+        "max_words": 40
+      },
+      "sources": [
+        "S1:profile:job_description",
+        "S2:profile:resume",
+        "S3:profile:profile_overview",
+        "S4:knowledge:Job search strategy"
+      ],
+      "context": "[S1] (source=profile/job_description, score=0.51, ref=job_description)\nTarget job description (part 1): Data Analyst (0-2 years). Required: Python, SQL, Power BI, Tableau, Statistics, Data Visualization, Communication. Responsibilities: build dashboards, write SQL reports, present insights to business teams. Education: Bachelor's degree.\n\n[S2] (source=profile/resume, score=0.44, ref=resume)\nCandidate resume (part 1): Riya Sharma. B.Tech Computer Science 2025. Skills: Python, Excel, SQL, Pandas. Projects: sales dashboard in Power BI for a college fest; Excel pivot-table analysis of hostel expenses. Internship: 2 months data entry and reporting.\n\n[S3] (source=profile/profile_overview, score=0.43, ref=profile_overview)\nCandidate profile overview. Target role: Data Analyst. ATS match score: 43/100. Candidate skills: Python, Excel, SQL, Pandas, Power BI. Skills required by the job description: Python, SQL, Power BI, Tableau, Statistics, Data Visualization, Communication. Skill gaps (missing skills): Tableau, Statistics, Data Visualization, Communication.\n\n[S4] (source=knowledge/guide, score=0.42, ref=career_planning.md)\nCareer Planning - Job search strategy: Apply to roles where you meet roughly 60-70% of the listed requirements. Combine job boards (LinkedIn, Naukri, company career pages) with referrals, which have much higher response rates. Keep your LinkedIn headline and skills aligned with your target role, and post about your projects. Quality and tailoring beat mass applying.",
+      "checks": {
+        "not_refused": true,
+        "max_words": true,
+        "first_sentence_any": true,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 2,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "root_cause": null
+    },
+    {
+      "id": "h-sc04",
+      "category": "skill_confusion",
+      "user": null,
+      "version": "v6",
+      "route": "career_study",
+      "question": "Is MySQL experience the same as knowing SQL?",
+      "expected_behavior": "IMPLIES: yes, MySQL proves SQL",
+      "answer": "No, MySQL experience is not the same as knowing SQL, though they are closely related.\n\nHere is the difference:\n\n*   **SQL (Structured Query Language)** is the standard programming language used to manage and query relational databases in general. Knowing SQL means you understand core database concepts like writing queries, `JOIN` operations, aggregations, and data manipulation across any system (such as PostgreSQL, Oracle, or SQL Server).\n*   **MySQL** is a specific database management system (RDBMS) that *uses* SQL as its language. Having MySQL experience means you know how to work with the MySQL platform specifically—including its unique administrative tasks, storage engines (like InnoDB), performance tuning, and configuration management [S2].\n\n### Resume Tip\n*   If you can write database queries, list **SQL** under your general technical skills.\n*   If you have specific experience installing, configuring, or managing MySQL databases, list **MySQL** as the specific database platform.\n\n---\n**Sources**\n- [S2] careers: MySQL Database Administrator",
+      "model": "gemini-3.6-flash",
+      "latency_ms": 19407.4,
+      "tokens": 3027,
+      "revised": null,
+      "intent": {
+        "type": "yes_no",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:careers:MySQL Database Administrator",
+        "S2:careers:MySQL Database Administrator"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.46, ref=career_1800)\nCareer: MySQL Database Administrator. Domain: Project and Business Management. Required skills: MySQL Administration, Large-scale high-performance distributed systems, Automation, Architecting services, Replication management, CentOS, Hardware performance. Description: MySQL Database Administrator coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include MySQL Administration, Large-scale high-performance distributed systems, Automation, Architecting services. Education: BS in Computer Science.\n\n[S2] (source=careers/career_profile, score=0.45, ref=career_1801)\nCareer: MySQL Database Administrator. Domain: Project and Business Management. Required skills: MySQL database architecture, MySQL database performance tuning, Data sharding, Galera cluster, LAMP environment, MySQL Replication, InnoDB administration, Linux environment, Linux shell scripting, Perl, Python, Physical/logical database design, Install, configure, patching, and upgrading MySQL databases, Automating administrative tasks, Hardware performance analysis, Database security management. Description: MySQL Database Administrator coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include MySQL database architecture, MySQL database performance tuning, Data sharding, Galera cluster. Education: Bachelor's degree in a relevant business, management, finance, marketing, or related field; role-specific experience is often valued.",
+      "checks": {
+        "not_refused": true,
+        "first_sentence_any": false,
+        "profile_consistent": null
+      },
+      "passed": false,
+      "citations": {
+        "citations": 1,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "root_cause": "instruction_following (first_sentence_any)"
+    },
+    {
+      "id": "h-sc04",
+      "category": "skill_confusion",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Is MySQL experience the same as knowing SQL?",
+      "expected_behavior": "IMPLIES: yes, MySQL proves SQL",
+      "answer": "No, MySQL experience is not identical to knowing SQL, although having MySQL experience does prove that you know SQL.\n\nHere is how they differ:\n- **SQL (Structured Query Language):** The universal database language used to query, update, and manage data across many relational database platforms, including Oracle, Microsoft SQL Server, and PostgreSQL [S3].\n- **MySQL:** A specific relational database management system (RDBMS) that uses SQL, but also includes platform-specific administration, storage engine management (like InnoDB), performance tuning, and replication [S1, S2].\n\nIn short: writing queries in MySQL proves your core SQL skills, but full MySQL experience involves database architecture and administrative tasks beyond general SQL querying.\n\n---\n**Sources**\n- [S1] careers: MySQL Database Administrator\n- [S2] careers: MySQL Database Administrator\n- [S3] careers: Database Administrator V",
+      "model": "gemini-3.6-flash",
+      "latency_ms": 12051.4,
+      "tokens": 3376,
+      "revised": null,
+      "intent": {
+        "type": "yes_no",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:careers:MySQL Database Administrator",
+        "S2:careers:MySQL Database Administrator",
+        "S3:careers:Database Administrator V"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.46, ref=career_1800)\nCareer: MySQL Database Administrator. Domain: Project and Business Management. Required skills: MySQL Administration, Large-scale high-performance distributed systems, Automation, Architecting services, Replication management, CentOS, Hardware performance. Description: MySQL Database Administrator coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include MySQL Administration, Large-scale high-performance distributed systems, Automation, Architecting services. Education: BS in Computer Science.\n\n[S2] (source=careers/career_profile, score=0.45, ref=career_1801)\nCareer: MySQL Database Administrator. Domain: Project and Business Management. Required skills: MySQL database architecture, MySQL database performance tuning, Data sharding, Galera cluster, LAMP environment, MySQL Replication, InnoDB administration, Linux environment, Linux shell scripting, Perl, Python, Physical/logical database design, Install, configure, patching, and upgrading MySQL databases, Automating administrative tasks, Hardware performance analysis, Database security management. Description: MySQL Database Administrator coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include MySQL database architecture, MySQL database performance tuning, Data sharding, Galera cluster. Education: Bachelor's degree in a relevant business, management, finance, marketing, or related field; role-specific experience is often valued.\n\n[S3] (source=careers/career_profile, score=0.35, ref=career_0941)\nCareer: Database Administrator V. Domain: Project and Business Management. Required skills: Database administration, Scheduling, Quality control, Database design, Database implementation, Database management systems, Structured Query Language (SQL), Microsoft SQL Server, IBM DB2, MySQL, Oracle, Data security, Data integrity, Query optimization, Data management, Knowledge of XML database management systems. Description: Database Administrator V coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include Database administration, Scheduling, Quality control, Database design. Education: Bachelor's degree in a relevant business, management, finance, marketing, or related field; role-specific experience is often valued.",
+      "checks": {
+        "not_refused": true,
+        "first_sentence_any": false,
+        "profile_consistent": null
+      },
+      "passed": false,
+      "citations": {
+        "citations": 3,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "root_cause": "instruction_following (first_sentence_any)"
+    }
+  ],
+  "facts": {
+    "persona_da": {
+      "have": [
+        "Python",
+        "Excel",
+        "SQL",
+        "Pandas",
+        "Power BI"
+      ],
+      "required": [
+        "Python",
+        "SQL",
+        "Power BI",
+        "Tableau",
+        "Statistics",
+        "Data Visualization",
+        "Communication"
+      ],
+      "gaps": [
+        "Tableau",
+        "Statistics",
+        "Data Visualization",
+        "Communication"
+      ],
+      "matched": [
+        "Python",
+        "SQL",
+        "Power BI"
+      ],
+      "ats": "43",
+      "role": "Data Analyst",
+      "n_matched": "3",
+      "n_required": "7"
+    },
+    "persona_be": {
+      "have": [
+        "Java",
+        "Spring Boot",
+        "MySQL",
+        "Git",
+        "REST APIs"
+      ],
+      "required": [
+        "Java",
+        "Spring Boot",
+        "Microservices",
+        "Docker",
+        "Kubernetes",
+        "AWS",
+        "REST APIs"
+      ],
+      "gaps": [
+        "Microservices",
+        "Docker",
+        "Kubernetes",
+        "AWS"
+      ],
+      "matched": [
+        "Java",
+        "Spring Boot",
+        "REST APIs"
+      ],
+      "ats": "43",
+      "role": "Backend Developer",
+      "n_matched": "3",
+      "n_required": "7"
+    },
+    "persona_ml": {
+      "have": [
+        "AutoCAD",
+        "MATLAB",
+        "Excel",
+        "Python"
+      ],
+      "required": [
+        "Python",
+        "Machine Learning",
+        "TensorFlow",
+        "SQL",
+        "Statistics",
+        "Docker"
+      ],
+      "gaps": [
+        "Machine Learning",
+        "TensorFlow",
+        "SQL",
+        "Statistics",
+        "Docker"
+      ],
+      "matched": [
+        "Python"
+      ],
+      "ats": "17",
+      "role": "Machine Learning Engineer",
+      "n_matched": "1",
+      "n_required": "6"
+    }
+  },
+  "summary": {
+    "v6": {
+      "n": 5,
+      "pass_rate": 0.8,
+      "pass_rate_by_category": {
+        "career_study": 1.0,
+        "out_of_scope": 1.0,
+        "ambiguous_followup": 1.0,
+        "resume_jd": 1.0,
+        "skill_confusion": 0.0
+      },
+      "scope_accuracy": 1.0,
+      "false_refusals": 0,
+      "out_of_scope_leaks": 0,
+      "constraint_compliance": 0.8,
+      "factual_correctness": 1.0,
+      "citation_rate": 0.75,
+      "citation_correctness": 1.0,
+      "citations": 6,
+      "profile_consistency": 1.0,
+      "revised": 0,
+      "avg_latency_ms": 24116,
+      "avg_tokens": 3111,
+      "models": [
+        "None",
+        "gemini-3.6-flash"
+      ],
+      "root_causes": {
+        "instruction_following": 1
+      }
+    },
+    "v7": {
+      "n": 5,
+      "pass_rate": 0.8,
+      "pass_rate_by_category": {
+        "career_study": 1.0,
+        "out_of_scope": 1.0,
+        "ambiguous_followup": 1.0,
+        "resume_jd": 1.0,
+        "skill_confusion": 0.0
+      },
+      "scope_accuracy": 1.0,
+      "false_refusals": 0,
+      "out_of_scope_leaks": 0,
+      "constraint_compliance": 0.8,
+      "factual_correctness": 1.0,
+      "citation_rate": 1.0,
+      "citation_correctness": 1.0,
+      "citations": 8,
+      "profile_consistency": 1.0,
+      "revised": 0,
+      "avg_latency_ms": 8494,
+      "avg_tokens": 3413,
+      "models": [
+        "None",
+        "gemini-3.6-flash"
+      ],
+      "root_causes": {
+        "instruction_following": 1
+      }
+    }
+  }
+}

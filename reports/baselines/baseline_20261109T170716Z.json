@@ -1,0 +1,75 @@
+{
+  "ts": "2026-11-09T17:07:16.147170+00:00",
+  "purpose": "baseline before the v8 candidate (E37)",
+  "live_prompt": {
+    "advisor_system": "v5",
+    "scope_router": "v2",
+    "refusal": "v1",
+    "greeting": "v1"
+  },
+  "prompt_files": {
+    "advisor_system_v1.md": "10b0a81d600b7c4e",
+    "advisor_system_v2.md": "24faa4d015df114f",
+    "advisor_system_v3.md": "4aae4cd4ee906190",
+    "advisor_system_v4.md": "8c7965287c51ab17",
+    "advisor_system_v5.md": "efb2d5c3e2697345",
+    "advisor_system_v6.md": "1fb755a8d73d9860",
+    "advisor_system_v7.md": "44d486d644809ad4",
+    "advisor_system_v8.md": "a31508ea162ce662",
+    "greeting_v1.md": "db300436f9d8a078",
+    "refusal_v1.md": "9025bdfa52339e7a",
+    "roadmap_v1.md": "2489e590e6687b26",
+    "scope_router_v1.md": "5068a16021a19a05",
+    "scope_router_v2.md": "525ff28c0832073d",
+    "career_discovery.md": "e7cc9f135eccb1d3",
+    "concept_explanation.md": "9429f5558235b04c",
+    "job_preparation.md": "1f1974862d57ad23",
+    "learning_plan.md": "39c0b4618ce65ed3",
+    "out_of_scope.md": "6f01e49ca7e034d1",
+    "profile_analysis.md": "9a0ded4cf5d0723b",
+    "profile_progress.md": "ee328150adf0c7e0",
+    "study_help.md": "04f274e2ab1065b6",
+    "few_shots.json": "eb3d29e67a6cab7c",
+    "few_shots_v3.json": "8642b129e1812b11",
+    "few_shots_v4.json": "849e20b1ec0ddbb9",
+    "few_shots_v5.json": "849e20b1ec0ddbb9",
+    "few_shots_v6.json": "849e20b1ec0ddbb9",
+    "few_shots_v7.json": "80cc44444e47363d",
+    "scope_examples.json": "43f5c2b81efc1a44"
+  },
+  "models": {
+    "CHAT_MODEL default": "groq:openai/gpt-oss-120b",
+    "router": "groq:openai/gpt-oss-20b",
+    "temperature": 0.3,
+    "note": "gemini-3.5-flash is served under the model name gemini-3.6-flash: every eval row records both the configured and the reported model"
+  },
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "datasets": {
+    "careers_csv": "568ebf2daaa84f72"
+  },
+  "retrieval": {
+    "MIN_SCORE": 0.3,
+    "CAREER_MIN_SCORE": 0.4,
+    "RAG_RERANK": true,
+    "RERANK_POOL": 20,
+    "RERANK_MIN": -6.0,
+    "RAG_SKILL_RERANK": true,
+    "skill_rerank": {
+      "DELTA": 6.0,
+      "ALPHA": 1.0,
+      "BETA": 0.5,
+      "GAMMA": 1.0,
+      "IMPLIED_WEIGHT": 0.75,
+      "dedupe_titles": true,
+      "interest_expansion": true
+    }
+  },
+  "test_sets": {
+    "prompt_eval_set.jsonl": "b64ebd9393486c8f",
+    "heldout_chat.jsonl": "ca891e1533dfb64c",
+    "heldout_v2.jsonl": "e2d7198a54459ffb",
+    "heldout_careers.jsonl": "62752128b3dd51cc",
+    "heldout_careers_v2.jsonl": "b4f65bd6a2bf6ee5",
+    "dev_set.jsonl": "61fcb4dc16f0c91e"
+  }
+}

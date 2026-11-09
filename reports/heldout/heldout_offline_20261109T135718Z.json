@@ -1,0 +1,532 @@
+{
+  "ts": "2026-11-09T13:57:09.526212+00:00",
+  "roadmap": {
+    "pass_rate": 0.9,
+    "rows": [
+      {
+        "id": "rm01",
+        "role": "Data Analyst",
+        "gaps": [
+          "SQL",
+          "Power BI",
+          "Statistics",
+          "Python"
+        ],
+        "days_per_skill": {
+          "SQL": 8,
+          "Python": 7,
+          "Statistics": 5,
+          "Power BI": 4
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": true
+        },
+        "passed": true
+      },
+      {
+        "id": "rm02",
+        "role": "Data Analyst",
+        "gaps": [
+          "Tableau",
+          "Statistics"
+        ],
+        "days_per_skill": {
+          "Tableau": 12,
+          "Statistics": 12
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": true
+        },
+        "passed": true
+      },
+      {
+        "id": "rm03",
+        "role": "Data Analyst",
+        "gaps": [
+          "Python",
+          "Tableau",
+          "Statistics",
+          "Excel",
+          "Data Visualization"
+        ],
+        "days_per_skill": {
+          "Excel": 6,
+          "Python": 5,
+          "Data Visualization": 5,
+          "Tableau": 4,
+          "Statistics": 4
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": true
+        },
+        "passed": true
+      },
+      {
+        "id": "rm04",
+        "role": "Backend Developer",
+        "gaps": [
+          "Spring Boot",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "days_per_skill": {
+          "AWS": 6,
+          "Docker": 6,
+          "Spring Boot": 6,
+          "Kubernetes": 6
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": true
+        },
+        "passed": true
+      },
+      {
+        "id": "rm05",
+        "role": "Backend Developer",
+        "gaps": [
+          "Docker",
+          "PostgreSQL",
+          "REST APIs"
+        ],
+        "days_per_skill": {
+          "REST APIs": 9,
+          "Docker": 8,
+          "PostgreSQL": 7
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": true
+        },
+        "passed": true
+      },
+      {
+        "id": "rm06",
+        "role": "Backend Developer",
+        "gaps": [
+          "Microservices",
+          "Apache Kafka",
+          "Docker",
+          "Kubernetes",
+          "AWS",
+          "CI/CD"
+        ],
+        "days_per_skill": {
+          "AWS": 4,
+          "Docker": 4,
+          "Microservices": 4,
+          "Apache Kafka": 4,
+          "Kubernetes": 4,
+          "CI/CD": 4
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": true
+        },
+        "passed": true
+      },
+      {
+        "id": "rm07",
+        "role": "Machine Learning Engineer",
+        "gaps": [
+          "Machine Learning",
+          "Statistics",
+          "SQL",
+          "TensorFlow"
+        ],
+        "days_per_skill": {
+          "TensorFlow": 6,
+          "SQL": 4,
+          "Statistics": 3,
+          "Machine Learning": 11
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": true
+        },
+        "passed": true
+      },
+      {
+        "id": "rm08",
+        "role": "Machine Learning Engineer",
+        "gaps": [
+          "Deep Learning",
+          "PyTorch",
+          "Docker"
+        ],
+        "days_per_skill": {
+          "PyTorch": 10,
+          "Deep Learning": 7,
+          "Docker": 7
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": true
+        },
+        "passed": true
+      },
+      {
+        "id": "rm09",
+        "role": "Machine Learning Engineer",
+        "gaps": [
+          "Python",
+          "Machine Learning",
+          "Statistics",
+          "Docker",
+          "SQL",
+          "TensorFlow",
+          "AWS"
+        ],
+        "days_per_skill": {
+          "Python": 5,
+          "TensorFlow": 4,
+          "SQL": 2,
+          "Docker": 2,
+          "Statistics": 2,
+          "Machine Learning": 7,
+          "AWS": 2
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": true
+        },
+        "passed": true
+      },
+      {
+        "id": "rm10",
+        "role": "Data Engineer",
+        "gaps": [
+          "Apache Spark",
+          "Apache Airflow",
+          "AWS"
+        ],
+        "days_per_skill": {
+          "Apache Spark": 8,
+          "AWS": 8,
+          "Apache Airflow": 8
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": false
+        },
+        "passed": false
+      },
+      {
+        "id": "rm11",
+        "role": "Data Engineer",
+        "gaps": [
+          "SQL",
+          "Apache Spark",
+          "Apache Kafka",
+          "Docker"
+        ],
+        "days_per_skill": {
+          "SQL": 11,
+          "Apache Spark": 5,
+          "Docker": 4,
+          "Apache Kafka": 4
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": false
+        },
+        "passed": false
+      },
+      {
+        "id": "rm12",
+        "role": "Cloud Engineer",
+        "gaps": [
+          "AWS",
+          "Docker",
+          "Kubernetes",
+          "Terraform"
+        ],
+        "days_per_skill": {
+          "Docker": 6,
+          "Kubernetes": 6,
+          "AWS": 6,
+          "Terraform": 6
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": true
+        },
+        "passed": true
+      },
+      {
+        "id": "rm13",
+        "role": "DevOps Engineer",
+        "gaps": [
+          "CI/CD",
+          "Docker",
+          "Kubernetes",
+          "Jenkins"
+        ],
+        "days_per_skill": {
+          "Docker": 6,
+          "Kubernetes": 6,
+          "CI/CD": 6,
+          "Jenkins": 6
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": true
+        },
+        "passed": true
+      },
+      {
+        "id": "rm14",
+        "role": "Frontend Developer",
+        "gaps": [
+          "JavaScript",
+          "React",
+          "TypeScript"
+        ],
+        "days_per_skill": {
+          "JavaScript": 12,
+          "React": 7,
+          "TypeScript": 5
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": true
+        },
+        "passed": true
+      },
+      {
+        "id": "rm15",
+        "role": "Full Stack Developer",
+        "gaps": [
+          "React",
+          "Node.js",
+          "MongoDB",
+          "Docker"
+        ],
+        "days_per_skill": {
+          "React": 9,
+          "Node.js": 7,
+          "MongoDB": 4,
+          "Docker": 4
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": true
+        },
+        "passed": true
+      },
+      {
+        "id": "rm16",
+        "role": "Business Analyst",
+        "gaps": [
+          "SQL",
+          "Power BI",
+          "Statistics"
+        ],
+        "days_per_skill": {
+          "SQL": 8,
+          "Statistics": 8,
+          "Power BI": 8
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": true
+        },
+        "passed": true
+      },
+      {
+        "id": "rm17",
+        "role": "Data Scientist",
+        "gaps": [
+          "Statistics",
+          "Machine Learning",
+          "Deep Learning"
+        ],
+        "days_per_skill": {
+          "Statistics": 7,
+          "Machine Learning": 12,
+          "Deep Learning": 5
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": true
+        },
+        "passed": true
+      },
+      {
+        "id": "rm18",
+        "role": "Cybersecurity Analyst",
+        "gaps": [
+          "Networking",
+          "Python",
+          "Siem"
+        ],
+        "days_per_skill": {
+          "Python": 8,
+          "Networking": 8,
+          "Siem": 8
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": true
+        },
+        "passed": true
+      },
+      {
+        "id": "rm19",
+        "role": "Data Analyst",
+        "gaps": [
+          "Communication"
+        ],
+        "days_per_skill": {
+          "Communication": 24
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": true
+        },
+        "passed": true
+      },
+      {
+        "id": "rm20",
+        "role": "Backend Developer",
+        "gaps": [
+          "Java",
+          "Spring Boot"
+        ],
+        "days_per_skill": {
+          "Java": 13,
+          "Spring Boot": 11
+        },
+        "checks": {
+          "valid_30_days": true,
+          "gaps_exact": true,
+          "all_gaps_covered": true,
+          "never_teaches_known_skill": true,
+          "prereqs_before_dependants": true,
+          "within_time_budget": true,
+          "resources_on_known_skill_days": true,
+          "role_specific_capstone": true
+        },
+        "passed": true
+      }
+    ]
+  }
+}

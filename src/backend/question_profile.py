@@ -70,7 +70,7 @@ def profile_question(message: str) -> Dict:
         qtype = "list"  # "give me 3 X" is a list request
 
     max_words = None
-    if re.search(r"\b(one|1|single) (line|sentence)\b|\bin a sentence\b|\bone-liner\b", low):
+    if re.search(r"\b(one|1|single)[- ](line|sentence)\b|\bin a sentence\b|\bone-liner\b", low):
         max_words = 40
     elif re.search(r"\b(briefly|brief|short|quick|in short|tl;?dr|concise|summari[sz]e)\b", low):
         max_words = 120
@@ -130,3 +130,72 @@ def answer_contract(qp: Dict) -> str:
     elif qp.get("format") == "steps":
         lines.append("- Present the answer as numbered steps.")
     return "\n".join(lines)
+
+
+# ── E36 (prompt v7): parsed intent = task + primary source + missing information ─────────────────────────────
+# "Route according to the actual question" (review doc §4, §6): which information must answer it?
+PRIMARY_SOURCE = {
+    "profile_fact":    "the student's analysed profile (parsed resume, stored ATS estimate and gaps)",
+    "fit_analysis":    "the student's parsed resume compared with the target job description",
+    "jd_requirements": "the target job description",
+    "recommendation":  "the student's skills/interests matched against career records",
+    "comparison":      "career records and learning guides",
+    "list":            "learning guides and career records",
+    "plan":            "the student's skill gaps and learning guides",
+    "how_to":          "learning guides",
+    "definition":      "learning guides and well-established knowledge",
+    "yes_no":          "career records and learning guides",
+    "salary":          "career records (only non-placeholder dataset values)",
+    "other":           "whichever provided source answers the question",
+}
+TASK = {"profile_fact": "look up a fact about the student", "fit_analysis": "compare the student with the target job",
+        "jd_requirements": "report what the job description asks for", "recommendation": "recommend careers",
+        "comparison": "compare options", "list": "give a list", "plan": "make a time-boxed plan", "how_to": "explain how to do something",
+        "definition": "define/explain a concept", "yes_no": "give a yes/no judgement", "salary": "report salary information",
+        "other": "answer the question"}
+
+_PROFILE_TYPES = {"profile_fact", "fit_analysis", "jd_requirements"}
+_INTEREST = re.compile(r"\b(i (like|love|enjoy|prefer|am good at|know|studied|have)|interested in|my (skills|degree|background|interests?)|"
+                       r"background in|experience (in|with)|i'm (a|an|good|interested))\b")
+_REFERENTLESS = re.compile(r"^\s*(which one( is (better|best))?|what about it|is it|how do i start|where do i start|which is better|what should i do|"
+                           r"best (course|option|one) for me|help me|can you help me)\b[?.! ]*$")
+
+
+def missing_information(qp: Dict, message: str, has_profile: bool, history_len: int = 0) -> Optional[str]:
+    """What essential information is missing to answer precisely (None = nothing). Generic rules, not per-question."""
+    low = (message or "").lower().strip()
+    if qp["type"] in _PROFILE_TYPES and not has_profile and re.search(r"\b(my|i|me)\b", low):
+        return "the student has no analysed profile (resume/JD) yet"
+    if history_len == 0 and _REFERENTLESS.search(low):
+        return "the question refers to something not stated (no earlier conversation)"
+    personal = re.search(r"\b(for me|suit me|suits me|should i|my career|for my|i should|me\?)\b", low) or \
+        re.search(r"\b(career|job role|role|course|study|switch)\b", low) and re.search(r"\b(best|which|what|suggest|recommend)\b", low)
+    if qp["type"] in ("recommendation", "other", "list", "how_to", "plan") and personal and not has_profile and history_len == 0:
+        try:
+            from src.rag.skill_rerank import query_skills
+            skills = query_skills(message)
+        except Exception:  # noqa: BLE001
+            skills = set()
+        if not skills and not _INTEREST.search(low) and len(low.split()) <= 12:
+            return "the student's skills, interests or goal (needed to personalise the answer)"
+    return None
+
+
+def parsed_intent(qp: Dict, message: str, has_profile: bool, history_len: int = 0) -> Dict:
+    missing = missing_information(qp, message, has_profile, history_len)
+    return {**qp, "task": TASK[qp["type"]], "primary_source": PRIMARY_SOURCE[qp["type"]], "missing": missing}
+
+
+def answer_contract_v7(pi: Dict) -> str:
+    """Task layer of prompt v7: the parsed intent as explicit requirements the answer is checked against."""
+    rows = [f"- Task: {pi['task']} (question type: {pi['type']}). {_TYPE_RULES[pi['type']]}",
+            f"- Primary source: {pi['primary_source']}. Use other sources only if they help answer THIS question.",
+            f"- Number of items requested: {pi['n_items'] or 'not specified'}"
+            + (f": give exactly {pi['n_items']}, numbered 1-{pi['n_items']}." if pi.get("n_items") else "."),
+            f"- Length: " + (f"at most {pi['max_words']} words, no headings." if pi.get("max_words") else "match the question; under ~250 words."),
+            f"- Format: {pi['format'] or 'whatever is clearest'}" + (" (markdown table)." if pi.get("format") == "table" else " (numbered steps)." if pi.get("format") == "steps" else "."),
+            "- The FIRST sentence must directly answer the question; do not restate it or add an introduction."]
+    if pi.get("missing"):
+        rows.append(f"- ESSENTIAL INFORMATION IS MISSING: {pi['missing']}. Do not guess. Ask ONE short clarifying question "
+                    "(you may offer 2-3 example options), and give at most one sentence of general guidance.")
+    return "\n".join(rows)

@@ -1,0 +1,221 @@
+test_id,category,user,question,expected_behavior,actual_answer,retrieved_source_ids,pass_fail,failure_reason,root_cause,prompt_version,model_id,model_configured,scope_pass,intent_pass,citation_support_pass,factual_pass,claim_support_rate,citation_correct_rate,latency_ms,tokens
+v2-s02,concept,,Explain the difference between TCP and UDP in a table.,table,"| Feature          | TCP                                                                     | UDP                                                                     |
+|-------------------|------------------------------------------------------------------------|------------------------------------------------------------------------|
+| Connection Type   | **Reliable, connection-oriented** (three-way handshake)                | **Unreliable, connectionless** (no handshake or acknowledgement required)|
+| Order of Packets  | Packets are delivered in the order they were sent                      | Packets may arrive out of order and must be reassembled               |
+| Error Handling    | Retransmits lost packets to ensure data integrity                     | Does not guarantee data integrity; discards lost packets              |
+| Flow Control      | Sends only as much data as the receiver can handle (slow start, congestion avoidance)  | Sends all available data at once                                        |
+| Example Uses     | File transfers, email, HTTP                                            | Real-time applications like VoIP, video streaming, online gaming       |",,PASS,,,v7,mistral,local,True,,True,True,,,22081.8,2214
+v2-s02,concept,,Explain the difference between TCP and UDP in a table.,table,"TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two different transport layer protocols used in internet communication. Here's a comparison of their key differences:
+
+| Feature                     | TCP                                                                  | UDP                                                                  |
+|-----------------------------|---------------------------------------------------------------------|----------------------------------------------------------------------|
+| Connection-oriented        | Yes                                                                   | No                                                                    |
+| Reliability                | Guarantees delivery, retransmits lost packets                          | Does not guarantee delivery or order of packets                       |
+| Flow Control               | Yes (slows down data flow if congestion)                              | No                                                                    |
+| Error Checking             | Yes (checksum for each packet to detect errors)                        | Minimal error checking (only checksum for large datagrams)          |
+| Order of Packets           | Preserves order of packets                                            | Does not guarantee order of packets                                   |
+| Overhead                   | Higher due to additional handshaking and acknowledgement messages      | Lower due to less overhead (no connection setup or teardown)          |
+| Suitable for               | Real-time applications that require reliable data transfer, such as VoIP and file transfers | Applications where speed is more important than reliability, such as video streaming and online gaming. |",,PASS,,,v8,mistral,local,True,True,True,True,,,19784.1,1240
+v2-s01,concept,,"What is an API, explained simply?",plain definition + example,"An Application Programming Interface (API) is a set of rules and protocols that allows different software applications to communicate with each other. In simpler terms, it acts as a bridge between two systems, enabling them to exchange data and interact in a standardized way.
+
+For careers and study, APIs are crucial because they enable the integration of various software components, making it possible to build complex systems by combining existing functionalities. For instance, an API can be used to connect a mobile app with a backend database, allowing users to access their data from multiple devices.
+
+In the context of the Chief Architect of APIs role, understanding and designing APIs is essential for managing software architecture, coordinating different components, and ensuring seamless communication between various systems.",S1:careers:Chief Architect of APIs,PASS,,,v7,mistral,local,True,,True,True,,,23371.3,2324
+v2-s01,concept,,"What is an API, explained simply?",plain definition + example,"An Application Programming Interface (API) is a set of rules and protocols that allows different software applications to communicate with each other. It defines how data should be requested from and sent to the application, making it easier for developers to build new programs that can work seamlessly with existing ones.
+
+For example, when you use an app on your phone to check the weather, the app sends a request to the weather service's API to get the current weather data. This is why APIs are crucial in today's digital world as they enable various services and devices to interact and exchange information efficiently.",,PASS,,,v8,mistral,local,True,True,True,True,,,11103.8,1060
+v2-s03,concept,,Explain polymorphism with a Java example.,Java code example,"Polymorphism is a key concept in object-oriented programming that allows objects of different types to be treated as if they were of the same type, based on their common base class or interface. This enables code reusability and flexibility.
+
+In Java, polymorphism can be achieved through method overriding and method overloading. Here's a simple example using inheritance and method overriding:
+
+```java
+class Animal {
+    public void makeSound() {
+        System.out.println(""The animal makes a sound"");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println(""Woof!"");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println(""Meow!"");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal myAnimal = new Dog(); // Polymorphism in action!
+        myAnimal.makeSound();       // Output: Woof!
+
+        Animal anotherAnimal = new Cat();
+        anotherAnimal.makeSound();  // Output: Meow!
+    }
+}
+```
+
+In this example, the `Dog` and `Cat` classes inherit from the `Animal` class and override its `makeSound()` method. In the `main` method, we create instances of both `Dog` and `Cat`, but assign them to an `Animal` variable (polymorphism). When we call the `makeSound()` method on these variables, Java knows which specific implementation to use based on the actual object's type at runtime.
+
+This example demonstrates how polymorphism allows us to write more flexible and reusable code by treating different objects as if they were of the same type.",,PASS,,,v7,mistral,local,True,,True,True,,,31838.5,2405
+v2-s03,concept,,Explain polymorphism with a Java example.,Java code example,"Polymorphism is a programming concept that allows objects of different classes to be treated as objects of a common superclass, enabling objects to take on many forms. This feature is crucial in object-oriented programming (OOP) for code reusability and flexibility.
+
+For instance, consider the following Java example with a `Shape` class and its subclasses `Circle` and `Square`. Polymorphism allows us to create an array of `Shape` objects and store both `Circle` and `Square` instances in it:
+
+```java
+public abstract class Shape {
+    public abstract double area();
+}
+
+public class Circle extends Shape {
+    private final double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public double area() {
+        return Math.PI * Math.pow(radius, 2);
+    }
+}
+
+public class Square extends Shape {
+    private final double sideLength;
+
+    public Square(double sideLength) {
+        this.sideLength = sideLength;
+    }
+
+    @Override
+    public double area() {
+        return Math.pow(sideLength, 2);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape[] shapes = new Shape[2];
+        shapes[0] = new Circle(5);
+        shapes[1] = new Square(4);
+
+        for (Shape shape : shapes) {
+            System.out.println(""Area: "" + shape.area());
+        }
+    }
+}
+```
+
+In this example, the `main` method creates an array of `Shape` objects and initializes it with a `Circle` and a `Square`. The polymorphic nature of Java enables us to call the `area()` method on both objects without explicitly checking their types. This demonstrates how polymorphism makes our code more flexible and reusable.",,PASS,,,v8,mistral,local,True,True,True,True,,,27142.1,1378
+v2-s04,study,,Explain Big-O notation in exactly two sentences.,exactly two sentences,"I'm your **career & study advisor**, so I can't help with that one. 🙂
+I can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *""I panic during exams, how do I stay calm and perform?""*
+",,FAIL,not_refused; n_sentences,scope_router (valid question refused),v7,,local,False,,True,True,,,0.8,
+v2-s04,study,,Explain Big-O notation in exactly two sentences.,exactly two sentences,"I'm your **career & study advisor**, so I can't help with that one. 🙂
+I can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *""I panic during exams, how do I stay calm and perform?""*
+",,FAIL,not_refused; n_sentences,scope_router (valid question refused),v8,,local,False,,True,True,,,0.1,
+v2-s05,study,,My DBMS exam is in 3 days and I haven't started. What should I study first?,prioritised revision,"Given that your DBMS exam is in three days and you haven't started yet, here's a time-boxed plan to help you prepare:
+
+**Days 1-2:**
+1. Revise the fundamentals of database management systems (DBMS), including their architecture, data modeling, and SQL queries.
+2. Practice common DBMS operations such as creating, altering, and deleting tables, indexes, and views.
+3. Review database normalization and denormalization techniques.
+4. Study transaction processing concepts like ACID properties, isolation levels, and deadlocks.
+5. Practice writing SQL queries to perform various operations on a database, such as selecting, inserting, updating, and deleting data.
+
+**Day 3:**
+1. Review any difficult topics or areas you struggled with during the first two days.
+2. Solve practice problems related to DBMS concepts and SQL queries.
+3. Take mock exams to assess your understanding and identify areas for improvement.
+4. Revise any remaining topics quickly, focusing on areas where you are weakest.
+5. On the day of the exam, arrive early, review key points, and stay calm. Good luck!","S1:knowledge:Choosing between a job, MS, MTech or MBA",PASS,,,v7,mistral,local,True,,True,True,,,25962.6,2430
+v2-s05,study,,My DBMS exam is in 3 days and I haven't started. What should I study first?,prioritised revision,"Based on the retrieved source [S1], it suggests that for software, data, and cloud roles, skills and projects matter more than a second degree. Given your DBMS exam is in 3 days, here's a suggested study plan:
+
+- **Day 1**: Review key concepts and formulas related to the DBMS you are studying (e.g., SQL, indexing, normalization).
+- **Day 2**: Practice solving problems based on these concepts using online resources or textbooks.
+- **Day 3**: Revise and focus on areas where you struggled during practice.
+
+It's important to prioritize understanding the core concepts and practicing problem-solving rather than trying to memorize everything in a short time. Good luck with your exam!","S1:knowledge:Choosing between a job, MS, MTech or MBA",PASS,intent,,v8,mistral,local,True,False,True,True,,1.0,15175.8,1325
+v2-s06,concept,,What is gradient descent?,"definition, no career records","Gradient Descent is a popular optimization algorithm used in machine learning and artificial intelligence to minimize the error or cost function of a model by iteratively adjusting its parameters. It works by finding the direction of steepest descent of the cost function, moving along that direction, and repeating this process until convergence.
+
+Gradient Descent matters for careers and study because it is essential in various machine learning algorithms such as linear regression, logistic regression, support vector machines (SVM), neural networks, and deep learning models. Mastering Gradient Descent can help students and professionals to build more accurate predictive models and make data-driven decisions in their respective fields.
+
+For example, a Data Scientist or Machine Learning Engineer might use Gradient Descent to optimize the parameters of a model for predicting customer churn, fraud detection, or recommendation systems. A student interested in AI or machine learning can learn about Gradient Descent as part of their curriculum and apply it in projects or capstone courses.",,PASS,,,v7,mistral,local,True,,True,True,,,24292.3,2191
+v2-s06,concept,,What is gradient descent?,"definition, no career records","Gradient Descent is a mathematical optimization algorithm used to minimize some function by iteratively moving in the direction of steepest descent as defined by the negative of the gradient. In simpler terms, it's a method for finding the best solution (minimum error) for a given problem by continuously adjusting its parameters based on the errors it makes.
+
+Gradient Descent matters significantly in careers and study, especially in machine learning and artificial intelligence, as it is essential for training models to make accurate predictions or classifications. For example, when building a model to predict house prices, Gradient Descent can help find the optimal weights for each feature (like number of rooms, location, etc.) that minimize the error between predicted and actual prices.",,PASS,,,v8,mistral,local,True,True,True,True,,,14074.4,1057
+v2-s07,concept,,Give two examples each of classification and regression problems.,2 examples each,"Based on the provided context, I don't have a student profile or any specific job description to reference. Here are general examples of classification and regression problems:
+
+1. Classification Problems:
+   - **Email Spam Detection**: Given an email, classify it as either spam or not spam.
+   - **Customer Churn Prediction**: Determine whether a customer is likely to cancel their subscription (churn) or continue using the service.
+
+2. Regression Problems:
+   - **House Price Prediction**: Estimate the price of a house based on features such as its size, location, and number of rooms.
+   - **Stock Price Forecasting**: Predict future stock prices for a specific company based on historical data.",,PASS,,,v7,mistral,local,True,,True,True,,,24192.9,2159
+v2-s07,concept,,Give two examples each of classification and regression problems.,2 examples each,"Based on the available career records, here are two career options that align with your skills or interests:
+
+1. **Data Analyst** - This role requires strong analytical and problem-solving skills, which you demonstrated through your work. However, it would benefit from additional expertise in programming languages like Python [S#] or R [S#].
+
+2. **Business Intelligence (BI) Developer** - Your experience with SQL [S#] and dashboards suggests that this career might be a good fit. To further enhance your qualifications, consider learning tools such as Power BI [S#] or Tableau [S#].
+
+To help narrow down the best option for you, do you prefer working with large datasets to uncover patterns and trends, or creating interactive dashboards to visualize data for business teams?",,FAIL,must_include_all; intent,retrieval (expected facts not in retrieved context),v8,mistral,local,True,False,True,False,,,39456.8,1301
+v2-s08,study,,How can I stop procrastinating while studying for semester exams?,practical techniques,"To overcome procrastination while studying for semester exams, follow these steps:
+
+1. Start with a 10-minute task to overcome the starting barrier.
+2. Use time blocks (Pomodoro technique: 25 minutes focus, 5 minutes break).
+3. Keep your phone out of reach during study sessions.
+4. Track visible progress (use a checklist or streak system).
+5. Study with a peer for accountability.
+6. Remember that motivation follows action; small daily wins matter more than occasional long sessions.",S1:knowledge:Beating procrastination and staying motivated,PASS,,,v7,mistral,local,True,,True,True,,,22651.7,2222
+v2-s08,study,,How can I stop procrastinating while studying for semester exams?,practical techniques,"To effectively manage your study time and reduce procrastination during semester exam preparations:
+
+1. Start with a 10-minute task to overcome the starting barrier (Source: Student Wellbeing And Productivity).
+2. Use time blocks, such as the Pomodoro Technique (25 minutes focus, 5 minutes break), to maintain your concentration and productivity (Source: Student Wellbeing And Productivity).
+3. Keep your phone out of reach while studying to minimize distractions (Source: Student Wellbeing And Productivity).
+4. Track visible progress by creating a checklist or using a streak system to keep yourself motivated (Source: Student Wellbeing And Productivity).
+5. Study with a peer for accountability and additional motivation (Source: Student Wellbeing And Productivity).
+6. Remember that small daily wins matter more than occasional long sessions, so aim to make consistent progress each day (Source: Student Wellbeing And Productivity).
+
+If your current semester syllabus is available, I can help you create a study plan tailored to the topics covered in the syllabus. Can you provide me with the syllabus for your current semester?",S1:knowledge:Beating procrastination and staying motivated,PASS,,,v8,mistral,local,True,True,True,True,,,58789.8,1076
+v2-c01,career,,Name two careers that combine finance and programming.,exactly two,"Based on the provided career records, here are two careers that combine finance and programming:
+
+1) **Data Analyst - Finance**: This role designs, builds, or maintains reliable data pipelines and data platforms, with a focus on financial data. Required skills include SQL, Relational Data, Financial and Accounting Concepts, SaaS Metrics, Python (numpy, pandas, scikit), R, Excel, ERP Systems, Business Intelligence Tools (Looker, Tableau, Business Objects, Microstrategy), MPP Databases (Snowflake, Redshift, BigQuery, Vertica), ETL Pipelines, Data Debugging, Automating Processes [S1].
+
+2) **Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance**: This role analyzes business or operational data and turns it into clear insights, focusing on financial analysis and using reporting platforms like Tableau, Power BI, Alteryx. Relevant skills include Finance, Accounting, Data analytics, Reporting platforms [S4].
+
+Both careers require a strong understanding of finance concepts and programming skills such as SQL, Python, R, and Excel.","S1:careers:Data Analyst - Finance | S2:knowledge:Entry-level tech and data career paths | S3:careers:Director, People Finance | S4:careers:Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance",PASS,,,v7,mistral,local,True,,True,True,1.0,1.0,74294.3,3100
+v2-c01,career,,Name two careers that combine finance and programming.,exactly two,"Two career options that involve both finance and programming are:
+
+1. **Data Analyst - Finance** [S1]: This role requires SQL, Relational Data, Financial and Accounting Concepts, SaaS Metrics, Python (numpy, pandas, scikit), R, Scripting Languages (Python, Ruby, Perl, Bash), Excel, ERP Systems, Financial Planning Tools, Business Intelligence Tools (Looker, Tableau, Business Objects, Microstrategy), MPP Databases (Snowflake, Redshift, BigQuery, Vertica), ETL Pipelines, Data Debugging, Automating Processes. Your skills in SQL and Python align well with this role.
+
+2. **Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance** [S4]: This position involves finance, accounting, data analytics, reporting platforms, and programming languages like Microsoft's M and DAX. Additionally, the use of tools such as Tableau, Power BI, Alteryx is also required. Your skills in SQL and Python, along with your interest in data analysis, could be beneficial for this role.
+
+Both careers require a strong foundation in finance concepts and programming languages, which you seem to have based on the stated skills. To make an informed decision, it would be helpful to consider which area of finance interests you more: general finance or manufacturing specifically.","S1:careers:Data Analyst - Finance | S2:careers:Director, People Finance | S3:careers:Intern Program | S4:careers:Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance | S5:careers:A/P and A/R Associate | S6:knowledge:Switching careers",PASS,,,v8,mistral,local,True,True,True,True,1.0,1.0,52048.4,2469
+v2-c02,career,,Is DevOps a good career for a fresher?,direct answer first,"No, DevOps is not a good career for a fresher based on the provided context. The student profile does not have an analysed profile yet, so there's no information about the student's skills or experience. However, the careers retrieved from the sources require substantial professional experience and specific skills such as Cloud infrastructure technologies, Enterprise security, Networking, Virtualization, DevOps practices, Splunk deployment, Regular Expressions, Splunk Dashboards, Cloud computing, Monitoring tools integration, Terraform, Deployment Manager, CloudFormation, Chef, Ansible, Docker, Kubernetes, and Relational databases. These skills and experience are typically not available for freshers.
+
+To prepare for a career in DevOps, the student should consider gaining relevant education, building projects that demonstrate their understanding of the required skills, and acquiring experience through internships or entry-level positions. It's also essential to keep up with industry trends and continuously learn new technologies and best practices.
+
+For more personalized advice, the student can run the 'Analyze Profile' feature in the sidebar, uploading their resume and a job description for a DevOps role. This will provide an ATS score and identify skill gaps that need to be addressed before pursuing a career in this field.","S1:careers:Cloud Services Engineer (DevOps) | S2:careers:Software Program Manager, Cloud Services | S3:careers:Solutions Architect, DevOps, Google Cloud | S4:knowledge:Why projects matter",FAIL,first_sentence_any,instruction_following (first_sentence_any),v7,mistral,local,True,,True,True,,,48180.5,3032
+v2-c02,career,,Is DevOps a good career for a fresher?,direct answer first,"Yes, DevOps is a good career choice for a fresher. From our career records, several roles related to Cloud and DevOps have been identified as suitable:
+
+1. **Software Engineer** [S1]: Requires Full Stack Development, Software Design, Coding, Efficient Data Structures, Object-Oriented Programming, Algorithms, Azure or Other Cloud Services, Web Technologies (React, CSS, Typescript, Flux), Debugging and Optimization, Distributed Systems, Computer Science Fundamentals, Algorithm Design, Web Experience Development. You have experience with Full Stack Development, Coding, and Web Technologies, so this role could be a good fit.
+
+2. **Cloud Services Engineer (DevOps)** [S2]: Requires Cloud infrastructure technologies, Enterprise security, Networking, Virtualization, Data center architecture, Integration architecture, Orchestration technologies, OSS/BSS management, Service delivery, Application development lifecycle management, Scripting languages (Perl, Ruby, Python, BASH), Public/Private Cloud experience (AWS/Azure/VMware), DevOps practices. You have some relevant skills like Networking and Scripting languages, but you might need to learn more about Cloud infrastructure technologies and Data center architecture for this role.
+
+3. **Software Program Manager, Cloud Services** [S3]: Requires Cloud architecture, DevOps, Micro-service architecture, Program/project management, Agile software development, Software engineering, Web technologies, Mobile platforms, IaaS/PaaS, DevOps automation, SaaS platforms, Software test methodologies. You have some relevant skills like Web technologies and Agile software development, but you might need to learn more about Cloud architecture, DevOps, and Micro-service architecture for this role.
+
+4. **Full-Stack Software Developer** [S4]: Requires Full-stack development, Open-source projects, Git repositories, JavaScript, Node.js, React, ECMAScript 6+, Browser debugging tools, UX/UI patterns, Agile methodology, DevOps, Software versioning tools (Git, SVN). You have some relevant skills like Full-stack development, JavaScript, and Agile methodology, but you might need to learn more about Open-source projects, Git repositories, React, Node.js, and DevOps for this role.
+
+5. **Solutions Architect, DevOps, Google Cloud** [S5]: Requires DevOps, Automating infrastructure deployment, Terraform, Deployment Manager, CloudFormation, Chef, Ansible, Docker, Kubernetes, Cloud technology, Enterprise technology, Relational databases, Infrastructure automation, Continuous integration/deployment, SQL/NoSQL. You have some relevant skills like DevOps and Automating infrastructure deployment, but you might need to learn more about Terraform, Deployment Manager, CloudFormation, Chef, Ansible, Docker, Kubernetes, Relational databases, Infrastructure automation, Continuous integration/deployment for this role.
+
+To help you decide which career path is best suited for you, consider your interests and preferences in terms of the technologies you want to work with, the type of projects you enjoy, and the working style that suits you best (e.g., team collaboration, independent work, etc.).","S1:careers:Software Engineer | S2:careers:Cloud Services Engineer (DevOps) | S3:careers:Software Program Manager, Cloud Services | S4:careers:Full-Stack Software Developer | S5:careers:Solutions Architect, DevOps, Google Cloud | S6:knowledge:Why projects matter",PASS,,,v8,mistral,local,True,True,True,True,1.0,1.0,65006.1,3019
+v2-c03,career,,Compare a business analyst and a data analyst briefly.,brief comparison,"**Business Data Analyst** ([S1]) requires strong analytical skills, proficiency in Microsoft Office products, and excellent writing and verbal skills. Your current skills include SQL and Excel, but you lack Power BI or Tableau for data visualization. To bridge the gap, learn either Power BI or Tableau to improve your chances for this career.",S1:careers:Business Data Analyst | S2:careers:Data Analyst | S3:careers:Business Intelligence Analyst | S4:careers:Business Analyst | S5:careers:Investment Business Analyst | S6:knowledge:Entry-level tech and data career paths | S7:knowledge:Technical preparation | S8:jobs:job_listing,PASS,,,v7,mistral,local,True,,True,True,1.0,1.0,84072.4,3752
+v2-c03,career,,Compare a business analyst and a data analyst briefly.,brief comparison,"Two suitable career options from our records are Business Data Analyst [S1] and Data Analyst [S2]. Both roles match your skills in Microsoft Office products, strong analytical skills, and attention to detail. However, the main difference is that a **Business Data Analyst** focuses on business or operational data analysis specifically, while a **Data Analyst** works with a broader range of data sources. The missing skill for Business Data Analyst is excellent writing and verbal skills, while Data Analyst requires data analysis and visualization tools like Tableau or Power BI.",S1:careers:Business Data Analyst | S2:careers:Data Analyst | S3:careers:Business Intelligence Analyst | S4:careers:Business Analyst | S5:careers:Investment Business Analyst | S6:knowledge:Entry-level tech and data career paths,PASS,,,v8,mistral,local,True,True,True,True,0.5,1.0,72952.5,2472
+v2-c04,career,,What should I do with my life?,clarify,"To help you find a fulfilling career path, let's first identify your interests and skills. Could you please share the subjects or kinds of work that you enjoy most (for example building things, analyzing numbers, designing, or helping people)? This will help me provide personalized career recommendations based on your preferences.",,PASS,,,v7,mistral,local,True,,True,True,,,23410.0,2092
+v2-c04,career,,What should I do with my life?,clarify,"It seems that you haven't provided me with your skills, interests, or goals yet. To help you find a suitable career, I would like to know more about the subjects or kinds of work that you enjoy most. For example, do you prefer roles involving building things, analyzing numbers, designing, or helping people? This will help me provide a more personalized recommendation.",,PASS,,,v8,mistral,local,True,True,True,True,,,15153.3,1160

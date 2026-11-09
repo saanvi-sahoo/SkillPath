@@ -1,0 +1,309 @@
+{
+  "ts": "2026-11-09T13:56:37.549422+00:00",
+  "careers": {
+    "tuning_24": {
+      "vector": {
+        "strict_p@5": 0.767,
+        "worst": [
+          {
+            "id": "q20",
+            "p@5": 0.0,
+            "top": [
+              "Analyst, Baseball Operations",
+              "Basketball Data Analyst",
+              "Global Strategy Competitive Analysis Analyst"
+            ]
+          },
+          {
+            "id": "q23",
+            "p@5": 0.2,
+            "top": [
+              "Expert Data Scientist",
+              "Product Advisor - The Domain",
+              "Principal Consultant, eCommerce IT"
+            ]
+          },
+          {
+            "id": "q02",
+            "p@5": 0.6,
+            "top": [
+              "Python Developer - Data Analysis",
+              "Python Integration Engineer",
+              "Software Engineer, Data"
+            ]
+          },
+          {
+            "id": "q06",
+            "p@5": 0.6,
+            "top": [
+              "Security Analyst",
+              "Security Analyst",
+              "Security Architect"
+            ]
+          },
+          {
+            "id": "q08",
+            "p@5": 0.6,
+            "top": [
+              "Project Coordinator",
+              "Project Manager, Development",
+              "Entry-Level Project Manager"
+            ]
+          }
+        ]
+      },
+      "vector+ce": {
+        "strict_p@5": 0.858,
+        "worst": [
+          {
+            "id": "q20",
+            "p@5": 0.2,
+            "top": [
+              "Analyst, Baseball Operations",
+              "Basketball Data Analyst",
+              "Game Security Analyst"
+            ]
+          },
+          {
+            "id": "q07",
+            "p@5": 0.4,
+            "top": [
+              "Full Stack JavaScript developer (React, Node)",
+              "Development Engineer, Full stack Node JS/React JS",
+              "Full Stack Engineer"
+            ]
+          },
+          {
+            "id": "q23",
+            "p@5": 0.4,
+            "top": [
+              "Expert Data Scientist",
+              "Office Specialists - Bookstore Clerks (F...",
+              "Web Developer"
+            ]
+          },
+          {
+            "id": "q17",
+            "p@5": 0.6,
+            "top": [
+              "Full Stack Developer",
+              "Full Stack Java Developer, Front-End Focused",
+              "Full stack developer"
+            ]
+          },
+          {
+            "id": "q19",
+            "p@5": 0.6,
+            "top": [
+              "Director, Customer Service Product and Tools",
+              "Product Management Consultant - IT",
+              "Senior Product Manager - Zestimate, Artificial Intelligence"
+            ]
+          }
+        ]
+      },
+      "vector+ce+skill": {
+        "strict_p@5": 0.933,
+        "worst": [
+          {
+            "id": "q23",
+            "p@5": 0.2,
+            "top": [
+              "Expert Data Scientist",
+              "Web Developer",
+              "Office Specialists - Bookstore Clerks (F..."
+            ]
+          },
+          {
+            "id": "q20",
+            "p@5": 0.6,
+            "top": [
+              "Analyst, Baseball Operations",
+              "Basketball Data Analyst",
+              "Business Analyst I"
+            ]
+          },
+          {
+            "id": "q19",
+            "p@5": 0.8,
+            "top": [
+              "Director, Customer Service Product and Tools",
+              "Product Management Consultant - IT",
+              "Technology Specialist"
+            ]
+          },
+          {
+            "id": "q22",
+            "p@5": 0.8,
+            "top": [
+              "Automation Software Engineer (Machine Learning & AI)",
+              "Product Manager, Voice Experiences",
+              "Autopilot Internship/Co-Op (Fall 2018)"
+            ]
+          },
+          {
+            "id": "q01",
+            "p@5": 1.0,
+            "top": [
+              "Data Science/Machine Learning - Internship",
+              "Software Developer - Machine Learning",
+              "Deep Learning Computer Architect"
+            ]
+          }
+        ]
+      }
+    },
+    "heldout_30": {
+      "vector": {
+        "strict_p@5": 0.727,
+        "worst": [
+          {
+            "id": "hq20",
+            "p@5": 0.0,
+            "top": [
+              "Sports Data Operator, Live Data Entry",
+              "Analyst, Baseball Operations",
+              "Basketball Data Analyst"
+            ]
+          },
+          {
+            "id": "hq22",
+            "p@5": 0.0,
+            "top": [
+              "Office Specialists - Bookstore Clerks (F...",
+              "Office Specialist II",
+              "Lead Fulfillment Associate (ACY1)"
+            ]
+          },
+          {
+            "id": "hq29",
+            "p@5": 0.0,
+            "top": [
+              "SYSTEMS ARCHITECT",
+              "Principal IoT Identity and Access Technologist",
+              "Telecom Software Architect - Data Networks"
+            ]
+          },
+          {
+            "id": "hq08",
+            "p@5": 0.4,
+            "top": [
+              "Java Developer",
+              "Chief Architect of APIs",
+              "Java Full-Stack Engineer"
+            ]
+          },
+          {
+            "id": "hq09",
+            "p@5": 0.4,
+            "top": [
+              "Scrum Master (Los Angeles)",
+              "Manager of Supply Chain & Merchandising Applications",
+              "Analyst, Information Management"
+            ]
+          }
+        ]
+      },
+      "vector+ce": {
+        "strict_p@5": 0.713,
+        "worst": [
+          {
+            "id": "hq20",
+            "p@5": 0.0,
+            "top": [
+              "Basketball Data Analyst",
+              "Sports Data Operator, Monitoring (Part-Time)",
+              "Sports Data Operator, Live Data Entry"
+            ]
+          },
+          {
+            "id": "hq29",
+            "p@5": 0.0,
+            "top": [
+              "Cloud Architect",
+              "Cloud IoT Architect",
+              "IOT Architect"
+            ]
+          },
+          {
+            "id": "hq09",
+            "p@5": 0.2,
+            "top": [
+              "Scrum Master (Los Angeles)",
+              "Business Analyst 2571",
+              "Project Manager Big Data Analytics"
+            ]
+          },
+          {
+            "id": "hq22",
+            "p@5": 0.4,
+            "top": [
+              "Python Integration Engineer",
+              "Python Developer - Data Analysis",
+              "OFFICE ASSISTANT (TEMP)"
+            ]
+          },
+          {
+            "id": "hq23",
+            "p@5": 0.4,
+            "top": [
+              "Expert Data Scientist",
+              "Sr. Staff Architect(Events & Streaming)",
+              "Spark Data Engineer"
+            ]
+          }
+        ]
+      },
+      "vector+ce+skill": {
+        "strict_p@5": 0.773,
+        "worst": [
+          {
+            "id": "hq20",
+            "p@5": 0.0,
+            "top": [
+              "Sports Data Operator, Monitoring (Part-Time)",
+              "Basketball Data Analyst",
+              "Sports Data Operator, Live Data Entry"
+            ]
+          },
+          {
+            "id": "hq22",
+            "p@5": 0.0,
+            "top": [
+              "OFFICE ASSISTANT (TEMP)",
+              "Office Specialist II",
+              "MANAGER, OFFICE"
+            ]
+          },
+          {
+            "id": "hq29",
+            "p@5": 0.0,
+            "top": [
+              "Cloud Architect",
+              "Cloud IoT Architect",
+              "SYSTEMS ARCHITECT"
+            ]
+          },
+          {
+            "id": "hq09",
+            "p@5": 0.2,
+            "top": [
+              "Scrum Master (Los Angeles)",
+              "Business Analyst 2571",
+              "Project Manager Big Data Analytics"
+            ]
+          },
+          {
+            "id": "hq30",
+            "p@5": 0.4,
+            "top": [
+              "Quantitative researcher",
+              "Quantitative Analyst",
+              "Business Analyst"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

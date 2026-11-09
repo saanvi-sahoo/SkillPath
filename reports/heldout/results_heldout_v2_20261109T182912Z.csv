@@ -1,0 +1,5 @@
+test_id,category,user,question,expected_behavior,actual_answer,retrieved_source_ids,pass_fail,failure_reason,root_cause,prompt_version,model_id,model_configured,scope_pass,intent_pass,citation_support_pass,factual_pass,claim_support_rate,citation_correct_rate,latency_ms,tokens
+v2-m02,multi_turn,,Give me two examples.,two examples,"Two common examples of cloud computing are:
+
+1. **Infrastructure as a Service (IaaS):** You rent virtualized hardware like servers, storage, and networking from providers like Google Cloud or Azure to build and manage your own applications [S1, S2].
+2. **Software as a Service (SaaS):** You access ready-to-use business applications or platforms over the internet, such as cloud-based data management or developer tools, without needing to maintain the underlying infrastructure [S1, S4].","S1:careers:Solutions Architect, Enterprise Migrations, Google Cloud | S2:careers:Solutions Architect, Google Cloud | S3:careers:Software Architect | S4:jobs:job_listing",PASS,,,v7,gemini-3.1-flash-lite,gemini-3.1-flash-lite,True,,True,True,0.0,1.0,10002.5,2676

@@ -19,7 +19,7 @@ Sabudh Foundation internship project (team: Saanvi Sahoo, Amrit Singh, Isa Ahmed
 | Source code | https://github.com/saanvi-sahoo/SkillPath | Branch `main`; app entry point `src/frontend/frontend.py` |
 | **Career dataset** (source of truth) | [view](https://github.com/saanvi-sahoo/SkillPath/blob/main/docs/emerging_tech_career_dataset_cleaned.csv) · [raw CSV](https://github.com/saanvi-sahoo/SkillPath/raw/main/docs/emerging_tech_career_dataset_cleaned.csv) | 2,900 × 13; quality audit: [reports/data_quality/career_dataset_report.md](reports/data_quality/career_dataset_report.md) |
 | Knowledge base (curated guides) | [src/data/knowledge_base/](src/data/knowledge_base/) | 9 guides, 37 sections embedded for the chatbot |
-| Retrieval benchmarks | [reports/embeddings/](reports/embeddings/) | Career P@5, guide Hit@k, Atlas checks |
+| Retrieval benchmarks | [reports/embeddings/](reports/embeddings/) · [reports/heldout/](reports/heldout/) | Career P@5 (by query type), guide Hit@k, Atlas checks, held-out results tables |
 | Prompt evaluation results | [reports/prompt_eval/](reports/prompt_eval/) · [docs/experiment_log.md](docs/experiment_log.md) | Prompt v1–v6 A/B tests (E0–E35) |
 | Vector database | [MongoDB Atlas, project "SkillPath AI"](https://cloud.mongodb.com/v2/6aef8bc9b64186873a8b7606#/overview) | Team login needed. Cluster `skillpath-cluster` → *Browse Collections* → database `skillpath_ai`. Setup: [docs/mongodb_atlas_setup.md](docs/mongodb_atlas_setup.md) |
 | App settings, logs, secrets | [share.streamlit.io](https://share.streamlit.io) | App owner only: ⋮ → *Settings → Secrets*, *Manage app* for logs and reboot. See [docs/deployment.md](docs/deployment.md) |
@@ -45,7 +45,7 @@ Example: `curl -X POST localhost:8000/skills/compare -H 'Content-Type: applicati
 | Vector database | **MongoDB Atlas Vector Search** (`skillpath_ai`: careers, knowledge + jobs, private profiles, feedback) | ✅ live, verified |
 | RAG precision | Cross-encoder re-ranking: career P@5 0.767 → 0.858, guide Hit@3 0.90 → 0.967 | ✅ |
 | Career Advisor chatbot | Career/study-only guardrail, question profiler, cited RAG answers, question queue | ✅ |
-| Prompt script training | Versioned prompts v1–v6, 65 + 30-case evaluations; v5 live | ✅ |
+| Prompt script training | Versioned prompts v1–v8 tested on frozen unseen sets (120 + 40 cases), intent routing, claim-level citation checks; **v7 live** (0.95 vs v6 0.90), v8 candidate. [Report](https://claude.ai/artifact/Ah127g8yDze1b9DKfmYedZ) · [method](docs/evaluation.md) | ✅ |
 | Feedback learning | 👍/👎 feedback stored in Atlas and reused on similar questions | ✅ |
 | Skill gaps + 30-day roadmap | Exact canonical comparison, prioritised + validated plan, role-specific capstone | ✅ |
 | Runs without paid keys | Keyless mode, local Mistral (Ollama), or the visitor's own API key | ✅ |

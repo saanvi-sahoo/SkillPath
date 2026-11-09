@@ -237,3 +237,6 @@ src/backend/user_memory/
 
 # local run logs (run_local.sh)
 logs/
+
+# real user questions harvested from chat logs (privacy, like reports/chat_logs/)
+reports/heldout/real_question_candidates.jsonl

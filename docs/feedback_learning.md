@@ -74,3 +74,10 @@ draft = LLM(prompt v6)  ->  problems = check_answer(draft, question profile, use
 if problems:  answer = LLM(prompt + draft + "fix only these problems: …")      # max 1 revision
 ```
 The checks are deterministic and specific to the user. For example, for "What am I missing for this job?" the draft must name every gap in *this user's* analysed profile, and for "Which gap first?" the first sentence must name one of their gaps.
+
+## 7. Feedback is reviewed before it is used (E37, review 2 §8)
+User feedback can be wrong, so it no longer changes answers automatically. Each 👍/👎 is stored as `pending`;
+`python -m src.backend.feedback_store --review` shows each one and a teammate approves or rejects it. Only approved
+rows become guidance; router anchors still need ≥ 2 different users. `--export-dev dev_feedback.jsonl` turns approved
+corrections into development test cases (never into a held-out set). The app now says feedback is used "after a team
+review". Isolated experiments (`persona_eval`, `feedback_learning_test`, unit tests) simulate approved feedback.

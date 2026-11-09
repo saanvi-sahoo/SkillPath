@@ -58,8 +58,15 @@ def compose_answer(message: str, decision: Dict, hits: List[Dict], memory: Optio
     label = (decision or {}).get("label")
     if label == "greeting":
         return load_prompt("greeting")
-    intents = _intents(message)
     idx = {id(h): i for i, h in enumerate(hits, 1)}
+    plan = next((h for h in hits if h.get("doc_type") == "generated_plan"), None)
+    if plan:  # E37: N-day plan requests -> the validated roadmap generator's plan, shown as-is
+        lines = plan["text"].splitlines()
+        return (f"**Your 30-day plan** [S{idx[id(plan)]}]\n\n{lines[0].replace('GENERATED PLAN', 'Plan')}\n\n"
+                + "\n".join(f"- {l}" for l in lines[1:]) +
+                "\n\nA 30-day plan builds working familiarity; it doesn't guarantee mastery or a job. Open *Learning Paths* to "
+                "generate it from your analysed profile.\n\n_Retrieval-only mode: built by the roadmap generator (no LLM)._")
+    intents = _intents(message)
     by_src = lambda *srcs: [h for h in hits if h.get("source") in srcs]  # noqa: E731
     careers = by_src("careers")
     best_career = max((h["score"] for h in careers), default=0.0)

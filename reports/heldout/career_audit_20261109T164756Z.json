@@ -1,0 +1,1297 @@
+{
+  "ts": "2026-11-09T16:47:37.745615+00:00",
+  "sets": {
+    "tuning_24": {
+      "n": 24,
+      "p@5": {
+        "vector": 0.767,
+        "vector+ce": 0.858,
+        "ce+skill(d6)": 0.933,
+        "ce+skill(d3)": 0.892,
+        "ce+skill(d0)": 0.858,
+        "hybrid+ce+skill(d3)": 0.892
+      },
+      "by_type": {
+        "interest": {
+          "n": 17,
+          "vector": 0.718,
+          "vector+ce": 0.835,
+          "ce+skill(d6)": 0.906,
+          "ce+skill(d3)": 0.859,
+          "ce+skill(d0)": 0.847,
+          "hybrid+ce+skill(d3)": 0.847
+        },
+        "skill": {
+          "n": 7,
+          "vector": 0.886,
+          "vector+ce": 0.914,
+          "ce+skill(d6)": 1.0,
+          "ce+skill(d3)": 0.971,
+          "ce+skill(d0)": 0.886,
+          "hybrid+ce+skill(d3)": 1.0
+        }
+      }
+    },
+    "heldout_30 (E36, audited)": {
+      "n": 30,
+      "p@5": {
+        "vector": 0.727,
+        "vector+ce": 0.713,
+        "ce+skill(d6)": 0.773,
+        "ce+skill(d3)": 0.753,
+        "ce+skill(d0)": 0.707,
+        "hybrid+ce+skill(d3)": 0.78
+      },
+      "by_type": {
+        "interest": {
+          "n": 17,
+          "vector": 0.788,
+          "vector+ce": 0.765,
+          "ce+skill(d6)": 0.8,
+          "ce+skill(d3)": 0.788,
+          "ce+skill(d0)": 0.765,
+          "hybrid+ce+skill(d3)": 0.824
+        },
+        "skill": {
+          "n": 7,
+          "vector": 0.714,
+          "vector+ce": 0.657,
+          "ce+skill(d6)": 0.829,
+          "ce+skill(d3)": 0.771,
+          "ce+skill(d0)": 0.657,
+          "hybrid+ce+skill(d3)": 0.771
+        },
+        "title": {
+          "n": 6,
+          "vector": 0.567,
+          "vector+ce": 0.633,
+          "ce+skill(d6)": 0.633,
+          "ce+skill(d3)": 0.633,
+          "ce+skill(d0)": 0.6,
+          "hybrid+ce+skill(d3)": 0.667
+        }
+      }
+    },
+    "heldout_v2_20 (frozen, final)": {
+      "n": 20,
+      "p@5": {
+        "vector": 0.61,
+        "vector+ce": 0.64,
+        "ce+skill(d6)": 0.69,
+        "ce+skill(d3)": 0.67,
+        "ce+skill(d0)": 0.65,
+        "hybrid+ce+skill(d3)": 0.6
+      },
+      "by_type": {
+        "title": {
+          "n": 5,
+          "vector": 0.8,
+          "vector+ce": 0.88,
+          "ce+skill(d6)": 0.92,
+          "ce+skill(d3)": 0.92,
+          "ce+skill(d0)": 0.88,
+          "hybrid+ce+skill(d3)": 0.84
+        },
+        "skill": {
+          "n": 5,
+          "vector": 0.8,
+          "vector+ce": 0.8,
+          "ce+skill(d6)": 0.84,
+          "ce+skill(d3)": 0.8,
+          "ce+skill(d0)": 0.8,
+          "hybrid+ce+skill(d3)": 0.84
+        },
+        "transition": {
+          "n": 5,
+          "vector": 0.44,
+          "vector+ce": 0.48,
+          "ce+skill(d6)": 0.48,
+          "ce+skill(d3)": 0.48,
+          "ce+skill(d0)": 0.52,
+          "hybrid+ce+skill(d3)": 0.48
+        },
+        "interest": {
+          "n": 5,
+          "vector": 0.4,
+          "vector+ce": 0.4,
+          "ce+skill(d6)": 0.52,
+          "ce+skill(d3)": 0.48,
+          "ce+skill(d0)": 0.4,
+          "hybrid+ce+skill(d3)": 0.24
+        }
+      }
+    }
+  },
+  "audit": [
+    {
+      "id": "hq01",
+      "query": "I want to analyse sales data and build KPI dashboards for managers",
+      "type": "interest",
+      "p@5": 1.0,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "Analytics Manager",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "Data analysis, KPI development, Campaign reporting, Dashboard creation, Data strategy deve"
+        },
+        {
+          "career": "Smashbox - Manager, Consumer Engagement, Insights and Analytics",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "Marketing, ROI Analysis, KPI Dashboards, Data Synthesis, Consumer Insights, Digital and So"
+        },
+        {
+          "career": "Manager, Data and Audience Activation",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "Data Management Platform, Audience segmentation, MarTech/AdTech platforms, Salesforce Krux"
+        },
+        {
+          "career": "Sr. Manager, Business Data Analytics",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "Analytics, Business analysis, Forecasting, Inventory management, Workforce management, Dat"
+        },
+        {
+          "career": "MANAGER-MARKETING ANALYTICS",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "Data analysis, Analytics development, Customer trend analysis, Presentation skills, Dashbo"
+        }
+      ]
+    },
+    {
+      "id": "hq02",
+      "query": "career for someone who knows Python, SQL and Excel",
+      "type": "skill",
+      "p@5": 0.6,
+      "diagnosis": "ranking (relevant records in the pool, not in the top 5)",
+      "top5": [
+        {
+          "career": "Business Analyst",
+          "domain": "Data Engineering",
+          "relevant": true,
+          "skills": "SQL, Data analysis, Data visualization, Excel, Tableau, Python, R, Big Data, BI tools"
+        },
+        {
+          "career": "Python Integration Engineer",
+          "domain": "Data Engineering",
+          "relevant": true,
+          "skills": "Python, SQL, ORM (SQLAlchemy or Django ORM), ETL, SFTP/SSH, Unix/Linux, Git, Software engi"
+        },
+        {
+          "career": "Junior Data Scientist",
+          "domain": "Machine Learning and AI",
+          "relevant": false,
+          "skills": "SQL, Tableau, Excel, R, Python, Machine Learning, Data Wrangling, Data Visualization"
+        },
+        {
+          "career": "Python Developer - Data Analysis",
+          "domain": "Software and Web Development",
+          "relevant": false,
+          "skills": "Python, Perl, SQL, Database Management, Web Development, JavaScript (AngularJS, JQuery), B"
+        },
+        {
+          "career": "Data Engineer - Digital Wealth",
+          "domain": "Data Engineering",
+          "relevant": true,
+          "skills": "Python, Apache Hadoop, Spark, HDFS, Hive, SQL, Excel, Project Management, Data Flow (Kafka"
+        }
+      ]
+    },
+    {
+      "id": "hq03",
+      "query": "I enjoy training deep learning models with PyTorch",
+      "type": "interest",
+      "p@5": 1.0,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "Deep Learning Engineer (Satellite Imaging)",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Python, C++, C, Tensorflow, PyTorch, OpenCV, Neural Networks, Lua, Go, Machine Learning, I"
+        },
+        {
+          "career": "Data Scientist (Deep Learning)",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Deep Learning, Computer Vision, Python, C++, TensorFlow, PyTorch, Caffe"
+        },
+        {
+          "career": "Research Staff Member, Distributed Deep Learning Platform",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Distributed Systems, Machine Learning, Deep Learning, Large-scale system engineering, Deep"
+        },
+        {
+          "career": "Machine Learning Engineer / AD",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Machine Learning Algorithms, Deep Learning Frameworks (TensorFlow, Caffe, PyTorch), Large "
+        },
+        {
+          "career": "Computer Vision Engineer (Deep Learning/Satellite Imaging)",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Python, C++, C, Tensorflow, PyTorch, Computer Vision, OpenCV, Neural Networks, Lua, Go, Ma"
+        }
+      ]
+    },
+    {
+      "id": "hq04",
+      "query": "roles building ETL pipelines in the cloud with Spark",
+      "type": "skill",
+      "p@5": 1.0,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "Software Development Engineer, Big Data",
+          "domain": "Data Engineering",
+          "relevant": true,
+          "skills": "Software Development, ETL Pipelines, Cloud Platforms (AWS/Azure/GCP), Database Technologie"
+        },
+        {
+          "career": "Data Engineer (Spark, Docker, AWS)",
+          "domain": "Data Engineering",
+          "relevant": true,
+          "skills": "Spark, Scala, Java, Python, ETL, SQL (Hive, PostgreSQL), Pandas, AWS, Docker, Hadoop, Jenk"
+        },
+        {
+          "career": "Enterprise ETL Engineer",
+          "domain": "Data Engineering",
+          "relevant": true,
+          "skills": "Technical Skills, ETL processes design, Data integration, Data validation, Enterprise data"
+        },
+        {
+          "career": "Data Engineer - AWS",
+          "domain": "Data Engineering",
+          "relevant": true,
+          "skills": "Big Data Applications, Python, ETL, Redshift, Apache Spark, AWS, Database structures, S3 d"
+        },
+        {
+          "career": "Cloud Architect",
+          "domain": "Data Engineering",
+          "relevant": true,
+          "skills": "Cloud Architecture, AWS services (EC2, Lambda, S3, EFS, RDS, Redshift, Route 53, CodeCommi"
+        }
+      ]
+    },
+    {
+      "id": "hq05",
+      "query": "I like automating infrastructure with Terraform and Kubernetes",
+      "type": "interest",
+      "p@5": 1.0,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "Solutions Architect, DevOps, Google Cloud",
+          "domain": "Cloud and DevOps",
+          "relevant": true,
+          "skills": "DevOps, Automating infrastructure deployment, Terraform, Deployment Manager, CloudFormatio"
+        },
+        {
+          "career": "Cloud Engineer",
+          "domain": "Cloud and DevOps",
+          "relevant": true,
+          "skills": "Linux/Windows administration, Automated deployments, Scripting (Bash/PowerShell/Python), I"
+        },
+        {
+          "career": "Software Architect",
+          "domain": "Cloud and DevOps",
+          "relevant": true,
+          "skills": "Microsoft .Net Framework and/or Core (C#), Designing cloud environments and architecting c"
+        },
+        {
+          "career": "AWS Cloud Infrastructure Architect",
+          "domain": "Cloud and DevOps",
+          "relevant": true,
+          "skills": "AWS, Terraform, Ansible, Datadog, Bitbucket, Linux, RHCE, EC2, S3, EBS, ELB, RDS, IAM, Rou"
+        },
+        {
+          "career": "Cloud Developer Intern",
+          "domain": "Cloud and DevOps",
+          "relevant": true,
+          "skills": "Python, SQL, Terraform/Ansible, Jenkins, GIT/GitLab, Linux/Unix"
+        }
+      ]
+    },
+    {
+      "id": "hq06",
+      "query": "I want to investigate security incidents and monitor threats in a SOC",
+      "type": "interest",
+      "p@5": 1.0,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "SOC Analyst / Security Operations Administrator",
+          "domain": "Cybersecurity and Networking",
+          "relevant": true,
+          "skills": "Network Security Monitoring (NSM), Log Management Systems, Security Information and Event "
+        },
+        {
+          "career": "Security Analyst",
+          "domain": "Cybersecurity and Networking",
+          "relevant": true,
+          "skills": "Network security monitoring, Malware analysis, Incident response, Endpoint protection, Usi"
+        },
+        {
+          "career": "Information Security Analyst",
+          "domain": "Cybersecurity and Networking",
+          "relevant": true,
+          "skills": "Information Security Governance, SSAE18 SOC 1 and SOC 2, Audit Frameworks, IT Risk Managem"
+        },
+        {
+          "career": "Information Security Analyst I",
+          "domain": "Cybersecurity and Networking",
+          "relevant": true,
+          "skills": "CISSP certification, Documenting security risks and controls, Enterprise control structure"
+        },
+        {
+          "career": "Security Analyst",
+          "domain": "Cybersecurity and Networking",
+          "relevant": true,
+          "skills": "Cyber Security, IT Security Compliance, Network Security, Security Auditing, Virus Prevent"
+        }
+      ]
+    },
+    {
+      "id": "hq07",
+      "query": "full stack web developer with JavaScript and React",
+      "type": "skill",
+      "p@5": 1.0,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "Full Stack JavaScript developer (React, Node)",
+          "domain": "Software and Web Development",
+          "relevant": true,
+          "skills": "React.js, Node.js, HTML5, CSS, Redux, Git, Electron framework, Unit Testing (Karma, Jasmin"
+        },
+        {
+          "career": "Full Stack JavaScript Developer",
+          "domain": "Software and Web Development",
+          "relevant": true,
+          "skills": "Enterprise class Javascript web applications, React.js, Node.js, Single page applications,"
+        },
+        {
+          "career": "Full Stack .NET Developer",
+          "domain": "Software and Web Development",
+          "relevant": true,
+          "skills": "NET, C, Java, JavaScript/TypeScript, HTML5, CSS3, Angular, React, Knockout, Vue.js, RESTfu"
+        },
+        {
+          "career": "Entry level Full Stack Web Developer",
+          "domain": "Software and Web Development",
+          "relevant": true,
+          "skills": "HTML5/CSS3/JavaScript, jQuery, Responsive Design, ReactJS, Angular, Object-Oriented Progra"
+        },
+        {
+          "career": "Full Stack Engineer",
+          "domain": "Software and Web Development",
+          "relevant": true,
+          "skills": "Web application development, API design, Java, JavaScript, REST APIs, HTML5, CSS, Node.js,"
+        }
+      ]
+    },
+    {
+      "id": "hq08",
+      "query": "Java backend engineer building APIs",
+      "type": "title",
+      "p@5": 0.6,
+      "diagnosis": "ranking (relevant records in the pool, not in the top 5)",
+      "top5": [
+        {
+          "career": "Java Developer",
+          "domain": "Software and Web Development",
+          "relevant": true,
+          "skills": "Backend development RESTful APIs Database integration Java EE (Enterprise Edition) Perform"
+        },
+        {
+          "career": "Software Engineer",
+          "domain": "Software and Web Development",
+          "relevant": true,
+          "skills": "Proficiency in one or more backend programming languages (e.g., Java, Python, Node.js, Rub"
+        },
+        {
+          "career": "Java Full-Stack Engineer",
+          "domain": "Cloud and DevOps",
+          "relevant": false,
+          "skills": "Java, REST services, Spring, Jersey, API Design, API resiliency, Cloud-based development, "
+        },
+        {
+          "career": "Backend Architect",
+          "domain": "Cloud and DevOps",
+          "relevant": false,
+          "skills": "Software engineering, System architecture, REST, Microservices, Cloud computing, Continuou"
+        },
+        {
+          "career": "Principal Implementation Engineer, Java Developer, Remote (Services)",
+          "domain": "Software and Web Development",
+          "relevant": true,
+          "skills": "Java development, API development, Understanding of software design principles, Unit testi"
+        }
+      ]
+    },
+    {
+      "id": "hq09",
+      "query": "I want to manage agile software projects as a scrum master",
+      "type": "interest",
+      "p@5": 0.2,
+      "diagnosis": "ranking (relevant records in the pool, not in the top 5)",
+      "top5": [
+        {
+          "career": "Scrum Master (Los Angeles)",
+          "domain": "Project and Business Management",
+          "relevant": true,
+          "skills": "Scrum Master, Agile team leadership, SCRUM certification, Agile Applications Development, "
+        },
+        {
+          "career": "Business Analyst 2571",
+          "domain": "Data Analysis and BI",
+          "relevant": false,
+          "skills": "Requirements gathering, Business modeling, Project scoping, Use case creation, Agile/SCRUM"
+        },
+        {
+          "career": "Project Manager Big Data Analytics",
+          "domain": "Data Engineering",
+          "relevant": false,
+          "skills": "App-Cloud Services, Agile-Scrum, Project Management, Big Data"
+        },
+        {
+          "career": "Analyst, Information Management",
+          "domain": "Software and Web Development",
+          "relevant": false,
+          "skills": "Information Management, Records Management, Data Protection, Auditing, Requirements Gather"
+        },
+        {
+          "career": "Manager of Supply Chain & Merchandising Applications",
+          "domain": "Software and Web Development",
+          "relevant": false,
+          "skills": "Application design and development, Legacy system support, Item Management, Ordering, Rece"
+        }
+      ]
+    },
+    {
+      "id": "hq10",
+      "query": "chatbots and generative AI with large language models",
+      "type": "skill",
+      "p@5": 1.0,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "Fall AI Lab Internship",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Machine Learning, Artificial Intelligence, Neural Networks, Speech modeling, Text modeling"
+        },
+        {
+          "career": "Artificial Intelligence (AI) Engineer, gRED Early Clinical Development",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Artificial Intelligence, Deep learning, Reinforcement learning, Generative methods, Softwa"
+        },
+        {
+          "career": "Los Angeles - Software Engineer, Machine Learning",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Machine Learning, Natural Language Processing (NLP), Deep Learning, Information Retrieval,"
+        },
+        {
+          "career": "Product Manager, Voice Experiences",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Artificial Intelligence, Conversational Interfaces, Natural Language Processing, Text-base"
+        },
+        {
+          "career": "Artificial Intelligence Senior Manager",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Analytics, Artificial Intelligence, Cognitive Computing, Machine Learning, Big Data Techno"
+        }
+      ]
+    },
+    {
+      "id": "hq11",
+      "query": "designing user experience and wireframes for mobile apps",
+      "type": "interest",
+      "p@5": 1.0,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "User Experience Designer",
+          "domain": "Software and Web Development",
+          "relevant": true,
+          "skills": "User Experience Design, Front-End Development, Design Systems, User Flows, Prototyping, De"
+        },
+        {
+          "career": "Software Developer",
+          "domain": "Software and Web Development",
+          "relevant": true,
+          "skills": "Mobile app development languages (e.g., Java, Swift, Kotlin) Cross-platform development (e"
+        },
+        {
+          "career": "UX Designer",
+          "domain": "Software and Web Development",
+          "relevant": true,
+          "skills": "UX Design, Wireframes, Flow diagrams, Interaction design, Visual design execution, Design "
+        },
+        {
+          "career": "User Experience Researcher",
+          "domain": "Product, UX and Design",
+          "relevant": true,
+          "skills": "Conducting primary research, Field visits, Ethnography, Surveys, Usability testing, Logs a"
+        },
+        {
+          "career": "User Experience Engineer",
+          "domain": "Software and Web Development",
+          "relevant": true,
+          "skills": "Modern front-end frameworks (e.g. React, Ruby on Rails, Sass), Coding standards, component"
+        }
+      ]
+    },
+    {
+      "id": "hq12",
+      "query": "research scientist running statistical experiments",
+      "type": "title",
+      "p@5": 1.0,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "Research Scientist",
+          "domain": "Data Science and Research",
+          "relevant": true,
+          "skills": "Forensic analysis of high stakes student assessments, Data analysis and visualization of l"
+        },
+        {
+          "career": "STOPS RESEARCH SCIENTIST 1",
+          "domain": "Data Science and Research",
+          "relevant": true,
+          "skills": "Research studies, Data analysis, Laboratory research, Scientific principles, Manuscript pr"
+        },
+        {
+          "career": "DATA SCIENTIST",
+          "domain": "Data Science and Research",
+          "relevant": true,
+          "skills": "Building predictive models, Deploying predictive models, Performing deep statistical analy"
+        },
+        {
+          "career": "Data Scientist",
+          "domain": "Data Science and Research",
+          "relevant": true,
+          "skills": "Statistical computing (R, Python), Data management, Data scrubbing, Mathematical aptitude,"
+        },
+        {
+          "career": "Data Scientist",
+          "domain": "Data Science and Research",
+          "relevant": true,
+          "skills": "Building predictive models, Regression modeling, Presenting results, SAS programming, Larg"
+        }
+      ]
+    },
+    {
+      "id": "hq13",
+      "query": "help desk role solving employees' laptop and network issues",
+      "type": "interest",
+      "p@5": 1.0,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "Remote Help Desk Tech",
+          "domain": "IT Support and Systems",
+          "relevant": true,
+          "skills": "Troubleshooting client-side network connectivity, Supporting Windows and Mac environments,"
+        },
+        {
+          "career": "IT Desktop/Help Desk Support - Technical Craft Specialist A",
+          "domain": "IT Support and Systems",
+          "relevant": true,
+          "skills": "Troubleshooting, Hardware and software installation, Remote desktop support, System mainte"
+        },
+        {
+          "career": "IT Helpdesk",
+          "domain": "IT Support and Systems",
+          "relevant": true,
+          "skills": "Desktop computing environment administration, Troubleshooting desktop issues, Hardware and"
+        },
+        {
+          "career": "Systems Administrator",
+          "domain": "Cybersecurity and Networking",
+          "relevant": true,
+          "skills": "User support, Hardware maintenance, Software maintenance, Troubleshooting, Microsoft Certi"
+        },
+        {
+          "career": "Corporate IT Systems Administrator I",
+          "domain": "Cybersecurity and Networking",
+          "relevant": true,
+          "skills": "Help Desk Support, System Administration, Troubleshooting, Equipment Deployment, Operating"
+        }
+      ]
+    },
+    {
+      "id": "hq14",
+      "query": "fraud detection and credit risk analytics in banking",
+      "type": "interest",
+      "p@5": 0.6,
+      "diagnosis": "ranking (relevant records in the pool, not in the top 5)",
+      "top5": [
+        {
+          "career": "Employee Fraud Detection Risk Manager - Monitoring and Analytics",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "Fraud rules development, Fraud analysis techniques, Data analytics, Microsoft Office appli"
+        },
+        {
+          "career": "Fraud Analyst 4",
+          "domain": "Technology and Business Operations",
+          "relevant": false,
+          "skills": "Fraud detection, Data interpretation, Merchant and credit card products knowledge"
+        },
+        {
+          "career": "Card Operations Fraud Analyst",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Fraud prevention strategies, Analytics, Model governance, Statistical techniques (Logistic"
+        },
+        {
+          "career": "Fraud Decision Scientist",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Fraud detection, Risk modeling, Data analysis, SQL programming, R and Python, Predictive m"
+        },
+        {
+          "career": "Investigator - Regional Investigations - Global Security & Investigations",
+          "domain": "Project and Business Management",
+          "relevant": false,
+          "skills": "Fraud Investigation, Risk Analysis, Root Cause Analysis, Evidence Gathering, Criminal Just"
+        }
+      ]
+    },
+    {
+      "id": "hq15",
+      "query": "master data management and data quality governance",
+      "type": "skill",
+      "p@5": 0.8,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "Data Delivery - Data Governance and Quality - Manager",
+          "domain": "Data Architecture and Governance",
+          "relevant": true,
+          "skills": "Technical skills:, Data management, Master data, Metadata, Data architecture, Data governa"
+        },
+        {
+          "career": "Master Data Management (MDM) Manager",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "Master Data Management, Data Lifecycle Management, Product Lifecycle Management, Product I"
+        },
+        {
+          "career": "Manager, Master Data Management",
+          "domain": "Data Engineering",
+          "relevant": true,
+          "skills": "Data Management, Master Data Management, Project Management, Data Quality Management, Data"
+        },
+        {
+          "career": "Manager I, Master Data Office (MDO)",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "Data Governance, Enterprise Data Governance, Data Quality Standards, Data Protection Stand"
+        },
+        {
+          "career": "Sr. Manager Data Governance (AMGA627)",
+          "domain": "Cybersecurity and Networking",
+          "relevant": false,
+          "skills": "Data Governance, Data Quality, Data Structures, Data Profiling, Databases, Master Data Man"
+        }
+      ]
+    },
+    {
+      "id": "hq16",
+      "query": "image recognition and object detection engineer",
+      "type": "interest",
+      "p@5": 1.0,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "Computer Vision Engineer (Deep Learning/Satellite Imaging)",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Python, C++, C, Tensorflow, PyTorch, Computer Vision, OpenCV, Neural Networks, Lua, Go, Ma"
+        },
+        {
+          "career": "Deep Learning Engineer (Satellite Imaging)",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Python, C++, C, Tensorflow, PyTorch, OpenCV, Neural Networks, Lua, Go, Machine Learning, I"
+        },
+        {
+          "career": "Scientist: Computer Vision & Machine Learning",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Research and development, Computer vision, Machine learning algorithms, Feature selection,"
+        },
+        {
+          "career": "Software Engineer, Machine Learning and Graphics",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Machine Learning, Image Synthesis, Image Analysis, Computer Graphics, Image Processing, GP"
+        },
+        {
+          "career": "Software Engineer, Machine Learning",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Machine learning, Data collection, Pipeline development, Model optimization, TensorFlow, C"
+        }
+      ]
+    },
+    {
+      "id": "hq17",
+      "query": "digital marketing analyst tracking campaign performance",
+      "type": "interest",
+      "p@5": 0.8,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "Digital Marketing Analyst",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "Data analysis, Digital marketing, Marketing performance measurement, Data insights transfo"
+        },
+        {
+          "career": "Analyst, Media Operations",
+          "domain": "Marketing, Sales and Customer Operations",
+          "relevant": true,
+          "skills": "Digital marketing, Display campaigns, Ad operations, Traffic campaigns, Creative trafficki"
+        },
+        {
+          "career": "Digital Media Analyst",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "Marketing analytics, Direct response digital media, Metrics analysis, Budgeting, Online to"
+        },
+        {
+          "career": "Manager, Business Intelligence & Analytics",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "Data validation and mapping, Campaign performance reporting, DoubleClick Campaign Manageme"
+        },
+        {
+          "career": "Marketing Data Analyst",
+          "domain": "Data Science and Research",
+          "relevant": false,
+          "skills": "Analyzing marketing data, Paid digital marketing campaigns, Organic social media analysis,"
+        }
+      ]
+    },
+    {
+      "id": "hq18",
+      "query": "Linux system administrator managing servers",
+      "type": "title",
+      "p@5": 1.0,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "Linux Systems Administrator",
+          "domain": "Cybersecurity and Networking",
+          "relevant": true,
+          "skills": "System administration, Troubleshooting, RedHat\u00ae Enterprise Linux, Network administration, "
+        },
+        {
+          "career": "System Administrator - Temporary",
+          "domain": "Cybersecurity and Networking",
+          "relevant": true,
+          "skills": "LINUX, Windows Server, Apache/Tomcat, Microsoft IIS, Microsoft Active Directory, Federated"
+        },
+        {
+          "career": "Systems Administrator (Linux & Windows)",
+          "domain": "Cybersecurity and Networking",
+          "relevant": true,
+          "skills": "Systems Administration, Installation and Maintenance of Updates, Security Compliance, Trou"
+        },
+        {
+          "career": "Linux Administrator",
+          "domain": "Cloud and DevOps",
+          "relevant": true,
+          "skills": "Linux operating system, Server/computer hardware and software, Clustering, MySQL, Network "
+        },
+        {
+          "career": "Operations Systems Administrator",
+          "domain": "Cybersecurity and Networking",
+          "relevant": true,
+          "skills": "System Administration, Windows Server, Linux Server, PowerShell, Visual Basic, Active Dire"
+        }
+      ]
+    },
+    {
+      "id": "hq19",
+      "query": "product manager for a SaaS platform",
+      "type": "interest",
+      "p@5": 0.6,
+      "diagnosis": "ranking (relevant records in the pool, not in the top 5)",
+      "top5": [
+        {
+          "career": "Inside Sales and Customer Growth Manager, Google Cloud",
+          "domain": "Project and Business Management",
+          "relevant": true,
+          "skills": "Relationship management, SaaS/PaaS/IaaS products, Sales cycle management, Demand generatio"
+        },
+        {
+          "career": "Global Account Manager - East",
+          "domain": "Project and Business Management",
+          "relevant": true,
+          "skills": "Enterprise sales, Sales cycle management, Salesforce management, SaaS selling, On-premise "
+        },
+        {
+          "career": "Product Support Representative",
+          "domain": "Machine Learning and AI",
+          "relevant": false,
+          "skills": "Natural Language Processing, Computer Vision, Machine Learning, Data Analysis, Software Su"
+        },
+        {
+          "career": "Product Manager I",
+          "domain": "Product, UX and Design",
+          "relevant": true,
+          "skills": "Product planning and execution, Market analysis, Financial analysis, Product strategy and "
+        },
+        {
+          "career": "Product Manager, Voice Experiences",
+          "domain": "Machine Learning and AI",
+          "relevant": false,
+          "skills": "Artificial Intelligence, Conversational Interfaces, Natural Language Processing, Text-base"
+        }
+      ]
+    },
+    {
+      "id": "hq20",
+      "query": "sports performance data analyst",
+      "type": "title",
+      "p@5": 0.0,
+      "diagnosis": "ranking (relevant records in the pool, not in the top 5)",
+      "top5": [
+        {
+          "career": "Basketball Data Analyst",
+          "domain": "Machine Learning and AI",
+          "relevant": false,
+          "skills": "Mathematics, Computer Science, Statistics, Programming (Python, C++, Java, Ruby, Perl, C, "
+        },
+        {
+          "career": "Sports Data Operator, Monitoring (Part-Time)",
+          "domain": "Technology and Business Operations",
+          "relevant": false,
+          "skills": "Data entry, Monitoring live events, Event statistics review, Communication skills, Attenti"
+        },
+        {
+          "career": "Sports Data Operator, Live Data Entry",
+          "domain": "Technology and Business Operations",
+          "relevant": false,
+          "skills": "Sports knowledge, Real-time stat tracking, Game statistics validation, Data entry, Softwar"
+        },
+        {
+          "career": "Game Data Analyst, Monetization",
+          "domain": "Data Engineering",
+          "relevant": false,
+          "skills": "Data analysis, Project management, Database querying, Schema drafting, ETL process, Docume"
+        },
+        {
+          "career": "Business Performance Analyst",
+          "domain": "Data Engineering",
+          "relevant": false,
+          "skills": "Microsoft Office Suite, Advanced MS-Excel, Microsoft SQL Server, Database Management, Stor"
+        }
+      ]
+    },
+    {
+      "id": "hq21",
+      "query": "Azure cloud solutions architect",
+      "type": "skill",
+      "p@5": 1.0,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "Azure Cloud Architect Associate - Consumer Markets",
+          "domain": "Cloud and DevOps",
+          "relevant": true,
+          "skills": "Next Generation Converged Data Center Infrastructure, Unified Fabrics, Virtualization, Orc"
+        },
+        {
+          "career": "Cloud Infrastructure Architect",
+          "domain": "Cloud and DevOps",
+          "relevant": true,
+          "skills": "Azure platform expertise, Cloud Migration, Cloud-native solutions architecture, Cloud plat"
+        },
+        {
+          "career": "Senior Cloud Solutions Architect",
+          "domain": "Cloud and DevOps",
+          "relevant": true,
+          "skills": "Cloud Computing, Microsoft Azure, AWS, Hybrid Cloud, Amazon Web Services, Google Cloud, So"
+        },
+        {
+          "career": "Associate Director, Cloud Solutions Architect",
+          "domain": "Cloud and DevOps",
+          "relevant": true,
+          "skills": "Cloud architecture, Technical architecture, Migration management, DevOps, Monitoring, High"
+        },
+        {
+          "career": "Cloud Solution Architect, Director",
+          "domain": "Cloud and DevOps",
+          "relevant": true,
+          "skills": "Network Security, Proxy, Routing, Remote Access, VPNs, PKI, WLAN, Firewalls, Application D"
+        }
+      ]
+    },
+    {
+      "id": "hq22",
+      "query": "writing Python scripts to automate repetitive office work",
+      "type": "interest",
+      "p@5": 0.2,
+      "diagnosis": "source_data / mixed (few relevant records exist)",
+      "top5": [
+        {
+          "career": "Python Integration Engineer",
+          "domain": "Data Engineering",
+          "relevant": true,
+          "skills": "Python, SQL, ORM (SQLAlchemy or Django ORM), ETL, SFTP/SSH, Unix/Linux, Git, Software engi"
+        },
+        {
+          "career": "OFFICE ASSISTANT (TEMP)",
+          "domain": "Operations and Administration",
+          "relevant": false,
+          "skills": "Answering telephone calls, Responding to inquiries, Organizing files, Setting up for event"
+        },
+        {
+          "career": "Office Specialist II",
+          "domain": "Operations and Administration",
+          "relevant": false,
+          "skills": "Technical Skills - Experience:, Typing at a rate of 50 words per minute, Computer proficie"
+        },
+        {
+          "career": "MANAGER, OFFICE",
+          "domain": "Operations and Administration",
+          "relevant": false,
+          "skills": "Computer skills, Experience in technology support, Proficiency in general office skills, A"
+        },
+        {
+          "career": "Administrative Intern",
+          "domain": "Operations and Administration",
+          "relevant": false,
+          "skills": "Proper English usage, spelling, grammar, and punctuation, Basic statistics and research me"
+        }
+      ]
+    },
+    {
+      "id": "hq23",
+      "query": "personalised recommendation engines for streaming platforms",
+      "type": "interest",
+      "p@5": 0.6,
+      "diagnosis": "ranking (relevant records in the pool, not in the top 5)",
+      "top5": [
+        {
+          "career": "Expert Data Scientist",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Recommendation systems, Personalization, Collaborative filtering, Content-based filtering,"
+        },
+        {
+          "career": "Sr. Staff Architect(Events & Streaming)",
+          "domain": "Data Engineering",
+          "relevant": false,
+          "skills": "Development of enterprise technology strategies, Publish/subscribe platforms, Stream proce"
+        },
+        {
+          "career": "Spark Data Engineer",
+          "domain": "Data Engineering",
+          "relevant": false,
+          "skills": "Spark, RDDs, DataFrames/Datasets API, Spark Structured Streaming, Scala, Java, SparkSQL, A"
+        },
+        {
+          "career": "Product Manager, Voice Experiences",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Artificial Intelligence, Conversational Interfaces, Natural Language Processing, Text-base"
+        },
+        {
+          "career": "Big Data Delivery Engineer (REMOTE) - Professional Services",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Big Data products and technical knowledge, Modern data technologies, Cloud platforms, Open"
+        }
+      ]
+    },
+    {
+      "id": "hq24",
+      "query": "real-time data streaming engineer using Kafka",
+      "type": "interest",
+      "p@5": 1.0,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "Data Engineer",
+          "domain": "Data Engineering",
+          "relevant": true,
+          "skills": "Programming in Java, Scala, or Python, Writing complex SQL on Hive, SparkSQL, Java Data Se"
+        },
+        {
+          "career": "Sr. Staff Architect(Events & Streaming)",
+          "domain": "Data Engineering",
+          "relevant": true,
+          "skills": "Development of enterprise technology strategies, Publish/subscribe platforms, Stream proce"
+        },
+        {
+          "career": "Big Data Engineer",
+          "domain": "Data Engineering",
+          "relevant": true,
+          "skills": "Java, Scala, Shell scripting, Hadoop, Spark, Elastic Search, Storm, Kafka, Data architectu"
+        },
+        {
+          "career": "Software Engineer - Big Data/Spark/Kafka",
+          "domain": "Data Engineering",
+          "relevant": true,
+          "skills": "Big Data, Hadoop, Java, Open Source Software, Enterprise Software Design, Data Services, M"
+        },
+        {
+          "career": "Spark Data Engineer",
+          "domain": "Data Engineering",
+          "relevant": true,
+          "skills": "Spark, RDDs, DataFrames/Datasets API, Spark Structured Streaming, Scala, Java, SparkSQL, A"
+        }
+      ]
+    },
+    {
+      "id": "hq25",
+      "query": "MLOps engineer deploying models to production",
+      "type": "interest",
+      "p@5": 0.6,
+      "diagnosis": "ranking (relevant records in the pool, not in the top 5)",
+      "top5": [
+        {
+          "career": "Cloud Engineer",
+          "domain": "Cloud and DevOps",
+          "relevant": true,
+          "skills": "Cloud Model Engineering, Software Development, Application Design, Performance Review, Tro"
+        },
+        {
+          "career": "DPS - IT - Jr Systems Engineer",
+          "domain": "Cloud and DevOps",
+          "relevant": true,
+          "skills": "Continuous Integration and Continuous Delivery (CI/CD) processes, Automation tools: Chef, "
+        },
+        {
+          "career": "Cloud / AWS Architect",
+          "domain": "Cloud and DevOps",
+          "relevant": true,
+          "skills": "Cloud platforms (AWS, Google Cloud Platform), Application architecture, DevOps pipelines, "
+        },
+        {
+          "career": "Software Engineer - Full Stack",
+          "domain": "Cloud and DevOps",
+          "relevant": false,
+          "skills": "Programming fundamentals, common data types, design patterns, data structures, object-orie"
+        },
+        {
+          "career": "Forward Deployed Engineer",
+          "domain": "Design, Engineering and Other Technical",
+          "relevant": false,
+          "skills": "Java, JavaScript, Technical languages, Cloud-based architectures, Build and deployment mod"
+        }
+      ]
+    },
+    {
+      "id": "hq26",
+      "query": "Power BI developer creating DAX reports",
+      "type": "interest",
+      "p@5": 0.8,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "REPORTING ANALYST - REDMOND, WA",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "Data visualization, Business intelligence, Data analysis, Microsoft Power BI Desktop, DAX "
+        },
+        {
+          "career": "Consultant - Analytics (Microsoft Power BI and Data Science)",
+          "domain": "Machine Learning and AI",
+          "relevant": false,
+          "skills": "Business Intelligence, Analytics, Data Platform, Data Science, Microsoft Analytics Stack, "
+        },
+        {
+          "career": "Business Intelligence Analyst",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "Data visualization & reporting software experience (Power BI/Tableau/Etc.), Demonstrated e"
+        },
+        {
+          "career": "Associate HR Business Intelligence Analyst",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "HR reporting, Data analysis, Data visualization tools (Tableau, Power BI), HR systems/tool"
+        },
+        {
+          "career": "Financial Business Analyst (PowerApps)",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "PowerApps, Power BI, SharePoint, Excel, SQL"
+        }
+      ]
+    },
+    {
+      "id": "hq27",
+      "query": "ethical hacker doing vulnerability assessments",
+      "type": "title",
+      "p@5": 0.8,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "Cyber Security Analyst",
+          "domain": "Cybersecurity and Networking",
+          "relevant": true,
+          "skills": "Product embedded software, Penetration testing, Ethical hacking, Vulnerability analysis, E"
+        },
+        {
+          "career": "Cyber Security Analyst",
+          "domain": "Cybersecurity and Networking",
+          "relevant": true,
+          "skills": "Security risk assessments, Network and security architecture analysis, Security alert moni"
+        },
+        {
+          "career": "Investigations Analyst, Ethical ML, Trust and Safety",
+          "domain": "Technology and Business Operations",
+          "relevant": false,
+          "skills": "Data Analysis, Hazard Assessment, Risk and Fraud Investigation, Security Vulnerabilities, "
+        },
+        {
+          "career": "Information Security Analyst",
+          "domain": "Cybersecurity and Networking",
+          "relevant": true,
+          "skills": "Information Security, Network Security, Vulnerability Assessment, Incident Response, Digit"
+        },
+        {
+          "career": "Security Analyst",
+          "domain": "Cybersecurity and Networking",
+          "relevant": true,
+          "skills": "Vulnerability validation testing, Phishing campaigns, Remediation testing, External penetr"
+        }
+      ]
+    },
+    {
+      "id": "hq28",
+      "query": "business analyst gathering requirements between IT and stakeholders",
+      "type": "interest",
+      "p@5": 1.0,
+      "diagnosis": "ok",
+      "top5": [
+        {
+          "career": "Business Analyst",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "Requirements gathering, Solution development, Software lifecycle management, Market analys"
+        },
+        {
+          "career": "Business Analyst",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "Business Analysis, Gathering business requirements, Translating requirements into operatio"
+        },
+        {
+          "career": "Business Analyst",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "Business analysis, Requirements gathering, Data analysis, Systems troubleshooting, System "
+        },
+        {
+          "career": "Business Analyst",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "Business process analysis, Technology evaluation, Requirements gathering, Application desi"
+        },
+        {
+          "career": "business analyst",
+          "domain": "Data Analysis and BI",
+          "relevant": true,
+          "skills": "Business process analysis, Project management, Requirements gathering, Quality control, So"
+        }
+      ]
+    },
+    {
+      "id": "hq29",
+      "query": "embedded systems and IoT firmware with C",
+      "type": "skill",
+      "p@5": 0.0,
+      "diagnosis": "source_data / mixed (few relevant records exist)",
+      "top5": [
+        {
+          "career": "Cloud Architect",
+          "domain": "Data Engineering",
+          "relevant": false,
+          "skills": "IoT protocols (MQTT, AMQP, HTTPS), Cloud IoT platforms (Azure IoT Hub, Stream Analytics, C"
+        },
+        {
+          "career": "Cloud IoT Architect",
+          "domain": "Machine Learning and AI",
+          "relevant": false,
+          "skills": "Data pipelines, Big data placement and processing frameworks, Hot path data processing, Sc"
+        },
+        {
+          "career": "SYSTEMS ARCHITECT",
+          "domain": "Project and Business Management",
+          "relevant": false,
+          "skills": "Embedded Software Engineering, C/C++ Development, Microcontrollers, Software Architecture "
+        },
+        {
+          "career": "IOT Architect",
+          "domain": "Machine Learning and AI",
+          "relevant": false,
+          "skills": "IoT Technology, Enterprise Software Development, Systems Modeling (Rational Rose, UML, BPM"
+        },
+        {
+          "career": "Principal IoT Identity and Access Technologist",
+          "domain": "Project and Business Management",
+          "relevant": false,
+          "skills": "IAM (Identity and Access Management) technologies, IoT security and identity, Remote attes"
+        }
+      ]
+    },
+    {
+      "id": "hq30",
+      "query": "quantitative analyst building trading models",
+      "type": "title",
+      "p@5": 0.4,
+      "diagnosis": "source_data / mixed (few relevant records exist)",
+      "top5": [
+        {
+          "career": "Quantitative researcher",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Building and testing trading systems, Developing scalable, multi-tiered applications and i"
+        },
+        {
+          "career": "Quantitative Analyst",
+          "domain": "Machine Learning and AI",
+          "relevant": true,
+          "skills": "Research mindset, Advanced econometrics, Statistics, Time series analysis, Forecasting, Ma"
+        },
+        {
+          "career": "Business Analyst",
+          "domain": "Data Analysis and BI",
+          "relevant": false,
+          "skills": "Business Analytics, Strategic Planning, Program Management, Quantitative Modeling, Financi"
+        },
+        {
+          "career": "Quantitative Business Analyst, Trust and Safety, YouTube",
+          "domain": "Data Analysis and BI",
+          "relevant": false,
+          "skills": "SQL, Dremel, R, Python, SAS, MATLAB, Data analytics, Statistical analysis, Data infrastruc"
+        },
+        {
+          "career": "Corporate Strategy Business Analyst",
+          "domain": "Data Analysis and BI",
+          "relevant": false,
+          "skills": "Financial modeling, Business case development, Quantitative analysis, Strategic planning, "
+        }
+      ]
+    }
+  ]
+}

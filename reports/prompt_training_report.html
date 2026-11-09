@@ -1,0 +1,151 @@
+<title>SkillPath Prompt Training</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column (~880px) for an evaluation report; wide tables scroll inside their own box */
+:root {
+  --paper: #f7f8f6; --ink: #1d2422; --muted: #5b6763; --rule: #d5dbd8; --panel: #eceff0; --accent: #1f6f5c; --warn: #9a5b12;
+  --display: "Newsreader", Georgia, serif; --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --paper: #141917; --ink: #e3e9e6; --muted: #9aa8a3; --rule: #2d3633; --panel: #1c2320; --accent: #5cc2a5; --warn: #e0a250; color-scheme: dark } }
+:root[data-theme="dark"] { --paper: #141917; --ink: #e3e9e6; --muted: #9aa8a3; --rule: #2d3633; --panel: #1c2320; --accent: #5cc2a5; --warn: #e0a250; color-scheme: dark }
+body { background: var(--paper); color: var(--ink); font: 15px/1.6 var(--body); }
+.wrap { max-width: 880px; margin: 0 auto; padding-block: 40px 72px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header { display: grid; gap: 10px; padding-bottom: 22px; border-bottom: 1px solid var(--rule); }
+.eyebrow { font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 650 clamp(28px, 5vw, 42px)/1.12 var(--display); margin: 0; text-wrap: balance; }
+h2 { font: 650 24px/1.25 var(--display); margin: 44px 0 10px; text-wrap: balance; }
+h3 { font: 600 16px/1.4 var(--body); margin: 26px 0 6px; }
+p, li { max-width: 70ch; } p { margin: 0 0 12px; }
+.lede { font-size: 17px; }
+.small { font-size: 13.5px; color: var(--muted); }
+.chip { display: inline-block; font: 500 12px/1 var(--mono); padding: 5px 8px; border: 1px solid var(--rule); border-radius: 999px; background: var(--panel); margin: 2px 2px 0 0; }
+.keys { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 20px 0 8px; }
+.key { background: var(--paper); padding: 14px 16px; display: grid; gap: 2px; min-width: 0; }
+.key b { font: 500 22px/1.2 var(--mono); font-variant-numeric: tabular-nums; }
+.key span { color: var(--muted); font-size: 13px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+.grid2 > * { min-width: 0; }
+.tbl { overflow-x: auto; margin: 8px 0 12px; border: 1px solid var(--rule); }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { text-align: left; padding: 7px 9px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+thead th { font: 500 11.5px/1.3 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); background: var(--panel); }
+tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+tbody th { font-weight: 500; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.t { color: var(--muted); white-space: nowrap; }
+code { font-family: var(--mono); font-size: 13px; background: var(--panel); padding: 1px 5px; border-radius: 3px; }
+pre { background: var(--panel); padding: 12px 14px; overflow-x: auto; font: 13px/1.5 var(--mono); border: 1px solid var(--rule); }
+.note { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; margin: 16px 0; }
+.note.warn { border-color: var(--warn); }
+ul { padding-left: 20px; margin: 0 0 12px; } li { margin: 3px 0; }
+footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 13px; }
+a { color: var(--accent); }
+</style>
+<div class="wrap">
+<header>
+  <div class="eyebrow">SkillPath AI · Sabudh Foundation · 10 November 2026</div>
+  <h1>Prompt training report: making the Career Advisor answer the exact question</h1>
+  <div><span class="chip">live prompt: v7</span> <span class="chip">candidate: v8</span> <span class="chip">experiments E36-E37</span></div>
+</header>
+
+<h2>Summary</h2>
+<p class="lede">The Career Advisor is improved by versioned prompts, routing and checks that are tested on fixed question sets,
+not by retraining model weights. Two team reviews drove this round: the first asked for unseen tests and stricter
+metrics (E36, prompt v7), the second for intent understanding, evidence chosen per question, claim-level citation
+checks and a focused prompt with task templates (E37, prompt v8).</p>
+<div class="keys">
+  <div class="key"><b>0.95 vs 0.9</b><span>v7 vs v6 on 120 unseen cases (all checks pass); v7 is now live</span></div>
+  <div class="key"><b>0.73</b><span>Career precision@5 on a fresh frozen set (target 0.90)</span></div>
+  <div class="key"><b>1.0</b><span>Roadmap cases passing every check (n=20)</span></div>
+  <div class="key"><b>1.0</b><span>Profile-isolation probes clean (n=40, local + Atlas)</span></div>
+</div>
+<ul>
+  <li><b>v8 on held-out v2, deployed-style model:</b> v8 not better: 0.95 vs 0.925; worse on multi_turn.</li>
+  <li><b>v8 on held-out v2, local Mistral:</b> v8 not better (preliminary): 0.833 vs 0.875; worse on concept, profile.</li>
+  <li><b>v8 on the development set:</b> not run yet.</li>
+</ul>
+
+<h2>How prompt training works here</h2>
+<ul>
+  <li>Prompts are versioned files; each new version is compared with the live one on the same questions, model, temperature and retrieval, each question answered by both versions in turn.</li>
+  <li>Objective rules (counts, word limits, labels, 30 days, no invented URLs) are Python checks; citation support is checked claim by claim with an entailment model; usefulness is scored by people (Question Satisfaction Rate, 0/1/2, blinded).</li>
+  <li>A version goes live only if it is better overall and no category is clearly worse. Test sets are frozen before the version they judge exists; ambiguous labels get a written rubric instead of being edited.</li>
+  <li>Every failure gets a root cause first (router, retrieval, grounding, prompt, instruction-following), so the responsible part is fixed.</li>
+  <li>User 👍/👎 is stored as pending; only feedback a teammate approves changes answers.</li>
+</ul>
+
+<h2>Prompt versions</h2>
+<div class="tbl"><table><thead><tr><th>Version</th><th>What changed</th><th>Result</th></tr></thead><tbody>
+<tr><th>v1</th><td>Two-line baseline</td><td>Pass 0.75; answered recipes and jokes</td></tr>
+<tr><th>v2</th><td>Scope rules, grounding, [S#] citations</td><td>Pass 0.969, but copied facts from examples</td></tr>
+<tr><th>v3</th><td>Examples as fictional students inside the system prompt</td><td>Judge relevance 5.0, groundedness 4.72</td></tr>
+<tr><th>v4</th><td>Ask when evidence is weak; related ≠ equivalent skills; salary and ATS caveats</td><td>Pass 1.0 vs 0.952 (42 paired)</td></tr>
+<tr><th>v5</th><td>Question profiler, retrieval per question type, answer contract, feedback guidance</td><td>0.98 vs 0.922 (51 paired)</td></tr>
+<tr><th>v6</th><td>Explicit scope; draft → check → revise once</td><td>0.90 on 120 held-out cases</td></tr>
+<tr><th>v7 (live)</th><td>Three layers; parsed intent; allowed citation labels; ATS as stored estimate; citation and profile checks</td><td>0.95 vs v6 0.90 (120 held-out)</td></tr>
+<tr><th>v8</th><td>10-rule core + one task template per intent; structured intent with secondary requests; evidence by intent; validated roadmap plan as a source; NLI claim check; task contracts</td><td>See E37 below</td></tr>
+</tbody></table></div>
+
+<h2>E36: v6 vs v7 on 120 unseen cases (final)</h2>
+<h3>E36 · v6 vs v7 · 120 held-out cases</h3><p>Frozen before v7 was written. Both versions answer each case on the same model; the first 10 pairs ran on Gemini 3.5 Flash (reported as gemini-3.6-flash) until its free daily quota ran out, the rest on Gemini 3.1 Flash-Lite. <span class="chip">120 of 120 cases (complete)</span> <span class="chip">model: gemini-3.1-flash-lite, gemini-3.6-flash</span></p>
+<div class="grid2"><div class="tbl"><table><thead><tr><th>Metric</th><th>Target</th><th>v6</th><th>v7</th></tr></thead><tbody><tr><th scope='row'>All checks pass</th><td class='t'>–</td><td class='num'>0.9</td><td class='num'>0.95</td></tr><tr><th scope='row'>Scope accuracy</th><td class='t'>&gt;= 0.98</td><td class='num'>0.992</td><td class='num'>0.992</td></tr><tr><th scope='row'>Out-of-scope leaks</th><td class='t'>0</td><td class='num'>0</td><td class='num'>0</td></tr><tr><th scope='row'>Constraint compliance</th><td class='t'>&gt;= 0.95</td><td class='num'>0.863</td><td class='num'>0.98</td></tr><tr><th scope='row'>Factual correctness</th><td class='t'>&gt;= 0.95</td><td class='num'>0.96</td><td class='num'>0.96</td></tr><tr><th scope='row'>Citation labels valid + lexical support</th><td class='t'>&gt;= 0.95</td><td class='num'>0.853</td><td class='num'>0.933</td></tr><tr><th scope='row'>Cited claims supported (NLI)</th><td class='t'>higher is better</td><td class='num'>0.252</td><td class='num'>0.261</td></tr><tr><th scope='row'>Cited claims contradicted (NLI)</th><td class='t'>0</td><td class='num'>0.0</td><td class='num'>0.004</td></tr><tr><th scope='row'>Profile consistency</th><td class='t'>1.0</td><td class='num'>0.977</td><td class='num'>0.977</td></tr><tr><th scope='row'>Answers revised by the self-check</th><td class='t'>–</td><td class='num'>2</td><td class='num'>35</td></tr><tr><th scope='row'>Average latency (ms)</th><td class='t'>–</td><td class='num'>9009</td><td class='num'>13729</td></tr><tr><th scope='row'>Average tokens per answer</th><td class='t'>–</td><td class='num'>2497</td><td class='num'>2560</td></tr></tbody></table></div>
+<div class="tbl"><table><thead><tr><th>Category</th><th>v6</th><th>v7</th></tr></thead><tbody><tr><th scope='row'>ambiguous_followup</th><td class='num'>0.8</td><td class='num'>0.9</td></tr><tr><th scope='row'>career_study</th><td class='num'>1.0</td><td class='num'>1.0</td></tr><tr><th scope='row'>out_of_scope</th><td class='num'>1.0</td><td class='num'>1.0</td></tr><tr><th scope='row'>resume_jd</th><td class='num'>0.833</td><td class='num'>0.933</td></tr><tr><th scope='row'>skill_confusion</th><td class='num'>0.85</td><td class='num'>0.9</td></tr></tbody></table></div></div>
+<p class="small">Failure root causes:</p><ul class="small"><li><b>v6</b>: instruction_following × 7, prompt × 3, scope_router × 1, grounding × 1</li><li><b>v7</b>: prompt × 3, scope_router × 1, grounding × 1, instruction_following × 1</li></ul>
+<p class="note">Two scoring corrections were applied after the run to both versions alike: the ambiguous MySQL⇔SQL case is scored by a written rubric, and a false-alarm bug in the profile-contradiction detector was fixed (before the fix: v7 0.883, v6 0.817). v7 won either way and is now live.</p>
+
+<h2>E37: v7 vs v8</h2>
+<p>v8 implements the second review. The decisive comparison is held-out v2, frozen before v8 was evaluated; the development set was used while building v8.</p>
+<h3>E37 · v7 vs v8 · held-out v2 (40 cases) · deployed-style model</h3><p>Held-out v2 was written and frozen before v8 was evaluated. Model: Gemini 3.1 Flash-Lite (what a visitor's free Gemini key would use). v8 was re-run after the intent-routing fixes; v7 answers are from the same model, and the one case whose route changed with the router fix was re-run for v7 too. <span class="chip">40 of 40 cases (complete)</span> <span class="chip">model: gemini-3.1-flash-lite</span></p>
+<div class="grid2"><div class="tbl"><table><thead><tr><th>Metric</th><th>Target</th><th>v7</th><th>v8</th></tr></thead><tbody><tr><th scope='row'>All checks pass</th><td class='t'>–</td><td class='num'>0.925</td><td class='num'>0.95</td></tr><tr><th scope='row'>Intent routed correctly</th><td class='t'>-</td><td class='num'>–</td><td class='num'>0.921</td></tr><tr><th scope='row'>Scope accuracy</th><td class='t'>&gt;= 0.98</td><td class='num'>0.925</td><td class='num'>0.95</td></tr><tr><th scope='row'>Out-of-scope leaks</th><td class='t'>0</td><td class='num'>0</td><td class='num'>0</td></tr><tr><th scope='row'>Constraint compliance</th><td class='t'>&gt;= 0.95</td><td class='num'>1.0</td><td class='num'>1.0</td></tr><tr><th scope='row'>Factual correctness</th><td class='t'>&gt;= 0.95</td><td class='num'>0.938</td><td class='num'>0.938</td></tr><tr><th scope='row'>Citation labels valid + lexical support</th><td class='t'>&gt;= 0.95</td><td class='num'>0.96</td><td class='num'>0.977</td></tr><tr><th scope='row'>Cited claims supported (NLI)</th><td class='t'>higher is better</td><td class='num'>0.167</td><td class='num'>0.25</td></tr><tr><th scope='row'>Cited claims contradicted (NLI)</th><td class='t'>0</td><td class='num'>0.0</td><td class='num'>0.0</td></tr><tr><th scope='row'>Profile consistency</th><td class='t'>1.0</td><td class='num'>1.0</td><td class='num'>1.0</td></tr><tr><th scope='row'>Answers revised by the self-check</th><td class='t'>–</td><td class='num'>7</td><td class='num'>8</td></tr><tr><th scope='row'>Average latency (ms)</th><td class='t'>–</td><td class='num'>6254</td><td class='num'>7727</td></tr><tr><th scope='row'>Average tokens per answer</th><td class='t'>–</td><td class='num'>2274</td><td class='num'>1422</td></tr></tbody></table></div>
+<div class="tbl"><table><thead><tr><th>Category</th><th>v7</th><th>v8</th></tr></thead><tbody><tr><th scope='row'>career</th><td class='num'>1.0</td><td class='num'>1.0</td></tr><tr><th scope='row'>concept</th><td class='num'>0.8</td><td class='num'>1.0</td></tr><tr><th scope='row'>multi_turn</th><td class='num'>1.0</td><td class='num'>0.875</td></tr><tr><th scope='row'>profile</th><td class='num'>1.0</td><td class='num'>1.0</td></tr><tr><th scope='row'>roadmap</th><td class='num'>0.75</td><td class='num'>0.75</td></tr><tr><th scope='row'>scope</th><td class='num'>0.75</td><td class='num'>1.0</td></tr><tr><th scope='row'>study</th><td class='num'>1.0</td><td class='num'>1.0</td></tr></tbody></table></div></div>
+<p class="small">Failure root causes:</p><ul class="small"><li><b>v7</b>: prompt × 3</li><li><b>v8</b>: prompt × 1, retrieval × 1</li></ul>
+<h3>E37 · v7 vs v8 (before the routing fixes) · held-out v2 · local model</h3><p>Same cases on the local Mistral 7B (Ollama), the model the app uses on a laptop. This run started before the intent-routing and router fixes, so its v8 is the earlier v8. <span class="chip">24 of 40 cases (preliminary: run incomplete)</span> <span class="chip">model: mistral</span></p>
+<div class="grid2"><div class="tbl"><table><thead><tr><th>Metric</th><th>Target</th><th>v7</th><th>v8</th></tr></thead><tbody><tr><th scope='row'>All checks pass</th><td class='t'>–</td><td class='num'>0.875</td><td class='num'>0.833</td></tr><tr><th scope='row'>Intent routed correctly</th><td class='t'>-</td><td class='num'>–</td><td class='num'>0.696</td></tr><tr><th scope='row'>Scope accuracy</th><td class='t'>&gt;= 0.98</td><td class='num'>0.958</td><td class='num'>0.958</td></tr><tr><th scope='row'>Out-of-scope leaks</th><td class='t'>0</td><td class='num'>0</td><td class='num'>0</td></tr><tr><th scope='row'>Constraint compliance</th><td class='t'>&gt;= 0.95</td><td class='num'>0.818</td><td class='num'>0.909</td></tr><tr><th scope='row'>Factual correctness</th><td class='t'>&gt;= 0.95</td><td class='num'>0.955</td><td class='num'>0.864</td></tr><tr><th scope='row'>Citation labels valid + lexical support</th><td class='t'>&gt;= 0.95</td><td class='num'>1.0</td><td class='num'>1.0</td></tr><tr><th scope='row'>Cited claims supported (NLI)</th><td class='t'>higher is better</td><td class='num'>0.75</td><td class='num'>0.588</td></tr><tr><th scope='row'>Cited claims contradicted (NLI)</th><td class='t'>0</td><td class='num'>0.0</td><td class='num'>0.0</td></tr><tr><th scope='row'>Profile consistency</th><td class='t'>1.0</td><td class='num'>1.0</td><td class='num'>1.0</td></tr><tr><th scope='row'>Answers revised by the self-check</th><td class='t'>–</td><td class='num'>3</td><td class='num'>6</td></tr><tr><th scope='row'>Average latency (ms)</th><td class='t'>–</td><td class='num'>41050</td><td class='num'>37588</td></tr><tr><th scope='row'>Average tokens per answer</th><td class='t'>–</td><td class='num'>2629</td><td class='num'>1677</td></tr></tbody></table></div>
+<div class="tbl"><table><thead><tr><th>Category</th><th>v7</th><th>v8</th></tr></thead><tbody><tr><th scope='row'>career</th><td class='num'>0.75</td><td class='num'>1.0</td></tr><tr><th scope='row'>concept</th><td class='num'>1.0</td><td class='num'>0.8</td></tr><tr><th scope='row'>profile</th><td class='num'>1.0</td><td class='num'>0.75</td></tr><tr><th scope='row'>study</th><td class='num'>0.667</td><td class='num'>0.667</td></tr></tbody></table></div></div>
+<p class="small">Failure root causes:</p><ul class="small"><li><b>v7</b>: scope_router × 1, instruction_following × 1, prompt × 1</li><li><b>v8</b>: prompt × 2, scope_router × 1, retrieval × 1</li></ul>
+<p class="note warn"><b>Decision: v7 stays live; v8 stays the candidate.</b> On the deployed-style model v8 is better overall (all checks 0.95 vs 0.925, no wrongly refused questions, 37% fewer tokens, better claim support), but it lost one of the 8 multi-turn cases (it explained IaaS and SaaS without naming a concrete provider). The acceptance rule says no category may be more than 5 points worse, so v8 is not activated yet. Next: require concrete, named examples in the concept template, test on the development set, and re-check on new unseen cases.</p>
+<p class="small">Intent routing (v8): 0.857 → 0.968 on the development set after generalising the rules; on held-out v2 it was 0.68 before the fixes (the clean number) and 0.92 after (no longer unseen). Router fixes for every version: short follow-ups inherit the scope of an in-scope conversation; "what can you help me with?" is a greeting by rule (the hosted router model had started refusing it).</p>
+<p class="small">Scoring corrections applied to every version alike: the refusal detector no longer counts clarifying questions or numbered answers as refusals; the entailment check no longer calls correct absence or count statements about the student's profile ("AutoCAD is not listed in the JD", "you meet 1 of 6") contradictions; those facts are checked by the deterministic profile check instead.</p>
+<h3>E37 · v7 vs v8 · development set (67 cases)</h3><p class='note warn'>Not run yet.</p>
+
+<h2>Citations: checking meaning, not word overlap</h2>
+<p>An entailment model (NLI) now reads each cited claim against its source and labels it supported, contradicted or insufficient.
+The review's example is caught: a source listing "Python, SQL" and the answer "The Data Engineer role does not require Python or SQL [S1]" is a
+contradiction. Only real statements are checked (titles and advice are skipped). Applied to earlier v5/v6 answers, a third of cited claims
+were stated by their source, half went beyond it, and 3.5% contradicted it; the old word-overlap check had passed 87%.</p>
+
+<h2>Career retrieval</h2>
+<p>Strict precision@5 by configuration (configurations were chosen on the tuning set; the frozen v2 set gives the honest number):</p>
+<div class='tbl'><table><thead><tr><th>Set</th><th>vector</th><th>vector+ce</th><th>ce+skill(d6)</th><th>ce+skill(d3)</th><th>ce+skill(d0)</th><th>hybrid+ce+skill(d3)</th></tr></thead><tbody><tr><th scope='row'>tuning_24</th><td class='num'>0.767</td><td class='num'>0.858</td><td class='num'>0.933</td><td class='num'>0.892</td><td class='num'>0.858</td><td class='num'>0.892</td></tr><tr><th scope='row'>heldout_30 (E36, audited)</th><td class='num'>0.727</td><td class='num'>0.713</td><td class='num'>0.773</td><td class='num'>0.753</td><td class='num'>0.707</td><td class='num'>0.78</td></tr><tr><th scope='row'>heldout_v2_20 (frozen, final)</th><td class='num'>0.61</td><td class='num'>0.64</td><td class='num'>0.69</td><td class='num'>0.67</td><td class='num'>0.65</td><td class='num'>0.6</td></tr></tbody></table></div>
+<p>Final live configuration (cross-encoder, skill re-ranker with domain bonus 6, implied skills at 0.75, interest/career-change expansion, one record per career title):</p>
+<div class="tbl"><table><thead><tr><th>Set</th><th>P@5</th><th>By query type</th></tr></thead><tbody><tr><th scope='row'>tuning_24</th><td class='num'>0.925</td><td>interest 0.89, skill 1.0</td></tr><tr><th scope='row'>heldout_30 (audited)</th><td class='num'>0.773</td><td>interest 0.8, skill 0.83, title 0.63</td></tr><tr><th scope='row'>heldout_v2_20 (final)</th><td class='num'>0.73</td><td>interest 0.68, skill 0.8, title 0.88, transition 0.56</td></tr></tbody></table></div>
+<p>Students describing interests or a change of field are the weak spot; career titles and skill lists do well. Of the 30 audited queries, 8 failures are ranking problems and 3 come from borderline domain labels in the dataset. The 0.90 target is not met yet.</p>
+
+<h2>Next steps</h2>
+<ul>
+  <li>Teammates score the blinded answers (<code>src/eval/satisfaction.py</code>) to get the Question Satisfaction Rate per version.</li>
+  <li>Relabel borderline domains in the career dataset; larger candidate pool for career-change queries.</li>
+  <li>Label the 17 real user questions into a new held-out set; approve or reject pending feedback weekly.</li>
+  <li>Activate v8 only if it wins on held-out v2 and on the human QSR.</li>
+</ul>
+
+<h2>Team ownership</h2>
+<div class="tbl"><table><thead><tr><th>Owner</th><th>Area</th></tr></thead><tbody>
+<tr><th>Amrit Singh</th><td>Scope, unclear questions, follow-ups, intent routing</td></tr>
+<tr><th>Saanvi Sahoo</th><td>CV/JD facts, skill gaps, roadmaps, citation support</td></tr>
+<tr><th>Isa Ahmed Khan</th><td>Embeddings, retrieval, re-ranking, career audit, performance</td></tr>
+</tbody></table></div>
+
+<h2>Reproduce</h2>
+<pre>python -m src.eval.heldout_offline && python -m src.eval.career_audit
+LLM_PROVIDER=api CHAT_MODEL=gemini-3.1-flash-lite python -m src.eval.heldout_eval --set heldout_v2 --versions v7 v8 \
+    --expect-model gemini-3.1-flash-lite --workers 2
+LLM_PROVIDER=local OLLAMA_MODEL=mistral python -m src.eval.heldout_eval --set heldout_v2 --versions v7 v8
+python -m src.eval.satisfaction export reports/heldout/heldout_eval_heldout_v2_&lt;ts&gt;.json --n 40
+python docs/build_prompt_training_report.py</pre>
+<footer>All numbers are read from <code>reports/heldout/</code> by <code>docs/build_prompt_training_report.py</code>. Method: <code>docs/evaluation.md</code>.
+Repository: <a href="https://github.com/saanvi-sahoo/SkillPath">github.com/saanvi-sahoo/SkillPath</a></footer>
+</div>

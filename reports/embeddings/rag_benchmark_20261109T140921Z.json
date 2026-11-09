@@ -1,0 +1,327 @@
+{
+  "ts": "2026-11-09T14:09:01.876715+00:00",
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "knowledge": {
+    "vector": {
+      "hit@1": 0.767,
+      "hit@3": 0.9,
+      "mrr@5": 0.842,
+      "ms_median": 9.0,
+      "misses": [
+        {
+          "q": "How should I phrase my project achievements on a CV?",
+          "expect": "Writing strong bullet points",
+          "got": [
+            "Presenting projects in interviews and on resumes",
+            "Why projects matter",
+            "Writing a strong project README"
+          ]
+        },
+        {
+          "q": "How do I answer 'tell me about a time you failed'?",
+          "expect": "Behavioural questions and the STAR method",
+          "got": [
+            "Communicating with your manager and team",
+            "Behavioural questions and the STAR method",
+            "Writing strong bullet points"
+          ]
+        },
+        {
+          "q": "How many hours a week should I plan for learning while in college?",
+          "expect": "Planning a study schedule",
+          "got": [
+            "Time management for students and working learners",
+            "Planning a study schedule",
+            "Beating procrastination and staying motivated"
+          ]
+        },
+        {
+          "q": "I'm an accountant who wants to move into analytics, how do I transition?",
+          "expect": "Switching careers",
+          "got": [
+            "Entry-level tech and data career paths",
+            "Switching careers",
+            "Writing strong bullet points"
+          ]
+        },
+        {
+          "q": "How do I negotiate my first offer letter?",
+          "expect": "Salary and offers",
+          "got": [
+            "Asking for a raise or promotion",
+            "Writing a cover letter",
+            "Applying abroad and recommendation letters"
+          ]
+        },
+        {
+          "q": "I keep delaying my study sessions, any tricks?",
+          "expect": "Beating procrastination and staying motivated",
+          "got": [
+            "Planning a study schedule",
+            "Beating procrastination and staying motivated",
+            "Managing exam stress"
+          ]
+        },
+        {
+          "q": "I'm working full time, how do I fit in learning?",
+          "expect": "Time management for students and working learners",
+          "got": [
+            "Learning by building projects",
+            "Growing your career while working",
+            "Studying effectively for long-term exams and placements"
+          ]
+        }
+      ]
+    },
+    "hybrid": {
+      "hit@1": 0.667,
+      "hit@3": 0.8,
+      "mrr@5": 0.74,
+      "ms_median": 11.7,
+      "misses": [
+        {
+          "q": "How do recruiters' software filter resumes automatically?",
+          "expect": "How Applicant Tracking Systems work",
+          "got": [
+            "Raising an ATS match score",
+            "LinkedIn profile that recruiters find",
+            "Presenting projects in interviews and on resumes"
+          ]
+        },
+        {
+          "q": "How should I phrase my project achievements on a CV?",
+          "expect": "Writing strong bullet points",
+          "got": [
+            "Presenting projects in interviews and on resumes",
+            "Why projects matter",
+            "Writing a strong project README"
+          ]
+        },
+        {
+          "q": "What SQL and stats topics come up in analyst interviews?",
+          "expect": "Technical preparation",
+          "got": [
+            "Entry-level tech and data career paths",
+            "Typical hiring stages",
+            "Technical preparation"
+          ]
+        },
+        {
+          "q": "Which memorisation methods actually work for exams?",
+          "expect": "Evidence-based learning techniques",
+          "got": [
+            "Studying effectively for long-term exams and placements",
+            "Preparing for GATE, CAT and GRE",
+            "Planning a study schedule"
+          ]
+        },
+        {
+          "q": "I don't know which field suits me, how do I decide?",
+          "expect": "Choosing a career direction",
+          "got": [
+            "Switching careers",
+            "Choosing between a job, MS, MTech or MBA",
+            "Choosing a career direction"
+          ]
+        },
+        {
+          "q": "I'm an accountant who wants to move into analytics, how do I transition?",
+          "expect": "Switching careers",
+          "got": [
+            "Entry-level tech and data career paths",
+            "Choosing courses and certifications",
+            "Switching careers"
+          ]
+        },
+        {
+          "q": "How do I negotiate my first offer letter?",
+          "expect": "Salary and offers",
+          "got": [
+            "Writing a cover letter",
+            "Asking for a raise or promotion",
+            "The first weeks in a new job"
+          ]
+        },
+        {
+          "q": "I get anxious before exams, what can I do?",
+          "expect": "Managing exam stress",
+          "got": [
+            "Studying effectively for long-term exams and placements",
+            "Preparing for GATE, CAT and GRE",
+            "Before and after the interview"
+          ]
+        },
+        {
+          "q": "I'm working full time, how do I fit in learning?",
+          "expect": "Time management for students and working learners",
+          "got": [
+            "Growing your career while working",
+            "Planning a study schedule",
+            "Studying effectively for long-term exams and placements"
+          ]
+        },
+        {
+          "q": "What should I focus on in my first month at a new company?",
+          "expect": "The first weeks in a new job",
+          "got": [
+            "Growing your career while working",
+            "The first weeks in a new job",
+            "Switching careers"
+          ]
+        }
+      ]
+    },
+    "vector+rerank": {
+      "hit@1": 0.8,
+      "hit@3": 0.967,
+      "mrr@5": 0.884,
+      "ms_median": 46.0,
+      "misses": [
+        {
+          "q": "My resume isn't getting shortlisted, how do I match the job keywords better?",
+          "expect": "Raising an ATS match score",
+          "got": [
+            "How Applicant Tracking Systems work",
+            "Raising an ATS match score",
+            "Handling rejections"
+          ]
+        },
+        {
+          "q": "How should I phrase my project achievements on a CV?",
+          "expect": "Writing strong bullet points",
+          "got": [
+            "Presenting projects in interviews and on resumes",
+            "Growing your career while working",
+            "Writing a cover letter"
+          ]
+        },
+        {
+          "q": "How many hours a week should I plan for learning while in college?",
+          "expect": "Planning a study schedule",
+          "got": [
+            "Time management for students and working learners",
+            "Planning a study schedule",
+            "Managing exam stress"
+          ]
+        },
+        {
+          "q": "I don't know which field suits me, how do I decide?",
+          "expect": "Choosing a career direction",
+          "got": [
+            "Choosing between a job, MS, MTech or MBA",
+            "Switching careers",
+            "Choosing a career direction"
+          ]
+        },
+        {
+          "q": "How long should a cover letter for an internship be?",
+          "expect": "Writing a cover letter",
+          "got": [
+            "Referrals, cold emails and internships",
+            "Writing a cover letter",
+            "Applying abroad and recommendation letters"
+          ]
+        },
+        {
+          "q": "I'm working full time, how do I fit in learning?",
+          "expect": "Time management for students and working learners",
+          "got": [
+            "Growing your career while working",
+            "Time management for students and working learners",
+            "The first weeks in a new job"
+          ]
+        }
+      ]
+    },
+    "hybrid+rerank": {
+      "hit@1": 0.8,
+      "hit@3": 0.967,
+      "mrr@5": 0.878,
+      "ms_median": 50.5,
+      "misses": [
+        {
+          "q": "My resume isn't getting shortlisted, how do I match the job keywords better?",
+          "expect": "Raising an ATS match score",
+          "got": [
+            "How Applicant Tracking Systems work",
+            "Raising an ATS match score",
+            "Handling rejections"
+          ]
+        },
+        {
+          "q": "How should I phrase my project achievements on a CV?",
+          "expect": "Writing strong bullet points",
+          "got": [
+            "Presenting projects in interviews and on resumes",
+            "Growing your career while working",
+            "Writing a cover letter"
+          ]
+        },
+        {
+          "q": "How many hours a week should I plan for learning while in college?",
+          "expect": "Planning a study schedule",
+          "got": [
+            "Time management for students and working learners",
+            "Planning a study schedule",
+            "Managing exam stress"
+          ]
+        },
+        {
+          "q": "I don't know which field suits me, how do I decide?",
+          "expect": "Choosing a career direction",
+          "got": [
+            "Choosing between a job, MS, MTech or MBA",
+            "Switching careers",
+            "Choosing a career direction"
+          ]
+        },
+        {
+          "q": "How long should a cover letter for an internship be?",
+          "expect": "Writing a cover letter",
+          "got": [
+            "Referrals, cold emails and internships",
+            "Writing a cover letter",
+            "Applying abroad and recommendation letters"
+          ]
+        },
+        {
+          "q": "I'm working full time, how do I fit in learning?",
+          "expect": "Time management for students and working learners",
+          "got": [
+            "Growing your career while working",
+            "Time management for students and working learners",
+            "The first weeks in a new job"
+          ]
+        }
+      ]
+    }
+  },
+  "careers": {
+    "vector": {
+      "strict_p@5": 0.767,
+      "ms_median": 10.4
+    },
+    "hybrid": {
+      "strict_p@5": 0.8,
+      "ms_median": 10.0
+    },
+    "vector+rerank": {
+      "strict_p@5": 0.858,
+      "ms_median": 68.2
+    },
+    "hybrid+rerank": {
+      "strict_p@5": 0.792,
+      "ms_median": 76.6
+    }
+  },
+  "profile": {
+    "plain": {
+      "hit@3": 1.0,
+      "n": 18
+    },
+    "expanded": {
+      "hit@3": 1.0,
+      "n": 18
+    }
+  }
+}

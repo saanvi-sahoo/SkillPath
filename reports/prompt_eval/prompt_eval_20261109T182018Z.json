@@ -1,0 +1,35 @@
+{
+  "ts": "20261109T182018Z",
+  "n_cases": 65,
+  "router_mode": null,
+  "router": {
+    "hybrid": {
+      "label_accuracy": 0.985,
+      "allow_refuse_accuracy": 0.985,
+      "false_refusals": 1,
+      "leaks": 0,
+      "confusion": {
+        "allow->allow": 45,
+        "allow->refuse": 1,
+        "refuse->refuse": 19,
+        "refuse->allow": 0
+      },
+      "llm_calls": 29,
+      "avg_latency_ms": 796.0,
+      "errors": [
+        {
+          "id": "gr02",
+          "expected": "greeting",
+          "got": "out_of_scope",
+          "method": "llm",
+          "latency_ms": 2280.6,
+          "knn": {
+            "label": "career_study",
+            "vote_share": 0.364,
+            "top_sim": 0.447
+          }
+        }
+      ]
+    }
+  }
+}

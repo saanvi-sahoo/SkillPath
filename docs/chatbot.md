@@ -115,3 +115,16 @@ Langfuse tracing in the pipeline can be enabled by adding `LANGFUSE_*` keys.
 | Primary model `llama-3.3-70b-versatile`, **retired by Groq**, so every call silently used fallbacks | `gpt-oss-120b`, with the answering model logged |
 
 The old tool (`src/backend/tools/memory_tool.py`) is no longer used and is kept for reference.
+
+## Live prompt and turn flow since E36-E37
+**Live: advisor prompt v7** (activated after the 120-case held-out A/B, E36). Candidate: **v8** (E37). Each turn:
+```
+message -> scope router (fixed refusal, no LLM, for out-of-scope)
+        -> intent: v8 + keyless use src/backend/intent.py (primary/secondary intents, counts, style, missing info,
+           conflicts, follow-ups); v7 uses the parsed intent from question_profile.py
+        -> evidence by intent: guides / career records / this student's profile / validated roadmap plan
+        -> prompt (v7 layers; v8 = short core + the one task template for this intent)
+        -> LLM draft -> self-check (contract, citations, profile facts; v8 adds NLI claim check, URLs, parts) -> 1 revision
+        -> answer + sources;  keyless: same routing, retrieval-only composer
+```
+Evaluation and the full results: [evaluation.md](evaluation.md).

@@ -104,11 +104,11 @@ def _render_answer(i: int, msg: dict, show_debug: bool) -> None:
     if fb == 1 and done != "up":
         _save_feedback(i, "up")
         st.session_state[f"advisor_fb_done_{i}"] = "up"
-        st.toast("Thanks! Similar questions will learn from this answer.")
+        st.toast("Thanks! After a quick review, similar questions will learn from it.")
     elif fb == 0 and done is None:
         from src.backend.feedback_store import REASONS
         with st.form(key=f"advisor_fb_form_{i}", border=True):
-            st.caption("What went wrong? Your feedback teaches the advisor for similar questions.")
+            st.caption("What went wrong? After a team review, your feedback teaches the advisor for similar questions.")
             reason = st.radio("Reason", list(REASONS), horizontal=True, key=f"advisor_fb_reason_{i}",
                               format_func=lambda r: {"not_answered": "Didn't answer my question", "inaccurate": "Wrong / inaccurate",
                                                      "too_long": "Too long / unfocused", "no_sources": "Not specific enough",

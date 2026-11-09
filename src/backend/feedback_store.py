@@ -10,8 +10,16 @@ retrieved and turned into guidance for prompt v5:
 Storage: MongoDB Atlas collection `feedback_v1` when MONGODB_URI is set (survives redeploys; plain collection,
 no search index needed: similarity is computed in Python over the small feedback set), else a local JSONL file.
 Privacy: feedback on profile-specific questions is only reused for the same user; API keys are never stored.
+
+E37 (review 2 §8): user feedback can itself be wrong, so it never changes answers automatically. Every new row is
+stored with status "pending"; only rows a teammate approves (`python -m src.backend.feedback_store --review`) are
+used as guidance. Approved corrections are also exported as development test cases, never into the held-out set.
+FEEDBACK_REQUIRE_APPROVAL=false restores the old immediate behaviour (used only by isolated experiments).
 """
 from __future__ import annotations
+
+import argparse
+import os
 
 import json
 import threading
@@ -27,6 +35,7 @@ LOCAL_FILE = config.PROJECT_ROOT / "reports" / "chat_logs" / "feedback.jsonl"
 COLLECTION = "feedback_v1"
 SIM_THRESHOLD = 0.75      # how similar a past question must be to count as "the same kind of question"
 ANCHOR_MIN_USERS = 2      # distinct users needed before a "wrongly refused" question becomes a router anchor
+REQUIRE_APPROVAL = os.getenv("FEEDBACK_REQUIRE_APPROVAL", "true").lower() == "true"
 REASONS = {
     "not_answered": "did not answer the actual question",
     "inaccurate": "was inaccurate or wrong",
@@ -65,7 +74,7 @@ def record(question: str, answer: str, rating: str, user_id: str, reason: str = 
     row = {"ts": datetime.now(timezone.utc).isoformat(), "question": question[:1000], "answer": answer[:3000],
            "rating": rating, "reason": reason, "comment": comment[:500], "user_id": user_id,
            "route_label": (route or {}).get("label"), "prompt_version": prompt_version,
-           "profile_specific": _is_profile_question(question),
+           "profile_specific": _is_profile_question(question), "status": "pending",
            "q_vec": [round(float(x), 5) for x in embed_symmetric(question)]}
     coll = _mongo()
     with _lock:
@@ -105,8 +114,12 @@ def _rows(ttl_s: float = 30.0) -> List[Dict]:
     return rows
 
 
+def _usable(r: Dict) -> bool:
+    return (not REQUIRE_APPROVAL) or r.get("status") == "approved"
+
+
 def similar_feedback(question: str, user_id: str, k: int = 6) -> List[Dict]:
-    rows = _rows()
+    rows = [r for r in _rows() if _usable(r)]
     if not rows:
         return []
     from src.rag.embedder import embed_symmetric
@@ -152,7 +165,7 @@ def learned_scope_anchors() -> List[str]:
     """Questions that >= ANCHOR_MIN_USERS distinct users reported as wrongly refused -> career_study anchors."""
     users: Dict[str, set] = {}
     for r in _rows():
-        if r.get("rating") == "down" and r.get("reason") == "wrong_refusal":
+        if r.get("rating") == "down" and r.get("reason") == "wrong_refusal" and _usable(r):
             users.setdefault(r["question"].strip(), set()).add(r.get("user_id"))
     return [q for q, u in users.items() if len(u) >= ANCHOR_MIN_USERS]
 
@@ -164,4 +177,63 @@ def summary() -> Dict:
         if r["rating"] == "down":
             by_reason[r.get("reason") or "other"] = by_reason.get(r.get("reason") or "other", 0) + 1
     return {"total": len(rows), "up": sum(r["rating"] == "up" for r in rows), "down": sum(r["rating"] == "down" for r in rows),
+            "pending": sum(r.get("status", "pending") == "pending" for r in rows),
+            "approved": sum(r.get("status") == "approved" for r in rows), "rejected": sum(r.get("status") == "rejected" for r in rows),
             "down_by_reason": by_reason, "learned_anchors": learned_scope_anchors()}
+
+
+def set_status(ts: str, question: str, status: str) -> bool:
+    """Approve or reject one feedback row (identified by its timestamp + question)."""
+    coll = _mongo()
+    if coll is not None:
+        res = coll.update_one({"ts": ts, "question": question}, {"$set": {"status": status}})
+        _cache["t"] = 0.0
+        return res.modified_count > 0
+    if not LOCAL_FILE.exists():
+        return False
+    rows, hit = [], False
+    for line in LOCAL_FILE.read_text(encoding="utf-8").splitlines():
+        r = json.loads(line)
+        if r.get("ts") == ts and r.get("question") == question:
+            r["status"], hit = status, True
+        rows.append(json.dumps(r, ensure_ascii=False))
+    LOCAL_FILE.write_text("\n".join(rows) + "\n", encoding="utf-8")
+    _cache["t"] = 0.0
+    return hit
+
+
+def export_dev_cases(path) -> int:
+    """Approved 👎 corrections -> development test cases (never the held-out set)."""
+    rows = [r for r in _rows(ttl_s=0) if r.get("status") == "approved" and r["rating"] == "down" and r.get("comment")]
+    with open(path, "w", encoding="utf-8") as f:
+        for i, r in enumerate(rows, 1):
+            f.write(json.dumps({"id": f"fb{i:03d}", "category": "feedback", "user": None, "expect": "allow",
+                                "messages": [{"role": "user", "content": r["question"]}],
+                                "expected_behavior": r["comment"], "checks": {}, "source_ts": r["ts"]}, ensure_ascii=False) + "\n")
+    return len(rows)
+
+
+def review_cli():
+    """Interactive review: approve (a) / reject (r) / skip (s) each pending row."""
+    for r in [x for x in _rows(ttl_s=0) if x.get("status", "pending") == "pending"]:
+        print("\n" + "-" * 70 + f"\n{r['ts']}  {r['rating']}  reason={r.get('reason')}\nQ: {r['question']}\nA: {r['answer'][:600]}\n"
+              f"Comment: {r.get('comment') or '-'}")
+        choice = input("approve (a) / reject (r) / skip (s) / quit (q)? ").strip().lower()
+        if choice == "q":
+            break
+        if choice in ("a", "r"):
+            set_status(r["ts"], r["question"], "approved" if choice == "a" else "rejected")
+
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--review", action="store_true")
+    ap.add_argument("--summary", action="store_true")
+    ap.add_argument("--export-dev", help="write approved corrections as development test cases (jsonl)")
+    a = ap.parse_args()
+    if a.review:
+        review_cli()
+    if a.export_dev:
+        print(export_dev_cases(a.export_dev), "cases ->", a.export_dev)
+    if a.summary or not (a.review or a.export_dev):
+        print(json.dumps(summary(), indent=2))
