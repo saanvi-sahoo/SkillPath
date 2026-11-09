@@ -88,6 +88,22 @@ def llm_classify(message: str, history: List[Dict]) -> Dict:
     return {"label": label if label in LABELS else "career_study", "reason": data.get("reason", "")}
 
 
+_ACADEMIC = re.compile(r"\b(notation|algorithm\w*|theorem|equation|concept|syllabus|exam|semester|subject|course|"
+                       r"programming|coding|code|data|database|network\w*|statistic\w*|probability|calculus|physics|chemistry|"
+                       r"biology|economics|accounting|engineering|machine learning|android|ios|web|cloud|career|job|resume|"
+                       r"interview|internship|degree|college|university)\b", re.I)
+
+
+def _study_or_career_signal(text: str) -> bool:
+    try:
+        from src.rag.skill_rerank import query_skills
+        if query_skills(text):
+            return True
+    except Exception:  # noqa: BLE001
+        pass
+    return bool(_ACADEMIC.search(text or ""))
+
+
 def route(message: str, history: List[Dict] | None = None, mode: str | None = None) -> Dict:
     """Return {'label', 'method', 'latency_ms', ...diagnostics}."""
     history = history or []
@@ -143,6 +159,10 @@ def route(message: str, history: List[Dict] | None = None, mode: str | None = No
         # E29: also for local Ollama (a 7B router call adds 10-40 s; kNN allow/refuse accuracy is 1.0 on 42 cases)
         prev = next((m["content"] for m in reversed(history) if m["role"] == "user"), "")
         k2 = knn_classify(f"{prev} {message}") if (is_followup and prev) else knn
+        # E37: without an LLM, a weak "out of scope" vote (no close off-topic example) is not enough to refuse a message
+        # that clearly carries study/career content ("Explain Big-O notation in exactly two sentences" was refused).
+        if k2["label"] == "out_of_scope" and k2["top_sim"] < 0.4 and k2["vote_share"] < 0.8 and _study_or_career_signal(f"{prev} {message}" if is_followup else message):
+            return done({**k2, "label": "career_study", "method": "no-LLM: study/career signal overrides weak refusal"})
         return done({**k2, "method": "knn (no-LLM)"})
     try:
         llm = llm_classify(message, history)

@@ -391,5 +391,13 @@ analysis; "how do I become…" → career; "what do you know about me" → profi
   which shows why the review said not to depend on the model alone.
 - Router suite: hybrid 1.0, kNN 1.0 allow/refuse.
 
-**Local model (Mistral 7B, Ollama):** v7 vs v8 on the same 40 cases. That run started before the routing and router
-fixes, so it measures the earlier v8; see the report for its status.
+**Local model (Mistral 7B, Ollama), 40/40 pairs** (earlier v8, before the routing and router fixes): all checks v8
+0.825 vs v7 0.80; constraint compliance 0.867 vs 0.733; tokens 1,752 vs 2,574; career 1.0 vs 0.75 and roadmap 1.0 vs
+0.50, but concept 0.80 vs 1.0 and profile 0.75 vs 1.0. Mixed, so the same decision: v7 stays live locally too.
+
+**Local router fix (all versions, found by the Mistral run):** without a hosted router model, scope fell back to
+nearest-example voting and refused "Explain Big-O notation in exactly two sentences" (best match only 0.19). Now a weak
+"out of scope" vote (similarity < 0.4 and < 80% agreement) is overruled when the message clearly carries study/career
+content (a known skill/tool or an academic/career term). Checked locally on every set: 45/45 off-topic cases still
+refused (the first version leaked "Who won the last Formula 1 race?", fixed by the agreement condition); 245/247
+in-scope cases allowed (the two left are "Which is better?" with no context).

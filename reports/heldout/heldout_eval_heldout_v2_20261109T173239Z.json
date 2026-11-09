@@ -7,6 +7,114 @@
   "n_cases": 40,
   "rows": [
     {
+      "id": "v2-s01",
+      "category": "concept",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "What is an API, explained simply?",
+      "expected_behavior": "plain definition + example",
+      "answer": "An Application Programming Interface (API) is a set of rules and protocols that allows different software applications to communicate with each other. In simpler terms, it acts as a bridge between two systems, enabling them to exchange data and interact in a standardized way.\n\nFor careers and study, APIs are crucial because they enable the integration of various software components, making it possible to build complex systems by combining existing functionalities. For instance, an API can be used to connect a mobile app with a backend database, allowing users to access their data from multiple devices.\n\nIn the context of the Chief Architect of APIs role, understanding and designing APIs is essential for managing software architecture, coordinating different components, and ensuring seamless communication between various systems.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 23371.3,
+      "intent_got": null,
+      "intent_expected": "concept_explanation",
+      "tokens": 2324,
+      "revised": null,
+      "intent": {
+        "type": "definition",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:careers:Chief Architect of APIs"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.50, ref=career_0452)\nCareer: Chief Architect of APIs. Domain: Project and Business Management. Required skills: API design, Cloud-native architecture, Software lifecycle management, Modeling (UML, SysUML, DSM, DSL), Software system architecture, Architecture description, Software refactoring, API lifecycle management, Cloud system architecture. Description: Chief Architect of APIs coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include API design, Cloud-native architecture, Software lifecycle management, Modeling (UML. Education: Master's degree in Information/Computer Science or related fields.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "no_career_citations": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": [],
+        "rechecked": true
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-s01",
+      "category": "concept",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "What is an API, explained simply?",
+      "expected_behavior": "plain definition + example",
+      "answer": "An Application Programming Interface (API) is a set of rules and protocols that allows different software applications to communicate with each other. It defines how data should be requested from and sent to the application, making it easier for developers to build new programs that can work seamlessly with existing ones.\n\nFor example, when you use an app on your phone to check the weather, the app sends a request to the weather service's API to get the current weather data. This is why APIs are crucial in today's digital world as they enable various services and devices to interact and exchange information efficiently.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 11103.8,
+      "intent_got": "concept_explanation",
+      "intent_expected": "concept_explanation",
+      "tokens": 1060,
+      "revised": null,
+      "intent": {
+        "type": "definition",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "no_career_citations": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
       "id": "v2-s02",
       "category": "concept",
       "user": null,
@@ -86,113 +194,6 @@
         "not_refused": true,
         "table": true,
         "must_include_any": true,
-        "intent": true,
-        "profile_consistent": null
-      },
-      "passed": true,
-      "citations": {
-        "citations": 0,
-        "invalid": [],
-        "unsupported": [],
-        "correct_rate": null
-      },
-      "contradictions": [],
-      "claims": {
-        "n": 0,
-        "counts": {
-          "supported": 0,
-          "contradicted": 0,
-          "insufficient": 0,
-          "invalid_id": 0
-        },
-        "support_rate": null,
-        "method": "lexical",
-        "items": []
-      },
-      "root_cause": null
-    },
-    {
-      "id": "v2-s01",
-      "category": "concept",
-      "user": null,
-      "version": "v7",
-      "route": "career_study",
-      "question": "What is an API, explained simply?",
-      "expected_behavior": "plain definition + example",
-      "answer": "An Application Programming Interface (API) is a set of rules and protocols that allows different software applications to communicate with each other. In simpler terms, it acts as a bridge between two systems, enabling them to exchange data and interact in a standardized way.\n\nFor careers and study, APIs are crucial because they enable the integration of various software components, making it possible to build complex systems by combining existing functionalities. For instance, an API can be used to connect a mobile app with a backend database, allowing users to access their data from multiple devices.\n\nIn the context of the Chief Architect of APIs role, understanding and designing APIs is essential for managing software architecture, coordinating different components, and ensuring seamless communication between various systems.",
-      "model": "mistral",
-      "model_configured": "local",
-      "latency_ms": 23371.3,
-      "intent_got": null,
-      "intent_expected": "concept_explanation",
-      "tokens": 2324,
-      "revised": null,
-      "intent": {
-        "type": "definition",
-        "missing": null,
-        "n_items": null,
-        "max_words": null
-      },
-      "sources": [
-        "S1:careers:Chief Architect of APIs"
-      ],
-      "context": "[S1] (source=careers/career_profile, score=0.50, ref=career_0452)\nCareer: Chief Architect of APIs. Domain: Project and Business Management. Required skills: API design, Cloud-native architecture, Software lifecycle management, Modeling (UML, SysUML, DSM, DSL), Software system architecture, Architecture description, Software refactoring, API lifecycle management, Cloud system architecture. Description: Chief Architect of APIs coordinates people, processes, and priorities to deliver business or technology outcomes. Typical responsibilities include planning, stakeholder communication, progress tracking, risk management, reporting, and continuous improvement. Relevant skills listed for this role include API design, Cloud-native architecture, Software lifecycle management, Modeling (UML. Education: Master's degree in Information/Computer Science or related fields.",
-      "checks": {
-        "not_refused": true,
-        "must_include_any": true,
-        "no_career_citations": true,
-        "profile_consistent": null
-      },
-      "passed": true,
-      "citations": {
-        "citations": 0,
-        "invalid": [],
-        "unsupported": [],
-        "correct_rate": null
-      },
-      "contradictions": [],
-      "claims": {
-        "n": 0,
-        "counts": {
-          "supported": 0,
-          "contradicted": 0,
-          "insufficient": 0,
-          "invalid_id": 0
-        },
-        "support_rate": null,
-        "method": "lexical",
-        "items": []
-      },
-      "root_cause": null
-    },
-    {
-      "id": "v2-s01",
-      "category": "concept",
-      "user": null,
-      "version": "v8",
-      "route": "career_study",
-      "question": "What is an API, explained simply?",
-      "expected_behavior": "plain definition + example",
-      "answer": "An Application Programming Interface (API) is a set of rules and protocols that allows different software applications to communicate with each other. It defines how data should be requested from and sent to the application, making it easier for developers to build new programs that can work seamlessly with existing ones.\n\nFor example, when you use an app on your phone to check the weather, the app sends a request to the weather service's API to get the current weather data. This is why APIs are crucial in today's digital world as they enable various services and devices to interact and exchange information efficiently.",
-      "model": "mistral",
-      "model_configured": "local",
-      "latency_ms": 11103.8,
-      "intent_got": "concept_explanation",
-      "intent_expected": "concept_explanation",
-      "tokens": 1060,
-      "revised": null,
-      "intent": {
-        "type": "definition",
-        "missing": null,
-        "n_items": null,
-        "max_words": null
-      },
-      "sources": [],
-      "context": "",
-      "checks": {
-        "not_refused": true,
-        "must_include_any": true,
-        "no_career_citations": true,
         "intent": true,
         "profile_consistent": null
       },
@@ -474,7 +475,8 @@
         },
         "support_rate": null,
         "method": "lexical",
-        "items": []
+        "items": [],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -528,7 +530,8 @@
         },
         "support_rate": null,
         "method": "lexical",
-        "items": []
+        "items": [],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -791,7 +794,8 @@
         },
         "support_rate": null,
         "method": "lexical",
-        "items": []
+        "items": [],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -847,7 +851,8 @@
         },
         "support_rate": null,
         "method": "lexical",
-        "items": []
+        "items": [],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -915,7 +920,8 @@
             "id": 4,
             "label": "supported"
           }
-        ]
+        ],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -986,7 +992,8 @@
             "id": 4,
             "label": "supported"
           }
-        ]
+        ],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -1042,7 +1049,8 @@
         },
         "support_rate": null,
         "method": "lexical",
-        "items": []
+        "items": [],
+        "rechecked": true
       },
       "root_cause": "instruction_following (first_sentence_any)"
     },
@@ -1094,12 +1102,12 @@
       "claims": {
         "n": 5,
         "counts": {
-          "supported": 5,
+          "supported": 3,
           "contradicted": 0,
           "insufficient": 0,
-          "invalid_id": 0
+          "invalid_id": 2
         },
-        "support_rate": 1.0,
+        "support_rate": 0.6,
         "method": "nli",
         "items": [
           {
@@ -1120,14 +1128,15 @@
           {
             "claim": "Full-Stack Software Developer : Requires Full-stack development, Open-source projects, Git repositories, JavaScript, Node.js, React, ECMAScript 6+, Browser debugging tools, UX/UI patterns, Agile methodology, DevOps, Software versioning tools (Git, SVN).",
             "id": 4,
-            "label": "supported"
+            "label": "invalid_id"
           },
           {
             "claim": "Solutions Architect, DevOps, Google Cloud : Requires DevOps, Automating infrastructure deployment, Terraform, Deployment Manager, CloudFormation, Chef, Ansible, Docker, Kubernetes, Cloud technology, Enterprise technology, Relational databases, Infrastructure automation, Continuous integration/deployment, SQL/NoSQL.",
             "id": 5,
-            "label": "supported"
+            "label": "invalid_id"
           }
-        ]
+        ],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -1196,7 +1205,8 @@
             "id": 1,
             "label": "supported"
           }
-        ]
+        ],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -1262,14 +1272,15 @@
           {
             "claim": "Two suitable career options from our records are Business Data Analyst and Data Analyst .",
             "id": 1,
-            "label": "insufficient"
+            "label": "supported"
           },
           {
             "claim": "Two suitable career options from our records are Business Data Analyst and Data Analyst .",
             "id": 2,
-            "label": "supported"
+            "label": "insufficient"
           }
-        ]
+        ],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -1439,7 +1450,8 @@
             "id": 1,
             "label": "supported"
           }
-        ]
+        ],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -1494,8 +1506,8 @@
         "counts": {
           "supported": 1,
           "contradicted": 0,
-          "insufficient": 1,
-          "invalid_id": 0
+          "insufficient": 0,
+          "invalid_id": 1
         },
         "support_rate": 0.5,
         "method": "nli",
@@ -1508,9 +1520,10 @@
           {
             "claim": "For a more specialized role that also uses Excel and SQL, consider the SQL Application Developer .",
             "id": 6,
-            "label": "insufficient"
+            "label": "invalid_id"
           }
-        ]
+        ],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -1563,7 +1576,8 @@
         },
         "support_rate": null,
         "method": "lexical",
-        "items": []
+        "items": [],
+        "rechecked": true
       },
       "root_cause": "prompt (forbidden content: no_guarantee)"
     },
@@ -1669,7 +1683,8 @@
         },
         "support_rate": null,
         "method": "lexical",
-        "items": []
+        "items": [],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -1796,7 +1811,8 @@
             "id": 2,
             "label": "insufficient"
           }
-        ]
+        ],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -1861,7 +1877,8 @@
             "id": 1,
             "label": "insufficient"
           }
-        ]
+        ],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -1900,18 +1917,16 @@
       "checks": {
         "not_refused": true,
         "include_frac": true,
-        "profile_consistent": false
+        "profile_consistent": true
       },
-      "passed": false,
+      "passed": true,
       "citations": {
         "citations": 0,
         "invalid": [],
         "unsupported": [],
         "correct_rate": null
       },
-      "contradictions": [
-        "The draft says the student has Microservices, Docker, Kubernetes, AWS, but the profile lists it as a gap. Correct this."
-      ],
+      "contradictions": [],
       "claims": {
         "n": 0,
         "counts": {
@@ -1922,9 +1937,10 @@
         },
         "support_rate": null,
         "method": "lexical",
-        "items": []
+        "items": [],
+        "rechecked": true
       },
-      "root_cause": "grounding (contradicts the student's profile)"
+      "root_cause": null
     },
     {
       "id": "v2-p01",
@@ -1976,12 +1992,12 @@
       "claims": {
         "n": 2,
         "counts": {
-          "supported": 2,
+          "supported": 1,
           "contradicted": 0,
           "insufficient": 0,
-          "invalid_id": 0
+          "invalid_id": 1
         },
-        "support_rate": 1.0,
+        "support_rate": 0.5,
         "method": "nli",
         "items": [
           {
@@ -1992,9 +2008,10 @@
           {
             "claim": "Software Development Engineer I : requires Java, JavaScript, Git, and relational databases, all skills you possess.",
             "id": 5,
-            "label": "supported"
+            "label": "invalid_id"
           }
-        ]
+        ],
+        "rechecked": true
       },
       "root_cause": "prompt (facts available but not used)"
     },
@@ -2048,7 +2065,8 @@
         },
         "support_rate": null,
         "method": "lexical",
-        "items": []
+        "items": [],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -2158,7 +2176,8 @@
         },
         "support_rate": null,
         "method": "lexical",
-        "items": []
+        "items": [],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -2216,7 +2235,8 @@
         },
         "support_rate": null,
         "method": "lexical",
-        "items": []
+        "items": [],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -2269,7 +2289,8 @@
         },
         "support_rate": null,
         "method": "lexical",
-        "items": []
+        "items": [],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -2377,7 +2398,8 @@
         },
         "support_rate": null,
         "method": "lexical",
-        "items": []
+        "items": [],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -2433,12 +2455,12 @@
       "claims": {
         "n": 2,
         "counts": {
-          "supported": 2,
+          "supported": 1,
           "contradicted": 0,
           "insufficient": 0,
-          "invalid_id": 0
+          "invalid_id": 1
         },
-        "support_rate": 1.0,
+        "support_rate": 0.5,
         "method": "nli",
         "items": [
           {
@@ -2449,9 +2471,10 @@
           {
             "claim": "Office Administrator : lists Human Resource Administration, Personnel Policies Development, Recruitment, New Employee Orientation, which are not part of your current skills, but you could consider learning these to transition into this role.",
             "id": 6,
-            "label": "supported"
+            "label": "invalid_id"
           }
-        ]
+        ],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -2509,7 +2532,8 @@
         },
         "support_rate": null,
         "method": "lexical",
-        "items": []
+        "items": [],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -2569,7 +2593,8 @@
         },
         "support_rate": null,
         "method": "lexical",
-        "items": []
+        "items": [],
+        "rechecked": true
       },
       "root_cause": "prompt (facts available but not used)"
     },
@@ -2729,7 +2754,8 @@
         },
         "support_rate": null,
         "method": "lexical",
-        "items": []
+        "items": [],
+        "rechecked": true
       },
       "root_cause": null
     },
@@ -2785,7 +2811,1724 @@
         },
         "support_rate": null,
         "method": "lexical",
+        "items": [],
+        "rechecked": true
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-r01",
+      "category": "roadmap",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Make a 30-day Python plan for a beginner with 1 hour a day.",
+      "expected_behavior": "30 days, 60 min",
+      "answer": "Based on the provided context, I don't have enough information to create a tailored learning plan for this user as they haven't run the profile analysis yet. However, here's a general 30-day Python plan for beginners:\n\n**Day 1-5:** Introduction to Python (syntax, variables, data types)\n- Concrete outcome: Complete an online tutorial or write simple scripts to practice basic concepts\n\n**Day 6-10:** Control structures (if-else, loops)\n- Concrete outcome: Write a program that takes user input and performs different actions based on the input\n\n**Day 11-15:** Functions and modules\n- Concrete outcome: Create reusable functions and organize code into separate modules\n\n**Day 16-20:** Data structures (lists, tuples, dictionaries)\n- Concrete outcome: Implement a program that manipulates data using lists, tuples, or dictionaries\n\n**Day 21-25:** File I/O and exceptions\n- Concrete outcome: Write a script that reads from a file, processes the data, and writes the results to another file\n\n**Day 26-30:** Review and practice\n- Concrete outcome: Solve problems on coding platforms like LeetCode or HackerRank to reinforce understanding of Python concepts",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 101311.6,
+      "intent_got": null,
+      "intent_expected": "learning_plan",
+      "tokens": 2412,
+      "revised": null,
+      "intent": {
+        "type": "plan",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Planning a study schedule"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.46, ref=study_strategies.md)\nStudy Strategies - Planning a study schedule: Break a skill into weekly milestones with a concrete output each week (a notebook, a mini project, a solved problem set). Use focused blocks such as the Pomodoro technique (25 minutes work, 5 minutes break). Reserve time every week for review of older topics. A realistic plan for a working student is 1-2 hours on weekdays and 3-4 hours on weekends.",
+      "checks": {
+        "not_refused": true,
+        "mentions_day30": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": [],
+        "rechecked": true
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-r01",
+      "category": "roadmap",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Make a 30-day Python plan for a beginner with 1 hour a day.",
+      "expected_behavior": "30 days, 60 min",
+      "answer": "**30-Day Python Learning Plan**\n\n*Weeks 1-2:* Follow the Generated Plan from [S1] for the first 14 days. Each day has a specific task with a checkable outcome.\n\n*Day 15:* Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n\n*Days 16-24:* Continue with the Generated Plan from [S1] to further enhance your Python skills and interview readiness.\n\n*Day 25:* Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n\n*Days 26-30:* Capstone Project - Plan & Build. Follow the guidelines in [S2] to define a problem and data, then build a working first version of your capstone project in Python. Push it to GitHub, add it to your resume, and practice a 2-minute walkthrough. Done when: A working first version runs end to end, public repo, updated resume line, and recorded walkthrough are ready.\n\n---\n**Sources**\n- [S1] roadmap: Validated 30-day plan (roadmap generator)\n- [S2] knowledge: Planning a study schedule",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 192537.4,
+      "intent_got": "learning_plan",
+      "intent_expected": "learning_plan",
+      "tokens": 3632,
+      "revised": [
+        "Present the generated 30-day plan through Day 30 (all 30 days, compactly)."
+      ],
+      "intent": {
+        "type": "plan",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:roadmap:generated_plan",
+        "S2:knowledge:Planning a study schedule"
+      ],
+      "context": "[S1] (source=roadmap/generated_plan, score=1.00, ref=src/roadmap/generator.py)\nGENERATED PLAN (validated, 60 min/day, role: Python learner). Skills in order: Python (24 days). Capstone: Portfolio project for Python learner using Python: plan, build and document it on GitHub.\nDay 1: Python - Syntax, variables & types. Task: Write 10 small exercises (60 min). Done when: 10 exercises run without errors. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 2: Python - Control flow & functions. Task: Write 5 reusable functions with docstrings (60 min). Done when: 5 functions tested with sample inputs. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 3: Python - Files, errors & modules. Task: Build a script that reads a CSV and handles bad rows (60 min). Done when: Script processes a messy CSV. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 4: Python - Pandas basics. Task: Clean and summarise a Kaggle dataset (60 min). Done when: Notebook with 5 summary tables. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 5: Python - Visualising data. Task: Make 4 charts answering 4 questions (60 min). Done when: 4 labelled charts. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 6: Python - Mini project. Task: Build it and push to GitHub with a README (60 min). Done when: Repo with README. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 7: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\nDay 8: Python - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 9: Python - Interview readiness (deeper practice 1). Task: Extend the previous Python exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 10: Python - Interview readiness (deeper practice 2). Task: Extend the previous Python exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 11: Python - Interview readiness (deeper practice 3). Task: Extend the previous Python exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 12: Python - Interview readiness (deeper practice 4). Task: Extend the previous Python exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 13: Python - Interview readiness (deeper practice 5). Task: Extend the",
+      "checks": {
+        "not_refused": true,
+        "mentions_day30": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 3,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 1,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 1
+        },
+        "support_rate": 0.0,
+        "method": "lexical",
+        "items": [
+          {
+            "claim": "Follow the guidelines in to define a problem and data, then build a working first version of your capstone project in Python.",
+            "id": 2,
+            "label": "invalid_id"
+          }
+        ],
+        "rechecked": true
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-r02",
+      "category": "roadmap",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Give me a 2-week plan to learn Git.",
+      "expected_behavior": "2 weeks",
+      "answer": "Based on the student's current profile and the learning guide provided [S1], here's a 2-week plan to learn Git:\n\n**Week 1:**\n- Day 1: Install Git and set up your account (GitHub or Bitbucket)\n- Day 2-3: Learn Git basics: init, clone, add, commit, status, log\n- Day 4-5: Branching and merging: create, switch, merge branches, resolve conflicts\n- Day 6-7: Collaborative workflows: pull requests, forks, code reviews\n\n**Week 2:**\n- Day 1: Advanced Git topics: stashing, rebase, cherry-pick\n- Day 2-3: GitHub/Bitbucket features: issues, projects, milestones\n- Day 4-5: Practice with a project: fork a popular repository and contribute\n- Day 6-7: Review and reinforce your knowledge by solving exercises or challenges online (e.g., freeCodeCamp, HackerRank)\n\n**Next steps:** 1) Add Git to your resume, mentioning any projects you've worked on using it; 2) Practice regularly to stay up-to-date with new features and best practices.\n\n---\n**Sources**\n- [S1] knowledge: Switching careers",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 61667.0,
+      "intent_got": null,
+      "intent_expected": "learning_plan",
+      "tokens": 2365,
+      "revised": null,
+      "intent": {
+        "type": "plan",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Switching careers"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.31, ref=career_planning.md)\nCareer Planning - Switching careers: Identify transferable skills from your current role (domain knowledge, communication, project management). Close the gap with a focused 3-6 month learning plan and 2-3 portfolio projects in the new field, ideally using data or problems from your current domain. Consider bridge roles that combine old and new expertise.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 1,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": [],
+        "rechecked": true
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-r02",
+      "category": "roadmap",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Give me a 2-week plan to learn Git.",
+      "expected_behavior": "2 weeks",
+      "answer": "Your profile shows no specific gaps for Git as it is already listed in your skills. However, I can suggest a 2-week learning plan to further improve your Git skills. This plan will focus on practical exercises and projects to build your confidence.\n\n**Week 1:**\n- Day 1: Git Basics (Branching & Merging) - Task: Create, merge, and resolve conflicts in a local repository (90 min). Resource: Pro Git book (free): https://git-scm.com/book/en/v2\n- Day 2: GitHub Workflow - Task: Open a pull request on your own repo (90 min). Done when: PR merged. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\n- Day 3: Mini Project - Task: Build the mini project and push it to GitHub with a README (90 min). Done when: Repository with README and screenshots. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\n- Day 4: Interview Readiness - Task: Answer common Git interview questions out loud or in writing (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\n- Day 5: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (90 min). Done when: All redo exercises completed; doubts written down.\n- Day 6: Interview Readiness (deeper practice) - Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\n- Day 7: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (90 min). Done when: All redo exercises completed; doubts written down.\n\n**Week 2:**\n- Day 8: Git - Interview readiness (deeper practice) - Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\n- Day 9: Git - Interview readiness (deeper practice) - Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\n- Day 10: Git - Interview readiness (deeper practice) - Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\n- Day 11: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (90 min). Done when: All redo exercises completed; doubts written down.\n- Day 12: Git - Interview readiness (deeper practice) - Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\n- Day 13: Git - Interview readiness (deeper practice) - Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\n- Day 14: Capstone Project - Task: Define the problem and data for a new project, then start building a working first version (90 min). Done when: A working first version runs end to end.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 166792.7,
+      "intent_got": "learning_plan",
+      "intent_expected": "learning_plan",
+      "tokens": 4191,
+      "revised": null,
+      "intent": {
+        "type": "plan",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:roadmap:generated_plan",
+        "S2:knowledge:Switching careers"
+      ],
+      "context": "[S1] (source=roadmap/generated_plan, score=1.00, ref=src/roadmap/generator.py)\nGENERATED PLAN (validated, 90 min/day, role: Git learner). Skills in order: Git (24 days). Capstone: Portfolio project for Git learner using Git: plan, build and document it on GitHub.\nDay 1: Git - Basics. Task: Track a project with 10 commits (90 min). Done when: Clean history. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 2: Git - Branching & merging. Task: Resolve a merge conflict (90 min). Done when: Conflict resolved. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 3: Git - GitHub workflow. Task: Open a PR on your own repo (90 min). Done when: PR merged. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 4: Git - Mini project. Task: Build the mini project and push it to GitHub with a README (90 min). Done when: Repository with README and screenshots. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 5: Git - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 6: Git - Interview readiness (deeper practice 1). Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 7: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (90 min). Done when: All redo exercises completed; doubts written down.\nDay 8: Git - Interview readiness (deeper practice 2). Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 9: Git - Interview readiness (deeper practice 3). Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 10: Git - Interview readiness (deeper practice 4). Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 11: Git - Interview readiness (deeper practice 5). Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 12: Git - Interview readiness (deeper practice 6). Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2\nDay 13: Git - Interview readiness (deeper practice 7). Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): ht",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": [],
+        "rechecked": true
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-r03",
+      "category": "roadmap",
+      "user": "persona_da",
+      "version": "v7",
+      "route": "career_study",
+      "question": "Make a 30-day plan to close my gaps.",
+      "expected_behavior": "uses real gaps",
+      "answer": "Here's a revised plan tailored to the user's gaps:\n\n**Week 1:**\n- Day 1-5: Focus on **Tableau**: Start with basics like creating dashboards and connecting to data sources [no source provided]. Practice by recreating your Power BI sales dashboard in Tableau.\n\n**Week 2:**\n- Day 1-3: Dive deeper into **Tableau**: Learn advanced features like parameters, calculated fields, and data blending (source: [S1]). Apply these concepts to your recreated dashboard.\n- Day 4-5: Practice creating a new Tableau dashboard for a different dataset (e.g., public datasets on Kaggle).\n\n**Week 3:**\n- Day 1-2: Study **Statistics**: Learn fundamental concepts like probability distributions, hypothesis testing, and regression analysis [no source provided]. Practice with online exercises or textbooks.\n- Day 3-4: Work on a project that applies Statistics to an existing dataset (e.g., analyze the relationship between hostel expenses and occupancy rate).\n- Day 5-6: Write a brief report summarizing your findings, focusing on clear communication.\n\n**Week 4:**\n- Day 1-2: Review **Data Visualization**: Learn best practices for creating effective visualizations in both Power BI and Tableau [no source provided]. Apply these principles to your projects.\n- Day 3-5: Refine your reports, focusing on clear communication and visually appealing representations of data.\n- Day 6: Take a break; review what you've learned this month.\n\n**Next steps:**\n1) Update your resume with Tableau, Statistics, and Data Visualization skills.\n2) Apply for relevant Data Analyst positions or internships to gain practical experience.\n\n---\n**Sources**\n- [S1] knowledge: Switching careers",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 168564.7,
+      "intent_got": null,
+      "intent_expected": "learning_plan",
+      "tokens": 2835,
+      "revised": [
+        "[S1] does not support: \"- Day 1-5: Focus on **Tableau**: Start with basics like creating dashboards, connecting to data sources, and using visualizations [S1].\". Cite the source that supports it, or drop the citation.",
+        "[S1] does not support: \"- Day 1-3: Dive deeper into **Tableau**: Learn advanced features like parameters, calculated fields, and data blending [S1].\". Cite the source that supports it, or drop the citation."
+      ],
+      "intent": {
+        "type": "plan",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Switching careers"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.30, ref=career_planning.md)\nCareer Planning - Switching careers: Identify transferable skills from your current role (domain knowledge, communication, project management). Close the gap with a focused 3-6 month learning plan and 2-3 portfolio projects in the new field, ideally using data or problems from your current domain. Consider bridge roles that combine old and new expertise.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "mentions_day30": false,
+        "profile_consistent": true
+      },
+      "passed": false,
+      "citations": {
+        "citations": 1,
+        "invalid": [],
+        "unsupported": [
+          [
+            1,
+            "- Day 1-3: Dive deeper into **Tableau**: Learn advanced features like parameters, calculated fields, and data blending (source: [S1])."
+          ]
+        ],
+        "correct_rate": 0.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": [],
+        "rechecked": true
+      },
+      "root_cause": "instruction_following (mentions_day30)"
+    },
+    {
+      "id": "v2-r03",
+      "category": "roadmap",
+      "user": "persona_da",
+      "version": "v8",
+      "route": "career_study",
+      "question": "Make a 30-day plan to close my gaps.",
+      "expected_behavior": "uses real gaps",
+      "answer": "User: Am I ready for this Data Analyst job?\nAdvisor: Partly: you meet 3 of the 7 required skills (Python, SQL, Power BI), but Tableau, Statistics, Data Visualization, and Communication are still gaps, and your ATS estimate is 43/100 (an AI estimate, not an official ATS result).\n\n- Already met: Python, Excel, SQL, Pandas, Power BI are on your resume.\n- Missing: Tableau, Statistics, Data Visualization, Communication.\n- Related background: your Excel charts help with dashboards, but they don't replace Power BI or Tableau. Your Python and SQL experience will be useful for the role.\n\nClosing the gaps in order of the generated plan (Data Visualization, Tableau, Statistics, Communication) will strengthen most of the role's tasks. The plan includes exercises, videos, projects, and public speaking practice to help you learn and demonstrate your skills. It takes 30 days with a daily time budget of 90 minutes.\n\nHere is the generated plan:\n\nDay 1-7: Data Visualization (follow the instructions in the retrieved source S1)\nDay 8: Review - Weekly review (follow the instructions in the retrieved source S1)\nDay 9-15: Tableau (follow the instructions in the retrieved source S1)\nDay 16: Statistics - Descriptive statistics (follow the instructions in the retrieved source S1)\nDay 17: Review - Weekly review (follow the instructions in the retrieved source S1)\nDay 18-25: Communication (follow the instructions in the retrieved source S1)\nDay 26: Review - Weekly review (follow the instructions in the retrieved source S1)\nDay 27-30: Capstone Project (follow the instructions in the retrieved source S1)",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 93166.6,
+      "intent_got": "profile_analysis",
+      "intent_expected": "learning_plan",
+      "tokens": 3925,
+      "revised": null,
+      "intent": {
+        "type": "plan",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:roadmap:generated_plan",
+        "S2:knowledge:Switching careers"
+      ],
+      "context": "[S1] (source=roadmap/generated_plan, score=1.00, ref=src/roadmap/generator.py)\nGENERATED PLAN (validated, 90 min/day, role: Data Analyst). Skills in order: Data Visualization (7 days), Tableau (6 days), Statistics (6 days), Communication (5 days). Capstone: End-to-end analysis: clean a public dataset with SQL/Python, build a dashboard using Data Visualization, Tableau, Statistics, Communication and present 3 business recommendations.\nDay 1: Data Visualization - Chart selection. Task: Classify 10 scenarios to chart types (90 min). Done when: 10/10 justified. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\nDay 2: Data Visualization - Design principles. Task: Redesign 3 bad charts (90 min). Done when: Before/after for 3 charts. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\nDay 3: Data Visualization - Building charts. Task: Create 5 charts on one dataset (90 min). Done when: 5 clean charts. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\nDay 4: Data Visualization - Dashboards. Task: Build a 1-page dashboard (90 min). Done when: Dashboard answers 3 questions. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\nDay 5: Data Visualization - Data storytelling. Task: Present the dashboard in 3 minutes (record it) (90 min). Done when: Recording made. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\nDay 6: Data Visualization - Mini project. Task: Build the mini project and push it to GitHub with a README (90 min). Done when: Repository with README and screenshots. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\nDay 7: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (90 min). Done when: All redo exercises completed; doubts written down.\nDay 8: Data Visualization - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\nDay 9: Tableau - Interface & connecting data. Task: Connect a CSV and make 3 charts (90 min). Done when: 3 charts built. Resource: Tableau free training videos: https://www.tableau.com/learn/training\nDay 10: Tableau - Dimensions, measures & filters. Task: Build 4 filtered views (90 min). Done when: Filters work correctly. Resource: Tableau free training videos: https://www.tableau.com/learn/training\nDay 11: Tableau - Calculated fields & LOD. Task: Create 5 calculated fields (90 min). Done when: 5 calcs validated. Resource: Tableau free training videos: https://www.tableau.com/learn/training\nDay 12: Tableau - Dashboards & actions. Task: Build an interactive dashboard (90 min). Done when: Dashboard with 2 actions. Resource: Tableau free training videos: https://www.tableau.co",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "mentions_day30": true,
+        "intent": false,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": [],
+        "rechecked": true
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-r04",
+      "category": "roadmap",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Where can I learn Docker for free? Give links.",
+      "expected_behavior": "no invented URLs",
+      "answer": "To learn Docker for free, there are several resources available online. Here are a few options:\n\n1. **Docker Documentation**: This is the official documentation provided by Docker and covers all aspects of their platform. You can find it at https://docs.docker.com/get-started/.\n\n2. **Docker Tutorials on YouTube**: There are numerous tutorials available on platforms like YouTube that can help you learn Docker step by step. Some popular channels include Traversy Media, Edureka, and CodingWithMosh.\n\n3. **FreeCodeCamp**: FreeCodeCamp offers a Docker course as part of their curriculum. You can find it at https://www.freecodecamp.org/learn/devops/.\n\n4. **Docker Community Edition (CE)**: Docker CE is a free, open-source version of the Docker platform that you can download and use for learning purposes. More information can be found at https://www.docker.com/products/docker-desktop.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 49792.8,
+      "intent_got": null,
+      "intent_expected": "learning_plan",
+      "tokens": 2195,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "no_invented_urls": false,
+        "must_include_any": true,
+        "profile_consistent": null
+      },
+      "passed": false,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
         "items": []
+      },
+      "root_cause": "prompt (forbidden content: no_invented_urls)"
+    },
+    {
+      "id": "v2-r04",
+      "category": "roadmap",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Where can I learn Docker for free? Give links.",
+      "expected_behavior": "no invented URLs",
+      "answer": "To learn Docker for free, you can explore the following resources:\n\n1. **Docker Documentation**: Offers a comprehensive guide on Docker, including tutorials and getting started guides. [Link](https://docs.docker.com/)\n2. **Docker Tutorial Series by EdX**: A free online course that covers Docker basics and more advanced topics.\n3. **Docker Official YouTube Channel**: Contains a variety of videos on Docker, from beginner to advanced levels. [Link: The official site for Docker's YouTube channel]",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 71886.4,
+      "intent_got": "career_discovery",
+      "intent_expected": "learning_plan",
+      "tokens": 1313,
+      "revised": [
+        "Part of the request is not answered: \"Give links\".",
+        "These links are not in any provided source and may be invented: https://www.edx.org/learn/docker-containerization, https://labs.play-with-docker.com/, https://www.youtube.com/user/Docker. Remove them or name the official site without a URL."
+      ],
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "no_invented_urls": true,
+        "must_include_any": true,
+        "intent": false,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-o01",
+      "category": "scope",
+      "user": null,
+      "version": "v7",
+      "route": "out_of_scope",
+      "question": "Write a birthday poem for my mom",
+      "expected_behavior": "refuse",
+      "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"Give me tips to study effectively for exams\"*\n",
+      "model": null,
+      "model_configured": "local",
+      "latency_ms": 2.8,
+      "intent_got": null,
+      "intent_expected": "out_of_scope",
+      "tokens": null,
+      "revised": null,
+      "intent": {
+        "type": null,
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "refusal": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {},
+        "support_rate": null,
+        "method": null,
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-o01",
+      "category": "scope",
+      "user": null,
+      "version": "v8",
+      "route": "out_of_scope",
+      "question": "Write a birthday poem for my mom",
+      "expected_behavior": "refuse",
+      "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"Give me tips to study effectively for exams\"*\n",
+      "model": null,
+      "model_configured": "local",
+      "latency_ms": 0.1,
+      "intent_got": null,
+      "intent_expected": "out_of_scope",
+      "tokens": null,
+      "revised": null,
+      "intent": {
+        "type": null,
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "refusal": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {},
+        "support_rate": null,
+        "method": null,
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-o02",
+      "category": "scope",
+      "user": null,
+      "version": "v7",
+      "route": "out_of_scope",
+      "question": "What's the best smartphone under 20000?",
+      "expected_behavior": "refuse",
+      "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"Explain SQL window functions for my interview preparation\"*\n",
+      "model": null,
+      "model_configured": "local",
+      "latency_ms": 0.0,
+      "intent_got": null,
+      "intent_expected": "out_of_scope",
+      "tokens": null,
+      "revised": null,
+      "intent": {
+        "type": null,
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "refusal": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {},
+        "support_rate": null,
+        "method": null,
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-o02",
+      "category": "scope",
+      "user": null,
+      "version": "v8",
+      "route": "out_of_scope",
+      "question": "What's the best smartphone under 20000?",
+      "expected_behavior": "refuse",
+      "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"Explain SQL window functions for my interview preparation\"*\n",
+      "model": null,
+      "model_configured": "local",
+      "latency_ms": 0.0,
+      "intent_got": null,
+      "intent_expected": "out_of_scope",
+      "tokens": null,
+      "revised": null,
+      "intent": {
+        "type": null,
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "refusal": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {},
+        "support_rate": null,
+        "method": null,
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-o03",
+      "category": "scope",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "How do I become a football coach?",
+      "expected_behavior": "accept: career question",
+      "answer": "To become a football coach, follow these steps:\n\n1. **Education**: Obtain a bachelor's degree in physical education, kinesiology, or a related field. Some positions may require a master's degree or additional certifications.\n\n2. **Experience**: Gain coaching experience at various levels, such as high school, youth leagues, or college. This will help you develop your skills and build a strong resume.\n\n3. **Certification**: Obtain certification from organizations like the United States Soccer Federation (USSF) or National Soccer Coaches Association of America (NSCAA). The specific certifications required may depend on the level of football you wish to coach.\n\n4. **Coaching Philosophy**: Develop a clear coaching philosophy that outlines your approach to player development, team strategy, and sportsmanship. This will help you stand out as a candidate for coaching positions.\n\n5. **Networking**: Build relationships with other coaches, players, and industry professionals. Networking can lead to job opportunities and valuable advice.\n\n6. **Continuing Education**: Stay up-to-date on the latest coaching techniques, strategies, and rules by attending workshops, seminars, and conferences. This will help you remain competitive in the coaching field.\n\n7. **Job Search**: Apply for coaching positions at schools, clubs, or professional teams that align with your coaching philosophy and experience level. Tailor each application to the specific job requirements and highlight your relevant skills and achievements.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 66311.7,
+      "intent_got": null,
+      "intent_expected": "career_discovery",
+      "tokens": 2296,
+      "revised": null,
+      "intent": {
+        "type": "how_to",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-o03",
+      "category": "scope",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "How do I become a football coach?",
+      "expected_behavior": "accept: career question",
+      "answer": "To become a football coach, follow these steps:\n\n1. Gain playing experience: Playing football at a competitive level can provide valuable insights and understanding of the game that will help you as a coach.\n\n2. Obtain a relevant education: A degree in physical education, sports management, or a related field can enhance your coaching skills and knowledge.\n\n3. Earn coaching certifications: Obtain certifications from organizations such as the National Federation of State High School Associations (NFHS), United States Soccer Federation (USSF), or the National Youth Sports Coaches Association (NYSCA). These certifications demonstrate your commitment to learning and developing your coaching abilities.\n\n4. Get practical experience: Volunteer or work as an assistant coach for a high school, college, or club team to gain hands-on experience. This will help you learn the day-to-day responsibilities of a coach and develop your leadership skills.\n\n5. Develop a coaching philosophy: Create a unique coaching philosophy that outlines your approach to player development, game strategy, and team management. This will set you apart from other coaches and demonstrate your commitment to the sport.\n\n6. Network with other coaches: Connect with experienced coaches in your area to learn from them, gain advice, and potentially find job opportunities. Attend coaching clinics and workshops to expand your network and continue learning.\n\n7. Build a resume and portfolio: Create a professional resume that highlights your playing experience, education, certifications, and practical coaching experience. Include any relevant references or testimonials from players, parents, or other coaches. Develop a portfolio of coaching materials such as practice plans, game strategies, and player evaluations to showcase your skills and knowledge.\n\n8. Apply for coaching positions: Search for job openings at schools, clubs, or professional teams. Tailor your resume and cover letter to each position, emphasizing the relevant experience and qualifications that make you a strong candidate.\n\n9. Prepare for interviews: Research the team or organization you are applying to, and be prepared to discuss your coaching philosophy, playing experience, and practical coaching experience during an interview. Show enthusiasm and passion for the sport, and demonstrate your ability to work well with players and parents.\n\n10. Continuously learn and improve: Stay up-to-date on the latest coaching techniques, strategies, and trends by attending workshops, reading books, and networking with other coaches. This will help you grow as a coach and provide the best possible experience for your players.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 70670.4,
+      "intent_got": "concept_explanation",
+      "intent_expected": "career_discovery",
+      "tokens": 1435,
+      "revised": null,
+      "intent": {
+        "type": "how_to",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "intent": false,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-o04",
+      "category": "scope",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Can you explain probability using dice examples for my exam?",
+      "expected_behavior": "accept: study",
+      "answer": "Yes, you are ready for the role of a Data Analyst. You meet 2 out of the 3 required skills (Python and SQL), and dashboards are related background. However, to strengthen most of the tasks in this role, it's recommended to close the gap in statistics.\n\n- **Already met:** Python and SQL are on your resume.\n- **Missing:** Statistics.\n- **Related background:** your dashboard work demonstrates proficiency with visualization, but not statistical analysis.\n\nClosing Statistics first will help you perform more tasks in this role effectively.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 109777.7,
+      "intent_got": null,
+      "intent_expected": "study_help",
+      "tokens": 2329,
+      "revised": [
+        "Start the first sentence with a direct Yes / No / It depends."
+      ],
+      "intent": {
+        "type": "yes_no",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-o04",
+      "category": "scope",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Can you explain probability using dice examples for my exam?",
+      "expected_behavior": "accept: study",
+      "answer": "Yes, I can help you understand probability using dice examples. Probability is a measure of the likelihood that an event will occur. In the context of dice, let's consider a fair six-sided die:\n\n1. Each number (1 to 6) on the die has an equal chance of being rolled. This means the probability of rolling any specific number is 1/6 or approximately 0.167 (or 16.67%).\n\n2. To find the probability of two events happening together, you multiply their individual probabilities. For example, if you roll a die twice, the probability of getting a 3 on both rolls is (1/6) * (1/6) = 1/36 or approximately 0.028 (or 2.78%).\n\n3. To find the probability of at least one specific event happening, you add the probabilities of that event happening and not happening, then subtract the result from 1. For example, if you roll a die once, the probability of getting a number less than 4 is (1/2) + (1/3) - (1/6) = 5/6 or approximately 0.833 (or 83.33%).\n\nThese examples should help you understand the basics of probability, but it's important to review additional resources and practice problems to fully prepare for your exam. Do you have a specific syllabus or textbook that I can refer to for more detailed information?",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 50708.9,
+      "intent_got": "study_help",
+      "intent_expected": "study_help",
+      "tokens": 1070,
+      "revised": null,
+      "intent": {
+        "type": "yes_no",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-m01",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Which of these needs the least maths?",
+      "expected_behavior": "picks among the three",
+      "answer": "Based on the provided student profile, it is not possible to determine which career requires the least maths as no analysis has been performed yet. To get started, please analyze your profile by uploading your resume and a job description in the sidebar and clicking \"Analyze Profile\". This will help identify your skills, gaps, and potential careers that require less math.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 34227.0,
+      "intent_got": null,
+      "intent_expected": "career_discovery",
+      "tokens": 2069,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "first_sentence_any": false,
+        "profile_consistent": null
+      },
+      "passed": false,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": "instruction_following (first_sentence_any)"
+    },
+    {
+      "id": "v2-m01",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Which of these needs the least maths?",
+      "expected_behavior": "picks among the three",
+      "answer": "Two career options from our records that might suit your skills are:\n\n1. **Data Analyst** [S3]: Your Python and SQL skills would be useful here, while you may need to learn more about data analysis techniques.\n2. **Business Intelligence (BI) Analyst** [S4]: This role also involves some statistics but focuses more on reporting and dashboard creation, which aligns with your interest in dashboards. You might want to improve your skills in SQL and business intelligence tools like Power BI or Tableau for this career.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 53924.6,
+      "intent_got": "career_discovery",
+      "intent_expected": "career_discovery",
+      "tokens": 1194,
+      "revised": [
+        "[S1] does not exist. Use only the listed source labels.",
+        "[S2] does not exist. Use only the listed source labels."
+      ],
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "first_sentence_any": false,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": false,
+      "citations": {
+        "citations": 2,
+        "invalid": [
+          3,
+          4
+        ],
+        "unsupported": [],
+        "correct_rate": 0.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 2,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 2
+        },
+        "support_rate": 0.0,
+        "method": "lexical",
+        "items": [
+          {
+            "claim": "Data Analyst : Your Python and SQL skills would be useful here, while you may need to learn more about data analysis techniques.",
+            "id": 3,
+            "label": "invalid_id"
+          },
+          {
+            "claim": "Business Intelligence (BI) Analyst : This role also involves some statistics but focuses more on reporting and dashboard creation, which aligns with your interest in dashboards.",
+            "id": 4,
+            "label": "invalid_id"
+          }
+        ]
+      },
+      "root_cause": "instruction_following (first_sentence_any)"
+    },
+    {
+      "id": "v2-m02",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Give me two examples.",
+      "expected_behavior": "two examples",
+      "answer": "Based on the student's profile and the retrieved sources, here are two career options for a Solutions Architect role in Cloud Computing:\n\n1) **Solutions Architect, Enterprise Migrations, Google Cloud** [S1]\n   - Already met skills: Cloud Computing, Infrastructure.\n   - Missing skills: Storage, Platforms, Data Management, Relational databases, Virtual machines, SQL/NoSQL, Networking, Infrastructure automation, Continuous integration/deployment, Security, Enterprise technology systems, Business applications, Technical documentation.\n\n2) **Solutions Architect, Google Cloud** [S2]\n   - Already met skills: Cloud computing, Infrastructure.\n   - Missing skills: Storage, Platforms, Data, Java, Go, PHP, Documentation, Continuous integration/deployment, SQL/NoSQL, Networking, Security, Cloud-based delivery models.\n\nTo strengthen your profile for these roles, focus on learning the missing skills and gaining experience with them through projects or internships.\n\n---\n**Sources**\n- [S1] careers: Solutions Architect, Enterprise Migrations, Google Cloud\n- [S2] careers: Solutions Architect, Google Cloud",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 56353.6,
+      "intent_got": null,
+      "intent_expected": "concept_explanation",
+      "tokens": 3094,
+      "revised": null,
+      "intent": {
+        "type": "list",
+        "missing": null,
+        "n_items": 2,
+        "max_words": null
+      },
+      "sources": [
+        "S1:careers:Solutions Architect, Enterprise Migrations, Google Cloud",
+        "S2:careers:Solutions Architect, Google Cloud",
+        "S3:careers:Software Architect",
+        "S4:jobs:job_listing"
+      ],
+      "context": "[S1] (source=careers/career_profile, score=0.41, ref=career_2524)\nCareer: Solutions Architect, Enterprise Migrations, Google Cloud. Domain: Cloud and DevOps. Required skills: Cloud Computing, Infrastructure, Storage, Platforms, Data Management, Relational databases, Virtual machines, SQL/NoSQL, Networking, Infrastructure automation, Continuous integration/deployment, Security, Enterprise technology systems, Business applications, Technical documentation. Description: Solutions Architect, Enterprise Migrations, Google Cloud helps build, deploy, automate, and operate software or cloud infrastructure. Common responsibilities include environment configuration, CI/CD, infrastructure automation, monitoring, reliability, access management, and troubleshooting. Relevant skills listed for this role include Cloud Computing, Infrastructure, Storage, Platforms. Education: BA/BS degree in Computer Science or a related engineering field, MS degree in Computer Science or a related engineering field.\n\n[S2] (source=careers/career_profile, score=0.41, ref=career_2525)\nCareer: Solutions Architect, Google Cloud. Domain: Cloud and DevOps. Required skills: Cloud computing, Infrastructure, Storage, Platforms, Data, Java, Go, Python, PHP, Documentation, Continuous integration/deployment, SQL/NoSQL, Networking, Security, Cloud-based delivery models. Description: Solutions Architect, Google Cloud helps build, deploy, automate, and operate software or cloud infrastructure. Common responsibilities include environment configuration, CI/CD, infrastructure automation, monitoring, reliability, access management, and troubleshooting. Relevant skills listed for this role include Cloud computing, Infrastructure, Storage, Platforms. Education: Bachelor's degree in Computer Science or related field, Master's degree in Computer Science or related field.\n\n[S3] (source=careers/career_profile, score=0.41, ref=career_2432)\nCareer: Software Architect. Domain: Cloud and DevOps. Required skills: Cloud computing platforms (AWS, Azure, etc.) Cloud security Containerization (Docker, Kubernetes). Description: A Cloud Architect designs and manages cloud-based solutions, optimizing scalability, security, and performance while aligning them with the companys technology strategy. Education: MCA.\n\n[S4] (source=jobs/job_listing, score=0.36, ref=https://in.linkedin.com/jobs/view/software-engineer-2-at-microsoft-4341275136)\nJob: Software Engineer -2 at Microsoft (Hyderabad, Telangana, India). Salary: Not Listed. Description: Apps.We also build Azure- & Foundry-native integrations with leading technology providers (for example, MongoDB, Elastic, and Datadog) to give customers flexibility, choice, and confidence as they build and operate modern cloud applications—using AI as a core building block, not an afterthought.Why CoreAIBuild trusted AI platforms and developer tools used by millions today—and billions tomorrow. Solve deep technical problems at global, cloud-to-edge scale. Apply AI to real-world en",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 2,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": [],
+        "rechecked": true
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-m02",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Give me two examples.",
+      "expected_behavior": "two examples",
+      "answer": "Cloud computing allows users to access and use computer resources, such as data storage and processing power, over the internet instead of owning physical servers. This can be more cost-effective and flexible than maintaining on-premises infrastructure.\n\n1. **Amazon Web Services (AWS)**: AWS is a popular cloud computing platform that offers various services like Elastic Compute Cloud (EC2), Simple Storage Service (S3), and Lambda for computing, storage, and serverless functions respectively. For example, you can use EC2 instances to run applications in the cloud and S3 to store data securely.\n\n2. **Microsoft Azure**: Microsoft Azure is another leading cloud platform that provides services such as Virtual Machines, Cosmos DB, and App Services for computing, database, and web application hosting respectively. For example, you can create a virtual machine to run custom applications or use Cosmos DB to store and manage data across multiple regions with high availability and scalability.\n\nBoth AWS and Azure are powerful cloud platforms that offer various services to help businesses scale their operations efficiently. While they have similar functionalities, they differ in terms of specific features, pricing models, and integration with other Microsoft or Amazon products.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 36412.8,
+      "intent_got": "concept_explanation",
+      "intent_expected": "concept_explanation",
+      "tokens": 1233,
+      "revised": null,
+      "intent": {
+        "type": "list",
+        "missing": null,
+        "n_items": 2,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-m03",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "No, I'm a complete beginner. Where do I start?",
+      "expected_behavior": "beginner start",
+      "answer": "As a beginner in UX design, you should first understand the basics of user experience and human-computer interaction. Here is a suggested learning path:\n\n1. **Introduction to UX Design**: Learn about the principles of UX design, including user research, usability testing, and user interface design. You can find resources online such as books, articles, and courses on platforms like Coursera, Udemy, or Skillshare.\n2. **UX Design Tools**: Familiarize yourself with common UX design tools like Sketch, Adobe XD, Figma, and InVision. These tools will help you create wireframes, prototypes, and mockups for your designs.\n3. **User Research**: Learn how to conduct user research, including interviews, surveys, and usability testing. This will help you understand the needs and preferences of your users.\n4. **Information Architecture**: Understand how to organize information effectively in a website or application. This includes creating navigation menus, sitemaps, and wireframes.\n5. **Visual Design**: Learn about color theory, typography, and layout principles to create visually appealing designs that are easy to use.\n6. **Prototyping and Testing**: Practice prototyping your designs using the tools mentioned above, and test them with users to gather feedback and iterate on your designs.\n7. **Portfolio Building**: Create a portfolio of your work to showcase your skills and experience to potential employers. Include case studies that demonstrate your design process, user research findings, and final designs.\n8. **Networking**: Connect with other UX designers in your community or online to learn from their experiences and gain insights into the industry. Attend meetups, conferences, and workshops to expand your network.\n9. **Continuous Learning**: Stay up-to-date with the latest trends and best practices in UX design by following industry blogs, podcasts, and newsletters. Consider joining professional organizations like the Interaction Design Association (IxDA) or the User Experience Professionals' Association (UXPA).\n\nGood luck on your journey to becoming a UX designer! If you have any specific questions about the steps above, feel free to ask.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 73344.8,
+      "intent_got": null,
+      "intent_expected": "learning_plan",
+      "tokens": 2475,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-m03",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "No, I'm a complete beginner. Where do I start?",
+      "expected_behavior": "beginner start",
+      "answer": "To become a UX designer, you should focus on learning the fundamental skills and gaining practical experience. Here are some steps to help you get started:\n\n1. Understand the basics of user experience (UX) design: Familiarize yourself with the principles, best practices, and methodologies used in UX design. You can find resources online, such as books, articles, and videos, or take a beginner's course to gain a strong foundation.\n2. Learn key UX design tools: Acquire proficiency in popular UX design tools like Sketch, Figma, Adobe XD, and InVision. These tools will help you create wireframes, prototypes, and user interfaces.\n3. Develop your research skills: UX designers need to conduct user research to understand their target audience's needs, preferences, and pain points. Learn qualitative and quantitative research methods, such as surveys, interviews, usability testing, and card sorting.\n4. Build a portfolio: Create a portfolio showcasing your design projects, case studies, and any relevant work experience. This will help demonstrate your skills and creativity to potential employers.\n5. Gain practical experience: Look for opportunities to work on real-world UX design projects, either through internships, freelance work, or collaborative projects with other designers. This hands-on experience will help you develop your skills and build a strong portfolio.\n6. Stay updated with industry trends: Keep up with the latest developments in UX design by following relevant blogs, podcasts, and online communities. Attend workshops, conferences, and meetups to network with other professionals and learn from experts in the field.\n7. Get certified: Consider earning a certification from a reputable organization, such as the Interaction Design Foundation (IDF) or the Nielsen Norman Group (NN/g). These certifications can help validate your skills and make you more attractive to potential employers.\n\nBy following these steps, you can build a strong foundation in UX design and start pursuing a career in this exciting field. Good luck!",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 57079.3,
+      "intent_got": "career_discovery",
+      "intent_expected": "learning_plan",
+      "tokens": 1539,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": false,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-m04",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v7",
+      "route": "out_of_scope",
+      "question": "Which should I pick for Android?",
+      "expected_behavior": "Java/Kotlin",
+      "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"Explain SQL window functions for my interview preparation\"*\n",
+      "model": null,
+      "model_configured": "local",
+      "latency_ms": 1.7,
+      "intent_got": null,
+      "intent_expected": "concept_explanation",
+      "tokens": null,
+      "revised": null,
+      "intent": {
+        "type": null,
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": false,
+        "must_include_any": false,
+        "profile_consistent": null
+      },
+      "passed": false,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": "scope_router (valid question refused)"
+    },
+    {
+      "id": "v2-m04",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v8",
+      "route": "out_of_scope",
+      "question": "Which should I pick for Android?",
+      "expected_behavior": "Java/Kotlin",
+      "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"Explain SQL window functions for my interview preparation\"*\n",
+      "model": null,
+      "model_configured": "local",
+      "latency_ms": 0.2,
+      "intent_got": null,
+      "intent_expected": "concept_explanation",
+      "tokens": null,
+      "revised": null,
+      "intent": {
+        "type": null,
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": false,
+        "must_include_any": false,
+        "profile_consistent": null
+      },
+      "passed": false,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": "scope_router (valid question refused)"
+    },
+    {
+      "id": "v2-m05",
+      "category": "multi_turn",
+      "user": "persona_ml",
+      "version": "v7",
+      "route": "career_study",
+      "question": "Why is it so low?",
+      "expected_behavior": "explain via gaps",
+      "answer": "The ATS score for your profile as a Machine Learning Engineer is 17/100 (an AI estimate, not an official ATS result). You currently have the skills AutoCAD, MATLAB, Excel, and Python. However, the job description requires Python, Machine Learning, TensorFlow, SQL, Statistics, and Docker. The skills Machine Learning, TensorFlow, SQL, Statistics, and Docker are missing from your profile, which is why your score is low. To improve your ATS score, you should focus on gaining these required skills and updating your resume accordingly.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 45715.3,
+      "intent_got": null,
+      "intent_expected": "profile_analysis",
+      "tokens": 2649,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Raising an ATS match score",
+        "S2:profile:profile_overview"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.33, ref=resume_and_ats.md)\nResume And Ats - Raising an ATS match score: Mirror the exact wording of the job description where it is truthful (for example \"Power BI\" not just \"BI tools\"). Put a dedicated Skills section near the top. Use standard section titles: Summary, Skills, Experience, Projects, Education, Certifications. Save as a text-based PDF or DOCX, never a scanned image. Spell out acronyms once, e.g. \"Natural Language Processing (NLP)\". Do not keyword-stuff or add skills you cannot discuss in an interview; recruiters verify.\n\n[S2] (source=profile/profile_overview, score=0.31, ref=profile_overview)\nCandidate profile overview. Target role: Machine Learning Engineer. ATS match score: 17/100. Candidate skills: AutoCAD, MATLAB, Excel, Python. Skills required by the job description: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Skill gaps (missing skills): Machine Learning, TensorFlow, SQL, Statistics, Docker.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": [],
+        "rechecked": true
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-m05",
+      "category": "multi_turn",
+      "user": "persona_ml",
+      "version": "v8",
+      "route": "career_study",
+      "question": "Why is it so low?",
+      "expected_behavior": "explain via gaps",
+      "answer": "The ATS score for your profile as a Machine Learning Engineer is 17/100. This indicates that there are skill gaps in the requirements listed in the job description you provided: Python, Machine Learning, TensorFlow, SQL, Statistics, and Docker. To improve your score, consider focusing on developing these skills or gaining relevant experience to better match the job requirements.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 23481.1,
+      "intent_got": "profile_progress",
+      "intent_expected": "profile_analysis",
+      "tokens": 1335,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:profile:profile_overview"
+      ],
+      "context": "[S1] (source=profile/profile_overview, score=0.31, ref=profile_overview)\nCandidate profile overview. Target role: Machine Learning Engineer. ATS match score: 17/100. Candidate skills: AutoCAD, MATLAB, Excel, Python. Skills required by the job description: Python, Machine Learning, TensorFlow, SQL, Statistics, Docker. Skill gaps (missing skills): Machine Learning, TensorFlow, SQL, Statistics, Docker.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": false,
+        "profile_consistent": true
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": [],
+        "rechecked": true
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-m06",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Technical, backend.",
+      "expected_behavior": "backend interview prep",
+      "answer": "To prepare for your interview at a startup, follow these steps:\n\n1. Research the company's products and recent news to show your interest and understanding.\n2. Re-read the job description to familiarize yourself with the role requirements.\n3. Prepare two or three thoughtful questions for the interviewer to demonstrate your engagement and knowledge.\n4. Test your setup for online interviews to avoid technical issues during the actual interview.\n5. Send a short thank-you note within 24 hours of the interview to express gratitude and reiterate your interest in the role.\n6. Track every application, stage, and outcome in a spreadsheet to spot patterns and improve your job search strategy.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 47166.9,
+      "intent_got": null,
+      "intent_expected": "job_preparation",
+      "tokens": 2924,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Before and after the interview",
+        "S2:knowledge:Typical hiring stages",
+        "S3:careers:Backend Programmer",
+        "S4:jobs:job_listing"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.53, ref=interview_preparation.md)\nInterview Preparation - Before and after the interview: Research the company's products and recent news, re-read the job description, and prepare two or three thoughtful questions for the interviewer. Test your setup for online interviews. Send a short thank-you note within 24 hours. Track every application, stage and outcome in a spreadsheet to spot patterns.\n\n[S2] (source=knowledge/guide, score=0.53, ref=interview_preparation.md)\nInterview Preparation - Typical hiring stages: Most tech hiring follows: resume screen, online assessment (aptitude/coding/SQL), one or two technical interviews, a managerial or behavioural round, and HR discussion (compensation, joining date). Data roles often add a take-home case study or dashboard task.\n\n[S3] (source=careers/career_profile, score=0.44, ref=career_0230)\nCareer: Backend Programmer. Domain: Cloud and DevOps. Required skills: Technical skills:, Scripting languages (e.g., Javascript, Ruby, Python), Programming languages (e.g., C/C++), SQL, Database engines, IP networking, Application protocols (e.g., UDP/TCP, HTTP), Data encryption, TLS, Cloud computing (Amazon Web Services). Description: Backend Programmer helps build, deploy, automate, and operate software or cloud infrastructure. Common responsibilities include environment configuration, CI/CD, infrastructure automation, monitoring, reliability, access management, and troubleshooting. Relevant skills listed for this role include Technical skills:, Scripting languages (e.g., Javascript, Ruby. Education: Bachelor's degree or diploma in computer science, IT, or a related field; relevant cloud and infrastructure certifications can be advantageous.\n\n[S4] (source=jobs/job_listing, score=0.41, ref=https://in.linkedin.com/jobs/view/software-engineer-backend-at-doordash-4084261319)\nJob: Software Engineer, Backend at DoorDash (Pune/Pimpri-Chinchwad Area). Salary: Not Listed. Description: encourage reuse over duplicationInstrumenting usage and cost signals into platform servicesSupporting safe deprecation and cleanup of stale data assetsPartner with cross-functional teams in a fast-moving, product-driven environmentWe're excited about you because…B.E./B.Tech., M.E./M.Tech, or Ph.D. in Computer Science or equivalent3+ years of experience with CS fundamental concepts and experience with at least one of the programming languages of Go, Java, and PythonPrior technical experience in Big Data infrastructure, Cost Efficiency & Governance, you've built meaningful pieces of data infrastructure. Bonus if those were open-sourced technologies like Spark, Clickhouse, Iceberg and AirflowExperience improving efficiency, scalability, and stability of data platformsExperience building or operating backend systems in production environmentsNotice to Applicants for Jobs Located in NYC or Remote Jobs Associated With Office in NYC OnlyWe use Covey as part of our hiring and/or promotional process for jobs in NYC ",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": false,
+        "profile_consistent": null
+      },
+      "passed": false,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": [],
+        "rechecked": true
+      },
+      "root_cause": "prompt (facts available but not used)"
+    },
+    {
+      "id": "v2-m06",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Technical, backend.",
+      "expected_behavior": "backend interview prep",
+      "answer": "To prepare for applications or interviews, follow these steps:\n\n1. Research the company's products and recent news to show your interest and knowledge.\n2. Re-read the job description carefully to understand the requirements and expectations.\n3. Prepare two or three thoughtful questions for the interviewer that demonstrate your understanding of the role and the company.\n4. Test your setup for online interviews to ensure smooth communication and avoid technical issues.\n5. Send a short thank-you note within 24 hours after each interview, expressing your appreciation for the opportunity and reiterating your interest in the position.\n6. Track every application, stage, and outcome in a spreadsheet to spot patterns and improve your approach over time.\n7. For this specific role at DoorDash, ensure you have 3+ years of experience with CS fundamental concepts and experience with at least one of the programming languages Go, Java, or Python. Prior technical experience in Big Data infrastructure, Cost Efficiency & Governance, and open-sourced technologies like Spark, Clickhouse, Iceberg, and Airflow would be beneficial. Experience improving efficiency, scalability, and stability of data platforms is also important.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 38382.5,
+      "intent_got": "job_preparation",
+      "intent_expected": "job_preparation",
+      "tokens": 1562,
+      "revised": null,
+      "intent": {
+        "type": "other",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:Before and after the interview",
+        "S2:knowledge:Typical hiring stages",
+        "S3:jobs:job_listing"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.53, ref=interview_preparation.md)\nInterview Preparation - Before and after the interview: Research the company's products and recent news, re-read the job description, and prepare two or three thoughtful questions for the interviewer. Test your setup for online interviews. Send a short thank-you note within 24 hours. Track every application, stage and outcome in a spreadsheet to spot patterns.\n\n[S2] (source=knowledge/guide, score=0.53, ref=interview_preparation.md)\nInterview Preparation - Typical hiring stages: Most tech hiring follows: resume screen, online assessment (aptitude/coding/SQL), one or two technical interviews, a managerial or behavioural round, and HR discussion (compensation, joining date). Data roles often add a take-home case study or dashboard task.\n\n[S3] (source=jobs/job_listing, score=0.41, ref=https://in.linkedin.com/jobs/view/software-engineer-backend-at-doordash-4084261319)\nJob: Software Engineer, Backend at DoorDash (Pune/Pimpri-Chinchwad Area). Salary: Not Listed. Description: encourage reuse over duplicationInstrumenting usage and cost signals into platform servicesSupporting safe deprecation and cleanup of stale data assetsPartner with cross-functional teams in a fast-moving, product-driven environmentWe're excited about you because…B.E./B.Tech., M.E./M.Tech, or Ph.D. in Computer Science or equivalent3+ years of experience with CS fundamental concepts and experience with at least one of the programming languages of Go, Java, and PythonPrior technical experience in Big Data infrastructure, Cost Efficiency & Governance, you've built meaningful pieces of data infrastructure. Bonus if those were open-sourced technologies like Spark, Clickhouse, Iceberg and AirflowExperience improving efficiency, scalability, and stability of data platformsExperience building or operating backend systems in production environmentsNotice to Applicants for Jobs Located in NYC or Remote Jobs Associated With Office in NYC OnlyWe use Covey as part of our hiring and/or promotional process for jobs in NYC and certain features may qualify it as an AEDT in NYC. As part of",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": false,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": false,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": [],
+        "rechecked": true
+      },
+      "root_cause": "prompt (facts available but not used)"
+    },
+    {
+      "id": "v2-m07",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Is it worth it for a CSE student who wants a job?",
+      "expected_behavior": "it depends answer",
+      "answer": "Yes, it is worth it for a Computer Science and Engineering (CSE) student to pursue a job search. Here are some reasons:\n\n1. Relevant skills: A CSE student typically has a strong foundation in programming languages such as Java, Python, or C++, which are highly sought-after by employers in various industries.\n2. Versatility: The skills learned during a CSE program can be applied to numerous career paths, including software development, data analysis, machine learning, and cybersecurity.\n3. Job market demand: The demand for technology professionals is high, with many companies investing heavily in digital transformation and automation initiatives.\n4. Opportunities for growth: A job in the tech industry offers opportunities for continuous learning, skill development, and career advancement.\n5. Salary potential: Tech jobs often come with competitive salaries, especially for roles requiring specialized skills or experience.\n6. Real-world application: Working on projects during a job can provide valuable practical experience that complements academic learning.\n7. Networking opportunities: A job offers the chance to connect with industry professionals and build a network that can help in future career advancement.\n8. Financial independence: Employment provides financial stability, allowing students to become self-supporting and gain independence.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 50033.3,
+      "intent_got": null,
+      "intent_expected": "study_help",
+      "tokens": 2274,
+      "revised": null,
+      "intent": {
+        "type": "yes_no",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "first_sentence_any": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-m07",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Is it worth it for a CSE student who wants a job?",
+      "expected_behavior": "it depends answer",
+      "answer": "Yes, studying for an exam is worth it for a Computer Science and Engineering (CSE) student who wants a job. Here's why:\n\n1. Enhanced Knowledge: Studying for an exam helps you gain in-depth knowledge about specific topics, which can be valuable when applying for jobs in the field of CSE.\n2. Improved Skills: Exam preparation often involves solving problems and working on projects, which can help improve your practical skills and problem-solving abilities.\n3. Better Understanding: A thorough understanding of concepts is essential for performing well in job interviews and demonstrating your competence to potential employers.\n\nHowever, it's important to manage your study time effectively and focus on the most relevant topics for your desired career path. If you're unsure about the syllabus or subjects you should focus on, I can help you with that. Could you please provide more details about the specific exam you are preparing for and the job roles you are interested in?",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 29483.6,
+      "intent_got": "study_help",
+      "intent_expected": "study_help",
+      "tokens": 1013,
+      "revised": null,
+      "intent": {
+        "type": "yes_no",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [],
+      "context": "",
+      "checks": {
+        "not_refused": true,
+        "first_sentence_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": []
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-m08",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v7",
+      "route": "career_study",
+      "question": "Explain the second one.",
+      "expected_behavior": "explains Featured/projects",
+      "answer": "The concept being explained is creating a LinkedIn profile that recruiters find attractive. This matters for careers because having an effective LinkedIn profile can increase visibility to potential employers, improve chances of getting noticed by recruiters, and help establish a professional online presence. For example, a well-crafted LinkedIn profile with a clear headline, a professional photo, a concise About section, relevant skills listed, projects showcased, recommendations requested, and occasional updates about learning can make a significant difference in attracting job opportunities. [S1] (source=knowledge/guide, score=0.57, ref=applications_and_networking.md)\n\n---\n**Sources**\n- [S1] knowledge: LinkedIn profile that recruiters find",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 38452.7,
+      "intent_got": null,
+      "intent_expected": "job_preparation",
+      "tokens": 2269,
+      "revised": null,
+      "intent": {
+        "type": "definition",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:LinkedIn profile that recruiters find"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.57, ref=applications_and_networking.md)\nApplications And Networking - LinkedIn profile that recruiters find: Use a headline with your target role and top skills (for example \"Aspiring Data Analyst | SQL, Power BI, Python\"), a professional photo, an About section in 4-5 lines, and the Skills section filled with the keywords recruiters search. Add projects with links, request two or three recommendations, and post occasionally about what you are learning.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 1,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": 1.0
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 1,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 1,
+          "invalid_id": 0
+        },
+        "support_rate": 0.0,
+        "method": "nli",
+        "items": [
+          {
+            "claim": "For example, a well-crafted LinkedIn profile with a clear headline, a professional photo, a concise About section, relevant skills listed, projects showcased, recommendations requested, and occasional updates about learning can make a significant difference in attracting job opportunities. (source=knowledge/guide, score=0.57, ref=applications and networking.md)",
+            "id": 1,
+            "label": "insufficient"
+          }
+        ],
+        "rechecked": true
+      },
+      "root_cause": null
+    },
+    {
+      "id": "v2-m08",
+      "category": "multi_turn",
+      "user": null,
+      "version": "v8",
+      "route": "career_study",
+      "question": "Explain the second one.",
+      "expected_behavior": "explains Featured/projects",
+      "answer": "Preparing for applications involves making your LinkedIn profile attractive to recruiters by using a headline that highlights your target role and top skills, adding a professional photo, writing an About section in 4-5 lines that summarizes your career goals and qualifications, filling out the Skills section with keywords that recruiters search for, adding projects with links, requesting two or three recommendations, and posting occasionally about what you are learning. This approach helps to increase visibility and improve chances of being noticed by potential employers. For example, if you are an aspiring data analyst with skills in SQL, Power BI, and Python, your LinkedIn profile should reflect these qualifications to attract recruiters looking for candidates with those specific skills.",
+      "model": "mistral",
+      "model_configured": "local",
+      "latency_ms": 23835.6,
+      "intent_got": "job_preparation",
+      "intent_expected": "job_preparation",
+      "tokens": 1044,
+      "revised": null,
+      "intent": {
+        "type": "definition",
+        "missing": null,
+        "n_items": null,
+        "max_words": null
+      },
+      "sources": [
+        "S1:knowledge:LinkedIn profile that recruiters find"
+      ],
+      "context": "[S1] (source=knowledge/guide, score=0.57, ref=applications_and_networking.md)\nApplications And Networking - LinkedIn profile that recruiters find: Use a headline with your target role and top skills (for example \"Aspiring Data Analyst | SQL, Power BI, Python\"), a professional photo, an About section in 4-5 lines, and the Skills section filled with the keywords recruiters search. Add projects with links, request two or three recommendations, and post occasionally about what you are learning.",
+      "checks": {
+        "not_refused": true,
+        "must_include_any": true,
+        "intent": true,
+        "profile_consistent": null
+      },
+      "passed": true,
+      "citations": {
+        "citations": 0,
+        "invalid": [],
+        "unsupported": [],
+        "correct_rate": null
+      },
+      "contradictions": [],
+      "claims": {
+        "n": 0,
+        "counts": {
+          "supported": 0,
+          "contradicted": 0,
+          "insufficient": 0,
+          "invalid_id": 0
+        },
+        "support_rate": null,
+        "method": "lexical",
+        "items": [],
+        "rechecked": true
       },
       "root_cause": null
     }
@@ -2887,6 +4630,91 @@
       "role": "Machine Learning Engineer",
       "n_matched": "1",
       "n_required": "6"
+    }
+  },
+  "summary": {
+    "v7": {
+      "n": 40,
+      "pass_rate": 0.8,
+      "pass_rate_by_category": {
+        "concept": 1.0,
+        "study": 0.667,
+        "career": 0.75,
+        "profile": 1.0,
+        "roadmap": 0.5,
+        "scope": 1.0,
+        "multi_turn": 0.625
+      },
+      "scope_accuracy": 0.9,
+      "false_refusals": 2,
+      "out_of_scope_leaks": 0,
+      "constraint_compliance": 0.733,
+      "factual_correctness": 0.875,
+      "citation_rate": 0.2,
+      "citation_correctness": 0.929,
+      "citations": 14,
+      "profile_consistency": 1.0,
+      "revised": 5,
+      "avg_latency_ms": 47198,
+      "avg_tokens": 2574,
+      "models": [
+        "None",
+        "mistral"
+      ],
+      "root_causes": {
+        "scope_router": 2,
+        "instruction_following": 3,
+        "prompt": 3
+      },
+      "claim_support_rate": 0.667,
+      "claim_contradiction_rate": 0.0,
+      "intent_accuracy": null,
+      "pass_rate_by_model": {
+        "None": 0.5,
+        "mistral": 0.833
+      }
+    },
+    "v8": {
+      "n": 40,
+      "pass_rate": 0.825,
+      "pass_rate_by_category": {
+        "concept": 0.8,
+        "study": 0.667,
+        "career": 1.0,
+        "profile": 0.75,
+        "roadmap": 1.0,
+        "scope": 1.0,
+        "multi_turn": 0.625
+      },
+      "scope_accuracy": 0.9,
+      "false_refusals": 2,
+      "out_of_scope_leaks": 0,
+      "constraint_compliance": 0.867,
+      "factual_correctness": 0.844,
+      "citation_rate": 0.25,
+      "citation_correctness": 0.92,
+      "citations": 25,
+      "profile_consistency": 1.0,
+      "revised": 9,
+      "avg_latency_ms": 45262,
+      "avg_tokens": 1752,
+      "models": [
+        "None",
+        "mistral"
+      ],
+      "root_causes": {
+        "scope_router": 2,
+        "retrieval": 1,
+        "prompt": 3,
+        "instruction_following": 1
+      },
+      "claim_support_rate": 0.5,
+      "claim_contradiction_rate": 0.0,
+      "intent_accuracy": 0.667,
+      "pass_rate_by_model": {
+        "None": 0.5,
+        "mistral": 0.861
+      }
     }
   }
 }

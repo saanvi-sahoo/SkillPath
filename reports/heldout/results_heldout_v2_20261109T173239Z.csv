@@ -1,4 +1,12 @@
 test_id,category,user,question,expected_behavior,actual_answer,retrieved_source_ids,pass_fail,failure_reason,root_cause,prompt_version,model_id,model_configured,scope_pass,intent_pass,citation_support_pass,factual_pass,claim_support_rate,citation_correct_rate,latency_ms,tokens
+v2-s01,concept,,"What is an API, explained simply?",plain definition + example,"An Application Programming Interface (API) is a set of rules and protocols that allows different software applications to communicate with each other. In simpler terms, it acts as a bridge between two systems, enabling them to exchange data and interact in a standardized way.
+
+For careers and study, APIs are crucial because they enable the integration of various software components, making it possible to build complex systems by combining existing functionalities. For instance, an API can be used to connect a mobile app with a backend database, allowing users to access their data from multiple devices.
+
+In the context of the Chief Architect of APIs role, understanding and designing APIs is essential for managing software architecture, coordinating different components, and ensuring seamless communication between various systems.",S1:careers:Chief Architect of APIs,PASS,,,v7,mistral,local,True,,True,True,,,23371.3,2324
+v2-s01,concept,,"What is an API, explained simply?",plain definition + example,"An Application Programming Interface (API) is a set of rules and protocols that allows different software applications to communicate with each other. It defines how data should be requested from and sent to the application, making it easier for developers to build new programs that can work seamlessly with existing ones.
+
+For example, when you use an app on your phone to check the weather, the app sends a request to the weather service's API to get the current weather data. This is why APIs are crucial in today's digital world as they enable various services and devices to interact and exchange information efficiently.",,PASS,,,v8,mistral,local,True,True,True,True,,,11103.8,1060
 v2-s02,concept,,Explain the difference between TCP and UDP in a table.,table,"| Feature          | TCP                                                                     | UDP                                                                     |
 |-------------------|------------------------------------------------------------------------|------------------------------------------------------------------------|
 | Connection Type   | **Reliable, connection-oriented** (three-way handshake)                | **Unreliable, connectionless** (no handshake or acknowledgement required)|
@@ -17,14 +25,6 @@ v2-s02,concept,,Explain the difference between TCP and UDP in a table.,table,"TC
 | Order of Packets           | Preserves order of packets                                            | Does not guarantee order of packets                                   |
 | Overhead                   | Higher due to additional handshaking and acknowledgement messages      | Lower due to less overhead (no connection setup or teardown)          |
 | Suitable for               | Real-time applications that require reliable data transfer, such as VoIP and file transfers | Applications where speed is more important than reliability, such as video streaming and online gaming. |",,PASS,,,v8,mistral,local,True,True,True,True,,,19784.1,1240
-v2-s01,concept,,"What is an API, explained simply?",plain definition + example,"An Application Programming Interface (API) is a set of rules and protocols that allows different software applications to communicate with each other. In simpler terms, it acts as a bridge between two systems, enabling them to exchange data and interact in a standardized way.
-
-For careers and study, APIs are crucial because they enable the integration of various software components, making it possible to build complex systems by combining existing functionalities. For instance, an API can be used to connect a mobile app with a backend database, allowing users to access their data from multiple devices.
-
-In the context of the Chief Architect of APIs role, understanding and designing APIs is essential for managing software architecture, coordinating different components, and ensuring seamless communication between various systems.",S1:careers:Chief Architect of APIs,PASS,,,v7,mistral,local,True,,True,True,,,23371.3,2324
-v2-s01,concept,,"What is an API, explained simply?",plain definition + example,"An Application Programming Interface (API) is a set of rules and protocols that allows different software applications to communicate with each other. It defines how data should be requested from and sent to the application, making it easier for developers to build new programs that can work seamlessly with existing ones.
-
-For example, when you use an app on your phone to check the weather, the app sends a request to the weather service's API to get the current weather data. This is why APIs are crucial in today's digital world as they enable various services and devices to interact and exchange information efficiently.",,PASS,,,v8,mistral,local,True,True,True,True,,,11103.8,1060
 v2-s03,concept,,Explain polymorphism with a Java example.,Java code example,"Polymorphism is a key concept in object-oriented programming that allows objects of different types to be treated as if they were of the same type, based on their common base class or interface. This enables code reusability and flexibility.
 
 In Java, polymorphism can be achieved through method overriding and method overloading. Here's a simple example using inheritance and method overriding:
@@ -214,8 +214,392 @@ v2-c02,career,,Is DevOps a good career for a fresher?,direct answer first,"Yes, 
 
 5. **Solutions Architect, DevOps, Google Cloud** [S5]: Requires DevOps, Automating infrastructure deployment, Terraform, Deployment Manager, CloudFormation, Chef, Ansible, Docker, Kubernetes, Cloud technology, Enterprise technology, Relational databases, Infrastructure automation, Continuous integration/deployment, SQL/NoSQL. You have some relevant skills like DevOps and Automating infrastructure deployment, but you might need to learn more about Terraform, Deployment Manager, CloudFormation, Chef, Ansible, Docker, Kubernetes, Relational databases, Infrastructure automation, Continuous integration/deployment for this role.
 
-To help you decide which career path is best suited for you, consider your interests and preferences in terms of the technologies you want to work with, the type of projects you enjoy, and the working style that suits you best (e.g., team collaboration, independent work, etc.).","S1:careers:Software Engineer | S2:careers:Cloud Services Engineer (DevOps) | S3:careers:Software Program Manager, Cloud Services | S4:careers:Full-Stack Software Developer | S5:careers:Solutions Architect, DevOps, Google Cloud | S6:knowledge:Why projects matter",PASS,,,v8,mistral,local,True,True,True,True,1.0,1.0,65006.1,3019
+To help you decide which career path is best suited for you, consider your interests and preferences in terms of the technologies you want to work with, the type of projects you enjoy, and the working style that suits you best (e.g., team collaboration, independent work, etc.).","S1:careers:Software Engineer | S2:careers:Cloud Services Engineer (DevOps) | S3:careers:Software Program Manager, Cloud Services | S4:careers:Full-Stack Software Developer | S5:careers:Solutions Architect, DevOps, Google Cloud | S6:knowledge:Why projects matter",PASS,,,v8,mistral,local,True,True,True,True,0.6,1.0,65006.1,3019
 v2-c03,career,,Compare a business analyst and a data analyst briefly.,brief comparison,"**Business Data Analyst** ([S1]) requires strong analytical skills, proficiency in Microsoft Office products, and excellent writing and verbal skills. Your current skills include SQL and Excel, but you lack Power BI or Tableau for data visualization. To bridge the gap, learn either Power BI or Tableau to improve your chances for this career.",S1:careers:Business Data Analyst | S2:careers:Data Analyst | S3:careers:Business Intelligence Analyst | S4:careers:Business Analyst | S5:careers:Investment Business Analyst | S6:knowledge:Entry-level tech and data career paths | S7:knowledge:Technical preparation | S8:jobs:job_listing,PASS,,,v7,mistral,local,True,,True,True,1.0,1.0,84072.4,3752
 v2-c03,career,,Compare a business analyst and a data analyst briefly.,brief comparison,"Two suitable career options from our records are Business Data Analyst [S1] and Data Analyst [S2]. Both roles match your skills in Microsoft Office products, strong analytical skills, and attention to detail. However, the main difference is that a **Business Data Analyst** focuses on business or operational data analysis specifically, while a **Data Analyst** works with a broader range of data sources. The missing skill for Business Data Analyst is excellent writing and verbal skills, while Data Analyst requires data analysis and visualization tools like Tableau or Power BI.",S1:careers:Business Data Analyst | S2:careers:Data Analyst | S3:careers:Business Intelligence Analyst | S4:careers:Business Analyst | S5:careers:Investment Business Analyst | S6:knowledge:Entry-level tech and data career paths,PASS,,,v8,mistral,local,True,True,True,True,0.5,1.0,72952.5,2472
 v2-c04,career,,What should I do with my life?,clarify,"To help you find a fulfilling career path, let's first identify your interests and skills. Could you please share the subjects or kinds of work that you enjoy most (for example building things, analyzing numbers, designing, or helping people)? This will help me provide personalized career recommendations based on your preferences.",,PASS,,,v7,mistral,local,True,,True,True,,,23410.0,2092
 v2-c04,career,,What should I do with my life?,clarify,"It seems that you haven't provided me with your skills, interests, or goals yet. To help you find a suitable career, I would like to know more about the subjects or kinds of work that you enjoy most. For example, do you prefer roles involving building things, analyzing numbers, designing, or helping people? This will help me provide a more personalized recommendation.",,PASS,,,v8,mistral,local,True,True,True,True,,,15153.3,1160
+v2-c05,career,,Which careers use both Excel and SQL?,careers from records,"Based on the student's profile, two career options that require both Excel and SQL are:
+
+1. Business Performance Analyst [S1]: This role involves designing, building, or maintaining reliable data pipelines and data platforms, including data modeling, quality checks, performance optimization, and making data accessible for analytics.
+
+2. Associate, Analytics [S3]: In this position, the analyst analyzes business or operational data and turns it into clear insights, with typical responsibilities including cleaning data, querying datasets, preparing reports or dashboards, identifying trends, and explaining findings to stakeholders.
+
+Both careers require additional skills such as Database Management for the Business Performance Analyst role and PowerPoint for the Associate, Analytics role, but Excel and SQL are shared requirements for both positions.","S1:careers:Business Performance Analyst | S2:careers:Business Analyst | S3:careers:Associate, Analytics | S4:careers:Business Analyst Medicare | S5:careers:Business Intelligence Analyst | S6:jobs:job_listing | S7:knowledge:Entry-level tech and data career paths | S8:careers:SQL Application Developer",PASS,,,v7,mistral,local,True,,True,True,1.0,1.0,49177.2,3674
+v2-c05,career,,Which careers use both Excel and SQL?,careers from records,"Two suitable career options from our records that require both Excel and SQL are:
+- **Business Performance Analyst** [S1]: This role involves designing, building, or maintaining reliable data platforms using Microsoft Office Suite, including Excel, and requires skills in Database Management and Stored Procedures.
+- **Associate, Analytics** [S3]: In this position, you'll analyze business or operational data and prepare reports or dashboards using MS Excel.
+
+For a more specialized role that also uses Excel and SQL, consider the **SQL Application Developer** [S6]. However, this career requires additional skills in Database Programming, Microsoft SQL Stack, and Source Control Tools.","S1:careers:Business Performance Analyst | S2:careers:Business Analyst | S3:careers:Associate, Analytics | S4:careers:Business Intelligence Analyst | S5:knowledge:Entry-level tech and data career paths | S6:careers:SQL Application Developer",PASS,,,v8,mistral,local,True,True,True,True,0.5,1.0,34124.2,2312
+v2-c06,career,,Will learning AI guarantee me a high salary?,no guarantee,"The salary information for the Software Engineer 2 position at Microsoft is not listed in the provided job description. To find out more about potential salaries for this role, you can check Glassdoor, AmbitionBox, or LinkedIn Salary.",S1:jobs:job_listing,FAIL,no_guarantee,prompt (forbidden content: no_guarantee),v7,mistral,local,True,,True,False,,,27061.8,2339
+v2-c06,career,,Will learning AI guarantee me a high salary?,no guarantee,"I'm sorry to disappoint, but learning AI does not guarantee a high salary. While AI skills are in demand and can lead to well-paying jobs, there are many factors that influence salary such as location, experience level, company size, and more. To increase your chances of earning a higher salary, focus on gaining practical experience, building a strong portfolio, and networking within the industry. You can find job opportunities and salary information on platforms like Glassdoor, AmbitionBox, and LinkedIn Salary.",,PASS,,,v8,mistral,local,True,True,True,True,,,17668.5,1198
+v2-c07,career,,What is the average salary of a blockchain developer in Pune according to your data?,no invented numbers,"The average salary for a Blockchain Developer in Pune isn't available in the provided context. You can check Glassdoor, AmbitionBox, or LinkedIn Salary for more information.",S1:jobs:job_listing | S2:jobs:job_listing,PASS,,,v7,mistral,local,True,,True,True,,,24855.2,2363
+v2-c07,career,,What is the average salary of a blockchain developer in Pune according to your data?,no invented numbers,"The average salary for a Blockchain Developer in Pune, as per our non-verified dataset, is not available. You can check Glassdoor, AmbitionBox, or LinkedIn Salary for more information.",,PASS,,,v8,mistral,local,True,True,True,True,,,13796.6,1119
+v2-c08,career,,I'm a mechanical engineer who likes coding. Suggest three career paths.,exactly three,"Based on your interest in engineering and coding, here are three career paths that might suit you:
+
+1. **Software Engineer**: This role typically requires experience with programming languages such as C#, Java, TypeScript, JavaScript, or Python, as well as strong communication and collaboration skills across disciplines and global teams [S2]. Familiarity with testing frameworks and engineering systems is also important.
+
+2. **Data Analyst**: Data Analyst roles often require SQL, Excel, Power BI/Tableau, statistics, and communication skills [S1]. This career path can lead to data science or analytics engineering if you develop a strong foundation in statistics and machine learning.
+
+3. **DevOps Engineer**: DevOps Engineers are responsible for the development and implementation of tools that automate the processes between software development and IT teams [S1]. This role often involves Linux, networking, a cloud provider, CI/CD, containers, and experience with PowerShell, Azure DevOps (ADO), GitHub, and Kusto can be beneficial [S2].",S1:knowledge:Entry-level tech and data career paths | S2:jobs:job_listing,PASS,,,v7,mistral,local,True,,True,True,0.5,1.0,51030.2,2712
+v2-c08,career,,I'm a mechanical engineer who likes coding. Suggest three career paths.,exactly three,"Based on your interest in mechanical engineering and coding, here are three potential career paths from our records:
+
+1. **Data Analyst** [S1]: This role requires SQL, Excel, Power BI/Tableau, statistics, and communication skills, which aligns with your background in engineering and your interest in coding.
+
+2. **Software Developer** [S1]: As a mechanical engineer who enjoys coding, you might find success as a Software Developer. This role typically requires proficiency in one programming language deeply, Data Structures and Algorithms (DSA), Git, a framework, and databases.
+
+3. **Data Scientist** [S1]: If you're interested in using your engineering problem-solving skills to analyze data and make predictions, a career as a Data Scientist could be suitable. This role requires Python, statistics, machine learning, and experimentation skills.",S1:knowledge:Entry-level tech and data career paths,PASS,,,v8,mistral,local,True,True,True,True,0.5,1.0,32463.2,1443
+v2-p01,profile,persona_be,Which of my skills match the job?,matched skills,"Your profile shows that you have Java, Spring Boot, MySQL, Git, and REST APIs, which are 4 out of the 7 required skills for the Backend Developer role (Java, Spring Boot, Microservices, Docker, Kubernetes, AWS, REST APIs). The missing skills from your profile that are required by the job description are **Microservices**, Docker, Kubernetes, and AWS.","S1:careers:Software Engineer, Product (Full Stack) | S2:profile:resume | S3:profile:profile_overview | S4:knowledge:Raising an ATS match score | S5:profile:career_summary",PASS,,,v7,mistral,local,True,,True,True,,,88470.2,3037
+v2-p01,profile,persona_be,Which of my skills match the job?,matched skills,"Two career options from our records that align with your current skills are:
+
+1. **Full Stack Developer, Online Operations** [S1]: needs Web development, Back end development, and MySQL, which you have experience with. The main missing skill is Front end development.
+2. **Software Development Engineer I** [S5]: requires Java, JavaScript, Git, and relational databases, all skills you possess. The key missing skill is NoSQL databases (Cassandra).
+
+To progress towards a Backend Developer role, you might need to learn Microservices, Docker, Kubernetes, and AWS.
+
+Comparing the two options:
+- **Full Stack Developer, Online Operations** focuses on both front end and back end development, while also working with web technologies like XHTML, CSS, JavaScript, and frameworks such as React & React Native.
+- **Software Development Engineer I** primarily works on Java, JavaScript, Git, and relational databases, but also includes skills like Scala, JavaScript frameworks (D3.js, AngularJS), R, and Python.
+
+To help you decide, consider whether you prefer a role that focuses more on front end development or one that leans towards back end development with additional languages.","S1:careers:Full Stack Developer, Online Operations | S2:careers:Software Engineer, Product (Full Stack) | S3:careers:Full Stack Software Engineer | S4:careers:Software Developer | S5:careers:Software Development Engineer I | S6:profile:resume | S7:profile:profile_overview | S8:knowledge:Raising an ATS match score",FAIL,include_frac; intent,prompt (facts available but not used),v8,mistral,local,True,False,True,False,0.5,1.0,57801.5,2974
+v2-p02,profile,persona_da,Tell me my ATS estimate in one line.,"stored value, short","Your current ATS score is 43/100 (an AI estimate, not an official ATS result).",S1:knowledge:Resume length and structure,PASS,,,v7,mistral,local,True,,True,True,,,26128.3,2405
+v2-p02,profile,persona_da,Tell me my ATS estimate in one line.,"stored value, short","Your current ATS score is 43/100, based on the last analysis of your profile.",,PASS,,,v8,mistral,local,True,True,True,True,,,13400.4,1176
+v2-p03,profile,persona_ml,Do I know enough to apply for this job?,verdict + gaps,"No, you do not know enough to apply for this job as your profile shows gaps in the required skills: Machine Learning, TensorFlow, SQL, Statistics, and Docker. To improve your chances, focus on learning these skills and tailoring your resume and LinkedIn profile to highlight your relevant experience with Python. Consider applying for internships or networking opportunities to increase your chances of getting noticed by potential employers.","S1:profile:resume | S2:knowledge:Job search strategy | S3:knowledge:Referrals, cold emails and internships | S4:profile:profile_overview",PASS,,,v7,mistral,local,True,,True,True,,,37879.6,2764
+v2-p03,profile,persona_ml,Do I know enough to apply for this job?,verdict + gaps,"No, it depends. The student's current skills include AutoCAD, MATLAB, Excel, and Python, but the target job requires experience in Machine Learning, TensorFlow, SQL, Statistics, and Docker. While the student has some relevant skills like Python, they have skill gaps that may affect their application for this role. It would be beneficial to focus on gaining experience or learning these missing skills before applying for similar jobs.
+
+Here are some steps to prepare for applications and interviews:
+1. Identify the required skills and experience for your target job.
+2. Assess your current skills and identify any gaps.
+3. Develop a plan to gain experience or learn the necessary skills through online courses, projects, or internships.
+4. Update your resume to highlight relevant skills and experiences.
+5. Apply to roles where you meet roughly 60-70% of the listed requirements (as per career planning guide).
+6. Utilize job boards like LinkedIn, Naukri, and company career pages.
+7. Leverage referrals for higher response rates (as per career planning guide).
+8. Consider applying for internships 2-4 months before the season to gain practical experience.
+9. Track every application in a spreadsheet.
+10. Tailor your applications and cover letters to each job, emphasizing how you meet the specific requirements.
+11. Prepare for interviews by researching the company and role, practicing common interview questions, and reviewing your skills and experiences.","S1:profile:resume | S2:knowledge:Job search strategy | S3:knowledge:Referrals, cold emails and internships | S4:profile:profile_overview",PASS,intent,,v8,mistral,local,True,False,True,True,,,45462.5,1739
+v2-p04,profile,persona_be,Does my MySQL experience cover the SQL requirement?,evidence of SQL use,"Yes, your MySQL experience does cover the SQL requirement for the Backend Developer role as it is a related skill. However, you still have gaps in Microservices, Docker, Kubernetes, and AWS that are required by the job description. To strengthen your profile, consider learning these skills to increase your chances of being considered for this role.
+
+Here's a suggested learning roadmap:
+
+- **Microservices**: Start with understanding the principles of microservices architecture and then learn Spring Cloud Netflix Eureka for service discovery and Spring Cloud Config for configuration management.
+- **Docker**: Begin with Docker basics such as creating images, containers, and networks. Then, learn how to use Docker Compose for managing multiple containers in a single project.
+- **Kubernetes**: Learn Kubernetes fundamentals like deploying applications, scaling, and managing clusters. You can start with Minikube for local development and then move on to cloud providers like AWS EKS or Google GKE.
+- **AWS**: Familiarize yourself with AWS services relevant to backend development such as EC2, S3, IAM, RDS (for MySQL), and CodePipeline for CI/CD.
+
+Once you have gained some experience with these technologies, update your resume and reanalyze your profile to see the impact on your ATS score. Good luck with your learning journey!",S1:careers:MySQL Database Administrator,PASS,,,v7,mistral,local,True,,True,True,,,56244.4,2688
+v2-p04,profile,persona_be,Does my MySQL experience cover the SQL requirement?,evidence of SQL use,"No, your MySQL experience does not cover the SQL requirement as stated in the Backend Developer job description. SQL is a programming language used for managing and manipulating data, while MySQL is a specific relational database management system that uses SQL. To meet the SQL requirement, you should demonstrate proficiency in SQL programming outside of your MySQL experience. You can do this by listing SQL on your resume and providing examples of SQL queries or projects you've completed using SQL.",,PASS,,,v8,mistral,local,True,True,True,True,,,23596.8,1462
+v2-p05,profile,persona_ml,"List the requirements in the job description, nothing else.",JD requirements only,"The job description for a Machine Learning Engineer requires:
+- Python
+- Machine Learning
+- TensorFlow
+- SQL
+- Statistics
+- Docker
+- Responsibilities include training and deploying ML models, building data pipelines. Education: Bachelor's in a technical field.",S1:profile:profile_overview | S2:profile:job_description | S3:careers:Office Administrator | S4:profile:resume,PASS,,,v7,mistral,local,True,,True,True,,,45532.3,2832
+v2-p05,profile,persona_ml,"List the requirements in the job description, nothing else.",JD requirements only,"Two career options from our records that match some of your skills are:
+- **Starts Coordinator** [S4]: needs Accuracy in data management, Organizational skills, Efficient communication with various parties, which match your Excel and organizational work. Missing skill: Machine Learning, TensorFlow, SQL, Statistics, Docker.
+- **Office Administrator** [S6]: lists Human Resource Administration, Personnel Policies Development, Recruitment, New Employee Orientation, which are not part of your current skills, but you could consider learning these to transition into this role. Missing skill: Machine Learning, TensorFlow, SQL, Statistics, Docker.
+
+To narrow it down: do you prefer coordinating people and processes in a business environment, or working with data and models in a technical field?",S1:careers:Permitting Associate | S2:profile:profile_overview | S3:profile:job_description | S4:careers:Starts Coordinator | S5:knowledge:Writing a cover letter | S6:careers:Office Administrator | S7:careers:Recruiting Associate | S8:careers:Admissions and Database Administrator,PASS,intent,,v8,mistral,local,True,False,True,True,0.5,1.0,108916.4,2912
+v2-p06,profile,persona_ml,Which skills on my resume are not needed for this job?,AutoCAD/MATLAB,The skills on your resume that are not required for a Machine Learning Engineer are AutoCAD and MATLAB. These skills do not appear in the job description or match with any of the required skills for the role.,"S1:knowledge:Raising an ATS match score | S2:profile:profile_overview | S3:careers:Analyst, Business | S4:profile:job_description | S5:profile:resume | S6:profile:career_summary",PASS,,,v7,mistral,local,True,,True,True,,,39712.8,3071
+v2-p06,profile,persona_ml,Which skills on my resume are not needed for this job?,AutoCAD/MATLAB,"The student's profile shows they have gaps in Machine Learning, TensorFlow, SQL, and Statistics, despite the draft stating otherwise. To improve their ATS score, they should mirror the exact wording of the job description where it is truthful, put a dedicated Skills section near the top, and save their resume as a text-based PDF or DOCX.",S1:knowledge:Raising an ATS match score | S2:profile:profile_overview | S3:profile:job_description | S4:profile:resume | S5:profile:career_summary,FAIL,must_include_any; intent,prompt (facts available but not used),v8,mistral,local,True,False,True,False,,,57042.6,1806
+v2-p07,profile,persona_be,Show me what you know about my background.,own data only,"Based on your student profile, you are a Backend Developer with skills in Java, Spring Boot, MySQL, Git, and REST APIs. However, there are gaps in Microservices, Docker, Kubernetes, and AWS. The target job description requires these skills for the Backend Developer role.
+
+- **Already met:** Java, Spring Boot, MySQL, Git, REST APIs are on your resume.
+- **Missing:** Microservices, Docker, Kubernetes, AWS.
+- **Related background:** Your experience with Java and Spring Boot can help you learn Microservices more quickly. Building projects using Docker and deploying them on AWS will also be beneficial in filling the gaps.
+
+To improve your chances of getting a Backend Developer role, consider focusing on learning Microservices, Docker, Kubernetes, and AWS. Once you have gained some experience with these technologies, update your resume to reflect your new skills.",,PASS,,,v7,mistral,local,True,,True,True,,,43508.5,2436
+v2-p07,profile,persona_be,Show me what you know about my background.,own data only,"Based on your profile, you are a Backend Developer with skills in Java, Spring Boot, MySQL, Git, and REST APIs. However, the job description you're targeting requires additional skills such as Microservices, Docker, Kubernetes, and AWS.
+
+Here are two career options that align with your current skills:
+- **Backend Developer** (as per your profile): You have Java, Spring Boot, MySQL, Git, and REST APIs.
+- **Java Developer** (career_0101): Lists Java, Spring Framework, and JDBC (which can be related to MySQL).
+
+To progress towards the Backend Developer role you're targeting, consider focusing on learning Microservices, Docker, Kubernetes, and AWS. This will help you meet the requirements of the job description you provided.",,PASS,intent,,v8,mistral,local,True,False,True,True,,,32942.5,1489
+v2-p08,profile,,What is my skill gap?,no profile -> say so,"I don't see an analysed profile yet, so I can't tell you about your skills or any skill gaps. Upload your resume and the job description in the sidebar and click **Analyze Profile**; I'll then explain the main skills that are missing for your career goals (an AI estimate, not an official ATS result).
+
+As a suggestion, you might consider starting with a role that requires skills similar to those you already have. For example:
+
+* If you have experience in data analysis or programming, you could look into roles such as Data Analyst or Business Intelligence Analyst.
+* If you have experience in project management, you could explore roles like Project Coordinator or Operations Manager.
+* If you have a background in marketing or communications, consider roles such as Marketing Coordinator or Public Relations Specialist.
+
+Once you've identified a role that aligns with your current skills, you can create a focused learning plan to fill any gaps and build a portfolio of projects in the new field. This will make it easier for you to transition into a career that better suits your interests and goals.",S1:knowledge:Switching careers,PASS,,,v7,mistral,local,True,,True,True,,,91238.9,2227
+v2-p08,profile,,What is my skill gap?,no profile -> say so,"The student's CV has not been analyzed against a specific job yet. To help identify any skill gaps, please run the 'Analyze Profile' command followed by the job title or job description you are interested in. In the meantime, consider reviewing the career planning guide (S1) which suggests identifying transferable skills from your current role, closing the gap with focused learning, and building portfolio projects in the new field. Once you have run 'Analyze Profile', I can provide a detailed analysis of any gaps that need to be addressed.",S1:knowledge:Switching careers,PASS,,,v8,mistral,local,True,True,True,True,,,74207.8,1384
+v2-r01,roadmap,,Make a 30-day Python plan for a beginner with 1 hour a day.,"30 days, 60 min","Based on the provided context, I don't have enough information to create a tailored learning plan for this user as they haven't run the profile analysis yet. However, here's a general 30-day Python plan for beginners:
+
+**Day 1-5:** Introduction to Python (syntax, variables, data types)
+- Concrete outcome: Complete an online tutorial or write simple scripts to practice basic concepts
+
+**Day 6-10:** Control structures (if-else, loops)
+- Concrete outcome: Write a program that takes user input and performs different actions based on the input
+
+**Day 11-15:** Functions and modules
+- Concrete outcome: Create reusable functions and organize code into separate modules
+
+**Day 16-20:** Data structures (lists, tuples, dictionaries)
+- Concrete outcome: Implement a program that manipulates data using lists, tuples, or dictionaries
+
+**Day 21-25:** File I/O and exceptions
+- Concrete outcome: Write a script that reads from a file, processes the data, and writes the results to another file
+
+**Day 26-30:** Review and practice
+- Concrete outcome: Solve problems on coding platforms like LeetCode or HackerRank to reinforce understanding of Python concepts",S1:knowledge:Planning a study schedule,PASS,,,v7,mistral,local,True,,True,True,,,101311.6,2412
+v2-r01,roadmap,,Make a 30-day Python plan for a beginner with 1 hour a day.,"30 days, 60 min","**30-Day Python Learning Plan**
+
+*Weeks 1-2:* Follow the Generated Plan from [S1] for the first 14 days. Each day has a specific task with a checkable outcome.
+
+*Day 15:* Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.
+
+*Days 16-24:* Continue with the Generated Plan from [S1] to further enhance your Python skills and interview readiness.
+
+*Day 25:* Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.
+
+*Days 26-30:* Capstone Project - Plan & Build. Follow the guidelines in [S2] to define a problem and data, then build a working first version of your capstone project in Python. Push it to GitHub, add it to your resume, and practice a 2-minute walkthrough. Done when: A working first version runs end to end, public repo, updated resume line, and recorded walkthrough are ready.",S1:roadmap:generated_plan | S2:knowledge:Planning a study schedule,PASS,,,v8,mistral,local,True,True,True,True,0.0,1.0,192537.4,3632
+v2-r02,roadmap,,Give me a 2-week plan to learn Git.,2 weeks,"Based on the student's current profile and the learning guide provided [S1], here's a 2-week plan to learn Git:
+
+**Week 1:**
+- Day 1: Install Git and set up your account (GitHub or Bitbucket)
+- Day 2-3: Learn Git basics: init, clone, add, commit, status, log
+- Day 4-5: Branching and merging: create, switch, merge branches, resolve conflicts
+- Day 6-7: Collaborative workflows: pull requests, forks, code reviews
+
+**Week 2:**
+- Day 1: Advanced Git topics: stashing, rebase, cherry-pick
+- Day 2-3: GitHub/Bitbucket features: issues, projects, milestones
+- Day 4-5: Practice with a project: fork a popular repository and contribute
+- Day 6-7: Review and reinforce your knowledge by solving exercises or challenges online (e.g., freeCodeCamp, HackerRank)
+
+**Next steps:** 1) Add Git to your resume, mentioning any projects you've worked on using it; 2) Practice regularly to stay up-to-date with new features and best practices.",S1:knowledge:Switching careers,PASS,,,v7,mistral,local,True,,True,True,,1.0,61667.0,2365
+v2-r02,roadmap,,Give me a 2-week plan to learn Git.,2 weeks,"Your profile shows no specific gaps for Git as it is already listed in your skills. However, I can suggest a 2-week learning plan to further improve your Git skills. This plan will focus on practical exercises and projects to build your confidence.
+
+**Week 1:**
+- Day 1: Git Basics (Branching & Merging) - Task: Create, merge, and resolve conflicts in a local repository (90 min). Resource: Pro Git book (free): https://git-scm.com/book/en/v2
+- Day 2: GitHub Workflow - Task: Open a pull request on your own repo (90 min). Done when: PR merged. Resource: Pro Git book (free): https://git-scm.com/book/en/v2
+- Day 3: Mini Project - Task: Build the mini project and push it to GitHub with a README (90 min). Done when: Repository with README and screenshots. Resource: Pro Git book (free): https://git-scm.com/book/en/v2
+- Day 4: Interview Readiness - Task: Answer common Git interview questions out loud or in writing (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2
+- Day 5: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (90 min). Done when: All redo exercises completed; doubts written down.
+- Day 6: Interview Readiness (deeper practice) - Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2
+- Day 7: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (90 min). Done when: All redo exercises completed; doubts written down.
+
+**Week 2:**
+- Day 8: Git - Interview readiness (deeper practice) - Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2
+- Day 9: Git - Interview readiness (deeper practice) - Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2
+- Day 10: Git - Interview readiness (deeper practice) - Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2
+- Day 11: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (90 min). Done when: All redo exercises completed; doubts written down.
+- Day 12: Git - Interview readiness (deeper practice) - Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2
+- Day 13: Git - Interview readiness (deeper practice) - Task: Extend the previous Git exercise with a harder variant (90 min). Done when: 10 answers written; 3 weakest revisited. Resource: Pro Git book (free): https://git-scm.com/book/en/v2
+- Day 14: Capstone Project - Task: Define the problem and data for a new project, then start building a working first version (90 min). Done when: A working first version runs end to end.",S1:roadmap:generated_plan | S2:knowledge:Switching careers,PASS,,,v8,mistral,local,True,True,True,True,,,166792.7,4191
+v2-r03,roadmap,persona_da,Make a 30-day plan to close my gaps.,uses real gaps,"Here's a revised plan tailored to the user's gaps:
+
+**Week 1:**
+- Day 1-5: Focus on **Tableau**: Start with basics like creating dashboards and connecting to data sources [no source provided]. Practice by recreating your Power BI sales dashboard in Tableau.
+
+**Week 2:**
+- Day 1-3: Dive deeper into **Tableau**: Learn advanced features like parameters, calculated fields, and data blending (source: [S1]). Apply these concepts to your recreated dashboard.
+- Day 4-5: Practice creating a new Tableau dashboard for a different dataset (e.g., public datasets on Kaggle).
+
+**Week 3:**
+- Day 1-2: Study **Statistics**: Learn fundamental concepts like probability distributions, hypothesis testing, and regression analysis [no source provided]. Practice with online exercises or textbooks.
+- Day 3-4: Work on a project that applies Statistics to an existing dataset (e.g., analyze the relationship between hostel expenses and occupancy rate).
+- Day 5-6: Write a brief report summarizing your findings, focusing on clear communication.
+
+**Week 4:**
+- Day 1-2: Review **Data Visualization**: Learn best practices for creating effective visualizations in both Power BI and Tableau [no source provided]. Apply these principles to your projects.
+- Day 3-5: Refine your reports, focusing on clear communication and visually appealing representations of data.
+- Day 6: Take a break; review what you've learned this month.
+
+**Next steps:**
+1) Update your resume with Tableau, Statistics, and Data Visualization skills.
+2) Apply for relevant Data Analyst positions or internships to gain practical experience.",S1:knowledge:Switching careers,FAIL,mentions_day30; unsupported citations: S1,instruction_following (mentions_day30),v7,mistral,local,True,,True,True,,0.0,168564.7,2835
+v2-r03,roadmap,persona_da,Make a 30-day plan to close my gaps.,uses real gaps,"User: Am I ready for this Data Analyst job?
+Advisor: Partly: you meet 3 of the 7 required skills (Python, SQL, Power BI), but Tableau, Statistics, Data Visualization, and Communication are still gaps, and your ATS estimate is 43/100 (an AI estimate, not an official ATS result).
+
+- Already met: Python, Excel, SQL, Pandas, Power BI are on your resume.
+- Missing: Tableau, Statistics, Data Visualization, Communication.
+- Related background: your Excel charts help with dashboards, but they don't replace Power BI or Tableau. Your Python and SQL experience will be useful for the role.
+
+Closing the gaps in order of the generated plan (Data Visualization, Tableau, Statistics, Communication) will strengthen most of the role's tasks. The plan includes exercises, videos, projects, and public speaking practice to help you learn and demonstrate your skills. It takes 30 days with a daily time budget of 90 minutes.
+
+Here is the generated plan:
+
+Day 1-7: Data Visualization (follow the instructions in the retrieved source S1)
+Day 8: Review - Weekly review (follow the instructions in the retrieved source S1)
+Day 9-15: Tableau (follow the instructions in the retrieved source S1)
+Day 16: Statistics - Descriptive statistics (follow the instructions in the retrieved source S1)
+Day 17: Review - Weekly review (follow the instructions in the retrieved source S1)
+Day 18-25: Communication (follow the instructions in the retrieved source S1)
+Day 26: Review - Weekly review (follow the instructions in the retrieved source S1)
+Day 27-30: Capstone Project (follow the instructions in the retrieved source S1)",S1:roadmap:generated_plan | S2:knowledge:Switching careers,PASS,intent,,v8,mistral,local,True,False,True,True,,,93166.6,3925
+v2-r04,roadmap,,Where can I learn Docker for free? Give links.,no invented URLs,"To learn Docker for free, there are several resources available online. Here are a few options:
+
+1. **Docker Documentation**: This is the official documentation provided by Docker and covers all aspects of their platform. You can find it at https://docs.docker.com/get-started/.
+
+2. **Docker Tutorials on YouTube**: There are numerous tutorials available on platforms like YouTube that can help you learn Docker step by step. Some popular channels include Traversy Media, Edureka, and CodingWithMosh.
+
+3. **FreeCodeCamp**: FreeCodeCamp offers a Docker course as part of their curriculum. You can find it at https://www.freecodecamp.org/learn/devops/.
+
+4. **Docker Community Edition (CE)**: Docker CE is a free, open-source version of the Docker platform that you can download and use for learning purposes. More information can be found at https://www.docker.com/products/docker-desktop.",,FAIL,no_invented_urls,prompt (forbidden content: no_invented_urls),v7,mistral,local,True,,True,False,,,49792.8,2195
+v2-r04,roadmap,,Where can I learn Docker for free? Give links.,no invented URLs,"To learn Docker for free, you can explore the following resources:
+
+1. **Docker Documentation**: Offers a comprehensive guide on Docker, including tutorials and getting started guides. [Link](https://docs.docker.com/)
+2. **Docker Tutorial Series by EdX**: A free online course that covers Docker basics and more advanced topics.
+3. **Docker Official YouTube Channel**: Contains a variety of videos on Docker, from beginner to advanced levels. [Link: The official site for Docker's YouTube channel]",,PASS,intent,,v8,mistral,local,True,False,True,True,,,71886.4,1313
+v2-o01,scope,,Write a birthday poem for my mom,refuse,"I'm your **career & study advisor**, so I can't help with that one. 🙂
+I can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *""Give me tips to study effectively for exams""*
+",,PASS,,,v7,,local,True,,True,True,,,2.8,
+v2-o01,scope,,Write a birthday poem for my mom,refuse,"I'm your **career & study advisor**, so I can't help with that one. 🙂
+I can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *""Give me tips to study effectively for exams""*
+",,PASS,,,v8,,local,True,,True,True,,,0.1,
+v2-o02,scope,,What's the best smartphone under 20000?,refuse,"I'm your **career & study advisor**, so I can't help with that one. 🙂
+I can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *""Explain SQL window functions for my interview preparation""*
+",,PASS,,,v7,,local,True,,True,True,,,0.0,
+v2-o02,scope,,What's the best smartphone under 20000?,refuse,"I'm your **career & study advisor**, so I can't help with that one. 🙂
+I can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *""Explain SQL window functions for my interview preparation""*
+",,PASS,,,v8,,local,True,,True,True,,,0.0,
+v2-o03,scope,,How do I become a football coach?,accept: career question,"To become a football coach, follow these steps:
+
+1. **Education**: Obtain a bachelor's degree in physical education, kinesiology, or a related field. Some positions may require a master's degree or additional certifications.
+
+2. **Experience**: Gain coaching experience at various levels, such as high school, youth leagues, or college. This will help you develop your skills and build a strong resume.
+
+3. **Certification**: Obtain certification from organizations like the United States Soccer Federation (USSF) or National Soccer Coaches Association of America (NSCAA). The specific certifications required may depend on the level of football you wish to coach.
+
+4. **Coaching Philosophy**: Develop a clear coaching philosophy that outlines your approach to player development, team strategy, and sportsmanship. This will help you stand out as a candidate for coaching positions.
+
+5. **Networking**: Build relationships with other coaches, players, and industry professionals. Networking can lead to job opportunities and valuable advice.
+
+6. **Continuing Education**: Stay up-to-date on the latest coaching techniques, strategies, and rules by attending workshops, seminars, and conferences. This will help you remain competitive in the coaching field.
+
+7. **Job Search**: Apply for coaching positions at schools, clubs, or professional teams that align with your coaching philosophy and experience level. Tailor each application to the specific job requirements and highlight your relevant skills and achievements.",,PASS,,,v7,mistral,local,True,,True,True,,,66311.7,2296
+v2-o03,scope,,How do I become a football coach?,accept: career question,"To become a football coach, follow these steps:
+
+1. Gain playing experience: Playing football at a competitive level can provide valuable insights and understanding of the game that will help you as a coach.
+
+2. Obtain a relevant education: A degree in physical education, sports management, or a related field can enhance your coaching skills and knowledge.
+
+3. Earn coaching certifications: Obtain certifications from organizations such as the National Federation of State High School Associations (NFHS), United States Soccer Federation (USSF), or the National Youth Sports Coaches Association (NYSCA). These certifications demonstrate your commitment to learning and developing your coaching abilities.
+
+4. Get practical experience: Volunteer or work as an assistant coach for a high school, college, or club team to gain hands-on experience. This will help you learn the day-to-day responsibilities of a coach and develop your leadership skills.
+
+5. Develop a coaching philosophy: Create a unique coaching philosophy that outlines your approach to player development, game strategy, and team management. This will set you apart from other coaches and demonstrate your commitment to the sport.
+
+6. Network with other coaches: Connect with experienced coaches in your area to learn from them, gain advice, and potentially find job opportunities. Attend coaching clinics and workshops to expand your network and continue learning.
+
+7. Build a resume and portfolio: Create a professional resume that highlights your playing experience, education, certifications, and practical coaching experience. Include any relevant references or testimonials from players, parents, or other coaches. Develop a portfolio of coaching materials such as practice plans, game strategies, and player evaluations to showcase your skills and knowledge.
+
+8. Apply for coaching positions: Search for job openings at schools, clubs, or professional teams. Tailor your resume and cover letter to each position, emphasizing the relevant experience and qualifications that make you a strong candidate.
+
+9. Prepare for interviews: Research the team or organization you are applying to, and be prepared to discuss your coaching philosophy, playing experience, and practical coaching experience during an interview. Show enthusiasm and passion for the sport, and demonstrate your ability to work well with players and parents.
+
+10. Continuously learn and improve: Stay up-to-date on the latest coaching techniques, strategies, and trends by attending workshops, reading books, and networking with other coaches. This will help you grow as a coach and provide the best possible experience for your players.",,PASS,intent,,v8,mistral,local,True,False,True,True,,,70670.4,1435
+v2-o04,scope,,Can you explain probability using dice examples for my exam?,accept: study,"Yes, you are ready for the role of a Data Analyst. You meet 2 out of the 3 required skills (Python and SQL), and dashboards are related background. However, to strengthen most of the tasks in this role, it's recommended to close the gap in statistics.
+
+- **Already met:** Python and SQL are on your resume.
+- **Missing:** Statistics.
+- **Related background:** your dashboard work demonstrates proficiency with visualization, but not statistical analysis.
+
+Closing Statistics first will help you perform more tasks in this role effectively.",,PASS,,,v7,mistral,local,True,,True,True,,,109777.7,2329
+v2-o04,scope,,Can you explain probability using dice examples for my exam?,accept: study,"Yes, I can help you understand probability using dice examples. Probability is a measure of the likelihood that an event will occur. In the context of dice, let's consider a fair six-sided die:
+
+1. Each number (1 to 6) on the die has an equal chance of being rolled. This means the probability of rolling any specific number is 1/6 or approximately 0.167 (or 16.67%).
+
+2. To find the probability of two events happening together, you multiply their individual probabilities. For example, if you roll a die twice, the probability of getting a 3 on both rolls is (1/6) * (1/6) = 1/36 or approximately 0.028 (or 2.78%).
+
+3. To find the probability of at least one specific event happening, you add the probabilities of that event happening and not happening, then subtract the result from 1. For example, if you roll a die once, the probability of getting a number less than 4 is (1/2) + (1/3) - (1/6) = 5/6 or approximately 0.833 (or 83.33%).
+
+These examples should help you understand the basics of probability, but it's important to review additional resources and practice problems to fully prepare for your exam. Do you have a specific syllabus or textbook that I can refer to for more detailed information?",,PASS,,,v8,mistral,local,True,True,True,True,,,50708.9,1070
+v2-m01,multi_turn,,Which of these needs the least maths?,picks among the three,"Based on the provided student profile, it is not possible to determine which career requires the least maths as no analysis has been performed yet. To get started, please analyze your profile by uploading your resume and a job description in the sidebar and clicking ""Analyze Profile"". This will help identify your skills, gaps, and potential careers that require less math.",,FAIL,first_sentence_any,instruction_following (first_sentence_any),v7,mistral,local,True,,True,True,,,34227.0,2069
+v2-m01,multi_turn,,Which of these needs the least maths?,picks among the three,"Two career options from our records that might suit your skills are:
+
+1. **Data Analyst** [S3]: Your Python and SQL skills would be useful here, while you may need to learn more about data analysis techniques.
+2. **Business Intelligence (BI) Analyst** [S4]: This role also involves some statistics but focuses more on reporting and dashboard creation, which aligns with your interest in dashboards. You might want to improve your skills in SQL and business intelligence tools like Power BI or Tableau for this career.",,FAIL,first_sentence_any,instruction_following (first_sentence_any),v8,mistral,local,True,True,False,True,0.0,0.0,53924.6,1194
+v2-m02,multi_turn,,Give me two examples.,two examples,"Based on the student's profile and the retrieved sources, here are two career options for a Solutions Architect role in Cloud Computing:
+
+1) **Solutions Architect, Enterprise Migrations, Google Cloud** [S1]
+   - Already met skills: Cloud Computing, Infrastructure.
+   - Missing skills: Storage, Platforms, Data Management, Relational databases, Virtual machines, SQL/NoSQL, Networking, Infrastructure automation, Continuous integration/deployment, Security, Enterprise technology systems, Business applications, Technical documentation.
+
+2) **Solutions Architect, Google Cloud** [S2]
+   - Already met skills: Cloud computing, Infrastructure.
+   - Missing skills: Storage, Platforms, Data, Java, Go, PHP, Documentation, Continuous integration/deployment, SQL/NoSQL, Networking, Security, Cloud-based delivery models.
+
+To strengthen your profile for these roles, focus on learning the missing skills and gaining experience with them through projects or internships.","S1:careers:Solutions Architect, Enterprise Migrations, Google Cloud | S2:careers:Solutions Architect, Google Cloud | S3:careers:Software Architect | S4:jobs:job_listing",PASS,,,v7,mistral,local,True,,True,True,,1.0,56353.6,3094
+v2-m02,multi_turn,,Give me two examples.,two examples,"Cloud computing allows users to access and use computer resources, such as data storage and processing power, over the internet instead of owning physical servers. This can be more cost-effective and flexible than maintaining on-premises infrastructure.
+
+1. **Amazon Web Services (AWS)**: AWS is a popular cloud computing platform that offers various services like Elastic Compute Cloud (EC2), Simple Storage Service (S3), and Lambda for computing, storage, and serverless functions respectively. For example, you can use EC2 instances to run applications in the cloud and S3 to store data securely.
+
+2. **Microsoft Azure**: Microsoft Azure is another leading cloud platform that provides services such as Virtual Machines, Cosmos DB, and App Services for computing, database, and web application hosting respectively. For example, you can create a virtual machine to run custom applications or use Cosmos DB to store and manage data across multiple regions with high availability and scalability.
+
+Both AWS and Azure are powerful cloud platforms that offer various services to help businesses scale their operations efficiently. While they have similar functionalities, they differ in terms of specific features, pricing models, and integration with other Microsoft or Amazon products.",,PASS,,,v8,mistral,local,True,True,True,True,,,36412.8,1233
+v2-m03,multi_turn,,"No, I'm a complete beginner. Where do I start?",beginner start,"As a beginner in UX design, you should first understand the basics of user experience and human-computer interaction. Here is a suggested learning path:
+
+1. **Introduction to UX Design**: Learn about the principles of UX design, including user research, usability testing, and user interface design. You can find resources online such as books, articles, and courses on platforms like Coursera, Udemy, or Skillshare.
+2. **UX Design Tools**: Familiarize yourself with common UX design tools like Sketch, Adobe XD, Figma, and InVision. These tools will help you create wireframes, prototypes, and mockups for your designs.
+3. **User Research**: Learn how to conduct user research, including interviews, surveys, and usability testing. This will help you understand the needs and preferences of your users.
+4. **Information Architecture**: Understand how to organize information effectively in a website or application. This includes creating navigation menus, sitemaps, and wireframes.
+5. **Visual Design**: Learn about color theory, typography, and layout principles to create visually appealing designs that are easy to use.
+6. **Prototyping and Testing**: Practice prototyping your designs using the tools mentioned above, and test them with users to gather feedback and iterate on your designs.
+7. **Portfolio Building**: Create a portfolio of your work to showcase your skills and experience to potential employers. Include case studies that demonstrate your design process, user research findings, and final designs.
+8. **Networking**: Connect with other UX designers in your community or online to learn from their experiences and gain insights into the industry. Attend meetups, conferences, and workshops to expand your network.
+9. **Continuous Learning**: Stay up-to-date with the latest trends and best practices in UX design by following industry blogs, podcasts, and newsletters. Consider joining professional organizations like the Interaction Design Association (IxDA) or the User Experience Professionals' Association (UXPA).
+
+Good luck on your journey to becoming a UX designer! If you have any specific questions about the steps above, feel free to ask.",,PASS,,,v7,mistral,local,True,,True,True,,,73344.8,2475
+v2-m03,multi_turn,,"No, I'm a complete beginner. Where do I start?",beginner start,"To become a UX designer, you should focus on learning the fundamental skills and gaining practical experience. Here are some steps to help you get started:
+
+1. Understand the basics of user experience (UX) design: Familiarize yourself with the principles, best practices, and methodologies used in UX design. You can find resources online, such as books, articles, and videos, or take a beginner's course to gain a strong foundation.
+2. Learn key UX design tools: Acquire proficiency in popular UX design tools like Sketch, Figma, Adobe XD, and InVision. These tools will help you create wireframes, prototypes, and user interfaces.
+3. Develop your research skills: UX designers need to conduct user research to understand their target audience's needs, preferences, and pain points. Learn qualitative and quantitative research methods, such as surveys, interviews, usability testing, and card sorting.
+4. Build a portfolio: Create a portfolio showcasing your design projects, case studies, and any relevant work experience. This will help demonstrate your skills and creativity to potential employers.
+5. Gain practical experience: Look for opportunities to work on real-world UX design projects, either through internships, freelance work, or collaborative projects with other designers. This hands-on experience will help you develop your skills and build a strong portfolio.
+6. Stay updated with industry trends: Keep up with the latest developments in UX design by following relevant blogs, podcasts, and online communities. Attend workshops, conferences, and meetups to network with other professionals and learn from experts in the field.
+7. Get certified: Consider earning a certification from a reputable organization, such as the Interaction Design Foundation (IDF) or the Nielsen Norman Group (NN/g). These certifications can help validate your skills and make you more attractive to potential employers.
+
+By following these steps, you can build a strong foundation in UX design and start pursuing a career in this exciting field. Good luck!",,PASS,intent,,v8,mistral,local,True,False,True,True,,,57079.3,1539
+v2-m04,multi_turn,,Which should I pick for Android?,Java/Kotlin,"I'm your **career & study advisor**, so I can't help with that one. 🙂
+I can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *""Explain SQL window functions for my interview preparation""*
+",,FAIL,not_refused; must_include_any,scope_router (valid question refused),v7,,local,False,,True,False,,,1.7,
+v2-m04,multi_turn,,Which should I pick for Android?,Java/Kotlin,"I'm your **career & study advisor**, so I can't help with that one. 🙂
+I can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *""Explain SQL window functions for my interview preparation""*
+",,FAIL,not_refused; must_include_any,scope_router (valid question refused),v8,,local,False,,True,False,,,0.2,
+v2-m05,multi_turn,persona_ml,Why is it so low?,explain via gaps,"The ATS score for your profile as a Machine Learning Engineer is 17/100 (an AI estimate, not an official ATS result). You currently have the skills AutoCAD, MATLAB, Excel, and Python. However, the job description requires Python, Machine Learning, TensorFlow, SQL, Statistics, and Docker. The skills Machine Learning, TensorFlow, SQL, Statistics, and Docker are missing from your profile, which is why your score is low. To improve your ATS score, you should focus on gaining these required skills and updating your resume accordingly.",S1:knowledge:Raising an ATS match score | S2:profile:profile_overview,PASS,,,v7,mistral,local,True,,True,True,,,45715.3,2649
+v2-m05,multi_turn,persona_ml,Why is it so low?,explain via gaps,"The ATS score for your profile as a Machine Learning Engineer is 17/100. This indicates that there are skill gaps in the requirements listed in the job description you provided: Python, Machine Learning, TensorFlow, SQL, Statistics, and Docker. To improve your score, consider focusing on developing these skills or gaining relevant experience to better match the job requirements.",S1:profile:profile_overview,PASS,intent,,v8,mistral,local,True,False,True,True,,,23481.1,1335
+v2-m06,multi_turn,,"Technical, backend.",backend interview prep,"To prepare for your interview at a startup, follow these steps:
+
+1. Research the company's products and recent news to show your interest and understanding.
+2. Re-read the job description to familiarize yourself with the role requirements.
+3. Prepare two or three thoughtful questions for the interviewer to demonstrate your engagement and knowledge.
+4. Test your setup for online interviews to avoid technical issues during the actual interview.
+5. Send a short thank-you note within 24 hours of the interview to express gratitude and reiterate your interest in the role.
+6. Track every application, stage, and outcome in a spreadsheet to spot patterns and improve your job search strategy.",S1:knowledge:Before and after the interview | S2:knowledge:Typical hiring stages | S3:careers:Backend Programmer | S4:jobs:job_listing,FAIL,must_include_any,prompt (facts available but not used),v7,mistral,local,True,,True,False,,,47166.9,2924
+v2-m06,multi_turn,,"Technical, backend.",backend interview prep,"To prepare for applications or interviews, follow these steps:
+
+1. Research the company's products and recent news to show your interest and knowledge.
+2. Re-read the job description carefully to understand the requirements and expectations.
+3. Prepare two or three thoughtful questions for the interviewer that demonstrate your understanding of the role and the company.
+4. Test your setup for online interviews to ensure smooth communication and avoid technical issues.
+5. Send a short thank-you note within 24 hours after each interview, expressing your appreciation for the opportunity and reiterating your interest in the position.
+6. Track every application, stage, and outcome in a spreadsheet to spot patterns and improve your approach over time.
+7. For this specific role at DoorDash, ensure you have 3+ years of experience with CS fundamental concepts and experience with at least one of the programming languages Go, Java, or Python. Prior technical experience in Big Data infrastructure, Cost Efficiency & Governance, and open-sourced technologies like Spark, Clickhouse, Iceberg, and Airflow would be beneficial. Experience improving efficiency, scalability, and stability of data platforms is also important.",S1:knowledge:Before and after the interview | S2:knowledge:Typical hiring stages | S3:jobs:job_listing,FAIL,must_include_any,prompt (facts available but not used),v8,mistral,local,True,True,True,False,,,38382.5,1562
+v2-m07,multi_turn,,Is it worth it for a CSE student who wants a job?,it depends answer,"Yes, it is worth it for a Computer Science and Engineering (CSE) student to pursue a job search. Here are some reasons:
+
+1. Relevant skills: A CSE student typically has a strong foundation in programming languages such as Java, Python, or C++, which are highly sought-after by employers in various industries.
+2. Versatility: The skills learned during a CSE program can be applied to numerous career paths, including software development, data analysis, machine learning, and cybersecurity.
+3. Job market demand: The demand for technology professionals is high, with many companies investing heavily in digital transformation and automation initiatives.
+4. Opportunities for growth: A job in the tech industry offers opportunities for continuous learning, skill development, and career advancement.
+5. Salary potential: Tech jobs often come with competitive salaries, especially for roles requiring specialized skills or experience.
+6. Real-world application: Working on projects during a job can provide valuable practical experience that complements academic learning.
+7. Networking opportunities: A job offers the chance to connect with industry professionals and build a network that can help in future career advancement.
+8. Financial independence: Employment provides financial stability, allowing students to become self-supporting and gain independence.",,PASS,,,v7,mistral,local,True,,True,True,,,50033.3,2274
+v2-m07,multi_turn,,Is it worth it for a CSE student who wants a job?,it depends answer,"Yes, studying for an exam is worth it for a Computer Science and Engineering (CSE) student who wants a job. Here's why:
+
+1. Enhanced Knowledge: Studying for an exam helps you gain in-depth knowledge about specific topics, which can be valuable when applying for jobs in the field of CSE.
+2. Improved Skills: Exam preparation often involves solving problems and working on projects, which can help improve your practical skills and problem-solving abilities.
+3. Better Understanding: A thorough understanding of concepts is essential for performing well in job interviews and demonstrating your competence to potential employers.
+
+However, it's important to manage your study time effectively and focus on the most relevant topics for your desired career path. If you're unsure about the syllabus or subjects you should focus on, I can help you with that. Could you please provide more details about the specific exam you are preparing for and the job roles you are interested in?",,PASS,,,v8,mistral,local,True,True,True,True,,,29483.6,1013
+v2-m08,multi_turn,,Explain the second one.,explains Featured/projects,"The concept being explained is creating a LinkedIn profile that recruiters find attractive. This matters for careers because having an effective LinkedIn profile can increase visibility to potential employers, improve chances of getting noticed by recruiters, and help establish a professional online presence. For example, a well-crafted LinkedIn profile with a clear headline, a professional photo, a concise About section, relevant skills listed, projects showcased, recommendations requested, and occasional updates about learning can make a significant difference in attracting job opportunities. [S1] (source=knowledge/guide, score=0.57, ref=applications_and_networking.md)",S1:knowledge:LinkedIn profile that recruiters find,PASS,,,v7,mistral,local,True,,True,True,0.0,1.0,38452.7,2269
+v2-m08,multi_turn,,Explain the second one.,explains Featured/projects,"Preparing for applications involves making your LinkedIn profile attractive to recruiters by using a headline that highlights your target role and top skills, adding a professional photo, writing an About section in 4-5 lines that summarizes your career goals and qualifications, filling out the Skills section with keywords that recruiters search for, adding projects with links, requesting two or three recommendations, and posting occasionally about what you are learning. This approach helps to increase visibility and improve chances of being noticed by potential employers. For example, if you are an aspiring data analyst with skills in SQL, Power BI, and Python, your LinkedIn profile should reflect these qualifications to attract recruiters looking for candidates with those specific skills.",S1:knowledge:LinkedIn profile that recruiters find,PASS,,,v8,mistral,local,True,True,True,True,,,23835.6,1044
