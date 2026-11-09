@@ -3,18 +3,56 @@
 
 Sabudh Foundation internship project (team: Saanvi Sahoo, Amrit Singh, Isa Ahmed Khan; mentor: Ms. Suparna Dutta), built on the previous batch's **UpskillxAI** (its original README is kept below).
 
+<p align="center">
+  <a href="https://saanvi-sahoo-skillpath-srcfrontendfrontend-qwxzcn.streamlit.app"><img alt="Open the live app" src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg"></a>
+  &nbsp;<a href="reports/SkillPath_AI_Implementation_Report.pdf"><img alt="Full report (PDF)" src="https://img.shields.io/badge/Report-PDF-1D4ED8.svg"></a>
+  &nbsp;<a href="docs/README.md"><img alt="Documentation" src="https://img.shields.io/badge/Docs-17_guides-334E68.svg"></a>
+</p>
+
+## Live app and links
+
+| What | Link | Notes |
+|---|---|---|
+| **Live app** (Streamlit Community Cloud) | **https://saanvi-sahoo-skillpath-srcfrontendfrontend-qwxzcn.streamlit.app** | Works with no keys (retrieval-only answers). For AI-written answers, open the sidebar → *AI engine & your own API key* (Groq / Gemini / OpenAI / OpenRouter). If the app was idle it shows "wake up": click it and wait about 30 s |
+| Full implementation report (PDF, 57 pages) | [reports/SkillPath_AI_Implementation_Report.pdf](reports/SkillPath_AI_Implementation_Report.pdf) | Summary, results and every document in one file. Rebuild: `python docs/build_pdf_report.py` |
+| Documentation index | [docs/README.md](docs/README.md) | Runbook, scenarios, embeddings, RAG, Atlas, chatbot, prompt training, experiment log |
+| Source code | https://github.com/saanvi-sahoo/SkillPath | Branch `main`; app entry point `src/frontend/frontend.py` |
+| **Career dataset** (source of truth) | [view](https://github.com/saanvi-sahoo/SkillPath/blob/main/docs/emerging_tech_career_dataset_cleaned.csv) · [raw CSV](https://github.com/saanvi-sahoo/SkillPath/raw/main/docs/emerging_tech_career_dataset_cleaned.csv) | 2,900 × 13; quality audit: [reports/data_quality/career_dataset_report.md](reports/data_quality/career_dataset_report.md) |
+| Knowledge base (curated guides) | [src/data/knowledge_base/](src/data/knowledge_base/) | 9 guides, 37 sections embedded for the chatbot |
+| Retrieval benchmarks | [reports/embeddings/](reports/embeddings/) | Career P@5, guide Hit@k, Atlas checks |
+| Prompt evaluation results | [reports/prompt_eval/](reports/prompt_eval/) · [docs/experiment_log.md](docs/experiment_log.md) | Prompt v1–v6 A/B tests (E0–E35) |
+| Vector database | [MongoDB Atlas, project "SkillPath AI"](https://cloud.mongodb.com/v2/6aef8bc9b64186873a8b7606#/overview) | Team login needed. Cluster `skillpath-cluster` → *Browse Collections* → database `skillpath_ai`. Setup: [docs/mongodb_atlas_setup.md](docs/mongodb_atlas_setup.md) |
+| App settings, logs, secrets | [share.streamlit.io](https://share.streamlit.io) | App owner only: ⋮ → *Settings → Secrets*, *Manage app* for logs and reboot. See [docs/deployment.md](docs/deployment.md) |
+
+### REST API
+
+The deployed app is Streamlit only (Streamlit Cloud doesn't host a separate API server); the cloud app runs the pipeline in-process. The FastAPI backend runs locally with `./run_local.sh` (or the `uvicorn` command below):
+
+| Check | Link |
+|---|---|
+| Interactive API docs (try every endpoint) | http://localhost:8000/docs |
+| OpenAPI schema | http://localhost:8000/openapi.json |
+| Endpoints | `POST /pipeline/run` (analyse resume + JD) · `POST /chat` (Career Advisor) · `POST /roadmap` (30-day plan) · `POST /skills/compare` (exact skill gaps) · `POST /jobs`, `/jobs/slice`, `/profiles`, `/jobs-with-profiles` |
+
+Example: `curl -X POST localhost:8000/skills/compare -H 'Content-Type: application/json' -d '{"candidate_skills":["Python","MySQL"],"required_skills":["SQL","Power BI"]}'`
+
+## What's built
+
 | What | How | Status |
 |---|---|---|
-| Resume/JD parsing + skill analysis | LangGraph pipeline, LLM structured output | ✅ verified end to end |
+| Resume/JD parsing + skill analysis | LangGraph pipeline; LLM structured output, or rule-based when keyless | ✅ verified end to end |
 | Career knowledge base (source of truth) | `docs/emerging_tech_career_dataset_cleaned.csv` → 2,899 × 384 MiniLM vectors | ✅ |
-| Vector database | **MongoDB Atlas Vector Search** (`skillpath_ai`, 3 collections) | ✅ live, verified |
-| Career Advisor chatbot | Career/study-only guardrail + RAG with citations | ✅ |
-| Prompt script training | Versioned prompts v1–v4 + 42-case evaluation | ✅ |
-| Skill gaps + 30-day roadmap | Exact canonical comparison, prioritised + validated plan | ✅ |
+| Vector database | **MongoDB Atlas Vector Search** (`skillpath_ai`: careers, knowledge + jobs, private profiles, feedback) | ✅ live, verified |
+| RAG precision | Cross-encoder re-ranking: career P@5 0.767 → 0.858, guide Hit@3 0.90 → 0.967 | ✅ |
+| Career Advisor chatbot | Career/study-only guardrail, question profiler, cited RAG answers, question queue | ✅ |
+| Prompt script training | Versioned prompts v1–v6, 65 + 30-case evaluations; v5 live | ✅ |
+| Feedback learning | 👍/👎 feedback stored in Atlas and reused on similar questions | ✅ |
+| Skill gaps + 30-day roadmap | Exact canonical comparison, prioritised + validated plan, role-specific capstone | ✅ |
+| Runs without paid keys | Keyless mode, local Mistral (Ollama), or the visitor's own API key | ✅ |
 
-**Run locally (one command):** `./run_local.sh` → http://localhost:8501 (or `./run_local.sh --keyless` → http://localhost:8502, same as the deployed app).
+## Run locally
 
-**Start here: [docs/README.md](docs/README.md)** (runbook, scenarios, embeddings, RAG, Atlas, chatbot, prompt scripting, status, experiment log).
+**One command:** `./run_local.sh` → http://localhost:8501 (or `./run_local.sh --keyless` → http://localhost:8502, same as the deployed app).
 
 ```bash
 python3.12 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
@@ -22,6 +60,7 @@ cp .env.example .env                               # add keys + MONGODB_URI
 python -m src.rag.ingest --sources all             # embeddings -> Atlas (or local fallback)
 uvicorn src.backend.fastapi_ends.api_endpoint:app --port 8000
 streamlit run src/frontend/frontend.py
+python -m pytest -q tests                          # 40 offline tests
 ```
 
 ---
