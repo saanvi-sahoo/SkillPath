@@ -74,3 +74,20 @@ Day schema (doc §11.1):
   "Cybersecurity Analyst" no longer gets the analyst dashboard project).
 - In the chat, "make me a 30-day … plan" runs this generator first (time budget from "45 minutes daily", known skills
   from "I know Python…", starter skills when only a role is named) and gives the plan to the model as a source.
+
+## 6. Adaptive roadmap (E38, review 3 §5)
+A valid plan is not necessarily a useful one: students miss days, find a topic hard, already know part of it, or change
+goals. `src/roadmap/adapt.py` tracks a status per day (`not_started`, `completed`, `needs_revision`, `skipped`,
+`already_known`) and `adapt_roadmap(roadmap, progress, today)` rebalances only the remaining days:
+
+- completed days stay as history; a hard day gets an easier **revision day** immediately (smaller steps, simpler practice, then the original task);
+- missed days move forward in order; already-known days are removed and later topics move up;
+- if the work no longer fits in 30 days, weekly reviews are dropped first, then the lowest-priority learning days are **deferred** (listed, never silently lost); the capstone stays last;
+- the daily minute budget never changes.
+
+The roadmap page has a *Track progress and adapt the plan* panel (status per day, "Which day are you on?", *Rebalance my
+plan*). It shows the **task completion rate** (completed / days due, the review's real-world metric) and saves a progress
+summary to the student's profile, so the advisor can answer "how am I doing?" from it. In chat, "I missed 3 days" or "DAX
+is too hard" triggers the same adapt-don't-repeat rule, and a plan asked for after "the second one" / "one hour daily" uses
+the selected career, the minutes and the skills the student said they lack (conversation state, docs/chatbot.md).
+Tests: `tests/test_e38.py::test_adaptive_roadmap`.

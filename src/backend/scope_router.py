@@ -29,7 +29,7 @@ KNN_K = 5
 # Tuned with src/eval/run_prompt_eval.py; log changes in docs/experiment_log.md
 KNN_MIN_TOP_SIM = float(os.getenv("SCOPE_KNN_MIN_TOP_SIM", "0.55"))
 KNN_MIN_VOTE_SHARE = float(os.getenv("SCOPE_KNN_MIN_VOTE_SHARE", "0.80"))
-FOLLOWUP_MAX_WORDS = 6
+FOLLOWUP_MAX_WORDS = int(os.getenv("SCOPE_FOLLOWUP_MAX_WORDS", "10"))  # E38: was 6 ("I missed 3 days this week. what now?" was refused)
 # llama-3.1-8b-instant was retired by Groq (found 2026-11-08); gpt-oss-20b is the cheapest served model
 ROUTER_MODEL = os.getenv("ROUTER_MODEL", "groq:openai/gpt-oss-20b")
 
@@ -88,7 +88,14 @@ def llm_classify(message: str, history: List[Dict]) -> Dict:
     return {"label": label if label in LABELS else "career_study", "reason": data.get("reason", "")}
 
 
+# E38: topics that are never career/study questions on their own (live sports results, weather, gossip, recipes, prices,
+# translation). Checked before follow-up inheritance: "who won the IPL?" inside a SQL-interview chat was answered.
+_HARD_OFF_TOPIC = re.compile(r"\b(who won|winner of|match score|live score|ipl|world cup|weather|temperature (in|today|tomorrow)|"
+                             r"bigg? ?boss|movie|netflix|series to watch|celebrit\w*|recipe|biryani|restaurant|bitcoin price|stock price|"
+                             r"crypto price|lottery|horoscope|joke|poem|love letter|translate)\b", re.I)
 _ACADEMIC = re.compile(r"\b(notation|algorithm\w*|theorem|equation|concept|syllabus|exam|semester|subject|course|"
+                       r"recursion|function|variable|loop|array|class|object|oops?|pointer|stack|queue|tree|graph|api|sql|git|"
+                       r"plan|roadmap|study|studying|learn\w*|skills?|salary|fresher|placement|portfolio|"
                        r"programming|coding|code|data|database|network\w*|statistic\w*|probability|calculus|physics|chemistry|"
                        r"biology|economics|accounting|engineering|machine learning|android|ios|web|cloud|career|job|resume|"
                        r"interview|internship|degree|college|university)\b", re.I)
@@ -134,6 +141,8 @@ def route(message: str, history: List[Dict] | None = None, mode: str | None = No
     except Exception:  # noqa: BLE001
         pass
 
+    if _HARD_OFF_TOPIC.search(message) and not _study_or_career_signal(_HARD_OFF_TOPIC.sub(" ", message)):
+        return done({"label": "out_of_scope", "method": "regex (off-topic topic)"})
     knn = knn_classify(message)
     if mode == "knn":
         return done({**knn, "method": "knn"})
@@ -163,6 +172,14 @@ def route(message: str, history: List[Dict] | None = None, mode: str | None = No
         # that clearly carries study/career content ("Explain Big-O notation in exactly two sentences" was refused).
         if k2["label"] == "out_of_scope" and k2["top_sim"] < 0.4 and k2["vote_share"] < 0.8 and _study_or_career_signal(f"{prev} {message}" if is_followup else message):
             return done({**k2, "label": "career_study", "method": "no-LLM: study/career signal overrides weak refusal"})
+        # E38: a follow-up that itself carries study/career words stays in scope ("web or mobile, which one for fresher?")
+        if is_followup and k2["label"] == "out_of_scope" and _study_or_career_signal(message):
+            return done({**k2, "label": "career_study", "method": "no-LLM: follow-up with study/career signal"})
+        # E38: "prompt_attack" needs attack wording (the regex above); a weak kNN vote for it is noise ("explain recursion"
+        # matched injection anchors at 0.20 similarity and was refused)
+        if k2["label"] == "prompt_attack" and k2["top_sim"] < 0.6:
+            lab = "career_study" if _study_or_career_signal(message) else "out_of_scope"
+            return done({**k2, "label": lab, "method": "no-LLM: weak attack vote ignored"})
         return done({**k2, "method": "knn (no-LLM)"})
     try:
         llm = llm_classify(message, history)

@@ -73,13 +73,22 @@ def load_profile_summary(user_id: str | None = None, v7: bool = False) -> str:
         # E33: short excerpts so questions about the JD or the resume can be answered from the actual text
         f"- Target job description (excerpt): {' '.join(str(mem.get('job_description') or '').split()[:110])}\n"
         f"- Resume (excerpt): {' '.join(str(mem.get('resume_text') or '').split()[:110])}"
+        + (_progress_line(mem.get("roadmap_progress")) if mem.get("roadmap_progress") else "")
     )
 
 
-def _retrieval_query(history: List[Dict]) -> str:
-    """Short follow-ups ('and how long?') are expanded with the previous user turn."""
+def _progress_line(p: Dict) -> str:
+    """E38: roadmap progress recorded on the roadmap page (task completion rate, revision topics)."""
+    return (f"\n- 30-day roadmap progress (recorded by the student): on day {p.get('on_day')}, completed {p.get('completed')}/"
+            f"{p.get('days_due')} days due" + (f"; revising: {', '.join(p['revising'])}" if p.get("revising") else "")
+            + (f"; deferred: {', '.join(p['deferred'])}" if p.get("deferred") else ""))
+
+
+def _retrieval_query(history: List[Dict], resolved: str | None = None) -> str:
+    """Short follow-ups ('and how long?') are expanded with the previous user turn.
+    E38: `resolved` is the message with references made explicit ("the second one" -> "Data Engineer")."""
     users = [m["content"] for m in history if m["role"] == "user"]
-    q = users[-1]
+    q = resolved or users[-1]
     if len(q.split()) <= 6 and len(users) > 1:
         q = f"{users[-2]} {q}"
     return q
@@ -180,8 +189,19 @@ def build_messages(history: List[Dict], profile: str, context: str, system_versi
 
 def answer(chat_history: List[Dict], system_version: str | None = None, router_mode: str | None = None,
            profile_override: str | None = None, route_override: Dict | None = None,
-           quotas: Dict | None = None, user_id: str | None = None, extra_hits: List[Dict] | None = None) -> Dict:
-    """Full turn with diagnostics (used by the eval harness and the API)."""
+           quotas: Dict | None = None, user_id: str | None = None, extra_hits: List[Dict] | None = None,
+           e38: bool | None = None) -> Dict:
+    """Full turn with diagnostics (used by the eval harness and the API). `e38` overrides the E38_PIPELINE default."""
+    from src.backend.features import _E38, set_e38
+    token = set_e38(e38)
+    try:
+        return _answer(chat_history, system_version, router_mode, profile_override, route_override, quotas, user_id, extra_hits)
+    finally:
+        _E38.reset(token)
+
+
+def _answer(chat_history, system_version, router_mode, profile_override, route_override, quotas, user_id, extra_hits) -> Dict:
+    from src.backend.features import e38_on
     t0 = time.perf_counter()
     history = [m for m in chat_history if m.get("role") in ("user", "assistant") and m.get("content")]
     if not history or history[-1]["role"] != "user":
@@ -206,14 +226,21 @@ def answer(chat_history: List[Dict], system_version: str | None = None, router_m
         qp = profile_question(message)
         memory = None if profile_override is not None else load_memory(uid)
         intent = None
-        if v8:  # E37: structured intent + source-aware routing (review 2 §2-3)
+        e38 = e38_on() and v5
+        state, rmsg = None, message
+        has_profile = memory is not None or (profile_override is not None and "No analysed profile" not in profile_override)
+        if e38:  # E38: structured conversation state ("the second one", "one hour daily", corrections, changes of goal)
+            from src.backend.conversation_state import build_state, resolved_message
+            state = build_state(history[:-1], message)
+            rmsg = resolved_message(message, state)
+            out["state"] = {k: v for k, v in state.items() if v and k != "provenance"}
+        if v8 or e38:  # E37: structured intent + source-aware routing (review 2 §2-3); E38: v7 uses it for plans only
             from src.backend.intent import classify, quotas_for
-            has_profile = memory is not None or (profile_override is not None and "No analysed profile" not in profile_override)
-            intent = classify(message, history[:-1], has_profile, decision["label"])
-            qp = intent["question_profile"]
+            intent = classify(rmsg, history[:-1], has_profile, decision["label"])
             out["intent"] = {k: v for k, v in intent.items() if k not in ("question_profile", "route")}
+        if v8:
+            qp = intent["question_profile"]
         elif v7:  # E36: parsed intent = task + primary source + missing information
-            has_profile = memory is not None or (profile_override is not None and "No analysed profile" not in profile_override)
             qp = parsed_intent(qp, message, has_profile, history_len=len(history) - 1)
         out["question_profile"] = qp
         hits = []
@@ -231,12 +258,15 @@ def answer(chat_history: List[Dict], system_version: str | None = None, router_m
             if v8:
                 q_quotas = quotas or quotas_for(intent, has_profile)
                 user_skills = (memory.get("candidate_skills") or None) if memory and intent["primary_intent"] == "career_discovery" else None
-            hits = retrieve(_retrieval_query(history), quotas=q_quotas, user_id=uid, user_skills=user_skills) if q_quotas else []
+            if e38 and state.get("selected_career") and not has_profile and q_quotas is not None and not quotas:
+                q_quotas = dict(q_quotas)  # E38: "what am I missing for <the career we discussed>" -> that career's records are the evidence
+                q_quotas["careers"] = max(q_quotas.get("careers", 0), 2)
+            hits = retrieve(_retrieval_query(history, rmsg if e38 else None), quotas=q_quotas, user_id=uid, user_skills=user_skills) if q_quotas else []
             if v5:
                 hits = _relevance_filter(hits)
-            if v8:
+            if v8 or e38:
                 from src.backend.task_contract import roadmap_evidence
-                plan = roadmap_evidence(message, intent, memory)
+                plan = roadmap_evidence(message, intent, memory, state=state)
                 if plan:
                     out["roadmap"] = {k: plan["plan"][k] for k in ("gaps_prioritised", "days_per_skill", "capstone", "daily_minutes")}
                     hits = [{k: v for k, v in plan.items() if k != "plan"}] + hits
@@ -244,6 +274,11 @@ def answer(chat_history: List[Dict], system_version: str | None = None, router_m
             hits = hits + extra_hits
         out["hits"] = hits
         context = format_context(hits) if hits else "(no retrieval for this message)"
+        if e38:
+            from src.rag.retriever import atlas_degraded
+            if atlas_degraded():  # E38 (review 3 §7): say so; never invent career records to fill the gap
+                context = ("NOTE: the main database is temporarily unreachable; results come from a local copy and may be incomplete. "
+                           "If a needed career record is missing, say the information is unavailable right now; do not invent records.\n\n") + context
         if decision["label"] == "career_study" and not (v8 and intent["primary_intent"] not in ("career_discovery",)):
             context = match_strength(hits) + "\n\n" + context  # v8: the career-evidence signal only where careers are the evidence
         profile = profile_override if profile_override is not None else load_profile_summary(uid, v7=v7)
@@ -254,6 +289,10 @@ def answer(chat_history: List[Dict], system_version: str | None = None, router_m
                 contract = contract_v8(intent)
             else:
                 contract = answer_contract_v7(qp) if v7 else answer_contract(qp)
+            if e38:
+                from src.backend.conversation_state import state_block
+                from src.backend.task_contract import e38_rules
+                contract = "\n".join(x for x in (state_block(state, intent), contract, e38_rules(message, intent, state)) if x)
             try:
                 g = learned_guidance(message, uid)
                 out["learned"] = {k: g[k] for k in ("n_similar", "n_good", "n_bad")}
@@ -266,6 +305,12 @@ def answer(chat_history: List[Dict], system_version: str | None = None, router_m
 
         def _extractive(reason: str):
             text = compose_answer(message, decision, hits, memory)
+            if e38 and state and state.get("reference"):  # E38: say what "the second one" refers to, even without a model
+                r = state["reference"]
+                text = f"About **{r['resolved']}** (item {r['index']} of my last list):\n\n" + text
+            if e38 and reason != "LLM_PROVIDER=none":  # E38: a useful notice; the conversation itself is kept by the UI
+                text = ("_The AI model is unavailable right now, so this answer is assembled directly from the knowledge base. "
+                        "Your conversation is kept: ask again in a minute for a full answer._\n\n") + text
             out["model"], out["generation"] = None, f"retrieval-only ({reason})"
             out["text"] = text + _sources_footer(text, hits)
 

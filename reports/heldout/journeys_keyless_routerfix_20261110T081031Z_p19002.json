@@ -1,0 +1,1620 @@
+{
+  "ts": "20261110T081031Z",
+  "versions": [
+    "v7",
+    "v7+e38"
+  ],
+  "rows": [
+    {
+      "id": "j01",
+      "goal": "review example: background -> pick 2nd option -> gaps -> 30-day plan at 1 h/day -> adapt",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I have completed B.Tech CSE. I know Python and SQL, but I don't know what career to choose.",
+          "answer": "**Careers from our records that match your question**:\n- **Python Developer - Data Analysis** (Software and Web Development) [S1]: needs Python, Perl, SQL, Database Management, Web Development, JavaScript (AngularJS.\n- **Python Integration Engineer** (Data Engineering) [S3]: needs Python, SQL, ORM (SQLAlchemy or Django ORM), ETL, SFTP/SSH, Unix/Linux.\n- **Software Engineer, Data** (Data Engineering) [S4]: needs Python, Strong SQL/RDS, Redshift, Data Modeling/Warehousing Architecture, Google Analytics/Segment, AWS Core Services (S3.\n\nTo narrow this down: **which skills or tools do you already know?** And **what is your current education or experience level?**\n\n**Guidance** (Entry-level tech and data career paths) [S2]: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engineer (testing fundamentals, automation with Selenium or Playwright). Analyst roles often lead to data science or analytics engineering; developer roles lead to senior engineering, architecture or engineering management.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] careers: Python Developer - Data Analysis\n- [S2] knowledge: Entry-level tech and data career paths\n- [S3] careers: Python Integration Engineer\n- [S4] careers: Software Engineer, Data",
+          "passed": false,
+          "failed": [
+            "min_numbered"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 3218.7,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "I prefer the second one. What skills am I missing?",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "mentions_item_of_turn"
+          ],
+          "item_expected": [
+            "Python Integration Engineer"
+          ],
+          "model": null,
+          "latency_ms": 145.0,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "No, I don't know Spark or Airflow yet. Make me a 30-day plan. I can study one hour daily.",
+          "answer": "**Your 30-day plan** [S1]\n\nPlan (validated, 60 min/day, role: Apache Airflow learner). Skills in order: Apache Spark (12 days), Apache Airflow (12 days). Capstone: Portfolio project for Apache Airflow learner using Apache Spark, Apache Airflow: plan, build and document it on GitHub.\n\n- Day 1: Apache Spark - Fundamentals & vocabulary. Task: Write a one-page cheat sheet of the 10 most important Apache Spark concepts (60 min). Done when: Cheat sheet covers 10 concepts in your own words.\n- Day 2: Apache Spark - Setting up & first steps. Task: Complete the getting-started tutorial end to end (60 min). Done when: Tutorial finished and working on your machine.\n- Day 3: Apache Spark - Core techniques. Task: Solve 5 small exercises using those techniques (60 min). Done when: 5 exercises solved without looking at solutions.\n- Day 4: Apache Spark - Applied practice. Task: Reproduce the example with your own data/problem (60 min). Done when: Your version runs and you can explain each step.\n- Day 5: Apache Spark - Intermediate topics. Task: Refactor yesterday's work using two best practices (60 min). Done when: Two improvements made and noted.\n- Day 6: Apache Spark - Mini project. Task: Build the mini project and push it to GitHub with a README (60 min). Done when: Repository with README and screenshots.\n- Day 7: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 8: Apache Spark - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 9: Apache Spark - Interview readiness (deeper practice 1). Task: Extend the previous Apache Spark exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 10: Apache Spark - Interview readiness (deeper practice 2). Task: Extend the previous Apache Spark exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 11: Apache Spark - Interview readiness (deeper practice 3). Task: Extend the previous Apache Spark exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 12: Apache Spark - Interview readiness (deeper practice 4). Task: Extend the previous Apache Spark exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 13: Apache Spark - Interview readiness (deeper practice 5). Task: Extend the previous Apache Spark exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 14: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 15: Apache Airflow - Fundamentals & vocabulary. Task: Write a one-page cheat sheet of the 10 most important Apache Airflow concepts (60 min). Done when: Cheat sheet covers 10 concepts in your own words.\n- Day 16: Apache Airflow - Setting up & first steps. Task: Complete the getting-started tutorial end to end (60 min). Done when: Tutorial finished and working on your machine.\n- Day 17: Apache Airflow - Core techniques. Task: Solve 5 small exercises using those techniques (60 min). Done when: 5 exercises solved without looking at solutions.\n- Day 18: Apache Airflow - Applied practice. Task: Reproduce the example with your own data/problem (60 min). Done when: Your version runs and you can explain each step.\n- Day 19: Apache Airflow - Intermediate topics. Task: Refactor yesterday's work using two best practices (60 min). Done when: Two improvements made and noted.\n- Day 20: Apache Airflow - Mini project. Task: Build the mini project and push it to GitHub with a README (60 min). Done when: Repository with README and screenshots.\n- Day 21: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 22: Apache Airflow - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 23: Apache Airflow - Interview readiness (deeper practice 1). Task: Extend the previous Apache Airflow exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 24: Apache Airflow - Interview readiness (deeper practice 2). Task: Extend the previous Apache Airflow exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 25: Apache Airflow - Interview readiness (deeper practice 3). Task: Extend the previous Apache Airflow exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 26: Apache Airflow - Interview readiness (deeper practice 4). Task: Extend the previous Apache Airflow exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 27: Apache Airflow - Interview readiness (deeper practice 5). Task: Extend the previous Apache Airflow exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 28: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 29: Capstone Project - Capstone: plan & build. Task: Define the problem and data, then build a working first version (60 min). Done when: A working first version runs end to end.\n- Day 30: Capstone Project - Capstone: polish & present. Task: Push to GitHub, add it to your resume and practise a 2-minute walkthrough (60 min). Done when: Public repo + resume line + recorded walkthrough.\n\nA 30-day plan builds working familiarity; it doesn't guarantee mastery or a job. Open *Learning Paths* to generate it from your analysed profile.\n\n_Retrieval-only mode: built by the roadmap generator (no LLM)._\n\n---\n**Sources**\n- [S1] roadmap: Validated 30-day plan (roadmap generator)",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 111.7,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "I finished the first week but found it hard. adjust the plan",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 113.2,
+          "state": null,
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.25
+    },
+    {
+      "id": "j01",
+      "goal": "review example: background -> pick 2nd option -> gaps -> 30-day plan at 1 h/day -> adapt",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I have completed B.Tech CSE. I know Python and SQL, but I don't know what career to choose.",
+          "answer": "**Careers from our records that match your question**:\n- **Python Developer - Data Analysis** (Software and Web Development) [S1]: needs Python, Perl, SQL, Database Management, Web Development, JavaScript (AngularJS.\n- **Python Integration Engineer** (Data Engineering) [S3]: needs Python, SQL, ORM (SQLAlchemy or Django ORM), ETL, SFTP/SSH, Unix/Linux.\n- **Software Engineer, Data** (Data Engineering) [S4]: needs Python, Strong SQL/RDS, Redshift, Data Modeling/Warehousing Architecture, Google Analytics/Segment, AWS Core Services (S3.\n\nTo narrow this down: **which skills or tools do you already know?** And **what is your current education or experience level?**\n\n**Guidance** (Entry-level tech and data career paths) [S2]: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engineer (testing fundamentals, automation with Selenium or Playwright). Analyst roles often lead to data science or analytics engineering; developer roles lead to senior engineering, architecture or engineering management.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] careers: Python Developer - Data Analysis\n- [S2] knowledge: Entry-level tech and data career paths\n- [S3] careers: Python Integration Engineer\n- [S4] careers: Software Engineer, Data",
+          "passed": false,
+          "failed": [
+            "min_numbered"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 216.7,
+          "state": {
+            "known_skills": [
+              "Python",
+              "SQL"
+            ],
+            "background": "B.Tech CSE"
+          },
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "I prefer the second one. What skills am I missing?",
+          "answer": "About **Python Integration Engineer** (item 2 of my last list):\n\n**Guidance** (Entry-level tech and data career paths) [S3]: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engineer (testing fundamentals, automation with Selenium or Playwright). Analyst roles often lead to data science or analytics engineering; developer roles lead to senior engineering, architecture or engineering management.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S3] knowledge: Entry-level tech and data career paths",
+          "passed": true,
+          "failed": [],
+          "item_expected": [
+            "Python Integration Engineer"
+          ],
+          "model": null,
+          "latency_ms": 146.8,
+          "state": {
+            "selected_career": "Python Integration Engineer",
+            "last_recommendations": [
+              "Python Developer",
+              "Python Integration Engineer",
+              "Software Engineer, Data"
+            ],
+            "reference": {
+              "phrase": "the second one",
+              "index": 2,
+              "resolved": "Python Integration Engineer"
+            },
+            "known_skills": [
+              "Python",
+              "SQL"
+            ],
+            "background": "B.Tech CSE"
+          },
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "No, I don't know Spark or Airflow yet. Make me a 30-day plan. I can study one hour daily.",
+          "answer": "**Your 30-day plan** [S1]\n\nPlan (validated, 60 min/day, role: Apache Airflow learner). Skills in order: Apache Spark (12 days), Apache Airflow (12 days). Capstone: Portfolio project for Apache Airflow learner using Apache Spark, Apache Airflow: plan, build and document it on GitHub.\n\n- Day 1: Apache Spark - Fundamentals & vocabulary. Task: Write a one-page cheat sheet of the 10 most important Apache Spark concepts (60 min). Done when: Cheat sheet covers 10 concepts in your own words.\n- Day 2: Apache Spark - Setting up & first steps. Task: Complete the getting-started tutorial end to end (60 min). Done when: Tutorial finished and working on your machine.\n- Day 3: Apache Spark - Core techniques. Task: Solve 5 small exercises using those techniques (60 min). Done when: 5 exercises solved without looking at solutions.\n- Day 4: Apache Spark - Applied practice. Task: Reproduce the example with your own data/problem (60 min). Done when: Your version runs and you can explain each step.\n- Day 5: Apache Spark - Intermediate topics. Task: Refactor yesterday's work using two best practices (60 min). Done when: Two improvements made and noted.\n- Day 6: Apache Spark - Mini project. Task: Build the mini project and push it to GitHub with a README (60 min). Done when: Repository with README and screenshots.\n- Day 7: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 8: Apache Spark - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 9: Apache Spark - Interview readiness (deeper practice 1). Task: Extend the previous Apache Spark exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 10: Apache Spark - Interview readiness (deeper practice 2). Task: Extend the previous Apache Spark exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 11: Apache Spark - Interview readiness (deeper practice 3). Task: Extend the previous Apache Spark exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 12: Apache Spark - Interview readiness (deeper practice 4). Task: Extend the previous Apache Spark exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 13: Apache Spark - Interview readiness (deeper practice 5). Task: Extend the previous Apache Spark exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 14: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 15: Apache Airflow - Fundamentals & vocabulary. Task: Write a one-page cheat sheet of the 10 most important Apache Airflow concepts (60 min). Done when: Cheat sheet covers 10 concepts in your own words.\n- Day 16: Apache Airflow - Setting up & first steps. Task: Complete the getting-started tutorial end to end (60 min). Done when: Tutorial finished and working on your machine.\n- Day 17: Apache Airflow - Core techniques. Task: Solve 5 small exercises using those techniques (60 min). Done when: 5 exercises solved without looking at solutions.\n- Day 18: Apache Airflow - Applied practice. Task: Reproduce the example with your own data/problem (60 min). Done when: Your version runs and you can explain each step.\n- Day 19: Apache Airflow - Intermediate topics. Task: Refactor yesterday's work using two best practices (60 min). Done when: Two improvements made and noted.\n- Day 20: Apache Airflow - Mini project. Task: Build the mini project and push it to GitHub with a README (60 min). Done when: Repository with README and screenshots.\n- Day 21: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 22: Apache Airflow - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 23: Apache Airflow - Interview readiness (deeper practice 1). Task: Extend the previous Apache Airflow exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 24: Apache Airflow - Interview readiness (deeper practice 2). Task: Extend the previous Apache Airflow exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 25: Apache Airflow - Interview readiness (deeper practice 3). Task: Extend the previous Apache Airflow exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 26: Apache Airflow - Interview readiness (deeper practice 4). Task: Extend the previous Apache Airflow exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 27: Apache Airflow - Interview readiness (deeper practice 5). Task: Extend the previous Apache Airflow exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited.\n- Day 28: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 29: Capstone Project - Capstone: plan & build. Task: Define the problem and data, then build a working first version (60 min). Done when: A working first version runs end to end.\n- Day 30: Capstone Project - Capstone: polish & present. Task: Push to GitHub, add it to your resume and practise a 2-minute walkthrough (60 min). Done when: Public repo + resume line + recorded walkthrough.\n\nA 30-day plan builds working familiarity; it doesn't guarantee mastery or a job. Open *Learning Paths* to generate it from your analysed profile.\n\n_Retrieval-only mode: built by the roadmap generator (no LLM)._\n\n---\n**Sources**\n- [S1] roadmap: Validated 30-day plan (roadmap generator)",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 170.1,
+          "state": {
+            "selected_career": "Python Integration Engineer",
+            "last_recommendations": [
+              "Python Developer",
+              "Python Integration Engineer",
+              "Software Engineer, Data"
+            ],
+            "known_skills": [
+              "Python",
+              "SQL"
+            ],
+            "missing_skills": [
+              "Apache Airflow",
+              "Apache Spark"
+            ],
+            "daily_minutes": 60,
+            "background": "B.Tech CSE"
+          },
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "I finished the first week but found it hard. adjust the plan",
+          "answer": "**Careers from our records that match your question**:\n- **Python Integration Engineer** (Data Engineering) [S1]: needs Python, SQL, ORM (SQLAlchemy or Django ORM), ETL, SFTP/SSH, Unix/Linux.\n\nTo narrow this down: **which skills or tools do you already know?** And **what is your current education or experience level?**\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] careers: Python Integration Engineer",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 128.7,
+          "state": {
+            "selected_career": "Python Integration Engineer",
+            "last_recommendations": [
+              "Day 1",
+              "Day 2",
+              "Day 3",
+              "Day 4",
+              "Day 5",
+              "Day 6",
+              "Day 7",
+              "Day 8",
+              "Day 9",
+              "Day 10",
+              "Day 11",
+              "Day 12",
+              "Day 13",
+              "Day 14",
+              "Day 15",
+              "Day 16",
+              "Day 17",
+              "Day 18",
+              "Day 19",
+              "Day 20",
+              "Day 21",
+              "Day 22",
+              "Day 23",
+              "Day 24",
+              "Day 25",
+              "Day 26",
+              "Day 27",
+              "Day 28",
+              "Day 29",
+              "Day 30"
+            ],
+            "known_skills": [
+              "Python",
+              "SQL"
+            ],
+            "missing_skills": [
+              "Apache Airflow",
+              "Apache Spark"
+            ],
+            "daily_minutes": 60,
+            "background": "B.Tech CSE"
+          },
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.5
+    },
+    {
+      "id": "j02",
+      "goal": "career transition: mechanical -> data analytics, tools, 4-week plan at 30 min, already knows Excel",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I studied mechanical engineering, but I want to move into data analytics.",
+          "answer": "**Careers from our records that match your question**:\n- **Data Engineer, Analytics** (Data Engineering) [S1]: needs Data warehouse, ETL design, Data modeling, SQL, Python, Java.\n- **Data Analytics & Reporting Manager** (Data Engineering) [S2]: needs Data analytics, Analytics, Predictive analytics, Coding, R, Python.\n- **Manager, Data and Analytics** (Data Engineering) [S3]: needs Analytics program management, Data centric mindset implementation, Analytics tagging strategy, Data integration into Enterprise Data Lake, Dashboard reporting, Data visualization.\n\nTo narrow this down: **which skills or tools do you already know?** And **what is your current education or experience level?**\n\n**Guidance** (Entry-level tech and data career paths) [S6]: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engineer (testing fundamentals, automation with Selenium or Playwright). Analyst roles often lead to data science or analytics engineering; developer roles lead to senior engineering, architecture or engineering management.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] careers: Data Engineer, Analytics\n- [S2] careers: Data Analytics & Reporting Manager\n- [S3] careers: Manager, Data and Analytics\n- [S6] knowledge: Entry-level tech and data career paths",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 134.9,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "which tools should i learn first?",
+          "answer": "**Guidance** (Entry-level tech and data career paths) [S1]: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engineer (testing fundamentals, automation with Selenium or Playwright). Analyst roles often lead to data science or analytics engineering; developer roles lead to senior engineering, architecture or engineering management.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] knowledge: Entry-level tech and data career paths",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 66.8,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "make me a 4 week plan, i have 30 minutes a day",
+          "answer": "**Guidance** (Time management for students and working learners) [S1]: Student Wellbeing And Productivity - Time management for students and working learners: Plan the week on Sunday: fixed commitments first, then 1-2 focused study blocks per day at your most alert time. Working learners can use 60-90 minute weekday blocks and longer weekend sessions; protect them like meetings. Review the plan weekly and cut low-value activities rather than sleep.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] knowledge: Time management for students and working learners",
+          "passed": false,
+          "failed": [
+            "must_include_any",
+            "must_include_any2"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 102.0,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "I already know Excel well, update it",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "must_include_any",
+            "must_include_any2"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 118.8,
+          "state": null,
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.5
+    },
+    {
+      "id": "j02",
+      "goal": "career transition: mechanical -> data analytics, tools, 4-week plan at 30 min, already knows Excel",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I studied mechanical engineering, but I want to move into data analytics.",
+          "answer": "**Careers from our records that match your question**:\n- **Data Analytics Analyst** (Data Analysis and BI) [S1]: needs Data Analytics, Dashboard & Scorecard Creation, Data Visualization, Data Mining, Reporting, Business Intelligence Tools.\n- **Data Analyst** (Data Analysis and BI) [S2]: needs Data analytics, Problem-solving, Critical thinking, Data interpretation, Evaluation, Integrated data analysis.\n- **Customer Data Analyst** (Data Analysis and BI) [S3]: needs Data analysis, System administration, Reporting, Troubleshooting, Process improvement, Business operations.\n\nTo narrow this down: **which skills or tools do you already know?** And **what is your current education or experience level?**\n\n**Guidance** (Entry-level tech and data career paths) [S6]: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engineer (testing fundamentals, automation with Selenium or Playwright). Analyst roles often lead to data science or analytics engineering; developer roles lead to senior engineering, architecture or engineering management.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] careers: Data Analytics Analyst\n- [S2] careers: Data Analyst\n- [S3] careers: Customer Data Analyst\n- [S6] knowledge: Entry-level tech and data career paths",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 262.6,
+          "state": {
+            "selected_career": "data analytics",
+            "background": "mechanical engineering"
+          },
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "which tools should i learn first?",
+          "answer": "**Guidance** (Choosing courses and certifications) [S3]: Prefer one structured course per skill over many partial ones. Free options include YouTube playlists, freeCodeCamp, Kaggle Learn, Google and Microsoft learning paths, and audited Coursera courses. Certifications such as Google Data Analytics, Microsoft PL-300 (Power BI) or AWS Cloud Practitioner help most at entry level when paired with projects.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S3] knowledge: Choosing courses and certifications",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 136.8,
+          "state": {
+            "selected_career": "data analytics",
+            "last_recommendations": [
+              "Data Analytics Analyst",
+              "Data Analyst",
+              "Customer Data Analyst"
+            ],
+            "background": "mechanical engineering"
+          },
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "make me a 4 week plan, i have 30 minutes a day",
+          "answer": "**Guidance** (Planning a study schedule) [S1]: Break a skill into weekly milestones with a concrete output each week (a notebook, a mini project, a solved problem set). Use focused blocks such as the Pomodoro technique (25 minutes work, 5 minutes break). Reserve time every week for review of older topics. A realistic plan for a working student is 1-2 hours on weekdays and 3-4 hours on weekends.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] knowledge: Planning a study schedule",
+          "passed": false,
+          "failed": [
+            "must_include_any",
+            "must_include_any2"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 144.1,
+          "state": {
+            "selected_career": "data analytics",
+            "last_recommendations": [
+              "Google Data Analytics",
+              "Microsoft PL-300 (Power BI)",
+              "AWS Cloud Practitioner"
+            ],
+            "daily_minutes": 30,
+            "background": "mechanical engineering"
+          },
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "I already know Excel well, update it",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "must_include_any",
+            "must_include_any2"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 149.4,
+          "state": {
+            "selected_career": "data analytics",
+            "last_recommendations": [
+              "Google Data Analytics",
+              "Microsoft PL-300 (Power BI)",
+              "AWS Cloud Practitioner"
+            ],
+            "known_skills": [
+              "Excel"
+            ],
+            "daily_minutes": 30,
+            "background": "mechanical engineering"
+          },
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.25
+    },
+    {
+      "id": "j03",
+      "goal": "profile: gaps -> explain the third -> plan for gaps at 1 h -> missed days",
+      "version": "v7",
+      "user": "persona_be",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "what are my skill gaps?",
+          "answer": "**Your profile** [S1]: target role *Backend Developer*, estimated ATS match **43/100**, skill gaps: **Microservices, Docker, Kubernetes, AWS**.\n\n**Guidance** (Switching careers) [S2]: Identify transferable skills from your current role (domain knowledge, communication, project management). Close the gap with a focused 3-6 month learning plan and 2-3 portfolio projects in the new field, ideally using data or problems from your current domain. Consider bridge roles that combine old and new expertise.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] profile: profile overview\n- [S2] knowledge: Switching careers",
+          "passed": false,
+          "failed": [
+            "min_numbered"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 82.2,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "explain the third one simply",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 94.7,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "make a 30 day plan for my gaps, 1 hour daily",
+          "answer": "**Your 30-day plan** [S1]\n\nPlan (validated, 60 min/day, role: Backend Developer). Skills in order: AWS (6 days), Docker (6 days), Microservices (6 days), Kubernetes (6 days). Capstone: Build a REST service using AWS, Docker, Microservices, Kubernetes, add tests, containerise it and deploy it with a CI/CD pipeline.\n\n- Day 1: AWS - Cloud & IAM basics. Task: Create an IAM user with least privilege (60 min). Done when: Policy documented. Resource: AWS Skill Builder (free courses): https://skillbuilder.aws/\n- Day 2: AWS - Compute: EC2. Task: Launch an EC2 instance and SSH in (60 min). Done when: Instance reachable. Resource: AWS Skill Builder (free courses): https://skillbuilder.aws/\n- Day 3: AWS - Storage: S3. Task: Host a static site on S3 (60 min). Done when: Site URL works. Resource: AWS Skill Builder (free courses): https://skillbuilder.aws/\n- Day 4: AWS - Databases & serverless. Task: Write one Lambda function (60 min). Done when: Lambda runs on a test event. Resource: AWS Skill Builder (free courses): https://skillbuilder.aws/\n- Day 5: AWS - Cloud Practitioner prep. Task: Take one practice test (60 min). Done when: Score recorded. Resource: AWS Skill Builder (free courses): https://skillbuilder.aws/\n- Day 6: AWS - Mini project. Task: Build the mini project and push it to GitHub with a README (60 min). Done when: Repository with README and screenshots. Resource: AWS Skill Builder (free courses): https://skillbuilder.aws/\n- Day 7: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 8: Docker - Containers vs VMs. Task: Run 3 official images (60 min). Done when: Containers run. Resource: Docker get started: https://docs.docker.com/get-started/\n- Day 9: Docker - Dockerfile. Task: Containerise a small app (60 min). Done when: Image builds and runs. Resource: Docker get started: https://docs.docker.com/get-started/\n- Day 10: Docker - Volumes & networking. Task: Run an app with a database container (60 min). Done when: App talks to DB. Resource: Docker get started: https://docs.docker.com/get-started/\n- Day 11: Docker - Docker Compose. Task: Write a compose file for app + DB (60 min). Done when: docker compose up works. Resource: Docker get started: https://docs.docker.com/get-started/\n- Day 12: Docker - Mini project. Task: Build the mini project and push it to GitHub with a README (60 min). Done when: Repository with README and screenshots. Resource: Docker get started: https://docs.docker.com/get-started/\n- Day 13: Docker - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: Docker get started: https://docs.docker.com/get-started/\n- Day 14: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 15: Microservices - Architecture basics. Task: Split a sample app into 2 services (design) (60 min). Done when: Diagram drawn. Resource: microservices.io patterns: https://microservices.io/\n- Day 16: Microservices - Service communication. Task: Make 2 services call each other (60 min). Done when: End-to-end call works. Resource: microservices.io patterns: https://microservices.io/\n- Day 17: Microservices - Resilience. Task: Add a circuit breaker (60 min). Done when: Failure handled gracefully. Resource: microservices.io patterns: https://microservices.io/\n- Day 18: Microservices - Mini project. Task: Build the mini project and push it to GitHub with a README (60 min). Done when: Repository with README and screenshots. Resource: microservices.io patterns: https://microservices.io/\n- Day 19: Microservices - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: microservices.io patterns: https://microservices.io/\n- Day 20: Microservices - Interview readiness (deeper practice 1). Task: Extend the previous Microservices exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: microservices.io patterns: https://microservices.io/\n- Day 21: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 22: Kubernetes - Core concepts. Task: Deploy an app to minikube/kind (60 min). Done when: App reachable. Resource: Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/\n- Day 23: Kubernetes - Config & secrets. Task: Externalise app config (60 min). Done when: Config change without rebuild. Resource: Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/\n- Day 24: Kubernetes - Scaling & updates. Task: Scale and roll out a new version (60 min). Done when: Zero-downtime update. Resource: Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/\n- Day 25: Kubernetes - Helm basics. Task: Install an app with Helm (60 min). Done when: Release installed. Resource: Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/\n- Day 26: Kubernetes - Mini project. Task: Build the mini project and push it to GitHub with a README (60 min). Done when: Repository with README and screenshots. Resource: Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/\n- Day 27: Kubernetes - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/\n- Day 28: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 29: Capstone Project - Capstone: plan & build. Task: Define the problem and data, then build a working first version (60 min). Done when: A working first version runs end to end.\n- Day 30: Capstone Project - Capstone: polish & present. Task: Push to GitHub, add it to your resume and practise a 2-minute walkthrough (60 min). Done when: Public repo + resume line + recorded walkthrough.\n\nA 30-day plan builds working familiarity; it doesn't guarantee mastery or a job. Open *Learning Paths* to generate it from your analysed profile.\n\n_Retrieval-only mode: built by the roadmap generator (no LLM)._\n\n---\n**Sources**\n- [S1] roadmap: Validated 30-day plan (roadmap generator)",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 113.9,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "I missed 3 days this week. what now?",
+          "answer": "**Your profile**: target role *Backend Developer*, estimated ATS match **43/100**, skill gaps: **Microservices, Docker, Kubernetes, AWS**.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 86.5,
+          "state": null,
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.5
+    },
+    {
+      "id": "j03",
+      "goal": "profile: gaps -> explain the third -> plan for gaps at 1 h -> missed days",
+      "version": "v7+e38",
+      "user": "persona_be",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "what are my skill gaps?",
+          "answer": "**Your profile** [S1]: target role *Backend Developer*, estimated ATS match **43/100**, skill gaps: **Microservices, Docker, Kubernetes, AWS**.\n\n**Guidance** (Switching careers) [S2]: Identify transferable skills from your current role (domain knowledge, communication, project management). Close the gap with a focused 3-6 month learning plan and 2-3 portfolio projects in the new field, ideally using data or problems from your current domain. Consider bridge roles that combine old and new expertise.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] profile: profile overview\n- [S2] knowledge: Switching careers",
+          "passed": false,
+          "failed": [
+            "min_numbered"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 66.1,
+          "state": {},
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "explain the third one simply",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 107.8,
+          "state": {},
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "make a 30 day plan for my gaps, 1 hour daily",
+          "answer": "**Your 30-day plan** [S1]\n\nPlan (validated, 60 min/day, role: Backend Developer). Skills in order: AWS (6 days), Docker (6 days), Microservices (6 days), Kubernetes (6 days). Capstone: Build a REST service using AWS, Docker, Microservices, Kubernetes, add tests, containerise it and deploy it with a CI/CD pipeline.\n\n- Day 1: AWS - Cloud & IAM basics. Task: Create an IAM user with least privilege (60 min). Done when: Policy documented. Resource: AWS Skill Builder (free courses): https://skillbuilder.aws/\n- Day 2: AWS - Compute: EC2. Task: Launch an EC2 instance and SSH in (60 min). Done when: Instance reachable. Resource: AWS Skill Builder (free courses): https://skillbuilder.aws/\n- Day 3: AWS - Storage: S3. Task: Host a static site on S3 (60 min). Done when: Site URL works. Resource: AWS Skill Builder (free courses): https://skillbuilder.aws/\n- Day 4: AWS - Databases & serverless. Task: Write one Lambda function (60 min). Done when: Lambda runs on a test event. Resource: AWS Skill Builder (free courses): https://skillbuilder.aws/\n- Day 5: AWS - Cloud Practitioner prep. Task: Take one practice test (60 min). Done when: Score recorded. Resource: AWS Skill Builder (free courses): https://skillbuilder.aws/\n- Day 6: AWS - Mini project. Task: Build the mini project and push it to GitHub with a README (60 min). Done when: Repository with README and screenshots. Resource: AWS Skill Builder (free courses): https://skillbuilder.aws/\n- Day 7: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 8: Docker - Containers vs VMs. Task: Run 3 official images (60 min). Done when: Containers run. Resource: Docker get started: https://docs.docker.com/get-started/\n- Day 9: Docker - Dockerfile. Task: Containerise a small app (60 min). Done when: Image builds and runs. Resource: Docker get started: https://docs.docker.com/get-started/\n- Day 10: Docker - Volumes & networking. Task: Run an app with a database container (60 min). Done when: App talks to DB. Resource: Docker get started: https://docs.docker.com/get-started/\n- Day 11: Docker - Docker Compose. Task: Write a compose file for app + DB (60 min). Done when: docker compose up works. Resource: Docker get started: https://docs.docker.com/get-started/\n- Day 12: Docker - Mini project. Task: Build the mini project and push it to GitHub with a README (60 min). Done when: Repository with README and screenshots. Resource: Docker get started: https://docs.docker.com/get-started/\n- Day 13: Docker - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: Docker get started: https://docs.docker.com/get-started/\n- Day 14: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 15: Microservices - Architecture basics. Task: Split a sample app into 2 services (design) (60 min). Done when: Diagram drawn. Resource: microservices.io patterns: https://microservices.io/\n- Day 16: Microservices - Service communication. Task: Make 2 services call each other (60 min). Done when: End-to-end call works. Resource: microservices.io patterns: https://microservices.io/\n- Day 17: Microservices - Resilience. Task: Add a circuit breaker (60 min). Done when: Failure handled gracefully. Resource: microservices.io patterns: https://microservices.io/\n- Day 18: Microservices - Mini project. Task: Build the mini project and push it to GitHub with a README (60 min). Done when: Repository with README and screenshots. Resource: microservices.io patterns: https://microservices.io/\n- Day 19: Microservices - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: microservices.io patterns: https://microservices.io/\n- Day 20: Microservices - Interview readiness (deeper practice 1). Task: Extend the previous Microservices exercise with a harder variant (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: microservices.io patterns: https://microservices.io/\n- Day 21: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 22: Kubernetes - Core concepts. Task: Deploy an app to minikube/kind (60 min). Done when: App reachable. Resource: Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/\n- Day 23: Kubernetes - Config & secrets. Task: Externalise app config (60 min). Done when: Config change without rebuild. Resource: Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/\n- Day 24: Kubernetes - Scaling & updates. Task: Scale and roll out a new version (60 min). Done when: Zero-downtime update. Resource: Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/\n- Day 25: Kubernetes - Helm basics. Task: Install an app with Helm (60 min). Done when: Release installed. Resource: Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/\n- Day 26: Kubernetes - Mini project. Task: Build the mini project and push it to GitHub with a README (60 min). Done when: Repository with README and screenshots. Resource: Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/\n- Day 27: Kubernetes - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/\n- Day 28: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 29: Capstone Project - Capstone: plan & build. Task: Define the problem and data, then build a working first version (60 min). Done when: A working first version runs end to end.\n- Day 30: Capstone Project - Capstone: polish & present. Task: Push to GitHub, add it to your resume and practise a 2-minute walkthrough (60 min). Done when: Public repo + resume line + recorded walkthrough.\n\nA 30-day plan builds working familiarity; it doesn't guarantee mastery or a job. Open *Learning Paths* to generate it from your analysed profile.\n\n_Retrieval-only mode: built by the roadmap generator (no LLM)._\n\n---\n**Sources**\n- [S1] roadmap: Validated 30-day plan (roadmap generator)",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 125.4,
+          "state": {
+            "daily_minutes": 60
+          },
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "I missed 3 days this week. what now?",
+          "answer": "**Your profile**: target role *Backend Developer*, estimated ATS match **43/100**, skill gaps: **Microservices, Docker, Kubernetes, AWS**.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 112.8,
+          "state": {
+            "last_recommendations": [
+              "Day 1",
+              "Day 2",
+              "Day 3",
+              "Day 4",
+              "Day 5",
+              "Day 6",
+              "Day 7",
+              "Day 8",
+              "Day 9",
+              "Day 10",
+              "Day 11",
+              "Day 12",
+              "Day 13",
+              "Day 14",
+              "Day 15",
+              "Day 16",
+              "Day 17",
+              "Day 18",
+              "Day 19",
+              "Day 20",
+              "Day 21",
+              "Day 22",
+              "Day 23",
+              "Day 24",
+              "Day 25",
+              "Day 26",
+              "Day 27",
+              "Day 28",
+              "Day 29",
+              "Day 30"
+            ],
+            "daily_minutes": 60
+          },
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.5
+    },
+    {
+      "id": "j04",
+      "goal": "study: concept -> simpler -> python examples -> quiz",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "explain recursion",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 107.9,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "make it easier, im a beginner",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 95.1,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "give me two examples in python",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "code_block",
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 177.3,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "quiz me with 3 questions on it",
+          "answer": "**Guidance** (Behavioural questions and the STAR method) [S1]: Answer behavioural questions with STAR: Situation, Task, Action, Result. Prepare 5-6 stories covering a challenge, a failure and what you learned, teamwork or conflict, leadership or initiative, and a deadline under pressure. Keep each answer to about two minutes and finish with a measurable result.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] knowledge: Behavioural questions and the STAR method",
+          "passed": false,
+          "failed": [
+            "n_items"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 141.4,
+          "state": null,
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.25
+    },
+    {
+      "id": "j04",
+      "goal": "study: concept -> simpler -> python examples -> quiz",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "explain recursion",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 66.0,
+          "state": {},
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "make it easier, im a beginner",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 89.0,
+          "state": {
+            "level": "beginner"
+          },
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "give me two examples in python",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "code_block",
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 139.9,
+          "state": {
+            "level": "beginner"
+          },
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "quiz me with 3 questions on it",
+          "answer": "**Guidance** (Behavioural questions and the STAR method) [S1]: Answer behavioural questions with STAR: Situation, Task, Action, Result. Prepare 5-6 stories covering a challenge, a failure and what you learned, teamwork or conflict, leadership or initiative, and a deadline under pressure. Keep each answer to about two minutes and finish with a measurable result.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] knowledge: Behavioural questions and the STAR method",
+          "passed": false,
+          "failed": [
+            "n_items"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 146.5,
+          "state": {
+            "level": "beginner"
+          },
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.25
+    },
+    {
+      "id": "j05",
+      "goal": "interests -> 3 careers -> first one -> 30-day start at 2 h -> readiness",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I like drawing and coding, suggest 3 careers",
+          "answer": "**Careers from our records that match your question**:\n- **3D Graphic Designer** (Product, UX and Design) [S1]: needs D graphic tools, D/3D texturing tools (3DS MAX, MAYA, Unity, Unreal), Environment modeling.\n- **UX Designer** (Software and Web Development) [S2]: needs UX Design, Wireframes, Flow diagrams, Interaction design, Visual design execution, Design specifications.\n- **Sr Specialist, UX Designer** (Data Analysis and BI) [S3]: needs Visual design, UX design, Data visualization, Adobe Creative Cloud, Sketch, InVision.\n\nTo narrow this down: **which skills or tools do you already know?** And **what is your current education or experience level?**\n\n**Guidance** (Switching careers) [S6]: Identify transferable skills from your current role (domain knowledge, communication, project management). Close the gap with a focused 3-6 month learning plan and 2-3 portfolio projects in the new field, ideally using data or problems from your current domain. Consider bridge roles that combine old and new expertise.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] careers: 3D Graphic Designer\n- [S2] careers: UX Designer\n- [S3] careers: Sr Specialist, UX Designer\n- [S6] knowledge: Switching careers",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 166.3,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "tell me about the first one",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "mentions_item_of_turn"
+          ],
+          "item_expected": [
+            "3D Graphic Designer"
+          ],
+          "model": null,
+          "latency_ms": 127.1,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "how do I start in 30 days, 2 hours a day",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "mentions_item_of_turn",
+            "must_include_any"
+          ],
+          "item_expected": [
+            "3D Graphic Designer"
+          ],
+          "model": null,
+          "latency_ms": 59.3,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "how will I know I'm ready to apply?",
+          "answer": "**Guidance** (Referrals, cold emails and internships) [S1]: Referrals have much higher response rates than cold applications. Ask alumni or connections for a referral with a short message that names the exact job ID and why you fit. Cold emails to founders or hiring managers should be under 120 words: who you are, one relevant achievement, a specific ask, and a link to your portfolio. Apply for internships 2-4 months before the season and track every application in a spreadsheet.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] knowledge: Referrals, cold emails and internships",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 156.5,
+          "state": null,
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.5
+    },
+    {
+      "id": "j05",
+      "goal": "interests -> 3 careers -> first one -> 30-day start at 2 h -> readiness",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I like drawing and coding, suggest 3 careers",
+          "answer": "**Careers from our records that match your question**:\n- **3D Graphic Designer** (Product, UX and Design) [S1]: needs D graphic tools, D/3D texturing tools (3DS MAX, MAYA, Unity, Unreal), Environment modeling.\n- **UX Designer** (Software and Web Development) [S2]: needs UX Design, Wireframes, Flow diagrams, Interaction design, Visual design execution, Design specifications.\n- **Sr Specialist, UX Designer** (Data Analysis and BI) [S3]: needs Visual design, UX design, Data visualization, Adobe Creative Cloud, Sketch, InVision.\n\nTo narrow this down: **which skills or tools do you already know?** And **what is your current education or experience level?**\n\n**Guidance** (Switching careers) [S6]: Identify transferable skills from your current role (domain knowledge, communication, project management). Close the gap with a focused 3-6 month learning plan and 2-3 portfolio projects in the new field, ideally using data or problems from your current domain. Consider bridge roles that combine old and new expertise.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] careers: 3D Graphic Designer\n- [S2] careers: UX Designer\n- [S3] careers: Sr Specialist, UX Designer\n- [S6] knowledge: Switching careers",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 205.1,
+          "state": {},
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "tell me about the first one",
+          "answer": "About **3D Graphic Designer** (item 1 of my last list):\n\nI couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": true,
+          "failed": [],
+          "item_expected": [
+            "3D Graphic Designer"
+          ],
+          "model": null,
+          "latency_ms": 217.2,
+          "state": {
+            "selected_career": "3D Graphic Designer",
+            "last_recommendations": [
+              "3D Graphic Designer",
+              "UX Designer",
+              "Sr Specialist, UX Designer"
+            ],
+            "reference": {
+              "phrase": "the first one",
+              "index": 1,
+              "resolved": "3D Graphic Designer"
+            }
+          },
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "how do I start in 30 days, 2 hours a day",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "mentions_item_of_turn",
+            "must_include_any"
+          ],
+          "item_expected": [
+            "3D Graphic Designer"
+          ],
+          "model": null,
+          "latency_ms": 142.0,
+          "state": {
+            "selected_career": "3D Graphic Designer",
+            "last_recommendations": [
+              "3D Graphic Designer",
+              "UX Designer",
+              "Sr Specialist, UX Designer"
+            ],
+            "daily_minutes": 120
+          },
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "how will I know I'm ready to apply?",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 210.0,
+          "state": {
+            "selected_career": "3D Graphic Designer",
+            "last_recommendations": [
+              "3D Graphic Designer",
+              "UX Designer",
+              "Sr Specialist, UX Designer"
+            ],
+            "daily_minutes": 120
+          },
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.5
+    },
+    {
+      "id": "j06",
+      "goal": "change of mind: data science -> cybersecurity, 2-week starter at 45 min",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I want to become a data scientist",
+          "answer": "**Careers from our records that match your question**:\n- **Data Science Engineer** (Data Science and Research) [S1]: needs R, Python, MatLab, MySQL, MongoDB, Cassandra.\n- **Data Scientist, Analytics - Ads Foundations** (Data Science and Research) [S2]: needs Data analysis, Data processing, Modeling, Data engineering, Scripting, Modeling frameworks (e.g..\n- **Data Scientist-DIS** (Machine Learning and AI) [S3]: needs Data Science, Advanced Analytics, Medical Information Analysis, Oncology Expertise, Advanced Analytical Skills, Machine Learning.\n\nTo narrow this down: **which skills or tools do you already know?** And **what is your current education or experience level?**\n\n**Guidance** (Entry-level tech and data career paths) [S6]: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engineer (testing fundamentals, automation with Selenium or Playwright). Analyst roles often lead to data science or analytics engineering; developer roles lead to senior engineering, architecture or engineering management.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] careers: Data Science Engineer\n- [S2] careers: Data Scientist, Analytics - Ads Foundations\n- [S3] careers: Data Scientist-DIS\n- [S6] knowledge: Entry-level tech and data career paths",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 109.7,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "what skills do i need",
+          "answer": "**Careers from our records that match your question**:\n- **Data Scientists Analyst** (Data Engineering) [S1]: needs Data analysis, Data profiling, Data manipulation, Data visualization, Data standardization, Data cleansing.\n- **Data Science Engineer** (Data Science and Research) [S2]: needs R, Python, MatLab, MySQL, MongoDB, Cassandra.\n- **Data Scientist** (Data Science and Research) [S3]: needs Statistical computing (R, Python), Data management, Data scrubbing, Mathematical aptitude, Programming.\n\nTo narrow this down: **which skills or tools do you already know?** And **what is your current education or experience level?**\n\n**Guidance** (Entry-level tech and data career paths) [S6]: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engineer (testing fundamentals, automation with Selenium or Playwright). Analyst roles often lead to data science or analytics engineering; developer roles lead to senior engineering, architecture or engineering management.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] careers: Data Scientists Analyst\n- [S2] careers: Data Science Engineer\n- [S3] careers: Data Scientist\n- [S6] knowledge: Entry-level tech and data career paths",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 127.9,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "actually I prefer cybersecurity. what changes?",
+          "answer": "**Careers from our records that match your question**:\n- **Cyber Security Analyst - Compliance** (Cybersecurity and Networking) [S1]: needs Cybersecurity, Information Systems, Information Technology, CompTIA Security+, SANs Security Essentials, CISSP.\n- **Security Analyst** (Cybersecurity and Networking) [S2]: needs Cyber Security, IT Security Compliance, Network Security, Security Auditing, Virus Prevention and Remediation, Intrusion Detection and Prevention.\n- **Cyber Security Analyst** (Cybersecurity and Networking) [S3]: needs Cyber Security, Information Security, SIEM Solutions, Network Intrusion Detection, Host Intrusion Detection, Security Incident Response.\n\nTo narrow this down: **which skills or tools do you already know?** And **what is your current education or experience level?**\n\n**Guidance** (Choosing courses and certifications) [S6]: Prefer one structured course per skill over many partial ones. Free options include YouTube playlists, freeCodeCamp, Kaggle Learn, Google and Microsoft learning paths, and audited Coursera courses. Certifications such as Google Data Analytics, Microsoft PL-300 (Power BI) or AWS Cloud Practitioner help most at entry level when paired with projects.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] careers: Cyber Security Analyst - Compliance\n- [S2] careers: Security Analyst\n- [S3] careers: Cyber Security Analyst\n- [S6] knowledge: Choosing courses and certifications",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 150.2,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "make a 2 week starter plan, 45 min daily",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "must_include_any",
+            "must_include_any2"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 67.2,
+          "state": null,
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.75
+    },
+    {
+      "id": "j06",
+      "goal": "change of mind: data science -> cybersecurity, 2-week starter at 45 min",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I want to become a data scientist",
+          "answer": "**Careers from our records that match your question**:\n- **Data Scientist** (Data Science and Research) [S1]: needs Statistical computing (R, Python), Data management, Data scrubbing, Mathematical aptitude, Programming.\n- **Data Scientist, Analytics** (Data Science and Research) [S2]: needs Quantitative analysis, Data mining, Presentation of data, Forecasting, Experiment design and evaluation, Dashboard and report building.\n- **Data Scientist, Analytics - Ads Foundations** (Data Science and Research) [S3]: needs Data analysis, Data processing, Modeling, Data engineering, Scripting, Modeling frameworks (e.g..\n\nTo narrow this down: **which skills or tools do you already know?** And **what is your current education or experience level?**\n\n**Guidance** (Entry-level tech and data career paths) [S6]: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engineer (testing fundamentals, automation with Selenium or Playwright). Analyst roles often lead to data science or analytics engineering; developer roles lead to senior engineering, architecture or engineering management.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] careers: Data Scientist\n- [S2] careers: Data Scientist, Analytics\n- [S3] careers: Data Scientist, Analytics - Ads Foundations\n- [S6] knowledge: Entry-level tech and data career paths",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 272.5,
+          "state": {
+            "selected_career": "data scientist"
+          },
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "what skills do i need",
+          "answer": "**Careers from our records that match your question**:\n- **Data Scientist, Analytics** (Data Science and Research) [S1]: needs Quantitative analysis, Data mining, Presentation of data, Forecasting, Experiment design and evaluation, Dashboard and report building.\n- **Data Scientist** (Data Science and Research) [S2]: needs Statistical computing (R, Python), Data management, Data scrubbing, Mathematical aptitude, Programming.\n- **Customer Data Scientist** (Data Science and Research) [S3]: needs Mathematical-analytical mindset, Ability to collect and join data from various APIs and databases, Scripting skills for data analysis, Digital marketing optimization expertise.\n\nTo narrow this down: **which skills or tools do you already know?** And **what is your current education or experience level?**\n\n**Guidance** (Entry-level tech and data career paths) [S6]: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engineer (testing fundamentals, automation with Selenium or Playwright). Analyst roles often lead to data science or analytics engineering; developer roles lead to senior engineering, architecture or engineering management.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] careers: Data Scientist, Analytics\n- [S2] careers: Data Scientist\n- [S3] careers: Customer Data Scientist\n- [S6] knowledge: Entry-level tech and data career paths",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 119.2,
+          "state": {
+            "selected_career": "data scientist",
+            "last_recommendations": [
+              "Data Scientist",
+              "Data Scientist, Analytics",
+              "Data Scientist, Analytics"
+            ]
+          },
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "actually I prefer cybersecurity. what changes?",
+          "answer": "**Careers from our records that match your question**:\n- **Cyber Security Analyst - Compliance** (Cybersecurity and Networking) [S1]: needs Cybersecurity, Information Systems, Information Technology, CompTIA Security+, SANs Security Essentials, CISSP.\n- **Security Analyst** (Cybersecurity and Networking) [S2]: needs Cyber Security, IT Security Compliance, Network Security, Security Auditing, Virus Prevention and Remediation, Intrusion Detection and Prevention.\n- **Cyber Security Analyst** (Cybersecurity and Networking) [S3]: needs Cyber Security, Information Security, SIEM Solutions, Network Intrusion Detection, Host Intrusion Detection, Security Incident Response.\n\nTo narrow this down: **which skills or tools do you already know?** And **what is your current education or experience level?**\n\n**Guidance** (Choosing courses and certifications) [S6]: Prefer one structured course per skill over many partial ones. Free options include YouTube playlists, freeCodeCamp, Kaggle Learn, Google and Microsoft learning paths, and audited Coursera courses. Certifications such as Google Data Analytics, Microsoft PL-300 (Power BI) or AWS Cloud Practitioner help most at entry level when paired with projects.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] careers: Cyber Security Analyst - Compliance\n- [S2] careers: Security Analyst\n- [S3] careers: Cyber Security Analyst\n- [S6] knowledge: Choosing courses and certifications",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 142.9,
+          "state": {
+            "selected_career": "cybersecurity",
+            "last_recommendations": [
+              "Data Scientist, Analytics",
+              "Data Scientist",
+              "Customer Data Scientist"
+            ],
+            "previous_goals": [
+              "data scientist"
+            ]
+          },
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "make a 2 week starter plan, 45 min daily",
+          "answer": "**Your 30-day plan** [S1]\n\nPlan (validated, 45 min/day, role: Cybersecurity). Skills in order: Linux (6 days), Siem (6 days), Python (6 days), Networking (6 days). Capstone: Set up a small lab, run a vulnerability assessment using Linux, Siem, Python, Networking, and write an incident-style report with fixes ranked by risk.\n\n- Day 1: Linux - Shell basics. Task: Complete 20 shell exercises (45 min). Done when: Exercises done. Resource: Linux Journey: https://linuxjourney.com/\n- Day 2: Linux - Processes & services. Task: Diagnose a running service (45 min). Done when: Notes of findings. Resource: Linux Journey: https://linuxjourney.com/\n- Day 3: Linux - Scripting. Task: Write a backup script (45 min). Done when: Script runs via cron. Resource: Linux Journey: https://linuxjourney.com/\n- Day 4: Linux - Mini project. Task: Build the mini project and push it to GitHub with a README (45 min). Done when: Repository with README and screenshots. Resource: Linux Journey: https://linuxjourney.com/\n- Day 5: Linux - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (45 min). Done when: 10 answers written; 3 weakest revisited. Resource: Linux Journey: https://linuxjourney.com/\n- Day 6: Linux - Interview readiness (deeper practice 1). Task: Extend the previous Linux exercise with a harder variant (45 min). Done when: 10 answers written; 3 weakest revisited. Resource: Linux Journey: https://linuxjourney.com/\n- Day 7: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (45 min). Done when: All redo exercises completed; doubts written down.\n- Day 8: Siem - Fundamentals & vocabulary. Task: Write a one-page cheat sheet of the 10 most important Siem concepts (45 min). Done when: Cheat sheet covers 10 concepts in your own words.\n- Day 9: Siem - Setting up & first steps. Task: Complete the getting-started tutorial end to end (45 min). Done when: Tutorial finished and working on your machine.\n- Day 10: Siem - Core techniques. Task: Solve 5 small exercises using those techniques (45 min). Done when: 5 exercises solved without looking at solutions.\n- Day 11: Siem - Applied practice. Task: Reproduce the example with your own data/problem (45 min). Done when: Your version runs and you can explain each step.\n- Day 12: Siem - Intermediate topics. Task: Refactor yesterday's work using two best practices (45 min). Done when: Two improvements made and noted.\n- Day 13: Siem - Mini project. Task: Build the mini project and push it to GitHub with a README (45 min). Done when: Repository with README and screenshots.\n- Day 14: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (45 min). Done when: All redo exercises completed; doubts written down.\n- Day 15: Python - Syntax, variables & types. Task: Write 10 small exercises (45 min). Done when: 10 exercises run without errors. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\n- Day 16: Python - Control flow & functions. Task: Write 5 reusable functions with docstrings (45 min). Done when: 5 functions tested with sample inputs. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\n- Day 17: Python - Files, errors & modules. Task: Build a script that reads a CSV and handles bad rows (45 min). Done when: Script processes a messy CSV. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\n- Day 18: Python - Pandas basics. Task: Clean and summarise a Kaggle dataset (45 min). Done when: Notebook with 5 summary tables. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\n- Day 19: Python - Visualising data. Task: Make 4 charts answering 4 questions (45 min). Done when: 4 labelled charts. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\n- Day 20: Python - Mini project. Task: Build it and push to GitHub with a README (45 min). Done when: Repo with README. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\n- Day 21: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (45 min). Done when: All redo exercises completed; doubts written down.\n- Day 22: Networking - Fundamentals & vocabulary. Task: Write a one-page cheat sheet of the 10 most important Networking concepts (45 min). Done when: Cheat sheet covers 10 concepts in your own words.\n- Day 23: Networking - Setting up & first steps. Task: Complete the getting-started tutorial end to end (45 min). Done when: Tutorial finished and working on your machine.\n- Day 24: Networking - Core techniques. Task: Solve 5 small exercises using those techniques (45 min). Done when: 5 exercises solved without looking at solutions.\n- Day 25: Networking - Applied practice. Task: Reproduce the example with your own data/problem (45 min). Done when: Your version runs and you can explain each step.\n- Day 26: Networking - Intermediate topics. Task: Refactor yesterday's work using two best practices (45 min). Done when: Two improvements made and noted.\n- Day 27: Networking - Mini project. Task: Build the mini project and push it to GitHub with a README (45 min). Done when: Repository with README and screenshots.\n- Day 28: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (45 min). Done when: All redo exercises completed; doubts written down.\n- Day 29: Capstone Project - Capstone: plan & build. Task: Define the problem and data, then build a working first version (45 min). Done when: A working first version runs end to end.\n- Day 30: Capstone Project - Capstone: polish & present. Task: Push to GitHub, add it to your resume and practise a 2-minute walkthrough (45 min). Done when: Public repo + resume line + recorded walkthrough.\n\nA 30-day plan builds working familiarity; it doesn't guarantee mastery or a job. Open *Learning Paths* to generate it from your analysed profile.\n\n_Retrieval-only mode: built by the roadmap generator (no LLM)._\n\n---\n**Sources**\n- [S1] roadmap: Validated 30-day plan (roadmap generator)",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 146.8,
+          "state": {
+            "selected_career": "cybersecurity",
+            "last_recommendations": [
+              "Cyber Security Analyst",
+              "Security Analyst",
+              "Cyber Security Analyst"
+            ],
+            "daily_minutes": 45,
+            "previous_goals": [
+              "data scientist"
+            ]
+          },
+          "tokens": null
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "j07",
+      "goal": "interruption: SQL interview -> off-topic -> continue",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "help me prepare for a SQL interview",
+          "answer": "**Guidance** (Behavioural questions and the STAR method) [S1]: Answer behavioural questions with STAR: Situation, Task, Action, Result. Prepare 5-6 stories covering a challenge, a failure and what you learned, teamwork or conflict, leadership or initiative, and a deadline under pressure. Keep each answer to about two minutes and finish with a measurable result.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] knowledge: Behavioural questions and the STAR method",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 103.9,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "who won the IPL?",
+          "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"How should I prepare for the GATE exam in six months?\"*\n",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 1.9,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "ok continue, give me 5 practice questions",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "n_items",
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 164.3,
+          "state": null,
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.333
+    },
+    {
+      "id": "j07",
+      "goal": "interruption: SQL interview -> off-topic -> continue",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "help me prepare for a SQL interview",
+          "answer": "**Guidance** (Behavioural questions and the STAR method) [S1]: Answer behavioural questions with STAR: Situation, Task, Action, Result. Prepare 5-6 stories covering a challenge, a failure and what you learned, teamwork or conflict, leadership or initiative, and a deadline under pressure. Keep each answer to about two minutes and finish with a measurable result.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] knowledge: Behavioural questions and the STAR method",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 84.3,
+          "state": {},
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "who won the IPL?",
+          "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"How should I prepare for the GATE exam in six months?\"*\n",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 0.2,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "ok continue, give me 5 practice questions",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "n_items",
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 180.9,
+          "state": {},
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.333
+    },
+    {
+      "id": "j08",
+      "goal": "profile readiness -> first step -> 2-week plan at 1 h -> honest resume claim",
+      "version": "v7",
+      "user": "persona_da",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "am I ready for a data analyst job?",
+          "answer": "**Guidance** (Technical preparation) [S3]: For software roles practise data structures and algorithms (arrays, strings, hashing, trees, graphs, dynamic programming) on platforms such as LeetCode or GeeksforGeeks, and be able to explain your own projects end to end. For data analyst roles practise SQL joins, GROUP BY, window functions and CTEs, Excel pivot tables and lookups, basic statistics (mean/median, distributions, hypothesis testing) and explaining a dashboard. For machine learning roles revise bias-variance, evaluation metrics, overfitting and regularisation, feature engineering, and one project you can defend in depth.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S3] knowledge: Technical preparation",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 64.0,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "what do I learn first?",
+          "answer": "**Guidance** (Technical preparation) [S2]: For software roles practise data structures and algorithms (arrays, strings, hashing, trees, graphs, dynamic programming) on platforms such as LeetCode or GeeksforGeeks, and be able to explain your own projects end to end. For data analyst roles practise SQL joins, GROUP BY, window functions and CTEs, Excel pivot tables and lookups, basic statistics (mean/median, distributions, hypothesis testing) and explaining a dashboard. For machine learning roles revise bias-variance, evaluation metrics, overfitting and regularisation, feature engineering, and one project you can defend in depth.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S2] knowledge: Technical preparation",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 89.8,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "plan for 2 weeks, 1 hr/day",
+          "answer": "**Your 30-day plan** [S1]\n\nPlan (validated, 60 min/day, role: Data Analyst). Skills in order: Data Visualization (7 days), Tableau (6 days), Statistics (6 days), Communication (5 days). Capstone: End-to-end analysis: clean a public dataset with SQL/Python, build a dashboard using Data Visualization, Tableau, Statistics, Communication and present 3 business recommendations.\n\n- Day 1: Data Visualization - Chart selection. Task: Classify 10 scenarios to chart types (60 min). Done when: 10/10 justified. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n- Day 2: Data Visualization - Design principles. Task: Redesign 3 bad charts (60 min). Done when: Before/after for 3 charts. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n- Day 3: Data Visualization - Building charts. Task: Create 5 charts on one dataset (60 min). Done when: 5 clean charts. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n- Day 4: Data Visualization - Dashboards. Task: Build a 1-page dashboard (60 min). Done when: Dashboard answers 3 questions. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n- Day 5: Data Visualization - Data storytelling. Task: Present the dashboard in 3 minutes (record it) (60 min). Done when: Recording made. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n- Day 6: Data Visualization - Mini project. Task: Build the mini project and push it to GitHub with a README (60 min). Done when: Repository with README and screenshots. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n- Day 7: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 8: Data Visualization - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n- Day 9: Tableau - Interface & connecting data. Task: Connect a CSV and make 3 charts (60 min). Done when: 3 charts built. Resource: Tableau free training videos: https://www.tableau.com/learn/training\n- Day 10: Tableau - Dimensions, measures & filters. Task: Build 4 filtered views (60 min). Done when: Filters work correctly. Resource: Tableau free training videos: https://www.tableau.com/learn/training\n- Day 11: Tableau - Calculated fields & LOD. Task: Create 5 calculated fields (60 min). Done when: 5 calcs validated. Resource: Tableau free training videos: https://www.tableau.com/learn/training\n- Day 12: Tableau - Dashboards & actions. Task: Build an interactive dashboard (60 min). Done when: Dashboard with 2 actions. Resource: Tableau free training videos: https://www.tableau.com/learn/training\n- Day 13: Tableau - Storytelling. Task: Publish a 4-point story on Tableau Public (60 min). Done when: Public link works. Resource: Tableau free training videos: https://www.tableau.com/learn/training\n- Day 14: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 15: Tableau - Mini project. Task: Build the mini project and push it to GitHub with a README (60 min). Done when: Repository with README and screenshots. Resource: Tableau free training videos: https://www.tableau.com/learn/training\n- Day 16: Statistics - Descriptive statistics. Task: Summarise a dataset by hand/Python (60 min). Done when: Summary table matches library output. Resource: Khan Academy statistics & probability: https://www.khanacademy.org/math/statistics-probability\n- Day 17: Statistics - Distributions. Task: Simulate sampling distributions in Python (60 min). Done when: Plots of 3 distributions. Resource: Khan Academy statistics & probability: https://www.khanacademy.org/math/statistics-probability\n- Day 18: Statistics - Probability basics. Task: Solve 8 probability problems (60 min). Done when: ≥ 6/8 correct. Resource: Khan Academy statistics & probability: https://www.khanacademy.org/math/statistics-probability\n- Day 19: Statistics - Hypothesis testing. Task: Run 3 tests on real data (60 min). Done when: 3 tests interpreted in plain words. Resource: Khan Academy statistics & probability: https://www.khanacademy.org/math/statistics-probability\n- Day 20: Statistics - Correlation & regression. Task: Fit and interpret a regression (60 min). Done when: Coefficients explained. Resource: Khan Academy statistics & probability: https://www.khanacademy.org/math/statistics-probability\n- Day 21: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 22: Statistics - A/B testing. Task: Analyse a sample A/B test dataset (60 min). Done when: Decision memo written. Resource: Khan Academy statistics & probability: https://www.khanacademy.org/math/statistics-probability\n- Day 23: Communication - Explaining technical work. Task: Explain one project in 5 sentences (60 min). Done when: Peer understands it. Resource: Toastmasters (public speaking practice): https://www.toastmasters.org/\n- Day 24: Communication - Written updates. Task: Write 3 status updates for a project (60 min). Done when: Each under 120 words. Resource: Toastmasters (public speaking practice): https://www.toastmasters.org/\n- Day 25: Communication - Presenting insights. Task: Give a 3-minute presentation (record it) (60 min). Done when: Recording reviewed with notes. Resource: Toastmasters (public speaking practice): https://www.toastmasters.org/\n- Day 26: Communication - Stakeholder questions. Task: Role-play 2 stakeholder meetings (60 min). Done when: Notes of 2 sessions. Resource: Toastmasters (public speaking practice): https://www.toastmasters.org/\n- Day 27: Communication - Mini project. Task: Build the mini project and push it to GitHub with a README (60 min). Done when: Repository with README and screenshots. Resource: Toastmasters (public speaking practice): https://www.toastmasters.org/\n- Day 28: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 29: Capstone Project - Capstone: plan & build. Task: Define the problem and data, then build a working first version (60 min). Done when: A working first version runs end to end.\n- Day 30: Capstone Project - Capstone: polish & present. Task: Push to GitHub, add it to your resume and practise a 2-minute walkthrough (60 min). Done when: Public repo + resume line + recorded walkthrough.\n\nA 30-day plan builds working familiarity; it doesn't guarantee mastery or a job. Open *Learning Paths* to generate it from your analysed profile.\n\n_Retrieval-only mode: built by the roadmap generator (no LLM)._\n\n---\n**Sources**\n- [S1] roadmap: Validated 30-day plan (roadmap generator)",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 103.4,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "can i put tableau on my resume now?",
+          "answer": "**Your profile** [S3]: target role *Data Analyst*, estimated ATS match **43/100**, skill gaps: **Tableau, Statistics, Data Visualization, Communication**.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S3] profile: profile overview",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 84.3,
+          "state": null,
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.75
+    },
+    {
+      "id": "j08",
+      "goal": "profile readiness -> first step -> 2-week plan at 1 h -> honest resume claim",
+      "version": "v7+e38",
+      "user": "persona_da",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "am I ready for a data analyst job?",
+          "answer": "**Guidance** (Technical preparation) [S3]: For software roles practise data structures and algorithms (arrays, strings, hashing, trees, graphs, dynamic programming) on platforms such as LeetCode or GeeksforGeeks, and be able to explain your own projects end to end. For data analyst roles practise SQL joins, GROUP BY, window functions and CTEs, Excel pivot tables and lookups, basic statistics (mean/median, distributions, hypothesis testing) and explaining a dashboard. For machine learning roles revise bias-variance, evaluation metrics, overfitting and regularisation, feature engineering, and one project you can defend in depth.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S3] knowledge: Technical preparation",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 81.0,
+          "state": {},
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "what do I learn first?",
+          "answer": "**Guidance** (Technical preparation) [S2]: For software roles practise data structures and algorithms (arrays, strings, hashing, trees, graphs, dynamic programming) on platforms such as LeetCode or GeeksforGeeks, and be able to explain your own projects end to end. For data analyst roles practise SQL joins, GROUP BY, window functions and CTEs, Excel pivot tables and lookups, basic statistics (mean/median, distributions, hypothesis testing) and explaining a dashboard. For machine learning roles revise bias-variance, evaluation metrics, overfitting and regularisation, feature engineering, and one project you can defend in depth.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S2] knowledge: Technical preparation",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 121.1,
+          "state": {},
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "plan for 2 weeks, 1 hr/day",
+          "answer": "**Your 30-day plan** [S1]\n\nPlan (validated, 60 min/day, role: Data Analyst). Skills in order: Data Visualization (7 days), Tableau (6 days), Statistics (6 days), Communication (5 days). Capstone: End-to-end analysis: clean a public dataset with SQL/Python, build a dashboard using Data Visualization, Tableau, Statistics, Communication and present 3 business recommendations.\n\n- Day 1: Data Visualization - Chart selection. Task: Classify 10 scenarios to chart types (60 min). Done when: 10/10 justified. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n- Day 2: Data Visualization - Design principles. Task: Redesign 3 bad charts (60 min). Done when: Before/after for 3 charts. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n- Day 3: Data Visualization - Building charts. Task: Create 5 charts on one dataset (60 min). Done when: 5 clean charts. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n- Day 4: Data Visualization - Dashboards. Task: Build a 1-page dashboard (60 min). Done when: Dashboard answers 3 questions. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n- Day 5: Data Visualization - Data storytelling. Task: Present the dashboard in 3 minutes (record it) (60 min). Done when: Recording made. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n- Day 6: Data Visualization - Mini project. Task: Build the mini project and push it to GitHub with a README (60 min). Done when: Repository with README and screenshots. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n- Day 7: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 8: Data Visualization - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (60 min). Done when: 10 answers written; 3 weakest revisited. Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n- Day 9: Tableau - Interface & connecting data. Task: Connect a CSV and make 3 charts (60 min). Done when: 3 charts built. Resource: Tableau free training videos: https://www.tableau.com/learn/training\n- Day 10: Tableau - Dimensions, measures & filters. Task: Build 4 filtered views (60 min). Done when: Filters work correctly. Resource: Tableau free training videos: https://www.tableau.com/learn/training\n- Day 11: Tableau - Calculated fields & LOD. Task: Create 5 calculated fields (60 min). Done when: 5 calcs validated. Resource: Tableau free training videos: https://www.tableau.com/learn/training\n- Day 12: Tableau - Dashboards & actions. Task: Build an interactive dashboard (60 min). Done when: Dashboard with 2 actions. Resource: Tableau free training videos: https://www.tableau.com/learn/training\n- Day 13: Tableau - Storytelling. Task: Publish a 4-point story on Tableau Public (60 min). Done when: Public link works. Resource: Tableau free training videos: https://www.tableau.com/learn/training\n- Day 14: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 15: Tableau - Mini project. Task: Build the mini project and push it to GitHub with a README (60 min). Done when: Repository with README and screenshots. Resource: Tableau free training videos: https://www.tableau.com/learn/training\n- Day 16: Statistics - Descriptive statistics. Task: Summarise a dataset by hand/Python (60 min). Done when: Summary table matches library output. Resource: Khan Academy statistics & probability: https://www.khanacademy.org/math/statistics-probability\n- Day 17: Statistics - Distributions. Task: Simulate sampling distributions in Python (60 min). Done when: Plots of 3 distributions. Resource: Khan Academy statistics & probability: https://www.khanacademy.org/math/statistics-probability\n- Day 18: Statistics - Probability basics. Task: Solve 8 probability problems (60 min). Done when: ≥ 6/8 correct. Resource: Khan Academy statistics & probability: https://www.khanacademy.org/math/statistics-probability\n- Day 19: Statistics - Hypothesis testing. Task: Run 3 tests on real data (60 min). Done when: 3 tests interpreted in plain words. Resource: Khan Academy statistics & probability: https://www.khanacademy.org/math/statistics-probability\n- Day 20: Statistics - Correlation & regression. Task: Fit and interpret a regression (60 min). Done when: Coefficients explained. Resource: Khan Academy statistics & probability: https://www.khanacademy.org/math/statistics-probability\n- Day 21: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 22: Statistics - A/B testing. Task: Analyse a sample A/B test dataset (60 min). Done when: Decision memo written. Resource: Khan Academy statistics & probability: https://www.khanacademy.org/math/statistics-probability\n- Day 23: Communication - Explaining technical work. Task: Explain one project in 5 sentences (60 min). Done when: Peer understands it. Resource: Toastmasters (public speaking practice): https://www.toastmasters.org/\n- Day 24: Communication - Written updates. Task: Write 3 status updates for a project (60 min). Done when: Each under 120 words. Resource: Toastmasters (public speaking practice): https://www.toastmasters.org/\n- Day 25: Communication - Presenting insights. Task: Give a 3-minute presentation (record it) (60 min). Done when: Recording reviewed with notes. Resource: Toastmasters (public speaking practice): https://www.toastmasters.org/\n- Day 26: Communication - Stakeholder questions. Task: Role-play 2 stakeholder meetings (60 min). Done when: Notes of 2 sessions. Resource: Toastmasters (public speaking practice): https://www.toastmasters.org/\n- Day 27: Communication - Mini project. Task: Build the mini project and push it to GitHub with a README (60 min). Done when: Repository with README and screenshots. Resource: Toastmasters (public speaking practice): https://www.toastmasters.org/\n- Day 28: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (60 min). Done when: All redo exercises completed; doubts written down.\n- Day 29: Capstone Project - Capstone: plan & build. Task: Define the problem and data, then build a working first version (60 min). Done when: A working first version runs end to end.\n- Day 30: Capstone Project - Capstone: polish & present. Task: Push to GitHub, add it to your resume and practise a 2-minute walkthrough (60 min). Done when: Public repo + resume line + recorded walkthrough.\n\nA 30-day plan builds working familiarity; it doesn't guarantee mastery or a job. Open *Learning Paths* to generate it from your analysed profile.\n\n_Retrieval-only mode: built by the roadmap generator (no LLM)._\n\n---\n**Sources**\n- [S1] roadmap: Validated 30-day plan (roadmap generator)",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 103.6,
+          "state": {
+            "daily_minutes": 60
+          },
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "can i put tableau on my resume now?",
+          "answer": "**Your profile** [S3]: target role *Data Analyst*, estimated ATS match **43/100**, skill gaps: **Tableau, Statistics, Data Visualization, Communication**.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S3] profile: profile overview",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 96.4,
+          "state": {
+            "last_recommendations": [
+              "Day 1",
+              "Day 2",
+              "Day 3",
+              "Day 4",
+              "Day 5",
+              "Day 6",
+              "Day 7",
+              "Day 8",
+              "Day 9",
+              "Day 10",
+              "Day 11",
+              "Day 12",
+              "Day 13",
+              "Day 14",
+              "Day 15",
+              "Day 16",
+              "Day 17",
+              "Day 18",
+              "Day 19",
+              "Day 20",
+              "Day 21",
+              "Day 22",
+              "Day 23",
+              "Day 24",
+              "Day 25",
+              "Day 26",
+              "Day 27",
+              "Day 28",
+              "Day 29",
+              "Day 30"
+            ],
+            "daily_minutes": 60
+          },
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.75
+    },
+    {
+      "id": "j09",
+      "goal": "confused fresher -> likes apps -> web vs mobile -> 30-day web roadmap at 90 min",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "what should i do after btech? confused",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 203.0,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "i like building apps",
+          "answer": "**Careers from our records that match your question**:\n- **Software Engineer, Product (Full Stack)** (Software and Web Development) [S1]: needs Full stack web/mobile application development, Programming languages such as PHP, JavaScript, HTML, Internal programming language Hack, Web/mobile interfaces using XHTML.\n- **Software Developer** (Software and Web Development) [S2]: needs Mobile app development languages (e.g., Java, Swift, Kotlin) Cross-platform development (e.g., React Native, Flutter) Mobile app design principles APIs and web services integration Debugging and troubleshooting.\n- **Full Stack Engineer** (Software and Web Development) [S3]: needs Building web applications, Architecting front end / backend frameworks, Implementing standards to maintain code quality, Development of major application features, Using design patterns, Experience with Python.\n\nTo narrow this down: **which skills or tools do you already know?** And **what is your current education or experience level?**\n\n**Guidance** (Learning by building projects) [S6]: Employers value proof of skill. After learning fundamentals, build small end-to-end projects: clean a real dataset, analyse it, and publish a dashboard or write-up; or build and deploy a small web app or API. Put the code on GitHub with a clear README describing the problem, approach, results and how to run it.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] careers: Software Engineer, Product (Full Stack)\n- [S2] careers: Software Developer\n- [S3] careers: Full Stack Engineer\n- [S6] knowledge: Learning by building projects",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 155.8,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "web or mobile, which one for fresher?",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "must_include_any",
+            "must_include_any2"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 176.3,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "ok web. 30 day roadmap, 90 mins daily",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "mentions_day30",
+            "must_include_any",
+            "must_include_any2"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 50.5,
+          "state": null,
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.25
+    },
+    {
+      "id": "j09",
+      "goal": "confused fresher -> likes apps -> web vs mobile -> 30-day web roadmap at 90 min",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "what should i do after btech? confused",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 137.6,
+          "state": {
+            "background": "btech"
+          },
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "i like building apps",
+          "answer": "**Careers from our records that match your question**:\n- **Software Engineer, Product (Full Stack)** (Software and Web Development) [S1]: needs Full stack web/mobile application development, Programming languages such as PHP, JavaScript, HTML, Internal programming language Hack, Web/mobile interfaces using XHTML.\n- **Full Stack Engineer** (Software and Web Development) [S2]: needs Building web applications, Architecting front end / backend frameworks, Implementing standards to maintain code quality, Development of major application features, Using design patterns, Experience with Python.\n- **Software Development Engineer I** (Software and Web Development) [S3]: needs Java, JavaScript, Git, relational databases, Agile Scrum development process, NoSQL databases (Cassandra).\n\nTo narrow this down: **which skills or tools do you already know?** And **what is your current education or experience level?**\n\n**Guidance** (Learning by building projects) [S6]: Employers value proof of skill. After learning fundamentals, build small end-to-end projects: clean a real dataset, analyse it, and publish a dashboard or write-up; or build and deploy a small web app or API. Put the code on GitHub with a clear README describing the problem, approach, results and how to run it.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] careers: Software Engineer, Product (Full Stack)\n- [S2] careers: Full Stack Engineer\n- [S3] careers: Software Development Engineer I\n- [S6] knowledge: Learning by building projects",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 219.9,
+          "state": {
+            "background": "btech"
+          },
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "web or mobile, which one for fresher?",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "must_include_any",
+            "must_include_any2"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 135.6,
+          "state": {
+            "last_recommendations": [
+              "Software Engineer, Product",
+              "Full Stack Engineer",
+              "Software Development Engineer I"
+            ],
+            "background": "btech"
+          },
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "ok web. 30 day roadmap, 90 mins daily",
+          "answer": "I couldn't find records in our knowledge base that match this question closely. Could you rephrase it, or tell me your skills and the kind of role you're interested in?",
+          "passed": false,
+          "failed": [
+            "mentions_day30",
+            "must_include_any",
+            "must_include_any2"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 62.9,
+          "state": {
+            "last_recommendations": [
+              "Software Engineer, Product",
+              "Full Stack Engineer",
+              "Software Development Engineer I"
+            ],
+            "daily_minutes": 90,
+            "background": "btech"
+          },
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.25
+    },
+    {
+      "id": "j10",
+      "goal": "devops: career -> salary -> guarantee -> first step",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "is devops a good career",
+          "answer": "I'd like to help, but I don't know enough about you yet to suggest careers responsibly. Could you tell me:\n1. **What is your current education or experience level?** (e.g. B.Tech 2nd year, B.Com graduate, working professional)\n2. **Which skills or tools do you already know**, even basic ones?\n3. **What kind of work do you enjoy?** (building things, analysing data, designing, helping people…)\n\nWith that I can match you against our 2,899 career records and explain why each option fits.",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 186.7,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "what about salary",
+          "answer": "**Salary:** our career records don't contain reliable salary data for this role, so I won't guess. Check current figures for your city and experience on Glassdoor, AmbitionBox or LinkedIn Salary.\n\n**Guidance** (Entry-level tech and data career paths) [S6]: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engineer (testing fundamentals, automation with Selenium or Playwright). Analyst roles often lead to data science or analytics engineering; developer roles lead to senior engineering, architecture or engineering management.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S6] knowledge: Entry-level tech and data career paths",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 144.5,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "will i get job for sure after learning it?",
+          "answer": "**Guidance** (Learning by building projects) [S1]: Employers value proof of skill. After learning fundamentals, build small end-to-end projects: clean a real dataset, analyse it, and publish a dashboard or write-up; or build and deploy a small web app or API. Put the code on GitHub with a clear README describing the problem, approach, results and how to run it.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] knowledge: Learning by building projects",
+          "passed": false,
+          "failed": [
+            "no_guarantee"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 151.7,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "what should I learn first then?",
+          "answer": "**Guidance** (Growing your career while working) [S1]: Keep learning one skill aligned with the next role you want, volunteer for projects that use it, find a mentor inside or outside the company, and update your resume every six months with new achievements so you are ready for opportunities.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] knowledge: Growing your career while working",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 60.3,
+          "state": null,
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.25
+    },
+    {
+      "id": "j10",
+      "goal": "devops: career -> salary -> guarantee -> first step",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "is devops a good career",
+          "answer": "I'd like to help, but I don't know enough about you yet to suggest careers responsibly. Could you tell me:\n1. **What is your current education or experience level?** (e.g. B.Tech 2nd year, B.Com graduate, working professional)\n2. **Which skills or tools do you already know**, even basic ones?\n3. **What kind of work do you enjoy?** (building things, analysing data, designing, helping people…)\n\nWith that I can match you against our 2,899 career records and explain why each option fits.",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 173.4,
+          "state": {},
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "what about salary",
+          "answer": "**Salary:** our career records don't contain reliable salary data for this role, so I won't guess. Check current figures for your city and experience on Glassdoor, AmbitionBox or LinkedIn Salary.\n\n**Guidance** (Entry-level tech and data career paths) [S6]: Common entry points: Data Analyst (SQL, Excel, Power BI/Tableau, statistics, communication), Business Analyst (requirements, process mapping, SQL, stakeholder communication), Software Developer (one language deeply, DSA, Git, a framework, databases), Data Scientist (Python, statistics, machine learning, experimentation), Cloud/DevOps Engineer (Linux, networking, a cloud provider, CI/CD, containers), QA/Test Engineer (testing fundamentals, automation with Selenium or Playwright). Analyst roles often lead to data science or analytics engineering; developer roles lead to senior engineering, architecture or engineering management.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S6] knowledge: Entry-level tech and data career paths",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 140.2,
+          "state": {
+            "last_recommendations": [
+              "What is your current education or experience level?",
+              "What kind of work do you enjoy?"
+            ]
+          },
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "will i get job for sure after learning it?",
+          "answer": "**Guidance** (Learning by building projects) [S1]: Employers value proof of skill. After learning fundamentals, build small end-to-end projects: clean a real dataset, analyse it, and publish a dashboard or write-up; or build and deploy a small web app or API. Put the code on GitHub with a clear README describing the problem, approach, results and how to run it.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] knowledge: Learning by building projects",
+          "passed": false,
+          "failed": [
+            "no_guarantee"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 148.1,
+          "state": {
+            "last_recommendations": [
+              "What is your current education or experience level?",
+              "What kind of work do you enjoy?"
+            ]
+          },
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "what should I learn first then?",
+          "answer": "**Guidance** (Growing your career while working) [S1]: Keep learning one skill aligned with the next role you want, volunteer for projects that use it, find a mentor inside or outside the company, and update your resume every six months with new achievements so you are ready for opportunities.\n\n**Next steps:** open *Learning Paths → Generate 30-day roadmap* for a day-by-day plan, or ask me about any career above.\n\n_Retrieval-only mode: this answer is composed directly from the cited records (no LLM)._\n\n---\n**Sources**\n- [S1] knowledge: Growing your career while working",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 73.1,
+          "state": {
+            "last_recommendations": [
+              "What is your current education or experience level?",
+              "What kind of work do you enjoy?"
+            ]
+          },
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.25
+    }
+  ],
+  "model_configured": "default",
+  "provider": "none",
+  "expect_model": "",
+  "summary": {
+    "v7": {
+      "journeys": 10,
+      "excluded_model_fallback": 0,
+      "task_success": 0.0,
+      "turn_pass_rate": 0.436,
+      "p95_latency_ms": 186.7,
+      "avg_latency_ms": 195,
+      "models": [
+        "None"
+      ],
+      "failed_turns": [
+        "j01 t1: min_numbered",
+        "j01 t2: mentions_item_of_turn",
+        "j01 t4: must_include_any",
+        "j02 t3: must_include_any, must_include_any2",
+        "j02 t4: must_include_any, must_include_any2",
+        "j03 t1: min_numbered",
+        "j03 t4: must_include_any",
+        "j04 t1: must_include_any",
+        "j04 t3: code_block, must_include_any",
+        "j04 t4: n_items",
+        "j05 t2: mentions_item_of_turn",
+        "j05 t3: mentions_item_of_turn, must_include_any",
+        "j06 t4: must_include_any, must_include_any2",
+        "j07 t1: must_include_any",
+        "j07 t3: n_items, must_include_any",
+        "j08 t4: must_include_any",
+        "j09 t1: must_include_any",
+        "j09 t3: must_include_any, must_include_any2",
+        "j09 t4: mentions_day30, must_include_any, must_include_any2",
+        "j10 t1: must_include_any",
+        "j10 t3: no_guarantee",
+        "j10 t4: must_include_any"
+      ]
+    },
+    "v7+e38": {
+      "journeys": 10,
+      "excluded_model_fallback": 0,
+      "task_success": 0.1,
+      "turn_pass_rate": 0.462,
+      "p95_latency_ms": 219.9,
+      "avg_latency_ms": 139,
+      "models": [
+        "None"
+      ],
+      "failed_turns": [
+        "j01 t1: min_numbered",
+        "j01 t4: must_include_any",
+        "j02 t2: must_include_any",
+        "j02 t3: must_include_any, must_include_any2",
+        "j02 t4: must_include_any, must_include_any2",
+        "j03 t1: min_numbered",
+        "j03 t4: must_include_any",
+        "j04 t1: must_include_any",
+        "j04 t3: code_block, must_include_any",
+        "j04 t4: n_items",
+        "j05 t3: mentions_item_of_turn, must_include_any",
+        "j05 t4: must_include_any",
+        "j07 t1: must_include_any",
+        "j07 t3: n_items, must_include_any",
+        "j08 t4: must_include_any",
+        "j09 t1: must_include_any",
+        "j09 t3: must_include_any, must_include_any2",
+        "j09 t4: mentions_day30, must_include_any, must_include_any2",
+        "j10 t1: must_include_any",
+        "j10 t3: no_guarantee",
+        "j10 t4: must_include_any"
+      ]
+    }
+  }
+}

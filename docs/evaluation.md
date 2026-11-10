@@ -401,3 +401,142 @@ nearest-example voting and refused "Explain Big-O notation in exactly two senten
 content (a known skill/tool or an academic/career term). Checked locally on every set: 45/45 off-topic cases still
 refused (the first version leaked "Who won the last Formula 1 race?", fixed by the agreement condition); 245/247
 in-scope cases allowed (the two left are "Which is better?" with no context).
+
+---
+
+# Part 3: Review 3, real-world reliability (E38)
+
+Review 3 asked to stop optimising prompt scores and make the advisor reliable in real conversations: messy wording,
+follow-ups that point back ("the second one"), changes of mind, corrections, missing time budgets, students changing field,
+failures of the model or database, and honest evidence. It advised against writing v9. E38 therefore changes the
+**pipeline around the prompt** (identical for v7 and v8) and keeps v7 as the live prompt.
+
+## 19. What was built
+
+| Review item | Implementation | File |
+|---|---|---|
+| §3 conversation memory | structured state rebuilt each turn (references, selected career, stated/missing skills, minutes/day, corrections, conflicts, previous goals) | `src/backend/conversation_state.py` |
+| §4 career transitions | structured rewrite (background/target/role), 2× pool, exact-title bonus | `src/rag/skill_rerank.py`, `src/rag/retriever.py` |
+| §4D data quality | label review of 2,899 career records (nothing changed) | `src/eval/career_label_review.py` |
+| §5 adaptive roadmap | per-day status, revision days, missed days moved, deferral, completion rate; UI panel; progress in profile | `src/roadmap/adapt.py`, frontend |
+| §6 citations | claim audit tool + first-pass review; deterministic "N of M skills" check; evaluator stores full sources | `src/eval/claim_audit.py`, `answer_check.count_issues` |
+| §7 failures & privacy | model-down notice, Atlas-down notice, scanned-PDF detection, salary/hiring caveats, cross-user records blocked + logged | `chatbot.py`, `doc_check.py`, `retriever._privacy_guard` |
+| §7 P95 latency | p95 in every summary | `heldout_eval.summarise`, `journey_eval` |
+| §10 end-to-end task success | 10 live journeys, success only if every turn passes | `src/eval/journey_eval.py` |
+| §3/§10 real questions, 30-50 multi-turn | `heldout_v3`: 120 realistic cases (47 multi-turn) + 17 genuine questions | `src/eval/heldout/` |
+
+Switch: `E38_PIPELINE` (per request via a context variable, so A/B arms never leak into each other).
+
+## 20. Test sets (frozen in commit 167fe13 before any E38 code)
+
+| Set | Size | Content | sha256 |
+|---|---|---|---|
+| `heldout_v3.jsonl` | 120 | 47 multi-turn with scripted history, 48 messy single questions, 12 CV/JD, 13 off-topic (3 inside conversations) | 73580ae5… |
+| `journeys_v1.jsonl` | 10 | live 3-4 turn journeys with per-turn checks | 3bf1c4ea… |
+| `heldout_careers_v3.jsonl` | 40 | 10 each: title, skill, interest, transition | 0730e3e0… |
+| `real_questions_labelled.jsonl` (git-ignored) | 17 | genuine questions from the chat log and 👎 feedback | – |
+
+The 120 cases are realistic, written by us in the style of real student messages; they are **not** collected user data.
+Only the 17 are genuine (the app has had few real users; the rest of the chat log is evaluation traffic).
+
+## 21. Measurement fixes found on the way (applied to every arm alike)
+
+- **Truncated sources.** The harness saved only 3,000 characters of the retrieved sources, and claim re-checks ran on that.
+  All 9 "invalid citation" labels in the audit sample were this artifact. Sources are now saved in full.
+- **Unicode hyphens.** gpt-oss writes "1‑hour‑per‑day" with U+2011; text checks for "1-hour" or "Day 1-19" missed it.
+  Answers are normalised before checks, and stored answers are re-scored (`rescore`).
+- **Same-second runs** wrote to the same file; result files now carry the process id.
+- **Same model per comparison.** Journeys exclude any journey where a turn was answered by a fallback model.
+
+## 22. Citation-checker audit (review §6)
+
+64 claims sampled from the E37 run (seed 38): 20 labelled supported, 20 insufficient, 9 invalid ID, 15 uncited. Each was read
+against the text of its cited source (first pass by Claude, `reviewer` column says so; a teammate should confirm).
+
+| Checker label | n | supported | true, wrong/no source | false | unclear | evaluator artifact |
+|---|---|---|---|---|---|---|
+| supported | 20 | 15 | 2 | **2** | 1 | 0 |
+| insufficient | 20 | **10** | 10 | 0 | 0 | 0 |
+| invalid_id | 9 | 0 | 0 | 0 | 0 | **9** |
+| uncited | 15 | 0 | 12 | 0 | 3 | 0 |
+
+Reading: the 0.25 "support rate" is not a hallucination rate. Half of the *insufficient* claims are stated by their source
+(the small NLI model misses paraphrases and correct "X is not required" statements); the other half are true but attached to an
+unrelated source (citation placement). The only false claims were two "You match 5 of the 7 skills" miscounts (the profile
+matches 3 of 7), which the word-overlap rule had passed; a deterministic check now compares such counts with the stored
+comparison and triggers a revision. Next: cite only sentences whose fact is in that source (prompt rule), and calibrate the
+entailment threshold on the audited pairs.
+
+## 23. Results
+
+**Career search** (production `retrieve()`, no LLM; `career_eval_v3.json`): fresh frozen set 0.825 → **0.895**
+(transition 0.72 → **1.0**, interest 0.94 → 0.94, skill 0.80 → 0.80, title 0.84 → 0.84). Development sets: v2 0.71 → 0.77,
+others unchanged. Target 0.90 not quite met; most remaining misses are dataset labels (26% of clearly-titled records carry
+another domain, `reports/data_quality/career_label_review.md`).
+
+**Keyless mode** (deployed app without a key; retrieval-only answers; 120 cases):
+
+| | v7 | v7+e38 |
+|---|---|---|
+| pass rate | 0.375 | **0.425** |
+| multi-turn | 0.17 | **0.298** |
+| real-world / profile / off-topic | 0.354 / 0.75 / 0.846 | same |
+| p95 latency | 656 ms | 696 ms |
+
+Absolute numbers are low by design (no model to follow counts/format). Keyless router findings on this set (same for both arms,
+not tuned here because the set is the final test): "whats the weather in delhi tomorrow" inside a career conversation and
+"translate 'good morning' to french" were answered; 5 short follow-ups ("types of it?", "just tell me yes or no…") were refused.
+65-case keyless regression: 0.877 with and without E38 (same 8 failures).
+
+**Local Mistral 7B, 50 multi-turn cases:**
+
+| | v7 | v7+e38 |
+|---|---|---|
+| pass rate | 0.50 | **0.62** |
+| multi-turn category | 0.468 | **0.596** |
+| ordinal references | 0.11 | **0.56** |
+| adaptive plans (missed days, hard topic) | 0.0 | **0.67** |
+| change of mind | 0.67 | **1.0** |
+| pronoun follow-ups | **0.83** | 0.67 |
+| off-topic leaks | 0 | 0 |
+| avg / p95 latency | 37 s / 94 s | 41 s / 157 s |
+
+**Deployed model (Groq gpt-oss-120b), live journeys** (8 per arm on the same model; Groq's daily quota ended the run, j09-j10
+excluded by the same-model rule):
+
+| | v7 | v7+e38 |
+|---|---|---|
+| task success | **5/8** | 4/8 |
+| turns passing | **0.871** | 0.839 |
+| p95 latency | 6.3 s | 6.6 s |
+
+The only journey that differs (j04) is a word limit: after "make it easier, I'm a beginner", the E38 answer was 309 words vs
+225 (limit 260). j03 fails for both (v7: profile contradiction; E38: a plan numbered "29. 30." instead of "Day 30", which the
+strict check doesn't accept). A strong model already follows context from the raw history; the state helps most where the
+model is weak (Mistral, keyless).
+
+**Local Mistral 7B, 10 live journeys** (all turns on Mistral):
+
+| | v7 | v7+e38 |
+|---|---|---|
+| task success | 1/10 | **3/10** |
+| turns passing | 0.615 | **0.692** |
+| avg / p95 latency | 46 s / 79 s | 52 s / 102 s |
+
+E38 newly completes j06 (change of mind → cybersecurity plan at 45 min/day) and j08 (profile → 2-week plan at 1 h/day).
+Most remaining local failures come from the **local scope router**, the same for both arms: in live conversations it refused
+"explain recursion", "what about salary" and two in-scope follow-ups, and answered "who won the IPL?". This is the
+next fix for the laptop version (the hosted router does not show it).
+
+**No-model router fix (after the runs above; these sets are now "seen").** The local and keyless router (kNN without an LLM)
+caused most local journey failures. Three general rules (`scope_router.py`): (1) `prompt_attack` needs attack wording; a weak
+kNN vote for it is ignored ("explain recursion" had matched injection anchors at 0.20 similarity); (2) live sports results,
+weather, gossip, recipes, prices, jokes and translation are refused even inside a career conversation unless the message also
+carries study/career words ("who won the IPL?" in a SQL-interview chat, "whats the weather in delhi tomorrow"); "weather
+forecasting project ideas with machine learning" is still allowed; (3) follow-ups up to 10 words (was 6) inherit scope, and a
+follow-up with study/career words stays in scope. Checks: 225/227 correct on every earlier frozen and dev set in no-LLM mode
+(the 2 errors are the known bare "Which is better?"), 65-case router check 100% allow/refuse, all tests pass.
+Keyless on heldout_v3 after the fix: leaks 2 → **0**, false refusals 5 → **2**, pass v7 0.392 / v7+e38 **0.45**
+(multi-turn 0.17 / **0.319**); keyless journeys 0/10 vs 1/10 (retrieval-only answers can't meet plan formats).
+
+<!-- E38_HOSTED_RESULTS -->

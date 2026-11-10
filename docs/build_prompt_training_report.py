@@ -104,6 +104,118 @@ def verdict(info, live="v7"):
     return (f"{vs[1]} not better{tag}: {fmt(b['pass_rate'])} vs {fmt(a['pass_rate'])}" + (f"; worse on {', '.join(sorted(worse))}" if worse else ""))
 
 
+def _jrn(pattern):
+    d, _ = latest(pattern, key="summary")
+    return d
+
+
+def journeys_block(rep, name, intro):
+    if not rep:
+        return f"<h3>{esc(name)}</h3><p class='note warn'>Not run yet.</p>"
+    from src.eval.journey_eval import summarise as js
+    S = js(rep)
+    vs = [v for v in rep["versions"] if v in S]
+    head = "".join(f"<th>{esc(v)}</th>" for v in vs)
+    labels = [("journeys", "Journeys scored (same model)"), ("excluded_model_fallback", "Excluded (fallback model)"),
+              ("task_success", "End-to-end task success"), ("turn_pass_rate", "Turns passing"),
+              ("avg_latency_ms", "Average latency (ms)"), ("p95_latency_ms", "P95 latency (ms)")]
+    rows = "".join(f"<tr><th scope='row'>{esc(l)}</th>" + "".join(f"<td class='num'>{esc(fmt(S[v].get(k)))}</td>" for v in vs) + "</tr>" for k, l in labels)
+    per = ""
+    for jid in sorted({r["id"] for r in rep["rows"]}):
+        cells = []
+        for v in vs:
+            r = next((x for x in rep["rows"] if x["id"] == jid and x["version"] == v), None)
+            cells.append("–" if not r else ("✓" if r["success"] else "✗ " + ", ".join(f"turn {t['turn']}" for t in r["turns"] if not t["passed"])))
+        goal = next(x["goal"] for x in rep["rows"] if x["id"] == jid)
+        per += f"<tr><th scope='row'>{esc(jid)}</th><td class='small'>{esc(goal)}</td>" + "".join(f"<td>{esc(c)}</td>" for c in cells) + "</tr>"
+    return f"""<h3>{esc(name)}</h3><p>{intro}</p>
+<div class="grid2"><div class="tbl"><table><thead><tr><th>Metric</th>{head}</tr></thead><tbody>{rows}</tbody></table></div></div>
+<div class="tbl"><table><thead><tr><th>Journey</th><th>Path</th>{head}</tr></thead><tbody>{per}</tbody></table></div>"""
+
+
+def e38_section() -> str:
+    import csv
+    from collections import Counter, defaultdict
+    is_v3 = lambda d: d.get("set") == "heldout_v3"  # noqa: E731
+    hosted, _ = latest("reports/heldout/heldout_eval_heldout_v3_*_p*.json", pred=lambda d: is_v3(d) and "v8+e38" in d["versions"] and len(d["rows"]) > 30)
+    local, _ = latest("reports/heldout/heldout_eval_heldout_v3_*_p*.json", pred=lambda d: is_v3(d) and any(r.get("model") == "mistral" for r in d["rows"]))
+    keyless, _ = latest("reports/heldout/heldout_eval_heldout_v3_*_p*.json", pred=lambda d: is_v3(d) and d["rows"] and all(r.get("model") is None for r in d["rows"]) and len(d["rows"]) >= 200)
+    real, _ = latest("reports/heldout/heldout_eval_real_*.json")
+    h_html, h_info = ab_block(hosted, "E38 · 120 realistic cases · hosted model (Gemini 3.1 Flash-Lite, every arm)",
+                              "Frozen set <code>heldout_v3</code> (committed in 167fe13 before any E38 code): 47 multi-turn conversations with scripted history "
+                              "(ordinal references, corrections, changes of goal, interruptions, time budgets), 48 messy single questions (typos, transitions, salary, "
+                              "missing time), 12 CV/JD questions, 13 off-topic. <b>v7</b> = live pipeline before E38; <b>+e38</b> = same prompt with conversation state, "
+                              "structured career search, real-world rules and the deterministic count check.")
+    l_html, l_info = ab_block(local, "E38 · 50 multi-turn cases · local model (Mistral 7B via Ollama)",
+                              "The multi-turn part of the same frozen set on the laptop model.")
+    k_html, k_info = ab_block(keyless, "E38 · 120 realistic cases · keyless mode (no model, retrieval-only answers)",
+                              "What the deployed app shows a visitor without a key. Absolute numbers are low by design (a retrieval-only answer can't follow counts or formats); the comparison shows what conversation state adds.")
+    r_html, r_info = ab_block(real, "E38 · 17 genuine user questions (chat log + 👎 feedback)", "Real questions harvested from the app; the labelled file stays out of git.")
+    jd = _jrn("reports/heldout/journeys_deployed_*_p*.json")
+    jl = _jrn("reports/heldout/journeys_local_*_p*.json")
+    j_html = journeys_block(jd, "E38 · 10 live journeys · deployed model (Groq gpt-oss-120b)",
+                            "Each journey is a live conversation (the advisor's own answers become the history): describe skills → explore careers → pick one by "
+                            "reference → gaps → feasible plan → progress update. A journey succeeds only if every turn passes. Frozen in 167fe13.")
+    j_html += journeys_block(jl, "E38 · 10 live journeys · local model (Mistral 7B)", "Same journeys on the laptop model.")
+    tags = ""
+    if h_info:
+        S, vs, _, _ = h_info
+        keep = ["ordinal", "pronoun", "bare_followup", "correction", "change_of_mind", "time_budget", "plan", "missing_time", "adaptive_plan",
+                "interruption", "format_change", "transition", "salary", "profile", "contradiction"]
+        tg = [t for t in keep if any(t in S[v].get("pass_rate_by_tag", {}) for v in vs)]
+        tags = "<div class='tbl'><table><thead><tr><th>Situation (tag)</th>" + "".join(f"<th>{esc(v)}</th>" for v in vs) + "</tr></thead><tbody>" + "".join(
+            f"<tr><th scope='row'>{esc(t)}</th>" + "".join(f"<td class='num'>{esc(fmt(S[v]['pass_rate_by_tag'].get(t)))}</td>" for v in vs) + "</tr>" for t in tg) + "</tbody></table></div>"
+    car = load(ROOT / "reports/heldout/career_eval_v3_v3.json") or {}
+    cdev = load(ROOT / "reports/heldout/career_eval_v3_dev.json") or {}
+    crow = ""
+    for n, d in list(cdev.items()) + list(car.items()):
+        bt = ", ".join(f"{t} {fmt(x['E37'])}→{fmt(x['E38'])}" for t, x in d["by_type"].items())
+        crow += f"<tr><th scope='row'>{esc(n)}{' (fresh, frozen)' if n.startswith('heldout_v3') else ' (seen)'}</th><td class='num'>{esc(fmt(d['p@5']['E37']))}</td><td class='num'>{esc(fmt(d['p@5']['E38']))}</td><td class='small'>{esc(bt)}</td></tr>"
+    audit = ROOT / "reports/heldout/claim_audit_heldout_v2_final_v7_v8.csv"
+    arows = ""
+    if audit.exists():
+        by = defaultdict(Counter)
+        for r in csv.DictReader(open(audit, encoding="utf-8")):
+            by[r["nli_label"]][r["review"]] += 1
+        L = ["supported", "true_uncited", "false", "unclear", "evaluator_artifact"]
+        arows = "".join(f"<tr><th scope='row'>{esc(k)}</th><td class='num'>{sum(c.values())}</td>" + "".join(f"<td class='num'>{c[x]}</td>" for x in L) + "</tr>" for k, c in by.items())
+    def ver(info, name):
+        return f"<li><b>{esc(name)}:</b> {esc(verdict(info))}.</li>" if info else ""
+    return f"""
+<h2>E38: real-world reliability (review 3)</h2>
+<p>The third review asked us to stop chasing prompt scores and make the advisor reliable in messy, real conversations: remember context,
+find careers for students who are changing field, check evidence honestly, adapt plans, and fail safely. No new prompt version was written
+(the review advised against v9); the changes are in the pipeline around the prompt and apply to v7 and v8 alike.</p>
+<ul>
+  <li><b>Conversation state</b> rebuilt every turn: "the second one" → the career it points to, minutes per day, skills the student said they have or lack, corrections, changes of goal, conflicting statements.</li>
+  <li><b>Structured career search</b> for career changes: background / target / role; search the target, larger candidate pool, exact-title bonus.</li>
+  <li><b>Adaptive roadmap</b>: per-day status, revision days for hard topics, missed days moved, known topics removed; task completion rate.</li>
+  <li><b>Failure handling</b>: model down (retrieval-only notice), Atlas down (no invented records), scanned PDF detected, salary/hiring caveats, cross-user records blocked and logged.</li>
+  <li><b>Deterministic CV/JD check</b>: "you match N of M skills" must equal the stored comparison (an error the citation audit found).</li>
+</ul>
+<ul>{ver(h_info, "Hosted model, 120 realistic cases")}{ver(l_info, "Local Mistral, 50 multi-turn cases")}{ver(k_info, "Keyless, 120 realistic cases")}</ul>
+{h_html}
+<p class="small">Pass rate by real-world situation (hosted run):</p>
+{tags}
+{j_html}
+{l_html}
+{k_html}
+{r_html}
+<h3>Career search on a fresh frozen set (production retrieve path, no LLM)</h3>
+<div class="tbl"><table><thead><tr><th>Set</th><th>E37</th><th>E38</th><th>By type (E37→E38)</th></tr></thead><tbody>{crow}</tbody></table></div>
+<p class="small">Data quality instead of more weight tuning: 240 of 907 career records (26%) whose title clearly names a role family carry another domain label
+(e.g. 64 data-analyst titles labelled Data Engineering, 22 of 26 QA titles outside Software). Nothing was changed; a review list is in
+<code>reports/data_quality/career_label_review.csv</code>.</p>
+<h3>Citation-checker audit (64 sampled claims from the E37 run)</h3>
+<p>Each sampled claim was read against the text of the source it cites. First pass by Claude, marked for teammate confirmation.</p>
+<div class="tbl"><table><thead><tr><th>Checker label</th><th>n</th><th>Supported</th><th>True, wrong/no source</th><th>False</th><th>Unclear</th><th>Evaluator artifact</th></tr></thead><tbody>{arows}</tbody></table></div>
+<p class="note">What the low "support rate" really meant: half of the claims the entailment model called <i>insufficient</i> are stated by their source
+(paraphrases, correct "X is not required" statements), the other half are true but cite an unrelated source (a citation-placement problem), and
+none were false. The only false claims were two "you match 5 of 7 skills" miscounts, now caught deterministically. All 9 "invalid citation" labels
+were caused by the evaluator saving only the first 3,000 characters of the sources; it now saves them in full.</p>
+"""
+
+
 def build() -> Path:
     e36_html, e36 = ab_block(load(E36), "E36 · v6 vs v7 · 120 held-out cases",
                              "Frozen before v7 was written. Both versions answer each case on the same model; the first 10 pairs ran on Gemini 3.5 Flash (reported as gemini-3.6-flash) until its free daily quota ran out, the rest on Gemini 3.1 Flash-Lite.")
@@ -181,7 +293,7 @@ a {{ color: var(--accent); }}
 <header>
   <div class="eyebrow">SkillPath AI · Sabudh Foundation · {date.today().strftime('%d %B %Y')}</div>
   <h1>Prompt training report: making the Career Advisor answer the exact question</h1>
-  <div><span class="chip">live prompt: v7</span> <span class="chip">candidate: v8</span> <span class="chip">experiments E36-E37</span></div>
+  <div><span class="chip">live prompt: v7</span> <span class="chip">candidate: v8</span> <span class="chip">experiments E36-E38</span></div>
 </header>
 
 <h2>Summary</h2>
@@ -200,6 +312,8 @@ checks and a focused prompt with task templates (E37, prompt v8).</p>
   <li><b>v8 on held-out v2, local Mistral:</b> {esc(verdict(v2l))}.</li>
   <li><b>v8 on the development set:</b> {esc(verdict(devi))}.</li>
 </ul>
+
+{e38_section()}
 
 <h2>How prompt training works here</h2>
 <ul>

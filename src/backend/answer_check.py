@@ -147,7 +147,29 @@ def fact_issues(text: str, memory: Optional[Dict]) -> List[str]:
             if claimed:
                 out.append(f"The draft says the student has {', '.join(claimed)}, but the profile lists it as a gap. Correct this.")
                 return out
+    from src.backend.features import e38_on
+    if e38_on():
+        out += count_issues(body, memory)
     return out
+
+
+_COUNT = re.compile(r"\b(\d{1,2})\s+(?:of|out of)\s+(?:the\s+|your\s+)?(\d{1,2})\s+(?:\w+\s+){0,2}?(?:skills|requirements|required skills)\b", re.I)
+
+
+def count_issues(body: str, memory: Optional[Dict]) -> List[str]:
+    """E38 (review 3 §6: deterministic validation for structured CV/JD facts): "you match N of M skills" must equal the
+    stored comparison. Found in the claim audit: 'You match 5 of the 7 skills' when the profile matches 3 of 7."""
+    req = memory.get("required_skills") or []
+    if not req:
+        return []
+    from src.skills.normalizer import compare
+    matched = compare(memory.get("candidate_skills") or [], req)["matched"]
+    for m in _COUNT.finditer(body):
+        n, tot = int(m.group(1)), int(m.group(2))
+        if tot == len(req) and n != len(matched):
+            return [f"The profile matches {len(matched)} of {len(req)} required skills ({', '.join(matched) or 'none'}); the draft says "
+                    f"{n} of {tot}. Use the stored comparison."]
+    return []
 
 
 def check_answer_v7(text: str, pi: Dict, question: str, memory: Optional[Dict], hits: List[Dict]) -> List[str]:

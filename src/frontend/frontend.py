@@ -167,7 +167,15 @@ if analyze_btn or st.session_state.pop("_reanalyze", False):
             jd_input_final = temp_path_jd
         else:
             jd_input_final = jd_input
-            
+        # E38 (review 3 §7): a scanned / image-only document has no text -> say so instead of producing an empty analysis
+        from src.utilities.doc_check import unreadable_reason
+        _unreadable = [m for m in ((unreadable_reason(resume_input, "CV") if uploaded_files else None),
+                                   (unreadable_reason(jd_input_final, "job description") if uploaded_jd_file else None)) if m]
+        for _m in _unreadable:
+            st.error(_m)
+        if _unreadable:
+            st.stop()
+
         loading_placeholder = st.empty()
         
         loading_html = """
@@ -615,9 +623,32 @@ if "pipeline_data" in st.session_state:
             if rm.get("deferred_gaps"):
                 st.info("Deferred to a second month: " + ", ".join(rm["deferred_gaps"]))
             import pandas as _pd
+            if rm.get("changes"):
+                st.info("Plan adapted: " + " ".join(rm["changes"]))
+            if (rm.get("progress") or {}).get("rate") is not None:
+                _p = rm["progress"]
+                st.caption(f"Task completion rate: {_p['completed']}/{_p['days_due']} days due ({_p['rate']:.0%}); "
+                           f"{_p['needs_revision']} marked for revision.")
             st.dataframe(_pd.DataFrame(rm["days"])[["day", "kind", "skill", "topic", "learning_task", "practice_task",
                                                    "estimated_minutes", "completion_criteria"]],
                          hide_index=True, use_container_width=True)
+            # E38 (review 3 §5): record progress per day and rebalance the remaining days instead of a fixed timetable
+            with st.expander("Track progress and adapt the plan"):
+                from src.roadmap.adapt import STATUSES, adapt_roadmap, save_progress
+                st.caption("Mark each day, say which day you're on, then rebalance: hard topics get a revision day, missed days move "
+                           "forward, topics you already know are removed. Your daily time stays the same.")
+                _prog = _pd.DataFrame([{"day": _d["day"], "topic": _d["topic"], "status": _d.get("status") or "not_started"}
+                                       for _d in rm["days"]])
+                _edited = st.data_editor(_prog, hide_index=True, use_container_width=True, key="rm_prog_editor",
+                                         disabled=["day", "topic"],
+                                         column_config={"status": st.column_config.SelectboxColumn("status", options=list(STATUSES), required=True)})
+                _today = st.number_input("Which day are you on today?", min_value=1, max_value=30,
+                                         value=int(rm.get("adapted_from_day") or 1), key="rm_today")
+                if st.button("Rebalance my plan", key="rm_adapt"):
+                    _progress = {int(r.day): r.status for r in _edited.itertuples()}
+                    st.session_state["roadmap"] = adapt_roadmap(rm, _progress, int(_today))
+                    save_progress(UID, st.session_state["roadmap"])
+                    st.rerun()
 
 else:
     TABS = st.tabs([

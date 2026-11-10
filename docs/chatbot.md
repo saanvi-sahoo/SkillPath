@@ -128,3 +128,40 @@ message -> scope router (fixed refusal, no LLM, for out-of-scope)
         -> answer + sources;  keyless: same routing, retrieval-only composer
 ```
 Evaluation and the full results: [evaluation.md](evaluation.md).
+
+## Conversation state and real-world handling (E38)
+Real students don't restate context ("I prefer the second one", "make it easier", "No. Make me a 30-day plan. I can
+study one hour daily."). Every turn now rebuilds a small structured state from the chat history
+(`src/backend/conversation_state.py`, deterministic, so identical locally, deployed and keyless):
+
+| Field | Example | Source |
+|---|---|---|
+| `last_recommendations` | Data Analyst; Data Engineer; Backend Developer | the advisor's last numbered/inline list |
+| `reference` | "the second one" → Data Engineer | ordinal / "option 2" / "the last one" in the current message |
+| `selected_career`, `previous_goals` | Data Engineer (earlier: Data Scientist) | picks, "I want to become…", "actually I'd rather…" |
+| `known_skills`, `missing_skills` | Python, SQL / Spark, Airflow | "I know…", "I don't know…", a bare "No" to "Do you have experience with X?" |
+| `daily_minutes` | 60 | "one hour daily", "45 mins a day", "30 min on weekdays" |
+| `background`, `level`, `corrections`, `conflicts` | B.Tech CSE; "meant Java, not JavaScript"; "beginner" vs "3 years experience" | user turns |
+
+Rules: every field is marked *stated* (the student said it) or comes from the advisor's own list; advisor suggestions are
+never treated as facts about the student; the latest statement wins and corrections are honoured; a change of goal keeps
+the old goal in `previous_goals` (history is never deleted). Nothing is stored server-side: the chat history is the store.
+
+The state is used three ways: (1) a `CONVERSATION STATE` block at the top of the answer contract (all prompt versions);
+(2) the search query with references resolved ("the second one" → "Data Engineer"), plus that career's records when the
+student has no analysed profile; (3) the roadmap generator's inputs (career, minutes/day, known and missing skills). If a
+plan is requested without a time budget, the plan assumes 60 min/day, says so, and asks.
+
+Other real-world rules (`task_contract.e38_rules`, `answer_check.count_issues`, `retriever._privacy_guard`):
+
+| Situation | Behaviour |
+|---|---|
+| Salary / "is there hiring right now" | the dataset doesn't establish current salaries or demand; no figures as facts, name where to check (no invented URLs) |
+| "I missed 3 days" / "DAX is too hard" | adapt: keep completed days, add a revision block, move missed tasks, say what shifts |
+| "You match N of M skills" | checked against the stored comparison; a wrong count triggers a revision |
+| LLM API unavailable | retrieval-only answer with a notice; the conversation is kept |
+| Atlas unreachable | local copy of the same vectors; the prompt is told results may be incomplete and not to invent records |
+| Image-only (scanned) CV/JD PDF | detected before analysis (`src/utilities/doc_check.py`); the student is asked for a text PDF/DOCX or pasted text |
+| A record owned by another user comes back | dropped and logged to `reports/security_incidents.jsonl` (the database query already filters by user_id) |
+
+Switch: `E38_PIPELINE=true|false` (default true). Results: docs/evaluation.md Part 3.

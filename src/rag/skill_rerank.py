@@ -140,6 +140,7 @@ INTEREST_MAP = [
     (r"\b(test\w*|qa|quality)\b", "qa engineer test automation software tester"),
     (r"\b(environment\w*|climate|sustainab\w*|energy)\b", "sustainability analyst energy data analyst"),
     (r"\b(marketing|social media|brand\w*|advertis\w*)\b", "digital marketing analyst marketing specialist"),
+    (r"\b(automat\w*|scripts?|scripting|bots?)\b", "automation engineer python developer rpa developer"),  # E38
 ]
 _INTEREST_SIGNAL = re.compile(r"\b(i (like|love|enjoy|care|want|am good|prefer|hate|dislike)|interested in|passion|switch\w*|moving|move into|"
                               r"transition|career change|from \w+ to|i'?m an? \w+ (who|wanting|looking))\b", re.I)
@@ -152,3 +153,67 @@ def expand_career_query(query: str) -> str:
     low = query.lower()
     extra = [words for pat, words in INTEREST_MAP if re.search(pat, low)]
     return f"{query}. Related careers: {'; '.join(extra[:3])}" if extra else query
+
+
+# ── E38: structured query rewriting for career-change and interest questions (review 3 §4) ────────────────────
+# "I studied mechanical engineering, but I want to move into data analytics" has three signals: background, transition,
+# target. Embedding the whole sentence pulls MECHANICAL records. Search uses the target (as a role title + field words);
+# the background is kept only as context for the answer. Written from general phrasing, not from evaluation queries.
+_FIELD_TO_ROLE = [(r"analytics|analysis", "analyst"), (r"engineering", "engineer"), (r"development", "developer"),
+                  (r"science", "scientist"), (r"design", "designer"), (r"management", "manager"), (r"administration", "administrator"),
+                  (r"testing", "tester"), (r"security|cybersecurity|cyber security", "security analyst")]
+_TARGET = [
+    re.compile(r"\bfrom\s+(?P<src>[\w ./&+-]{2,50}?)\s+(?:to|into)\s+(?P<tgt>[\w ./&+-]{2,50})", re.I),
+    re.compile(r"\b(?:want|wants|wanting|plan|planning|hope|hoping|would like|looking|trying)\s+(?:to\s+)?(?:move|switch|transition|get|go|shift|change)\w*\s+"
+               r"(?:my career\s+)?(?:in)?to\s+(?:an?\s+|the\s+)?(?P<tgt>[\w ./&+-]{2,50})", re.I),
+    re.compile(r"\b(?:moving|switching|transitioning|shifting|pivoting)\s+(?:my career\s+)?(?:in)?to\s+(?:an?\s+)?(?P<tgt>[\w ./&+-]{2,50})", re.I),
+    re.compile(r"\b(?:wants?|wanting|hope|hoping|plan(?:ning)?) to (?:become|be|work as)\s+(?:an?\s+)?(?P<tgt>[\w ./&+-]{2,50})", re.I),
+    re.compile(r"\bhow (?:do|can|should) i (?:become|get into|start as|move into)\s+(?:an?\s+)?(?P<tgt>[\w ./&+-]{2,50})", re.I),
+]
+_BG = re.compile(r"\b(?:studied|study|degree in|background in|graduate in|i(?:'m| am) an?|i work (?:in|as)|working (?:in|as)|from)\s+"
+                 r"(?:an?\s+)?(?P<bg>[\w ./&+-]{2,40}?)(?=,|\s+but\b|\s+and\b|\s+who\b|\s+wanting\b|\s+moving\b|\s+switching\b|\s+to\b|\s+into\b|$)", re.I)
+TITLE_BONUS = float(os.getenv("CAREER_TITLE_BONUS", "2.0"))
+TRANSITION_POOL_FACTOR = int(os.getenv("CAREER_TRANSITION_POOL_FACTOR", "2"))
+
+
+def _role_form(field: str) -> str:
+    f = field.lower().strip()
+    for pat, role in _FIELD_TO_ROLE:
+        if re.search(rf"\b({pat})\b", f):
+            return re.sub(rf"\b({pat})\b", role, f, count=1)
+    return f
+
+
+def rewrite_career_query(query: str) -> Dict:
+    """{'type': transition|interest|plain, 'background', 'target', 'role', 'search_query'} (deterministic)."""
+    q = (query or "").strip()
+    tgt = None
+    for pat in _TARGET:
+        m = pat.search(q)
+        if m:
+            tgt = re.split(r"[.,;!?]|\s+(?:but|because|and i|so)\b", m.group("tgt"))[0].strip(" .")
+            break
+    if not tgt:
+        exp = expand_career_query(q)
+        return {"type": "interest" if exp != q else "plain", "background": None, "target": None, "role": None, "search_query": exp}
+    bgm = _BG.search(q[: q.lower().find(tgt.lower())] if tgt.lower() in q.lower() else q)
+    bg = bgm.group("bg").strip() if bgm else None
+    role = _role_form(tgt)
+    words = [w for w in re.findall(r"[a-z+#]+", tgt.lower()) if w not in ("a", "an", "the", "role", "roles", "career", "field", "job", "jobs")]
+    extra = [w for pat, w in INTEREST_MAP if re.search(pat, tgt.lower())]
+    sq = f"{role.title()} ({' '.join(words)})" + (f". Related careers: {'; '.join(extra[:2])}" if extra else "")
+    return {"type": "transition", "background": bg, "target": tgt, "role": role, "search_query": sq}
+
+
+def title_bonus(hits: List[Dict], role: Optional[str]) -> List[Dict]:
+    """Exact-title evidence (the 'hybrid' half of review 3 §4B): a record whose title contains the target role gets +TITLE_BONUS."""
+    if not role or not hits:
+        return hits
+    key = title_key(role)
+    toks = [t for t in key.split() if len(t) > 2]
+    out = []
+    for h in hits:
+        t = title_key((h.get("metadata") or {}).get("career_name") or "")
+        hit = key in t or (len(toks) >= 2 and all(tok in t for tok in toks))
+        out.append({**h, "skill_score": h.get("skill_score", h.get("rerank", 0.0)) + (TITLE_BONUS if hit else 0.0), "title_match": hit})
+    return sorted(out, key=lambda h: h["skill_score"], reverse=True)

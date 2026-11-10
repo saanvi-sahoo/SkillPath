@@ -81,6 +81,31 @@ def ensure_local_corpus() -> None:
             ingest(missing, backend="local", show_progress=False)
 
 
+SECURITY_LOG = config.PROJECT_ROOT / "reports" / "security_incidents.jsonl"
+
+
+def _privacy_guard(hits: List[Dict], user_id: Optional[str]) -> List[Dict]:
+    """E38 (review 3 §7), defence in depth: the database query already filters by user_id (vector_store._build_filter);
+    if a record owned by ANOTHER user still comes back (misconfigured index, bad ingest), drop it and log an incident."""
+    ok, leaked = [], []
+    for h in hits:
+        owner = h.get("user_id") or (h.get("metadata") or {}).get("user_id") or "global"
+        (ok if owner in ("global", user_id) else leaked).append(h)
+    if leaked:
+        import json
+        from datetime import datetime, timezone
+        try:
+            SECURITY_LOG.parent.mkdir(parents=True, exist_ok=True)
+            with open(SECURITY_LOG, "a", encoding="utf-8") as f:
+                f.write(json.dumps({"ts": datetime.now(timezone.utc).isoformat(), "event": "cross_user_record_blocked",
+                                    "requester": user_id, "record_ids": [h.get("id") for h in leaked],
+                                    "owners": sorted({str(h.get("user_id")) for h in leaked})}) + "\n")
+        except Exception:  # noqa: BLE001
+            pass
+        print(f"[retriever] SECURITY: blocked {len(leaked)} record(s) owned by another user")
+    return ok
+
+
 def retrieve(query: str, quotas: Optional[Dict[str, int]] = None, user_id: str = config.DEFAULT_USER_ID,
              min_score: float = config.MIN_SCORE, user_skills: Optional[List[str]] = None) -> List[Dict]:
     ensure_local_corpus()
@@ -91,19 +116,29 @@ def retrieve(query: str, quotas: Optional[Dict[str, int]] = None, user_id: str =
         if k <= 0:
             continue
         if config.RAG_RERANK and source in config.RERANK_SOURCES:
-            src_query, src_qv = query, qv
+            src_query, src_qv, rw, pool_k = query, qv, None, max(config.RERANK_POOL, k)
             if source == "careers" and config.RAG_SKILL_RERANK:
-                from src.rag.skill_rerank import expand_career_query
-                src_query = expand_career_query(query)  # E37: interests / career change -> career-area words
+                from src.backend.features import e38_on
+                from src.rag.skill_rerank import TRANSITION_POOL_FACTOR, expand_career_query, rewrite_career_query
+                if e38_on():  # E38: structured rewrite (background / target / role) + a larger pool for transitions & interests
+                    rw = rewrite_career_query(query)
+                    src_query = rw["search_query"]
+                    if rw["type"] in ("transition", "interest"):
+                        pool_k *= TRANSITION_POOL_FACTOR
+                else:
+                    src_query = expand_career_query(query)  # E37: interests / career change -> career-area words
                 if src_query != query:
                     src_qv = embed_query(src_query)
-            pool = _search(source, src_qv, max(config.RERANK_POOL, k), user_id)
+            pool = _search(source, src_qv, pool_k, user_id)
             try:
                 from src.rag.hybrid import rerank
                 if source == "careers" and config.RAG_SKILL_RERANK:
                     # E36: cross-encoder over the whole pool, then career-intent + exact/related skill evidence
-                    from src.rag.skill_rerank import skill_rerank
-                    ranked = skill_rerank(src_query, rerank(src_query, pool, top=len(pool)), top=k, user_skills=user_skills)
+                    from src.rag.skill_rerank import skill_rerank, title_bonus
+                    ranked = skill_rerank(src_query, rerank(src_query, pool, top=len(pool)), top=len(pool), user_skills=user_skills)
+                    if rw and rw.get("role"):
+                        ranked = title_bonus(ranked, rw["role"])  # E38: exact title evidence for the target role
+                    ranked = ranked[:k]
                 else:
                     ranked = rerank(query, pool, top=k)
                 hits.extend(h for h in ranked if h.get("rerank", 0) >= config.RERANK_MIN)
@@ -112,7 +147,7 @@ def retrieve(query: str, quotas: Optional[Dict[str, int]] = None, user_id: str =
                 hits.extend(pool[:k])
         else:
             hits.extend(_search(source, qv, k, user_id))
-    hits = [h for h in hits if h.get("score", 0) >= min_score]
+    hits = [h for h in _privacy_guard(hits, user_id) if h.get("score", 0) >= min_score]
     hits.sort(key=lambda h: h["score"], reverse=True)
     return hits
 

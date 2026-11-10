@@ -1,0 +1,1518 @@
+{
+  "ts": "20261110T051648Z",
+  "versions": [
+    "v7",
+    "v7+e38"
+  ],
+  "rows": [
+    {
+      "id": "j01",
+      "goal": "review example: background -> pick 2nd option -> gaps -> 30-day plan at 1 h/day -> adapt",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I have completed B.Tech CSE. I know Python and SQL, but I don't know what career to choose.",
+          "answer": "Based on your skills in Python and SQL, here are two career options that you might find interesting:\n\n1. **Python Developer - Data Analysis**: This role involves designing, developing, testing, and maintaining software applications or web services. Your Python and SQL skills align well with the requirements for this position [S1].\n\n2. **Data Engineer**: As a Data Engineer, you would be responsible for designing, building, or maintaining reliable data pipelines and data platforms. While your profile does not currently list required skills such as ETL, Big Data Technologies (Hadoop, Hive), or Cloud platforms (AWS, Google Cloud Platform, MS Azure), these could be areas for future learning [S5].\n\nTo help you decide between these two options, consider which area you find more appealing: working on software applications or web services (Python Developer - Data Analysis) or building and maintaining data pipelines and data platforms (Data Engineer).\n\n---\n**Sources**\n- [S1] careers: Python Developer - Data Analysis\n- [S5] careers: Data Engineer",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 39636.0,
+          "state": null,
+          "tokens": 4067
+        },
+        {
+          "turn": 2,
+          "q": "I prefer the second one. What skills am I missing?",
+          "answer": "I don't see an analysed profile yet, so I can't tell you your ATS score or skill gaps. Upload your resume and the job description in the sidebar and click **Analyze Profile**; I'll then explain the score (an AI estimate, not an official ATS result) and your skill gaps.",
+          "passed": false,
+          "failed": [
+            "mentions_item_of_turn"
+          ],
+          "item_expected": [
+            "Data Engineer"
+          ],
+          "model": "mistral",
+          "latency_ms": 45153.0,
+          "state": null,
+          "tokens": 2542
+        },
+        {
+          "turn": 3,
+          "q": "No, I don't know Spark or Airflow yet. Make me a 30-day plan. I can study one hour daily.",
+          "answer": "Given your current skills in Python and SQL, here is a 30-day plan to learn Apache Spark and Airflow:\n\n**Day 1-7:** Learn the basics of Apache Spark, including its architecture, core components (RDD, DataFrame, Dataset), transformations, actions, and APIs. Practice with examples using Python [S1].\n\n**Day 8-14:** Dive deeper into Spark's SQL interface, DataFrames, and Datasets for more complex data processing tasks. Learn how to read and write data from various sources like CSV, JSON, and databases [S2].\n\n**Day 15-21:** Familiarize yourself with Apache Airflow, its architecture, components (DAGs, Operators, Sensors), and the UI. Practice creating simple workflows using Python scripts or predefined operators [S3].\n\n**Day 22-28:** Learn how to build more complex DAGs using custom operators, XComs, and Pipeline functions in Airflow. Understand how to schedule, monitor, and manage your workflows [S4].\n\n**Day 29:** Review and practice both Spark and Airflow with real-world examples or projects from online resources [S5].\n\n**Day 30:** Update your resume to include Apache Spark and Airflow, and apply for relevant job opportunities.",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 78532.6,
+          "state": null,
+          "tokens": 2669
+        },
+        {
+          "turn": 4,
+          "q": "I finished the first week but found it hard. adjust the plan",
+          "answer": "Given that you've completed the first week and found it challenging, I suggest modifying the original plan to make it more manageable:\n\n**Day 1-7 (revised):** Focus on understanding the basics of Apache Spark, including its architecture, core components, transformations, actions, and APIs. Practice with simple examples using Python [S].\n\n**Day 8-14 (revised):** Dive deeper into Spark's SQL interface, DataFrames, and Datasets for basic data processing tasks. Learn how to read and write data from CSV files only [S].\n\n**Day 15-21 (revised):** Familiarize yourself with Apache Airflow, its architecture, components, and the UI. Practice creating simple workflows using Python scripts or predefined operators [S].\n\n**Day 22-28 (revised):** Learn how to build basic DAGs using custom operators, XComs, and Pipeline functions in Airflow. Understand how to schedule, monitor, and manage your workflows [S].\n\n**Day 29-30:** Review both Spark and Airflow with real-world examples or projects from online resources [S].\n\n**Next steps:** Update your resume to include Apache Spark and Airflow, and apply for relevant job opportunities. As you gain more experience, consider expanding your knowledge by learning how to work with larger datasets using Big Data Technologies (Hadoop, Hive) or Cloud platforms (AWS, Google Cloud Platform, MS Azure).\n\n[S] (no citation needed as no external source was used for this information)",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 66185.4,
+          "state": null,
+          "tokens": 3026
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.5
+    },
+    {
+      "id": "j01",
+      "goal": "review example: background -> pick 2nd option -> gaps -> 30-day plan at 1 h/day -> adapt",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I have completed B.Tech CSE. I know Python and SQL, but I don't know what career to choose.",
+          "answer": "Two good options from our career records for your skills are:\n\n1. **Python Developer - Data Analysis** [S1]: Your Python and SQL skills align well with this role's requirements.\n2. **Data Analyst** [S6]: This role requires SQL, financial and accounting concepts, and SaaS metrics, which you have demonstrated knowledge in.\n\nTo help narrow down the options: do you prefer working primarily with software development or data analysis?\n\n---\n**Sources**\n- [S1] careers: Python Developer - Data Analysis\n- [S6] careers: Data Analyst - Finance",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 86777.9,
+          "state": {
+            "known_skills": [
+              "Python",
+              "SQL"
+            ],
+            "background": "B.Tech CSE"
+          },
+          "tokens": 4216
+        },
+        {
+          "turn": 2,
+          "q": "I prefer the second one. What skills am I missing?",
+          "answer": "I don't see an analysed profile yet, so I can't tell you your ATS score or career recommendations. Upload your resume and the job description in the sidebar and click **Analyze Profile**; I'll then explain the score (an AI estimate, not an official ATS result) and your skill gaps for a career recommendation.",
+          "passed": false,
+          "failed": [
+            "not_refused",
+            "mentions_item_of_turn"
+          ],
+          "item_expected": [
+            "Data Analyst"
+          ],
+          "model": "mistral",
+          "latency_ms": 52013.8,
+          "state": {
+            "selected_career": "Data Analyst",
+            "last_recommendations": [
+              "Python Developer",
+              "Data Analyst"
+            ],
+            "reference": {
+              "phrase": "the second one",
+              "index": 2,
+              "resolved": "Data Analyst"
+            },
+            "known_skills": [
+              "Python",
+              "SQL"
+            ],
+            "background": "B.Tech CSE"
+          },
+          "tokens": 3384
+        },
+        {
+          "turn": 3,
+          "q": "No, I don't know Spark or Airflow yet. Make me a 30-day plan. I can study one hour daily.",
+          "answer": "Based on your current skills and the gaps you mentioned for the Data Analyst role (Python, SQL, Apache Airflow, Apache Spark), here is a 30-day study plan tailored to your needs:\n\nDay 1-7: Python Fundamentals & Data Analysis\n- Task: Learn Python basics, data structures, and control flow.\n- Resource: https://www.w3schools.com/python/\n\nDay 8-14: SQL for Data Analysis\n- Task: Learn SQL syntax and practice writing queries to manipulate and analyze datasets.\n- Resource: https://www.w3schools.com/sql/\n\nDay 15-21: Apache Airflow Fundamentals & Vocabulary\n- Task: Write a one-page cheat sheet of the 10 most important Apache Airflow concepts in your own words.\n- Resource: https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/dag/index.html\n\nDay 22-28: Apache Airflow Setting Up & First Steps\n- Task: Complete the getting-started tutorial end to end (60 min daily).\n- Resource: https://airflow.apache.org/docs/apache-airflow/stable/tutorials/dags/your_first_dag.html\n\nDay 29-30: Capstone Project - Plan & Build\n- Task: Define the problem and data, then build a working first version of your capstone project using Python, SQL, and Apache Airflow.\n- Resource: https://www.kaggle.com/datasets (Find a public dataset for your project)",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 53839.8,
+          "state": {
+            "selected_career": "Data Analyst",
+            "last_recommendations": [
+              "Python Developer",
+              "Data Analyst"
+            ],
+            "known_skills": [
+              "Python",
+              "SQL"
+            ],
+            "missing_skills": [
+              "Apache Airflow",
+              "Apache Spark"
+            ],
+            "daily_minutes": 60,
+            "background": "B.Tech CSE"
+          },
+          "tokens": 4444
+        },
+        {
+          "turn": 4,
+          "q": "I finished the first week but found it hard. adjust the plan",
+          "answer": "Based on your progress and the gaps you mentioned, here's an adjusted study plan for Apache Airflow and Spark:\n\n- **Week 1 (Revision):** Review Python basics and SQL syntax to ensure a strong foundation.\n- **Day 8-14:** Apache Airflow Fundamentals & Vocabulary\n- **Day 15-21:** Apache Airflow Setting Up & First Steps\n- **Day 22-28:** Apache Spark Fundamentals (RDDs, DataFrames)\n- **Day 29-30: Capstone Project - Plan & Build**\n  - Define the problem and data\n  - Break down the project into smaller tasks (e.g., ETL pipeline with Airflow, data analysis with Spark)\n  - Start working on one task per day (for example, build an Airflow DAG to load data from a database)\n\n**Next steps:** 1) Complete the revised week 1, 2) continue with Apache Airflow and Spark as planned.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 39416.2,
+          "state": {
+            "selected_career": "Data Analyst",
+            "last_recommendations": [
+              "Task",
+              "Resource"
+            ],
+            "known_skills": [
+              "Python",
+              "SQL"
+            ],
+            "missing_skills": [
+              "Apache Airflow",
+              "Apache Spark"
+            ],
+            "daily_minutes": 60,
+            "background": "B.Tech CSE"
+          },
+          "tokens": 3102
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.75
+    },
+    {
+      "id": "j02",
+      "goal": "career transition: mechanical -> data analytics, tools, 4-week plan at 30 min, already knows Excel",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I studied mechanical engineering, but I want to move into data analytics.",
+          "answer": "To transition from Mechanical Engineering to Data Analytics, you'll need to learn skills that are relevant to the field. From your provided sources, careers such as Data Engineer, Analytics & Reporting Manager, and Analytics Engineer require skills like SQL, Python, and data visualization tools like Tableau or Power BI.\n\nHere is a suggested learning roadmap for you:\n\n**Week 1-2:** Start with SQL basics and practice using it on databases.\n\n**Week 3:** Learn the fundamentals of Python programming and data manipulation libraries such as pandas.\n\n**Weeks 4-6:** Familiarize yourself with Tableau or Power BI for data visualization, and work on small projects to apply these skills.\n\n**Next steps:** As you progress, build a portfolio of your projects and update your resume to highlight your new skills in Data Analytics. Consider taking online courses or participating in data analytics workshops to further strengthen your knowledge.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 39129.2,
+          "state": null,
+          "tokens": 3340
+        },
+        {
+          "turn": 2,
+          "q": "which tools should i learn first?",
+          "answer": "Given your background in Mechanical Engineering and interest in Data Analytics, the following tools are recommended for you to learn first:\n\n1. SQL: As a foundational skill for data analysis, it is essential to understand how to work with databases using SQL.\n2. Python: Python is widely used in the field of Data Analytics for data manipulation and visualization.\n3. Tableau or Power BI: These tools are commonly used for creating interactive dashboards and data visualizations.\n4. Excel: Although you may already have some experience with Excel, it's still a valuable tool to master for data analysis and reporting purposes.\n5. Statistics: Understanding statistics is crucial for interpreting the results of your data analysis and making informed decisions based on them.\n\nStart by focusing on SQL and Python, as they are the most widely used tools in Data Analytics. Once you have a good grasp of these, move on to Tableau or Power BI for visualizing your data, and Excel and Statistics to further enhance your skills.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 39087.6,
+          "state": null,
+          "tokens": 3379
+        },
+        {
+          "turn": 3,
+          "q": "make me a 4 week plan, i have 30 minutes a day",
+          "answer": "Given your current skill gaps and the time constraint of 30 minutes per day, here's a suggested learning plan for you:\n\n**Week 1:**\n- **Day 1-7:** Learn SQL basics with online resources such as W3Schools or Codecademy. Practice using SQL queries on sample datasets to familiarize yourself with the language.\n\n**Week 2:**\n- **Day 8-14:** Start learning Python by focusing on data manipulation libraries like pandas. You can find tutorials and exercises on websites such as DataCamp or Coursera.\n\n**Week 3:**\n- **Day 15-21:** Work on small projects to apply your SQL and Python skills. For example, create a simple database using SQL and perform data manipulation tasks with Python.\n\n**Week 4:**\n- **Day 22-28:** Familiarize yourself with Tableau or Power BI for data visualization. Start by watching tutorials on YouTube or taking online courses to understand the basics, then work on small projects to practice your skills.\n\n**Next steps:** Continue building a portfolio of your projects and updating your resume to highlight your new skills in Data Analytics. Consider taking more advanced courses or participating in data analytics workshops to further strengthen your knowledge.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 37217.4,
+          "state": null,
+          "tokens": 2975
+        },
+        {
+          "turn": 4,
+          "q": "I already know Excel well, update it",
+          "answer": "Based on your existing skills, here's a suggested learning plan for you to improve your data analytics skills:\n\n**Week 1-2:** Learn Python programming and data manipulation libraries like pandas. You can find tutorials and exercises on websites such as DataCamp or Coursera.\n\n**Week 3:** Familiarize yourself with SQL basics and practice using it on databases.\n\n**Weeks 4-6:** Work on small projects to apply your Python and SQL skills, focusing on data manipulation tasks. Additionally, learn data visualization tools like Tableau or Power BI for creating interactive dashboards.\n\n**Next steps:** Continue building a portfolio of your projects and updating your resume to highlight your new skills in Data Analytics. Consider taking more advanced courses or participating in data analytics workshops to further strengthen your knowledge.",
+          "passed": false,
+          "failed": [
+            "must_include_any2"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 29470.0,
+          "state": null,
+          "tokens": 2905
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.75
+    },
+    {
+      "id": "j02",
+      "goal": "career transition: mechanical -> data analytics, tools, 4-week plan at 30 min, already knows Excel",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I studied mechanical engineering, but I want to move into data analytics.",
+          "answer": "Your background in mechanical engineering does not directly apply to data analytics, but it can provide a related foundation. To transition into data analytics as a Data Analytics Analyst [S1], you'll need to learn skills such as Data Analytics, Dashboard & Scorecard Creation, and Data Visualization.\n\nHere's a suggested learning plan for the first six weeks:\n\n**Week 1-2:** Data Analytics fundamentals, data cleaning, and querying datasets (SQL)\n\n**Week 3:** Dashboard creation with tools like Power BI or Tableau\n\n**Week 4:** Data Visualization techniques\n\n**Week 5:** Data Mining and Trend Analysis\n\n**Week 6:** Reporting and Business Intelligence Tools (e.g., Excel, Access)\n\nAfter completing this plan, you can consider updating your resume to include these new skills and apply for relevant data analytics roles.\n\n---\n**Sources**\n- [S1] careers: Data Analytics Analyst",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 38014.0,
+          "state": {
+            "selected_career": "data analytics",
+            "background": "mechanical engineering"
+          },
+          "tokens": 3393
+        },
+        {
+          "turn": 2,
+          "q": "which tools should i learn first?",
+          "answer": "Based on the student's background in mechanical engineering and aspiration to move into data analytics, here are some tools they should consider learning first:\n\n1. Power BI (Business Intelligence) - Since the student has no prior experience with data analytics or business intelligence tools, Power BI is a good starting point as it is widely used and offers a user-friendly interface for creating dashboards and reports. [S4]\n2. SQL (Structured Query Language) - SQL is essential for querying and manipulating databases, which is a fundamental skill in data analytics. [S1], [S2], [S3]\n3. Excel - Excel is commonly used for data analysis and visualization, and it can serve as a stepping stone towards more advanced tools like Power BI or Tableau. [S2]\n4. Python (Programming Language) - Python is widely used in data science and analytics, and it can be helpful for automating repetitive tasks and performing complex analyses. [S5]\n\nThe student should start with SQL and Excel to build a foundation in data analysis and then move on to Power BI and Python as they gain more experience. It is recommended to learn one tool thoroughly before moving on to the next, following the study strategies mentioned in [S4]. Additionally, building projects using these tools will help demonstrate practical skills and improve employability. [S6]\n\n---\n**Sources**\n- [S1] careers: Data Developer - Analytics/Spotfire\n- [S2] careers: Manager, Site Analytics and Optimization\n- [S3] careers: Manager, Data Analytics\n- [S4] knowledge: Choosing courses and certifications\n- [S5] knowledge: Entry-level tech and data career paths\n- [S6] knowledge: Learning by building projects",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 47063.8,
+          "state": {
+            "selected_career": "data analytics",
+            "background": "mechanical engineering"
+          },
+          "tokens": 3839
+        },
+        {
+          "turn": 3,
+          "q": "make me a 4 week plan, i have 30 minutes a day",
+          "answer": "Based on the student's background in mechanical engineering and aspiration to move into data analytics, here's a revised four-week plan tailored to their gaps:\n\n**Week 1:**\n- **Day 1-7 (Monday - Sunday):** Data Analytics fundamentals, including data cleaning, data manipulation, and statistical analysis using Excel [S1]\n\n**Week 2:**\n- **Day 1-7 (Monday - Sunday):** Learn SQL basics for querying and manipulating databases, focusing on SELECT, JOIN, GROUP BY, and aggregate functions\n\n**Week 3:**\n- **Day 1-7 (Monday - Sunday):** Learn Power BI for data visualization and dashboard creation\n\n**Week 4:**\n- **Day 1-7 (Monday - Sunday):** Review the learned concepts, practice more with different datasets, and build a small project to showcase your skills\n\nThis plan fits the student's daily study time of 30 minutes. Each week has a concrete task with a checkable outcome per step. The primary source is the student's skill gaps and learning guides.\n\n---\n**Sources**\n- [S1] knowledge: Planning a study schedule",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 79270.1,
+          "state": {
+            "selected_career": "data analytics",
+            "last_recommendations": [
+              "Power BI",
+              "SQL",
+              "Excel",
+              "Python"
+            ],
+            "daily_minutes": 30,
+            "background": "mechanical engineering"
+          },
+          "tokens": 3144
+        },
+        {
+          "turn": 4,
+          "q": "I already know Excel well, update it",
+          "answer": "Based on the student's background in mechanical engineering and aspiration to move into data analytics, here's an adapted four-week plan tailored to their progress:\n\n**Week 1:**\n- **Day 1-3 (Monday - Wednesday):** Review Excel skills for data cleaning, manipulation, and statistical analysis. [S2]\n- **Day 4-7 (Thursday - Sunday):** Learn SQL basics for querying and manipulating databases, focusing on SELECT, JOIN, GROUP BY, and aggregate functions.\n\n**Week 2:**\n- **Day 1-3 (Monday - Wednesday):** Revise Excel skills and SQL basics. [S5]\n- **Day 4-7 (Thursday - Sunday):** Learn Power BI for data visualization and dashboard creation.\n\n**Week 3:**\n- **Day 1-3 (Monday - Wednesday):** Revise Excel, SQL, and Power BI skills. [S6]\n- **Day 4-7 (Thursday - Sunday):** Practice with a small project to showcase your skills in Excel, SQL, and Power BI.\n\n**Week 4:**\n- **Day 1-3 (Monday - Wednesday):** Review the learned concepts and practice more with different datasets. [S6]\n- **Day 4-7 (Thursday - Sunday):** Build a project to demonstrate your skills in Excel, SQL, Power BI, and data visualization.\n\nThis plan fits the student's daily study time of 30 minutes. Each week has a concrete task with a checkable outcome per step. The primary source is the student's skill gaps and learning guides.",
+          "passed": false,
+          "failed": [
+            "must_include_any2"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 88917.2,
+          "state": {
+            "selected_career": "data analytics",
+            "last_recommendations": [
+              "Power BI",
+              "SQL",
+              "Excel",
+              "Python"
+            ],
+            "known_skills": [
+              "Excel"
+            ],
+            "daily_minutes": 30,
+            "background": "mechanical engineering"
+          },
+          "tokens": 3486
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.75
+    },
+    {
+      "id": "j03",
+      "goal": "profile: gaps -> explain the third -> plan for gaps at 1 h -> missed days",
+      "version": "v7",
+      "user": "persona_be",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "what are my skill gaps?",
+          "answer": "Your current skills according to your analysed profile are Java, Spring Boot, MySQL, Git, and REST APIs. However, the job description for Backend Developer requires Microservices, Docker, Kubernetes, and AWS as well. Therefore, your skill gaps are Microservices, Docker, Kubernetes, and AWS.",
+          "passed": false,
+          "failed": [
+            "min_numbered"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 24220.4,
+          "state": null,
+          "tokens": 2795
+        },
+        {
+          "turn": 2,
+          "q": "explain the third one simply",
+          "answer": "ATS score is an artificial intelligence estimate of how well a resume matches a job description, not an official ATS result. To get an ATS score, upload your resume and the job description in the sidebar and click **Analyze Profile**. The higher the score, the closer the match between your skills and the job requirements. In this case, the ATS score is 43/100, indicating a weak match.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 22647.4,
+          "state": null,
+          "tokens": 2419
+        },
+        {
+          "turn": 3,
+          "q": "make a 30 day plan for my gaps, 1 hour daily",
+          "answer": "Here's a revised 30-day plan to help you fill your skill gaps for the Backend Developer role, without any citations:\n\n**Week 1:**\n- **Day 1-2:** Introduction to Microservices (concepts and benefits)\n- **Day 3-4:** Spring Cloud Netflix Eureka and Spring Cloud Config (service discovery and configuration management)\n- **Day 5-7:** Hands-on with a simple microservices project using Spring Boot, Eureka, and Config Server\n\n**Week 2:**\n- **Day 1-3:** Docker basics (containers, images, and Dockerfiles)\n- **Day 4-5:** Multi-container Docker applications with docker-compose\n- **Day 6-7:** Containerize your microservices project using Docker\n\n**Week 3:**\n- **Day 1-2:** Kubernetes basics (concepts and benefits)\n- **Day 3-4:** Deploying applications on Kubernetes (deployment, services, and ingress)\n- **Day 5-7:** Deploy your Dockerized microservices project on a local Kubernetes cluster\n\n**Week 4:**\n- **Day 1-2:** AWS fundamentals (EC2, S3, IAM)\n- **Day 3-4:** Setting up CI/CD pipelines using Jenkins and AWS CodePipeline\n- **Day 5-7:** Deploy your microservices project on AWS EKS (Kubernetes on AWS)",
+          "passed": false,
+          "failed": [
+            "mentions_day30"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 79272.1,
+          "state": null,
+          "tokens": 2796
+        },
+        {
+          "turn": 4,
+          "q": "I missed 3 days this week. what now?",
+          "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"Teach me binary search, I have a DSA test tomorrow\"*\n",
+          "passed": false,
+          "failed": [
+            "not_refused",
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 0.8,
+          "state": null,
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.25
+    },
+    {
+      "id": "j03",
+      "goal": "profile: gaps -> explain the third -> plan for gaps at 1 h -> missed days",
+      "version": "v7+e38",
+      "user": "persona_be",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "what are my skill gaps?",
+          "answer": "Your skill gaps for the Backend Developer role are Microservices, Docker, Kubernetes, and AWS. These skills are required by the job description but not listed in your current skills on your resume.",
+          "passed": false,
+          "failed": [
+            "min_numbered"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 23432.0,
+          "state": {},
+          "tokens": 2768
+        },
+        {
+          "turn": 2,
+          "q": "explain the third one simply",
+          "answer": "ATS score is an estimate of how well a student's resume matches a job description based on their skills and qualifications. It helps students understand how likely they are to be selected by an Applicant Tracking System (ATS) for a specific job. However, it's important to note that the ATS score is just an estimate and not an official result. To get an accurate ATS score, the student needs to upload their resume and the job description in the sidebar and click \"Analyze Profile.\" This will help them understand their skill gaps and improve their chances of being selected by an ATS for a specific job.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 26399.0,
+          "state": {},
+          "tokens": 2434
+        },
+        {
+          "turn": 3,
+          "q": "make a 30 day plan for my gaps, 1 hour daily",
+          "answer": "**Day 1 - AWS:**\nTask: Complete the AWS Cloud & IAM basics course on AWS Skill Builder (free courses) and create an IAM user with least privilege. Done when: Policy documented.\nResource: https://skillbuilder.aws/\n\n**Day 2 - AWS:**\nTask: Launch an EC2 instance and SSH in. Done when: Instance reachable.\nResource: AWS Skill Builder (free courses): https://skillbuilder.aws/\n\n**Day 3 - AWS:**\nTask: Host a static site on S3. Done when: Site URL works.\nResource: AWS Skill Builder (free courses): https://skillbuilder.aws/\n\n**Day 4 - AWS:**\nTask: Write one Lambda function. Done when: Lambda runs on a test event.\nResource: AWS Skill Builder (free courses): https://skillbuilder.aws/\n\n**Day 5 - AWS:**\nTask: Take one practice test. Done when: Score recorded.\nResource: AWS Skill Builder (free courses): https://skillbuilder.aws/\n\n**Day 6 - AWS:**\nTask: Build the mini project and push it to GitHub with a README. Done when: Repository with README and screenshots.\nResource: AWS Skill Builder (free courses): https://skillbuilder.aws/\n\n**Day 7 - Review:**\nTask: Redo one exercise from each skill studied this week without notes. Done when: All redo exercises completed; doubts written down.\n\n**Day 8 - Docker:**\nTask: Run 3 official images. Done when: Containers run.\nResource: Docker get started: https://docs.docker.com/get-started/\n\n**Day 9 - Docker:**\nTask: Containerise a small app. Done when: Image builds and runs.\nResource: Docker get started: https://docs.docker.com/get-started/\n\n**Day 10 - Docker:**\nTask: Run an app with a database container. Done when: App talks to DB.\nResource: Docker get started: https://docs.docker.com/get-started/\n\n**Day 11 - Docker:**\nTask: Write a compose file for app + DB. Done when: docker compose up works.\nResource: Docker get started: https://docs.docker.com/get-started/\n\n**Day 12 - Docker:**\nTask: Build the mini project and push it to GitHub with a README. Done when: Repository with README and screenshots.\nResource: Docker get started: https://docs.docker.com/get-started/\n\n**Day 13 - Docker:**\nTask: Answer Docker interview questions out loud / in writing and fix weak spots. Done when: 10 answers written; 3 weakest revisited.\nResource: Docker get started: https://docs.docker.com/get-started/\n\n**Day 14 - Review:**\nTask: Redo one exercise from each skill studied this week without notes. Done when: All redo exercises completed; doubts written down.\n\n**Day 15 - Microservices:**\nTask: Split a sample app into 2 services (design). Done when: Diagram drawn.\nResource: microservices.io patterns: https://microservices.io/\n\n**Day 16 - Microservices:**\nTask: Make 2 services call each other. Done when: End-to-end call works.\nResource: microservices.io patterns: https://microservices.io/\n\n**Day 17 - Microservices:**\nTask: Add a circuit breaker. Done when: Failure handled gracefully.\nResource: microservices.io patterns: https://microservices.io/\n\n**Day 18 - Microservices:**\nTask: Build the mini project and push it to GitHub with a README. Done when: Repository with README and screenshots.\nResource: microservices.io patterns: https://microservices.io/\n\n**Day 19 - Microservices:**\nTask: Answer Microservices interview questions out loud / in writing and fix weak spots. Done when: 10 answers written; 3 weakest revisited.\nResource: microservices.io patterns: https://microservices.io/\n\n**Day 20 - Microservices (deeper practice):**\nTask: Extend the previous Microservices exercise with a harder variant. Done when: 10 answers written; 3 weakest revisited.\nResource: microservices.io patterns: https://microservices.io/\n\n**Day 21 - Review:**\nTask: Redo one exercise from each skill studied this week without notes. Done when: All redo exercises completed; doubts written down.\n\n**Day 22 - Kubernetes:**\nTask: Deploy an app to minikube/kind. Done when: App reachable.\nResource: Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/\n\n**Day 23 - Kubernetes:**\nTask: Externalise app config. Done when: Config change without rebuild.\nResource: Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/\n\n**Day 24 - Kubernetes:**\nTask: Scale and roll out a new version. Done when: Zero-downtime update.\nResource: Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/\n\n**Day 25 - Kubernetes:**\nTask: Install an app with Helm. Done when: Release installed.\nResource: Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/\n\n**Day 26 - Kubernetes:**\nTask: Build the mini project and push it to GitHub with a README. Done when: Repository with README and screenshots.\nResource: Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/\n\n**Day 27 - Kubernetes:**\nTask: Answer Kubernetes interview questions out loud / in writing and fix weak spots. Done when: 10 answers written; 3 weakest revisited.\nResource: Kubernetes basics tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/\n\n**Day 28 - Review:**\nTask: Redo one exercise from each skill studied this week without notes. Done when: All redo exercises completed; doubts written down.\n\n**Day 29 - Capstone Project:**\nTask: Define the problem and data, then build a working first version. Done when: A working first version runs end to end.\n\n**Day 30 - Capstone Project:**\nTask: Push to GitHub, add it to your resume and practise a 2-minute walkthrough. Done when: Public repo + resume line + recorded walkthrough.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 141802.9,
+          "state": {
+            "daily_minutes": 60
+          },
+          "tokens": 5720
+        },
+        {
+          "turn": 4,
+          "q": "I missed 3 days this week. what now?",
+          "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"Teach me binary search, I have a DSA test tomorrow\"*\n",
+          "passed": false,
+          "failed": [
+            "not_refused",
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 0.1,
+          "state": null,
+          "tokens": null
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.5
+    },
+    {
+      "id": "j04",
+      "goal": "study: concept -> simpler -> python examples -> quiz",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "explain recursion",
+          "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"How do I switch from mechanical engineering to software development?\"*\n",
+          "passed": false,
+          "failed": [
+            "not_refused",
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 0.0,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "make it easier, im a beginner",
+          "answer": "As a beginner, you should start with the basics of programming and web development. Here's a suggested learning roadmap:\n\n1. **Programming fundamentals**: Learn Python or JavaScript as they are popular choices for beginners due to their simplicity. [Codecademy](https://www.codecademy.com/) offers free courses in both languages.\n2. **HTML & CSS**: These are the building blocks of web development. You can learn them on platforms like [W3Schools](https://www.w3schools.com/).\n3. **Introduction to web development**: Once you're comfortable with HTML, CSS, and one programming language, move on to an introduction to web development course. [freeCodeCamp](https://www.freecodecamp.org/) offers a free curriculum that covers these topics.\n4. **Front-end frameworks**: Frameworks like React or Angular can help you build complex user interfaces more efficiently. [React](https://reactjs.org/tutorial/tutorial.html) and [Angular](https://angular.io/start) both have official tutorials available for free.\n5. **Version control with Git**: Familiarize yourself with version control to manage your code effectively. [GitHub Guides](https://guides.github.com/) provides a comprehensive guide on using Git and GitHub.\n6. **Build projects**: Apply what you've learned by building small projects, such as a simple web page or a personal portfolio. This will help reinforce your understanding of the concepts.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 36348.4,
+          "state": null,
+          "tokens": 2386
+        },
+        {
+          "turn": 3,
+          "q": "give me two examples in python",
+          "answer": "As a beginner, here are two simple Python projects you can work on to build your skills and add them to your portfolio:\n\n1. **Web Scraper**: Build a web scraper that extracts data from a website. This project will help you practice working with APIs, parsing HTML, and handling exceptions. You can use libraries like BeautifulSoup or Scrapy for this task.\n2. **Simple Command-Line Application**: Create a command-line application (CLI) to perform a specific function, such as converting units of measurement or generating random passwords. This project will help you understand how to take user input, process it, and display the results. You can use libraries like argparse for this task.\n\nAfter completing these projects, make sure to add them to your portfolio and mention them on your resume when applying for relevant positions.",
+          "passed": false,
+          "failed": [
+            "code_block",
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 29435.7,
+          "state": null,
+          "tokens": 2600
+        },
+        {
+          "turn": 4,
+          "q": "quiz me with 3 questions on it",
+          "answer": "1. **What is the STAR method used for in an interview?**\n   - Answer: The STAR method is used to structure answers to behavioral interview questions by providing specific examples of Situations, Tasks, Actions, and Results.\n\n2. **How long should each answer using the STAR method be during an interview?**\n   - Answer: Each answer using the STAR method should be about two minutes in length.\n\n3. **What are some common topics to prepare for when using the STAR method?**\n   - Answer: Common topics to prepare for when using the STAR method include a challenge, a failure and what was learned, teamwork or conflict, leadership or initiative, and a deadline under pressure.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 28541.0,
+          "state": null,
+          "tokens": 2874
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.5
+    },
+    {
+      "id": "j04",
+      "goal": "study: concept -> simpler -> python examples -> quiz",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "explain recursion",
+          "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"How do I switch from mechanical engineering to software development?\"*\n",
+          "passed": false,
+          "failed": [
+            "not_refused",
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 0.0,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 2,
+          "q": "make it easier, im a beginner",
+          "answer": "Recursion is a programming technique where a function calls itself within its own code to solve complex problems by breaking them down into smaller, simpler sub-problems. A common example of recursive function is the factorial function, which calculates the product of all positive integers up to a given number (n! = n \\* (n - 1) \\* ... \\* 1). In this case, if n=0 or 1, the function returns 1; otherwise, it calls itself with n-1 and multiplies the result by n.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 23804.7,
+          "state": {
+            "level": "beginner"
+          },
+          "tokens": 2263
+        },
+        {
+          "turn": 3,
+          "q": "give me two examples in python",
+          "answer": "As a **career & study advisor**, I can't provide Python code, but I can suggest what you might learn:\n\n1. **Python basics**: Learn the fundamental concepts such as variables, data structures (lists, dictionaries), control flow (if-else statements, loops), and functions. This will form the foundation for more complex programming tasks.\n2. **Object-oriented programming (OOP)**: Understand classes, inheritance, and polymorphism to create reusable and modular code. This is essential for larger projects and professional software development.",
+          "passed": false,
+          "failed": [
+            "code_block",
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 24589.5,
+          "state": {
+            "level": "beginner"
+          },
+          "tokens": 2378
+        },
+        {
+          "turn": 4,
+          "q": "quiz me with 3 questions on it",
+          "answer": "1. What is the STAR method used for in an interview? (Answer: To answer behavioral questions by describing a Situation, Task, Action, and Result.)\n2. How long should each STAR story be during an interview? (Answer: About two minutes.)\n3. What are some examples of situations that can be covered with the STAR method in an interview? (Answer: Challenge, failure and what you learned, teamwork or conflict, leadership or initiative, and a deadline under pressure.)",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 24981.6,
+          "state": {
+            "last_recommendations": [
+              "Python basics",
+              "Object-oriented programming"
+            ],
+            "level": "beginner"
+          },
+          "tokens": 2604
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.5
+    },
+    {
+      "id": "j05",
+      "goal": "interests -> 3 careers -> first one -> 30-day start at 2 h -> readiness",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I like drawing and coding, suggest 3 careers",
+          "answer": "Based on your interests in drawing and coding, here are three career options:\n\n1) **3D Graphic Designer**: This role involves creating digital products and user experiences by understanding user needs and translating them into usable designs or product decisions. Relevant skills include D graphic tools, D/3D texturing tools (3DS MAX, MAYA, Unity), Environment modeling, Point clouds, GIS data, DTED, Problem-solving, Programming (Python, Matlab, VBScript) [S1].\n\n2) **UX Designer**: UX Designers design, develop, test, and maintain software applications or web services. Relevant skills include UX Design, Wireframes, Flow diagrams, Interaction design, Visual design execution, Design specifications, Design patterns, Interaction models, Adobe Creative Suite, Sketch, Invision [S2].\n\n3) **Frontend Developer**: Frontend Developers design, develop, test, and maintain software applications or web services. Relevant skills include UI/UX design, Wireframing, User story development, Development with HTML5, CSS3, JavaScript, UI design software (InVision, UXPin, Balsamiq, Framer.js, Quartz Composer) [S3].\n\nTo narrow down your choices, consider reading more job descriptions for these roles and talking to people already in the field through LinkedIn informational interviews. Additionally, focus on developing your skills in the areas where you see gaps between your current abilities and the requirements of these careers.\n\n---\n**Sources**\n- [S1] careers: 3D Graphic Designer\n- [S2] careers: UX Designer\n- [S3] careers: Frontend Developer",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 45565.0,
+          "state": null,
+          "tokens": 3245
+        },
+        {
+          "turn": 2,
+          "q": "tell me about the first one",
+          "answer": "The first career option is a 3D Graphic Designer. This role involves creating digital products and user experiences by understanding user needs and translating them into usable designs or product decisions. Relevant skills include D graphic tools, D/3D texturing tools (3DS MAX, MAYA, Unity), Environment modeling, Point clouds, GIS data, DTED, Problem-solving, Programming (Python, Matlab, VBScript), CAD software, and Driving simulation environment (CarMaker, CarSim, SCANeR) [S1]. Education for this role typically includes a Bachelor's degree or diploma in design, human-computer interaction, psychology, computer science, or a related field; a portfolio is valuable.\n\n---\n**Sources**\n- [S1] careers: 3D Graphic Designer",
+          "passed": true,
+          "failed": [],
+          "item_expected": [
+            "3D Graphic Designer"
+          ],
+          "model": "mistral",
+          "latency_ms": 34997.7,
+          "state": null,
+          "tokens": 3606
+        },
+        {
+          "turn": 3,
+          "q": "how do I start in 30 days, 2 hours a day",
+          "answer": "To start learning 3D Graphic Designer in 30 days with 2 hours of study per day, follow these steps:\n\n1. **Day 1-3**: Familiarize yourself with the field by reading about 3D graphic design and its applications. Browse online resources such as tutorials, articles, and forums to get a sense of the industry and current trends.\n   - Recommended resource: [Beginner's Guide to 3D Graphic Design](https://www.toptal.com/designers/graphic/beginners-guide-to-3d-graphic-design)\n\n2. **Day 4-7**: Learn the basics of a 3D modeling software like Blender, Maya, or 3DS Max. Focus on understanding the user interface and basic tools such as creating objects, manipulating them, and applying materials.\n   - Recommended resource: [Blender Beginner Tutorials](https://www.blenderguru.com/tutorials/)\n\n3. **Day 8-14**: Learn texturing and shading techniques to make your models look more realistic. Focus on understanding how to apply textures, create materials, and adjust lighting.\n   - Recommended resource: [Blender Texturing Tutorial](https://www.youtube.com/watch?v=GXQ_x6KYDv8)\n\n4. **Day 15-21**: Learn animation techniques to bring your models to life. Focus on understanding keyframes, rigging, and character animation.\n   - Recommended resource: [Blender Animation Tutorial](https://www.youtube.com/watch?v=yQYlzKGJcZU)\n\n5. **Day 22-28**: Learn rendering techniques to prepare your models for presentation. Focus on understanding how to set up and optimize render settings, use render farms, and post-processing techniques.\n   - Recommended resource: [Blender Rendering Tutorial](https://www.youtube.com/watch?v=GJd2eRz18_Q)\n\n6. **Day 29**: Create a portfolio of your work to showcase your skills and abilities. Include a variety of projects that demonstrate your proficiency in modeling, texturing, shading, animation, and rendering.\n   - Recommended resource: [Creating a Portfolio for 3D Artists](https://www.artstation.com/artwork/2j18n)\n\n7. **Day 30**: Update your resume to include your new skills and portfolio, and start applying for jobs in the field of 3D graphic design.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [
+            "3D Graphic Designer"
+          ],
+          "model": "mistral",
+          "latency_ms": 41926.3,
+          "state": null,
+          "tokens": 3162
+        },
+        {
+          "turn": 4,
+          "q": "how will I know I'm ready to apply?",
+          "answer": "To start learning 3D Graphic Designer in 30 days with 2 hours of study per day:\n\n1. **Day 1-3**: Familiarize yourself with the field by reading about 3D graphic design and its applications. Browse online resources such as tutorials, articles, and forums to get a sense of the industry and current trends.\n   - Recommended resource: [Beginner's Guide to 3D Graphic Design](https://www.toptal.com/designers/graphic/beginners-guide-to-3d-graphic-design)\n\n2. **Day 4-7**: Learn the basics of a 3D modeling software like Blender, Maya, or 3DS Max. Focus on understanding the user interface and basic tools such as creating objects, manipulating them, and applying materials.\n   - Recommended resource: [Blender Beginner Tutorials](https://www.blenderguru.com/tutorials/)\n\n3. **Day 8-14**: Learn texturing and shading techniques to make your models look more realistic. Focus on understanding how to apply textures, create materials, and adjust lighting.\n   - Recommended resource: [Blender Texturing Tutorial](https://www.youtube.com/watch?v=GXQ_x6KYDv8)\n\n4. **Day 15-21**: Learn animation techniques to bring your models to life. Focus on understanding keyframes, rigging, and character animation.\n   - Recommended resource: [Blender Animation Tutorial](https://www.youtube.com/watch?v=ZpQe7Ckz6_8)\n\n5. **Day 22-30**: Practice environment modeling, lighting, rendering, and problem-solving using the skills learned in previous steps. Build a portfolio of your work to showcase your abilities.\n   - Recommended resource: [Blender Environment Modeling Tutorial](https://www.youtube.com/watch?v=qZ_Jc25n1F8)",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 98816.9,
+          "state": null,
+          "tokens": 3951
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "j05",
+      "goal": "interests -> 3 careers -> first one -> 30-day start at 2 h -> readiness",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I like drawing and coding, suggest 3 careers",
+          "answer": "Based on your interest in drawing and coding, here are three career options:\n\n1) **3D Graphic Designer**: This role involves creating digital products and user experiences by understanding user needs and translating them into usable designs or product decisions. Relevant skills include D graphic tools, D/3D texturing tools (3DS MAX, MAYA, Unity), Environment modeling, Point clouds, GIS data, DTED, Problem-solving, Programming (Python, Matlab, VBScript) [S1].\n\n2) **UX Designer**: UX Designers design, develop, test, and maintain software applications or web services. Relevant skills include UX Design, Wireframes, Flow diagrams, Interaction design [S2].\n\n3) **Frontend Developer**: Frontend Developers design, develop, test, and maintain software applications or web services. Relevant skills include UI/UX design, Wireframing, User story development, Development with HTML5, CSS3, JavaScript [S3].\n\nTo narrow down your choices, consider researching more about these roles, reading job descriptions, and talking to people already in these fields (LinkedIn informational interviews) [S4]. If you're considering a career switch, identify transferable skills from your current role and close the gap with a focused learning plan and portfolio projects in the new field [S5].\n\n---\n**Sources**\n- [S1] careers: 3D Graphic Designer\n- [S2] careers: UX Designer\n- [S3] careers: Frontend Developer\n- [S4] knowledge: Choosing a career direction\n- [S5] knowledge: Switching careers",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 43838.6,
+          "state": {},
+          "tokens": 3210
+        },
+        {
+          "turn": 2,
+          "q": "tell me about the first one",
+          "answer": "The first career you selected is a 3D Graphic Designer. This role involves creating digital products and user experiences by understanding user needs and translating them into usable designs or product decisions. Relevant skills for this role include D graphic tools, D/3D texturing tools (3DS MAX, MAYA, Unity), Environment modeling, Point clouds, GIS data, DTED, Problem-solving, Programming (Python, Matlab, VBScript), CAD software, and Driving simulation environment (CarMaker, CarSim, SCANeR) [S1]. A Bachelor's degree or diploma in design, human-computer interaction, psychology, computer science, or a related field; a portfolio is valuable for this career.\n\n---\n**Sources**\n- [S1] careers: 3D Graphic Designer",
+          "passed": true,
+          "failed": [],
+          "item_expected": [
+            "3D Graphic Designer"
+          ],
+          "model": "mistral",
+          "latency_ms": 25910.2,
+          "state": {
+            "selected_career": "3D Graphic Designer",
+            "last_recommendations": [
+              "3D Graphic Designer",
+              "UX Designer",
+              "Frontend Developer"
+            ],
+            "reference": {
+              "phrase": "the first one",
+              "index": 1,
+              "resolved": "3D Graphic Designer"
+            }
+          },
+          "tokens": 3088
+        },
+        {
+          "turn": 3,
+          "q": "how do I start in 30 days, 2 hours a day",
+          "answer": "To start a career as a 3D Graphic Designer within 30 days with 2 hours of daily study, follow this plan:\n\n1) **Week 1**: Familiarize yourself with the required skills and tools for 3D graphic design. Research online resources, tutorials, and courses to learn about D graphic tools (Blender, Maya, 3DS Max), D/3D texturing tools (Substance Painter, Marmoset Hexels, Quixel Mixer), Environment modeling, Point clouds, GIS data, DTED, CAD software, and Driving simulation environment (CarMaker, CarSim, SCANeR).\n\n2) **Week 2**: Start with the basics of one tool or software, such as Blender. Complete beginner tutorials to learn modeling, texturing, lighting, rendering, and animation.\n\n3) **Week 3**: Expand your knowledge by learning more advanced techniques in Blender, focusing on specific areas like character creation, environment design, or hard-surface modeling.\n\n4) **Week 4**: Create a portfolio of your work to showcase your skills. Include at least one complete project that demonstrates your ability to model, texture, light, and render 3D assets.\n\n5) **Bonus Week**: Learn about problem-solving, programming (Python, Matlab, VBScript), and collaboration with developers if you have time remaining.\n\n**Next steps:**\n1) Update your resume to include the skills and projects you've learned during this 30-day plan.\n2) Research job listings for 3D Graphic Designer positions and tailor your cover letter to each application, emphasizing your relevant experience and portfolio.\n3) Apply to multiple positions and prepare for interviews by researching common questions and practicing your responses.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [
+            "3D Graphic Designer"
+          ],
+          "model": "mistral",
+          "latency_ms": 33879.9,
+          "state": {
+            "selected_career": "3D Graphic Designer",
+            "last_recommendations": [
+              "3D Graphic Designer",
+              "UX Designer",
+              "Frontend Developer"
+            ],
+            "daily_minutes": 120
+          },
+          "tokens": 3288
+        },
+        {
+          "turn": 4,
+          "q": "how will I know I'm ready to apply?",
+          "answer": "To determine if you are ready to apply for a 3D Graphic Designer position, follow these steps:\n\n1) **Analyze your skills**: Review the required skills for a 3D Graphic Designer as listed in the career profile [S1]. Check which of these skills you already have and identify any gaps.\n\n2) **Build a portfolio**: Create a portfolio that showcases your 3D modeling, texturing, lighting, rendering, and animation abilities. Include at least one complete project demonstrating your skills.\n\n3) **Update your resume**: Incorporate the skills you have learned and the projects in your portfolio into your resume. Highlight any relevant work experience or education.\n\n4) **Analyze your ATS score**: Run an analysis of your updated resume and the job description for a 3D Graphic Designer position to determine your ATS score (an AI estimate, not an official ATS result). This score will help you understand how well your resume matches the job requirements.\n\n5) **Assess the missing skills**: If there are still gaps in required skills, create a learning plan and set goals for mastering those skills before applying to positions.\n\n6) **Apply to relevant jobs**: Apply to 3D Graphic Designer positions that match your skills and experience. Tailor your cover letter to each application, emphasizing your relevant experience and portfolio.\n\n7) **Prepare for interviews**: Research common interview questions and practice your responses. Preparation will help you feel more confident during the interview process.\n\n---\n**Sources**\n- [S1] careers: 3D Graphic Designer",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 33278.9,
+          "state": {
+            "selected_career": "3D Graphic Designer",
+            "last_recommendations": [
+              "Week 1",
+              "Week 2",
+              "Week 3",
+              "Week 4",
+              "Bonus Week"
+            ],
+            "daily_minutes": 120
+          },
+          "tokens": 3634
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "j06",
+      "goal": "change of mind: data science -> cybersecurity, 2-week starter at 45 min",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I want to become a data scientist",
+          "answer": "To become a Data Scientist, you will need skills in Data Science, Advanced Analytics, Statistical Programming, Machine Learning, and Data Visualization. Based on the careers profile, required skills for this role include R, Python, SQL, Hadoop, Spark, and statistical programming.\n\nHere's a suggested learning roadmap:\n\n1. **Python**: Start with Python as it is widely used in data science. You can find numerous resources online to learn Python for data science.\n\n2. **R**: R is another popular language for data analysis and visualization. Once you are comfortable with Python, you can start learning R.\n\n3. **SQL**: SQL (Structured Query Language) is essential for working with databases. You should focus on learning SQL queries, joins, aggregations, and transactions.\n\n4. **Hadoop and Spark**: Hadoop and Spark are used for distributed data processing. Apache Spark is a faster and more efficient alternative to MapReduce for large-scale data processing.\n\n5. **Machine Learning**: Learn about machine learning algorithms such as regression, classification, clustering, and neural networks. Scikit-learn is a popular Python library for machine learning.\n\n6. **Data Visualization**: Tools like Matplotlib, Seaborn, and Plotly in Python, and ggplot2 in R can help you create effective data visualizations.\n\n7. **Data Engineering**: Familiarize yourself with tools like Apache Hive, Apache Pig, and Apache HBase for data warehousing and big data processing.\n\n8. **Data Science Projects**: Apply your knowledge to real-world projects. This will help you gain practical experience and build a portfolio to showcase your skills.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 44095.2,
+          "state": null,
+          "tokens": 4171
+        },
+        {
+          "turn": 2,
+          "q": "what skills do i need",
+          "answer": "To become a Data Scientist, you will need the following skills:\n\n1. Statistical computing (R, Python): These languages are commonly used for statistical analysis and data manipulation in data science.\n2. Data management: This includes organizing, cleaning, and transforming data to make it useful for analysis.\n3. Mathematical aptitude: A strong understanding of mathematics is essential for data science as it involves complex calculations and algorithms.\n4. Programming: Familiarity with programming languages like Java or JavaScript can be beneficial in a data scientist role.\n5. Data mining: This involves extracting valuable patterns and insights from large datasets.\n6. Presentation of data: The ability to present complex data in an easy-to-understand format is crucial for communicating findings effectively.\n7. Forecasting: Predictive modeling and forecasting are important skills for a data scientist, as they help make informed decisions based on data trends.\n8. Dashboard and report building: Creating dashboards and reports to visualize data and present insights is a key responsibility of a data scientist.\n9. ETL framework (Extract, Transform, Load): This process involves extracting data from various sources, transforming it into a usable format, and loading it into a database or data warehouse.\n10. SQL: Structured Query Language (SQL) is essential for managing and manipulating relational databases, which are often used in data science projects.\n\nIn addition to these technical skills, good communication and problem-solving abilities are also important for success as a Data Scientist.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 44835.8,
+          "state": null,
+          "tokens": 4237
+        },
+        {
+          "turn": 3,
+          "q": "actually I prefer cybersecurity. what changes?",
+          "answer": "Based on your interest in Cybersecurity, here are some career options and recommended steps:\n\n1. **Cyber Security Analyst**: This role involves maintaining secure, available, and reliable systems or networks. Typical activities include configuration, monitoring, access control, troubleshooting, security assessment, incident handling, and documenting technical changes [S1-S5]. To prepare for this career:\n   - **Weeks 1-2**: Familiarize yourself with the basics of Cybersecurity and Networking.\n   - **Weeks 3-4**: Learn about Information Systems and IT fundamentals.\n   - **Weeks 5-6**: Study CompTIA Security+ or SANS Security Essentials to gain a foundational understanding of cybersecurity concepts [S1, S2].\n\n2. **Security Analyst**: This role also focuses on maintaining secure systems and networks, but with additional emphasis on network security, security auditing, and intrusion detection [S2, S3]. To prepare for this career:\n   - **Weeks 1-2**: Learn about Network Security and Security Auditing.\n   - **Weeks 3-4**: Study Security Incident Response and Data Loss Prevention [S3].\n\n3. **Cyber Threat Analyst**: This role involves threat analysis, cybersecurity risk assessment, and security architecture review [S4]. To prepare for this career:\n   - **Weeks 1-2**: Learn about Cyber defense trend analysis, threat modeling, and security risk analysis [S4].\n   - **Weeks 3-4**: Study Security Risk Communication and Threat Modeling in more depth.\n\nRemember to focus on one structured course per skill for efficient learning. Free resources include YouTube playlists, freeCodeCamp, Kaggle Learn, Google and Microsoft learning paths, and audited Coursera courses [S7]. Good luck with your Cybersecurity journey!\n\n---\n**Sources**\n- [S1] careers: Cyber Security Analyst - Compliance\n- [S2] careers: Security Analyst\n- [S3] careers: Cyber Security Analyst\n- [S4] careers: Cyber Threat Analyst\n- [S5] careers: INFORMATION SECURITY ANALYST\n- [S7] knowledge: Choosing courses and certifications",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 53405.1,
+          "state": null,
+          "tokens": 4202
+        },
+        {
+          "turn": 4,
+          "q": "make a 2 week starter plan, 45 min daily",
+          "answer": "Based on the student's skill gaps and learning guides, here is a 2-week, 45-minute per day starter plan tailored to the user's gaps:\n\n**Week 1:**\n\n*Day 1:* Introduction to Python for Data Science (DataCamp) - 60 minutes\n*Day 2:* Python Basics (Python.org) - 90 minutes\n*Day 3:* Python Data Structures (Python.org) - 60 minutes\n*Day 4:* Python Control Flow (Python.org) - 60 minutes\n*Day 5:* Python Functions and Modules (Python.org) - 60 minutes\n\n**Week 2:**\n\n*Day 1:* Introduction to SQL (DataCamp) - 90 minutes\n*Day 2:* SQL Queries (W3Schools) - 90 minutes\n*Day 3:* SQL Joins and Aggregation Functions (W3Schools) - 60 minutes\n*Day 4:* SQL Subqueries and Advanced Topics (W3Schools) - 60 minutes\n*Day 5:* Practice SQL Queries on a Database (SQLBolt) - 90 minutes\n\n**Next steps:** Apply your new skills to a small project, such as analyzing a dataset using Python and SQL. Update your resume with the newly acquired skills and submit it for ATS analysis to track progress.",
+          "passed": false,
+          "failed": [
+            "must_include_any2"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 43704.6,
+          "state": null,
+          "tokens": 3575
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.75
+    },
+    {
+      "id": "j06",
+      "goal": "change of mind: data science -> cybersecurity, 2-week starter at 45 min",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I want to become a data scientist",
+          "answer": "To become a Data Scientist, you need skills such as Statistical computing (R, Python), Data management, Data scrubbing, Mathematical aptitude, Programming [S1]. The job description also requires Quantitative analysis, Data mining, Presentation of data, Forecasting, Experiment design and evaluation, Dashboard and report building, Data set building, ETL framework, SQL, Python, Hypothesis testing, Regression analysis, Statistical software (e.g., R, SAS), Distributed computing (Hive/Hadoop) [S2].\n\nStart by learning Python for data science tasks and statistical computing with libraries like NumPy, Pandas, and Scikit-learn. Then, focus on SQL for database management and querying. For data mining, consider tools like Tableau or Power BI. To enhance your skills in forecasting and experiment design, study machine learning algorithms and regression analysis.\n\nTo strengthen your resume, build a portfolio of projects that demonstrate your ability to work with real-world datasets, apply statistical techniques, and create dashboards or reports. This will help you stand out when applying for Data Scientist roles.\n\n---\n**Sources**\n- [S1] careers: Data Scientist\n- [S2] careers: Data Scientist, Analytics",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 43926.1,
+          "state": {
+            "selected_career": "data scientist"
+          },
+          "tokens": 4032
+        },
+        {
+          "turn": 2,
+          "q": "what skills do i need",
+          "answer": "Based on the Data Scientist career profile you're targeting, the required skills are Quantitative analysis, Data mining, Presentation of data, Forecasting, Experiment design and evaluation, Dashboard and report building, Data set building, ETL framework, SQL, Python, Hypothesis testing, Regression analysis, Statistical software (e.g., R, SAS), Distributed computing (Hive/Hadoop).\n\nFrom your current skills, you have SQL, Python, and dashboarding experience. To fill the gaps, consider learning:\n\n1. Data mining techniques\n2. Quantitative analysis methods\n3. Forecasting and experiment design\n4. ETL frameworks (e.g., Apache NiFi)\n5. Statistical software like R or SAS\n6. Distributed computing using Hive/Hadoop\n7. Regression analysis\n8. Hypothesis testing\n\nThese skills will help you meet the requirements for a Data Scientist career and improve your chances of success in this field.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 28943.4,
+          "state": {
+            "selected_career": "data scientist"
+          },
+          "tokens": 4048
+        },
+        {
+          "turn": 3,
+          "q": "actually I prefer cybersecurity. what changes?",
+          "answer": "As a Cyber Security Analyst, the required skills include Cybersecurity, Information Systems, Information Technology, CompTIA Security+, SANS Security Essentials, CISSP, CISM, FISMA, NIST, IT contingency planning, Continuity of operations (COOP), Workflow automation, Database skills, Excel skills.\n\nYou currently have skills in SQL, Python, and some experience with Excel. This means that you already meet the requirements for Information Systems, Information Technology, and some aspects of Database skills and Excel skills. However, you still need to acquire CompTIA Security+, SANS Security Essentials, CISSP, CISM, FISMA, NIST, IT contingency planning, Continuity of operations (COOP), Workflow automation, and additional database skills to be fully prepared for a Cyber Security Analyst role.\n\nTo improve your chances of getting the job, focus on acquiring the missing skills and consider obtaining relevant certifications such as CompTIA Security+ or CISSP. Additionally, gaining experience with workflow automation tools and familiarizing yourself with IT contingency planning and continuity of operations (COOP) will also be beneficial.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 47276.9,
+          "state": {
+            "selected_career": "cybersecurity",
+            "last_recommendations": [
+              "Data mining techniques",
+              "Quantitative analysis methods",
+              "Forecasting and experiment design",
+              "ETL frameworks",
+              "Statistical software like R or SAS",
+              "Distributed computing using Hive/Hadoop",
+              "Regression analysis",
+              "Hypothesis testing"
+            ],
+            "previous_goals": [
+              "data scientist"
+            ]
+          },
+          "tokens": 4297
+        },
+        {
+          "turn": 4,
+          "q": "make a 2 week starter plan, 45 min daily",
+          "answer": "Based on the student's current skills and the generated plan for Cybersecurity, here is a two-week starter plan:\n\n**Week 1:**\nDay 1: Linux - Shell basics. Task: Complete 20 shell exercises (45 min). Done when: Exercises done. Resource: Linux Journey: https://linuxjourney.com/\nDay 2: Linux - Processes & services. Task: Diagnose a running service (45 min). Done when: Notes of findings. Resource: Linux Journey: https://linuxjourney.com/\nDay 3: Linux - Scripting. Task: Write a backup script (45 min). Done when: Script runs via cron. Resource: Linux Journey: https://linuxjourney.com/\nDay 4: Linux - Mini project. Task: Build the mini project and push it to GitHub with a README (45 min). Done when: Repository with README and screenshots. Resource: Linux Journey: https://linuxjourney.com/\nDay 5: Linux - Interview readiness. Task: Answer them out loud / in writing and fix weak spots (45 min). Done when: 10 answers written; 3 weakest revisited. Resource: Linux Journey: https://linuxjourney.com/\nDay 6: Siem - Fundamentals & vocabulary. Task: Write a one-page cheat sheet of the 10 most important Siem concepts (45 min). Done when: Cheat sheet covers 10 concepts in your own words.\nDay 7: Siem - Setting up & first steps. Task: Complete the getting-started tutorial end to end (45 min). Done when: Tutorial finished and working on your machine.\nDay 8: Python - Syntax, variables & types. Task: Write 10 small exercises (45 min). Done when: 10 exercises run without errors. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\n\n**Week 2:**\nDay 9: Python - Control flow & functions. Task: Write 5 reusable functions with docstrings (45 min). Done when: 5 functions tested with sample inputs. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 10: Python - Files, errors & modules. Task: Build a script that reads a CSV and handles bad rows (45 min). Done when: Script processes a messy CSV. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 11: Python - Pandas basics. Task: Clean and summarise a Kaggle dataset (45 min). Done when: Notebook with 5 summary tables. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 12: Python - Visualising data. Task: Make 4 charts answering 4 questions (45 min). Done when: 4 labelled charts. Resource: Official Python tutorial: https://docs.python.org/3/tutorial/\nDay 13: Networking - Fundamentals & vocabulary. Task: Write a one-page cheat sheet of the 10 most important Networking concepts (45 min). Done when: Cheat sheet covers 10 concepts in your own words.\nDay 14: Networking - Setting up & first steps. Task: Complete the getting-started tutorial end to end (45 min). Done when: Tutorial finished and working on your machine.\nDay 15: Review - Weekly review. Task: Redo one exercise from each skill studied this week without notes (45 min). Done when: All redo exercises completed; doubts written down.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 84299.2,
+          "state": {
+            "selected_career": "cybersecurity",
+            "last_recommendations": [
+              "Data mining techniques",
+              "Quantitative analysis methods",
+              "Forecasting and experiment design",
+              "ETL frameworks",
+              "Statistical software like R or SAS",
+              "Distributed computing using Hive/Hadoop",
+              "Regression analysis",
+              "Hypothesis testing"
+            ],
+            "daily_minutes": 45,
+            "previous_goals": [
+              "data scientist"
+            ]
+          },
+          "tokens": 4864
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "j07",
+      "goal": "interruption: SQL interview -> off-topic -> continue",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "help me prepare for a SQL interview",
+          "answer": "To prepare for a SQL interview, follow these steps:\n\n1. **Understand the Job Description**: Familiarize yourself with the specific requirements of the SQL Developer/Business Analyst role as outlined in career profile [S5].\n\n2. **Practice SQL Queries**: Brush up on your SQL skills by practicing various types of queries such as SELECT, JOIN, GROUP BY, and subqueries. Use online resources like LeetCode or W3Schools for practice problems.\n\n3. **Data Cleaning**: Learn how to clean and preprocess data effectively. This includes handling missing values, outliers, and duplicate records.\n\n4. **Database Normalization**: Understand the concept of database normalization and its benefits, as well as the different normal forms (1st, 2nd, 3rd).\n\n5. **Performance Optimization**: Learn techniques for optimizing SQL queries to improve performance, such as indexing, partitioning, and query rewriting.\n\n6. **Data Modeling**: Familiarize yourself with data modeling concepts like ER diagrams, database schema design, and normalization.\n\n7. **Prepare Sample Reports and Dashboards**: Practice creating reports and dashboards using SQL queries and tools like Microsoft Power BI or Tableau.\n\n8. **Functional and Technical Documentation**: Be prepared to explain your approach to writing functional and technical documentation for data analysis projects.\n\n9. **XML Knowledge**: Since XML is also a required skill, review the basics of XML structure, parsing, and manipulation using SQL.\n\n10. **Oracle Certification**: If you have an Oracle certification, review its content to refresh your knowledge on Oracle-specific SQL features and best practices.\n\nIn addition to technical preparation, remember to research the company and prepare thoughtful questions for the interviewer [S3]. Practice answering behavioral questions using the STAR method [S1] to provide clear and concise responses. Good luck with your interview!\n\n---\n**Sources**\n- [S1] knowledge: Behavioural questions and the STAR method\n- [S3] knowledge: Before and after the interview\n- [S5] careers: JR SQL Developer / Business Analyst",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 47441.6,
+          "state": null,
+          "tokens": 3088
+        },
+        {
+          "turn": 2,
+          "q": "who won the IPL?",
+          "answer": "The Indian Premier League (IPL) is a professional cricket league in India, and it does not have a winner yet as the current season is still ongoing. To find out who wins the IPL, you can check the official IPL website or follow updates on sports news channels.\n\nFor career-related questions, please provide your resume and the job description so I can analyze your profile and suggest relevant advice.",
+          "passed": false,
+          "failed": [
+            "refusal"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 50478.9,
+          "state": null,
+          "tokens": 2928
+        },
+        {
+          "turn": 3,
+          "q": "ok continue, give me 5 practice questions",
+          "answer": "1. **User:** What should I learn first to become a Data Analyst?\n   - **Advisor:** Your profile shows two gaps for the Data Analyst role: Python and SQL. Python comes first because it is essential for data manipulation and analysis, while SQL is needed for database management.\n\n2. **User:** What are the main skills for a Frontend Developer?\n   - **Advisor:** Your profile lists JavaScript and HTML/CSS as relevant skills for a Frontend Developer, but you have gaps in React and CSS frameworks like Bootstrap or Tailwind.\n\n3. **User:** What are the main requirements for a Business Analyst?\n   - **Advisor:** A Business Analyst needs strong Excel and SQL skills, with experience in data analysis, reporting, and business intelligence. You have gaps in project management and communication skills.\n\n4. **User:** What should I learn to improve my SQL skills?\n   - **Advisor:** To enhance your SQL skills, focus on database normalization, advanced queries (subqueries, joins), and performance optimization techniques like indexing and partitioning.\n\n5. **User:** What are the main differences between Python and Java?\n   - **Advisor:** Python is an interpreted language with dynamic typing, while Java is a compiled language with static typing. Python has simpler syntax and fewer lines of code, but Java offers better performance and security.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 78973.2,
+          "state": null,
+          "tokens": 3298
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.667
+    },
+    {
+      "id": "j07",
+      "goal": "interruption: SQL interview -> off-topic -> continue",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "help me prepare for a SQL interview",
+          "answer": "To prepare for a SQL interview, follow these steps:\n\n1. **Familiarize yourself with basic SQL syntax and commands**: Review the basics such as SELECT, FROM, WHERE, JOIN, GROUP BY, ORDER BY, UNION, and subqueries. Practice writing queries to select, filter, sort, aggregate, and join data from multiple tables.\n\n2. **Understand database normalization**: Learn about first, second, and third normal forms (1NF, 2NF, 3NF) and their importance in designing efficient databases. Be able to identify and correct common issues like redundancy, anomalies, and dependencies.\n\n3. **Practice SQL joins**: Master inner, outer, left, right, and self-joins. Understand the differences between JOIN, INNER JOIN, LEFT JOIN, RIGHT JOIN, and SELF JOIN. Practice writing queries to combine data from multiple tables based on common columns.\n\n4. **Learn about SQL functions**: Familiarize yourself with built-in functions like COUNT(), AVG(), MAX(), MIN(), SUM(), and CASE WHEN. Understand how to use these functions for aggregating, filtering, and manipulating data.\n\n5. **Work on real-world SQL problems**: Practice solving complex SQL problems by working on sample datasets or using online platforms like LeetCode or HackerRank. This will help you develop problem-solving skills and gain confidence in your abilities.\n\n6. **Understand database design principles**: Learn about ER diagrams, normalization, denormalization, and indexing. Understanding these concepts will help you design efficient databases and write optimized SQL queries.\n\n7. **Prepare for interview questions**: Research common SQL interview questions and practice answering them. Some examples include:\n   - Write a query to find the top 10 customers by sales amount.\n   - Given two tables with different schemas, write a query to combine their data based on a common column.\n   - Write a query to calculate the average salary for each department in a company.\n   - Explain how to optimize a slow SQL query.\n\n8. **Review your resume and be prepared to discuss your experience**: Make sure your resume highlights any relevant SQL projects or experiences. Be ready to explain these projects in detail, including the problem you solved, the approach you took, and the results you achieved.\n\n9. **Prepare for behavioral questions**: Research common behavioral interview questions and prepare answers using the STAR method (Situation, Task, Action, Result). This will help you demonstrate your problem-solving skills, teamwork abilities, and adaptability during the interview.\n\n10. **Research the company and the role**: Learn about the company's products, services, culture, and recent news. Understand the job description and prepare thoughtful questions to ask the interviewer. This will show your enthusiasm for the position and help you make a positive impression during the interview.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 47547.4,
+          "state": {},
+          "tokens": 3304
+        },
+        {
+          "turn": 2,
+          "q": "who won the IPL?",
+          "answer": "The Indian Premier League (IPL) is a professional cricket league in India, and it's not appropriate for me to answer questions about sports as I am designed to help with career and study topics. However, if you are interested in learning more about cricket or preparing for a job in sports analysis, I can provide some guidance on that topic.\n\nFor example, you may want to learn about the basics of cricket, rules, scoring systems, and popular players. Additionally, you could practice analyzing cricket matches using data from sources like Cricinfo or ESPNcricinfo, and use statistical methods such as mean, median, and standard deviation to understand player performance and team strategies.\n\nIf you are specifically interested in a career in sports analysis, it would be beneficial to gain experience with data analysis tools like Excel, SQL, R, or Python, and to learn about relevant concepts such as regression analysis, time series analysis, and machine learning algorithms. You can also consider building projects that involve analyzing sports data, such as predicting match outcomes or player performance, and presenting your findings in a clear and engaging manner.\n\nTo prepare for a job in sports analysis, you may want to research the qualifications and skills required by employers, and tailor your resume and cover letter to highlight relevant experience and accomplishments. You can also practice answering common interview questions related to data analysis, problem-solving, and communication skills. Additionally, staying up-to-date with industry news and trends will help you demonstrate your passion for sports and your ability to adapt to new challenges.",
+          "passed": false,
+          "failed": [
+            "refusal"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 34561.7,
+          "state": {
+            "last_recommendations": [
+              "Familiarize yourself with basic SQL syntax and commands",
+              "Understand database normalization",
+              "Practice SQL joins",
+              "Learn about SQL functions",
+              "Work on real-world SQL problems",
+              "Understand database design principles",
+              "Prepare for interview questions",
+              "Explain how to optimize a slow SQL query",
+              "Prepare for behavioral questions",
+              "Research the company and the role"
+            ]
+          },
+          "tokens": 3331
+        },
+        {
+          "turn": 3,
+          "q": "ok continue, give me 5 practice questions",
+          "answer": "1. What are the top 5 skills that support a Data Analyst role?\n2. How can I improve my resume to make it more appealing to recruiters using an Applicant Tracking System (ATS)?\n3. Which programming languages and frameworks are important for a Full Stack Developer?\n4. What are some effective strategies for studying for the GRE exam?\n5. What steps should I take to prepare for a job interview in the field of Mechanical Engineering?",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 20082.5,
+          "state": {
+            "last_recommendations": [
+              "Familiarize yourself with basic SQL syntax and commands",
+              "Understand database normalization",
+              "Practice SQL joins",
+              "Learn about SQL functions",
+              "Work on real-world SQL problems",
+              "Understand database design principles",
+              "Prepare for interview questions",
+              "Explain how to optimize a slow SQL query",
+              "Prepare for behavioral questions",
+              "Research the company and the role"
+            ]
+          },
+          "tokens": 3088
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.333
+    },
+    {
+      "id": "j08",
+      "goal": "profile readiness -> first step -> 2-week plan at 1 h -> honest resume claim",
+      "version": "v7",
+      "user": "persona_da",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "am I ready for a data analyst job?",
+          "answer": "Partly: you meet 3 of the 5 required skills (Python, Excel, SQL), but Tableau, Statistics, Data Visualization, and Communication are still gaps, and your ATS estimate is 43/100 (an AI estimate, not an official ATS result).\n\n- **Already met:** Python, Excel, SQL are on your resume.\n- **Missing:** Tableau, Statistics, Data Visualization, Communication.\n- **Related background:** your Excel charts help with dashboards, but they don't replace Power BI or Tableau.\n\nClosing the gaps will strengthen most of the role's tasks. Focus on Tableau and Statistics first as they are more directly related to data analysis. Practise explaining dashboards and insights clearly to prepare for communication requirements.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 28486.4,
+          "state": null,
+          "tokens": 3032
+        },
+        {
+          "turn": 2,
+          "q": "what do I learn first?",
+          "answer": "As a Data Analyst, you should focus on closing the gaps in your skillset: Tableau, Statistics, Data Visualization, and Communication.\n\n- **Week 1:** Learn the basics of Tableau, focusing on creating dashboards and connecting to databases.\n- **Weeks 2-3:** Practice using Tableau with sample datasets to build interactive visualizations and reports.\n- **Week 4:** Study statistics fundamentals such as probability distributions, hypothesis testing, and regression analysis.\n- **Week 5:** Learn data visualization best practices for effectively communicating insights from your analyses.\n- **Ongoing:** Continuously improve your communication skills by practicing explaining complex concepts in simple terms to non-technical stakeholders.\n\nNext steps:\n1) Start learning Tableau and statistics using online resources like Coursera or Udemy.\n2) Build a portfolio of Tableau dashboards using public datasets, showcasing your ability to create engaging visualizations and communicate insights effectively.\n3) Update your resume to reflect your new skills and experiences, emphasizing your ability to use Tableau, statistics, data visualization, and communication in a Data Analyst role.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 30007.7,
+          "state": null,
+          "tokens": 3265
+        },
+        {
+          "turn": 3,
+          "q": "plan for 2 weeks, 1 hr/day",
+          "answer": "Given the student's skill gaps for a Data Analyst role (Tableau, Statistics, Data Visualization, Communication), here is a time-boxed plan with concrete tasks and checkable outcomes per step:\n\n**Week 1:**\n- **Day 1-3:** Learn Tableau basics, focusing on creating dashboards and connecting to databases.\n- **Day 4-5:** Practice using Tableau with sample datasets to build interactive visualizations and reports.\n- **Day 6-7:** Review statistics fundamentals such as probability distributions, hypothesis testing, and regression analysis.\n\n**Week 2:**\n- **Day 1-3:** Learn data visualization best practices for effectively communicating insights from your analyses.\n- **Day 4-5:** Continue practicing with Tableau and statistics using sample datasets.\n- **Day 6-7:** Review and revise your dashboards, focusing on clarity and storytelling. Share them with peers or mentors for feedback.\n\n**Next steps:**\n1) Build a portfolio of Tableau dashboards using public datasets, showcasing your ability to create engaging visualizations and communicate insights effectively.\n2) Update your resume to reflect your new skills and experiences, emphasizing your ability to use Tableau, statistics, data visualization, and communication in a Data Analyst role.",
+          "passed": false,
+          "failed": [
+            "must_include_any2"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 30454.2,
+          "state": null,
+          "tokens": 3240
+        },
+        {
+          "turn": 4,
+          "q": "can i put tableau on my resume now?",
+          "answer": "Yes, you can list Tableau as a skill on your resume since you have started learning it. However, mention that you are currently developing your skills in Tableau and include any relevant projects or exercises you've completed to demonstrate your progress. Here is an example:\n\nResume excerpt (updated):\nRiya Sharma. B.Tech Computer Science 2025. Skills: Python, Excel, SQL, Pandas, Power BI, Tableau (currently developing skills). Projects: sales dashboard in Power BI for a college fest; Excel pivot-table analysis of hostel expenses; Tableau practice exercises and sample projects. Internship: 2 months data entry and reporting.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 28069.8,
+          "state": null,
+          "tokens": 3821
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.75
+    },
+    {
+      "id": "j08",
+      "goal": "profile readiness -> first step -> 2-week plan at 1 h -> honest resume claim",
+      "version": "v7+e38",
+      "user": "persona_da",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "am I ready for a data analyst job?",
+          "answer": "Partly: you meet 3 of the 5 required skills (Python, Excel, SQL), but Tableau, Statistics, Data Visualization, and Communication are still gaps, and your ATS estimate is 43/100 (an AI estimate, not an official ATS result).\n\n- **Already met:** Python, Excel, SQL are on your resume.\n- **Missing:** Tableau, Statistics, Data Visualization, Communication.\n- **Related background:** your Excel charts help with dashboards, but they don't replace Power BI or Tableau.\n\nClosing the gaps in Statistics and Data Visualization will strengthen most of the role's tasks. You may find it helpful to practise SQL joins, GROUP BY, window functions, and CTEs, as well as revising basic statistics and explaining a dashboard (referenced in [S4]). Additionally, focusing on improving communication skills could be beneficial for presenting insights to business teams.\n\n---\n**Sources**\n- [S4] knowledge: Technical preparation",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 28334.4,
+          "state": {},
+          "tokens": 3069
+        },
+        {
+          "turn": 2,
+          "q": "what do I learn first?",
+          "answer": "As a Data Analyst, you should focus on closing the gaps in your skills to match the job description requirements: Tableau, Statistics, Data Visualization, and Communication.\n\n- **First step:** Learn Statistics (probability distributions, hypothesis testing, regression analysis) as it is crucial for data analysis and interpretation. [S3] provides a guide on technical preparation for data analyst roles, which includes basic statistics.\n- **Second step:** Improve Data Visualization skills using Tableau to create interactive dashboards that present insights effectively. You can find tutorials and practice exercises online.\n- **Third step:** Enhance Communication skills, as you will need to explain your findings to business teams clearly and concisely. Consider taking a course or workshop on business communication for data analysts.\n\nAfter addressing these gaps, consider building projects that demonstrate your skills in data analysis, such as cleaning and analyzing a dataset, creating a dashboard, and presenting insights to stakeholders. This will help you improve your portfolio and prepare for interviews.\n\n---\n**Sources**\n- [S3] knowledge: Technical preparation",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 31247.2,
+          "state": {
+            "last_recommendations": [
+              "Already met",
+              "Missing",
+              "Related background"
+            ]
+          },
+          "tokens": 3281
+        },
+        {
+          "turn": 3,
+          "q": "plan for 2 weeks, 1 hr/day",
+          "answer": "Based on the provided data, here is a 2-week study plan for Ritika, focusing on the skills needed to fill her gaps in Data Visualization, Tableau, Statistics, and Communication:\n\n**Week 1:**\n\nDay 1: Data Visualization - Chart types (60 min)\n   - Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n\nDay 2: Data Visualization - Design principles (60 min)\n   - Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n\nDay 3: Data Visualization - Building charts (60 min)\n   - Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n\nDay 4: Data Visualization - Dashboards (60 min)\n   - Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n\nDay 5: Data Visualization - Data storytelling (60 min)\n   - Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n\nDay 6: Data Visualization - Mini project (60 min)\n   - Resource: Storytelling with Data (blog & exercises): https://www.storytellingwithdata.com/\n\nDay 7: Review and rest (No new learning, focus on reviewing the week's work)\n\n**Week 2:**\n\nDay 1: Tableau - Interface & connecting data (60 min)\n   - Resource: Tableau free training videos: https://www.tableau.com/learn/training\n\nDay 2: Tableau - Dimensions, measures & filters (60 min)\n   - Resource: Tableau free training videos: https://www.tableau.com/learn/training\n\nDay 3: Tableau - Calculated fields & LOD (60 min)\n   - Resource: Tableau free training videos: https://www.tableau.com/learn/training\n\nDay 4: Tableau - Dashboards & actions (60 min)\n   - Resource: Tableau free training videos: https://www.tableau.com/learn/training\n\nDay 5: Tableau - Storytelling (60 min)\n   - Resource: Tableau free training videos: https://www.tableau.com/learn/training\n\nDay 6: Statistics - Descriptive statistics (60 min)\n   - Resource: Khan Academy statistics & probability: https://www.khanacademy.org/math/statistics-probability\n\nDay 7: Review and rest (No new learning, focus on reviewing the week's work)\n\nThis plan aims to provide Ritika with a structured approach to learn and practice Data Visualization, Tableau, Statistics, and Communication skills over two weeks. It is essential for her to allocate one hour per day for studying and dedicating time each day for reviewing the material learned during the week.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 99517.9,
+          "state": {
+            "last_recommendations": [
+              "First step",
+              "Second step",
+              "Third step"
+            ],
+            "daily_minutes": 60
+          },
+          "tokens": 4791
+        },
+        {
+          "turn": 4,
+          "q": "can i put tableau on my resume now?",
+          "answer": "Based on the student's profile and retrieved sources, **Tableau** is a gap for the Data Analyst role. Although Ritika has experience with Power BI, it does not satisfy Tableau as they are different tools. To add Tableau to her resume, she should first learn and gain practical experience with the tool before listing it on her resume.\n\n- **Next steps:** 1) Learn Tableau using free resources ([S3]), 2) build a project or dashboard using Tableau, 3) update your resume to include Tableau as a skill.\n\n---\n**Sources**\n- [S3] profile: learning path",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 31931.0,
+          "state": {
+            "last_recommendations": [
+              "First step",
+              "Second step",
+              "Third step"
+            ],
+            "daily_minutes": 60
+          },
+          "tokens": 4049
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "j09",
+      "goal": "confused fresher -> likes apps -> web vs mobile -> 30-day web roadmap at 90 min",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "what should i do after btech? confused",
+          "answer": "To provide a helpful answer, I need to know your specific field of study in BTech. Based on the examples provided, here's how I would respond if you studied Computer Science:\n\n\"Your BTech in Computer Science is a strong foundation for various careers. However, to help you decide what to do next, it's important to identify your interests and career goals.\n\n1) If you enjoy building software systems, consider roles such as Software Developer, Full Stack Engineer or DevOps Engineer. Your BTech provides the necessary skills in programming (e.g., Java, Python), algorithms, and data structures. However, you may have gaps in specific technologies like Docker, AWS, or Kubernetes.\n\n2) If you're interested in data analysis, consider roles such as Data Analyst, Business Intelligence Analyst, or Data Scientist. Your BTech provides the necessary skills in programming (e.g., Python, SQL), and you can further specialize by learning tools like Tableau, Power BI, or R.\n\n3) If you're interested in pursuing higher education, consider a Master's degree in Computer Science, which will provide more specialized knowledge and potentially improve your career prospects.\n\nTo help me give more personalized advice, could you please specify the field of study within BTech?\"",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 26583.4,
+          "state": null,
+          "tokens": 2309
+        },
+        {
+          "turn": 2,
+          "q": "i like building apps",
+          "answer": "To help you decide what to learn next for a Software Engineer, Product (Full Stack) role, let's focus on the skills gaps identified in the job description: PHP, JavaScript, HTML, Web/mobile interfaces using XHTML, CSS, JavaScript, Frameworks like React & React Native, Relational databases and SQL, MySQL.\n\n1. **PHP**: You already have experience with Python, which is related to PHP, so you can start by learning the syntax and core concepts of PHP. A good resource for this is W3Schools' PHP Tutorial (<https://www.w3schools.com/php/>).\n\n2. **JavaScript**: You already have experience with Python, which has some similarities to JavaScript, so you can start by focusing on the differences and learning how to write client-side code using JavaScript. A good resource for this is freeCodeCamp's JavaScript Algorithms and Data Structures Certification (<https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/>).\n\n3. **HTML**: Since you already have experience with Python, JavaScript, and PHP, learning HTML will be straightforward as it is a markup language used for structuring content on the web. A good resource for this is W3Schools' HTML Tutorial (<https://www.w3schools.com/html/>).\n\n4. **Web/mobile interfaces using XHTML, CSS, JavaScript**: These are technologies used to create visually appealing and interactive user interfaces for web and mobile applications. You can start by learning the basics of HTML and CSS, then move on to more advanced topics like responsive design, animations, and interactions with JavaScript. A good resource for this is freeCodeCamp's Responsive Web Design Certification (<https://www.freecodecamp.org/learn/responsive-web-design/>).\n\n5. **Frameworks like React & React Native**: These are popular JavaScript frameworks used for building user interfaces, especially for mobile applications. Since you already have experience with JavaScript, learning these frameworks will be easier. A good resource for learning React is freeCodeCamp's React Certification (<https://www.freecodecamp.org/learn/react/>) and for React Native, check out the official documentation (<https://reactnative.dev/>).\n\n6. **Relational databases and SQL**: These are essential skills for a full-stack engineer as they help manage data in web applications. You can start by learning the basics of SQL using an online tutorial like W3Schools' SQL Tutorial (<https://www.w3schools.com/sql/>). For relational databases, you can learn about MySQL, which is mentioned in the job description, or other popular options like PostgreSQL and Oracle.\n\n7. **MySQL**: To learn MySQL, you can start with W3Schools' MySQL Tutorial (<https://www.w3schools.com/mysql/>) and then move on to more advanced topics like database design, optimization, and security.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 142652.1,
+          "state": null,
+          "tokens": 4189
+        },
+        {
+          "turn": 3,
+          "q": "web or mobile, which one for fresher?",
+          "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"Review my skill gaps and tell me what to learn first\"*\n",
+          "passed": false,
+          "failed": [
+            "not_refused",
+            "must_include_any",
+            "must_include_any2"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 0.4,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "ok web. 30 day roadmap, 90 mins daily",
+          "answer": "Based on your interest in building apps and the skills you currently have, I suggest a 30-day roadmap focused on learning mobile app development with React Native. Here's a time-boxed plan tailored to your gaps:\n\n**Week 1 - Getting started with React Native:**\n- Day 1-2: Install Node.js and React Native CLI, create a new project, and familiarize yourself with the project structure.\n- Day 3-4: Learn the basics of JavaScript and JSX syntax in React Native.\n- Day 5-6: Understand components, props, and state in React Native.\n\n**Week 2 - Building your first app:**\n- Day 1-2: Create a simple app with a single screen using FlatList for data display.\n- Day 3-4: Add navigation between screens using React Navigation.\n- Day 5-6: Implement basic styling using StyleSheet and Touchable components.\n\n**Week 3 - Working with APIs:**\n- Day 1-2: Learn how to fetch data from a REST API (e.g., JSONPlaceholder).\n- Day 3-4: Integrate the fetched data into your app.\n- Day 5-6: Handle errors and optimize API calls for better performance.\n\n**Week 4 - Styling and animations:**\n- Day 1-2: Learn about popular libraries for styling in React Native (e.g., styled-components, react-native-paper).\n- Day 3-4: Implement basic animations using Animated API or a third-party library like React Native Reanimated.\n- Day 5-6: Create a visually appealing and responsive layout for your app.\n\n**Week 5 - Testing and debugging:**\n- Day 1-2: Learn about testing in React Native using Jest and Enzyme.\n- Day 3-4: Write unit tests for your components to ensure they work as expected.\n- Day 5-6: Debug common issues using the built-in developer tools in React Native.\n\n**Next steps:**\n1) Build a small project showcasing your skills in React Native.\n2) Update your resume with your new skills and the project you've built.\n3) Apply for internships or entry-level mobile app development roles.",
+          "passed": false,
+          "failed": [
+            "mentions_day30",
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 76421.7,
+          "state": null,
+          "tokens": 3579
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.25
+    },
+    {
+      "id": "j09",
+      "goal": "confused fresher -> likes apps -> web vs mobile -> 30-day web roadmap at 90 min",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "what should i do after btech? confused",
+          "answer": "After completing your B Tech, you may consider pursuing a Master's degree, working as a software engineer, or doing an internship in your field of interest. To help me provide more personalized advice, could you please share your specific area of interest or the field you studied during your B Tech?\n\nHere are some general suggestions for after graduation:\n\n1. Continue learning by reading articles, attending workshops, or taking online courses to keep up with the latest trends and technologies in your field.\n2. Networking is essential; connect with professionals in your desired industry through LinkedIn, meetups, or alumni networks to learn about job opportunities and gain insights into the industry.\n3. Internships provide practical experience that can help you stand out when applying for jobs. Look for opportunities that align with your interests and career goals.\n4. Start looking for jobs in your field by researching companies, tailoring your resume to each job application, and preparing for interviews.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 102256.7,
+          "state": {
+            "background": "btech"
+          },
+          "tokens": 2384
+        },
+        {
+          "turn": 2,
+          "q": "i like building apps",
+          "answer": "Based on your B Tech degree, you may be interested in pursuing careers related to software development such as Software Engineer, Full Stack Engineer, or Software Development Engineer I. Here's a brief overview of each role:\n\n1. **Software Engineer, Product (Full Stack)**: This role requires skills in full stack web/mobile application development, programming languages like PHP, JavaScript, HTML, and internal programming language Hack. Web/mobile interfaces using XHTML, CSS, JavaScript, frameworks like React & React Native, relational databases, and SQL are also important [S1].\n\n2. **Full Stack Engineer**: This role involves building web applications, architecting front-end/back-end frameworks, implementing code quality standards, developing major application features, and using design patterns. Experience with Python, AngularJS, Google App Engine, React, or Django is beneficial [S2].\n\n3. **Software Development Engineer I**: This role requires skills in Java, JavaScript, Git, relational databases, and the Agile Scrum development process. Familiarity with NoSQL databases (Cassandra), Spring framework (Spring Boot), Scala, JavaScript frameworks (D3.js, AngularJS), R, Python is also beneficial [S3].\n\nTo improve your chances of getting hired for these roles, consider building small end-to-end projects to demonstrate your skills. Put the code on GitHub with a clear README describing the problem, approach, results, and how to run it. This will help you gain practical experience and showcase your abilities to potential employers [S6].\n\nTo fill any skill gaps or improve your chances for specific roles, consider learning new technologies or frameworks that are relevant to the job descriptions you're interested in.\n\n---\n**Sources**\n- [S1] careers: Software Engineer, Product (Full Stack)\n- [S2] careers: Full Stack Engineer\n- [S3] careers: Software Development Engineer I\n- [S6] knowledge: Learning by building projects",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 73983.0,
+          "state": {
+            "background": "btech"
+          },
+          "tokens": 3846
+        },
+        {
+          "turn": 3,
+          "q": "web or mobile, which one for fresher?",
+          "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"Review my skill gaps and tell me what to learn first\"*\n",
+          "passed": false,
+          "failed": [
+            "not_refused",
+            "must_include_any",
+            "must_include_any2"
+          ],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 1.6,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "ok web. 30 day roadmap, 90 mins daily",
+          "answer": "Based on your B Tech degree and interest in building apps, I recommend focusing on mobile app development as a starting point since it is more accessible to beginners compared to web development. Here's a 30-day plan tailored to your gaps:\n\n**Week 1:** Learn the basics of Android or iOS development (choose one) using free online resources like Udemy, Coursera, or Khan Academy.\n\n*Android:*\n- [Android Development for Beginners](https://www.udemy.com/course/android-development-for-beginners/)\n- [Kotlin for Android Developers](https://www.coursera.org/learn/kotlin-for-android)\n\n*iOS:*\n- [Swift Programming: From Beginner to Paid Professional](https://www.udemy.com/course/swift-programming/)\n- [Learn Swift 5 - iOS Development for Beginners](https://www.udemy.com/course/learn-swift-5/)\n\n**Week 2:** Choose a simple project to build, such as a to-do list or a weather app, and apply what you've learned so far.\n\n**Week 3:** Learn about UI design principles and best practices for your chosen platform (Android or iOS).\n\n*Android:*\n- [Material Design for Android](https://www.udacity.com/course/material-design-for-android--ud855)\n\n*iOS:*\n- [Designing Interfaces](https://www.interfacedesign.io/)\n\n**Week 4:** Learn about app architecture, navigation patterns, and dependency injection to structure your apps better.\n\n*Android:*\n- [Clean Architecture in Android](https://www.udemy.com/course/clean-architecture-in-android/)\n\n*iOS:*\n- [Designing App Architectures with Swift](https://www.udemy.com/course/designing-app-architectures-with-swift/)\n\n**Week 5:** Learn about APIs, how to consume them in your apps, and handle JSON data.\n\n*Android:*\n- [Consuming APIs in Android](https://www.udemy.com/course/consuming-apis-in-android/)\n\n*iOS:*\n- [APIs from Scratch: Learn How to Build RESTful APIs with Swift](https://www.udemy.com/course/apis-from-scratch/)\n\n**Week 6:** Work on a more complex project, such as a social media app or a fitness tracker, applying everything you've learned so far.\n\n**Next steps:** Share your projects on GitHub and showcase them in your resume to demonstrate your skills to potential employers. Consider joining local developer communities or online forums to network with other developers and learn from their experiences.",
+          "passed": false,
+          "failed": [
+            "mentions_day30",
+            "must_include_any",
+            "must_include_any2"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 87588.9,
+          "state": {
+            "last_recommendations": [
+              "Software Engineer, Product",
+              "Full Stack Engineer",
+              "Software Development Engineer I"
+            ],
+            "daily_minutes": 90,
+            "background": "btech"
+          },
+          "tokens": 3479
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.5
+    },
+    {
+      "id": "j10",
+      "goal": "devops: career -> salary -> guarantee -> first step",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "is devops a good career",
+          "answer": "Yes, DevOps is a good career for you, given your current skills and the job descriptions in our records. The career of Cloud Services Engineer (DevOps) [S1] requires skills that match some of yours: Cloud infrastructure technologies, Networking, and Virtualization.\n\nHowever, there are other roles related to DevOps that might also suit you, such as Software Program Manager, Cloud Services [S2] or Solutions Architect, DevOps, Google Cloud [S3].\n\nTo prepare for these roles, consider focusing on skills like Terraform, Deployment Manager, and Kubernetes, which are mentioned in the career records but not currently listed in your profile. You can find project ideas related to these skills in our guide on Portfolio And Projects [S4].\n\nFor a more detailed learning roadmap tailored to your current skills and career goals, consider running the 'Analyze Profile' feature with your resume and target job description. This will provide you with an ATS score and a personalized list of skills gaps and recommendations.\n\n---\n**Sources**\n- [S1] careers: Cloud Services Engineer (DevOps)\n- [S2] careers: Software Program Manager, Cloud Services\n- [S3] careers: Solutions Architect, DevOps, Google Cloud\n- [S4] knowledge: Project ideas by role",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 50787.3,
+          "state": null,
+          "tokens": 3248
+        },
+        {
+          "turn": 2,
+          "q": "what about salary",
+          "answer": "The career records do not provide specific salary information for the careers listed: Software Engineer, Cloud DevOps Engineer, Cloud Services Engineer (DevOps), Software Program Manager, Cloud Services, and Node + React at Deloitte. However, they are all related to cloud and DevOps, so you may refer to similar job listings or industry standards for salary expectations in these fields. For example, the average salary for a Software Engineer in India is approximately INR 600,000 per year according to Glassdoor, while the average salary for a Cloud DevOps Engineer is around INR 800,000 per year based on Payscale data.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 56986.8,
+          "state": null,
+          "tokens": 4233
+        },
+        {
+          "turn": 3,
+          "q": "will i get job for sure after learning it?",
+          "answer": "No, getting a job is not guaranteed after learning a skill or completing a course. However, acquiring new skills can increase your chances of being considered for certain roles and make you more competitive in the job market. It's important to tailor your resume and LinkedIn profile to highlight relevant skills and experiences, network with professionals in your desired field, and apply to multiple positions to maximize your chances of finding a job.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 37444.2,
+          "state": null,
+          "tokens": 2826
+        },
+        {
+          "turn": 4,
+          "q": "what should I learn first then?",
+          "answer": "I don't see an analysed profile yet, so I can't tell you specific skills or gaps for your career. Upload your resume and the job description in the sidebar and click **Analyze Profile**; I'll then explain the score (an AI estimate, not an official ATS result) and your skill gaps.",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 65420.8,
+          "state": null,
+          "tokens": 3013
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.75
+    },
+    {
+      "id": "j10",
+      "goal": "devops: career -> salary -> guarantee -> first step",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "is devops a good career",
+          "answer": "Yes, DevOps is a good career for the student given their current skills. The two careers that align well with the student's skills are:\n\n1. Cloud Services Engineer (DevOps) [S3]: This role requires skills such as DevOps, Automating infrastructure deployment, Terraform, and Deployment Manager, which partially match the student's current skills.\n2. Software Program Manager, Cloud Services [S4]: This career also aligns well with the student's skills, particularly in Cloud architecture, DevOps, and Micro-service architecture.\n\nTo further narrow down the options, it would be helpful to understand the student's preferences regarding the type of work they enjoy most (building things, analyzing numbers, designing, or helping people). Additionally, the student may want to consider gaining more experience in areas where they have gaps, such as Kubernetes and Docker.\n\n[S3] (source=careers/career_profile, score=0.56, ref=career_2523)\nCareer: Solutions Architect, DevOps, Google Cloud. Domain: Cloud and DevOps. Required skills: DevOps, Automating infrastructure deployment, Terraform, Deployment Manager, Kubernetes, Docker, Cloud technology, Enterprise technology, Relational databases, Infrastructure automation, Continuous integration/deployment, SQL/NoSQL.\n\n[S4] (source=knowledge/guide, score=0.45, ref=portfolio_and_projects.md)\nPortfolio And Projects - Project ideas by role: Cloud/DevOps: infrastructure as code (Terraform) plus a CI/CD pipeline deploying a containerised app.\n\n---\n**Sources**\n- [S3] careers: Solutions Architect, DevOps, Google Cloud\n- [S4] knowledge: Project ideas by role",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 150780.5,
+          "state": {},
+          "tokens": 3325
+        },
+        {
+          "turn": 2,
+          "q": "what about salary",
+          "answer": "Based on the provided career records, I cannot provide a specific salary range for the Software Engineer role as it is not listed in any of them. However, you can check current job postings on Glassdoor, AmbitionBox, or LinkedIn Salary to find more accurate and up-to-date salary information for this role.",
+          "passed": false,
+          "failed": [
+            "not_refused"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 53056.7,
+          "state": {
+            "last_recommendations": [
+              "Cloud Services Engineer",
+              "Software Program Manager, Cloud Services"
+            ]
+          },
+          "tokens": 3942
+        },
+        {
+          "turn": 3,
+          "q": "will i get job for sure after learning it?",
+          "answer": "No, getting a job is not guaranteed after learning a skill or completing a course. However, having the necessary skills and experience can significantly increase your chances of landing a job in your desired field. It's important to also tailor your resume and cover letter to each job application, network with professionals in your industry, and be prepared for interviews to maximize your chances of success.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 39394.8,
+          "state": {
+            "last_recommendations": [
+              "Cloud Services Engineer",
+              "Software Program Manager, Cloud Services"
+            ]
+          },
+          "tokens": 2862
+        },
+        {
+          "turn": 4,
+          "q": "what should I learn first then?",
+          "answer": "Based on the current information, I don't have enough details to provide a specific plan for your learning journey. To help with this, please upload your resume and a job description in the sidebar and click \"Analyze Profile\". This will give me an understanding of your skills, experience, and any potential gaps for the role you are interested in, allowing me to offer tailored recommendations on what to learn first.\n\nIf you have already analyzed your profile, please let me know so I can provide guidance based on that information.",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": "mistral",
+          "latency_ms": 81490.6,
+          "state": {
+            "last_recommendations": [
+              "Cloud Services Engineer",
+              "Software Program Manager, Cloud Services"
+            ]
+          },
+          "tokens": 3146
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.5
+    }
+  ],
+  "model_configured": "default",
+  "provider": "local",
+  "expect_model": "mistral",
+  "summary": {
+    "v7": {
+      "journeys": 10,
+      "excluded_model_fallback": 0,
+      "task_success": 0.1,
+      "turn_pass_rate": 0.615,
+      "p95_latency_ms": 79272.1,
+      "avg_latency_ms": 46117,
+      "models": [
+        "None",
+        "mistral"
+      ],
+      "failed_turns": [
+        "j01 t2: mentions_item_of_turn",
+        "j01 t3: must_include_any",
+        "j02 t4: must_include_any2",
+        "j03 t1: min_numbered",
+        "j03 t3: mentions_day30",
+        "j03 t4: not_refused, must_include_any",
+        "j04 t1: not_refused, must_include_any",
+        "j04 t3: code_block, must_include_any",
+        "j06 t4: must_include_any2",
+        "j07 t2: refusal",
+        "j08 t3: must_include_any2",
+        "j09 t1: must_include_any",
+        "j09 t3: not_refused, must_include_any, must_include_any2",
+        "j09 t4: mentions_day30, must_include_any",
+        "j10 t4: must_include_any"
+      ]
+    },
+    "v7+e38": {
+      "journeys": 10,
+      "excluded_model_fallback": 0,
+      "task_success": 0.3,
+      "turn_pass_rate": 0.692,
+      "p95_latency_ms": 102256.7,
+      "avg_latency_ms": 51933,
+      "models": [
+        "None",
+        "mistral"
+      ],
+      "failed_turns": [
+        "j01 t2: not_refused, mentions_item_of_turn",
+        "j02 t4: must_include_any2",
+        "j03 t1: min_numbered",
+        "j03 t4: not_refused, must_include_any",
+        "j04 t1: not_refused, must_include_any",
+        "j04 t3: code_block, must_include_any",
+        "j07 t2: refusal",
+        "j07 t3: must_include_any",
+        "j09 t3: not_refused, must_include_any, must_include_any2",
+        "j09 t4: mentions_day30, must_include_any, must_include_any2",
+        "j10 t2: not_refused",
+        "j10 t4: must_include_any"
+      ]
+    }
+  }
+}

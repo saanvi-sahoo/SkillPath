@@ -34,10 +34,12 @@ REFUSAL_PAT = re.compile(
     r"\b(can['’]?t|cannot|can not|unable to|not able to|won['’]?t)\b.{0,40}"
     r"\b(help|assist|provide|answer|print|share|reveal|recommend|give|write|do that|comply|book|predict))", re.I)
 CONSTRAINT = {"code_block", "n_items", "max_words", "first_sentence_any", "table", "min_numbered", "asks_question", "n_sentences", "mentions_day30"}
-FACTUAL = {"include_frac", "must_include_any", "must_include_any2", "must_include_all", "must_not_include", "no_guarantee",
-           "no_invented_urls", "no_career_citations"}
+FACTUAL = {"include_frac", "must_include_any", "must_include_any2", "must_include_any3", "must_include_all", "must_not_include", "no_guarantee",
+           "no_invented_urls", "no_career_citations", "no_guarantee_claim", "mentions_item_of_turn"}
 SETS = {"heldout": HERE / "heldout" / "heldout_chat.jsonl", "heldout_v2": HERE / "heldout" / "heldout_v2.jsonl",
-        "dev": HERE / "dev" / "dev_set.jsonl"}
+        "dev": HERE / "dev" / "dev_set.jsonl",
+        "heldout_v3": HERE / "heldout" / "heldout_v3.jsonl",  # E38: 120 realistic cases, frozen in 167fe13 before E38 code
+        "real": config.PROJECT_ROOT / "reports" / "heldout" / "real_questions_labelled.jsonl"}  # 17 genuine questions (git-ignored)
 NO_PROFILE_UID = "heldout_no_profile"
 
 
@@ -60,8 +62,12 @@ def _resolve(v, f: Optional[Dict]):
     return v
 
 
+_HYPHENS = str.maketrans({"\u2010": "-", "\u2011": "-", "\u2012": "-", "\u00a0": " ", "\u202f": " ", "\u2009": " "})
+
+
 def _body(t: str) -> str:
-    return t.split("\n\n---\n**Sources**")[0]
+    # E38: gpt-oss writes "1‑hour" with U+2011 (non-breaking hyphen); checks for "1-hour" / "Day 1-19" missed it
+    return t.split("\n\n---\n**Sources**")[0].translate(_HYPHENS)
 
 
 def _first(t: str) -> str:
@@ -115,7 +121,7 @@ def score(case: Dict, text: str, hits: List[Dict], f: Optional[Dict], memory: Op
             ch[k] = len([l for l in body.splitlines() if re.match(r"^\s*\d+[.)]\s+\S", l)]) >= v
         elif k == "asks_question":
             ch[k] = "?" in body
-        elif k in ("must_include_any", "must_include_any2"):
+        elif k.startswith("must_include_any"):
             opts = _resolve(v, f)
             ch[k] = any(str(o).lower() in low for o in opts) if opts else None
         elif k == "must_include_all":
@@ -143,6 +149,11 @@ def score(case: Dict, text: str, hits: List[Dict], f: Optional[Dict], memory: Op
             ch[k] = "```" in body
         elif k == "no_contradicted_claims":
             pass  # scored from the claim check below
+        elif k == "no_guarantee_claim":  # E38: must not PROMISE an outcome (negated mentions are fine)
+            ch[k] = not re.search(r"(?<!no )(?<!not )(?<!can't )(?<!cannot )\b(guaranteed|will definitely|definitely (get|land)|100% (sure|chance)|surely get)\b", low)
+        elif k == "mentions_item_of_turn":  # journeys: answer names item N of an earlier answer's list (set by the runner)
+            item = (case.get("_items") or {}).get(tuple(v))
+            ch[k] = None if not item else _mentions(item, low)
     cr = citation_report(text, hits) if case["expect"] == "allow" else {"citations": 0, "invalid": [], "unsupported": [], "correct_rate": None}
     claims = {"n": 0, "counts": {}, "support_rate": None, "claims": []}
     if case["expect"] == "allow":
@@ -158,6 +169,11 @@ def score(case: Dict, text: str, hits: List[Dict], f: Optional[Dict], memory: Op
     return {"checks": ch, "passed": passed, "citations": cr, "contradictions": contradictions,
             "claims": {k: claims[k] for k in ("n", "counts", "support_rate")} | {"method": claims.get("method"),
                        "items": [{kk: c[kk] for kk in ("claim", "id", "label")} for c in claims["claims"]][:12]}}
+
+
+def _mentions(item: str, low: str) -> bool:
+    words = [w for w in re.findall(r"[a-z0-9+#]+", item.lower()) if len(w) > 2 and w not in ("the", "and", "for", "with")]
+    return bool(words) and (item.lower() in low or sum(w in low for w in words) >= max(1, (len(words) + 1) // 2))
 
 
 def root_cause(case: Dict, row: Dict, f: Optional[Dict]) -> str:
@@ -189,10 +205,17 @@ def root_cause(case: Dict, row: Dict, f: Optional[Dict]) -> str:
     return "other"
 
 
+def arm(version: str):
+    """'v7' = the version as it was (E38 off); 'v7+e38' = same prompt with the E38 pipeline."""
+    base, _, flag = version.partition("+")
+    return base, flag == "e38"
+
+
 def ask(case: Dict, version: str, decision: Dict) -> Dict:
     from src.backend.chatbot import answer
     uid = case.get("user") or NO_PROFILE_UID
-    return answer(case["messages"], system_version=version, route_override=decision, user_id=uid, extra_hits=case.get("extra_hits"))
+    base, e38 = arm(version)
+    return answer(case["messages"], system_version=base, route_override=decision, user_id=uid, extra_hits=case.get("extra_hits"), e38=e38)
 
 
 def run(cases: List[Dict], versions: List[str], expect_model: str, sleep_s: float, rep: Dict, path: Path, workers: int = 1) -> Dict:
@@ -238,14 +261,15 @@ def run(cases: List[Dict], versions: List[str], expect_model: str, sleep_s: floa
         for v, res in pair.items():
             sc = score(c, res["text"], res.get("hits", []), f, mem, res.get("intent"))
             row = {"id": c["id"], "category": c["category"], "user": c.get("user"), "version": v, "route": decision["label"],
-                   "question": msgs[-1]["content"], "expected_behavior": c["expected_behavior"], "answer": res["text"],
+                   "question": msgs[-1]["content"], "expected_behavior": c["expected_behavior"], "answer": res["text"], "tags": c.get("tags", []),
+                   "n_turns": sum(m["role"] == "user" for m in msgs), "state": res.get("state"),
                    "model": res.get("model"), "model_configured": os.getenv("CHAT_MODEL", "default"), "latency_ms": res.get("latency_ms"),
                    "intent_got": (res.get("intent") or {}).get("primary_intent"), "intent_expected": c.get("intent"),
                    "tokens": (res.get("usage") or {}).get("total_tokens"), "revised": res.get("revised"),
                    "intent": {k: (res.get("question_profile") or {}).get(k) for k in ("type", "missing", "n_items", "max_words")},
                    "sources": [f"S{i}:{h['source']}:{(h.get('metadata') or {}).get('career_name') or (h.get('metadata') or {}).get('section') or h.get('doc_type')}"
                                for i, h in enumerate(res.get("hits", []), 1)],
-                   "context": format_context(res.get("hits", []))[:3000] if res.get("hits") else "", **sc}
+                   "context": format_context(res.get("hits", []))[:40000] if res.get("hits") else "", **sc}  # E38: was [:3000], which made re-checks see only the first sources (claim audit)
             row["root_cause"] = None if row["passed"] else root_cause(c, row, f)
             rows_out.append(row)
             print(f"[{v}] {c['id']:12s} {c['category']:18s} passed={row['passed']} "
@@ -289,6 +313,9 @@ def summarise(rep: Dict) -> Dict:
         out[v] = {
             "n": len(rows), "pass_rate": round(sum(r["passed"] for r in rows) / len(rows), 3),
             "pass_rate_by_category": {k: round(sum(x) / len(x), 3) for k, x in by_cat.items()},
+            "pass_rate_by_tag": {t: round(sum(r["passed"] for r in rows if t in (r.get("tags") or [])) / n_t, 3)
+                                 for t in sorted({t for r in rows for t in (r.get("tags") or [])})
+                                 for n_t in [sum(t in (r.get("tags") or []) for r in rows)]},
             "scope_accuracy": round((sum(r["checks"].get("not_refused") is True for r in allow) + sum(r["checks"].get("refusal") is True for r in oos)) / len(rows), 3),
             "false_refusals": sum(r["checks"].get("not_refused") is False for r in allow),
             "out_of_scope_leaks": sum(r["checks"].get("refusal") is False for r in oos),
@@ -299,6 +326,8 @@ def summarise(rep: Dict) -> Dict:
             "profile_consistency": round(sum(r["checks"]["profile_consistent"] for r in prof) / len(prof), 3) if prof else None,
             "revised": sum(bool(r.get("revised")) for r in rows),
             "avg_latency_ms": round(sum(r["latency_ms"] or 0 for r in rows) / len(rows)),
+            "p95_latency_ms": (lambda xs: round(xs[min(len(xs) - 1, int(round(0.95 * (len(xs) - 1))))]) if xs else None)(
+                sorted(r["latency_ms"] for r in rows if r.get("latency_ms") is not None and r.get("route") != "out_of_scope")),  # review 3 §7 (answered turns)
             "avg_tokens": round(sum(toks) / len(toks)) if toks else None,
             "models": sorted({str(r["model"]) for r in rows}), "root_causes": causes,
             "claim_support_rate": (lambda n, sup: round(sup / n, 3) if n else None)(
@@ -388,7 +417,24 @@ def recheck_claims(rep: Dict) -> None:
             r["passed"] = all(x for k, x in r["checks"].items() if x is not None and k != "intent")
 
 
+def rescore(rep: Dict) -> None:
+    """Re-run every check on the stored answers + saved sources (scorer fixes apply to every version alike)."""
+    from src.backend.chatbot import load_memory
+    cases = {c["id"]: c for c in load_cases(SETS[rep.get("set", "heldout")])} if rep.get("set") in SETS else {}
+    facts = rep.get("facts") or {}
+    for r in rep["rows"]:
+        c = cases.get(r["id"])
+        if not c:
+            continue
+        sc = score(c, r["answer"], _hits_from_context(r.get("context", "")), facts.get(r.get("user") or ""),
+                   load_memory(r["user"]) if r.get("user") else None, {"primary_intent": r.get("intent_got")} if r.get("intent_got") else None)
+        r["checks"], r["passed"] = sc["checks"], sc["passed"]
+        r["root_cause"] = None if r["passed"] else root_cause(c, r, facts.get(r.get("user") or ""))
+
+
 def write_outputs(rep: Dict, path: Path) -> str:
+    if os.getenv("RESCORE", "true") == "true":
+        rescore(rep)
     apply_rubrics(rep)
     recheck_profile(rep)
     recheck_refusals(rep)
@@ -418,12 +464,12 @@ def write_outputs(rep: Dict, path: Path) -> str:
     S = rep["summary"]
     vs = [v for v in rep["versions"] if v in S]
     L = [f"# Held-out chatbot evaluation ({rep['ts']})", "",
-         f"Frozen set: `src/eval/heldout/heldout_chat.jsonl` ({rep['n_cases']} cases). Paired design, shared route per case. "
+         f"Frozen set: `{rep.get('set', 'heldout')}` ({rep['n_cases']} cases). Paired design, shared route per case. "
          f"Completed pairs: {len([r for r in rep['rows'] if r['version'] == vs[0]]) if vs else 0}" + (f" (stopped: {rep['stopped']})" if rep.get("stopped") else ""), "",
          "| Metric | Target (review doc) | " + " | ".join(vs) + " |", "|---|---|" + "---|" * len(vs)]
     for m in ["pass_rate", "intent_accuracy", "scope_accuracy", "false_refusals", "out_of_scope_leaks", "constraint_compliance",
               "factual_correctness", "citation_rate", "citation_correctness", "claim_support_rate", "claim_contradiction_rate",
-              "profile_consistency", "revised", "avg_latency_ms", "avg_tokens"]:
+              "profile_consistency", "revised", "avg_latency_ms", "p95_latency_ms", "avg_tokens"]:
         L.append(f"| {m} | {TARGETS.get(m, '-')} | " + " | ".join(str(S[v].get(m)) for v in vs) + " |")
     L += ["", "## Pass rate by category", "", "| Category | " + " | ".join(vs) + " |", "|---|" + "---|" * len(vs)]
     cats = sorted({c for v in vs for c in S[v]["pass_rate_by_category"]})
@@ -448,7 +494,7 @@ def main():
     ap.add_argument("--sleep", type=float, default=4.0)
     ap.add_argument("--ids", nargs="*")
     ap.add_argument("--resume")
-    ap.add_argument("--set", default="heldout", choices=sorted(SETS), help="heldout (E36) | heldout_v2 (frozen before v8) | dev")
+    ap.add_argument("--set", default="heldout", choices=sorted(SETS), help="heldout (E36) | heldout_v2 (frozen before v8) | heldout_v3 (E38) | real | dev")
     ap.add_argument("--workers", type=int, default=1, help="cases answered in parallel (each pair stays same-model)")
     ap.add_argument("--report")
     a = ap.parse_args()
@@ -467,7 +513,8 @@ def main():
         cases = load_cases(SETS[rep.get("set", "heldout")])
     else:
         ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-        path = OUT / f"heldout_eval_{a.set}_{ts}.json" if a.set != "heldout" else OUT / f"heldout_eval_{ts}.json"
+        tag = f"{a.set}_{ts}_p{os.getpid()}"  # E38: two runs started in the same second overwrote each other's file
+        path = OUT / f"heldout_eval_{tag}.json" if a.set != "heldout" else OUT / f"heldout_eval_{ts}_p{os.getpid()}.json"
         rep = {"ts": ts, "versions": a.versions, "n_cases": len(cases), "rows": [], "set": a.set}
     rep = run(cases, rep["versions"], a.expect_model, a.sleep, rep, path, workers=a.workers)
     print(write_outputs(rep, path))

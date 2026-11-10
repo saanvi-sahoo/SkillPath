@@ -118,3 +118,27 @@ queries get career-area words added (`expand_career_query`), implied skills coun
 title is kept. Questions are now routed by intent first (`src/backend/intent.py`), so concept and study questions don't
 retrieve career records at all. Final strict P@5 on the frozen v2 career set: 0.73 (titles 0.88, skills 0.80,
 interests 0.68, career changes 0.56).
+
+## 11. Career-change and interest queries: structured rewrite (E38)
+"I studied mechanical engineering, but I want to move into data analytics" contains a background, a transition and a
+target. Embedding the whole sentence pulls *mechanical* records. `skill_rerank.rewrite_career_query` now extracts
+`{type, background, target, role}` and searches for the target as a role title ("Data Analyst (data analytics)"); the
+background is kept only as context for the answer. Transition and interest queries get a 2× candidate pool, and records
+whose title contains the target role get an exact-title bonus (+2.0) after the cross-encoder and skill re-ranker.
+Measured through the production `retrieve()` path (`python -m src.eval.career_eval_v3`):
+
+| Set | E37 (live before) | E38 | Transition queries |
+|---|---|---|---|
+| Development sets (seen): tuning 24 / E36 30 / v2 20 | 0.85 / 0.733 / 0.71 | 0.85 / 0.733 / 0.77 | v2: 0.56 → 0.76 |
+| **Fresh frozen set `heldout_careers_v3` (40, 10 per type)** | 0.825 | **0.895** | **0.72 → 1.0** |
+
+By type on the fresh set (E37 → E38): title 0.84 → 0.84, skill 0.80 → 0.80, interest 0.94 → 0.94 (one query 0.8 → 0.6,
+another 0.8 → 1.0), transition 0.72 → 1.0. The v3 set was committed (167fe13) before any E38 code and measured once.
+
+**Data quality instead of more weight tuning** (review 3 §4D, `python -m src.eval.career_label_review`): of 907 career
+records whose title clearly names a role family, **240 (26%) carry a domain label outside that family**, e.g. 64 "Data
+Analyst"-type titles labelled *Data Engineering*, 22 of 26 QA/testing titles outside Software, 82 of 168 software/web titles
+outside *Software and Web Development*. Most remaining zero-precision queries ("sports analyst", "manual testing → test
+automation", "Linux, Active Directory, troubleshooting") have relevant records with the wrong label. Nothing was changed;
+`reports/data_quality/career_label_review.csv` has a `decision` column for a reviewer, and accepted relabels belong in a
+new dataset version followed by a re-run on a new frozen set.

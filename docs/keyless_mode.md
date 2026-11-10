@@ -84,3 +84,9 @@ study questions retrieve guides only (no career records), profile questions only
 "30-day plan" requests show the validated roadmap generator's plan directly. 65-case regression: 0.877 before and
 after (same 8 failures: exact item counts and word limits, which a retrieval-only answer can't meet). Turn it off with
 `KEYLESS_INTENT_ROUTING=false`.
+
+## Conversation state in keyless mode (E38)
+The E38 conversation state is deterministic, so keyless answers also resolve "the second one" (the answer starts
+"About **Data Engineer** (item 2 of my last list)"), search with the resolved query, and build 30-day plans with the minutes
+and skills stated earlier in the chat. 65-case regression with `E38_PIPELINE=false` and `=true`: identical (0.877, the same 8
+failures: exact counts and word limits, which a retrieval-only answer can't meet). Turn it off with `E38_PIPELINE=false`.

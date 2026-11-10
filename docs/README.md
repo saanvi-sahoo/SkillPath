@@ -52,6 +52,14 @@ python -m src.eval.run_prompt_eval --router-only            # fast, router only
 python -m src.eval.run_prompt_eval --versions v3 v4 --router off --judge --judge-model gemini-3.5-flash
 python -m src.eval.heldout_offline                  # held-out: career P@5, 20 roadmaps, profile isolation (no LLM)
 LLM_PROVIDER=api CHAT_MODEL=gemini-3.5-flash python -m src.eval.heldout_eval --versions v6 v7 --expect-model gemini-3.6-flash --workers 3
+# E38 real-world reliability (docs/evaluation.md Part 3)
+python -m src.eval.career_eval_v3 --sets v3          # career search through the production path, E37 vs E38
+python -m src.eval.career_label_review               # dataset label review (nothing changed)
+LLM_PROVIDER=api CHAT_MODEL=gemini-3.1-flash-lite python -m src.eval.heldout_eval --set heldout_v3 --versions v7 v7+e38 v8+e38 \
+    --expect-model gemini-3.1-flash-lite --sleep 8      # 120 realistic cases ('+e38' = with the E38 pipeline)
+LLM_PROVIDER=api CHAT_MODEL=groq:openai/gpt-oss-120b python -m src.eval.journey_eval --versions v7 v7+e38 --expect-model openai/gpt-oss-120b
+python -m src.eval.claim_audit export reports/heldout/heldout_eval_<run>.json   # citation-checker audit sample
+python -m src.eval.progress                          # progress bars for running evaluations
 ```
 
 Reports are written to `reports/embeddings/` and `reports/prompt_eval/`, and every ingestion run is appended to `reports/embeddings/ingestion_log.jsonl`.

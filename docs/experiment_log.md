@@ -4,6 +4,18 @@ Add one entry for every change to models, prompts, thresholds, chunking or data.
 
 ---
 
+## 2026-11-10: E38 Review 3: real-world reliability (conversation state, career transitions, adaptive roadmap, failure handling)
+- **Frozen first** (commit 167fe13, before any E38 code): `heldout_v3` 120 realistic cases (47 multi-turn), `journeys_v1` 10 live journeys, `heldout_careers_v3` 40 queries; plus 17 genuine user questions (git-ignored).
+- **Conversation state** (`src/backend/conversation_state.py`): "the second one" → the career it names, minutes/day, stated/missing skills, corrections, changes of goal, conflicts; used in the contract, the search query and the roadmap generator. Switch `E38_PIPELINE`.
+- **Career transitions**: structured rewrite (background/target/role), 2× pool, exact-title bonus. Fresh set P@5 0.825 → 0.895; transition 0.72 → 1.0. Label review: 26% of clearly-titled records carry another domain (not changed).
+- **Adaptive roadmap** (`src/roadmap/adapt.py`): per-day status, revision days, missed days moved, deferral; task completion rate; UI panel; progress saved to the profile.
+- **Failure handling**: model-down notice, Atlas-down notice, scanned-PDF detection, salary/hiring caveats, cross-user records blocked + logged; deterministic "N of M skills" check.
+- **Citation audit** (64 claims): no false claims among "insufficient"; half are actually supported, half cite the wrong source; the only false claims were two skill miscounts (now caught); all 9 "invalid ID" labels were an evaluator artifact (sources saved truncated, fixed).
+- **Results** (docs/evaluation.md Part 3): keyless 0.375 → 0.425; local Mistral multi-turn 0.50 → 0.62; deployed gpt-oss-120b journeys 5/8 vs 4/8 (one word-limit miss); hosted Gemini 120 cases: see evaluation.md §23.
+- Measurement fixes for every arm: full sources saved, Unicode hyphens normalised + re-score, pid in result filenames, same-model rule for journeys, p95 latency.
+
+---
+
 ## 2026-11-09: E37 Review 2: intent routing, claim-level checks, prompt v8 candidate, retrieval audit
 - **Intent + source routing** (`src/backend/intent.py`): the review's structured intent (8 labels, secondary intents, counts, style, profile/retrieval needs, clarification, conflicts, follow-up references). Concepts/study never use career records; 30-day plans use the validated roadmap generator as evidence. Keyless mode uses the same routing: 65-case regression unchanged (0.877, same 8 failures).
 - **Claim-level citation check** (`src/backend/claim_check.py`, NLI `cross-encoder/nli-deberta-v3-xsmall`): supported / contradicted / insufficient / invalid ID. Review 2's example ("does not require Python [S1]") is caught as a contradiction. On 376 stored v5/v6 cited claims: 33.8% supported, 52.9% insufficient, 3.5% contradicted.

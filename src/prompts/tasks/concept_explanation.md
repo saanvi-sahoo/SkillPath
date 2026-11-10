@@ -4,3 +4,4 @@ Intent: explain a concept or skill. Evidence: well-established knowledge; a retr
 - If N examples per item are requested, give exactly N for each item.
 - Comparing two technologies: say how they differ and how they relate (e.g. Docker builds containers, Kubernetes orchestrates many of them); related does not mean interchangeable.
 - No career advice unless asked.
+- Types or categories (IaaS/PaaS/SaaS, kinds of ML, SQL join types): name at least one real, well-known example for each type (e.g. AWS EC2 for IaaS); a follow-up like "give examples" means concrete named examples, not abstract descriptions.

@@ -1,0 +1,1029 @@
+{
+  "heldout_v3_40": {
+    "n": 40,
+    "p@5": {
+      "E37": 0.825,
+      "E38": 0.895
+    },
+    "by_type": {
+      "interest": {
+        "n": 10,
+        "E37": 0.94,
+        "E38": 0.94
+      },
+      "skill": {
+        "n": 10,
+        "E37": 0.8,
+        "E38": 0.8
+      },
+      "title": {
+        "n": 10,
+        "E37": 0.84,
+        "E38": 0.84
+      },
+      "transition": {
+        "n": 10,
+        "E37": 0.72,
+        "E38": 1.0
+      }
+    },
+    "rows": [
+      {
+        "id": "cv3-01",
+        "query": "Machine Learning Engineer",
+        "type": "title",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Machine Learning Engineering Manager (Machine Learning and AI)",
+            "✓ Machine Learning Engineer & Researcher (Machine Learning and AI)",
+            "✓ Machine Learning Engineer (Machine Learning and AI)",
+            "✓ Machine Learning Sr. Software Engineer (Machine Learning and AI)",
+            "✓ Machine Learning Engineer / AD (Machine Learning and AI)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Machine Learning Engineering Manager (Machine Learning and AI)",
+            "✓ Machine Learning Engineer & Researcher (Machine Learning and AI)",
+            "✓ Machine Learning Engineer (Machine Learning and AI)",
+            "✓ Machine Learning Sr. Software Engineer (Machine Learning and AI)",
+            "✓ Machine Learning Engineer / AD (Machine Learning and AI)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-02",
+        "query": "Security Analyst",
+        "type": "title",
+        "E37": {
+          "p@5": 0.8,
+          "top5": [
+            "✓ Security Analyst (Cybersecurity and Networking)",
+            "✓ Mainframe Security Analyst (Cybersecurity and Networking)",
+            "✓ Information Security Analyst (Cybersecurity and Networking)",
+            "✓ Game Security Analyst (Cybersecurity and Networking)"
+          ]
+        },
+        "E38": {
+          "p@5": 0.8,
+          "top5": [
+            "✓ Security Analyst (Cybersecurity and Networking)",
+            "✓ Mainframe Security Analyst (Cybersecurity and Networking)",
+            "✓ Information Security Analyst (Cybersecurity and Networking)",
+            "✓ Game Security Analyst (Cybersecurity and Networking)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-03",
+        "query": "DevOps Engineer",
+        "type": "title",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Software Engineer (Cloud and DevOps)",
+            "✓ Cloud DevOps Engineer (Cloud and DevOps)",
+            "✓ Cloud Services Engineer (DevOps) (Cloud and DevOps)",
+            "✓ Software Developer Engineer (Cloud and DevOps)",
+            "✓ Full Stack Engineer (Cloud and DevOps)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Software Engineer (Cloud and DevOps)",
+            "✓ Cloud DevOps Engineer (Cloud and DevOps)",
+            "✓ Cloud Services Engineer (DevOps) (Cloud and DevOps)",
+            "✓ Software Developer Engineer (Cloud and DevOps)",
+            "✓ Full Stack Engineer (Cloud and DevOps)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-04",
+        "query": "Data Analyst",
+        "type": "title",
+        "E37": {
+          "p@5": 0.8,
+          "top5": [
+            "✓ Analyst, Data (Data Analysis and BI)",
+            "✓ Data Analyst (Data Analysis and BI)",
+            "✓ Business Data Analyst (Data Analysis and BI)",
+            "✓ Provider Network Data Analyst (Data Analysis and BI)"
+          ]
+        },
+        "E38": {
+          "p@5": 0.8,
+          "top5": [
+            "✓ Analyst, Data (Data Analysis and BI)",
+            "✓ Data Analyst (Data Analysis and BI)",
+            "✓ Business Data Analyst (Data Analysis and BI)",
+            "✓ Provider Network Data Analyst (Data Analysis and BI)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-05",
+        "query": "Frontend Developer",
+        "type": "title",
+        "E37": {
+          "p@5": 0.8,
+          "top5": [
+            "✓ Frontend Developer (Software and Web Development)",
+            "✓ Web Developer (Software and Web Development)",
+            "✓ Front End Developer (Software and Web Development)",
+            "✗ Software Engineer (Software and Web Development)",
+            "✓ Front end Developer iOS (Software and Web Development)"
+          ]
+        },
+        "E38": {
+          "p@5": 0.8,
+          "top5": [
+            "✓ Frontend Developer (Software and Web Development)",
+            "✓ Web Developer (Software and Web Development)",
+            "✓ Front End Developer (Software and Web Development)",
+            "✗ Software Engineer (Software and Web Development)",
+            "✓ Front end Developer iOS (Software and Web Development)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-06",
+        "query": "Database Administrator",
+        "type": "title",
+        "E37": {
+          "p@5": 0.8,
+          "top5": [
+            "✓ Associate Professional Database Administrator (Project and Business Management)",
+            "✗ Database Administrator (DBA) (IT Support and Systems)",
+            "✓ Database Administrator (Project and Business Management)",
+            "✓ Database Administrator - SQL (Project and Business Management)",
+            "✓ SQL Database Administrator (Technology and Business Operations)"
+          ]
+        },
+        "E38": {
+          "p@5": 0.8,
+          "top5": [
+            "✓ Associate Professional Database Administrator (Project and Business Management)",
+            "✗ Database Administrator (DBA) (IT Support and Systems)",
+            "✓ Database Administrator (Project and Business Management)",
+            "✓ Database Administrator - SQL (Project and Business Management)",
+            "✓ SQL Database Administrator (Technology and Business Operations)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-07",
+        "query": "Scrum Master",
+        "type": "title",
+        "E37": {
+          "p@5": 0.2,
+          "top5": [
+            "✓ Scrum Master (Los Angeles) (Project and Business Management)",
+            "✗ Analyst, Information Management (Software and Web Development)",
+            "✗ Product Manager, Data & Analytics (Data Analysis and BI)",
+            "✗ Junior Software Developer (Software and Web Development)",
+            "✗ Full Stack Software Developer 4 (Software and Web Development)"
+          ]
+        },
+        "E38": {
+          "p@5": 0.2,
+          "top5": [
+            "✓ Scrum Master (Los Angeles) (Project and Business Management)",
+            "✗ Analyst, Information Management (Software and Web Development)",
+            "✗ Product Manager, Data & Analytics (Data Analysis and BI)",
+            "✗ Junior Software Developer (Software and Web Development)",
+            "✗ Full Stack Software Developer 4 (Software and Web Development)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-08",
+        "query": "Network Engineer",
+        "type": "title",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Network Engineer (Cybersecurity and Networking)",
+            "✓ Network Engineer Intern (Cybersecurity and Networking)",
+            "✓ Senior Network Engineer/Architect (Cybersecurity and Networking)",
+            "✓ Business & Industrial Network Engineer (Cybersecurity and Networking)",
+            "✓ Cisco Network Engineer (Cybersecurity and Networking)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Network Engineer (Cybersecurity and Networking)",
+            "✓ Network Engineer Intern (Cybersecurity and Networking)",
+            "✓ Senior Network Engineer/Architect (Cybersecurity and Networking)",
+            "✓ Business & Industrial Network Engineer (Cybersecurity and Networking)",
+            "✓ Cisco Network Engineer (Cybersecurity and Networking)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-09",
+        "query": "Business Analyst",
+        "type": "title",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Business Analyst (Data Analysis and BI)",
+            "✓ Business Analyst JN -082018-41393 (Data Analysis and BI)",
+            "✓ Business Analyst 1 - BA (Data Analysis and BI)",
+            "✓ Sr. Business Analyst 14882 (Data Analysis and BI)",
+            "✓ Corporate Strategy Business Analyst (Data Analysis and BI)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Business Analyst (Data Analysis and BI)",
+            "✓ Business Analyst JN -082018-41393 (Data Analysis and BI)",
+            "✓ Business Analyst 1 - BA (Data Analysis and BI)",
+            "✓ Sr. Business Analyst 14882 (Data Analysis and BI)",
+            "✓ Corporate Strategy Business Analyst (Data Analysis and BI)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-10",
+        "query": "Financial Analyst",
+        "type": "title",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Financial Analyst (Project and Business Management)",
+            "✓ Financial Analyst (FP &A) (Data Analysis and BI)",
+            "✓ Financial Analyst I (Investment Operatio... (Finance and Risk)",
+            "✓ Financial Business Information Analyst (Data Analysis and BI)",
+            "✓ Business Intelligence Financial Analyst, Sr. (Data Analysis and BI)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Financial Analyst (Project and Business Management)",
+            "✓ Financial Analyst (FP &A) (Data Analysis and BI)",
+            "✓ Financial Analyst I (Investment Operatio... (Finance and Risk)",
+            "✓ Financial Business Information Analyst (Data Analysis and BI)",
+            "✓ Business Intelligence Financial Analyst, Sr. (Data Analysis and BI)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-11",
+        "query": "Python, Pandas, scikit-learn, statistics",
+        "type": "skill",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Python Engineer for Data Analytics (Machine Learning and AI)",
+            "✓ Data Engineer - Conshohocken, PA (Data Science and Research)",
+            "✓ Deep Learning Data Scientist (Machine Learning and AI)",
+            "✓ Data Scientist - Analytics Engineering (Machine Learning and AI)",
+            "✓ Data Science Generalist (Machine Learning and AI)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Python Engineer for Data Analytics (Machine Learning and AI)",
+            "✓ Data Engineer - Conshohocken, PA (Data Science and Research)",
+            "✓ Deep Learning Data Scientist (Machine Learning and AI)",
+            "✓ Data Scientist - Analytics Engineering (Machine Learning and AI)",
+            "✓ Data Science Generalist (Machine Learning and AI)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-12",
+        "query": "Terraform, AWS, Kubernetes",
+        "type": "skill",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ AWS Cloud Infrastructure Architect (Cloud and DevOps)",
+            "✓ Solutions Architect, DevOps, Google Cloud (Cloud and DevOps)",
+            "✓ Software Architect (Cloud and DevOps)",
+            "✓ HBO Cloud Architect (Cloud and DevOps)",
+            "✓ Cloud Engineer (Cloud and DevOps)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ AWS Cloud Infrastructure Architect (Cloud and DevOps)",
+            "✓ Solutions Architect, DevOps, Google Cloud (Cloud and DevOps)",
+            "✓ Software Architect (Cloud and DevOps)",
+            "✓ HBO Cloud Architect (Cloud and DevOps)",
+            "✓ Cloud Engineer (Cloud and DevOps)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-13",
+        "query": "Java, Spring Boot, microservices",
+        "type": "skill",
+        "E37": {
+          "p@5": 0.8,
+          "top5": [
+            "✓ Microservices Developer (Cloud and DevOps)",
+            "✓ Full stack developer (Software and Web Development)",
+            "✓ Developer Application Services (Software and Web Development)",
+            "✓ Sr. Web/Java Full Stack Developer (Software and Web Development)",
+            "✗ VP, Applications Development (Machine Learning and AI)"
+          ]
+        },
+        "E38": {
+          "p@5": 0.8,
+          "top5": [
+            "✓ Microservices Developer (Cloud and DevOps)",
+            "✓ Full stack developer (Software and Web Development)",
+            "✓ Developer Application Services (Software and Web Development)",
+            "✓ Sr. Web/Java Full Stack Developer (Software and Web Development)",
+            "✗ VP, Applications Development (Machine Learning and AI)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-14",
+        "query": "Spark, Kafka, Airflow",
+        "type": "skill",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Software Engineer - Big Data/Spark/Kafka (Data Engineering)",
+            "✓ Sr. Staff Architect(Events & Streaming) (Data Engineering)",
+            "✓ Big Data Software Engineer (Data Engineering)",
+            "✓ Data Warehouse Architect (Data Engineering)",
+            "✓ Data Engineer (Data Engineering)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Software Engineer - Big Data/Spark/Kafka (Data Engineering)",
+            "✓ Sr. Staff Architect(Events & Streaming) (Data Engineering)",
+            "✓ Big Data Software Engineer (Data Engineering)",
+            "✓ Data Warehouse Architect (Data Engineering)",
+            "✓ Data Engineer (Data Engineering)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-15",
+        "query": "SIEM, incident response, firewalls",
+        "type": "skill",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Security Analyst (Cybersecurity and Networking)",
+            "✓ SOC Analyst / Security Operations Administrator (Cybersecurity and Networking)",
+            "✓ Information Security Analyst (Cybersecurity and Networking)",
+            "✓ CSOC Cyber Security Analyst (Cybersecurity and Networking)",
+            "✓ Cyber Security Analyst (Cybersecurity and Networking)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Security Analyst (Cybersecurity and Networking)",
+            "✓ SOC Analyst / Security Operations Administrator (Cybersecurity and Networking)",
+            "✓ Information Security Analyst (Cybersecurity and Networking)",
+            "✓ CSOC Cyber Security Analyst (Cybersecurity and Networking)",
+            "✓ Cyber Security Analyst (Cybersecurity and Networking)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-16",
+        "query": "Selenium, Java, test automation",
+        "type": "skill",
+        "E37": {
+          "p@5": 0.6,
+          "top5": [
+            "✗ ATSV-Product Test Architect (Cloud and DevOps)",
+            "✓ Quality Assurance Analyst (Project and Business Management)",
+            "✓ Expert Software Engineer in Test (Software and Web Development)",
+            "✓ Quality Assurance Manager (Data Engineering)",
+            "✗ Developer - Entry Level (Cloud and DevOps)"
+          ]
+        },
+        "E38": {
+          "p@5": 0.6,
+          "top5": [
+            "✗ ATSV-Product Test Architect (Cloud and DevOps)",
+            "✓ Quality Assurance Analyst (Project and Business Management)",
+            "✓ Expert Software Engineer in Test (Software and Web Development)",
+            "✓ Quality Assurance Manager (Data Engineering)",
+            "✗ Developer - Entry Level (Cloud and DevOps)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-17",
+        "query": "Excel, Power BI, DAX, SQL",
+        "type": "skill",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Senior Data Analyst - People & Performance (Data Analysis and BI)",
+            "✓ Associate, Analytics (Data Analysis and BI)",
+            "✓ Data & Applied Scientist-Analysis & Insights (Data Analysis and BI)",
+            "✓ Financial Business Analyst (PowerApps) (Data Analysis and BI)",
+            "✓ Business Systems Analyst (Data Analysis and BI)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Senior Data Analyst - People & Performance (Data Analysis and BI)",
+            "✓ Associate, Analytics (Data Analysis and BI)",
+            "✓ Data & Applied Scientist-Analysis & Insights (Data Analysis and BI)",
+            "✓ Financial Business Analyst (PowerApps) (Data Analysis and BI)",
+            "✓ Business Systems Analyst (Data Analysis and BI)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-18",
+        "query": "React, Node.js, MongoDB",
+        "type": "skill",
+        "E37": {
+          "p@5": 0.6,
+          "top5": [
+            "✗ Development Engineer, Full stack Node JS/React JS (Cloud and DevOps)",
+            "✓ Full Stack JavaScript developer (React, Node) (Software and Web Development)",
+            "✓ Full-Stack Engineer (Software and Web Development)",
+            "✓ Full Stack Software Engineer (Software and Web Development)",
+            "✗ Full Stack Web/Mobile Developer (Cloud and DevOps)"
+          ]
+        },
+        "E38": {
+          "p@5": 0.6,
+          "top5": [
+            "✗ Development Engineer, Full stack Node JS/React JS (Cloud and DevOps)",
+            "✓ Full Stack JavaScript developer (React, Node) (Software and Web Development)",
+            "✓ Full-Stack Engineer (Software and Web Development)",
+            "✓ Full Stack Software Engineer (Software and Web Development)",
+            "✗ Full Stack Web/Mobile Developer (Cloud and DevOps)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-19",
+        "query": "Linux, Active Directory, troubleshooting",
+        "type": "skill",
+        "E37": {
+          "p@5": 0.0,
+          "top5": [
+            "✗ Systems Administrator (Linux & Windows) (Cybersecurity and Networking)",
+            "✗ System Administrator - Temporary (Cybersecurity and Networking)",
+            "✗ Systems Administrator Staff (Cybersecurity and Networking)",
+            "✗ Operations Systems Administrator (Cybersecurity and Networking)",
+            "✗ Windows / VMWare Systems Administrator (Cybersecurity and Networking)"
+          ]
+        },
+        "E38": {
+          "p@5": 0.0,
+          "top5": [
+            "✗ Systems Administrator (Linux & Windows) (Cybersecurity and Networking)",
+            "✗ System Administrator - Temporary (Cybersecurity and Networking)",
+            "✗ Systems Administrator Staff (Cybersecurity and Networking)",
+            "✗ Operations Systems Administrator (Cybersecurity and Networking)",
+            "✗ Windows / VMWare Systems Administrator (Cybersecurity and Networking)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-20",
+        "query": "SEO, Google Analytics, content marketing",
+        "type": "skill",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Content Marketing Operations Manager (Data Analysis and BI)",
+            "✓ Manager Marketing Analytics (Data Analysis and BI)",
+            "✓ Digital Media Analyst (Data Analysis and BI)",
+            "✓ Analytics Manager (Data Analysis and BI)",
+            "✓ Analyst, MRM//McCann (Data Analysis and BI)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Content Marketing Operations Manager (Data Analysis and BI)",
+            "✓ Manager Marketing Analytics (Data Analysis and BI)",
+            "✓ Digital Media Analyst (Data Analysis and BI)",
+            "✓ Analytics Manager (Data Analysis and BI)",
+            "✓ Analyst, MRM//McCann (Data Analysis and BI)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-21",
+        "query": "I love explaining tech to people and solving customer problems",
+        "type": "interest",
+        "E37": {
+          "p@5": 0.8,
+          "top5": [
+            "✓ Technical Specialist I (IT Support and Systems)",
+            "✓ Product Advisor - The Domain (Marketing, Sales and Customer Operations)",
+            "✓ Customer Success Specialist / Educational Consultant (Project and Business Management)",
+            "✗ Technology Consultant (Project and Business Management)",
+            "✓ Customer Service Specialist (Technology and Business Operations)"
+          ]
+        },
+        "E38": {
+          "p@5": 0.6,
+          "top5": [
+            "✓ Customer Success Specialist / Educational Consultant (Project and Business Management)",
+            "✗ Technology Consultant (Project and Business Management)",
+            "✓ Customer Success Specialist (Marketing, Sales and Customer Operations)",
+            "✗ Customer Solution Specialist (Machine Learning) (Machine Learning and AI)",
+            "✓ Retail Sales Consultant (Project and Business Management)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-22",
+        "query": "I enjoy finding patterns in numbers and telling stories with charts",
+        "type": "interest",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Quantitative Business Analyst, Trust and Safety, YouTube (Data Analysis and BI)",
+            "✓ Statistician I (Data Science and Research)",
+            "✓ Data Scientist, Analytics (Data Science and Research)",
+            "✓ Data Science Engineer (Data Science and Research)",
+            "✓ Data Analyst II (Data Analysis and BI)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Data Scientist, Analytics (Data Science and Research)",
+            "✓ Data Analyst II (Data Analysis and BI)",
+            "✓ Data & Applied Scientist-Analysis & Insights (Data Analysis and BI)",
+            "✓ Data Scientist, Advanced Analytics (Data Science and Research)",
+            "✓ Data and Research Analyst (Data Science and Research)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-23",
+        "query": "I like protecting systems from hackers",
+        "type": "interest",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Principle Information Security Analyst (Cybersecurity and Networking)",
+            "✓ Information Security Analyst I (Cybersecurity and Networking)",
+            "✓ IT Security Analyst (Cybersecurity and Networking)",
+            "✓ Security Analyst (Cybersecurity and Networking)",
+            "✓ Cyber Security Analyst (Cybersecurity and Networking)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Information Security Analyst I (Cybersecurity and Networking)",
+            "✓ Cyber Security Analyst (Cybersecurity and Networking)",
+            "✓ Cyber Security Analyst Job (Cybersecurity and Networking)",
+            "✓ Cyber Information Systems Security Analyst 2 (Cybersecurity and Networking)",
+            "✓ Cyber Security Analyst - Compliance (Cybersecurity and Networking)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-24",
+        "query": "I enjoy organising teams and keeping projects on schedule",
+        "type": "interest",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Scrum Master (Los Angeles) (Project and Business Management)",
+            "✓ Project Management Coordinator, Brand Operations (Project and Business Management)",
+            "✓ Program Manager I (Project and Business Management)",
+            "✓ Project Coordinator (Project and Business Management)",
+            "✓ Program Planner (Planning and Integration) (Project and Business Management)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Scrum Master (Los Angeles) (Project and Business Management)",
+            "✓ Project Management Coordinator, Brand Operations (Project and Business Management)",
+            "✓ Project Coordinator (Project and Business Management)",
+            "✓ Program Planner (Planning and Integration) (Project and Business Management)",
+            "✓ Exhibit Project Coordinator (Project and Business Management)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-25",
+        "query": "I like building websites that people use every day",
+        "type": "interest",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Web Developer - Marketing (Software and Web Development)",
+            "✓ Web Developer (Software and Web Development)",
+            "✓ Full Stack Software Engineer (Software and Web Development)",
+            "✓ Software Engineer, Product (Full Stack) (Software and Web Development)",
+            "✓ Full Stack Engineer (Software and Web Development)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Web Developer (Software and Web Development)",
+            "✓ Software Engineer, Product (Full Stack) (Software and Web Development)",
+            "✓ Full Stack Engineer (Software and Web Development)",
+            "✓ Full Stack Software Engineer (Software and Web Development)",
+            "✓ Software Developer (Software and Web Development)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-26",
+        "query": "I like automating boring infrastructure work and servers",
+        "type": "interest",
+        "E37": {
+          "p@5": 0.8,
+          "top5": [
+            "✓ Developer Programs Engineer, Cloud Platform (Cloud and DevOps)",
+            "✓ Software Developer - Tracer (Cloud and DevOps)",
+            "✗ Sr. Full Stack Developer (Cloud and DevOps)",
+            "✓ Infrastructure Developer- SRE (Cloud and DevOps)",
+            "✓ Cloud Engineer (Cloud and DevOps)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Developer Programs Engineer, Cloud Platform (Cloud and DevOps)",
+            "✓ Software Developer - Tracer (Cloud and DevOps)",
+            "✓ Infrastructure Developer- SRE (Cloud and DevOps)",
+            "✓ Cloud Engineer (Cloud and DevOps)",
+            "✓ Data Center Operations Engineer (Cloud and DevOps)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-27",
+        "query": "I am fascinated by how AI chatbots and language models work",
+        "type": "interest",
+        "E37": {
+          "p@5": 0.8,
+          "top5": [
+            "✓ Product Manager, Voice Experiences (Machine Learning and AI)",
+            "✗ Program Officer, Postsecondary (Machine Learning and AI)",
+            "✓ Fall AI Lab Internship (Machine Learning and AI)",
+            "✓ Applied Scientist - Alexa Deep Learning (Machine Learning and AI)",
+            "✓ Research Scientist, Audio (Machine Learning and AI)"
+          ]
+        },
+        "E38": {
+          "p@5": 0.8,
+          "top5": [
+            "✓ Product Manager, Voice Experiences (Machine Learning and AI)",
+            "✗ Program Officer, Postsecondary (Machine Learning and AI)",
+            "✓ Fall AI Lab Internship (Machine Learning and AI)",
+            "✓ Applied Scientist - Alexa Deep Learning (Machine Learning and AI)",
+            "✓ Research Scientist, Audio (Machine Learning and AI)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-28",
+        "query": "I like money, markets and financial risk",
+        "type": "interest",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Risk Analyst, Investigations (Finance and Risk)",
+            "✓ Financial Analyst I (Investment Operatio... (Finance and Risk)",
+            "✓ Rating & Underwriting Analyst I (Finance and Risk)",
+            "✓ Trade & Business Development Financial Analyst (Finance and Risk)",
+            "✓ Risk Analyst - Social Media (Finance and Risk)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Risk Analyst, Investigations (Finance and Risk)",
+            "✓ Financial Analyst I (Investment Operatio... (Finance and Risk)",
+            "✓ Rating & Underwriting Analyst I (Finance and Risk)",
+            "✓ Trade & Business Development Financial Analyst (Finance and Risk)",
+            "✓ Risk Analyst - Social Media (Finance and Risk)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-29",
+        "query": "I enjoy building data pipelines that move data between systems",
+        "type": "interest",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Software and Data Pipeline Architect (Data Engineering)",
+            "✓ Data Engineer (Data Engineering)",
+            "✓ Data Analyst, Stitcher (Data Engineering)",
+            "✓ Data Warehouse/Business Intelligence (Data Engineering)",
+            "✓ Data Architect (Data Engineering)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Software and Data Pipeline Architect (Data Engineering)",
+            "✓ Data Engineer (Data Engineering)",
+            "✓ Data Analyst, Stitcher (Data Engineering)",
+            "✓ Data Warehouse/Business Intelligence (Data Engineering)",
+            "✓ Data Architect (Data Engineering)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-30",
+        "query": "I like fixing computers and helping colleagues with IT problems",
+        "type": "interest",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ IT Desktop/Help Desk Support - Technical Craft Specialist A (IT Support and Systems)",
+            "✓ Deskside Support Technician Job (IT Support and Systems)",
+            "✓ IT Support Administrator (IT Support and Systems)",
+            "✓ IT Technical Support Consultant - Sunnyvale, CA (IT Support and Systems)",
+            "✓ Remote Help Desk Tech (IT Support and Systems)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ IT Desktop/Help Desk Support - Technical Craft Specialist A (IT Support and Systems)",
+            "✓ Deskside Support Technician Job (IT Support and Systems)",
+            "✓ IT Support Administrator (IT Support and Systems)",
+            "✓ IT Technical Support Consultant - Sunnyvale, CA (IT Support and Systems)",
+            "✓ Remote Help Desk Tech (IT Support and Systems)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-31",
+        "query": "I studied mechanical engineering, but I want to move into data analytics.",
+        "type": "transition",
+        "E37": {
+          "p@5": 0.0,
+          "top5": [
+            "✗ Data Engineer, Analytics (Data Engineering)",
+            "✗ Data Analytics & Reporting Manager (Data Engineering)",
+            "✗ Manager, Data and Analytics (Data Engineering)",
+            "✗ Analytics Engineer (Data Engineering)",
+            "✗ Manager of Data Analytics (Data Engineering)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Data Analytics Analyst (Data Analysis and BI)",
+            "✓ Data Analyst (Data Analysis and BI)",
+            "✓ Customer Data Analyst (Data Analysis and BI)",
+            "✓ Analyst, Data (Data Analysis and BI)",
+            "✓ Data Analyst, Intermediate (Data Analysis and BI)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-32",
+        "query": "I'm an accountant who wants to switch into financial data analysis",
+        "type": "transition",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Junior Financial Data Analyst (Data Analysis and BI)",
+            "✓ Financial Business Information Analyst (Data Analysis and BI)",
+            "✓ Financial Analyst (FP &A) (Data Analysis and BI)",
+            "✓ Manager, Finance - Financial Planning & Analysis (Data Analysis and BI)",
+            "✓ Business Data Analyst (Data Analysis and BI)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Junior Financial Data Analyst (Data Analysis and BI)",
+            "✓ Financial Business Information Analyst (Data Analysis and BI)",
+            "✓ DATA ANALYST (Data Analysis and BI)",
+            "✓ Financial Analyst (FP &A) (Data Analysis and BI)",
+            "✓ Risk Data Analyst (Data Analysis and BI)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-33",
+        "query": "From manual software testing to cloud DevOps",
+        "type": "transition",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Software Program Manager, Cloud Services (Cloud and DevOps)",
+            "✓ Software Engineer - Full Stack (Cloud and DevOps)",
+            "✓ Cloud Engineer (Cloud and DevOps)",
+            "✓ Software Developer (Cloud and DevOps)",
+            "✓ IT Director, Cloud and DevOps (Cloud and DevOps)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Solutions Architect, DevOps, Google Cloud (Cloud and DevOps)",
+            "✓ Developer, Cloud Architecture/Dev Ops (Cloud and DevOps)",
+            "✓ IT Director, Cloud and DevOps (Cloud and DevOps)",
+            "✓ Cloud Services Engineer (DevOps) (Cloud and DevOps)",
+            "✓ Cloud DevOps Engineer (Cloud and DevOps)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-34",
+        "query": "Civil engineer moving into software development",
+        "type": "transition",
+        "E37": {
+          "p@5": 0.8,
+          "top5": [
+            "✓ Software Engineer - Data Movement (Software and Web Development)",
+            "✓ Sr. Software Engineer - Advanced Tech (Software and Web Development)",
+            "✗ Software Developer Engineer (Cloud and DevOps)",
+            "✓ Software Development Engineer I (Software and Web Development)",
+            "✓ Contractor - Software Developer (Software and Web Development)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Software Developer (All Levels) Dallas, TX Area (Software and Web Development)",
+            "✓ Contractor - Software Developer (Software and Web Development)",
+            "✓ Sr Software Developer-Java (Software and Web Development)",
+            "✓ Software Developer (Software and Web Development)",
+            "✓ Full Stack Developer / Software Developer - Insurance Tech Company (Software and Web Development)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-35",
+        "query": "I work in customer support and want to transition to cybersecurity",
+        "type": "transition",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Cyber Security Analyst - Compliance (Cybersecurity and Networking)",
+            "✓ Cyber Security Analyst (Cybersecurity and Networking)",
+            "✓ Cyber Security Analyst Job (Cybersecurity and Networking)",
+            "✓ Director (Cybersecurity and Networking)",
+            "✓ CSOC Cyber Security Analyst (Cybersecurity and Networking)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Security Analyst (Cybersecurity and Networking)",
+            "✓ Cyber Security Analyst (Cybersecurity and Networking)",
+            "✓ INFORMATION SECURITY ANALYST (Cybersecurity and Networking)",
+            "✓ IT Security Analyst (Cybersecurity and Networking)",
+            "✓ Cyber Security Analyst Job (Cybersecurity and Networking)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-36",
+        "query": "Moving from IT help desk support into network engineering",
+        "type": "transition",
+        "E37": {
+          "p@5": 0.0,
+          "top5": [
+            "✗ IT Desktop/Help Desk Support - Technical Craft Specialist A (IT Support and Systems)",
+            "✗ IT Support Administrator (IT Support and Systems)",
+            "✗ Deskside Support Technician Job (IT Support and Systems)",
+            "✗ IT Technical Support Consultant - Sunnyvale, CA (IT Support and Systems)",
+            "✗ Remote Help Desk Tech (IT Support and Systems)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Network Engineer Intern (Cybersecurity and Networking)",
+            "✓ Network Engineer (Cybersecurity and Networking)",
+            "✓ Senior Network Engineer/Architect (Cybersecurity and Networking)",
+            "✓ Network Engineer II - Data Center Engineering (Cybersecurity and Networking)",
+            "✓ Cisco Network Engineer (Cybersecurity and Networking)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-37",
+        "query": "I'm a data analyst who wants to become a machine learning engineer",
+        "type": "transition",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Data science engineer (Machine Learning and AI)",
+            "✓ Data Scientist, Engineering (Machine Learning and AI)",
+            "✓ Machine Learning Engineer (Machine Learning and AI)",
+            "✓ Data Scientist and Engineer, Early Career (Machine Learning and AI)",
+            "✓ Machine Learning Engineer, Personalization (Machine Learning and AI)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Machine Learning Engineer (Machine Learning and AI)",
+            "✓ Machine Learning Engineer & Researcher (Machine Learning and AI)",
+            "✓ Machine Learning Sr. Software Engineer (Machine Learning and AI)",
+            "✓ Machine Learning Engineer, Personalization (Machine Learning and AI)",
+            "✓ Machine Learning Engineer / AD (Machine Learning and AI)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-38",
+        "query": "Moving from network administration into cloud engineering",
+        "type": "transition",
+        "E37": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Cloud Engineering Architect (Cloud and DevOps)",
+            "✓ Network Engineer (Cloud and DevOps)",
+            "✓ Network Engineer (Intern) - United States (Cloud and DevOps)",
+            "✓ Senior Network Architect (Cloud and DevOps)",
+            "✓ Director of Systems Engineering (Cloud and DevOps)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Cloud Engineer (Cloud and DevOps)",
+            "✓ Cloud Engineering Architect (Cloud and DevOps)",
+            "✓ Cloud DevOps Engineer (Cloud and DevOps)",
+            "✓ AWS Cloud Engineer (Cloud and DevOps)",
+            "✓ Cloud Services Engineer (DevOps) (Cloud and DevOps)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-39",
+        "query": "I'm a sales executive wanting to switch into business analysis",
+        "type": "transition",
+        "E37": {
+          "p@5": 0.6,
+          "top5": [
+            "✓ Business Analyst (Data Analysis and BI)",
+            "✗ Sales Solution Specialist, Workplace Analytics (Data Analysis and BI)",
+            "✓ Sales Business Analyst (Data Analysis and BI)",
+            "✓ Customer Service Business Analyst II (Data Analysis and BI)",
+            "✗ Sales Operations Analyst - Marketing Science (Data Analysis and BI)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Business Analyst (Data Analysis and BI)",
+            "✓ Business Analyst JN -082018-41393 (Data Analysis and BI)",
+            "✓ Business Analyst 1 - BA (Data Analysis and BI)",
+            "✓ BUSINESS ANALYST - METRICS & REPORTING (Data Analysis and BI)",
+            "✓ Business Analyst (M) (Data Analysis and BI)"
+          ]
+        }
+      },
+      {
+        "id": "cv3-40",
+        "query": "Java backend developer transitioning to data engineering",
+        "type": "transition",
+        "E37": {
+          "p@5": 0.8,
+          "top5": [
+            "✓ Java Data Engineer (Data Engineering)",
+            "✓ Data Engineer - SQL / Big Data / Java (Data Engineering)",
+            "✓ Software Engineer- Java/Big Data (Data Engineering)",
+            "✓ Junior Full Stack Developer (Data Engineering)",
+            "✗ Engineer II- Big Data (Data Engineering)"
+          ]
+        },
+        "E38": {
+          "p@5": 1.0,
+          "top5": [
+            "✓ Data Engineer - University Students (Data Engineering)",
+            "✓ Data Engineer(s) (Data Engineering)",
+            "✓ Data Engineer (Data Engineering)",
+            "✓ Data Engineer, Infrastructure Strategy (Data Engineering)",
+            "✓ Data Engineer - SQL / Big Data / Java (Data Engineering)"
+          ]
+        }
+      }
+    ]
+  }
+}

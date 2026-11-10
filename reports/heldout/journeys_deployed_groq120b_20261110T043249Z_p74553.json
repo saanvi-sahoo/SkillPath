@@ -1,0 +1,1268 @@
+{
+  "ts": "20261110T043249Z",
+  "versions": [
+    "v7",
+    "v7+e38"
+  ],
+  "rows": [
+    {
+      "id": "j01",
+      "goal": "review example: background -> pick 2nd option -> gaps -> 30-day plan at 1 h/day -> adapt",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I have completed B.Tech CSE. I know Python and SQL, but I don't know what career to choose.",
+          "answer": "Based on your B.Tech CSE degree and your Python and SQL skills, here are a few career paths you could consider:\n\n- **Python Developer – Data Analysis** [S1]: uses Python and SQL to build and maintain data‑focused applications and web services.  \n- **Python Integration Engineer** [S3]: focuses on creating data pipelines and integrations, requiring strong Python and SQL plus basic ETL/ORM knowledge.  \n- **Data Engineer** [S5]: designs and maintains data platforms, with Python and SQL as core technical foundations.  \n- **Data Analyst** [S7]: applies Python and SQL for data manipulation, analysis, and visualization to support business decisions.\n\n---\n**Sources**\n- [S1] careers: Python Developer - Data Analysis\n- [S3] careers: Python Integration Engineer\n- [S5] careers: Data Engineer\n- [S7] careers: Data Analyst",
+          "passed": false,
+          "failed": [
+            "min_numbered"
+          ],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 6706.6,
+          "state": null,
+          "tokens": 3674
+        },
+        {
+          "turn": 2,
+          "q": "I prefer the second one. What skills am I missing?",
+          "answer": "Could you upload your resume and the specific Python Integration Engineer job description, or let me know which areas you’re unsure about (e.g., API design, cloud services, CI/CD pipelines)?",
+          "passed": true,
+          "failed": [],
+          "item_expected": [
+            "Python Integration Engineer"
+          ],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3670.6,
+          "state": null,
+          "tokens": 2247
+        },
+        {
+          "turn": 3,
+          "q": "No, I don't know Spark or Airflow yet. Make me a 30-day plan. I can study one hour daily.",
+          "answer": "Here is a 30‑day, 1‑hour‑per‑day plan to get you up to speed on Apache Spark and Apache Airflow for a Python Integration Engineer role.\n\n| Day Range | Focus | Daily Tasks (≈1 h) | Checkable Outcome |\n|-----------|-------|--------------------|-------------------|\n| **Days 1‑5** | Spark fundamentals | • Watch a 10‑min intro video (Databricks/YouTube) <br>• Read Spark “Getting Started” (Python API) <br>• Install Spark locally (via pip and Docker) <br>• Run the “WordCount” example on a small CSV | Spark installed; you can launch `spark-submit` and see the word‑count output. |\n| **Days 6‑10** | Core Spark APIs | • Follow the “DataFrames & SQL” tutorial <br>• Practice reading, filtering, aggregating a sample dataset (e.g., NYC taxi data) <br>• Write a simple ETL script that reads a CSV, transforms columns, and writes Parquet | A Python script (`etl_spark.py`) that reads a CSV, performs at least three transformations, and writes Parquet files without errors. |\n| **Days 11‑15** | Spark performance basics | • Learn about partitions, caching, and `spark.sql.shuffle.partitions` <br>• Experiment with `persist()` vs. `cache()` on a 1‑M‑row dataset <br>• Record execution time before/after caching | A short report (markdown) showing execution time improvements and a note on optimal partition count for your machine. |\n| **Days 16‑20** | Airflow basics | • Install Airflow locally (Docker‑Compose) <br>• Complete the official “Getting Started” DAG tutorial <br>• Create a DAG that runs the Spark ETL script from Day 10 daily | A functional DAG (`spark_etl_dag.py`) that appears in the Airflow UI and runs successfully on schedule. |\n| **Days 21‑23** | Airflow operators & connections | • Study `PythonOperator`, `BashOperator`, and `SparkSubmitOperator` <br>• Set up a connection to your local Spark cluster in Airflow <br>• Replace the Bash call with `SparkSubmitOperator` in the DAG | DAG runs using `SparkSubmitOperator` and logs show Spark job execution. |\n| **Days 24‑26** | Scheduling & monitoring | • Add retries, email alerts (use a dummy SMTP), and SLA checks <br>• Enable the Airflow UI’s “Graph” and “Tree” views to monitor runs | DAG includes retry logic and sends a test email on failure; you can view run status in the UI. |\n| **Days 27‑30** | Mini‑project & review | • Design a 2‑step pipeline: (1) extract data from a public API, (2) transform with Spark, (3) load to a local SQLite DB <br>• Implement the full pipeline as an Airflow DAG <br>• Write a 200‑word summary of what you learned and next steps | A complete end‑to‑end DAG (`api_to_sql_dag.py`) that runs without errors and a brief written reflection. |\n\n**Tips for staying on track**  \n- Set a recurring calendar reminder for the same hour each day.  \n- Keep a simple log (date, task, result) to verify each outcome.  \n- If a day’s task feels too long, split it across two consecutive days; the outcome must still be completed by the end of the range.  \n\nAfter day 30 you’ll have hands‑on experience building Spark‑based ETL jobs and orchestrating them with Airflow—key skills for a Python Integration Engineer.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3086.0,
+          "state": null,
+          "tokens": 2955
+        },
+        {
+          "turn": 4,
+          "q": "I finished the first week but found it hard. adjust the plan",
+          "answer": "Here’s a slower, 30‑day plan that spreads the Spark basics over two weeks and adds extra practice + review time.\n\n| Days | Focus | Daily 1‑hour Tasks | Checkable Outcome |\n|------|-------|--------------------|-------------------|\n| **Days 1‑7** | Spark intro & setup | • Day 1: Watch a 15‑min “What is Spark?” video (Databricks) <br>• Day 2: Install Spark via pip and verify `pyspark --version` <br>• Days 3‑4: Follow the “Spark Quick‑Start” notebook (read CSV, show schema) <br>• Days 5‑6: Run the official “WordCount” example on a tiny text file <br>• Day 7: Write a one‑line summary of what a Spark **executor** does | Spark installed; you can launch `pyspark` and see the word‑count result. |\n| **Days 8‑14** | DataFrames & simple ETL | • Day 8: Read the “DataFrames” guide (focus on `read`, `select`, `filter`) <br>• Day 9: Load a sample CSV (e.g., Iris dataset) and show first rows <br>• Day 10: Practice three transformations (filter, groupBy, withColumn) <br>• Day 11: Write the transformed data to Parquet <br>• Day 12: Add a `persist()` call and note any speed change <br>• Day 13: Debug any errors; write a short “troubleshooting” note <br>• Day 14: Commit the script `etl_spark.py` to a Git repo | A runnable `etl_spark.py` that reads CSV → transforms → writes Parquet without errors. |\n| **Days 15‑18** | Spark performance basics | • Day 15: Learn about partitions (read the “Partitions” page) <br>• Day 16: Experiment with `repartition(4)` vs. default on a 100k‑row file <br>• Day 17: Compare runtime with and without `cache()` <br>• Day 18: Summarize findings in a markdown file | Markdown (`spark_perf.md`) showing partition count and runtime differences. |\n| **Days 19‑22** | Airflow installation & first DAG | • Day 19: Install Docker‑Compose and start Airflow locally <br>• Day 20: Complete the “Hello World” DAG tutorial <br>• Day 21: Create a DAG that runs a simple Bash command (`echo “hi”`) <br>• Day 22: Verify the DAG appears and succeeds in the UI | A functional DAG (`hello_dag.py`) visible in Airflow UI and marked successful. |\n| **Days 23‑26** | Airflow + Spark integration | • Day 23: Read about `SparkSubmitOperator` (official docs) <br>• Day 24: Add a `SparkSubmitOperator` to call `etl_spark.py` <br>• Day 25: Test the DAG; fix any path or environment issues <br>• Day 26: Add a retry rule (retries = 2) | DAG runs the Spark ETL script via `SparkSubmitOperator` and logs show success. |\n| **Days 27‑30** | Mini‑project & review | • Day 27: Sketch a 2‑step pipeline (API → Spark → SQLite) <br>• Day 28: Implement the API fetch (PythonOperator) <br>• Day 29: Connect Spark output to SQLite (write mode) <br>• Day 30: Write a 150‑word reflection and list next topics (e.g., streaming, Kubernetes) | Complete end‑to‑end DAG (`api_to_sql_dag.py`) that runs without errors and a brief reflection document. |\n\n**How to stay on track**  \n- Keep a simple log (date, task, result).  \n- If a day feels too heavy, split the task into two 30‑minute slots on consecutive days; still finish the outcome by the end of the range.  \n- Use the Airflow UI’s “Graph View” to visualize dependencies and confirm each step runs.  \n\nThis adjusted schedule gives you extra time on Spark fundamentals while still reaching the Airflow integration goal by day 30. Good luck!",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3612.6,
+          "state": null,
+          "tokens": 3880
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.75
+    },
+    {
+      "id": "j01",
+      "goal": "review example: background -> pick 2nd option -> gaps -> 30-day plan at 1 h/day -> adapt",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I have completed B.Tech CSE. I know Python and SQL, but I don't know what career to choose.",
+          "answer": "Here are four career paths that align well with your B.Tech CSE background and your Python + SQL skills:\n\n- **Python Developer – Data Analysis** – The role requires Python, SQL, and database management, matching the core skills you already have [S1].\n- **Python Integration Engineer** – Focuses on building data pipelines with Python and SQL, plus related tools like ORM and ETL, which build directly on your existing expertise [S3].\n- **Data Analyst** – Uses Python and SQL for data manipulation and visualization, a natural fit for someone comfortable with both languages [S7].\n- **Data Engineer** – Involves designing and maintaining data pipelines, heavily relying on Python and SQL as foundational skills [S5].\n\nThese options let you leverage what you know while offering clear next‑step learning paths (e.g., ETL tools, data modeling, or visualization libraries) to strengthen each role.\n\n---\n**Sources**\n- [S1] careers: Python Developer - Data Analysis\n- [S3] careers: Python Integration Engineer\n- [S5] careers: Data Engineer\n- [S7] careers: Data Analyst",
+          "passed": false,
+          "failed": [
+            "min_numbered"
+          ],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2896.1,
+          "state": {
+            "known_skills": [
+              "Python",
+              "SQL"
+            ],
+            "background": "B.Tech CSE"
+          },
+          "tokens": 3744
+        },
+        {
+          "turn": 2,
+          "q": "I prefer the second one. What skills am I missing?",
+          "answer": "I don’t have an analysed profile yet, so I can’t list the exact skill gaps for a Python Integration Engineer role. Could you upload your resume (or a recent version) and the specific job description you’re targeting so I can run the profile analysis? (If you prefer, you can also share a list of projects you’ve done with Python/SQL, or simply describe any experience you have with data pipelines, ORMs, or cloud tools.)",
+          "passed": true,
+          "failed": [],
+          "item_expected": [
+            "Python Integration Engineer"
+          ],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2796.7,
+          "state": {
+            "selected_career": "Python Integration Engineer",
+            "last_recommendations": [
+              "Python Developer",
+              "Python Integration Engineer",
+              "Data Analyst",
+              "Data Engineer"
+            ],
+            "reference": {
+              "phrase": "the second one",
+              "index": 2,
+              "resolved": "Python Integration Engineer"
+            },
+            "known_skills": [
+              "Python",
+              "SQL"
+            ],
+            "background": "B.Tech CSE"
+          },
+          "tokens": 2988
+        },
+        {
+          "turn": 3,
+          "q": "No, I don't know Spark or Airflow yet. Make me a 30-day plan. I can study one hour daily.",
+          "answer": "Here is a 30‑day, 1‑hour‑per‑day plan to get you up to speed on Apache Spark and Apache Airflow for a Python Integration Engineer role.\n\n**Days 1‑19 – Apache Spark (core foundation)**  \n| Day | Task (≈60 min) | Checkable outcome |\n|-----|----------------|-------------------|\n| 1 | Write a one‑page cheat sheet of the 10 most important Spark concepts. | Cheat sheet covers 10 concepts in your own words. |\n| 2 | Complete the official “Getting Started with Spark” tutorial on your machine. | Tutorial runs without errors. |\n| 3 | Solve 5 small Spark exercises (e.g., RDD transformations, DataFrame queries). | All 5 solutions pass without looking at answers. |\n| 4 | Re‑implement the tutorial example using a personal dataset (CSV/JSON). | Your version runs and you can explain each step. |\n| 5 | Refactor the Day 4 code applying two best practices (e.g., caching, partitioning). | Two documented improvements in the code. |\n| 6 | Build a mini‑project: read data, transform with Spark, write results to a DB. Push to GitHub with a README. | Public repo with README and screenshots. |\n| 7 | Weekly review: redo one exercise from Days 2‑5 without notes. | All redo exercises completed; note any doubts. |\n| 8‑13 | Interview‑readiness drills – each day extend a previous Spark exercise with a harder variant (e.g., add window functions, join multiple sources). | 6 extended solutions, each documented with the new feature used. |\n| 14 | Weekly review – redo one exercise from Days 8‑13 without notes. | Completed redo; list remaining weak spots. |\n| 15‑19 | Continue deeper practice (add streaming, MLlib basics). | 5 new solutions covering streaming or ML basics. |\n\n**Days 20‑30 – Apache Airflow (orchestration)**  \n| Day | Task (≈60 min) | Checkable outcome |\n|-----|----------------|-------------------|\n| 20 | Write a one‑page cheat sheet of the 10 key Airflow concepts. | Cheat sheet completed. |\n| 21 | Install Airflow locally and finish the “Getting Started” tutorial (DAG creation, scheduler). | Tutorial DAG runs successfully. |\n| 22 | Solve 5 small Airflow exercises (e.g., branching, XComs, retries). | All 5 DAGs execute as expected. |\n| 23 | Reproduce the tutorial DAG with your own data pipeline (e.g., extract from a CSV, transform with Spark, load to a DB). | Custom DAG runs end‑to‑end; you can explain each task. |\n| 24 | Refactor the Day 23 DAG applying two best practices (e.g., using variables, modularizing tasks). | Two documented improvements. |\n| 25 | Weekly review – redo one exercise from Days 21‑24 without notes. | Completed redo; note any gaps. |\n| 26‑29 | Capstone integration: design a 2‑day pipeline where Airflow schedules a Spark job that reads raw data, processes it, and writes results to a database. Build, test, and push the full repo to GitHub. | Working end‑to‑end pipeline, GitHub repo with README. |\n| 30 | Polish & present – add the project to your resume, record a 2‑minute walkthrough video, and list “Apache Spark & Airflow” as skills. | Resume line added, video uploaded, and repo linked. |\n\nAll tasks are based on the validated 60‑min‑per‑day roadmap for Spark and Airflow learning [S1]. This schedule fits your daily hour and ends with a portfolio piece you can showcase to recruiters.\n\n---\n**Sources**\n- [S1] roadmap: Validated 30-day plan (roadmap generator)",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3794.7,
+          "state": {
+            "selected_career": "Python Integration Engineer",
+            "last_recommendations": [
+              "Python Developer",
+              "Python Integration Engineer",
+              "Data Analyst",
+              "Data Engineer"
+            ],
+            "known_skills": [
+              "Python",
+              "SQL"
+            ],
+            "missing_skills": [
+              "Apache Airflow",
+              "Apache Spark"
+            ],
+            "daily_minutes": 60,
+            "background": "B.Tech CSE"
+          },
+          "tokens": 4684
+        },
+        {
+          "turn": 4,
+          "q": "I finished the first week but found it hard. adjust the plan",
+          "answer": "I’ve added a short revision block after Day 7, kept the tasks you already finished, and shifted the remaining Spark and Airflow steps so the whole schedule still fits into 30 days (one hour each day).\n\n---\n\n### Revised 30‑Day Plan (1 hr / day)\n\n| Day | Task (≈60 min) | Checkable outcome |\n|-----|----------------|-------------------|\n| **1‑7** | **Completed** – Spark cheat sheet, “Getting Started” tutorial, 5 basic exercises, personal‑dataset rewrite, two best‑practice refactors, mini‑project on GitHub, weekly review. | You already have the cheat sheet, tutorial runs, GitHub repo, and review notes. |\n| **8‑9** | **Revision block – Spark fundamentals**  <br>• Day 8: Re‑watch the Spark intro video (or read the official docs) and redo **one** of the original 5 exercises **without notes**. <br>• Day 9: Build a **tiny** Spark script (≤ 30 lines) that reads a CSV, filters rows, and writes the result to a new CSV. | Day 8: Exercise passes; Day 9: Script runs and you have the output file. |\n| **10‑13** | Extend the earlier exercises with a new feature each day (e.g., add a `groupBy`, a window function, a join, and a `cache`). | Four new scripts, each documented with the added Spark feature. |\n| **14** | Weekly review – redo **one** of the Day 10‑13 scripts **without notes**. | Completed redo; note any remaining confusion. |\n| **15‑19** | Deeper practice: <br>• Day 15: Simple Spark Streaming (read from a socket). <br>• Day 16: Basic MLlib (linear regression on a small dataset). <br>• Day 17: Optimize a job (partitioning & caching). <br>• Day 18: Write results to PostgreSQL. <br>• Day 19: Document all steps in a short README. | Five functional notebooks/scripts plus a README. |\n| **20‑21** | **Airflow cheat sheet** and install Airflow locally; run the “Getting Started” tutorial (create a simple DAG). | Cheat sheet written; tutorial DAG executes. |\n| **22‑24** | Airflow exercises (branching, XComs, retries) – one exercise per day. | Three DAGs that run successfully. |\n| **25** | **Revision – Airflow basics**: Re‑create the tutorial DAG **without notes** and add a tiny task that prints “Hello Airflow”. | DAG runs and prints the message. |\n| **26‑27** | Build a **custom DAG** that triggers a Spark job (use the script from Day 18). Day 26: define the DAG; Day 27: test end‑to‑end execution. | Working DAG that launches Spark, with logs confirming success. |\n| **28‑29** | **Capstone integration** – expand the DAG to a 2‑day pipeline: <br>• Day 28: Add a second Spark task (e.g., aggregation). <br>• Day 29: Add a final task that loads results into a database and sends an email notification. | Full pipeline runs across two days, producing the final DB table and email. |\n| **30** | Polish & showcase: update your résumé with “Apache Spark & Airflow”, write a 2‑minute walkthrough video, and add the full GitHub repo link. | Resume line added, video uploaded, repo URL in resume. |\n\n**What changed:**  \n- Days 8‑9 are new revision days (smaller, easier tasks).  \n- All Spark‑only days after Day 9 shift forward by 2 days, and the Airflow block starts on Day 20 instead of Day 20 originally (no net shift because we added the two revision days).  \n- The total still ends on Day 30, preserving the one‑hour‑per‑day cadence.\n\nFeel free to let me know which specific Spark concept felt hardest, and I can suggest an even more focused micro‑exercise for the next revision day. Good luck!",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4017.6,
+          "state": {
+            "selected_career": "Python Integration Engineer",
+            "last_recommendations": [
+              "Python Developer",
+              "Python Integration Engineer",
+              "Data Analyst",
+              "Data Engineer"
+            ],
+            "known_skills": [
+              "Python",
+              "SQL"
+            ],
+            "missing_skills": [
+              "Apache Airflow",
+              "Apache Spark"
+            ],
+            "daily_minutes": 60,
+            "background": "B.Tech CSE"
+          },
+          "tokens": 4569
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.75
+    },
+    {
+      "id": "j02",
+      "goal": "career transition: mechanical -> data analytics, tools, 4-week plan at 30 min, already knows Excel",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I studied mechanical engineering, but I want to move into data analytics.",
+          "answer": "To move from mechanical engineering into data analytics, begin by mastering the core analytics toolkit—SQL, Excel (or Google Sheets), Python (or R), basic statistics, and a visualization tool such as Tableau or Power BI—then apply those skills in real‑world projects or an internship.  \n\n- **Why it works:** Your engineering background already gives you strong quantitative reasoning and problem‑solving, which are essential for data‑driven roles. The typical entry point for data‑focused careers is a **Data Analyst** position that expects exactly the skills listed above [S6].  \n- **Skill‑building roadmap (≈3‑6 months):**  \n  1. **SQL:** Complete an online course (e.g., “SQL for Data Analysis” on Coursera) and practice querying public datasets.  \n  2. **Excel/Power BI/Tableau:** Learn pivot tables, VLOOKUP, and dashboard creation; build a sample sales dashboard.  \n  3. **Python:** Focus on pandas, NumPy, and matplotlib/seaborn for data cleaning and visualization.  \n  4. **Statistics:** Cover descriptive stats, hypothesis testing, and basic regression (many free resources on Khan Academy).  \n  5. **Portfolio project:** Combine all tools—extract data with SQL, analyze in Python, and present findings in a Tableau dashboard. Publish on GitHub and write a brief case‑study.  \n- **Experience routes:**  \n  - **Internships or contract gigs** in business intelligence or reporting teams.  \n  - **Volunteer analytics work** for a nonprofit or a student club (e.g., analyzing event attendance).  \n- **Certifications (optional but helpful):** Google Data Analytics Professional Certificate, Microsoft Certified: Data Analyst Associate, or Tableau Desktop Specialist.  \n\nOnce you have a portfolio and a few months of hands‑on practice, you’ll meet the typical skill set for entry‑level data‑analytics roles and can start applying confidently.\n\n---\n**Sources**\n- [S6] knowledge: Entry-level tech and data career paths",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3449.8,
+          "state": null,
+          "tokens": 3449
+        },
+        {
+          "turn": 2,
+          "q": "which tools should i learn first?",
+          "answer": "You should start with **SQL, Excel, Python, a visualization tool (Tableau or Power BI), and basic statistics** — these are the core tools most entry‑level data‑analytics roles expect [S4].\n\n- **SQL** – lets you retrieve, filter, and aggregate data directly from databases, a daily task for analysts.  \n- **Excel (or Google Sheets)** – essential for quick data cleaning, pivot tables, and ad‑hoc analysis that many teams still rely on.  \n- **Python** – provides powerful libraries (pandas, NumPy, matplotlib) for data manipulation, analysis, and automation.  \n- **Tableau / Power BI** – enables you to build interactive dashboards and visual stories that communicate insights to stakeholders.  \n- **Basic Statistics** – underpins all analytical reasoning, from descriptive summaries to hypothesis testing and simple predictive models.\n\n---\n**Sources**\n- [S4] knowledge: Entry-level tech and data career paths",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2610.5,
+          "state": null,
+          "tokens": 3351
+        },
+        {
+          "turn": 3,
+          "q": "make me a 4 week plan, i have 30 minutes a day",
+          "answer": "Here’s a 4‑week, 30‑minutes‑per‑day plan to build the core data‑analytics tools you need.\n\n**Week 1 – SQL fundamentals** [S1][S2]  \n- **Mon‑Fri (30 min):** Follow a “SQL for Data Analysis” tutorial (one short video + practice query).  \n- **Sat:** Write a SELECT‑WHERE‑ORDER query on a public CSV imported into SQLite.  \n- **Sun:** Review the week’s queries and note any errors.  \n**Outcome:** A GitHub gist containing at least three working queries (SELECT, JOIN, GROUP BY).\n\n**Week 2 – Excel & basic stats** [S2]  \n- **Mon‑Wed:** Watch a 10‑min pivot‑table tutorial; create a pivot table from the same dataset used in Week 1.  \n- **Thu‑Fri:** Practice VLOOKUP/INDEX‑MATCH on a small sales sheet.  \n- **Sat:** Solve three textbook‑style statistics problems (mean, median, standard deviation).  \n- **Sun:** Summarise findings in a one‑page Excel report.  \n**Outcome:** An Excel file with a functional pivot table, lookup formulas, and a stats summary.\n\n**Week 3 – Python (pandas & matplotlib)** [S2]  \n- **Mon‑Tue:** Install Anaconda, run a “Hello World” notebook.  \n- **Wed‑Fri:** Follow a 5‑minute pandas tutorial; load the Week 1 CSV, clean missing values, and compute basic aggregates.  \n- **Sat:** Plot a bar chart of a key metric with matplotlib/seaborn.  \n- **Sun:** Export the cleaned DataFrame to CSV.  \n**Outcome:** A Jupyter notebook that loads, cleans, aggregates, and visualises the dataset.\n\n**Week 4 – Visualization (Tableau or Power BI) & mini project** [S2]  \n- **Mon‑Tue:** Watch a 10‑min intro to Tableau/Power BI; connect to the CSV from Week 3.  \n- **Wed‑Fri:** Build a 2‑page dashboard (one chart, one table) showing insights from the data.  \n- **Sat:** Record a 2‑minute video walkthrough of the dashboard.  \n- **Sun:** Publish the dashboard (public link) and the video to your portfolio.  \n**Outcome:** A live dashboard link and a short presentation video that demonstrate end‑to‑end data‑analysis skills.\n\n---\n**Sources**\n- [S1] knowledge: Time management for students and working learners\n- [S2] knowledge: Planning a study schedule",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2970.4,
+          "state": null,
+          "tokens": 3408
+        },
+        {
+          "turn": 4,
+          "q": "I already know Excel well, update it",
+          "answer": "Here’s an updated 4‑week, 30‑minutes‑per‑day plan that skips basic Excel and focuses on the remaining core tools (SQL, Python, statistics, and a visualization platform).  \n\n**Week 1 – SQL fundamentals**  \n- **Mon‑Fri (30 min):** Follow a short “SQL for Data Analysis” video (≈10 min) and complete one practice query (SELECT, WHERE, ORDER BY) on a public dataset.  \n- **Sat:** Write a JOIN query that combines two tables from the same dataset.  \n- **Sun:** Review all queries, fix any errors, and commit the SQL scripts to a GitHub gist.  \n\n**Week 2 – Python basics (pandas & matplotlib)**  \n- **Mon‑Tue:** Install Anaconda, launch Jupyter Notebook, and run a “Hello World” cell.  \n- **Wed‑Fri:** Follow a 5‑minute pandas tutorial; load the Week 1 CSV, clean missing values, and compute aggregates (sum, mean, group‑by).  \n- **Sat:** Create a simple line or bar chart of a key metric using matplotlib/seaborn.  \n- **Sun:** Export the cleaned DataFrame to CSV and push the notebook to GitHub.  \n\n**Week 3 – Core statistics for analytics**  \n- **Mon‑Wed:** Watch a 10‑minute intro to descriptive statistics; calculate mean, median, mode, variance, and standard deviation on the dataset you’ve been using.  \n- **Thu‑Fri:** Practice hypothesis‑testing basics (t‑test or chi‑square) with a small example from an online tutorial.  \n- **Sat:** Summarise the statistical findings in a short markdown report attached to your notebook.  \n- **Sun:** Reflect on how the statistics inform the visualisations you’ll build next week.  \n\n**Week 4 – Visualization (Tableau or Power BI) & mini project**  \n- **Mon‑Tue:** Watch a 10‑minute intro to Tableau (or Power BI) and connect to the cleaned CSV from Week 2.  \n- **Wed‑Fri:** Build a 2‑page dashboard: one page with a key trend chart, another with a filtered table and KPI cards.  \n- **Sat:** Record a 2‑minute walkthrough video of the dashboard, highlighting insights derived from the SQL, Python, and statistical steps.  \n- **Sun:** Publish the dashboard (public link) and the video to your portfolio, and add a brief project description to your GitHub repo.  \n\n**Result:** By the end of the month you’ll have a complete end‑to‑end analytics workflow—SQL extraction, Python cleaning/analysis, statistical insight, and a polished visual dashboard—ready to showcase to recruiters.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 5029.4,
+          "state": null,
+          "tokens": 3669
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "j02",
+      "goal": "career transition: mechanical -> data analytics, tools, 4-week plan at 30 min, already knows Excel",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I studied mechanical engineering, but I want to move into data analytics.",
+          "answer": "You can transition by building the core data‑analytics skill set (SQL, Python/R, statistics, data‑visualisation and dashboard tools) and showcasing project work that translates your mechanical‑engineering problem‑solving experience into business insights.  \n\n- **Leverage your engineering background** – the analytical mindset, quantitative coursework and experience with CAD or simulation data are directly relevant to data‑analytics tasks such as data cleaning, mining and interpretation.  \n- **Learn the required technical skills** – start with SQL for data extraction, Python (or R) for analysis, and a BI tool like Power BI or Tableau for visualisation and scorecard creation. These are listed as essential for Data Analytics Analyst and Data Analyst roles [S1][S2][S4].  \n- **Add statistical fundamentals** – descriptive and inferential statistics are common expectations for analyst positions [S4]; online courses (e.g., Coursera’s “Statistics with Python”) can fill this gap.  \n- **Create a portfolio** – clean a public dataset (e.g., Kaggle), perform exploratory analysis, build interactive dashboards, and write brief reports that explain findings to a non‑technical audience. Publish on GitHub or a personal site.  \n- **Earn a credential or short‑term program** – a data‑analytics certificate or a bootcamp (often 3‑6 months) aligns with typical entry‑level pathways (SQL, Excel, Power BI/Tableau, statistics, communication) [S6].  \n- **Tailor your resume** – highlight transferable skills (problem‑solving, critical thinking, project management) and list the new analytics tools as “proficient” once you have completed projects or courses.  \n\nFollowing this roadmap will give you the concrete evidence (skills, projects, and a focused résumé) that hiring managers look for when moving from mechanical engineering into a data‑analytics career.\n\n---\n**Sources**\n- [S1] careers: Data Analytics Analyst\n- [S2] careers: Data Analyst\n- [S4] careers: Analyst, Data\n- [S6] knowledge: Entry-level tech and data career paths",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3375.6,
+          "state": {
+            "selected_career": "data analytics",
+            "background": "mechanical engineering"
+          },
+          "tokens": 3338
+        },
+        {
+          "turn": 2,
+          "q": "which tools should i learn first?",
+          "answer": "Assuming you can study 60 minutes per day, you should start with these core tools:\n\n- **SQL** – essential for extracting and manipulating data in most analyst roles [S1][S2][S3].  \n- **Python (or R)** – the primary language for data cleaning, analysis, and automation [S1][S3].  \n- **Microsoft Excel** – still a baseline for quick analysis, reporting, and pivot‑table work [S2][S3].  \n- **Power BI or Tableau** – industry‑standard BI tools for building interactive dashboards and visualisations [S2][S5].  \n- **Basic Statistics** – needed to interpret data, run tests, and support data‑driven insights.  \n\nHow many minutes per day can you actually study?\n\n---\n**Sources**\n- [S1] careers: Data Developer - Analytics/Spotfire\n- [S2] careers: Manager, Site Analytics and Optimization\n- [S3] careers: Manager, Data Analytics\n- [S5] knowledge: Entry-level tech and data career paths",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4580.7,
+          "state": {
+            "selected_career": "data analytics",
+            "last_recommendations": [
+              "Leverage your engineering background",
+              "Learn the required technical skills",
+              "Add statistical fundamentals",
+              "Create a portfolio",
+              "Earn a credential or short‑term program",
+              "Tailor your resume"
+            ],
+            "background": "mechanical engineering"
+          },
+          "tokens": 3798
+        },
+        {
+          "turn": 3,
+          "q": "make me a 4 week plan, i have 30 minutes a day",
+          "answer": "Here is a 4‑week, 30‑minutes‑per‑day plan that builds the core data‑analytics toolkit and produces a portfolio piece you can add to your résumé.\n\n**Week 1 – SQL basics**  \n- Mon – Watch a 10‑min intro to relational databases, then write 5 simple SELECT queries on a free “Chinook” sample DB. **Outcome:** a notebook with 5 queries saved.  \n- Tue – Practice WHERE, ORDER BY, and LIMIT clauses (10 min) and run 3 filter queries. **Outcome:** filtered result screenshots.  \n- Wed – Learn GROUP BY and aggregate functions (SUM, AVG) (10 min) and compute totals per genre. **Outcome:** a summary table.  \n- Thu – Join two tables (INNER JOIN) (10 min) and retrieve customer‑purchase pairs. **Outcome:** a joined‑table CSV.  \n- Fri – Review all queries, add comments, and push the notebook to GitHub. **Outcome:** a public repo “SQL‑basics‑week1”.  \n\n**Week 2 – Python for data cleaning**  \n- Mon – Install Anaconda, open a Jupyter notebook, load a CSV (pandas read_csv). **Outcome:** notebook with data preview.  \n- Tue – Practice handling missing values (dropna, fillna). **Outcome:** cleaned dataset saved as CSV.  \n- Wed – Filter, sort, and create new columns (apply, lambda). **Outcome:** transformed dataset with at least 3 new features.  \n- Thu – Write a short script (≤30 lines) that outputs basic descriptive stats. **Outcome:** script file and printed stats.  \n- Fri – Push the notebook and script to the same GitHub repo. **Outcome:** “Python‑cleaning‑week2” folder.  \n\n**Week 3 – Statistics & visualisation**  \n- Mon – Read a 10‑min tutorial on mean, median, variance; compute these on the cleaned data. **Outcome:** a table of statistics.  \n- Tue – Learn hypothesis testing (t‑test) with SciPy; run one test comparing two groups. **Outcome:** test result with p‑value.  \n- Wed – Create a bar chart in Matplotlib showing a key metric (e.g., sales by category). **Outcome:** saved PNG.  \n- Thu – Build an interactive plot with Plotly (simple line chart). **Outcome:** HTML file viewable in browser.  \n- Fri – Add all plots and statistical notes to the GitHub repo. **Outcome:** “Stats‑Viz‑week3” folder.  \n\n**Week 4 – Dashboard with Power BI (or Tableau)**  \n- Mon – Install Power BI Desktop, import the cleaned CSV. **Outcome:** Power BI file opened.  \n- Tue – Create a basic table visual and a slicer for a categorical field. **Outcome:** screenshot of the table view.  \n- Wed – Add a bar chart and a line chart linked to the slicer. **Outcome:** two chart screenshots.  \n- Thu – Design a simple dashboard page (title, filters, charts). **Outcome:** exported PDF of the dashboard.  \n- Fri – Publish the PBIX file to Power BI Service (free account) and add the link to your GitHub README. **Outcome:** live dashboard link on your portfolio.  \n\n**Review (end of each week)** – spend the final 5 minutes revisiting the week’s goals and noting any concepts that need extra practice. This schedule follows the study‑strategy guidance of breaking skills into weekly milestones with concrete outputs [S1].\n\n---\n**Sources**\n- [S1] knowledge: Planning a study schedule",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3672.7,
+          "state": {
+            "selected_career": "data analytics",
+            "last_recommendations": [
+              "SQL",
+              "Python",
+              "Microsoft Excel",
+              "Power BI or Tableau",
+              "Basic Statistics"
+            ],
+            "daily_minutes": 30,
+            "background": "mechanical engineering"
+          },
+          "tokens": 3723
+        },
+        {
+          "turn": 4,
+          "q": "I already know Excel well, update it",
+          "answer": "Here’s an updated 4‑week, 30‑minutes‑per‑day plan that builds on your existing Excel expertise and adds the core analytics tools you need.  \n\n**Week 1 – SQL fundamentals**  \n- Mon: Watch a 10‑min intro to relational databases; write 5 simple SELECT queries on the free “Chinook” sample DB.  \n- Tue: Practice WHERE, ORDER BY, LIMIT (run 3 filter queries).  \n- Wed: Learn GROUP BY and aggregate functions (SUM, AVG) and compute totals per genre.  \n- Thu: Perform an INNER JOIN between two tables (e.g., customers + orders).  \n- Fri: Review all queries, add comments, and push the notebook to a GitHub repo “SQL‑basics‑week1”.  \n\n**Week 2 – Python for data cleaning**  \n- Mon: Install Anaconda, open a Jupyter notebook, load a CSV with pandas (read_csv).  \n- Tue: Handle missing values (dropna, fillna) and save the cleaned file.  \n- Wed: Filter, sort, and create three new columns using apply and lambda.  \n- Thu: Write a short script (≤30 lines) that prints basic descriptive stats.  \n- Fri: Push the notebook and script to the same repo (“Python‑cleaning‑week2”).  \n\n**Week 3 – Statistics & visualisation**  \n- Mon: Compute mean, median, variance on the cleaned data; note results in the notebook.  \n- Tue: Run a simple two‑sample t‑test with SciPy and record the p‑value.  \n- Wed: Create a bar chart in Matplotlib (e.g., sales by category) and save as PNG.  \n- Thu: Build an interactive Plotly line chart and export as HTML.  \n- Fri: Add all plots and statistical notes to the repo (“Stats‑Viz‑week3”).  \n\n**Week 4 – Dashboard with Power BI (or Tableau)**  \n- Mon: Install Power BI Desktop, import the cleaned CSV.  \n- Tue: Create a basic table visual and a slicer for a categorical field.  \n- Wed: Add a bar chart and a line chart linked to the slicer.  \n- Thu: Assemble a simple dashboard page (title, filters, charts) and export a PDF.  \n- Fri: Publish the PBIX file to Power BI Service (free account) and add the live link to your GitHub README.  \n\n**Ongoing:** Use your Excel skills for quick ad‑hoc checks or to prototype calculations before coding them in Python or SQL. Each day’s 30‑minute block ends with a 5‑minute review to note any concepts that need extra practice.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3809.3,
+          "state": {
+            "selected_career": "data analytics",
+            "last_recommendations": [
+              "Mon",
+              "Tue",
+              "Wed",
+              "Thu",
+              "Fri"
+            ],
+            "known_skills": [
+              "Excel"
+            ],
+            "daily_minutes": 30,
+            "background": "mechanical engineering"
+          },
+          "tokens": 4205
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "j03",
+      "goal": "profile: gaps -> explain the third -> plan for gaps at 1 h -> missed days",
+      "version": "v7",
+      "user": "persona_be",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "what are my skill gaps?",
+          "answer": "Your skill gaps for the Backend Developer target role are **Microservices, Docker, Kubernetes, and AWS**【S1】. These four required technologies are listed in the job description but are not present on your resume, which currently shows Java, Spring Boot, MySQL, Git, and REST APIs. Closing these gaps will improve your ATS match and readiness for the responsibilities such as designing microservices and deploying containers on AWS.",
+          "passed": false,
+          "failed": [
+            "min_numbered"
+          ],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2214.4,
+          "state": null,
+          "tokens": 2528
+        },
+        {
+          "turn": 2,
+          "q": "explain the third one simply",
+          "answer": "Kubernetes is an open‑source platform that automatically manages, scales, and runs groups of containerised applications across many servers.  \n\nIt matters because most modern backend systems are packaged as containers (e.g., Docker) and need a reliable way to keep them running, handle traffic spikes, and roll out updates without downtime. For a Backend Developer, knowing Kubernetes lets you deploy the microservices you build to a cloud environment (such as AWS) and ensure they stay healthy and can grow as user demand increases. For example, you could take the order‑management service you already built, containerise it with Docker, and then use Kubernetes to spin up multiple copies, balance requests, and replace a faulty instance automatically—skills that employers explicitly require for the role you’re targeting.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2143.2,
+          "state": null,
+          "tokens": 2335
+        },
+        {
+          "turn": 3,
+          "q": "make a 30 day plan for my gaps, 1 hour daily",
+          "answer": "Your 30‑day, 1‑hour‑per‑day plan to close the Microservices, Docker, Kubernetes, and **AWS** gaps is:\n\n**Days 1‑5 | Docker basics**  \n- **Task:** Follow a short Docker tutorial (e.g., “Docker for Beginners”) and write a Dockerfile for the order‑management Spring Boot app.  \n- **Outcome:** A runnable image that builds without errors (`docker build .`) and can be started with `docker run`.\n\n**Days 6‑9 | Docker‑Compose & multi‑container**  \n- **Task:** Add a `docker‑compose.yml` that launches the Spring Boot container together with a MySQL container, persisting data to a local volume.  \n- **Outcome:** `docker‑compose up` brings up both services, and the API works against the database.\n\n**Days 10‑14 | Microservices fundamentals**  \n- **Task:** Split the order‑management code into two services (e.g., `order‑service` and `inventory‑service`) each with its own Spring Boot project and REST endpoints.  \n- **Outcome:** Two independent JARs that can be built and run (or containerised) separately, communicating via HTTP.\n\n**Days 15‑18 | Kubernetes intro**  \n- **Task:** Install Minikube (or Kind) locally, then write a simple Kubernetes Deployment and Service YAML for the `order‑service` container.  \n- **Outcome:** `kubectl apply -f` creates a pod that is reachable through a ClusterIP service; `kubectl get pods` shows it running.\n\n**Days 19‑22 | Kubernetes multi‑service**  \n- **Task:** Deploy both microservices and the MySQL pod using a single `kustomization.yaml` (or Helm chart). Add an `Ingress` (or NodePort) to expose the API.  \n- **Outcome:** All three pods run in the local cluster, and you can call the order API from your host machine.\n\n**Days 23‑26 | AWS fundamentals (gap)**  \n- **Task:** Complete the free “AWS Cloud Practitioner Essentials” module (focus on EC2, IAM, and ECR). Create an IAM user with limited permissions.  \n- **Outcome:** You have an AWS account, an IAM user, and can push a Docker image to Amazon ECR.\n\n**Days 27‑30 | Deploy to AWS (gap)**  \n- **Task:** Push the `order‑service` image to ECR, launch an EC2 instance, install Docker, and run the container (or use AWS Elastic Beanstalk/ECS Fargate for a managed option).  \n- **Outcome:** The service is reachable via the EC2 public IP (or Elastic Beanstalk URL), confirming end‑to‑end deployment on AWS.\n\n**Check‑in:** At the end of each day, verify the stated outcome (e.g., successful build, container runs, pod status, AWS login) and note any errors to address the next day. This systematic, hour‑long routine will give you hands‑on experience with all four missing technologies within a month.",
+          "passed": false,
+          "failed": [
+            "profile_consistent"
+          ],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 6285.0,
+          "state": null,
+          "tokens": 3015
+        },
+        {
+          "turn": 4,
+          "q": "I missed 3 days this week. what now?",
+          "answer": "You can simply shift the missed days forward and keep the same total of 30 hours by extending the plan into the next week.\n\n**Re‑adjusted 1‑hour‑per‑day schedule (starting tomorrow)**  \n\n| Day | Focus | Mini‑goal (≈1 h) |\n|-----|-------|-----------------|\n| 1‑5 | Docker basics | Write a Dockerfile for your order‑management Spring Boot app and build/run it. |\n| 6‑9 | Docker‑Compose | Add a `docker‑compose.yml` that starts the app with a MySQL container. |\n| 10‑14 | Microservices fundamentals | Split the monolith into two Spring Boot services (`order‑service` & `inventory‑service`). |\n| 15‑18 | Kubernetes intro | Install Minikube/Kind and deploy one service with a Deployment + Service YAML. |\n| 19‑22 | Kubernetes multi‑service | Deploy both services + MySQL, expose via Ingress/NodePort. |\n| 23‑26 | AWS fundamentals | Finish the “AWS Cloud Practitioner Essentials” module; create an IAM user. |\n| 27‑30 | Deploy to AWS | Push a Docker image to ECR and run it on an EC2 instance (or Elastic Beanstalk/ECS). |\n| **31‑33** | **Make‑up days** | Use any three of the above slots you missed (e.g., redo Docker‑Compose, finish Microservices split, or finish the AWS module). |\n\n**How to use the make‑up days**\n\n1. **Identify which topics you missed** (e.g., if you skipped Days 6‑8, those are Docker‑Compose).  \n2. **Allocate one hour per missed day** to the exact same mini‑goal you would have done originally.  \n3. **If a make‑up day lands on a later topic**, you can still complete the earlier task because the skills are independent (Docker‑Compose doesn’t depend on Kubernetes).  \n\n**Result:** You’ll still complete all four gap areas (Microservices, Docker, Kubernetes, AWS) in roughly 33 calendar days while keeping the 1‑hour‑per‑day cadence. Keep a simple checklist of the mini‑goals so you can mark each day as “done” and stay on track.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2965.0,
+          "state": null,
+          "tokens": 3472
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.5
+    },
+    {
+      "id": "j03",
+      "goal": "profile: gaps -> explain the third -> plan for gaps at 1 h -> missed days",
+      "version": "v7+e38",
+      "user": "persona_be",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "what are my skill gaps?",
+          "answer": "Your skill gaps for the Backend Developer target role are **Microservices, Docker, Kubernetes, and AWS**【S1】. These four required technologies are not listed on your resume, so they appear as missing when your profile is compared to the job description. Closing these gaps will improve your ATS match and readiness for the responsibilities such as designing micro‑services and deploying containers on AWS.",
+          "passed": false,
+          "failed": [
+            "min_numbered"
+          ],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 1386.8,
+          "state": {},
+          "tokens": 2527
+        },
+        {
+          "turn": 2,
+          "q": "explain the third one simply",
+          "answer": "Kubernetes is an open‑source platform that automatically manages, scales, and runs groups of containerised applications across many computers.  \n\nIt matters because most modern backend systems are packaged as containers (e.g., Docker) and need a reliable way to keep them alive, update them without downtime, and handle traffic spikes. For a Backend Developer, knowing Kubernetes lets you deploy the micro‑services you build so they run smoothly in production.  \n\n**Example:** Imagine you’ve created a Spring Boot micro‑service for order processing and containerised it with Docker. Using Kubernetes, you can define a “deployment” that tells the cluster how many copies of that container to run, how to roll out a new version, and how to recover automatically if a node fails—so the service stays available to users without manual intervention.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2190.9,
+          "state": {},
+          "tokens": 2329
+        },
+        {
+          "turn": 3,
+          "q": "make a 30 day plan for my gaps, 1 hour daily",
+          "answer": "Here is a 30‑day, 1‑hour‑per‑day plan that closes your Microservices, Docker, Kubernetes, and AWS gaps【S1】.\n\n**Week 1 – AWS basics**  \n1. Cloud & IAM basics – create a least‑privilege IAM user; **Done:** policy documented.  \n2. EC2 – launch an instance and SSH in; **Done:** instance reachable.  \n3. S3 – host a static site; **Done:** site URL works.  \n4. Lambda – write a simple function; **Done:** function runs on test event.  \n5. Cloud Practitioner practice test; **Done:** score recorded.  \n6. Mini AWS project – push a small repo (e.g., a static‑site‑to‑S3) to GitHub with README; **Done:** repo with screenshots.  \n7. Review – redo one exercise from each day without notes; **Done:** all redo tasks completed.\n\n**Week 2 – Docker**  \n8. Containers vs VMs – run three official images; **Done:** containers running.  \n9. Dockerfile – containerise a tiny Java app; **Done:** image builds and runs.  \n10. Volumes & networking – connect the app to a MySQL container; **Done:** app talks to DB.  \n11. Docker‑Compose – write a compose file for app + DB; **Done:** `docker compose up` works.  \n12. Mini Docker project – push the containerised app to GitHub; **Done:** repo with README.  \n13. Interview prep – write answers to 10 Docker questions, revisit 3 weak spots; **Done:** answers saved.  \n14. Review – redo one Docker exercise from the week; **Done:** all redo tasks completed.\n\n**Week 3 – Microservices**  \n15. Architecture basics – split a sample Spring Boot app into two services (design diagram); **Done:** diagram created.  \n16. Service communication – implement REST calls between the two services; **Done:** end‑to‑end call works.  \n17. Resilience – add a circuit‑breaker (e.g., Resilience4j); **Done:** failure handled gracefully.  \n18. Mini microservices project – push code to GitHub; **Done:** repo with README.  \n19. Interview prep – answer 10 microservices questions, improve 3 weak spots; **Done:** answers saved.  \n20. Deeper practice – extend the previous project with a harder scenario (e.g., async messaging); **Done:** extended version runs.  \n21. Review – redo one microservices exercise without notes; **Done:** all redo tasks completed.\n\n**Week 4 – Kubernetes**  \n22. Core concepts – deploy the Dockerised app to Minikube/kind; **Done:** app reachable.  \n23. Config & secrets – externalise configuration via ConfigMaps/Secrets; **Done:** config changes without rebuild.  \n24. Scaling & updates – scale pods and perform a zero‑downtime rollout; **Done:** rollout succeeds.  \n25. Helm basics – package the app with a Helm chart and install it; **Done:** release installed.  \n26. Mini Kubernetes project – push the Helm‑based deployment to GitHub; **Done:** repo with README.  \n27. Interview prep – answer 10 Kubernetes questions, refine 3 weak spots; **Done:** answers saved.  \n28. Review – redo one Kubernetes exercise without notes; **Done:** all redo tasks completed.\n\n**Week 5 – Capstone**  \n29. Capstone build – design and implement a full‑stack backend using Spring Boot microservices, Docker, Kubernetes, and AWS (e.g., deploy to EKS or EC2); **Done:** first version runs end‑to‑end.  \n30. Polish & showcase – push the project to GitHub, add a one‑line resume bullet, record a 2‑minute walkthrough; **Done:** public repo, resume update, and video ready.\n\nAll tasks are 60 minutes each, fitting your daily study time. Completing the checklist will give you hands‑on experience in each missing technology and a concrete project to showcase on your resume.",
+          "passed": false,
+          "failed": [
+            "mentions_day30"
+          ],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4017.1,
+          "state": {
+            "daily_minutes": 60
+          },
+          "tokens": 4874
+        },
+        {
+          "turn": 4,
+          "q": "I missed 3 days this week. what now?",
+          "answer": "**Adjusted 30‑day plan (1 hour / day) after missing 3 days in Week 1**\n\n| Day | New focus (keeps earlier progress) | What you’ll do (≈60 min) |\n|-----|-----------------------------------|--------------------------|\n| **Day 1‑2** | *Completed* – AWS IAM & EC2 | (no change) |\n| **Day 3‑4** | *Completed* – S3 & Lambda | (no change) |\n| **Day 5‑7** | **Revision block – AWS basics** (hardest topic) | • Review IAM policies (10 min) <br>• Re‑run the EC2 launch steps without notes (15 min) <br>• Re‑create the S3 static site from scratch (15 min) <br>• Re‑deploy the Lambda function (10 min) <br>• Quick quiz you write (10 min) |\n| **Day 8‑9** | Docker – containers vs VMs & Dockerfile | (shifted forward by 2 days) |\n| **Day 10‑12** | Docker – volumes, networking & compose | (shifted forward) |\n| **Day 13** | Mini Docker project – push to GitHub | (shifted forward) |\n| **Day 14** | Docker interview prep & review | (shifted forward) |\n| **Day 15‑16** | Microservices – split a Spring Boot app | (shifted forward) |\n| **Day 17‑18** | Microservices – REST communication & circuit‑breaker | (shifted forward) |\n| **Day 19** | Mini microservices project – GitHub | (shifted forward) |\n| **Day 20** | Microservices interview prep | (shifted forward) |\n| **Day 21** | Deeper practice – async messaging | (shifted forward) |\n| **Day 22‑23** | Kubernetes – Minikube/kind deployment | (shifted forward) |\n| **Day 24‑25** | Kubernetes – ConfigMaps/Secrets & scaling | (shifted forward) |\n| **Day 26** | Helm basics – chart & install | (shifted forward) |\n| **Day 27** | Mini Kubernetes project – GitHub | (shifted forward) |\n| **Day 28** | Kubernetes interview prep & review | (shifted forward) |\n| **Day 29** | Capstone – design & implement full‑stack backend (microservices + Docker + K8s + AWS) | (shifted forward) |\n| **Day 30** | Polish & showcase – repo, resume bullet, 2‑min walkthrough | (shifted forward) |\n\n**What changed**\n\n* The three missed days are replaced by a **2‑day revision block (Days 5‑7)** that revisits the AWS concepts you found hardest, using short, focused redo tasks and a quick self‑quiz.  \n* All subsequent topics (Docker → Microservices → Kubernetes → Capstone) are pushed back by exactly the two days you added for revision, keeping the total at 30 days.  \n* No content is dropped; the schedule stays within your 1‑hour daily limit and still ends with the capstone project that ties all four gaps together.  \n\nFollow the updated order, and you’ll still finish the full plan in a month while reinforcing the area that gave you trouble.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4087.4,
+          "state": {
+            "last_recommendations": [
+              "Cloud & IAM basics",
+              "EC2",
+              "S3",
+              "Lambda",
+              "Cloud Practitioner practice test; Done",
+              "Mini AWS project",
+              "Review"
+            ],
+            "daily_minutes": 60
+          },
+          "tokens": 4115
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.5
+    },
+    {
+      "id": "j04",
+      "goal": "study: concept -> simpler -> python examples -> quiz",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "explain recursion",
+          "answer": "Recursion is a programming technique where a function calls itself directly or indirectly to solve a problem by breaking it into smaller, similar sub‑problems until a simple base case is reached.  \n\nIt matters because many algorithms—such as tree traversals, sorting (e.g., quicksort, mergesort), and solving combinatorial problems—are naturally expressed recursively, and understanding it lets you write clearer, more efficient code and reason about complex data structures.  \n\n**Example:** In a binary‑tree search, a recursive function visits the left or right child based on the target value, calling itself on that child until it either finds the value or reaches a null leaf (the base case). Mastering this pattern is essential for roles like software engineering, data science, or any position that works with hierarchical data.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2044.5,
+          "state": null,
+          "tokens": 2027
+        },
+        {
+          "turn": 2,
+          "q": "make it easier, im a beginner",
+          "answer": "Recursion is when a function solves a problem by calling **itself** on a smaller piece of that same problem until it reaches a simple case it can answer directly.  \n\nThink of it like a set of Russian nesting dolls: each doll contains a smaller doll, and you keep opening them until you reach the tiniest one that can’t be opened any further—that tiny doll is the **base case**. In code, the base case stops the endless self‑calls, and each larger doll (the previous call) builds on the result of the smaller one.\n\n**Simple example (Python):**\n\n```python\ndef count_down(n):\n    if n == 0:               # base case – stop recursing\n        return \"Done!\"\n    else:\n        return f\"{n} -> \" + count_down(n-1)   # call itself with a smaller number\n```\n\nCalling `count_down(3)` produces: `3 -> 2 -> 1 -> Done!`\n\nKey points for beginners:\n1. **Base case** – a condition that ends the recursion (e.g., `n == 0`).  \n2. **Recursive step** – the part where the function calls itself with a reduced argument (`n-1`).  \n3. Each call waits for the next one to finish, then returns its result, building the final answer.\n\nPractice by writing small recursive functions like factorial (`n! = n * (n-1)!`) or summing a list. Once you see how the problem shrinks with each call, recursion becomes a powerful, natural way to solve many programming tasks.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2930.9,
+          "state": null,
+          "tokens": 2338
+        },
+        {
+          "turn": 3,
+          "q": "give me two examples in python",
+          "answer": "Here are two beginner‑friendly Python recursion examples:\n\n1. **Factorial calculation** – computes n! by multiplying n by the factorial of n‑1 until it reaches 1.  \n   ```python\n   def factorial(n):\n       if n == 1:               # base case\n           return 1\n       return n * factorial(n-1)   # recursive step\n   ```\n\n2. **Sum of a list** – adds the first element to the sum of the remaining list items, stopping when the list is empty.  \n   ```python\n   def recursive_sum(lst):\n       if not lst:              # base case\n           return 0\n       return lst[0] + recursive_sum(lst[1:])   # recursive step\n   ```",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2324.2,
+          "state": null,
+          "tokens": 2600
+        },
+        {
+          "turn": 4,
+          "q": "quiz me with 3 questions on it",
+          "answer": "Here are three recursion quiz questions for you:\n\n1. **What is the base case in the `factorial` function, and why is it necessary?** – It checks if you understand the stopping condition that prevents infinite recursion.  \n2. **What will `recursive_sum([4, 5, 6])` return, and how does the function reach that result?** – It tests your ability to trace recursive calls and combine results.  \n3. **Rewrite the `factorial` function so it uses a single‑argument recursive call without the `if n == 1` check (hint: use `n == 0`). Why does this still work?** – It assesses whether you grasp that different base cases can be equivalent if the logic is adjusted.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2051.7,
+          "state": null,
+          "tokens": 2847
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "j04",
+      "goal": "study: concept -> simpler -> python examples -> quiz",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "explain recursion",
+          "answer": "Recursion is a programming technique where a function calls itself directly or indirectly to solve a problem by breaking it into smaller, similar sub‑problems.  \n\nIt matters because many algorithms—such as searching, sorting, and traversing hierarchical data—are naturally expressed recursively, and understanding it helps you write concise, maintainable code and reason about algorithmic complexity.  \n\n**Example:** In a computer‑science degree, the classic recursive solution to compute the n‑th Fibonacci number calls the same function with n‑1 and n‑2 until it reaches the base cases 0 or 1. Mastering this pattern also prepares you for interview questions and for working with data structures like trees, where operations such as depth‑first search are most cleanly implemented with recursion.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 1590.6,
+          "state": {},
+          "tokens": 2038
+        },
+        {
+          "turn": 2,
+          "q": "make it easier, im a beginner",
+          "answer": "Recursion is when a function solves a problem by calling **itself** with a smaller version of that same problem.  \n\nThink of it like a set of Russian nesting dolls: each doll contains a smaller doll, and you keep opening them until you reach the tiniest one that can’t be opened any further. In code, the “tiny doll” is the **base case**—a simple condition that stops the recursion—while the larger dolls represent the **recursive case**, where the function calls itself with a reduced input.\n\n### How it works step‑by‑step\n1. **Define the base case** – the condition where the function returns a result without further calls (e.g., `if n == 0: return 1`).  \n2. **Define the recursive case** – the part that calls the same function with a smaller argument (e.g., `return n * factorial(n‑1)`).  \n3. **Each call creates a new stack frame** – the program remembers where it left off, so when the base case is reached, the results unwind back up the chain.\n\n### Simple example: factorial  \n```python\ndef factorial(n):\n    if n == 0:          # base case\n        return 1\n    else:               # recursive case\n        return n * factorial(n-1)\n```\nCalling `factorial(3)` triggers:\n- `factorial(3)` → `3 * factorial(2)`\n- `factorial(2)` → `2 * factorial(1)`\n- `factorial(1)` → `1 * factorial(0)`\n- `factorial(0)` returns `1` (base case)  \nThen the results multiply back up: `1 → 1 → 2 → 6`.\n\n### Why learn it?\n- Many classic algorithms (searching trees, sorting, generating combinations) are naturally expressed recursively.  \n- Understanding recursion builds problem‑solving skills useful for coding interviews and for working with data structures like linked lists or binary trees.  \n\n**Tip for practice:** Start with small problems (countdown, sum of a list) and always write the base case first; then add the recursive call that moves the input toward that base case. This habit prevents infinite loops and makes debugging easier.",
+          "passed": false,
+          "failed": [
+            "max_words"
+          ],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2572.9,
+          "state": {
+            "level": "beginner"
+          },
+          "tokens": 2558
+        },
+        {
+          "turn": 3,
+          "q": "give me two examples in python",
+          "answer": "Here are two Python recursion examples:\n\n1. **Factorial calculation** – shows how a function multiplies n by the factorial of n‑1 until it reaches the base case 0.  \n   ```python\n   def factorial(n):\n       if n == 0:               # base case\n           return 1\n       return n * factorial(n-1)   # recursive call\n   ```\n\n2. **Sum of a list** – demonstrates processing a list by adding the first element to the sum of the remaining elements, stopping when the list is empty.  \n   ```python\n   def sum_list(lst):\n       if not lst:               # base case\n           return 0\n       return lst[0] + sum_list(lst[1:])   # recursive call\n   ```",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2706.1,
+          "state": {
+            "last_recommendations": [
+              "Define the base case",
+              "Define the recursive case",
+              "Each call creates a new stack frame"
+            ],
+            "level": "beginner"
+          },
+          "tokens": 2774
+        },
+        {
+          "turn": 4,
+          "q": "quiz me with 3 questions on it",
+          "answer": "Here are three recursion quiz questions:\n\n1. **What is the base case in the `factorial` function, and why is it essential?** – It stops infinite calls and provides a known result to build upon.  \n2. **How does the `sum_list` function reduce the problem size with each recursive call?** – It slices the list (`lst[1:]`), making the list shorter until it’s empty.  \n3. **What would happen if you omitted the base case in a recursive function?** – The function would call itself forever, causing a stack overflow error.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2595.3,
+          "state": {
+            "last_recommendations": [
+              "Factorial calculation",
+              "Sum of a list"
+            ],
+            "level": "beginner"
+          },
+          "tokens": 3027
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.75
+    },
+    {
+      "id": "j05",
+      "goal": "interests -> 3 careers -> first one -> 30-day start at 2 h -> readiness",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I like drawing and coding, suggest 3 careers",
+          "answer": "Here are three careers that combine drawing and coding:\n\n1. **3D Graphic Designer** – blends artistic modeling and texturing with programming (Python, Matlab) for interactive visualizations [S1].  \n2. **UX Designer** – uses visual design tools and wireframing together with front‑end technologies (HTML, CSS, JS) to create user‑focused interfaces [S2].  \n3. **Frontend Developer** – applies UI/UX design and wireframing skills while coding interactive web pages with HTML5, CSS3, and JavaScript frameworks [S3].\n\n---\n**Sources**\n- [S1] careers: 3D Graphic Designer\n- [S2] careers: UX Designer\n- [S3] careers: Frontend Developer",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2105.3,
+          "state": null,
+          "tokens": 2895
+        },
+        {
+          "turn": 2,
+          "q": "tell me about the first one",
+          "answer": "A 3D Graphic Designer creates visual assets and interactive experiences by combining artistic modeling with programming [S1].\n\n**What the role involves**  \n- **Core tasks:** design and texture 3‑D models, build environments, work with point‑cloud and GIS data, and develop simulations (e.g., CarMaker, CarSim) for products or training tools.  \n- **Technical side:** write scripts or small programs in Python, Matlab, or VBScript to automate workflows, generate procedural geometry, or integrate assets into engines such as Unity or Unreal.  \n\n**Key required skills**  \n- Proficiency with 3‑D graphics tools (3DS MAX, Maya, Unity, Unreal) and texturing pipelines.  \n- Experience handling point‑clouds, DTED, and GIS data for realistic environments.  \n- Strong problem‑solving ability and basic programming (Python, Matlab, VBScript).  \n- Familiarity with CAD software and driving‑simulation platforms (CarMaker, CarSim, SCANeR).  \n\n**Typical background**  \n- Bachelor’s degree or diploma in design, human‑computer interaction, psychology, computer science, or a related field.  \n- A portfolio that showcases 3‑D models, textures, and any scripted tools or simulations you’ve built.  \n\n**Why it fits drawing + coding**  \nYour drawing skills translate into creating compelling visual concepts and detailed models, while coding lets you automate processes, customize tools, and integrate assets into interactive applications. Building a portfolio that highlights both hand‑drawn concepts and scripted prototypes will strengthen your candidacy.\n\n---\n**Sources**\n- [S1] careers: 3D Graphic Designer",
+          "passed": true,
+          "failed": [],
+          "item_expected": [
+            "3D Graphic Designer"
+          ],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2061.5,
+          "state": null,
+          "tokens": 3211
+        },
+        {
+          "turn": 3,
+          "q": "how do I start in 30 days, 2 hours a day",
+          "answer": "Start by building a focused 30‑day, 2‑hour‑daily plan that gives you a basic 3D‑design portfolio and a few automation scripts.\n\n1. **Set up your tools (Day 1‑2).** Install a free 3D package (Blender) and a code editor (VS Code). Follow the official “Getting Started” tutorials to learn the interface and how to export models.  \n\n2. **Learn basic modeling (Day 3‑10).** Spend 30 min each day on Blender fundamentals: navigation, primitives, extrusion, modifiers, and UV unwrapping. Complete a simple project (e.g., a low‑poly chair) and render a still image.  \n\n3. **Add texture & lighting (Day 11‑14).** Follow a short tutorial on material nodes and HDR lighting. Apply textures to your chair model and render a polished shot. Save the .blend file and rendered image for your portfolio.  \n\n4. **Introduce Python scripting (Day 15‑18).** In Blender’s Scripting workspace, learn to run a “Hello World” script, then automate a repetitive task (e.g., batch‑renaming objects or applying a material to all selected meshes). Use the official Blender Python API docs as reference.  \n\n5. **Create a small interactive scene (Day 19‑24).** Model a simple environment (room with a few props). Write a short Python script that randomly places objects or changes lighting at runtime. Export the scene to Unity (free) and set up a basic “Press Space to rotate camera” script in C#.  \n\n6. **Build a showcase portfolio (Day 25‑27).** Compile three pieces: (a) the textured chair render, (b) the scripted automation screenshot, (c) a short video of the interactive Unity scene. Upload them to a free site (Behance, ArtStation, or a personal GitHub Pages).  \n\n7. **Polish your résumé and LinkedIn (Day 28‑29).** Add “3D Modeling (Blender)”, “Python scripting for 3D pipelines”, and “Unity prototyping” as skills. Link to your portfolio.  \n\n8. **Apply and get feedback (Day 30).** Submit your portfolio to entry‑level 3D‑designer or junior visualization gigs on freelance platforms (Upwork, Fiverr) or to local studios. Request constructive feedback to guide the next month of learning.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [
+            "3D Graphic Designer"
+          ],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2753.3,
+          "state": null,
+          "tokens": 2883
+        },
+        {
+          "turn": 4,
+          "q": "how will I know I'm ready to apply?",
+          "answer": "You’ll know you’re ready to apply when you meet these concrete checkpoints:\n\n1. **Portfolio basics** – at least three polished pieces:  \n   - One fully textured 3‑D model with a high‑quality render.  \n   - One Python script that automates a modeling task (e.g., batch‑apply material).  \n   - One short interactive demo (Unity or Blender) showing a model in motion or a simple UI.  \n\n2. **Technical proficiency** – you can comfortably:  \n   - Navigate Blender’s core tools (modeling, UV, shading) without referring to tutorials.  \n   - Write and run a Python script inside Blender’s API.  \n   - Export a scene to Unity and add a basic C# script (e.g., camera control).  \n\n3. **Resume & LinkedIn alignment** – your résumé lists “3D Modeling (Blender)”, “Python scripting for 3D pipelines”, and “Unity prototyping”, with links to the three portfolio items.  \n\n4. **External validation** – you have received **positive feedback** from at least two peers, mentors, or online community members (e.g., Reddit r/Blender, Discord design channels) confirming the quality of your work.  \n\n5. **Application tracking** – you’ve set up a simple spreadsheet to log each application (company, role, date, status) as recommended in the guide [S1].  \n\nIf all five items are satisfied, you’re ready to start submitting applications and reaching out for referrals.\n\n---\n**Sources**\n- [S1] knowledge: Referrals, cold emails and internships",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 6000.9,
+          "state": null,
+          "tokens": 3576
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "j05",
+      "goal": "interests -> 3 careers -> first one -> 30-day start at 2 h -> readiness",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I like drawing and coding, suggest 3 careers",
+          "answer": "Here are three careers that combine drawing and coding:\n\n1. **3D Graphic Designer** – blends artistic 3D modeling and texturing with programming (Python, Matlab) for interactive simulations [S1].  \n2. **UX Designer** – uses visual design tools and wireframing alongside front‑end technologies (HTML, CSS, JS) to create user‑focused interfaces [S2].  \n3. **Frontend Developer** – integrates UI/UX design, wireframes, and visual prototyping with JavaScript frameworks to build interactive web applications [S3].\n\n---\n**Sources**\n- [S1] careers: 3D Graphic Designer\n- [S2] careers: UX Designer\n- [S3] careers: Frontend Developer",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3132.3,
+          "state": {},
+          "tokens": 2870
+        },
+        {
+          "turn": 2,
+          "q": "tell me about the first one",
+          "answer": "A 3D Graphic Designer creates and textures three‑dimensional models for digital products, often using programming to build interactive or simulation‑based experiences.  \n\n**Key responsibilities** – research user needs, develop 3‑D concepts, produce environment models, apply texturing tools (e.g., 3ds Max, Maya, Unity, Unreal), and integrate assets into driving‑simulation platforms such as CarMaker or CarSim.  \n\n**Core skills** – proficiency with 3‑D graphics and texturing software, knowledge of CAD tools, ability to work with point‑cloud and GIS data (DTED), strong problem‑solving, and programming basics (Python, Matlab, VBScript) for automation or custom tool development.  \n\n**Typical work environment** – collaboration with product, UX, and development teams to translate design concepts into usable visual assets that support user‑experience decisions and product prototypes.  \n\n**Education & portfolio** – a bachelor’s degree or diploma in design, HCI, psychology, computer science, or a related field is common, and a strong portfolio of 3‑D work is essential for hiring.  \n\n**Career outlook** – demand grows in industries like automotive simulation, gaming, virtual reality, and product visualization, where realistic 3‑D graphics and interactive simulations are critical.  \n\n*All points are drawn from the career profile for 3D Graphic Designer [S1].*\n\n---\n**Sources**\n- [S1] careers: 3D Graphic Designer",
+          "passed": true,
+          "failed": [],
+          "item_expected": [
+            "3D Graphic Designer"
+          ],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3298.2,
+          "state": {
+            "selected_career": "3D Graphic Designer",
+            "last_recommendations": [
+              "3D Graphic Designer",
+              "UX Designer",
+              "Frontend Developer"
+            ],
+            "reference": {
+              "phrase": "the first one",
+              "index": 1,
+              "resolved": "3D Graphic Designer"
+            }
+          },
+          "tokens": 2829
+        },
+        {
+          "turn": 3,
+          "q": "how do I start in 30 days, 2 hours a day",
+          "answer": "Here’s a 30‑day, 2‑hour‑per‑day plan to start becoming a 3D Graphic Designer.\n\n1. **Set up your workspace and install core tools** – download a free trial of **Blender** (for modeling) and the **Unity Hub** (for real‑time rendering); also install **Python** for scripting. This gives you the basic software stack used in the role [S1].\n\n2. **Day 1‑5: Learn the interface and basic modeling** – follow Blender’s “Beginner Fundamentals” series (one 30‑minute video each day, then spend the remaining 30 min practicing simple shapes (cube, sphere, cylinder) and exporting them as .fbx.\n\n3. **Day 6‑10: Intro to texturing** – watch Unity’s “Material & Shader Basics” (2 × 15‑min clips per day) and apply basic textures to the models you created, experimenting with UV mapping in Blender.\n\n4. **Day 11‑15: Simple scene assembly** – import your textured models into Unity, place them in a small scene, add lighting, and use the free “Standard Assets” pack to create a basic environment. Spend each session building and iterating the scene.\n\n5. **Day 16‑20: Learn Python scripting for automation** – follow a beginner Python‑for‑Blender tutorial (20 min reading, 40 min coding) to write a script that batch‑renames objects and applies a default material.\n\n6. **Day 21‑25: Create a mini portfolio piece** – design a short (10‑15 sec) animated walkthrough of your scene (camera path, simple animation). Render it in Unity and export a video file.\n\n7. **Day 26‑28: Build a simple portfolio website** – use a free static‑site generator (e.g., GitHub Pages) and embed the video, plus screenshots of your models. Write a brief description of the tools used.\n\n8. **Day 29‑30: Review and plan next steps** – list the skills you now have (Blender modeling, Unity texturing, basic Python scripting) and compare them to the full 3D Graphic Designer requirements [S1]; identify the next gaps (e.g., Maya, point‑cloud handling) and schedule deeper learning for the following month.\n\n**Daily time check:** each day’s tasks total ~2 hours, fitting your schedule. After 30 days you’ll have a functional 3‑D asset, a rendered scene, and a simple portfolio to showcase your emerging skills.\n\n---\n**Sources**\n- [S1] careers: 3D Graphic Designer",
+          "passed": true,
+          "failed": [],
+          "item_expected": [
+            "3D Graphic Designer"
+          ],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2649.3,
+          "state": {
+            "selected_career": "3D Graphic Designer",
+            "last_recommendations": [
+              "3D Graphic Designer",
+              "UX Designer",
+              "Frontend Developer"
+            ],
+            "daily_minutes": 120
+          },
+          "tokens": 3201
+        },
+        {
+          "turn": 4,
+          "q": "how will I know I'm ready to apply?",
+          "answer": "You’ll know you’re ready to apply when you meet the core skill checklist, have a polished portfolio, and your résumé clearly shows the required qualifications.  \n\n**Readiness checklist (based on the 3D Graphic Designer profile [S1])**  \n\n1. **Core software proficiency** – can create, texture, and export 3‑D models in at least one industry‑standard tool (e.g., Blender, 3ds MAX, or Maya) and render them in a real‑time engine such as Unity or Unreal.  \n2. **Environment & asset creation** – have built a complete scene (environment modeling, lighting, basic animation) that demonstrates spatial layout and material work.  \n3. **Programming basics** – can write simple Python (or Matlab/VBScript) scripts to automate repetitive tasks or drive asset pipelines.  \n4. **Data handling** – understand how to import point‑cloud or GIS data (DTED) into your scene, even at a basic level.  \n5. **CAD awareness** – be comfortable navigating a CAD file (e.g., exporting a model from SolidWorks or similar) and converting it for 3‑D use.  \n6. **Simulation context** – have experimented with a driving‑simulation environment (CarMaker, CarSim, or SCANeR) or can explain how your assets would integrate there.  \n7. **Portfolio** – showcase 2–3 finished pieces (model, textured scene, and a short animation or interactive demo) on a personal website or PDF, with brief notes on tools and techniques used.  \n8. **Education/credentials** – hold a relevant bachelor’s degree/diploma or can demonstrate equivalent self‑taught competence; include any design‑related coursework or certifications.  \n\n**How to verify**  \n\n- **Self‑audit**: tick each item on the checklist; any unchecked item is a gap to fill before applying.  \n- **Peer/mentor review**: ask a senior designer or instructor to critique your portfolio and confirm the listed skills.  \n- **Resume match**: ensure your résumé lists the exact tools and programming languages above; recruiters often scan for those keywords.  \n\nWhen all checklist items are satisfied and you’ve received positive feedback on your portfolio, you’re ready to start submitting applications.\n\n---\n**Sources**\n- [S1] careers: 3D Graphic Designer",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4197.1,
+          "state": {
+            "selected_career": "3D Graphic Designer",
+            "last_recommendations": [
+              "Set up your workspace and install core tools",
+              "Day 1‑5",
+              "Day 6‑10",
+              "Day 11‑15",
+              "Day 16‑20",
+              "Day 21‑25",
+              "Day 26‑28",
+              "Day 29‑30"
+            ],
+            "daily_minutes": 120
+          },
+          "tokens": 3869
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "j06",
+      "goal": "change of mind: data science -> cybersecurity, 2-week starter at 45 min",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I want to become a data scientist",
+          "answer": "To become a data scientist, focus on mastering Python (or R), statistical analysis, machine‑learning techniques, and basic data‑engineering tools while building a portfolio of end‑to‑end projects.  \n\n**Core skill set** – The career records list Python, statistical computing (R/Python), data management/scrubbing, and machine‑learning methods (e.g., regression, random forest, SVM) as essential for data‑science roles [S1][S5]. Additional common requirements are data‑engineering knowledge (Spark, Hadoop) and modeling frameworks such as Scikit‑Learn or TensorFlow [S2][S3].  \n\n**Education** – A bachelor’s degree in computer science, data science, statistics, mathematics, engineering, or a related quantitative field is the typical baseline; a postgraduate degree can add advantage [S1][S2][S4][S5].  \n\n**Entry‑point role** – Starting as a Data Analyst helps you acquire SQL, Excel, Power BI/Tableau, and communication skills that are frequent stepping stones to data‑science positions [S7].  \n\n**Learning roadmap**  \n\n| Phase | Topics | Suggested resources / actions |\n|-------|--------|------------------------------|\n| 1️⃣ Foundations | Python (pandas, numpy), R basics, statistics (hypothesis testing, distributions) | Online courses (Coursera, edX), practice problems on Khan Academy |\n| 2️⃣ Data handling | SQL, data cleaning, version control (Git), basic data‑engineering (Azure/AWS, Databricks) | Follow tutorials in S6’s job description for Python + databricks, practice on Kaggle datasets |\n| 3️⃣ Machine learning | Scikit‑Learn, TensorFlow/PyTorch, model evaluation, feature engineering | Build a classification project (e.g., Titanic) and a regression project (e.g., house prices) |\n| 4️⃣ Visualization & storytelling | Power BI/Tableau, matplotlib/ggplot, business communication | Publish a dashboard with business recommendations (S9) |\n| 5️⃣ Advanced topics | Distributed computing (Spark/Hadoop), deep learning, domain‑specific methods (e.g., text mining) | Follow S3/S4’s listed skills for large‑scale processing and deep learning |\n\n**Portfolio** – Create at least two projects: (1) a clean‑analyze‑visualize pipeline on a public dataset with a Power BI/Tableau dashboard [S9]; (2) an end‑to‑end ML model served via a simple API [S9]. Host code on GitHub and write brief case studies.  \n\n**Interview prep** – Practice SQL joins, window functions, and Excel pivot tables for analyst questions, and review bias‑variance, evaluation metrics, and one deep‑dive ML project for data‑science interviews [S8].  \n\n**Next steps** – 1) Enroll in a Python‑statistics course; 2) Complete a Kaggle data‑cleaning challenge and publish a dashboard; 3) Add the projects to your resume and LinkedIn; 4) Apply for junior data‑analyst roles to gain professional experience before targeting full data‑scientist positions.\n\n---\n**Sources**\n- [S1] careers: Data Science Engineer\n- [S2] careers: Data Scientist, Analytics - Ads Foundations\n- [S3] careers: Data Scientist-DIS\n- [S4] careers: Data Scientist (EG)\n- [S5] careers: Data Scientist\n- [S7] knowledge: Entry-level tech and data career paths\n- [S8] knowledge: Technical preparation\n- [S9] knowledge: Project ideas by role",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 5752.2,
+          "state": null,
+          "tokens": 4154
+        },
+        {
+          "turn": 2,
+          "q": "what skills do i need",
+          "answer": "You need a combination of programming, statistics, machine‑learning, data‑engineering, and communication skills to work as a data scientist.  \n\n**Core technical skills**  \n- **Programming:** Python (pandas, NumPy, Scikit‑Learn) or R for data manipulation and modeling [S1][S3].  \n- **Statistics & mathematics:** hypothesis testing, regression, probability, linear algebra [S4].  \n- **Machine‑learning:** supervised/unsupervised algorithms (e.g., random forest, SVM, boosting), model evaluation, feature engineering [S2].  \n- **Data handling:** SQL querying, data cleaning/scrubbing, ETL basics, familiarity with relational (MySQL, MS SQL) and NoSQL (MongoDB) stores [S1][S5].  \n- **Data engineering basics:** big‑data tools (Spark/Hadoop), cloud platforms (Azure, AWS, Databricks), containerisation (Docker) for building pipelines [S1][S5].  \n- **Visualization & storytelling:** Power BI/Tableau, matplotlib/ggplot, ability to create dashboards and present insights [S1][S9].  \n- **Version control & reproducibility:** Git, documentation, basic software‑engineering practices [S8].  \n\n**Supporting skills**  \n- **Domain knowledge** relevant to the industry you target (e.g., finance, healthcare).  \n- **Communication:** translating technical results into business recommendations.  \n\n**Typical education** – Bachelor’s degree in computer science, data science, statistics, mathematics, engineering, or a related quantitative field; a postgraduate degree can add advantage [S1][S2][S4][S5].  \n\nBuilding a portfolio with end‑to‑end projects (data cleaning → analysis → ML model → dashboard) will demonstrate these skills to employers [S9].\n\n---\n**Sources**\n- [S1] careers: Data Scientists Analyst\n- [S2] careers: Data Science Engineer\n- [S3] careers: Data Scientist\n- [S4] careers: Data Scientist, Analytics\n- [S5] careers: Data Engineer\n- [S8] knowledge: Technical preparation\n- [S9] knowledge: Project ideas by role",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4352.2,
+          "state": null,
+          "tokens": 4567
+        },
+        {
+          "turn": 3,
+          "q": "actually I prefer cybersecurity. what changes?",
+          "answer": "Switching to cybersecurity means focusing on security fundamentals, networking, risk assessment, and compliance rather than statistical modeling and machine‑learning.  \n\n**Core cybersecurity skill set** (from the career records)  \n- **Foundational knowledge:** Cybersecurity concepts, Information Security, IT security compliance, NIST/FISMA frameworks, and COOP/contingency planning [S1][S2][S3][S5].  \n- **Technical controls:** Network security, firewalls, intrusion detection/prevention (IDS/IPS), SIEM solutions, data‑loss‑prevention, vulnerability scanning, patch and change management [S2][S3][S5].  \n- **Incident handling:** Incident response, security monitoring, ticketing systems, forensic tools, threat hunting, and security‑policy development [S2][S3][S4].  \n- **Scripting & automation:** PowerShell or Python for automation and log analysis [S2].  \n- **Certifications (highly valued):** CompTIA Security+, CISSP, CISM, CISA, CEH, GSEC, GCIH, GPYC [S1][S2].  \n- **Tools & platforms:** SIEM (e.g., Splunk, QRadar), cloud security basics (AWS/Azure), and workflow‑automation tools [S1][S4].  \n\n**What changes from a data‑science path**  \n- **Replace** heavy statistics, machine‑learning, and data‑visualisation focus with security frameworks, risk assessment, and incident‑response processes.  \n- **Retain** Python (useful for scripting) and data‑handling basics (SQL, Excel) for log analysis and reporting.  \n- **Add** networking knowledge (TCP/IP, LAN/WAN), security certifications, and hands‑on experience with firewalls, IDS/IPS, and SIEM tools.  \n\n**Suggested learning roadmap**  \n1. **Foundations (4 weeks):** Complete a free “CompTIA Security+” course; study NIST 800‑53 and basic networking (Cisco CCNA intro).  \n2. **Hands‑on labs (6 weeks):** Use TryHackMe/Hack The Box to practice vulnerability scanning, IDS/IPS configuration, and incident‑response playbooks.  \n3. **Scripting (2 weeks):** Build Python scripts for log parsing and automated ticket creation.  \n4. **SIEM & DLP (4 weeks):** Follow a Splunk or QRadar beginner track; implement a simple DLP rule set.  \n5. **Certifications (ongoing):** Schedule the Security+ exam; later pursue CISSP or CISM based on career level.  \n\n**Portfolio tip** – Document a full “detect‑investigate‑remediate” cycle on a test network and publish the report on GitHub; this demonstrates the required security workflow and satisfies many of the listed role requirements.\n\n---\n**Sources**\n- [S1] careers: Cyber Security Analyst - Compliance\n- [S2] careers: Security Analyst\n- [S3] careers: Cyber Security Analyst\n- [S4] careers: Cyber Threat Analyst\n- [S5] careers: INFORMATION SECURITY ANALYST",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 7959.3,
+          "state": null,
+          "tokens": 5016
+        },
+        {
+          "turn": 4,
+          "q": "make a 2 week starter plan, 45 min daily",
+          "answer": "Here’s a 2‑week, 45‑minute‑per‑day starter plan to begin building core cybersecurity skills.  \n\n| Day | Focus | 45‑min task | Checkable outcome |\n|-----|-------|-------------|-------------------|\n| **Week 1** |\n| Mon | **Security fundamentals** | Watch the first 45 min of a free “CompTIA Security+” video (cover CIA triad & basic threats). | Write three bullet‑point notes summarising confidentiality, integrity, availability. |\n| Tue | **Networking basics** | Complete the “TCP/IP basics” module on Cisco’s NetAcad (first lesson). | List the OSI layers and identify which layer a firewall operates on. |\n| Wed | **Risk & compliance** | Read NIST 800‑53 “Access Control” summary (PDF, 45 min). | Create a one‑page cheat sheet of the three AC families (AC‑1, AC‑2, AC‑3). |\n| Thu | **Python for security** | Follow a 45‑min tutorial on parsing log files with Python (e.g., read a sample syslog). | Upload a script that extracts all “ERROR” lines to a new file. |\n| Fri | **Vulnerability scanning** | Run a free scan on a local VM using Nmap (basic SYN scan). | Capture a screenshot of the open ports report. |\n| Sat | **Incident response basics** | Watch a 45‑min incident‑response playbook video (identification & containment). | Draft a 3‑step containment checklist for a phishing incident. |\n| Sun | **Reflection & planning** | Review notes from the week; list 2 topics you found hardest. | Write a short “next‑week focus” note based on those gaps. |\n| **Week 2** |\n| Mon | **SIEM intro** | Complete the first 45 min of Splunk’s free “Getting Started” tutorial (data ingestion). | Import a sample CSV and verify a basic search returns results. |\n| Tue | **Security monitoring** | Set up a simple alert in Splunk for failed login attempts. | Screenshot the alert rule and a triggered alert (use test data). |\n| Wed | **Patch management** | Read a 45‑min article on Windows patch cycles (Microsoft Docs). | Summarise the patch‑approval workflow in 5 bullet points. |\n| Thu | **DLP basics** | Watch a 45‑min overview of Data‑Loss‑Prevention concepts (e.g., Microsoft DLP). | List three DLP policy types and a real‑world example for each. |\n| Fri | **Hands‑on lab** | Complete a 45‑min TryHackMe “Intro to Cyber Security” room (basic enumeration). | Capture the final room badge as proof of completion. |\n| Sat | **Documentation** | Write a one‑page incident report for the lab you completed on Friday (what was found, steps taken). | Save the report as a PDF and add it to a GitHub repo. |\n| Sun | **Review & next steps** | Re‑read all notes; identify the top two skills to deepen (e.g., SIEM or scripting). | Create a 2‑week follow‑up plan with specific resources. |\n\n**Goal:** By the end of two weeks you will have foundational knowledge of security concepts, basic networking, introductory Python scripting, a hands‑on vulnerability scan, a simple SIEM alert, and a documented incident report—each with a tangible artifact to show progress.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4564.0,
+          "state": null,
+          "tokens": 4495
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "j06",
+      "goal": "change of mind: data science -> cybersecurity, 2-week starter at 45 min",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I want to become a data scientist",
+          "answer": "You can become a data scientist by building a solid foundation in statistical programming, data‑management, and machine‑learning techniques, then gaining practical experience through projects and relevant coursework.  \n\n**Core skill checklist (based on typical data‑scientist profiles)**  \n- **Statistical computing:** Python + R (or another high-level language) [S1]  \n- **Data management & scrubbing:** SQL, ETL pipelines, data cleaning [S1][S2]  \n- **Mathematics & statistics:** hypothesis testing, regression, forecasting [S2][S5]  \n- **Machine‑learning & modeling:** scikit-learn, TensorFlow, or similar frameworks [S3]  \n- **Data visualization & reporting:** dashboards, Power BI/Tableau, storytelling [S5]  \n- **Distributed computing (optional but valuable):** Hive/Hadoop, Spark [S2][S3]  \n\n**Step‑by‑step roadmap (≈6‑12 months for an entry‑level transition)**  \n\n| Weeks | Focus | Actions |\n|------|-------|---------|\n| 1‑2 | Python + R basics | Complete a “Python for Data Science” and “R for Statistics” tutorial; write scripts to load/clean CSV files. |\n| 3‑4 | SQL & ETL | Practice SELECT, JOIN, window functions on public datasets (e.g., Kaggle); build a simple Airflow/Dagster pipeline to move data from a CSV to a SQLite/PostgreSQL DB. |\n| 5‑6 | Statistics & hypothesis testing | Study descriptive stats, t‑tests, ANOVA; apply them to a real dataset (e.g., A/B test results). |\n| 7‑9 | Machine‑learning fundamentals | Follow a scikit-learn course; implement regression, classification, and clustering models; compare performance with cross-validation. |\n| 10‑11 | Visualization & storytelling | Create a Power BI or Tableau dashboard (or a Python + Plotly app) that explains findings to a non-technical audience. |\n| 12‑14 | Distributed tools (optional) | Intro to Spark (PySpark) or Hadoop; run a simple map-reduce job on a cloud sandbox. |\n| 15‑16 | Portfolio & resume | Publish the end-to-end project on GitHub, write a concise README, and add “Data Scientist” keywords (Python, statistical analysis, ETL, ML) to your resume. |\n\n**Education & credentials**  \n- Bachelor’s degree in Computer Science, Statistics, Mathematics, Engineering, or a related quantitative field (as most profiles require) [S2][S3][S5].  \n- Consider a short-term certificate or MOOCs (e.g., Coursera’s “Data Science Specialization”) to demonstrate formal training.\n\n**Next steps**  \n1. Choose a public dataset you’re interested in (health, finance, marketing).  \n2. Follow the roadmap above, documenting each phase on GitHub.  \n3. Add the completed project to your portfolio and tailor your resume to highlight the core skills listed.  \n\nFollowing this plan will align your profile with the skill set most frequently required for data‑scientist roles.\n\n---\n**Sources**\n- [S1] careers: Data Scientist\n- [S2] careers: Data Scientist, Analytics\n- [S3] careers: Data Scientist, Analytics - Ads Foundations\n- [S5] careers: Data Scientist, Advanced Analytics",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 6614.0,
+          "state": {
+            "selected_career": "data scientist"
+          },
+          "tokens": 3982
+        },
+        {
+          "turn": 2,
+          "q": "what skills do i need",
+          "answer": "Your current career goal is Data Scientist [S1][S2]. To support this role, you already have SQL, Python, and some experience with dashboards. However, there are two skills that are still gaps for this role:\n\n- **Mathematics & statistics:** hypothesis testing, regression, forecasting, experimental design (supported by S4)\n- **Machine learning & modeling:** familiarity with scikit-learn, TensorFlow, or similar frameworks; ability to compare models and evaluate metrics (supported by S4)\n\nTo strengthen your profile for this role, focus on gaining experience in these areas. You can practice statistical analysis, experimentation, and model comparison using platforms like LeetCode or GeeksforGeeks for machine learning and modeling [S6]. Additionally, consider working on a project that involves data cleaning, features, model comparison, evaluation, and serving the model through a small API or app to demonstrate your skills.\n\n---\n**Sources**\n- [S1] careers: Data Scientist, Analytics\n- [S2] careers: Data Scientist\n- [S6] knowledge: Technical preparation",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 56150.0,
+          "state": {
+            "selected_career": "data scientist",
+            "last_recommendations": [
+              "Statistical computing",
+              "Data management & scrubbing",
+              "Mathematics & statistics",
+              "Machine‑learning & modeling",
+              "Data visualization & reporting",
+              "Distributed computing"
+            ]
+          },
+          "tokens": 4325
+        },
+        {
+          "turn": 3,
+          "q": "actually I prefer cybersecurity. what changes?",
+          "answer": "Switching to cybersecurity means adding core security knowledge (e.g., networking, risk assessment, incident response, and relevant certifications) while de‑emphasizing pure data‑science tools.  \n\n**What you already have (from your profile)**  \n- **Python** – useful for scripting and automation in security tasks [S2][S3]  \n- **SQL / data handling** – helps with log analysis and SIEM queries [S2][S5]  \n\n**Key skills you need to acquire for a Cyber Security Analyst / Security Analyst role**  \n\n| Skill area | Typical requirement | Why it matters |\n|------------|--------------------|----------------|\n| **Fundamental security concepts** | Cybersecurity, Information Security, IT Security Compliance, Network Security [S1][S2][S3][S5] | Forms the base for all security work (threat modeling, controls). |\n| **Security frameworks & standards** | NIST, FISMA, CIS Critical Security Controls, FFIEC CAT [S1][S2] | Guides policy creation and audit readiness. |\n| **Security certifications** | CompTIA Security+, CISSP, CISM, CEH, GSEC, CISA [S1][S2] | Validates knowledge to employers and often required in job ads. |\n| **Monitoring & detection** | SIEM solutions, IDS/IPS, threat hunting, security incident response [S3][S4] | Core for detecting and reacting to attacks. |\n| **Vulnerability & patch management** | Vulnerability scanning, remediation, patch management [S2][S5] | Prevents exploitation of known flaws. |\n| **Scripting & automation** | PowerShell, Python scripting for security tasks [S2][S3] | Automates repetitive security operations. |\n| **Risk & compliance** | Risk assessments, security audits, policy development, COOP/continuity planning [S1][S4][S5] | Ensures organizational resilience and regulatory adherence. |\n| **Network & cloud security basics** | Understanding of firewalls, VPNs, cloud security controls (AWS, Azure) [S5] | Protects modern hybrid environments. |\n| **Incident management tools** | Ticketing systems, workflow automation, documentation [S1][S3] | Tracks and resolves security incidents efficiently. |\n\n**Suggested learning roadmap (≈4‑6 months)**  \n\n1. **Foundations (Weeks 1‑3):** Complete a free “CompTIA Security+” course (e.g., Professor Messer) and study NIST 800‑53 basics.  \n2. **Networking & OS security (Weeks 4‑6):** Finish “Cisco CCNA Security” or equivalent networking module; practice Linux hardening.  \n3. **SIEM & monitoring (Weeks 7‑9):** Use a free Splunk or Elastic Stack sandbox; write Python/PowerShell scripts to ingest logs and create alerts.  \n4. **Vulnerability management (Weeks 10‑12):** Learn Nessus or OpenVAS scanning; run scans on a lab VM and remediate findings.  \n5. **Incident response & forensics (Weeks 13‑15):** Follow the “Cyber Incident Response” guide from NIST 800‑61; simulate a breach in a controlled lab.  \n6. **Certifications & portfolio (Weeks 16‑20):** Schedule the Security+ exam; document each lab on GitHub with a short write‑up for each skill.  \n\nBy adding these security‑focused competencies and showcasing them in a portfolio, your profile will align with the typical requirements for Cyber Security Analyst or Security Analyst positions [S1][S2][S3][S4][S5].\n\n---\n**Sources**\n- [S1] careers: Cyber Security Analyst - Compliance\n- [S2] careers: Security Analyst\n- [S3] careers: Cyber Security Analyst\n- [S4] careers: Cyber Threat Analyst\n- [S5] careers: INFORMATION SECURITY ANALYST",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 7436.3,
+          "state": {
+            "selected_career": "cybersecurity",
+            "last_recommendations": [
+              "Mathematics & statistics",
+              "Machine learning & modeling"
+            ],
+            "previous_goals": [
+              "data scientist"
+            ]
+          },
+          "tokens": 4896
+        },
+        {
+          "turn": 4,
+          "q": "make a 2 week starter plan, 45 min daily",
+          "answer": "Here’s a 2‑week starter plan for a Cybersecurity Analyst role that fits a 45‑minute daily study slot.\n\n| Day | Skill focus | Concrete task (≈45 min) | Checkable outcome |\n|-----|-------------|--------------------------|-------------------|\n| 1 | Linux – Shell basics | Complete 20 shell‑command exercises on Linux Journey. | All 20 exercises marked correct. |\n| 2 | Linux – Processes & services | Diagnose a running service (e.g., Apache) and note status, logs, and fix steps. | Written notes with at least three findings. |\n| 3 | Linux – Scripting | Write a backup script that copies a folder to `/tmp/backup` and schedule it with `cron`. | Script runs automatically once; backup folder created. |\n| 4 | Linux – Mini project | Create a GitHub repo, push the backup script, and add a README describing the purpose. | Public repo with README and screenshots. |\n| 5 | Linux – Interview prep | Answer 10 common Linux interview questions in writing; revisit the 3 weakest. | Document with 10 answers and revised notes on 3 topics. |\n| 6 | Linux – Deep practice | Extend the backup script to rotate old backups (keep last 5). | Script successfully rotates backups; logs show rotation. |\n| 7 | Review – Weekly recap | Redo one exercise from each Linux topic without notes. | All redo exercises completed; any remaining doubts listed. |\n| 8 | SIEM – Fundamentals | Write a one‑page cheat sheet of the 10 most important SIEM concepts (e.g., log sources, correlation). | Cheat sheet completed in own words. |\n| 9 | SIEM – Getting started | Follow a free Splunk (or Elastic Stack) “getting‑started” tutorial end‑to‑end on your machine. | Tutorial dashboard running and ingesting sample logs. |\n|10 | SIEM – Core techniques | Solve 5 small SIEM exercises (e.g., create a rule, search logs, set an alert). | All 5 exercises completed without looking at solutions. |\n|11 | SIEM – Applied practice | Reproduce the tutorial example using your own log file (e.g., Apache access log). | Your version runs and you can explain each step. |\n|12 | SIEM – Refactor | Apply two best‑practice improvements to the previous SIEM setup (e.g., use field extractions, add a dashboard). | Two documented improvements added. |\n|13 | SIEM – Mini project | Build a mini SIEM project (collect logs from a local service, create a detection rule, document in GitHub). | Repo with README, screenshots, and rule file. |\n|14 | Review – Weekly recap | Redo one exercise from each SIEM topic without notes. | All redo exercises completed; remaining questions noted. |\n\n**Notes:**  \n- All tasks are designed for a 45‑minute daily commitment.  \n- Resources: Linux Journey (linuxjourney.com) for Linux tasks and the free Splunk/Elastic tutorial for SIEM work.  \n- Completing the outcomes each day gives you tangible proof of progress to add to a portfolio or resume.  \n\n[S1]\n\n---\n**Sources**\n- [S1] roadmap: Validated 30-day plan (roadmap generator)",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3453.9,
+          "state": {
+            "selected_career": "cybersecurity",
+            "last_recommendations": [
+              "Python",
+              "SQL / data handling"
+            ],
+            "daily_minutes": 45,
+            "previous_goals": [
+              "data scientist"
+            ]
+          },
+          "tokens": 5796
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "j07",
+      "goal": "interruption: SQL interview -> off-topic -> continue",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "help me prepare for a SQL interview",
+          "answer": "Here’s a step‑by‑step plan to prepare for a SQL interview:\n\n1. **Master core SQL concepts** – review data types, SELECT syntax, filtering, ordering, and basic aggregations.  \n2. **Practice key query patterns** – write queries for joins (inner, left/right, self), GROUP BY with HAVING, window functions (ROW_NUMBER, RANK, LAG), and common table expressions (CTEs) until you can do them without reference [S2].  \n3. **Solve real‑world problems** – use platforms like LeetCode, HackerRank, or SQLZoo to complete at least 10–15 medium‑difficulty problems that combine multiple concepts (e.g., ranking sales per region, pivoting data).  \n4. **Review your own projects** – prepare concise explanations of 2–3 past projects, describing the business problem, the schema you designed, and the most complex queries you wrote; be ready to walk through the logic end‑to‑end [S2].  \n5. **Refresh related analytics skills** – practice Excel pivot tables, basic statistics (means, distributions), and how you’d translate query results into dashboards, since interviewers often ask about interpreting data [S2].  \n6. **Prepare behavioural stories using STAR** – craft 5–6 short anecdotes (challenge, failure, teamwork, leadership, deadline pressure) that showcase problem‑solving with SQL; keep each under two minutes [S1].  \n7. **Research the company and role** – read recent product news, study the job description, and list 2–3 thoughtful questions to ask the interviewer [S3].  \n8. **Simulate the interview flow** – rehearse the typical hiring stages (resume screen, online assessment, technical interview, behavioural round, HR) to know what to expect and manage time [S4].  \n9. **Test your setup** – ensure a stable internet connection, a quiet environment, and that any coding platform you’ll use works correctly before the interview [S3].  \n10. **Follow up** – send a brief thank‑you email within 24 hours, referencing a specific discussion point to reinforce your interest [S3].\n\n---\n**Sources**\n- [S1] knowledge: Behavioural questions and the STAR method\n- [S2] knowledge: Technical preparation\n- [S3] knowledge: Before and after the interview\n- [S4] knowledge: Typical hiring stages",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2548.2,
+          "state": null,
+          "tokens": 2988
+        },
+        {
+          "turn": 2,
+          "q": "who won the IPL?",
+          "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"How should I prepare for the GATE exam in six months?\"*\n",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 4.6,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "ok continue, give me 5 practice questions",
+          "answer": "Here are five practice SQL interview questions, each chosen to test a core skill you’ll need in most interview scenarios:\n\n1. **Write a query to find the second‑highest salary from an `employees` table without using `LIMIT`/`TOP`.** – Tests window functions or self‑joins for ranking results.  \n2. **Given tables `orders(order_id, customer_id, order_date)` and `order_items(order_id, product_id, quantity)`, return the total quantity ordered per customer for the last 30 days.** – Checks joins, date filtering, and aggregation.  \n3. **Create a recursive CTE to generate a hierarchy of employees (manager → direct reports) from an `employees(emp_id, manager_id)` table.** – Evaluates understanding of recursive queries and hierarchical data.  \n4. **Write a query that pivots sales data to show total sales per product as columns for each quarter (Q1‑Q4).** – Assesses ability to transform rows to columns using `CASE` or `PIVOT`.  \n5. **Explain how you would improve the performance of a query that joins three large tables and includes a `WHERE` clause on a non‑indexed column.** – Measures knowledge of indexing, query plans, and optimization techniques.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3126.5,
+          "state": null,
+          "tokens": 2751
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "j07",
+      "goal": "interruption: SQL interview -> off-topic -> continue",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "help me prepare for a SQL interview",
+          "answer": "Here’s a step‑by‑step plan to prepare for a SQL interview:\n\n1. **Master core SQL concepts** – review SELECT syntax, filtering (WHERE), sorting (ORDER BY), aggregation (GROUP BY, HAVING), joins (INNER, LEFT, RIGHT, FULL), subqueries, CTEs, and window functions [S2].  \n2. **Practice targeted problems** – solve at least 10–15 real‑world queries per day on LeetCode, HackerRank or similar, focusing on joins, aggregations, and CTEs; time yourself to simulate the interview pace [S2].  \n3. **Build a mini‑project** – load a sample dataset (e.g., public sales data) into a local MySQL/PostgreSQL instance, write end‑to‑end queries that clean, transform, and produce a dashboard‑ready result; be ready to explain each step [S2].  \n4. **Study common interview topics** – indexing strategies, query optimisation (EXPLAIN plans), handling NULLs, data types, and basic transaction concepts; note one example where you improved performance [S2].  \n5. **Prepare behavioural STAR stories** – craft 5–6 concise stories (Situation, Task, Action, Result) covering a technical challenge, a mistake you fixed, teamwork, leadership, and meeting a tight deadline; keep each under two minutes [S1].  \n6. **Research the company and role** – read recent news, product pages, and the job description; list two‑three thoughtful questions to ask the interviewer [S3].  \n7. **Set up interview logistics** – test your video/audio setup, ensure a quiet environment, and have a code editor or SQL client ready for live coding [S3].  \n8. **Do a mock interview** – ask a peer or use a platform to run a timed SQL session and receive feedback on both technical answers and STAR storytelling [S4].  \n9. **Follow up promptly** – send a brief thank‑you email within 24 hours, reiterating your enthusiasm and a key point from the conversation [S3].  \n\nFollowing these steps will give you solid technical readiness, clear communication practice, and professional polish for the interview.\n\n---\n**Sources**\n- [S1] knowledge: Behavioural questions and the STAR method\n- [S2] knowledge: Technical preparation\n- [S3] knowledge: Before and after the interview\n- [S4] knowledge: Typical hiring stages",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4001.3,
+          "state": {},
+          "tokens": 3009
+        },
+        {
+          "turn": 2,
+          "q": "who won the IPL?",
+          "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"How should I prepare for the GATE exam in six months?\"*\n",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 0.1,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 3,
+          "q": "ok continue, give me 5 practice questions",
+          "answer": "Here are five SQL interview practice questions:\n\n1. **Write a query to find the second highest salary from an Employees table.** – Tests use of subqueries or window functions for ranking.  \n2. **Retrieve the total sales per product category for the last quarter, showing categories with zero sales as well.** – Checks LEFT JOIN, aggregation, and handling of missing data.  \n3. **Given a Orders table, list customers who placed orders on every day of the past week.** – Evaluates use of GROUP BY, HAVING, and date logic.  \n4. **Explain how you would improve the performance of a query that joins three large tables and filters on a non‑indexed column.** – Assesses knowledge of indexing, query plans, and optimization techniques.  \n5. **Write a query using a Common Table Expression (CTE) to compute the cumulative total of sales by month, ordered chronologically.** – Demonstrates understanding of CTEs and window functions.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2233.1,
+          "state": {
+            "last_recommendations": [
+              "Master core SQL concepts",
+              "Practice targeted problems",
+              "Build a mini‑project",
+              "Study common interview topics",
+              "Prepare behavioural STAR stories",
+              "Research the company and role",
+              "Set up interview logistics",
+              "Do a mock interview",
+              "Follow up promptly"
+            ]
+          },
+          "tokens": 2705
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "j08",
+      "goal": "profile readiness -> first step -> 2-week plan at 1 h -> honest resume claim",
+      "version": "v7",
+      "user": "persona_da",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "am I ready for a data analyst job?",
+          "answer": "You are partially ready for a Data Analyst role, but several key requirements are still missing (ATS estimate 43/100, an AI estimate, not an official result).\n\n**Requirements already met (evidence from your resume)**  \n- **Python** – listed in your skills section.  \n- **SQL** – listed in your skills section.  \n- **Power BI** – demonstrated in the “sales dashboard in Power BI” project.  \n\n**Missing requirements (exact skill names)**  \n- Tableau  \n- Statistics  \n- Data Visualization  \n- Communication  \n\n**Related background that only partly covers a gap**  \n- **Power BI** and **Pandas** give you experience building visualizations, but the JD’s “Data Visualization” skill expects broader design and storytelling ability beyond tool‑specific work.  \n- **Excel pivot‑table analysis** shows you can create basic visual reports, yet it does not fully satisfy the “Communication” requirement of presenting insights to business teams.  \n\n**Verdict** – With an ATS match of 43/100, you meet three of the seven core skills; closing the gaps in Tableau, Statistics, broader data‑visualization practice, and business communication will be essential before you’re a strong candidate.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2736.8,
+          "state": null,
+          "tokens": 3146
+        },
+        {
+          "turn": 2,
+          "q": "what do I learn first?",
+          "answer": "Start with **Tableau**, then add **Statistics**, followed by broader **Data‑Visualization** concepts, and finally work on **Communication** skills.  \n\n**Why this order works**  \n- **Tableau** directly fills a hard‑skill gap in the JD and builds on your existing Power BI experience, letting you create dashboards quickly for interview demos.  \n- **Statistics** underpins the analytical reasoning the role expects (e.g., hypothesis testing, descriptive metrics) and is required for many data‑analysis tasks.  \n- **Data‑Visualization** concepts (design principles, storytelling, chart selection) expand your ability to turn any tool’s output into clear insights, covering the “Data Visualization” gap that Power BI alone doesn’t satisfy.  \n- **Communication** (presenting findings, writing concise insights) is the final piece; once you have solid visual products, practice explaining them to non‑technical audiences to meet the JD’s communication requirement.  \n\n**Suggested first‑step learning plan (4 weeks)**  \n\n| Week | Focus | Action items |\n|------|-------|--------------|\n| 1‑2 | **Tableau basics** | Complete Tableau’s free “Getting Started” tutorial; recreate your Power BI sales dashboard in Tableau; publish to Tableau Public. |\n| 3‑4 | **Fundamental Statistics** | Study mean, median, variance, normal distribution, and basic hypothesis testing (e.g., t‑test); use Python’s `scipy.stats` or Excel to run small analyses on your existing datasets. |\n| 5‑6 | **Data‑Visualization principles** | Read “Storytelling with Data” (or a similar guide); practice redesigning the Tableau dashboards applying best‑practice chart types and color use. |\n| 7‑8 | **Communication practice** | Record a 5‑minute walkthrough of one dashboard, focusing on clear, business‑focused language; get feedback from a peer or mentor; write a one‑page summary of insights. |\n\nCompleting these steps will close the four skill gaps and raise your ATS match well above the current 43 / 100. Good luck!",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4259.9,
+          "state": null,
+          "tokens": 3286
+        },
+        {
+          "turn": 3,
+          "q": "plan for 2 weeks, 1 hr/day",
+          "answer": "Start with Tableau and basic statistics, then practice visualization design and concise communication in a 2‑week, 1‑hour‑per‑day schedule.\n\n| Day | Focus | Concrete task (≈1 h) | Checkable outcome |\n|-----|-------|----------------------|-------------------|\n| **Mon 1** | Tableau intro | Watch Tableau “Getting Started” video (first 30 min) and create a new workbook. | A blank Tableau workbook saved. |\n| **Tue 2** | Tableau – data import | Load your sales‑data CSV into Tableau, connect to the data source. | Data source appears in the Data pane. |\n| **Wed 3** | Tableau – simple viz | Build a bar chart of total sales by product category. | Bar chart exported as an image file. |\n| **Thu 4** | Tableau – dashboard | Combine the bar chart with a line chart (sales over time) into a dashboard. | Dashboard published to Tableau Public (private link). |\n| **Fri 5** | Statistics basics | Read a short article on mean, median, variance (e.g., Khan Academy 10‑min). Compute these metrics on the same sales data using Python (`pandas.describe()`). | A Jupyter notebook cell showing the computed statistics. |\n| **Sat 6** | Statistics – hypothesis test | Perform a two‑sample t‑test comparing sales of two categories (Python `scipy.stats.ttest_ind`). | Test result (t‑value, p‑value) printed in the notebook. |\n| **Sun 7** | Review & note | Summarize today’s Tableau dashboard and statistical findings in a 150‑word paragraph. | Paragraph saved in a markdown file. |\n| **Mon 8** | Visualization design | Read “Chart choice cheat sheet” (5 min) and redesign the bar chart using best‑practice colors and labels. | Updated bar chart image. |\n| **Tue 9** | Storytelling | Add a title, subtitle, and brief insight annotation to the dashboard. | Dashboard with annotations saved. |\n| **Wed 10** | Communication – pitch prep | Draft a 2‑minute spoken script explaining the dashboard insights to a non‑technical audience. | Script document (≈200 words). |\n| **Thu 11** | Communication – practice | Record yourself delivering the script (phone or screen recorder). | Audio/video file ≤2 min. |\n| **Fri 12** | Feedback loop | Share the recording with a peer/mentor; note 2 improvement points. | Feedback notes saved. |\n| **Sat 13** | Refine & finalize | Incorporate feedback, re‑record the pitch, and update the dashboard if needed. | Final pitch recording and polished dashboard link. |\n| **Sun 14** | Portfolio wrap‑up | Compile the Tableau Public link, notebook with statistics, and pitch video into a single PDF portfolio page. | PDF ready to attach to applications. |\n\nCompleting these daily tasks will close the Tableau, Statistics, Data‑Visualization, and Communication gaps and give you concrete artefacts to showcase in interviews.",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2908.9,
+          "state": null,
+          "tokens": 3639
+        },
+        {
+          "turn": 4,
+          "q": "can i put tableau on my resume now?",
+          "answer": "You can add Tableau to your résumé, but list it as **“Tableau – beginner (hands‑on project completed)”** rather than as a fully mastered skill.  \n\n- Your current profile shows Tableau as a missing requirement — a skill gap — so it isn’t yet a confirmed strength on your resume [S4].  \n- After finishing the 2‑week, 1‑hour‑per‑day learning plan you’ll have a published Tableau dashboard (the one you built from your sales data) that you can reference as evidence of practical experience.  \n\n**How to phrase it:**  \n\n```\nTechnical Skills\n- Python, SQL, Power BI, Pandas, Excel\n- Tableau (basic – created a sales dashboard; ongoing learning)\n```  \n\nThis signals to recruiters that you’re actively acquiring the tool while still being transparent about your proficiency level. Once you deepen your Tableau expertise (e.g., more complex visualizations, storytelling, or a second project), you can upgrade the entry to “Tableau – proficient.”\n\n---\n**Sources**\n- [S4] profile: profile overview",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3157.4,
+          "state": null,
+          "tokens": 4222
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.75
+    },
+    {
+      "id": "j08",
+      "goal": "profile readiness -> first step -> 2-week plan at 1 h -> honest resume claim",
+      "version": "v7+e38",
+      "user": "persona_da",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "am I ready for a data analyst job?",
+          "answer": "You are partially ready for a Data Analyst role, but several key requirements are still missing.\n\n**Requirements already met (evidence from your resume)**\n- **Python** – listed in your skills and used in projects. [S3]\n- **SQL** – listed in your skills and used for reporting in your internship. [S3]\n- **Power BI** – you built a sales dashboard for a college fest. [S3]\n\n**Missing requirements (exact skill names)**\n- Tableau [S2]\n- Statistics [S2]\n- Data Visualization [S2]\n- Communication [S2]\n\n**Related background (partly covers a gap)**\n- **Power BI** experience gives you related background for **Data Visualization** and partially for **Tableau**, but it does not replace Tableau proficiency. [S3]\n- Your **Excel pivot-table analysis** and Power BI dashboards provide some visualisation practice, yet they don’t satisfy the dedicated “Data Visualization” requirement. [S3]\n- The **2-month internship** involved data entry and reporting, giving limited exposure to presenting insights, which is related to **Communication** but not a full match.\n\n**Verdict:** Your ATS estimate is 43/100 (an AI estimate, not an official result), indicating you are not yet a strong fit for the target Data Analyst job.\n\n---\n**Sources**\n- [S2] profile: job description\n- [S3] profile: career summary",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4366.9,
+          "state": {},
+          "tokens": 3206
+        },
+        {
+          "turn": 2,
+          "q": "what do I learn first?",
+          "answer": "Start with **Tableau** – it directly fills a required tool gap and will also give you practical data‑visualisation experience that supports the “Data Visualization” requirement. After you’re comfortable building dashboards in Tableau, add a short **Statistics** module, then focus on polishing **Communication** (storytelling and presentation) to round out the role’s soft‑skill need.\n\n**Suggested 8‑week roadmap**\n\n| Week | Focus | What to do |\n|------|-------|------------|\n| 1‑2 | **Tableau basics** | Complete Tableau’s free “Getting Started” videos, connect to a sample CSV, create basic charts (bar, line, map) and a simple dashboard. |\n| 3‑4 | **Fundamental statistics** | Study descriptive stats (mean, median, variance) and basic hypothesis testing (t‑test, chi‑square) using Khan Academy or Coursera “Statistics for Data Analysis”. Apply them to a small dataset in Python (pandas) to see the link with your existing skills. |\n| 5‑6 | **Data‑visualisation principles** | Learn visual‑design guidelines (color, chart choice, avoiding clutter) from “Storytelling with Data”. Re‑create the dashboards you built in Tableau applying these principles. |\n| 7‑8 | **Communication & presentation** | Practice turning a Tableau dashboard into a 5‑minute business story: write a slide deck, rehearse answering “so what?” questions, and record yourself to improve verbal clarity. |\n\nBy the end of week 8 you’ll have:\n\n* **Tableau** proficiency (tool gap closed)\n* **Statistics** foundation for analysis\n* **Data‑visualisation** best practices applied in Tableau\n* **Communication** practice for presenting insights\n\nThese steps directly address the four gaps identified in your job description and will help improve your ATS match from the current 43/100 estimate.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4562.9,
+          "state": {
+            "last_recommendations": [
+              "Python",
+              "SQL",
+              "Power BI"
+            ]
+          },
+          "tokens": 3354
+        },
+        {
+          "turn": 3,
+          "q": "plan for 2 weeks, 1 hr/day",
+          "answer": "Here’s a 2‑week, 1‑hour‑per‑day plan that targets your Tableau, Statistics, Data Visualization, and Communication gaps while fitting your 60‑minute daily study limit.\n\n| Day | Skill focus | Task (60 min) | Checkable outcome |\n|-----|-------------|---------------|-------------------|\n| 1 | Data Visualization | Classify 10 real‑world scenarios to the best chart type (Storytelling with Data). | 10/10 scenarios correctly matched, documented in a spreadsheet. |\n| 2 | Data Visualization | Redesign 3 poorly‑designed charts. | Before/after images saved with a one‑sentence justification for each redesign. |\n| 3 | Data Visualization | Create 5 clean charts on a single public dataset (e.g., COVID‑19 cases). | Five chart files exported and labeled. |\n| 4 | Data Visualization | Build a 1‑page dashboard answering three business questions. | Dashboard PDF with answers to the three questions. |\n| 5 | Data Visualization | Record a 3‑minute walkthrough of the dashboard. | Audio/video file saved; notes on key storytelling points. |\n| 6 | Tableau | Connect a CSV in Tableau and make 3 basic charts. | Tableau workbook with three charts saved. |\n| 7 | Tableau | Add dimensions, measures, and filters to create 4 filtered views. | Four filtered views documented in the workbook. |\n| 8 | Tableau | Create 5 calculated fields (including a LOD expression). | Calculated fields validated against expected results. |\n| 9 | Tableau | Build an interactive dashboard with at least 2 actions. | Published dashboard (local file) with actions functional. |\n|10 | Tableau | Publish a 4‑point story on Tableau Public. | Public link shared and verified working. |\n|11 | Statistics | Summarise a dataset (mean, median, std dev) using Python/pandas. | Summary table saved; values match pandas output. |\n|12 | Statistics | Simulate and plot 3 probability distributions in Python. | Three plots saved with brief captions. |\n|13 | Communication | Write 3 concise (≤120‑word) status updates for a mock project. | Text file with three updates; peer review confirms clarity. |\n|14 | Communication | Record a 3‑minute presentation of your Tableau dashboard (use the walkthrough from Day 5). | Video file uploaded; self‑review notes on pacing and clarity. |\n\n**How it fits your schedule:** Each day is a single 60‑minute block, matching the 1 hr/day constraint. Completing the listed outcomes gives you concrete evidence of progress toward closing the four skill gaps and should improve your ATS match beyond the current 43/100 estimate.",
+          "passed": false,
+          "failed": [
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3148.4,
+          "state": {
+            "last_recommendations": [
+              "Tableau proficiency",
+              "Statistics foundation for analysis",
+              "Data‑visualisation best practices applied in Tableau",
+              "Communication practice for presenting insights"
+            ],
+            "daily_minutes": 60
+          },
+          "tokens": 5320
+        },
+        {
+          "turn": 4,
+          "q": "can i put tableau on my resume now?",
+          "answer": "No—you should wait until you have at least a basic working knowledge before listing Tableau as a skill. Your profile currently shows Tableau as a **skill gap** [S4], meaning you haven’t yet demonstrated proficiency. Add it to your resume only after you’ve completed the introductory learning (e.g., built a simple dashboard and a few calculated fields) so you can back the claim with concrete work. In the meantime you can note “Tableau (learning)” or “Tableau – introductory level” to signal progress without overstating competence.\n\n---\n**Sources**\n- [S4] profile: profile overview",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2152.3,
+          "state": {
+            "last_recommendations": [
+              "Tableau proficiency",
+              "Statistics foundation for analysis",
+              "Data‑visualisation best practices applied in Tableau",
+              "Communication practice for presenting insights"
+            ],
+            "daily_minutes": 60
+          },
+          "tokens": 4079
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.75
+    },
+    {
+      "id": "j09",
+      "goal": "confused fresher -> likes apps -> web vs mobile -> 30-day web roadmap at 90 min",
+      "version": "v7",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "what should i do after btech? confused",
+          "answer": "I don't know enough about your specific interests, skills, or career goals to recommend a precise path. What are you most interested in pursuing after your B.Tech: higher education (like M.Tech or MBA), starting a job, or exploring other options like entrepreneurship or civil services?",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "qwen/qwen3.8-27b",
+          "latency_ms": 1720.0,
+          "state": null,
+          "tokens": 1908
+        },
+        {
+          "turn": 2,
+          "q": "i like building apps",
+          "answer": "Since you enjoy building apps, the most direct path is to pursue a **Software Developer** or **Full Stack Engineer** role, or an M.Tech in Computer Science if you want deeper technical specialization.\n\n**Career Options:**\n*   **Software Developer:** Focuses on mobile app development using languages like Java, Swift, or Kotlin, and cross-platform tools like React Native or Flutter [S2]. This role involves designing user-friendly apps and integrating APIs.\n*   **Full Stack Engineer:** Involves building both front-end and back-end web applications, using frameworks like React, AngularJS, or Django, along with databases and Python [S3].\n*   **Software Engineer, Product:** Similar to Full Stack, this role emphasizes full stack web/mobile development, JavaScript, HTML, and SQL [S1].\n\n**Next Steps:**\n1.  **Build Projects:** Employers value proof of skill. Build small end-to-end apps (e.g., a mobile app or web API) and host them on GitHub with a clear README [S6].\n2.  **Learn Core Skills:** Focus on the specific languages and frameworks listed above (e.g., Java/Kotlin for mobile, React/Node for web) [S2][S3].\n3.  **Higher Education (Optional):** If you prefer research or advanced technical depth, consider an M.Tech, which is listed as the education requirement for the Software Developer role [S2].\n\nWould you like help identifying specific projects to build for your resume?\n\n---\n**Sources**\n- [S1] careers: Software Engineer, Product (Full Stack)\n- [S2] careers: Software Developer\n- [S3] careers: Full Stack Engineer\n- [S6] knowledge: Learning by building projects",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "qwen/qwen3.8-27b",
+          "latency_ms": 3886.6,
+          "state": null,
+          "tokens": 3165
+        },
+        {
+          "turn": 3,
+          "q": "web or mobile, which one for fresher?",
+          "answer": "Web development is generally the better starting point for a fresher because it has a larger job market, lower hardware barriers, and faster feedback loops for learning.\n\n| Dimension | Web Development | Mobile Development |\n| :--- | :--- | :--- |\n| **Job Market** | Broader range of roles and companies | More specialized, often fewer entry-level roles |\n| **Learning Curve** | Faster iteration; easier to test in browser | Slower; requires device emulators/simulators |\n| **Tooling** | Standard IDEs and browsers | Specific SDKs (Android Studio, Xcode) |\n| **Portfolio** | Easier to host and share live links | Harder to demo without app store links |\n| **Skill Transfer** | Strong foundation in HTTP, APIs, databases | Focuses on platform-specific UI/UX and hardware |\n\nStart with web to build a strong foundation in programming logic, APIs, and databases. You can always pivot to mobile later using cross-platform frameworks like React Native or Flutter, which leverage your web JavaScript skills.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "qwen/qwen3.8-27b",
+          "latency_ms": 3570.5,
+          "state": null,
+          "tokens": 2502
+        },
+        {
+          "turn": 4,
+          "q": "ok web. 30 day roadmap, 90 mins daily",
+          "answer": "Your 30‑day, 90‑minute‑per‑day web‑development roadmap is:\n\n### Week 1 – Foundations (HTML + CSS)\n| Day | Task (≈90 min) | Checkable outcome |\n|-----|----------------|-------------------|\n| 1   | Watch a concise intro to HTML5 (30 min) + build a static “About Me” page (60 min) | Page renders correctly in three browsers |\n| 2   | Learn CSS selectors & box model (30 min) + style the page (60 min) | Page layout matches a provided mockup |\n| 3   | Flexbox basics (30 min) + refactor layout using Flexbox (60 min) | Elements align as intended on desktop & mobile |\n| 4   | Responsive design with media queries (30 min) + make page responsive (60 min) | Same page passes Chrome DevTools mobile view test |\n| 5   | Deploy to GitHub Pages (30 min) + write a short README (60 min) | Live URL reachable and README shows project description |\n| 6‑7 | Review & polish (90 min each) | No HTML/CSS validation errors (W3C validator) |\n\n### Week 2 – JavaScript Basics\n| Day | Task | Outcome |\n|-----|------|---------|\n| 8   | JS syntax & data types (30 min) + add a “click‑to‑show alert” button (60 min) | Button shows correct alert |\n| 9   | DOM manipulation (30 min) + build a dynamic list (add/remove items) (60 min) | List updates without page reload |\n| 10  | Event handling & forms (30 min) + create a simple contact form with validation (60 min) | Form blocks submission on invalid input |\n| 11  | Fetch API (30 min) + pull JSON from a public API (e.g., cat facts) and display (60 min) | Data appears on page after fetch |\n| 12  | Async/await & error handling (30 min) + improve previous fetch with loading spinner (60 min) | Spinner shows while loading, disappears on success/failure |\n| 13‑14| Mini‑project: “To‑Do List” using only vanilla JS (90 min each) | Fully functional to‑do app saved in localStorage |\n\n### Week 3 – Front‑End Framework (React)\n| Day | Task | Outcome |\n|-----|------|---------|\n| 15  | Install Node & create‑react‑app (30 min) + explore folder structure (60 min) | Repo initialized, `npm start` runs |\n| 16  | JSX & component basics (30 min) + build a Header component (60 min) | Header renders with props |\n| 17  | State & props (30 min) + convert To‑Do list to React (60 min) | To‑Do list works with React state |\n| 18  | Handling events & forms in React (30 min) + add new task form (60 min) | New tasks added without page reload |\n| 19  | useEffect for data fetching (30 min) + fetch cat facts inside a component (60 min) | Facts load on component mount |\n| 20  | Simple routing with React Router (30 min) + add “About” page (60 min) | URL changes show correct component |\n| 21  | Deploy to Netlify (30 min) + write project README (60 min) | Live URL with React app, README describes tech stack |\n\n### Week 4 – Full‑Stack Mini‑Project (Front‑end + API)\n| Day | Task | Outcome |\n|-----|------|---------|\n| 22  | Choose a free backend (e.g., JSON‑Server or Supabase) and set up a simple “posts” API (90 min) | API endpoint returns JSON |\n| 23  | Connect React app to the API (GET) and display posts (90 min) | Posts list renders from remote data |\n| 24  | Implement POST (create new post) with form (90 min) | New post appears in UI and persists |\n| 25  | Implement DELETE (remove post) (90 min) | Post removal updates UI and backend |\n| 26  | Add basic CSS framework (Tailwind or Bootstrap) for styling (90 min) | App looks polished on desktop & mobile |\n| 27  | Write tests with Jest/React Testing Library (90 min) | At least two passing unit tests |\n| 28‑30| Final polish, write a concise portfolio page linking all projects, and push all repos to GitHub (90 min each) | Portfolio site live, each project has its own repo with README |\n\n**How to verify progress:** after each day, push the code to a GitHub repo and tick the “outcome achieved” column. By day 30 you’ll have a live portfolio showcasing HTML/CSS, vanilla JS, React, and a simple full‑stack app—exactly what entry‑level web‑developer recruiters look for.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3913.5,
+          "state": null,
+          "tokens": 3663
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    }
+  ],
+  "model_configured": "groq:openai/gpt-oss-120b",
+  "provider": "api",
+  "expect_model": "openai/gpt-oss-120b",
+  "summary": {
+    "v7": {
+      "journeys": 8,
+      "excluded_model_fallback": 1,
+      "task_success": 0.625,
+      "turn_pass_rate": 0.871,
+      "p95_latency_ms": 6285.0,
+      "avg_latency_ms": 3496,
+      "models": [
+        "None",
+        "openai/gpt-oss-120b"
+      ],
+      "failed_turns": [
+        "j01 t1: min_numbered",
+        "j03 t1: min_numbered",
+        "j03 t3: profile_consistent",
+        "j08 t3: must_include_any"
+      ]
+    },
+    "v7+e38": {
+      "journeys": 8,
+      "excluded_model_fallback": 0,
+      "task_success": 0.5,
+      "turn_pass_rate": 0.839,
+      "p95_latency_ms": 6614.0,
+      "avg_latency_ms": 5080,
+      "models": [
+        "None",
+        "openai/gpt-oss-120b"
+      ],
+      "failed_turns": [
+        "j01 t1: min_numbered",
+        "j03 t1: min_numbered",
+        "j03 t3: mentions_day30",
+        "j04 t2: max_words",
+        "j08 t3: must_include_any"
+      ]
+    }
+  }
+}

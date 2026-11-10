@@ -240,3 +240,5 @@ logs/
 
 # real user questions harvested from chat logs (privacy, like reports/chat_logs/)
 reports/heldout/real_question_candidates.jsonl
+reports/heldout/real_questions_labelled.jsonl
+reports/security_incidents.jsonl

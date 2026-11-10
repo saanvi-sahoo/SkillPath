@@ -1,0 +1,554 @@
+item,test_id,question,answer,score_0_1_2,notes
+item001,v2-m06,"Technical, backend.","To prepare for your backend technical interview tomorrow, you should focus on reviewing your core programming language (Go, Java, or Python), system design fundamentals, and the specific company's products [S1, S3].
+
+Follow these steps to make the most of your remaining time:
+
+1.  **Review Technical Fundamentals:** Since you are interviewing for a backend role, ensure you are comfortable discussing how to build and operate systems in production, as well as core computer science concepts [S3].
+2.  **Research the Company:** Spend time understanding the startup’s products and recent news to demonstrate genuine interest [S1].
+3.  **Prepare Questions:** Have two or three thoughtful questions ready for your interviewers, such as asking about their current technical challenges or how they manage data infrastructure [S1, S3].
+4.  **Test Your Setup:** If the interview is online, verify your internet connection, camera, and microphone today to avoid last-minute technical issues [S1].
+5.  **Follow Up:** Plan to send a short, professional thank-you note to your interviewers within 24 hours after the meeting [S1].
+
+*Note: As this is a startup, be prepared for questions regarding scalability and efficiency, as these are often critical for backend roles [S3].*",,
+item002,v2-m05,Why is it so low?,"Your ATS score is 17/100 because your resume currently lacks five of the six core technical skills required for the Machine Learning Engineer role [S2].
+
+While you have **Python**, your profile is missing **Machine Learning, TensorFlow, SQL, Statistics, and Docker** [S2]. Because your background is in Mechanical Engineering and design, your current resume does not yet demonstrate the specific data pipeline and model deployment experience that this job description requires.
+
+To improve your score:
+*   **Highlight transferable skills:** Ensure your regression project is clearly described using industry-standard terminology (e.g., mention the libraries used if they relate to the required skills).
+*   **Structure your resume:** Use standard section titles like ""Skills"" and ""Projects"" near the top of your document to help ATS parsers read your qualifications more effectively [S1].
+*   **Address gaps:** Prioritize learning and documenting projects that incorporate SQL and TensorFlow, as these are foundational for the responsibilities listed in the job description [S2].
+
+Would you like a roadmap for how to start building a project that covers one of these missing skills?",,
+item003,v2-m08,Explain the second one.,"Adding projects to your ""Featured"" section allows you to showcase tangible evidence of your skills to recruiters and hiring managers who visit your profile. This matters for your career because it moves your profile beyond a static list of qualifications, providing concrete proof of your ability to apply tools or concepts to real-world problems.
+
+For example, if you are a developer, linking a GitHub repository of a completed project demonstrates your coding proficiency and problem-solving process, which can be the deciding factor in securing an interview [S1].",,
+item004,v2-s08,How can I stop procrastinating while studying for semester exams?,"To stop procrastinating while studying, you should immediately start with a small 10-minute task to overcome the initial barrier to action [S1]. 
+
+1. Use time-blocking techniques like the Pomodoro method, which consists of 25 minutes of focused study followed by a 5-minute break [S1].
+2. Eliminate distractions by keeping your phone completely out of reach during your study sessions [S1].
+3. Maintain motivation by tracking your visible progress with a checklist and studying with a peer for added accountability [S1].",,
+item005,v2-p03,Do I know enough to apply for this job?,"No, you are not ready to apply for this role yet: you meet 1 of the 6 required skills [S3].
+
+*   **Already met:** Python [S1, S3].
+*   **Missing:** Machine Learning, TensorFlow, SQL, Statistics, and Docker [S3, S4].
+*   **Related background:** Your MATLAB experience and regression project show a foundation in data analysis, but they do not replace the specific requirements for Machine Learning, TensorFlow, SQL, Statistics, or Docker [S1, S4].
+
+Focus on building projects that incorporate these missing skills to better align your profile with the target role requirements [S2].",,
+item006,v2-o04,Can you explain probability using dice examples for my exam?,"Yes, probability is the measure of how likely an event is to occur, calculated by dividing the number of favorable outcomes by the total number of possible outcomes. For example, when rolling a fair six-sided die, the probability of rolling a four is 1/6 because there is only one ""four"" face out of six total possibilities. To prepare for your exam, I recommend prioritizing the study of independent events, conditional probability, and the addition rule for mutually exclusive outcomes. Could you please share your specific exam syllabus so I can refine this study plan for you?",,
+item007,v2-m06,"Technical, backend.","To prepare for your backend interview tomorrow, focus on these three areas:
+
+*   **Technical Fundamentals:** Review your core programming language (Go, Java, or Python) and system design concepts, as backend roles often test your ability to build scalable, stable systems [S4].
+*   **Company Research:** Research the startup's product and recent news, and prepare two or three thoughtful questions about their infrastructure or engineering challenges [S1].
+*   **Hiring Process:** Be ready for a mix of technical coding/SQL assessments and behavioural questions about your experience building or operating production systems [S2, S4].
+
+Since you have limited time, focus on reviewing your own projects to explain the ""why"" behind your technical decisions. Do you have a specific technical area, like databases or cloud infrastructure, that you are most worried about?",,
+item008,v2-m01,Which of these needs the least maths?,"**Data Analyst** typically requires the least amount of advanced mathematics compared to Data Engineering or Data Science. 
+
+While all three roles involve data, the focus for a Data Analyst is usually on descriptive statistics, business reporting, and data visualization, whereas Data Engineering relies heavily on discrete mathematics and algorithm design, and Data Scientist roles often require significant knowledge of linear algebra, calculus, and inferential statistics for machine learning models.
+
+To help me give you more tailored advice, are you currently studying or looking to transition into one of these fields?",,
+item009,v2-m03,"No, I'm a complete beginner. Where do I start?","To become a UX designer as a complete beginner, you should start by mastering the core principles of user-centered design and learning industry-standard prototyping tools.
+
+Since you are starting from scratch, here is a recommended 4-week foundational roadmap:
+
+*   **Week 1: UX Fundamentals.** Study the design thinking process (Empathize, Define, Ideate, Prototype, Test) and learn the basics of user research, such as how to conduct interviews and create user personas.
+*   **Week 2: Interaction Design & Wireframing.** Learn the principles of visual hierarchy, layout, and navigation; practice creating low-fidelity wireframes using tools like Figma or Adobe XD.
+*   **Week 3: Prototyping.** Transition your wireframes into interactive, high-fidelity prototypes to simulate how a user would navigate through a digital product.
+*   **Week 4: Portfolio Building.** Begin documenting your first project, focusing on the ""why"" behind your design decisions rather than just the final aesthetic.
+
+**Next steps:** 
+1) Download Figma (it has a free tier) to begin exploring the interface.
+2) If you would like a more structured path, I can help you analyze specific courses or bootcamps if you provide your weekly time budget. 
+
+Would you like to focus on the research side of UX or the visual interface design side first?",,
+item010,v2-c01,Name two careers that combine finance and programming.,"Two careers that combine finance and programming are:
+
+1. **Data Analyst - Finance**: This role uses SQL, Python, and ETL pipelines to build and maintain data platforms for financial reporting and analysis [S1].
+2. **Sr. Manufacturing Business Intelligence/FP&A Analyst**: This position leverages programming languages like DAX and SQL alongside reporting platforms to turn operational financial data into business insights [S4].",,
+item011,v2-m04,Which should I pick for Android?,"You should pick Java, as it is one of the two official languages for Android development alongside Kotlin. While Python is not natively supported for building Android apps, Java provides the robust, object-oriented structure required for the Android SDK and is widely used in enterprise-level mobile applications.
+
+If you are just starting your mobile development journey, would you like to know more about the differences between Java and Kotlin for Android, or are you looking for a roadmap to build your first app?",,
+item012,v2-s04,Explain Big-O notation in exactly two sentences.,"Big-O notation is a mathematical framework used to describe the efficiency of an algorithm by measuring how its execution time or memory requirements grow as the input size increases. This concept is essential for software engineering careers because it allows developers to compare different approaches and select the most scalable solution for high-performance applications, such as choosing an efficient sorting algorithm over a slower one when processing large datasets.",,
+item013,v2-c05,Which careers use both Excel and SQL?,"Several careers from our records utilize both Excel and SQL:
+
+*   **Business Performance Analyst** [S1]: Uses your Excel and SQL skills for data pipeline and platform maintenance, though it requires additional expertise in Power BI or Tableau.
+*   **Business Analyst** [S2]: Leverages Excel and SQL for data analysis and visualization, with Python or R often listed as a required skill.
+*   **Associate, Analytics** [S3]: Combines Excel and SQL for reporting and data cleaning, though it typically requires proficiency in presentation tools like PowerPoint.
+*   **Business Intelligence Analyst** [S4]: Utilizes Excel and SQL for data modeling and quality checks, often requiring specific knowledge of relational database design.
+
+To help me provide more tailored advice, could you tell me if you prefer roles focused on building data infrastructure (like pipelines and databases) or roles focused on analyzing data to provide business insights?",,
+item014,v2-c06,Will learning AI guarantee me a high salary?,"No, learning AI cannot guarantee you a high salary, as job outcomes depend on market demand, your specific experience, and your ability to apply skills in a professional setting. You can improve your chances of securing a competitive role by building a strong portfolio of projects, gaining relevant internships, and networking within the industry. 
+
+Since I do not have your profile details, I cannot provide specific salary data or career matches; would you like to share your current skills or interests so I can help you explore relevant career paths?",,
+item015,v2-m03,"No, I'm a complete beginner. Where do I start?","To start your journey as a UX designer, you should begin by learning the core principles of user-centered design and familiarizing yourself with industry-standard tools.
+
+Since you are a beginner, here is a recommended path to build your foundation:
+
+*   **Learn the Fundamentals:** Study the core UX process, including user research, wireframing, prototyping, and usability testing.
+*   **Master the Tools:** Start practicing with design software like Figma or Adobe XD, which are the industry standards for creating interfaces.
+*   **Build a Portfolio:** As you learn, document your process for small projects or redesigns of existing apps to show your thinking to potential employers.
+*   **Take Structured Courses:** Look for reputable introductory certifications (such as the Google UX Design Professional Certificate) to provide a clear learning structure.
+
+To help me give you more specific advice, are you currently a student, or are you looking to transition into this field from another career?",,
+item016,v2-c03,Compare a business analyst and a data analyst briefly.,"A Business Analyst focuses on process mapping and stakeholder requirements, while a Data Analyst prioritizes technical data modeling and visualization.
+
+*   **Responsibilities**: Business Analysts bridge business needs with technical solutions, whereas Data Analysts clean data and build dashboards to identify trends [S2, S3].
+*   **Skills**: Business Analysts require project management and process mapping [S4, S5, S6]; Data Analysts require SQL, database querying, and visualization tools like Tableau or Power BI [S2, S6].
+*   **Working Style**: Business Analysts often work independently on operational improvements [S1], while Data Analysts focus on data-driven decision-making for stakeholders [S2].
+
+Data Analyst salary: 105,320 (dataset value, unverified). Business Analyst salary: data not available.",,
+item017,v2-c04,What should I do with my life?,"I cannot provide a responsible career recommendation without knowing more about your background and interests. To help me narrow down your options, which of these areas do you find most engaging: solving technical or logical problems, working creatively with design or media, or helping and managing people?",,
+item018,v2-c04,What should I do with my life?,"I don't know enough about your interests or background yet to suggest a career path. To help me give you a useful recommendation, could you tell me what subjects you enjoy, what kind of work you find fulfilling (e.g., building things, analyzing data, or helping people), or what your current field of study is?",,
+item019,v2-c07,What is the average salary of a blockchain developer in Pune according to your data?,"I do not have access to specific salary data for blockchain developers in Pune in my current records. For reliable and current compensation information, I recommend checking platforms like Glassdoor, AmbitionBox, or LinkedIn Salary.",,
+item020,v2-p04,Does my MySQL experience cover the SQL requirement?,"Yes, your MySQL experience covers the SQL requirement because MySQL is a specific implementation of SQL.
+
+Since your resume lists MySQL and you have 1.5 years of experience building REST APIs with it, you have demonstrated the necessary proficiency in database management and query design required for a Backend Developer role. You do not need to list ""SQL"" as a separate skill; your current experience is sufficient evidence for recruiters and ATS systems.",,
+item021,v2-c02,Is DevOps a good career for a fresher?,"It depends on your interest in building and automating infrastructure, as DevOps roles are highly technical and often require a strong foundation in software development or systems administration.
+
+I don't know enough about your current background to suggest if this is the right path for you yet. To help me provide a more tailored recommendation, could you tell me a bit more about your experience: do you prefer writing application code, managing servers and networks, or coordinating project workflows and architecture?
+
+Here are some relevant career paths from our records:
+
+*   **Software Engineer** [S1]: Focuses on building and operating software; requires strong coding and data structure skills, with DevOps as a key supporting competency.
+*   **Cloud Services Engineer (DevOps)** [S2]: Focuses on infrastructure automation and cloud technologies; requires scripting (Python/Ruby) and networking knowledge.
+*   **Software Program Manager, Cloud Services** [S3]: Focuses on the lifecycle and delivery of cloud projects; requires project management and agile methodology skills.
+*   **Full-Stack Software Developer** [S4]: Focuses on end-to-end web application development; requires JavaScript and React, with DevOps as a secondary requirement.
+*   **Solutions Architect, DevOps (Google Cloud)** [S5]: Focuses on high-level infrastructure design and automation; requires expertise in tools like Terraform, Kubernetes, and Docker.
+
+*Note: Salary data is not available for these roles.*",,
+item022,v2-c08,I'm a mechanical engineer who likes coding. Suggest three career paths.,"Three career paths that bridge mechanical engineering and coding are:
+
+1. **Robotics Engineer**: Uses your mechanical knowledge of hardware and kinematics alongside coding (C++ or Python) to control physical systems and automation [S1].
+2. **Data Analyst/Engineer**: Leverages your analytical background to build data models, automate reporting, and improve engineering efficiency using tools like SQL, Python, or Power BI [S1, S2].
+3. **Software Developer (Engineering Systems)**: Focuses on building the tools, automation scripts, and workflows that support engineering teams, often involving cloud platforms like Azure or DevOps practices [S1, S2].
+
+To provide more tailored advice, please upload your resume and a target job description to run an analysis.",,
+item023,v2-r03,Make a 30-day plan to close my gaps.,"To close your gaps in Tableau, Statistics, Data Visualization, and Communication, follow this 30-day plan [S1].
+
+### 30-Day Data Analyst Learning Plan (90 min/day)
+
+*   **Days 1–8: Data Visualization**
+    *   **Days 1–5:** Focus on chart selection, design principles, building charts, dashboards, and storytelling using *Storytelling with Data* resources [S1].
+    *   **Day 6:** Build a mini-project and push to GitHub [S1].
+    *   **Day 7:** Weekly review [S1].
+    *   **Day 8:** Interview readiness practice [S1].
+*   **Days 9–15: Tableau**
+    *   **Days 9–13:** Learn interface, filters, calculated fields, and dashboard actions using *Tableau free training videos* [S1].
+    *   **Day 14:** Weekly review [S1].
+    *   **Day 15:** Build a Tableau mini-project and push to GitHub [S1].
+*   **Days 16–22: Statistics**
+    *   **Days 16–20:** Study descriptive statistics, distributions, probability, hypothesis testing, and regression using *Khan Academy* [S1].
+    *   **Day 21:** Weekly review [S1].
+    *   **Day 22:** Analyze an A/B test dataset [S1].
+*   **Days 23–28: Communication**
+    *   **Days 23–26:** Practice explaining technical work, writing status updates, and role-playing stakeholder meetings using *Toastmasters* resources [S1].
+    *   **Day 27:** Build a communication-focused mini-project for GitHub [S1].
+    *   **Day 28:** Weekly review [S1].
+*   **Days 29–30: Capstone Project**
+    *   **Day 29:** Define a problem, clean a dataset, and build an end-to-end analysis [S1].
+    *   **Day 30:** Polish the project, add it to your resume, and record a 2-minute walkthrough [S1].
+
+***
+
+### CV Analysis
+Your resume currently matches the Data Analyst role in Python, SQL, and Power BI. To improve your 43/100 ATS score, you must address the following gaps identified in the job description:
+*   **Tableau:** You have Power BI experience, but the JD specifically requires Tableau; you must add a Tableau project to your resume [S1].
+*   **Statistics:** This is a core requirement missing from your profile; completing the statistics modules will help bridge this gap.
+*   **Data Visualization:** While you have dashboard experience, you need to demonstrate advanced design and storytelling principles [S1].
+*   **Communication:** The JD requires presenting insights to business teams; you should highlight any experience explaining technical findings to non-technical stakeholders [S1].",,
+item024,v2-s02,Explain the difference between TCP and UDP in a table.,"The primary difference is that TCP is a connection-oriented protocol designed for reliability and ordered data delivery, while UDP is a connectionless protocol optimized for speed and low latency.
+
+| Feature | TCP (Transmission Control Protocol) | UDP (User Datagram Protocol) |
+| :--- | :--- | :--- |
+| **Reliability** | High (guarantees delivery) | Low (no delivery guarantee) |
+| **Ordering** | Guarantees sequence of packets | No inherent ordering |
+| **Speed** | Slower (due to overhead) | Faster (minimal overhead) |
+| **Connection** | Connection-oriented (handshake) | Connectionless (no handshake) |
+| **Use Case** | Web browsing, email, file transfer | Streaming, gaming, VoIP |
+
+If you are preparing for a networking or systems design interview, I can help you practice explaining these concepts or suggest projects to demonstrate your understanding of them.",,
+item025,v2-m07,Is it worth it for a CSE student who wants a job?,"It depends, as GATE is highly beneficial if you are targeting prestigious Public Sector Undertaking (PSU) jobs or top-tier research institutes, but it may be less efficient if your primary goal is an immediate role in the private software industry. While the rigorous preparation strengthens your core computer science fundamentals, private companies typically prioritize practical coding skills, projects, and internships over a GATE score. To provide a more tailored recommendation, could you clarify whether you are currently aiming for government-sector roles or private-sector software engineering positions?",,
+item026,v2-r03,Make a 30-day plan to close my gaps.,"To close your gaps in **Tableau, Statistics, Data Visualization, and Communication** within 30 days, follow this focused plan:
+
+*   **Days 1–7: Statistics Fundamentals.** Focus on descriptive statistics, probability distributions, and hypothesis testing. 
+    *   *Outcome:* Complete a short online course or certification module and apply these concepts to your existing hostel expense dataset.
+*   **Days 8–17: Tableau Proficiency.** Learn to connect data sources, create calculated fields, and build interactive dashboards.
+    *   *Outcome:* Rebuild your sales dashboard from Power BI in Tableau to demonstrate tool versatility.
+*   **Days 18–24: Data Visualization Best Practices.** Study principles of storytelling with data (e.g., choosing the right chart types, color theory, and layout).
+    *   *Outcome:* Refine your Tableau dashboard to prioritize clarity and business impact.
+*   **Days 25–30: Communication & Presentation.** Practice summarizing technical findings into non-technical insights [S1].
+    *   *Outcome:* Record a 3-minute video presentation explaining the ""why"" behind your sales dashboard data to a hypothetical business stakeholder.
+
+**Next steps:** 1) Update your resume to include Tableau under your skills section once you finish the project, and 2) add a ""Key Projects"" section that highlights the business impact of your dashboards.",,
+item027,v2-s03,Explain polymorphism with a Java example.,"Polymorphism is a core object-oriented programming concept that allows objects of different classes to be treated as instances of a common superclass, enabling a single interface to represent different underlying forms. It matters for careers and study because it allows developers to write flexible, reusable code that can handle new data types without modifying existing logic; for example, a payment processing system can use a single `processPayment()` method to handle various types like `CreditCard` or `PayPal` seamlessly.
+
+```java
+// Polymorphism example in Java
+class Payment {
+    void process() {
+        System.out.println(""Processing generic payment..."");
+    }
+}
+
+class CreditCard extends Payment {
+    @Override
+    void process() {
+        System.out.println(""Processing credit card payment."");
+    }
+}
+
+class PayPal extends Payment {
+    @Override
+    void process() {
+        System.out.println(""Processing PayPal payment."");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Payment myPayment = new CreditCard(); // Polymorphic reference
+        myPayment.process(); // Calls CreditCard's version
+    }
+}
+```",,
+item028,v2-p02,Tell me my ATS estimate in one line.,"Your ATS match score is 43/100, which is an AI estimate based on your last analysis and not an official ATS result.",,
+item029,v2-p01,Which of my skills match the job?,"You meet 3 of the 7 required skills for the Backend Developer role: Java, Spring Boot, and REST APIs [S2, S4].
+
+*   **Already met:** Java, Spring Boot, and REST APIs are listed in your resume [S1, S2].
+*   **Missing:** Microservices, Docker, Kubernetes, and AWS [S2, S4].
+*   **Related background:** Your experience building an order-management REST API with Spring Boot provides a strong foundation for learning microservices, though it does not replace the requirement for containerization and cloud deployment skills [S1].
+
+Focusing your next project on deploying a Spring Boot application using Docker on AWS would help bridge these specific gaps.",,
+item030,v2-p06,Which skills on my resume are not needed for this job?,"The skills on your resume that are not listed in the job description requirements are AutoCAD, MATLAB, and Excel [S2, S4].
+
+These three skills are not among the requirements for the Machine Learning Engineer role, which specifies Python, Machine Learning, TensorFlow, SQL, Statistics, and Docker [S2, S3].",,
+item031,v2-s05,My DBMS exam is in 3 days and I haven't started. What should I study first?,"To pass your DBMS exam in three days, you should prioritize studying Relational Algebra and SQL queries first, as these are the most frequently tested practical components. On day one, master SQL syntax and normalization (1NF to BCNF) to secure high-weightage marks; on day two, focus on Transaction Management, ACID properties, and Concurrency Control; on day three, review indexing, B-trees, and solve previous year question papers to verify your understanding. Please provide your specific syllabus or course outline so I can refine this plan to match your curriculum.",,
+item032,v2-o01,Write a birthday poem for my mom,"I'm your **career & study advisor**, so I can't help with that one. 🙂
+I can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *""Give me tips to study effectively for exams""*
+",,
+item033,v2-p03,Do I know enough to apply for this job?,"No, you do not currently meet the requirements for this Machine Learning Engineer role.
+
+Your profile shows you meet only 1 of the 6 required skills (Python), while you have five significant gaps: Machine Learning, TensorFlow, SQL, Statistics, and Docker [S4]. Your ATS estimate is 17/100, and your current background in mechanical design does not yet align with the technical requirements for training and deploying models or building data pipelines.
+
+To become a competitive candidate, I suggest:
+1. **Focus on the gaps:** Prioritize learning Statistics and SQL, then move to Machine Learning frameworks like TensorFlow.
+2. **Bridge your experience:** Use your existing Python skills to build and document a project that involves data pipelines or model deployment to demonstrate practical application.
+3. **Strategy:** Per standard job search guidance, it is most effective to apply for roles where you meet at least 60-70% of the requirements [S2].
+
+Would you like a roadmap to help you bridge these specific skill gaps?",,
+item034,v2-o02,What's the best smartphone under 20000?,"I'm your **career & study advisor**, so I can't help with that one. 🙂
+I can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *""Explain SQL window functions for my interview preparation""*
+",,
+item035,v2-p05,"List the requirements in the job description, nothing else.","The job description for the Machine Learning Engineer role requires the following:
+
+*   **Skills/Tools:** Python, Machine Learning, TensorFlow, SQL, Statistics, and Docker [S2].
+*   **Responsibilities:** Train and deploy ML models and build data pipelines [S2].
+*   **Education:** Bachelor's in a technical field [S2].",,
+item036,v2-p02,Tell me my ATS estimate in one line.,"Your ATS estimate is 43/100, which is an AI-generated estimate and not an official result from an employer's system.",,
+item037,v2-s07,Give two examples each of classification and regression problems.,"I don't see an analysed profile yet, so I can't tailor these examples to your specific career goals; please upload your resume and a job description to get started.
+
+1. **Classification:** Predicting whether an email is ""spam"" or ""not spam,"" or identifying if a medical image shows a ""benign"" or ""malignant"" tumor.
+2. **Regression:** Estimating the future price of a house based on its square footage and location, or forecasting the total sales revenue for a company next quarter.",,
+item038,v2-m04,Which should I pick for Android?,"You should pick Java for Android development, as it is one of the two official languages supported by Google for building Android applications.
+
+While Python is excellent for data science and automation, it is not natively supported for Android app development; Java (or Kotlin) is required to interact with the Android SDK and build functional mobile interfaces. Java is a statically-typed, object-oriented language that provides the structure and performance necessary for mobile environments, whereas Python is dynamically-typed and typically used for backend logic or scripting rather than mobile UI development.",,
+item039,v2-c02,Is DevOps a good career for a fresher?,"Yes, DevOps is a viable career path for a fresher, though it typically requires a strong foundation in software development or systems administration [S1, S2, S3].
+
+Because DevOps roles involve building, automating, and operating cloud infrastructure [S1, S2, S3], you will need to demonstrate practical skills in areas like CI/CD, infrastructure automation, and scripting (e.g., Python or BASH) [S1, S2, S3]. Since you have not run an analysis of your profile yet, I cannot tell you how your current skills align with these requirements. 
+
+To get started:
+1. **Upload your resume and a target job description** in the sidebar and click **Analyze Profile** so I can identify your specific skill gaps.
+2. **Build projects:** For a fresher, well-documented projects that use tools like Docker, Kubernetes, or Terraform are the strongest proof of your ability to handle DevOps tasks [S3, S4].
+
+Would you like to know which specific technical skills are most commonly requested for entry-level DevOps roles?",,
+item040,v2-p05,"List the requirements in the job description, nothing else.","The job description for the Machine Learning Engineer role requires the following [S2]:
+
+**Skills/Tools**
+* Python
+* Machine Learning
+* TensorFlow
+* SQL
+* Statistics
+* Docker
+
+**Responsibilities**
+* Train and deploy ML models
+* Build data pipelines
+
+**Education**
+* Bachelor's in a technical field",,
+item041,v2-r04,Where can I learn Docker for free? Give links.,"I don't see an analysed profile yet, so I can't tailor these resources to your specific background, but there are several high-quality, free platforms to learn Docker.
+
+*   **[Docker Curriculum](https://docker-curriculum.com/):** An excellent, step-by-step tutorial that takes you from the basics of containers to deploying a web application.
+*   **[Docker Official Documentation](https://docs.docker.com/get-started/):** The ""Get Started"" guide is the most accurate and up-to-date resource for learning core concepts like images, containers, and Docker Compose.
+*   **[FreeCodeCamp (YouTube)](https://www.youtube.com/watch?v=fqMOX6JJhGo):** They offer comprehensive ""Docker for Beginners"" video courses that provide a great visual walkthrough of the technology.
+*   **[Killercoda](https://killercoda.com/playgrounds):** This site provides free, browser-based interactive labs where you can practice Docker commands without needing to install anything on your local machine.
+
+To get the most out of these, I recommend uploading your resume and a target job description in the sidebar and clicking **Analyze Profile**; I can then help you prioritize which Docker skills are most relevant to your career goals.",,
+item042,v2-p06,Which skills on my resume are not needed for this job?,"The skills on your resume that are not listed as requirements for the Machine Learning Engineer role are **AutoCAD, MATLAB, and Excel** [S2, S4].
+
+While these tools demonstrate your technical background in mechanical engineering, they do not align with the specific requirements for this position, which focuses on **Python, Machine Learning, TensorFlow, SQL, Statistics, and Docker** [S2, S4]. 
+
+To improve your ATS match score (currently 17/100), consider moving these engineering-specific skills to a secondary section or focusing your resume more heavily on your Python projects and the missing technical requirements [S1, S2].",,
+item043,v2-o03,How do I become a football coach?,"To become a football coach, you should follow these actionable steps to build your credentials and experience.
+
+1. **Obtain formal coaching licenses:** Start with introductory grassroots or ""Level 1"" coaching badges offered by your national football association to learn the fundamentals of player development and safety.
+2. **Gain practical experience:** Volunteer at local youth clubs, schools, or community programs to log coaching hours and develop your personal coaching philosophy.
+3. **Build a professional network:** Attend coaching clinics, workshops, and association events to connect with experienced mentors and learn about job openings.
+4. **Specialize and advance:** Pursue higher-level UEFA or equivalent licenses (e.g., C, B, A, and Pro licenses) as you gain experience and decide if you want to focus on youth development, tactical analysis, or senior team management.
+5. **Maintain certifications:** Ensure your first aid, safeguarding, and background check certifications remain current, as these are mandatory requirements for all coaching roles.
+
+Since I do not have your profile details, I cannot determine which level of coaching best suits your current background; would you like to focus on youth development, semi-professional coaching, or the tactical analysis side of the game?",,
+item044,v2-p07,Show me what you know about my background.,"Your profile is for a **Backend Developer** with 1.5 years of experience and an AI-estimated ATS score of 43/100.
+
+*   **Education:** B.E. in Information Technology (2023).
+*   **Current Skills:** Java, Spring Boot, MySQL, Git, and REST APIs.
+*   **Experience:** You have built an order-management REST API using Spring Boot and MySQL.
+*   **Skill Gaps:** You are missing Microservices, Docker, Kubernetes, and AWS, all of which are required by your target job description.
+
+Would you like a roadmap to help you bridge these specific skill gaps?",,
+item045,v2-s01,"What is an API, explained simply?","An API (Application Programming Interface) is a set of rules that allows two different software programs to communicate and exchange data with each other. 
+
+It acts as a bridge, enabling your application to request information or services from another system without needing to know how that system is built internally. For example, when you use a travel website to search for flights, the site uses an API to ""talk"" to various airline databases, retrieve real-time pricing, and display the results to you. Understanding APIs is essential for roles like **Chief Architect of APIs** [S1], where you would be responsible for designing these communication channels to ensure software systems can scale and work together effectively.",,
+item046,v2-o04,Can you explain probability using dice examples for my exam?,"Yes, I can explain probability using dice to help you prepare for your exam.
+
+Probability is the measure of how likely an event is to occur, calculated as the number of **favorable outcomes** divided by the **total number of possible outcomes**.
+
+*   **Single Die (Total outcomes = 6):** If you want to roll a 4, there is only one favorable outcome (the face with 4). The probability is 1/6 (approximately 16.7%).
+*   **Multiple Events (Independent):** If you roll two dice, the total number of outcomes is 6 × 6 = 36. To find the probability of rolling a ""double"" (e.g., 1-1, 2-2, etc.), there are 6 favorable outcomes. The probability is 6/36, which simplifies to 1/6.
+*   **""OR"" Rule (Addition):** If you want to roll a 1 OR a 2 on a single die, you add the probabilities: 1/6 + 1/6 = 2/6, or 1/3.
+*   **""AND"" Rule (Multiplication):** If you want to roll a 1 on the first die AND a 2 on the second, you multiply the independent probabilities: 1/6 × 1/6 = 1/36.
+
+Would you like to try a practice problem, or is there a specific type of probability (like conditional probability) you need help with for your exam?",,
+item047,v2-r02,Give me a 2-week plan to learn Git.,"I don't see an analysed profile yet, so I cannot tailor this to your specific background, but here is a 2-week plan to master Git fundamentals.
+
+*   **Days 1-3 (Core Concepts):** Learn the difference between local and remote repositories, and practice `git init`, `git add`, `git commit`, and `git status`.
+    *   *Outcome:* Successfully track changes in a local folder and commit them with descriptive messages.
+*   **Days 4-7 (Branching & Merging):** Learn `git branch`, `git checkout` (or `git switch`), and `git merge`.
+    *   *Outcome:* Create a new feature branch, make changes, and merge it back into the main branch without errors.
+*   **Days 8-10 (Remote Work):** Learn `git remote`, `git push`, `git pull`, and `git clone` using a platform like GitHub or GitLab.
+    *   *Outcome:* Push a local project to a remote repository and pull changes from it.
+*   **Days 11-14 (Collaboration & Troubleshooting):** Learn how to resolve merge conflicts and use `git log` and `git diff` to inspect history.
+    *   *Outcome:* Simulate a merge conflict and resolve it manually, then document your project history.
+
+**Next steps:** Once you have completed this, upload your resume and a target job description to the sidebar and click **Analyze Profile** so I can help you integrate these skills into your career plan.",,
+item048,v2-c07,What is the average salary of a blockchain developer in Pune according to your data?,"I do not have salary data for blockchain developers in Pune in my current records. 
+
+For accurate and up-to-date compensation information, I recommend checking platforms like Glassdoor, AmbitionBox, or LinkedIn Salary, which aggregate user-reported data for specific roles and locations. 
+
+If you would like to explore other roles, I can provide the salary information I do have for the positions currently in my dataset, such as Data Analyst roles in Pune, which range from 4–5 Lacs PA [S2] to 1–1.25 Cr PA [S1] depending on experience level.",,
+item049,v2-o01,Write a birthday poem for my mom,"I'm your **career & study advisor**, so I can't help with that one. 🙂
+I can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *""Give me tips to study effectively for exams""*
+",,
+item050,v2-p04,Does my MySQL experience cover the SQL requirement?,"Yes, your MySQL experience covers the SQL requirement because MySQL is a relational database management system that utilizes the SQL language.
+
+*   **Already met:** Your experience with MySQL demonstrates proficiency in SQL, which is the foundational language for the database requirements in your target role.
+*   **Missing:** While MySQL covers SQL, you still have gaps in Microservices, Docker, Kubernetes, and AWS.
+*   **Related background:** Your work on the order-management REST API shows you can apply SQL within a Spring Boot environment, which is highly relevant to the backend responsibilities listed in the job description.
+
+Focusing on containerization (Docker/Kubernetes) and cloud deployment (AWS) will be your next priority to bridge the remaining gaps.",,
+item051,v2-s05,My DBMS exam is in 3 days and I haven't started. What should I study first?,"To prepare for your DBMS exam in three days, prioritize high-yield topics that form the core of most database courses.
+
+*   **Day 1: Relational Model & SQL.** Focus on ER diagrams, mapping ER to relational schemas, and writing complex SQL queries (Joins, Group By, Subqueries).
+    *   *Outcome:* Ability to draw an ER diagram and write a query involving at least three tables.
+*   **Day 2: Normalization & Transactions.** Master Normal Forms (1NF through BCNF) and ACID properties, concurrency control, and recovery basics.
+    *   *Outcome:* Ability to decompose a relation into 3NF/BCNF and explain how locks prevent data inconsistency.
+*   **Day 3: Indexing, Hashing & Review.** Study B-Trees, B+ Trees, and hashing techniques, then spend the final hours reviewing past exam papers or practice questions.
+    *   *Outcome:* Ability to explain how indexing speeds up search operations and solve one practice exam under timed conditions.
+
+**Next step:** Start by reviewing your syllabus to identify which of these topics carries the most marks, and focus your time there first.",,
+item052,v2-s03,Explain polymorphism with a Java example.,"Polymorphism is a core concept in object-oriented programming that allows objects of different classes to be treated as objects of a common superclass, enabling a single interface to represent different underlying forms. It matters for your career because it makes code more flexible, reusable, and easier to maintain, which is a standard expectation in professional software engineering roles.
+
+In Java, this is commonly achieved through method overriding. For example, if you have a base class `Animal` with a method `makeSound()`, you can create subclasses like `Dog` and `Cat` that provide their own specific implementation of that method.
+
+```java
+class Animal {
+    void makeSound() {
+        System.out.println(""Some generic sound"");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println(""Bark"");
+    }
+}
+
+// Usage
+Animal myDog = new Dog();
+myDog.makeSound(); // Outputs: Bark
+```
+
+Even though the reference type is `Animal`, the program executes the `Dog` version of the method at runtime. This allows you to write generic code that handles various animal types without needing to know their specific class beforehand.
+
+**Next steps:** To see how this applies to your own career path, upload your resume and a target job description so I can identify if you need to demonstrate this concept in a project or interview.",,
+item053,v2-r02,Give me a 2-week plan to learn Git.,"This 14-day learning plan focuses on mastering Git fundamentals and interview readiness, requiring 90 minutes of study per day [S1].
+
+*   **Day 1:** Git Basics – Track a project with 10 commits [S1].
+*   **Day 2:** Branching & Merging – Resolve a merge conflict [S1].
+*   **Day 3:** GitHub Workflow – Open a pull request on your own repository [S1].
+*   **Day 4:** Mini Project – Build a project and push it to GitHub with a README [S1].
+*   **Day 5:** Interview Readiness – Answer 10 Git questions and revisit 3 weak spots [S1].
+*   **Day 6:** Interview Readiness (Deeper Practice 1) – Extend a previous Git exercise with a harder variant [S1].
+*   **Day 7:** Weekly Review – Redo one exercise from each skill studied this week without notes [S1].
+*   **Day 8:** Interview Readiness (Deeper Practice 2) – Extend a previous Git exercise with a harder variant [S1].
+*   **Day 9:** Interview Readiness (Deeper Practice 3) – Extend a previous Git exercise with a harder variant [S1].
+*   **Day 10:** Interview Readiness (Deeper Practice 4) – Extend a previous Git exercise with a harder variant [S1].
+*   **Day 11:** Interview Readiness (Deeper Practice 5) – Extend a previous Git exercise with a harder variant [S1].
+*   **Day 12:** Interview Readiness (Deeper Practice 6) – Extend a previous Git exercise with a harder variant [S1].
+*   **Day 13:** Interview Readiness (Deeper Practice 7) – Extend a previous Git exercise with a harder variant [S1].
+*   **Day 14:** Weekly Review – Redo one exercise from each skill studied this week without notes [S1].
+
+**Resource:** Use the *Pro Git* book for all technical tasks: https://git-scm.com/book/en/v2 [S1].",,
+item054,v2-m02,Give me two examples.,"Two common examples of cloud computing are:
+
+1. **Infrastructure as a Service (IaaS):** You rent virtualized hardware like servers, storage, and networking from providers like Google Cloud or Azure to build and manage your own applications [S1, S2].
+2. **Software as a Service (SaaS):** You access ready-to-use business applications or platforms over the internet, such as cloud-based data management or developer tools, without needing to maintain the underlying infrastructure [S1, S4].",,
+item055,v2-s06,What is gradient descent?,"Gradient descent is an optimization algorithm used to minimize a function by iteratively moving in the direction of the steepest descent, as defined by the negative of the gradient. In machine learning and data science, it is the fundamental method used to ""train"" models by adjusting their internal parameters to reduce the error between predicted and actual outcomes.
+
+For example, if you are building a linear regression model to predict housing prices, gradient descent helps the model automatically find the best-fitting line by repeatedly tweaking the slope and intercept until the difference between the predicted price and the actual sale price is as small as possible. Understanding this concept is essential for roles in data science, machine learning engineering, and AI research.",,
+item056,v2-c05,Which careers use both Excel and SQL?,"Several career paths frequently require both Excel and SQL skills to manage, analyze, and report on data:
+
+*   **Business Performance Analyst** [S1]: Uses these tools to design and maintain data pipelines, perform quality checks, and optimize data accessibility.
+*   **Business Analyst** [S2, S4]: Focuses on data manipulation, automated report building, and transforming raw data into actionable insights for stakeholders.
+*   **Associate, Analytics** [S3]: Involves cleaning datasets, querying information, and preparing dashboards to identify business trends.
+*   **Business Intelligence Analyst** [S5]: Utilizes these skills to manage data warehouse structures and support relational database design.
+*   **SQL Application Developer** [S8]: Applies these skills to translate business requirements into database code, manage integrations, and maintain software applications.
+
+To help me narrow these down, are you more interested in the technical side of building data pipelines, or the analytical side of creating reports and insights for business teams?",,
+item057,v2-r01,Make a 30-day Python plan for a beginner with 1 hour a day.,"This 30-day Python learning plan is designed for a beginner with a 60-minute daily time budget [S1].
+
+### 30-Day Python Plan
+*   **Day 1:** Syntax, variables & types (10 exercises) [S1].
+*   **Day 2:** Control flow & functions (5 functions) [S1].
+*   **Day 3:** Files, errors & modules (CSV script) [S1].
+*   **Day 4:** Pandas basics (Clean/summarise dataset) [S1].
+*   **Day 5:** Visualising data (4 charts) [S1].
+*   **Day 6:** Mini project (GitHub repo + README) [S1].
+*   **Day 7:** Weekly review (Redo exercises) [S1].
+*   **Day 8:** Interview readiness (10 answers) [S1].
+*   **Day 9:** Interview readiness (Harder variant 1) [S1].
+*   **Day 10:** Interview readiness (Harder variant 2) [S1].
+*   **Day 11:** Interview readiness (Harder variant 3) [S1].
+*   **Day 12:** Interview readiness (Harder variant 4) [S1].
+*   **Day 13:** Interview readiness (Harder variant 5) [S1].
+*   **Day 14:** Weekly review (Redo exercises) [S1].
+*   **Day 15:** Interview readiness (Harder variant 6) [S1].
+*   **Day 16:** Interview readiness (Harder variant 7) [S1].
+*   **Day 17:** Interview readiness (Harder variant 8) [S1].
+*   **Day 18:** Interview readiness (Harder variant 9) [S1].
+*   **Day 19:** Interview readiness (Harder variant 10) [S1].
+*   **Day 20:** Interview readiness (Harder variant 11) [S1].
+*   **Day 21:** Weekly review (Redo exercises) [S1].
+*   **Day 22:** Interview readiness (Harder variant 12) [S1].
+*   **Day 23:** Interview readiness (Harder variant 13) [S1].
+*   **Day 24:** Interview readiness (Harder variant 14) [S1].
+*   **Day 25:** Interview readiness (Harder variant 15) [S1].
+*   **Day 26:** Interview readiness (Harder variant 16) [S1].
+*   **Day 27:** Interview readiness (Harder variant 17) [S1].
+*   **Day 28:** Weekly review (Redo exercises) [S1].
+*   **Day 29:** Capstone: plan & build (First version) [S1].
+*   **Day 30:** Capstone: polish & present (GitHub + resume) [S1].
+
+**Resources:** Use the [Official Python Tutorial](https://docs.python.org/3/tutorial/) for all technical tasks [S1]. Use the Pomodoro technique (25 minutes work, 5 minutes break) to maintain focus [S2].",,
+item058,v2-r04,Where can I learn Docker for free? Give links.,"You can learn Docker for free through official documentation and reputable educational platforms by visiting the links provided below.
+
+1. **Docker Official Documentation:** [https://docs.docker.com/get-started/](https://docs.docker.com/get-started/) – The official ""Get Started"" guide provides a comprehensive, hands-on introduction to containerizing applications.
+2. **Docker YouTube Channel:** [https://www.youtube.com/@Docker](https://www.youtube.com/@Docker) – Their official channel features tutorials ranging from basic concepts to advanced orchestration.
+3. **FreeCodeCamp:** [https://www.freecodecamp.org/](https://www.freecodecamp.org/) – This platform offers long-form video courses and articles that cover Docker fundamentals and practical deployment scenarios.
+4. **Play with Docker:** [https://labs.play-with-docker.com/](https://labs.play-with-docker.com/) – This is an official interactive browser-based playground that allows you to run Docker commands without installing anything on your local machine.
+
+If you would like a structured learning plan, please provide your current technical background and daily time availability.",,
+item059,v2-s06,What is gradient descent?,"Gradient descent is an iterative optimization algorithm used to minimize a function by repeatedly moving in the direction of the steepest descent, defined by the negative of the gradient. It matters for careers and study because it is the fundamental engine used to train machine learning models, allowing them to adjust their internal parameters to reduce prediction errors.
+
+For example, in linear regression, gradient descent is used to find the specific values for the slope and intercept that result in the smallest possible difference between the model's predictions and the actual data points.",,
+item060,v2-c01,Name two careers that combine finance and programming.,"Two careers that combine finance and programming are Data Analyst - Finance and Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance.
+
+1. **Data Analyst - Finance** [S1]: This role aligns with your interest in finance and programming by requiring Python and SQL for building data pipelines, though it often requires a Bachelor's degree in a technical field.
+2. **Sr. Manufacturing Business Intelligence/FP&A Analyst, Finance** [S4]: This position combines financial analysis with programming skills like SQL and DAX to create dashboards, though it typically requires proficiency in specific reporting platforms like Tableau or Power BI.",,
+item061,v2-c06,Will learning AI guarantee me a high salary?,"Learning AI does not guarantee a high salary, as compensation depends on many factors including your specific role, experience level, location, and the company's hiring standards.
+
+I don't have specific salary data for AI roles in your profile, as the available job listings do not provide figures [S1]. For reliable market data, I recommend checking platforms like Glassdoor, AmbitionBox, or LinkedIn Salary, which provide crowdsourced compensation insights based on specific job titles and regions.
+
+To give you a better idea of how your skills align with current market requirements, you can upload your resume and a target job description to run an analysis. Would you like to do that, or are you looking for information on which AI skills are currently in high demand?",,
+item062,v2-m01,Which of these needs the least maths?,"Data Analyst typically requires the least advanced mathematics among these three roles, as it focuses more on descriptive statistics and business reporting than the complex algorithmic or architectural mathematics required for Data Science or Data Engineering.
+
+To provide more tailored advice, could you tell me more about your background—are you currently studying a quantitative subject, or are you looking to transition into data from a different field?",,
+item063,v2-p08,What is my skill gap?,"I don't see an analysed profile yet, so I can't identify your specific skill gaps. Could you please upload your resume and the job description you are targeting in the sidebar and click **Analyze Profile**?",,
+item064,v2-s01,"What is an API, explained simply?","An API (Application Programming Interface) is a set of rules that allows two different software programs to communicate and exchange information with each other. It acts as a digital messenger that takes a request from one system, delivers it to another, and brings the response back.
+
+This concept is essential for modern careers and study because most professional software development involves connecting different services, such as integrating a payment processor into a website or pulling weather data into a mobile app. For example, when you use a travel website to search for flights, the site uses an API to send your search criteria to various airline databases and then displays the combined results on your screen.",,
+item065,v2-m07,Is it worth it for a CSE student who wants a job?,"It depends on your career goals, as GATE is primarily designed for students seeking advanced research-based degrees or specific government sector roles.
+
+*   **Yes, if:** You are targeting Public Sector Undertakings (PSUs) that recruit directly through GATE scores, or if you want to pursue an M.Tech/M.S. at top-tier institutions like IITs or IISc to pivot into specialized research or high-end R&D roles.
+*   **No, if:** Your primary goal is to enter the software industry as a developer or engineer immediately after graduation. For these roles, industry-focused projects, internships, and proficiency in data structures, algorithms, and system design are generally more valuable than a GATE score.
+
+Since I don't have your profile details yet, I can't tell you how this aligns with your specific background. If you'd like to explore this further, you can upload your resume and a target job description, and I can help you analyze your current skill gaps for the industry roles you are considering.",,
+item066,v2-s07,Give two examples each of classification and regression problems.,"Classification and regression are two fundamental types of supervised machine learning problems.
+
+1. Classification: Predicting a categorical label, such as identifying if an email is ""spam"" or ""not spam,"" or classifying an image as a ""cat"" or ""dog.""
+2. Regression: Predicting a continuous numerical value, such as estimating the future price of a house based on its square footage, or forecasting the temperature for the next day.
+
+I am a career and education assistant; if you would like to explore how these concepts apply to data science roles, please let me know your current skill level or interests.",,
+item067,v2-r01,Make a 30-day Python plan for a beginner with 1 hour a day.,"To learn Python in 30 days with one hour per day, you should focus on building foundational logic and completing one small project to solidify your skills.
+
+*   **Days 1–7 (Basics):** Learn variables, data types (strings, integers, lists), and basic arithmetic. 
+    *   *Outcome:* Write a script that calculates a tip or converts units (e.g., Celsius to Fahrenheit).
+*   **Days 8–14 (Control Flow):** Learn `if/else` statements, `for` and `while` loops. 
+    *   *Outcome:* Create a ""Guess the Number"" game where the computer generates a number and the user guesses it.
+*   **Days 15–21 (Functions & Modules):** Learn how to define functions, use parameters, and import standard libraries (like `math` or `random`). 
+    *   *Outcome:* Refactor your previous scripts into reusable functions.
+*   **Days 22–30 (Mini Project):** Build a simple To-Do List application that saves tasks to a text file. 
+    *   *Outcome:* A functional command-line tool that demonstrates input handling, file I/O, and logic.
+
+**Study Tips:** Use the Pomodoro technique (25 minutes of coding, 5 minutes of break) to maintain focus during your hour [S1]. Reserve the final 10 minutes of each session to review what you built the day before [S1].
+
+**Next steps:** 1) Choose an online platform to follow, 2) set a consistent time for your daily hour, and 3) upload your resume once you have a project to list!",,
+item068,v2-m05,Why is it so low?,"Your ATS score is 17/100 because your resume currently lacks five of the six key skills required by the Machine Learning Engineer job description [S2].
+
+While your resume meets the requirement for **Python** [S2], you have significant skill gaps in **Machine Learning, TensorFlow, SQL, Statistics, and Docker** [S2]. Your background in Mechanical Engineering and design work partly helps demonstrate technical proficiency, but these specific requirements remain gaps that prevent a higher match [S2]. To improve your score, you should gain and document experience in these missing areas and ensure your resume mirrors the exact terminology used in the job description [S1].",,
+item069,v2-o03,How do I become a football coach?,"I'm your **career & study advisor**, so I can't help with sports coaching paths. I can help you plan your academic studies, improve your resume for professional roles, or prepare for job interviews. For example: *""How can I improve my resume for an internship?""*",,
+item070,v2-p08,What is my skill gap?,"You have no analysed profile yet, so I cannot identify your specific skill gaps. Please upload your resume and the job description you are targeting so I can perform an analysis for you.",,
+item071,v2-s08,How can I stop procrastinating while studying for semester exams?,"To stop procrastinating, start with a 10-minute task to overcome the initial barrier and build momentum [S1].
+
+1. **Use the Pomodoro Technique:** Set a timer for 25 minutes of focused study followed by a 5-minute break to maintain concentration without burnout [S1].
+2. **Eliminate distractions:** Keep your phone in another room or out of reach while you are in a study block [S1].
+3. **Track visible progress:** Use a checklist or a streak tracker to see your daily accomplishments, as small wins are more effective than occasional long sessions [S1].
+4. **Find accountability:** Study with a peer to stay focused and hold each other responsible for your study goals [S1].
+
+Remember that motivation often follows action, so focus on starting small rather than waiting until you feel like studying [S1].",,
+item072,v2-c03,Compare a business analyst and a data analyst briefly.,"A **Data Analyst** focuses on technical data manipulation and visualization to uncover trends [S2], while a **Business Analyst** bridges the gap between data insights and business processes to improve organizational efficiency [S4, S6].
+
+*   **Data Analyst:** Primarily uses SQL, Python, and visualization tools (Tableau, Power BI) to clean datasets and build dashboards [S2, S6, S8].
+*   **Business Analyst:** Emphasizes requirements gathering, process mapping, and stakeholder communication to translate findings into actionable business strategies [S4, S6].
+
+Both roles often require Excel and strong analytical skills [S1, S3, S4], but the Data Analyst role is more tool-heavy, whereas the Business Analyst role is more process-oriented.",,
+item073,v2-s04,Explain Big-O notation in exactly two sentences.,Big-O notation is a mathematical way to describe how the execution time or memory requirements of an algorithm grow as the input size increases. It is essential for your career because it helps you write efficient code and pass technical interviews by demonstrating your ability to analyze and optimize software performance.,,
+item074,v2-c08,I'm a mechanical engineer who likes coding. Suggest three career paths.,"Three career paths that bridge mechanical engineering and coding are Software Developer, Data Analyst, and QA/Test Engineer.
+
+1. **Software Developer** [S1]: Your coding interest supports the requirement for deep language knowledge, though you may need to learn specific frameworks or data structures.
+2. **Data Analyst** [S1]: Your engineering background likely includes statistics and logic, which support this role, while you may need to gain proficiency in specific tools like Power BI or Tableau.
+3. **QA/Test Engineer** [S1]: Your mechanical engineering experience with systems and precision supports the testing fundamentals required, though you would need to learn automation tools like Selenium or Playwright.",,
+item075,v2-o02,What's the best smartphone under 20000?,"I'm your **career & study advisor**, so I can't help with that one. 🙂
+I can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *""Explain SQL window functions for my interview preparation""*
+",,
+item076,v2-s02,Explain the difference between TCP and UDP in a table.,"TCP is a connection-oriented protocol that prioritizes reliable, ordered data delivery, whereas UDP is a connectionless protocol that prioritizes speed and low latency by sending data without verifying receipt.
+
+| Feature | TCP (Transmission Control Protocol) | UDP (User Datagram Protocol) |
+| :--- | :--- | :--- |
+| **Connection** | Connection-oriented (requires a handshake) | Connectionless (no handshake) |
+| **Reliability** | Guaranteed delivery and error checking | No guarantee of delivery |
+| **Ordering** | Data arrives in the exact order sent | Data may arrive out of order |
+| **Speed** | Slower due to overhead and flow control | Faster due to minimal overhead |
+| **Use Case** | Web browsing (HTTP), Email (SMTP) | Streaming, Online gaming, VoIP |",,
+item077,v2-m02,Give me two examples.,"1. Infrastructure as a Service (IaaS) provides virtualized computing resources like servers and storage, allowing you to manage your own operating systems and applications.
+2. Software as a Service (SaaS) delivers fully functional applications over the internet, enabling users to access software directly through a web browser without managing the underlying infrastructure.",,
+item078,v2-p07,Show me what you know about my background.,"Your stored profile information for the target role of Backend Developer indicates an ATS match score of 43/100, which is an AI estimate and not an official ATS result.
+
+Your current skills are listed as Java, Spring Boot, MySQL, Git, and REST APIs. Your profile notes that you have 1.5 years of experience as a Java developer and hold a B.E. in Information Technology from 2023. The target job description requires Microservices, Docker, Kubernetes, and AWS, which are currently identified as your skill gaps.",,
+item079,v2-p01,Which of my skills match the job?,"You match 5 of the 7 skills required for the Backend Developer role: **Java**, **Spring Boot**, **MySQL**, **Git**, and **REST APIs** [S3, S5].
+
+The remaining requirements—**Microservices**, **Docker**, **Kubernetes**, and **AWS**—are currently identified as gaps in your profile [S3, S5]. Your experience building an order-management REST API with Spring Boot and MySQL provides a strong foundation for these missing skills [S2].",,
+item080,v2-m08,Explain the second one.,"Adding projects to your LinkedIn ""Featured"" section allows you to showcase tangible evidence of your skills and work, which helps recruiters and hiring managers verify your practical experience beyond just a list of job titles [S1]. This matters for your career because it provides concrete proof of your capabilities; for example, linking a GitHub repository or a portfolio site to a specific project allows a recruiter to see your actual code or design process, making you a more compelling candidate.",,

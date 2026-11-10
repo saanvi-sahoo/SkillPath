@@ -85,7 +85,8 @@ ROUTES: Dict[str, Dict] = {
 _STYLE = [("one_sentence", r"\b(one|1|single)[- ](line|sentence)\b|\bin a sentence\b|\bone-liner\b"),
           ("brief", r"\b(briefly|brief|short|quick|in short|tl;?dr|concise|nothing else|just)\b"),
           ("detailed", r"\b(in detail|detailed|step[- ]by[- ]step|deep dive|thorough|comprehensive)\b"),
-          ("beginner", r"\blike i'?m (a )?(beginner|five|5)\b|\bin simple terms\b|\bsimply\b|\bfor (a )?beginners?\b")]
+          ("beginner", r"\blike i'?m (a )?(beginner|five|5)\b|\bin simple terms\b|\bsimply\b|\bfor (a )?beginners?\b|"
+                       r"\bi'?m (a )?(complete |total )?beginner\b|\bmake it (easier|simpler)\b|\b(easier|simpler) (version|way|explanation)\b")]  # E38
 _WORDNUM = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10}
 _SPLIT = re.compile(r"\?\s+(?=\w)|;\s*|\b(?:and then|then|also|after that|plus)\b|,?\s+and\s+(?=(?:make|give|list|explain|suggest|"
                     r"create|tell|show|compare|recommend|build|write|name)\b)", re.I)
@@ -144,6 +145,10 @@ def classify(message: str, history: Optional[List[Dict]] = None, has_profile: bo
         prev_int = _intents_of(prev)
         if prev_int:
             primary = prev_int[0]
+        last_bot = next((m["content"] for m in reversed(history) if m["role"] == "assistant"), "")
+        offer = re.search(r"[^.!?\n]*\b(plan|roadmap|schedule)\b[^.!?\n]*\?\s*$", last_bot.split("\n\n---")[0].strip(), re.I)
+        if offer and not allc and len(low.split()) <= 6:  # E38: "yes" / "30 days" answering "Do you want a day-by-day plan?"
+            primary = "learning_plan"
     # secondary intents: separate requests in the message, plus a plan/profile request hidden inside one sentence
     secondary = [i for i in dict.fromkeys(per_part[1:] + [i for i in allc if i in ("learning_plan", "profile_analysis")]) if i != primary][:2]
 
@@ -169,7 +174,7 @@ def classify(message: str, history: Optional[List[Dict]] = None, has_profile: bo
         conflict = f"one sentence cannot hold {count} separate items"
     missing = qp.get("missing")
     if primary == "profile_progress" and re.search(r"\bi (have )?(completed|finished|done)\b", low):
-        missing = missing or "no roadmap progress is recorded for this student (the app does not track completed days yet)"
+        missing = missing or "roadmap progress: use the 30-day roadmap progress line in the profile if present; otherwise ask which day they are on and what was hard"
     goal = {"career_discovery": "find or compare career options", "concept_explanation": "understand a concept",
             "profile_analysis": "assess their profile against a job", "learning_plan": "get a learning plan",
             "study_help": "study or prepare for an exam", "job_preparation": "prepare for applications or interviews",
