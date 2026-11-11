@@ -45,7 +45,7 @@ Example: `curl -X POST localhost:8000/skills/compare -H 'Content-Type: applicati
 | Vector database | **MongoDB Atlas Vector Search** (`skillpath_ai`: careers, knowledge + jobs, private profiles, feedback) | ✅ live, verified |
 | RAG precision | Cross-encoder re-ranking: career P@5 0.767 → 0.858, guide Hit@3 0.90 → 0.967 | ✅ |
 | Career Advisor chatbot | Career/study-only guardrail, question profiler, cited RAG answers, question queue | ✅ |
-| Prompt script training | Versioned prompts v1–v8 tested on frozen unseen sets (120 + 40 cases), intent routing, claim-level citation checks; **v7 live** (0.95 vs v6 0.90), v8 candidate. [Report](https://claude.ai/artifact/Ah127g8yDze1b9DKfmYedZ) · [method](docs/evaluation.md) | ✅ |
+| Prompt script training | Versioned prompts v1–v8 tested on frozen unseen sets (120 + 40 cases), intent routing, claim-level citation checks; **v7 live** (0.95 vs v6 0.90) with the **E38 real-world pipeline** (conversation memory, career-change search 0.825→0.895, adaptive roadmap, failure handling); v8 candidate. [Report](https://claude.ai/artifact/Ah127g8yDze1b9DKfmYedZ) · [method](docs/evaluation.md) | ✅ |
 | Feedback learning | 👍/👎 feedback stored in Atlas and reused on similar questions | ✅ |
 | Skill gaps + 30-day roadmap | Exact canonical comparison, prioritised + validated plan, role-specific capstone | ✅ |
 | Runs without paid keys | Keyless mode, local Mistral (Ollama), or the visitor's own API key | ✅ |

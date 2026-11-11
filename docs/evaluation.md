@@ -539,4 +539,48 @@ follow-up with study/career words stays in scope. Checks: 225/227 correct on eve
 Keyless on heldout_v3 after the fix: leaks 2 → **0**, false refusals 5 → **2**, pass v7 0.392 / v7+e38 **0.45**
 (multi-turn 0.17 / **0.319**); keyless journeys 0/10 vs 1/10 (retrieval-only answers can't meet plan formats).
 
-<!-- E38_HOSTED_RESULTS -->
+**Hosted model (Gemini 3.1 Flash-Lite, every arm), heldout_v3, all 120 cases (final).** Google's free tier (500 requests/day,
+per-minute throttling, and a 503 outage on the evening of 10 Nov) stretched the run over two days; every pair was answered by
+Flash-Lite (pairs answered by a fallback model were retried). The first 22 cases ran three arms; from case 23 the run continued
+with v7 vs v7+e38 (the go-live question) to fit the quota, so v8+e38 has 22 cases (all passed) and is preliminary.
+
+| | v7 | v7+e38 |
+|---|---|---|
+| **pass rate** | 0.933 | **0.975** |
+| multi-turn | 0.936 | **0.979** |
+| real-world | 0.896 | **0.958** |
+| profile / off-topic | 1.0 / 1.0 | 1.0 / 1.0 |
+| constraint compliance | 0.857 | **1.0** |
+| factual correctness | 0.962 | **0.984** |
+| cited claims supported (NLI) | 0.28 | **0.34** |
+| leaks / false refusals | 0 / 0 | 0 / 0 |
+| avg / p95 latency | 6.0 s / 21.9 s | 6.0 s / **18.2 s** |
+| avg tokens | 2,393 | 2,592 |
+
+By situation (v7 → v7+e38): ordinal references 0.78 → **1.0**, missing study time 0.0 → **1.0**, plans 0.5 → **1.0**, time
+budgets 0.75 → **1.0**; pronoun follow-ups, corrections, changes of goal, interruptions, salary and profile questions stay at 1.0;
+adaptive plans 1.0 → 0.67 and career transitions 0.86 → 0.71 each lose one case (3 and 7 cases; the categories they belong to
+still improve).
+
+**17 genuine user questions, local Mistral** (labelled file git-ignored): v7 13/17, v7+e38 12/17, a one-case difference that is
+noise at n=17 (the two near-identical Power BI certification questions flip in opposite directions). Both arms answered "How do
+I make friends in a new college?" (scope). v7's pass on "How do I get ready for a data analyst interview?" invented a profile
+("you meet 3 of 5 skills") for a student with none; E38 instead asked for a CV without general tips. Neither is good.
+
+## 24. Decision
+
+**The E38 pipeline goes live with prompt v7** (`E38_PIPELINE=true`, the default), locally and on the deployed app. It passes the
+acceptance rule on the decisive comparison (hosted, 120 frozen cases: 0.933 → **0.975**, no category worse, no leaks, no false
+refusals, lower p95) and improves every other setup measured on held-out data: keyless 0.375 → 0.425, local Mistral multi-turn
+0.50 → 0.62, local journeys 1/10 → 3/10, career search 0.825 → 0.895. Not better: the deployed Groq model's live journeys
+(5/8 vs 4/8, one journey lost on a word limit after "make it easier"; the beginner rule now asks for short answers, post-run fix)
+and the 17 genuine questions on Mistral (13 vs 12, noise). v8 stays the candidate (22/22 with E38, preliminary).
+Costs: ~8% more tokens; p95 latency lower hosted, ~60% higher on local Mistral (longer plans). Switch off with `E38_PIPELINE=false`.
+The no-LLM router fix and a 90 s request timeout ship with it.
+
+## 25. Remaining limitations and next steps
+- Career precision 0.895 < 0.90; relabel the 240 flagged records in a new dataset version, then re-measure on a new frozen set.
+- Citation placement: cite only sentences whose fact is in that source; calibrate the NLI threshold on the audited pairs.
+- Human Question Satisfaction Rate and confirmation of the claim audit by a teammate are still open.
+- Local latency (p95 100-160 s on Mistral) is the main laptop pain point; a smaller plan summary would help.
+- The 120 cases are realistic but written by us; only 17 are genuine. Collect consented real conversations (review Phase 3).

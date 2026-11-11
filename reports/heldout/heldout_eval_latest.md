@@ -1,58 +1,52 @@
-# Held-out chatbot evaluation (20261109T173239Z)
+# Held-out chatbot evaluation (20261110T032543Z)
 
-Frozen set: `src/eval/heldout/heldout_chat.jsonl` (40 cases). Paired design, shared route per case. Completed pairs: 40
+Frozen set: `heldout_v3` (120 cases). Paired design, shared route per case. Completed pairs: 120
 
-| Metric | Target (review doc) | v7 | v8 |
+| Metric | Target (review doc) | v7 | v7+e38 |
 |---|---|---|---|
-| pass_rate | - | 0.8 | 0.825 |
-| intent_accuracy | - | None | 0.667 |
-| scope_accuracy | >= 0.98 | 0.9 | 0.9 |
-| false_refusals | as low as possible | 2 | 2 |
+| pass_rate | - | 0.933 | 0.975 |
+| intent_accuracy | - | None | 1.0 |
+| scope_accuracy | >= 0.98 | 1.0 | 1.0 |
+| false_refusals | as low as possible | 0 | 0 |
 | out_of_scope_leaks | 0 | 0 | 0 |
-| constraint_compliance | >= 0.95 | 0.733 | 0.867 |
-| factual_correctness | >= 0.95 | 0.875 | 0.844 |
-| citation_rate | - | 0.2 | 0.25 |
-| citation_correctness | >= 0.95 | 0.929 | 0.92 |
-| claim_support_rate | higher is better | 0.667 | 0.5 |
-| claim_contradiction_rate | 0 | 0.0 | 0.0 |
+| constraint_compliance | >= 0.95 | 0.857 | 1.0 |
+| factual_correctness | >= 0.95 | 0.962 | 0.984 |
+| citation_rate | - | 0.495 | 0.598 |
+| citation_correctness | >= 0.95 | 0.909 | 0.921 |
+| claim_support_rate | higher is better | 0.28 | 0.34 |
+| claim_contradiction_rate | 0 | 0.011 | 0.005 |
 | profile_consistency | 1.0 | 1.0 | 1.0 |
-| revised | - | 5 | 9 |
-| avg_latency_ms | - | 47198 | 45262 |
-| avg_tokens | - | 2574 | 1752 |
+| revised | - | 29 | 37 |
+| avg_latency_ms | - | 5988 | 5998 |
+| p95_latency_ms | - | 21914 | 18216 |
+| avg_tokens | - | 2393 | 2592 |
 
 ## Pass rate by category
 
-| Category | v7 | v8 |
+| Category | v7 | v7+e38 |
 |---|---|---|
-| career | 0.75 | 1.0 |
-| concept | 1.0 | 0.8 |
-| multi_turn | 0.625 | 0.625 |
-| profile | 1.0 | 0.75 |
-| roadmap | 0.5 | 1.0 |
-| scope | 1.0 | 1.0 |
-| study | 0.667 | 0.667 |
+| multi_turn | 0.936 | 0.979 |
+| out_of_scope | 1.0 | 1.0 |
+| profile | 1.0 | 1.0 |
+| real_world | 0.896 | 0.958 |
 
 ## Root causes of failures
 
-- **v7**: {"scope_router": 2, "instruction_following": 3, "prompt": 3} · models ['None', 'mistral']
-- **v8**: {"scope_router": 2, "retrieval": 1, "prompt": 3, "instruction_following": 1} · models ['None', 'mistral']
+- **v7**: {"retrieval": 6, "instruction_following": 2} · models ['None', 'gemini-3.1-flash-lite']
+- **v7+e38**: {"retrieval": 2, "prompt": 1} · models ['None', 'gemini-3.1-flash-lite']
 
 ## Failed cases
 
 | Version | Case | Failed checks | Root cause |
 |---|---|---|---|
-| v7 | v2-s04 | not_refused, n_sentences | scope_router (valid question refused) |
-| v8 | v2-s04 | not_refused, n_sentences | scope_router (valid question refused) |
-| v8 | v2-s07 | must_include_all, intent | retrieval (expected facts not in retrieved context) |
-| v7 | v2-c02 | first_sentence_any | instruction_following (first_sentence_any) |
-| v7 | v2-c06 | no_guarantee | prompt (forbidden content: no_guarantee) |
-| v8 | v2-p01 | include_frac, intent | prompt (facts available but not used) |
-| v8 | v2-p06 | must_include_any, intent | prompt (facts available but not used) |
-| v7 | v2-r03 | mentions_day30 | instruction_following (mentions_day30) |
-| v7 | v2-r04 | no_invented_urls | prompt (forbidden content: no_invented_urls) |
-| v7 | v2-m01 | first_sentence_any | instruction_following (first_sentence_any) |
-| v8 | v2-m01 | first_sentence_any | instruction_following (first_sentence_any) |
-| v7 | v2-m04 | not_refused, must_include_any | scope_router (valid question refused) |
-| v8 | v2-m04 | not_refused, must_include_any | scope_router (valid question refused) |
-| v7 | v2-m06 | must_include_any | prompt (facts available but not used) |
-| v8 | v2-m06 | must_include_any | prompt (facts available but not used) |
+| v7 | mt01 | must_include_any, must_include_any2 | retrieval (expected facts not in retrieved context) |
+| v7 | mt02 | mentions_day30 | instruction_following (mentions_day30) |
+| v7+e38 | mt16 | must_include_any2 | retrieval (expected facts not in retrieved context) |
+| v7 | mt17 | must_include_any2, asks_question | retrieval (expected facts not in retrieved context) |
+| v7 | rw01 | must_include_any | retrieval (expected facts not in retrieved context) |
+| v7 | rw07 | asks_question | instruction_following (asks_question) |
+| v7+e38 | rw08 | must_include_any | prompt (facts available but not used) |
+| v7 | rw20 | must_include_any | retrieval (expected facts not in retrieved context) |
+| v7 | rw24 | must_include_any | retrieval (expected facts not in retrieved context) |
+| v7 | rw30 | must_include_any3 | retrieval (expected facts not in retrieved context) |
+| v7+e38 | rw45 | must_include_any2 | retrieval (expected facts not in retrieved context) |

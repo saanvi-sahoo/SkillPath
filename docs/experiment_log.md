@@ -11,7 +11,7 @@ Add one entry for every change to models, prompts, thresholds, chunking or data.
 - **Adaptive roadmap** (`src/roadmap/adapt.py`): per-day status, revision days, missed days moved, deferral; task completion rate; UI panel; progress saved to the profile.
 - **Failure handling**: model-down notice, Atlas-down notice, scanned-PDF detection, salary/hiring caveats, cross-user records blocked + logged; deterministic "N of M skills" check.
 - **Citation audit** (64 claims): no false claims among "insufficient"; half are actually supported, half cite the wrong source; the only false claims were two skill miscounts (now caught); all 9 "invalid ID" labels were an evaluator artifact (sources saved truncated, fixed).
-- **Results** (docs/evaluation.md Part 3): keyless 0.375 → 0.425; local Mistral multi-turn 0.50 → 0.62; deployed gpt-oss-120b journeys 5/8 vs 4/8 (one word-limit miss); hosted Gemini 120 cases: see evaluation.md §23.
+- **Results** (docs/evaluation.md Part 3): keyless 0.375 → 0.425; local Mistral multi-turn 0.50 → 0.62; deployed gpt-oss-120b journeys 5/8 vs 4/8 (one word-limit miss); hosted Gemini (decisive, 120 frozen cases) 0.933 → **0.975**, no category worse, p95 21.9 → 18.2 s → **E38 live with v7**. Also: no-LLM router fix (keyless leaks 2 → 0), 90 s LLM request timeout.
 - Measurement fixes for every arm: full sources saved, Unicode hyphens normalised + re-score, pid in result filenames, same-model rule for journeys, p95 latency.
 
 ---

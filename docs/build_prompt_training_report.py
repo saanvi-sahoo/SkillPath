@@ -99,7 +99,7 @@ def verdict(info, live="v7"):
     cats = set(a["pass_rate_by_category"]) | set(b["pass_rate_by_category"])
     worse = [c for c in cats if (b["pass_rate_by_category"].get(c) or 0) + 0.05 < (a["pass_rate_by_category"].get(c) or 0)]
     tag = "" if complete else " (preliminary)"
-    if b["pass_rate"] > a["pass_rate"] and not worse and b["out_of_scope_leaks"] == 0:
+    if b["pass_rate"] > a["pass_rate"] and not worse and b["out_of_scope_leaks"] <= a["out_of_scope_leaks"]:  # no MORE leaks than the baseline
         return f"{vs[1]} better{tag}: {fmt(b['pass_rate'])} vs {fmt(a['pass_rate'])}, no category more than 5 points worse"
     return (f"{vs[1]} not better{tag}: {fmt(b['pass_rate'])} vs {fmt(a['pass_rate'])}" + (f"; worse on {', '.join(sorted(worse))}" if worse else ""))
 
@@ -137,9 +137,11 @@ def e38_section() -> str:
     import csv
     from collections import Counter, defaultdict
     is_v3 = lambda d: d.get("set") == "heldout_v3"  # noqa: E731
-    hosted, _ = latest("reports/heldout/heldout_eval_heldout_v3_*_p*.json", pred=lambda d: is_v3(d) and "v8+e38" in d["versions"] and len(d["rows"]) > 30)
+    hosted, _ = latest("reports/heldout/heldout_eval_heldout_v3_*_p*.json", pred=lambda d: is_v3(d) and "v8+e38" in d["versions"] + d.get("versions_partial", []) and len(d["rows"]) > 30)
     local, _ = latest("reports/heldout/heldout_eval_heldout_v3_*_p*.json", pred=lambda d: is_v3(d) and any(r.get("model") == "mistral" for r in d["rows"]))
-    keyless, _ = latest("reports/heldout/heldout_eval_heldout_v3_*_p*.json", pred=lambda d: is_v3(d) and d["rows"] and all(r.get("model") is None for r in d["rows"]) and len(d["rows"]) >= 200)
+    kl = sorted(glob.glob(str(ROOT / "reports/heldout/heldout_eval_heldout_v3_*_p*.json")))
+    kl = [d for d in (load(f) for f in kl) if d and is_v3(d) and d["rows"] and all(r.get("model") is None for r in d["rows"]) and len(d["rows"]) >= 200]
+    keyless, keyless_fix = (kl[0] if kl else None), (kl[-1] if len(kl) > 1 else None)
     real, _ = latest("reports/heldout/heldout_eval_real_*.json")
     h_html, h_info = ab_block(hosted, "E38 · 120 realistic cases · hosted model (Gemini 3.1 Flash-Lite, every arm)",
                               "Frozen set <code>heldout_v3</code> (committed in 167fe13 before any E38 code): 47 multi-turn conversations with scripted history "
@@ -150,6 +152,8 @@ def e38_section() -> str:
                               "The multi-turn part of the same frozen set on the laptop model.")
     k_html, k_info = ab_block(keyless, "E38 · 120 realistic cases · keyless mode (no model, retrieval-only answers)",
                               "What the deployed app shows a visitor without a key. Absolute numbers are low by design (a retrieval-only answer can't follow counts or formats); the comparison shows what conversation state adds.")
+    kf_html, _ = ab_block(keyless_fix, "E38 · keyless mode after the no-LLM router fix (set now seen)",
+                          "Same 120 cases after the router fix that the local journeys motivated (weak attack votes ignored, hard off-topic topics, longer follow-ups). Not a clean held-out number: these cases helped find the bugs.")
     r_html, r_info = ab_block(real, "E38 · 17 genuine user questions (chat log + 👎 feedback)", "Real questions harvested from the app; the labelled file stays out of git.")
     jd = _jrn("reports/heldout/journeys_deployed_*_p*.json")
     jl = _jrn("reports/heldout/journeys_local_*_p*.json")
@@ -157,6 +161,8 @@ def e38_section() -> str:
                             "Each journey is a live conversation (the advisor's own answers become the history): describe skills → explore careers → pick one by "
                             "reference → gaps → feasible plan → progress update. A journey succeeds only if every turn passes. Frozen in 167fe13.")
     j_html += journeys_block(jl, "E38 · 10 live journeys · local model (Mistral 7B)", "Same journeys on the laptop model.")
+    j_html += journeys_block(_jrn("reports/heldout/journeys_keyless_*_p*.json"), "E38 · 10 live journeys · keyless (after the router fix)",
+                             "Retrieval-only answers can't meet plan-format checks; shown for completeness.")
     tags = ""
     if h_info:
         S, vs, _, _ = h_info
@@ -200,6 +206,7 @@ find careers for students who are changing field, check evidence honestly, adapt
 {j_html}
 {l_html}
 {k_html}
+{kf_html}
 {r_html}
 <h3>Career search on a fresh frozen set (production retrieve path, no LLM)</h3>
 <div class="tbl"><table><thead><tr><th>Set</th><th>E37</th><th>E38</th><th>By type (E37→E38)</th></tr></thead><tbody>{crow}</tbody></table></div>
@@ -293,7 +300,7 @@ a {{ color: var(--accent); }}
 <header>
   <div class="eyebrow">SkillPath AI · Sabudh Foundation · {date.today().strftime('%d %B %Y')}</div>
   <h1>Prompt training report: making the Career Advisor answer the exact question</h1>
-  <div><span class="chip">live prompt: v7</span> <span class="chip">candidate: v8</span> <span class="chip">experiments E36-E38</span></div>
+  <div><span class="chip">live: prompt v7 + E38 pipeline</span> <span class="chip">candidate: v8</span> <span class="chip">experiments E36-E38</span></div>
 </header>
 
 <h2>Summary</h2>

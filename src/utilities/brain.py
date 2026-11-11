@@ -240,7 +240,9 @@ def get_base_llm(model: str = GEMINI_MODEL, temperature: float = 0.2, api_key_en
     """Return a base LLM client (Groq or Gemini) pinned to *model*."""
     # Force max_retries to 0 so we fail instantly to the next model in the fallback chain instead of waiting
     kwargs.setdefault("max_retries", 0)
-    
+    # E38 (review 3 §7): a request that never returns hung evaluation runs for 15+ minutes; fail over instead
+    kwargs.setdefault("timeout", float(os.getenv("LLM_REQUEST_TIMEOUT_S", "90")))
+
     if model == "byok":
         from src.utilities.llm_provider import build_user_llm, session_llm
         return build_user_llm(session_llm(), temperature)

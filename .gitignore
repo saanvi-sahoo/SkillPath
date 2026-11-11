@@ -242,3 +242,5 @@ logs/
 reports/heldout/real_question_candidates.jsonl
 reports/heldout/real_questions_labelled.jsonl
 reports/security_incidents.jsonl
+reports/heldout/heldout_eval_real_*
+reports/heldout/results_real_*
