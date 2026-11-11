@@ -35,3 +35,7 @@ Examples:
 - Big Data Analyst - Developer - labelled *Machine Learning and AI* (expected Data analysis / BI)
 - Big Data Engineer - labelled *Machine Learning and AI* (expected Data engineering)
 - Big Data Engineer - labelled *Machine Learning and AI* (expected Data engineering)
+
+## First pass (final validation)
+
+{'ambiguous': 113, 'likely_mislabeled': 127} of 240 flagged records. *likely_mislabeled* = the record's required skills fit its title's role family at least twice as well as the family of its label; *ambiguous* = they fit both or neither (e.g. a 'Business Analyst' whose skills are data pipelines). Proposed relabels: `career_domain_corrections_v1_PROPOSED.csv` (`verified_by` and `apply` columns for a reviewer). The dataset and the vector store are unchanged.

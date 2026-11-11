@@ -314,7 +314,7 @@ def summary_part(width):
 ORDER = [("README.md", "Documentation index"), ("status.md", "Progress ledger"), ("architecture.md", "Architecture"),
          ("runbook.md", "Runbook: every process"), ("embeddings.md", "Embeddings"), ("rag.md", "RAG design and precision"),
          ("mongodb_atlas_setup.md", "MongoDB Atlas setup"), ("chatbot.md", "Career Advisor chatbot"),
-         ("prompt_scripting.md", "Prompt scripting and training"), ("evaluation.md", "Evaluation, prompt training v7-v8 and real-world reliability (E38)"), ("feedback_learning.md", "Feedback learning and precise answers"),
+         ("prompt_scripting.md", "Prompt scripting and training"), ("evaluation.md", "Evaluation, prompt training v7-v8 and real-world reliability (E38)"), ("final_validation.md", "Final validation and release readiness"), ("feedback_learning.md", "Feedback learning and precise answers"),
          ("keyless_mode.md", "Keyless mode"), ("byok.md", "Bring your own API key"), ("skills_and_roadmap.md", "Skill gaps and the 30-day roadmap"),
          ("scenarios.md", "Scenarios"), ("deployment.md", "Deployment"), ("roadmap.md", "Project roadmap"),
          ("experiment_log.md", "Experiment log (E0-E37)")]

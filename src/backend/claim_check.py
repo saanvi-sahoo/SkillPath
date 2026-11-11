@@ -37,7 +37,8 @@ def _nli():
             if _model is None and not _failed:
                 try:
                     from sentence_transformers import CrossEncoder
-                    _model = CrossEncoder(NLI_MODEL, max_length=384)
+                    from src.utilities.hf_models import load_cached
+                    _model = load_cached(CrossEncoder, NLI_MODEL, max_length=384)
                 except Exception as e:  # noqa: BLE001
                     print(f"[claim_check] NLI model unavailable, lexical fallback: {e}")
                     _failed = True

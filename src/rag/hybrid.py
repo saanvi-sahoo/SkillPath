@@ -108,7 +108,8 @@ def rerank(query: str, hits: List[Dict], top: int) -> List[Dict]:
         with _lock:
             if _ce is None:
                 from sentence_transformers import CrossEncoder
-                _ce = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2", max_length=320)
+                from src.utilities.hf_models import load_cached
+                _ce = load_cached(CrossEncoder, "cross-encoder/ms-marco-MiniLM-L-6-v2", max_length=320)
     ce = _ce.predict([(query, h["text"]) for h in hits], batch_size=32)
     order = np.argsort(-np.asarray(ce))[:top]
     return [{**hits[i], "rerank": round(float(ce[i]), 3)} for i in order]

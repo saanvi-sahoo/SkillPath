@@ -23,6 +23,7 @@ from typing import Dict, List
 from src.eval.heldout_eval import NO_PROFILE_UID, OUT, _body, arm, persona_facts, score
 
 SET = Path(__file__).parent / "heldout" / "journeys_v1.jsonl"
+SETS = {"v1": SET, "v2": Path(__file__).parent / "heldout" / "journeys_v2.jsonl"}  # v2: fresh, frozen for the final validation
 
 
 def _items(text: str) -> List[str]:
@@ -86,7 +87,7 @@ def summarise(rep: Dict) -> Dict:
 def rescore(rep: Dict) -> None:
     """Re-run each turn's checks on the stored answers (scorer fixes apply to every arm alike)."""
     from src.backend.chatbot import load_memory
-    js = {j["id"]: j for j in (json.loads(l) for l in SET.read_text().splitlines() if l.strip())}
+    js = {j["id"]: j for j in (json.loads(l) for l in SETS[rep.get("set", "v1")].read_text().splitlines() if l.strip())}
     facts = persona_facts() if any(r.get("user") for r in rep["rows"]) else {}
     for r in rep["rows"]:
         j = js[r["id"]]
@@ -114,7 +115,7 @@ def write(rep: Dict, path: Path) -> str:
     path.write_text(json.dumps(rep, indent=2, ensure_ascii=False, default=str))
     S = rep["summary"]
     vs = [v for v in rep["versions"] if v in S]
-    L = [f"# End-to-end journeys ({rep['ts']})", "", f"10 live conversations (`src/eval/heldout/journeys_v1.jsonl`). A journey succeeds only if every turn passes.", "",
+    L = [f"# End-to-end journeys ({rep['ts']})", "", f"Live conversations (`journeys_{rep.get('set', 'v1')}.jsonl`). A journey succeeds only if every turn passes.", "",
          "| Metric | " + " | ".join(vs) + " |", "|---|" + "---|" * len(vs)]
     for m in ("journeys", "excluded_model_fallback", "task_success", "turn_pass_rate", "avg_latency_ms", "p95_latency_ms"):
         L.append(f"| {m} | " + " | ".join(str(S[v][m]) for v in vs) + " |")
@@ -141,21 +142,28 @@ def main():
     ap.add_argument("--resume")
     ap.add_argument("--report")
     ap.add_argument("--tag", default="")
+    ap.add_argument("--set", default="v1", choices=sorted(SETS))
     a = ap.parse_args()
     if a.report:
         p = Path(a.report)
         print(write(json.loads(p.read_text()), p))
         return
+    global SET
+    SET = SETS[a.set]
     js = [json.loads(l) for l in SET.read_text().splitlines() if l.strip()]
     if a.ids:
         js = [j for j in js if j["id"] in a.ids]
     if a.resume:
         path = Path(a.resume)
         rep = json.loads(path.read_text())
+        SET = SETS[rep.get("set", "v1")]  # resume must use the run's own journey set
+        js = [json.loads(l) for l in SET.read_text().splitlines() if l.strip()]
+        if a.ids:
+            js = [j for j in js if j["id"] in a.ids]
     else:
         ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
         path = OUT / f"journeys_{a.tag + '_' if a.tag else ''}{ts}_p{os.getpid()}.json"
-        rep = {"ts": ts, "versions": a.versions, "rows": [], "model_configured": os.getenv("CHAT_MODEL", "default"),
+        rep = {"ts": ts, "versions": a.versions, "set": a.set, "rows": [], "model_configured": os.getenv("CHAT_MODEL", "default"),
                "provider": os.getenv("LLM_PROVIDER"), "expect_model": a.expect_model}
     facts = persona_facts()
     done = {(r["id"], r["version"]) for r in rep["rows"]}

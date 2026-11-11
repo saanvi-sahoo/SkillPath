@@ -4,6 +4,12 @@ Add one entry for every change to models, prompts, thresholds, chunking or data.
 
 ---
 
+## 2026-11-11: Final validation (review 4)
+- Fresh journeys (8, frozen first): **8/8** on the deployed model; failed journeys re-tested after 5 fixes (numbered options, "Day N" plans, revision-fragment guard, beginner brevity, empty-reply retry) → j01, j04, j08 pass, j03 turns 1-3 pass on gpt-oss-120b.
+- Release smoke tests 8/9 (hosted p95 latency fails when the free Groq quota runs out). Team kits: 50-answer blinded QSR, 58-claim citation sample, 240-record label first pass. Details: docs/final_validation.md.
+
+---
+
 ## 2026-11-10: E38 Review 3: real-world reliability (conversation state, career transitions, adaptive roadmap, failure handling)
 - **Frozen first** (commit 167fe13, before any E38 code): `heldout_v3` 120 realistic cases (47 multi-turn), `journeys_v1` 10 live journeys, `heldout_careers_v3` 40 queries; plus 17 genuine user questions (git-ignored).
 - **Conversation state** (`src/backend/conversation_state.py`): "the second one" → the career it names, minutes/day, stated/missing skills, corrections, changes of goal, conflicts; used in the contract, the search query and the roadmap generator. Switch `E38_PIPELINE`.

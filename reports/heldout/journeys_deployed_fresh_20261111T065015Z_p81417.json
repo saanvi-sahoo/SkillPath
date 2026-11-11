@@ -1,0 +1,645 @@
+{
+  "ts": "20261111T065015Z",
+  "versions": [
+    "v7+e38"
+  ],
+  "set": "v2",
+  "rows": [
+    {
+      "id": "k01",
+      "goal": "ECE student: options -> pick by number -> gaps -> 3-week plan at 40 min",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "im doing ECE and know a bit of C and Python. which tech jobs can i aim for?",
+          "answer": "With an ECE background and basic C and Python skills, you can aim for several entry‑level tech roles:\n\n1. **Python Integration Engineer** – builds data pipelines and platforms using Python, SQL, ORM (SQLAlchemy/Django), ETL, Git, and Unix/Linux [S1].  \n2. **Software Engineer, Data** – designs and maintains data pipelines; core requirements are Python, strong SQL/RDS, AWS services, and data‑modeling [S2].  \n3. **Data Engineer (Python)** – focuses on RESTful APIs, relational databases (Postgres/MySQL), AWS (S3, SQS, Lambda), and Docker [S3].  \n4. **Python Engineer for Data Analytics** – works on AI/ML‑enabled analytics, needing Python, Flask/Django, REST, micro‑services, SQL, and cloud/Docker [S4].  \n5. **Software Engineer, Database** – develops and tests database‑centric applications; Python and C/C++ knowledge are useful [S5].  \n6. **Entry‑level Software Developer** – deepens one language (Python or C), learns data structures & algorithms, Git, and a web or backend framework [S6].  \n\n**Next steps:**  \n- Strengthen **SQL** (common across 1‑4).  \n- Gain familiarity with **Git**, **Linux command line**, and basic **cloud services** (AWS or Azure).  \n- Pick a framework (e.g., Flask/Django) and build a small web or API project to showcase practical Python use.  \n\nThese roles align with your current skill set while offering clear pathways to fill the most common gaps.\n\n---\n**Sources**\n- [S1] careers: Python Integration Engineer\n- [S2] careers: Software Engineer, Data\n- [S3] careers: Data Engineer (Python)\n- [S4] careers: Python Engineer for Data Analytics\n- [S5] careers: Software Engineer, Database\n- [S6] knowledge: Entry-level tech and data career paths",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 5182.2,
+          "state": {},
+          "tokens": 3803
+        },
+        {
+          "turn": 2,
+          "q": "option 2 sounds interesting. what skills does it need that i dont have?",
+          "answer": "The Software Engineer, Data role needs several core skills you don’t yet have beyond basic C and Python.\n\n1. **Strong SQL / RDS** – proficiency with relational databases and cloud‑hosted SQL services.  \n2. **Amazon Redshift** – data‑warehouse platform for large‑scale analytics.  \n3. **Data modeling / warehousing architecture** – designing schemas and ETL pipelines for analytical workloads [S2].  \n4. **AWS core services (S3, SQS, EC2, etc.)** – building and operating data pipelines on the Amazon cloud [S2].  \n5. **Creating, maintaining, and monitoring ETL jobs** – using tools or scripts to move and transform data [S2].  \n6. **Talend** – ETL/ELT integration platform [S2].  \n7. **Tableau or Looker** – data‑visualisation tools for reporting and dashboards [S2].  \n8. **AWS Kinesis & Lambda** – streaming data processing and serverless functions [S2].\n\nThese are the primary gaps; your existing Python knowledge aligns with the role’s requirement for Python [S2].\n\n---\n**Sources**\n- [S2] careers: Associate, Software Engineering, Corporate Technology Data Acquisition",
+          "passed": true,
+          "failed": [],
+          "item_expected": [
+            "Software Engineer, Data"
+          ],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 5005.2,
+          "state": {
+            "selected_career": "Software Engineer, Data",
+            "last_recommendations": [
+              "Python Integration Engineer",
+              "Software Engineer, Data",
+              "Data Engineer",
+              "Python Engineer for Data Analytics",
+              "Software Engineer, Database",
+              "Entry‑level Software Developer"
+            ],
+            "reference": {
+              "phrase": "option 2",
+              "index": 2,
+              "resolved": "Software Engineer, Data"
+            }
+          },
+          "tokens": 4578
+        },
+        {
+          "turn": 3,
+          "q": "ok make a 3 week plan for that, i get about 40 minutes a day",
+          "answer": "Here’s a 3‑week, 40‑minute‑per‑day plan to fill the gaps for a Software Engineer, Data role.  \n1. SQL & relational‑database fundamentals.  \n2. AWS core services + Redshift data‑warehouse basics.  \n3. ETL tooling, streaming, and data‑visualisation.\n\n**Day‑by‑day schedule**\n\n**Week 1 – SQL & RDS**  \nDay 1: Install PostgreSQL locally; create a “students” table. *Outcome*: Table created and populated with sample data.  \nDay 2: Write SELECT, WHERE, JOIN queries on the table. *Outcome*: 5 queries saved in a .sql file.  \nDay 3: Practice GROUP BY and aggregate functions. *Outcome*: Report of average grades per class.  \nDay 4: Set up Amazon RDS free‑tier instance; connect via pgAdmin. *Outcome*: Remote DB accessible.  \nDay 5: Migrate local schema to RDS; verify data integrity. *Outcome*: Same data visible in RDS.  \nDay 6: Review week’s queries; redo any that failed. *Outcome*: All queries run without errors.  \nDay 7: Mini‑project – write a Python script (psycopg2) that reads, filters, and writes results to CSV. *Outcome*: Script runs end‑to‑end.\n\n**Week 2 – AWS core & Redshift**  \nDay 8: Watch AWS “Introduction to Cloud” (10 min) + read S3 basics. *Outcome*: Note key S3 concepts.  \nDay 9: Create an S3 bucket; upload a CSV file. *Outcome*: File stored and publicly readable.  \nDay 10: Launch a free‑tier EC2 instance; SSH in. *Outcome*: Instance reachable.  \nDay 11: Follow Redshift “Getting Started” tutorial (focus on cluster creation). *Outcome*: Redshift cluster running.  \nDay 12: Load the CSV from S3 into Redshift using COPY. *Outcome*: Table populated in Redshift.  \nDay 13: Run simple SELECT queries on Redshift via SQL Workbench. *Outcome*: 3 query results saved.  \nDay 14: Review AWS services; sketch a diagram of data flow (S3 → Redshift → Python). *Outcome*: Diagram saved as PNG.\n\n**Week 3 – ETL, streaming & visualisation**  \nDay 15: Install Talend Open Studio; create a basic “CSV‑to‑Postgres” job. *Outcome*: Job runs and loads data.  \nDay 16: Add a transformation step (e.g., calculate GPA). *Outcome*: Transformed data appears in Postgres.  \nDay 17: Explore AWS Kinesis tutorial (setup a simple data stream). *Outcome*: Stream receives test records.  \nDay 18: Write a Lambda function (Python) that reads from Kinesis and writes to S3. *Outcome*: Function deployed and tested.  \nDay 19: Install Tableau Public; connect to the RDS database. *Outcome*: First dashboard showing student grades.  \nDay 20: Add a Looker‑style chart (filter by class) in Tableau. *Outcome*: Interactive filter works.  \nDay 21: Consolidate: document the end‑to‑end pipeline (S3 → Kinesis → Lambda → Redshift → Tableau). *Outcome*: One‑page summary with screenshots.\n\nFollow this schedule, checking off each day’s outcome, and you’ll acquire the core skills needed for the Software Engineer, Data position.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3367.0,
+          "state": {
+            "selected_career": "Software Engineer, Data",
+            "last_recommendations": [
+              "Strong SQL / RDS",
+              "Amazon Redshift",
+              "Data modeling / warehousing architecture",
+              "AWS core services",
+              "Creating, maintaining, and monitoring ETL jobs",
+              "Talend",
+              "Tableau or Looker",
+              "AWS Kinesis & Lambda"
+            ],
+            "daily_minutes": 40
+          },
+          "tokens": 4005
+        },
+        {
+          "turn": 4,
+          "q": "week 1 went fine but I didn't get pointers at all. fix the plan",
+          "answer": "Here’s a revised 3‑week plan that adds clear learning pointers for each day while still fitting a 40‑minute daily window.\n\n1. **Week 1 – SQL & RDS (with step‑by‑step resources).**  \n2. **Week 2 – AWS core services & Redshift (with tutorials).**  \n3. **Week 3 – ETL, streaming & visualisation (with hands‑on guides).**\n\n**Week 1 – SQL & RDS (with pointers)**  \n| Day | Task & Resource | Checkable Outcome |\n|-----|----------------|-------------------|\n| Day 1 | Install PostgreSQL (official installer) → follow the “PostgreSQL Quick Start” guide (https://www.postgresql.org/docs/current/tutorial-start.html). Create a `students` table. | Table created and populated with 5 rows. |\n| Day 2 | Write basic SELECT/WHERE/JOIN queries using the “SQLBolt” lessons (https://sqlbolt.com/lesson/select_queries). Save 5 queries in `queries.sql`. | 5 correct queries saved. |\n| Day 3 | Practice GROUP BY & aggregates with “Mode SQL Tutorial” (https://mode.com/sql-tutorial/sql-aggregation/). | Aggregated report (average grade per class) exported to CSV. |\n| Day 4 | Set up a free‑tier Amazon RDS PostgreSQL instance – follow AWS’s “Create a PostgreSQL DB Instance” walkthrough (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.html). Connect via pgAdmin. | Remote DB reachable; connection test succeeds. |\n| Day 5 | Migrate local schema to RDS using `pg_dump`/`pg_restore` (AWS docs). Verify row counts match. | Same 5 rows appear in RDS. |\n| Day 6 | Review and debug any failing queries (use “SQLFiddle” to test). | All queries run without errors on RDS. |\n| Day 7 | Write a Python script using `psycopg2` (refer to “Real Python – PostgreSQL with Python” tutorial: https://realpython.com/python-postgresql/). Script reads, filters, writes results to `output.csv`. | Script executes end‑to‑end and creates `output.csv`. |\n\n**Week 2 – AWS core & Redshift (with pointers)**  \n| Day | Task & Resource | Outcome |\n|-----|----------------|---------|\n| Day 8 | Watch AWS “Introduction to Cloud” (10‑min video) and read S3 basics (https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html). | Key S3 concepts noted. |\n| Day 9 | Create an S3 bucket via AWS Console; upload a sample CSV (follow “Getting Started with Amazon S3” guide). | CSV stored in bucket. |\n| Day 10 | Launch a free‑tier EC2 instance (Ubuntu) – follow “Launch an Instance” tutorial (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html). SSH in. | Instance reachable via SSH. |\n| Day 11 | Set up a Redshift cluster – use “Getting Started with Amazon Redshift” (https://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html). | Redshift cluster active. |\n| Day 12 | Load CSV from S3 into Redshift using the `COPY` command (AWS docs). | Table populated in Redshift. |\n| Day 13 | Run three SELECT queries in SQL Workbench/J (download guide: https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-using-workbench.html). | Query results saved as screenshots. |\n| Day 14 | Sketch a data‑flow diagram (S3 → Redshift → Python) using draw.io (free). | Diagram exported as PNG. |\n\n**Week 3 – ETL, streaming & visualisation (with pointers)**  \n| Day | Task & Resource | Outcome |\n|-----|----------------|---------|\n| Day 15 | Install Talend Open Studio – follow “Talend Quick Start” (https://www.talend.com/resources/talend-open-studio-quick-start/). Build a CSV‑to‑Postgres job. | Job runs and loads data. |\n| Day 16 | Add a transformation step (calculate GPA) using Talend’s “tMap” component (Talend docs). | Transformed data appears in Postgres. |\n| Day 17 | Set up a Kinesis data stream – follow “Getting Started with Amazon Kinesis Data Streams” (https://docs.aws.amazon.com/streams/latest/dev/getting-started.html). | Stream receives test records. |\n| Day 18 | Write a Python Lambda (use AWS Lambda console tutorial) that reads from Kinesis and writes to S3. | Lambda deployed and processes records. |\n| Day 19 | Install Tableau Public; connect to RDS (Tableau “Connect to PostgreSQL” guide). Build a simple bar chart of grades. | First dashboard published. |\n| Day 20 | Add an interactive filter (class) in Tableau (Tableau “Filters” tutorial). | Filter works on dashboard. |\n| Day 21 | Document the full pipeline (S3 → Kinesis → Lambda → Redshift → Tableau) in a one‑page PDF with screenshots. | Completed summary PDF. |\n\nFollow the updated plan; each day now includes a specific tutorial or guide (“pointer”) to keep you on track within the 40‑minute window. Good luck!",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3891.2,
+          "state": {
+            "selected_career": "Software Engineer, Data",
+            "last_recommendations": [
+              "SQL & relational‑database fundamentals",
+              "AWS core services + Redshift data‑warehouse basics",
+              "ETL tooling, streaming, and data‑visualisation"
+            ],
+            "daily_minutes": 40
+          },
+          "tokens": 4754
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "k02",
+      "goal": "career change: accountant -> data analytics, tools, then corrected time budget",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I've been an accountant for 4 years and want to move into data analytics. where do I start?",
+          "answer": "Start by building foundational data‑analytics skills (Excel/SQL/visualisation) while leveraging your 4 years of accounting experience – I’ll assume you can study 60 minutes per day.  \n\n1. Strengthen Excel for data cleaning and reporting (advanced formulas, pivot tables).  \n2. Learn SQL to query relational databases, a core skill for most analyst roles [S4].  \n3. Pick a BI tool (Power BI or Tableau) to create dashboards and scorecards [S1].  \n4. Add basic statistics and data‑visualisation concepts to interpret trends [S4].  \n\n**14‑day 60‑min‑per‑day learning plan**\n\n| Day | Activity (≈60 min) |\n|-----|--------------------|\n| Day 1 | Review Excel advanced functions (VLOOKUP, INDEX/MATCH, pivot tables). |\n| Day 2 | Practice Excel data‑cleaning on a sample accounting ledger. |\n| Day 3 | Intro to relational databases – concepts of tables, keys. |\n| Day 4 | SQL basics: SELECT, WHERE, ORDER BY on a sample dataset. |\n| Day 5 | SQL filtering and aggregation (GROUP BY, HAVING). |\n| Day 6 | Hands‑on SQL: import a CSV of financial transactions and query it. |\n| Day 7 | Intro to a BI tool (Power BI free desktop): connect to SQL data. |\n| Day 8 | Build a simple sales‑trend dashboard (charts, slicers). |\n| Day 9 | Learn basic descriptive statistics (mean, median, variance). |\n| Day 10 | Apply statistics to identify outliers in the accounting data. |\n| Day 11 | Combine Excel and Power BI: export pivot tables to dashboards. |\n| Day 12 | Mini‑project: clean, analyse, and visualise a month’s expense data. |\n| Day 13 | Review and document the project (key insights, visualisations). |\n| Day 14 | Reflect on gaps (e.g., Python/R, advanced statistics) and plan next steps. |\n\nThese steps give you the core analytics toolkit that matches the skill sets listed for Data Analytics Analyst and Data Analyst roles [S1][S4]. How many minutes a day can you realistically study?\n\n---\n**Sources**\n- [S1] careers: Data Analytics Analyst\n- [S4] careers: Analyst, Data",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4963.7,
+          "state": {
+            "selected_career": "data analytics",
+            "background": "accountant"
+          },
+          "tokens": 3842
+        },
+        {
+          "turn": 2,
+          "q": "give me a 30 day plan, 1 hour every evening",
+          "answer": "Here is a 30‑day, 1‑hour‑per‑evening plan to transition from accounting to data analytics.\n\n1. Advanced Excel & data‑cleaning  \n2. SQL fundamentals and querying  \n3. Business‑Intelligence tool (Power BI or Tableau)  \n4. Basic statistics, visualisation, and a capstone mini‑project  \n\n**Day‑by‑day schedule (each entry ≈60 min)**  \n\n| Day | Task | Checkable outcome |\n|-----|------|-------------------|\n| Day 1 | Review Excel advanced formulas (INDEX/MATCH, XLOOKUP). | Create a sheet that consolidates two mock ledger tables using these formulas. |\n| Day 2 | Pivot tables & slicers on sample financial data. | Build a pivot report showing monthly totals and variances. |\n| Day 3 | Data‑cleaning techniques (text‑to‑columns, remove duplicates). | Produce a cleaned version of a messy CSV export. |\n| Day 4 | Intro to relational databases – tables, keys, relationships. | Sketch an ER diagram for a simple accounting system. |\n| Day 5 | SQL SELECT, WHERE, ORDER BY on a practice DB. | Write three queries returning filtered transaction lists. |\n| Day 6 | GROUP BY, HAVING, aggregate functions. | Generate a query showing total expenses per category. |\n| Day 7 | Join operations (INNER, LEFT). | Combine two tables (transactions + vendors) in a single query. |\n| Day 8 | Install Power BI Desktop; connect to the SQL sample. | Publish the first data source in Power BI. |\n| Day 9 | Build basic visualisations (bar, line, matrix). | Create a dashboard showing expense trends over 12 months. |\n| Day 10 | Add slicers and drill‑through pages. | Enable interactive filtering by department and date. |\n| Day 11 | Intro to descriptive statistics (mean, median, std dev). | Compute these metrics for monthly expense totals in Excel. |\n| Day 12 | Identify outliers using Z‑score or IQR. | Highlight anomalous transactions in the dataset. |\n| Day 13 | Combine Excel insights into Power BI (export/import). | Add a calculated column showing deviation from average. |\n| Day 14 | Review week 1‑2 material; redo any unclear queries. | Document a short “cheat sheet” of key formulas and SQL syntax. |\n| Day 15 | Learn Power BI DAX basics (CALCULATE, FILTER). | Create a measure for Year‑over‑Year expense growth. |\n| Day 16 | Build a KPI card (e.g., profit margin). | Add the KPI to the existing dashboard. |\n| Day 17 | Intro to Tableau (optional alternative). | Load the same dataset and replicate one Power BI visual. |\n| Day 18 | Comparative visualisation (dual‑axis chart). | Show expenses vs. revenue side‑by‑side. |\n| Day 19 | Basic data‑storytelling principles. | Write a 150‑word narrative explaining the dashboard insights. |\n| Day 20 | Mini‑project: define a business question (e.g., “Which cost centre is overspending?”). | Draft the question and required data fields. |\n| Day 21 | Data extraction & cleaning for the mini‑project. | Produce a clean CSV ready for analysis. |\n| Day 22 | SQL queries to answer the business question. | Write at least two queries delivering the needed metrics. |\n| Day 23 | Visualise results in Power BI (charts, slicers). | Complete a dashboard that answers the question. |\n| Day 24 | Add statistical summary (trend line, confidence interval). | Include a regression line on the expense trend chart. |\n| Day 25 | Peer review: compare your dashboard to a sample analyst example (online tutorial). | Note three improvements you can make. |\n| Day 26 | Implement the improvements (layout, colour, tooltips). | Updated dashboard ready for presentation. |\n| Day 27 | Record a 2‑minute video walkthrough of the dashboard. | Export the video file. |\n| Day 28 | Write a concise project summary (purpose, method, key insight). | 200‑word write‑up saved as PDF. |\n| Day 29 | Reflect on remaining gaps (Python/R, advanced statistics, storytelling). | List three next‑step learning topics. |\n| Day 30 | Update LinkedIn/Resume: add “Data Analytics Projects” with the mini‑project link. | Publish the updated profile. |\n\nThis schedule respects your 60‑minute evening window and gives a concrete deliverable each day, building a portfolio you can show to future employers.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 7049.5,
+          "state": {
+            "selected_career": "data analytics",
+            "last_recommendations": [
+              "Strengthen Excel for data cleaning and reporting",
+              "Pick a BI tool"
+            ],
+            "daily_minutes": 60,
+            "background": "accountant"
+          },
+          "tokens": 3974
+        },
+        {
+          "turn": 3,
+          "q": "sorry, I can only do 30 minutes on weekdays. redo it",
+          "answer": "Here’s a 30‑day data‑analytics learning plan that fits your 30‑minute weekday evenings (and 60‑minute weekends).\n\n1. Advanced Excel & data‑cleaning  \n2. SQL fundamentals and querying  \n3. Business‑Intelligence tool (Power BI or Tableau)  \n4. Basic statistics, visualisation, and a capstone mini‑project  \n\n**Day‑by‑day schedule (weekday ≈ 30 min, weekend ≈ 60 min)**  \n\n| Day | Activity | Approx. time |\n|-----|----------|--------------|\n| Day 1 | Excel: INDEX/MATCH, XLOOKUP basics | 30 min |\n| Day 2 | Pivot tables & slicers on a sample ledger | 30 min |\n| Day 3 | Data‑cleaning (remove duplicates, text‑to‑columns) | 30 min |\n| Day 4 | Review Excel formulas; practice on a mock file | 30 min |\n| Day 5 | Intro to relational databases: tables & keys | 30 min |\n| Day 6 | **Weekend** – Install Power BI Desktop; connect to sample CSV | 60 min |\n| Day 7 | **Weekend** – Load data, create first simple chart | 60 min |\n| Day 8 | SQL SELECT, WHERE, ORDER BY on practice DB | 30 min |\n| Day 9 | GROUP BY, aggregate functions (SUM, AVG) | 30 min |\n| Day 10 | JOINs (INNER, LEFT) between transactions & vendors | 30 min |\n| Day 11 | Write three queries that answer basic accounting questions | 30 min |\n| Day 12 | **Weekend** – Build a Power BI dashboard: bar chart of monthly expenses | 60 min |\n| Day 13 | Add slicers (date, department) to the dashboard | 60 min |\n| Day 14 | Intro to descriptive statistics (mean, median, std dev) in Excel | 30 min |\n| Day 15 | Identify outliers using Z‑score on expense data | 30 min |\n| Day 16 | Create a calculated column in Power BI for deviation from average | 30 min |\n| Day 17 | Basic DAX: CALCULATE for Year‑over‑Year growth | 30 min |\n| Day 18 | KPI card (e.g., profit margin) in Power BI | 30 min |\n| Day 19 | **Weekend** – Replicate one Power BI visual in Tableau (optional) | 60 min |\n| Day 20 | Define a mini‑project question (e.g., “Which cost centre overspends?”) | 30 min |\n| Day 21 | Extract & clean the required data set | 30 min |\n| Day 22 | Write SQL queries that produce the needed metrics | 30 min |\n| Day 23 | Visualise results in Power BI (charts & slicers) | 30 min |\n| Day 24 | Add a trend line and basic statistical summary | 30 min |\n| Day 25 | **Weekend** – Refine dashboard layout, colours, tooltips | 60 min |\n| Day 26 | Record a 2‑minute walkthrough video of the dashboard | 60 min |\n| Day 27 | Write a 150‑word narrative explaining key insights | 30 min |\n| Day 28 | Review gaps (Python/R, advanced stats) and list next‑step topics | 30 min |\n| Day 29 | Update LinkedIn/Resume: add “Data‑Analytics Projects” with the mini‑project link | 30 min |\n| Day 30 | Final reflection: what worked, what to improve, and plan for continued learning | 30 min |\n\nAll weekday sessions stay within 30 minutes, while the two weekend days allow deeper work (≈ 60 minutes) to keep progress steady. This sequence builds the core analytics toolkit you need to transition from accounting to a data‑analytics role.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4087.7,
+          "state": {
+            "selected_career": "data analytics",
+            "last_recommendations": [
+              "Advanced Excel & data‑cleaning",
+              "SQL fundamentals and querying",
+              "Business‑Intelligence tool",
+              "Basic statistics, visualisation, and a capstone mini‑project"
+            ],
+            "daily_minutes": 30,
+            "background": "accountant",
+            "corrections": [
+              "daily study time 60 -> 30 minutes"
+            ],
+            "time_note": "sorry, I can only do 30 minutes on weekdays. redo it"
+          },
+          "tokens": 4807
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "k03",
+      "goal": "profile: readiness -> first gap -> simpler -> honest timeline",
+      "version": "v7+e38",
+      "user": "persona_ml",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "how far am i from the ML engineer job in my profile?",
+          "answer": "Your profile is currently far from the Machine Learning Engineer role, with an ATS match of only 17/100 and five required skills missing (Machine Learning, TensorFlow, SQL, Statistics, Docker) [S1].\n\n1. **Learn core Machine Learning concepts** – complete a beginner‑to‑intermediate ML course (e.g., Coursera’s “Machine Learning” by Andrew Ng) and implement at least two end‑to‑end projects (e.g., classification and regression) using Python.  \n2. **Master TensorFlow** – follow TensorFlow’s official tutorials, build a simple neural‑network model, and add the code to a GitHub repo to demonstrate practical experience.  \n3. **Add SQL proficiency** – take an online SQL fundamentals course, practice writing queries on sample datasets, and integrate SQL data extraction into your ML pipelines.  \n4. **Study Statistics for Data Science** – cover probability, hypothesis testing, and descriptive statistics; apply these concepts in your ML projects to justify model choices.  \n5. **Get comfortable with Docker** – learn container basics, create a Dockerfile for one of your ML projects, and practice running the container locally and on a cloud service.  \n6. **Update your resume** – replace generic “Python” with specific ML‑related achievements (e.g., “Implemented TensorFlow model for fuel‑efficiency prediction”) and list the new skills with concrete project links.  \n7. **Consider a focused credential** – if you can, pursue a short‑term specialization or a part‑time master’s in Data Science/ML, as many hiring managers value such formal training [S3].\n\nFollowing these steps will systematically close the skill gaps and raise your ATS score, moving you much closer to qualifying for the Machine Learning Engineer position.\n\n---\n**Sources**\n- [S1] profile: job description\n- [S3] knowledge: Choosing between a job, MS, MTech or MBA",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3594.5,
+          "state": {},
+          "tokens": 2991
+        },
+        {
+          "turn": 2,
+          "q": "list my gaps in the order i should learn them",
+          "answer": "Your gaps, in the recommended learning order, are: **Statistics**, **Machine Learning**, **TensorFlow**, **SQL**, **Docker**.\n\n1. **Statistics** – your profile lists this gap; begin with a beginner’s statistics tutorial or a free course with certificate [S1].  \n2. **Machine Learning** – you need to learn core ML concepts and implement end‑to‑end projects.  \n3. **TensorFlow** – after ML basics, follow TensorFlow tutorials and convert a project to a TensorFlow model.  \n4. **SQL** – learn SQL fundamentals, practice queries on sample data, and integrate SQL steps into your ML pipelines.  \n5. **Docker** – finally, learn container basics, create a Dockerfile for a TensorFlow project, and run it locally or on a cloud service.\n\n---\n**Sources**\n- [S1] profile: learning path",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4579.1,
+          "state": {
+            "last_recommendations": [
+              "Learn core Machine Learning concepts",
+              "Master TensorFlow",
+              "Add SQL proficiency",
+              "Study Statistics for Data Science",
+              "Get comfortable with Docker",
+              "Update your resume",
+              "Consider a focused credential"
+            ]
+          },
+          "tokens": 2997
+        },
+        {
+          "turn": 3,
+          "q": "explain the first one simply, i'm a beginner",
+          "answer": "Statistics is the science of collecting, summarizing, and interpreting data to discover patterns and make informed decisions.  \n\nFor a beginner, think of it like tracking your daily coffee intake: you count how many cups you drink each day (collect data), calculate the average over a week (summarize), and then notice whether you tend to drink more on weekdays than weekends (interpret).  \n\nWhy it matters for a Machine Learning Engineer: most ML models rely on statistical concepts such as probability distributions, hypothesis testing, and confidence intervals to evaluate how well a model fits the data and to avoid false conclusions. For example, when you build a model to predict fuel‑efficiency, you’ll use statistical metrics like R² or Mean Squared Error to measure accuracy and decide whether the model is reliable enough for deployment. Mastering statistics gives you the tools to assess model performance rigorously and to communicate results convincingly to stakeholders.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 1720.9,
+          "state": {
+            "selected_career": "Statistics",
+            "last_recommendations": [
+              "Statistics",
+              "Machine Learning",
+              "TensorFlow",
+              "SQL",
+              "Docker"
+            ],
+            "reference": {
+              "phrase": "the first one",
+              "index": 1,
+              "resolved": "Statistics"
+            },
+            "level": "beginner"
+          },
+          "tokens": 3044
+        },
+        {
+          "turn": 4,
+          "q": "can I be job ready in 1 month?",
+          "answer": "No, with your current beginner level and five major skill gaps (Statistics, Machine Learning, TensorFlow, SQL, Docker) you are unlikely to be job‑ready for a Machine Learning Engineer role within just one month.  \n\n- **Why:** mastering statistics and core ML concepts alone typically takes 4–6 weeks of focused study, and each subsequent skill (TensorFlow, SQL, Docker) adds additional weeks of practice and project work.  \n- **What you can achieve in a month:** you could complete an introductory statistics course and a basic ML tutorial, and build a simple Python‑based model, giving you a solid foundation but still leaving the deeper ML pipelines, TensorFlow implementation, data‑engineering (SQL), and deployment (Docker) gaps unfilled.  \n\n**Realistic short‑term plan:**  \n1. **Weeks 1‑2:** Finish a beginner statistics course (e.g., Khan Academy or Coursera “Statistics with Python”) and apply concepts to a small dataset.  \n2. **Weeks 2‑4:** Complete a concise ML course (e.g., Andrew Ng’s “Machine Learning”) and implement two end‑to‑end projects (classification and regression) using scikit‑learn.  \n\nAfter this month you’ll have the **foundations** but will still need additional time to learn TensorFlow, SQL, and Docker to meet the full job requirements and raise your ATS score well beyond the current 17/100.  \n\n*Reference:* focusing on one skill aligned with the next role is recommended for steady progress [S1].\n\n---\n**Sources**\n- [S1] knowledge: Growing your career while working",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2136.4,
+          "state": {
+            "selected_career": "Statistics",
+            "last_recommendations": [
+              "Statistics",
+              "Machine Learning",
+              "TensorFlow",
+              "SQL",
+              "Docker"
+            ],
+            "background": "be",
+            "level": "beginner"
+          },
+          "tokens": 3514
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "k04",
+      "goal": "study: exam concept -> shorter -> example in Java -> quiz",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "what is normalization in DBMS? exam next week",
+          "answer": "Normalization in a DBMS is the systematic process of organizing tables and their relationships to eliminate redundant data and ensure each piece of information is stored only once.  \n\nBy applying normal forms (1NF, 2NF, 3NF, etc.), you break a large, duplicated table into smaller, related tables linked by keys, which reduces update anomalies, saves storage, and makes queries more reliable.  \n\n**Why it matters for your studies and career:** mastering normalization shows you can design clean, efficient databases—a core skill for roles such as data analyst, backend developer, or database administrator. For example, a retail‑order database that stores customer address information in every order row would cause inconsistencies if a customer moves; normalizing it into a separate Customers table linked by a CustomerID ensures the address is updated in one place and all orders automatically reflect the change. This understanding will help you answer exam questions, build scalable applications, and impress interviewers with solid data‑modeling fundamentals.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2112.2,
+          "state": {},
+          "tokens": 2077
+        },
+        {
+          "turn": 2,
+          "q": "too long, give me the short version",
+          "answer": "Normalization is the process of structuring a database into related tables to eliminate redundant data and prevent update anomalies.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 1301.4,
+          "state": {},
+          "tokens": 2033
+        },
+        {
+          "turn": 3,
+          "q": "show 2NF with a small table example",
+          "answer": "2NF removes partial dependencies by ensuring every non‑key attribute depends on the whole primary key.\n\n1. Identify the composite primary key and any attributes that depend on only part of it.  \n2. Create a new table for the attributes that depend on the partial key.  \n3. Keep the remaining attributes (those fully dependent) in the original table, linking the tables with the key attribute.\n\n**Example – before 2NF (partial dependency present)**  \n\n| OrderID | ProductID | ProductName | UnitPrice | Quantity |\n|---------|-----------|-------------|-----------|----------|\n| 101     | P01       | Widget      | 10.00     | 2        |\n| 101     | P02       | Gizmo       | 15.00     | 1        |\n| 102     | P01       | Widget      | 10.00     | 3        |\n\n- Composite primary key: **(OrderID, ProductID)**\n- **ProductName** and **UnitPrice** depend only on **ProductID** (partial dependency).\n\n**After converting to 2NF**\n\n*Orders table (fully dependent on OrderID)*  \n\n| OrderID | ProductID | Quantity |\n|---------|-----------|----------|\n| 101     | P01       | 2        |\n| 101     | P02       | 1        |\n| 102     | P01       | 3        |\n\n*Products table (attributes depend on whole key ProductID)*  \n\n| ProductID | ProductName | UnitPrice |\n|-----------|-------------|-----------|\n| P01       | Widget      | 10.00     |\n| P02       | Gizmo       | 15.00     |\n\nNow every non‑key column in each table depends on the entire primary key, satisfying Second Normal Form.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2274.1,
+          "state": {},
+          "tokens": 2684
+        },
+        {
+          "turn": 4,
+          "q": "quiz me with 4 questions",
+          "answer": "Here are four quiz questions on database normalization:\n\n1. **What is the main purpose of normalization in a relational database?** – tests understanding of why we restructure tables.  \n2. **Define First Normal Form (1NF) and give one example of a violation.** – checks knowledge of atomic values and repeating groups.  \n3. **Explain the difference between a partial dependency and a transitive dependency.** – distinguishes concepts needed for 2NF vs. 3NF.  \n4. **Given a table with columns (StudentID, CourseID, CourseName, Instructor), which normal form is violated and how would you decompose it to achieve that form?** – applies theory to a practical decomposition.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2486.7,
+          "state": {
+            "last_recommendations": [
+              "Composite primary key",
+              "ProductName and UnitPrice depend only on ProductID"
+            ]
+          },
+          "tokens": 2774
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "k05",
+      "goal": "interest -> careers -> last one -> 2-week starter at 2 h -> off-topic -> back",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I enjoy organising events and managing people. suggest 3 tech careers",
+          "answer": "Here are three tech‑focused careers that match your passion for organizing events and managing people:\n\n1. **Scrum Master** – Leads Agile teams, coordinates processes, and ensures smooth delivery of projects, aligning well with event‑style coordination and people leadership [S1].\n2. **Project Management Coordinator (Brand Operations)** – Handles event planning, vendor and budget management, and cross‑functional collaboration, directly leveraging your event‑organizing strengths [S2].\n3. **Program Manager** – Oversees multiple projects, manages resources and stakeholders, and drives continuous improvement, fitting both people‑management and large‑scale coordination [S4].\n\n---\n**Sources**\n- [S1] careers: Scrum Master (Los Angeles)\n- [S2] careers: Project Management Coordinator, Brand Operations\n- [S4] careers: Program Manager",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2105.5,
+          "state": {},
+          "tokens": 2756
+        },
+        {
+          "turn": 2,
+          "q": "tell me about the last one",
+          "answer": "Program Manager is a tech‑focused career that coordinates people, processes, and priorities to deliver business or technology outcomes [S1].\n\n1. **Core responsibilities** – Plan and track program progress, communicate with stakeholders, manage risks, generate reports, and drive continuous improvement [S1].  \n2. **Key required skills** – Program Management, Supervision, Budget Management, Grant Administration, Data Analysis, Document Management, Compliance, Technology Implementation, and Report Generation [S1].  \n3. **Typical education & experience** – A bachelor’s degree in a relevant field plus substantial professional experience in program or project management; many employers also value advanced degrees or certifications (e.g., PMP) [S1].\n\n---\n**Sources**\n- [S1] careers: Program Manager",
+          "passed": true,
+          "failed": [],
+          "item_expected": [
+            "Program Manager"
+          ],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2276.4,
+          "state": {
+            "selected_career": "Program Manager",
+            "last_recommendations": [
+              "Scrum Master",
+              "Project Management Coordinator",
+              "Program Manager"
+            ],
+            "reference": {
+              "phrase": "the last one",
+              "index": 3,
+              "resolved": "Program Manager"
+            }
+          },
+          "tokens": 3202
+        },
+        {
+          "turn": 3,
+          "q": "who will win the next football world cup?",
+          "answer": "I'm your **career & study advisor**, so I can't help with that one. 🙂\nI can help with things like choosing a career path, closing your skill gaps, improving your resume/ATS score, preparing for interviews, or planning your studies. For example, you could ask: *\"How do I switch from mechanical engineering to software development?\"*\n",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": null,
+          "latency_ms": 1.9,
+          "state": null,
+          "tokens": null
+        },
+        {
+          "turn": 4,
+          "q": "ok back to it, give me a 2 week starter plan for that role, 2 hours a day",
+          "answer": "Here’s a 2‑week, 2‑hour‑per‑day starter plan to begin building Program Manager skills.  \n\n1. **Week 1 – Foundations**  \n2. **Week 2 – Applied practice**  \n\n**Week 1 – Foundations**  \n- **Day 1:** Read an introductory article on program management (e.g., “What is a Program Manager?”). *Outcome:* Write a 3‑sentence summary in a notebook.  \n- **Day 2:** Watch a 30‑minute video on Agile and Scrum basics. *Outcome:* List three ways Scrum ceremonies map to program‑level coordination.  \n- **Day 3:** Study a template for a Program Charter. *Outcome:* Draft a one‑page charter for a mock program (e.g., “Campus Event Series”).  \n- **Day 4:** Learn the basics of stakeholder analysis (read a short guide). *Outcome:* Create a stakeholder matrix for your mock program.  \n- **Day 5:** Explore risk‑management fundamentals (read a 5‑page cheat sheet). *Outcome:* Identify five potential risks for the mock program and propose mitigation actions.  \n- **Day 6:** Review budgeting basics for programs (watch a 20‑minute tutorial). *Outcome:* Sketch a simple budget spreadsheet with line items and totals.  \n- **Day 7:** Reflect: compare your mock program documents to a real job posting for a Program Manager. *Outcome:* Note three gaps you’ll address in Week 2.  \n\n**Week 2 – Applied practice**  \n- **Day 8:** Set up a Kanban board (physical or digital) for the mock program. *Outcome:* Populate it with at least five tasks across “To Do,” “In Progress,” and “Done.”  \n- **Day 9:** Conduct a 15‑minute stand‑up meeting with a friend acting as a stakeholder. *Outcome:* Record meeting notes and action items.  \n- **Day 10:** Write a concise status report (1 page) using the data from your board. *Outcome:* Share it with a peer for feedback.  \n- **Day 11:** Practice writing a program‑level executive summary. *Outcome:* Produce a 250‑word summary highlighting goals, timeline, and ROI.  \n- **Day 12:** Learn basic data‑analysis for program metrics (read a short guide on KPIs). *Outcome:* Define three KPIs for your mock program and calculate sample values.  \n- **Day 13:** Simulate a change‑request process: draft a change request and assess impact on schedule/budget. *Outcome:* Document the decision and update the charter.  \n- **Day 14:** Review all artifacts, update any missing pieces, and create a portfolio slide deck (5 slides) showcasing your mock program. *Outcome:* Have a ready‑to‑present set of materials for interviews or networking.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [
+            "Program Manager"
+          ],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3094.4,
+          "state": {
+            "selected_career": "Program Manager",
+            "last_recommendations": [
+              "Core responsibilities",
+              "Key required skills",
+              "Typical education & experience"
+            ],
+            "daily_minutes": 120
+          },
+          "tokens": 3425
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "k06",
+      "goal": "profile: ATS -> improve -> plan without time -> answer time",
+      "version": "v7+e38",
+      "user": "persona_da",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "why is my ATS score low?",
+          "answer": "Your ATS match score is **43 / 100**, which is relatively low.  \n\nThe score reflects that you meet only 3 of the 7 required skills for the Data Analyst role (Python, SQL, and Power BI) while **Tableau, Statistics, Data Visualization, and Communication** are listed as gaps in your profile. Because the job description emphasizes these missing competencies, the AI estimate drops the match percentage. Additionally, the resume‑ATS guide recommends mirroring the exact wording of the job description (e.g., “Power BI”) and using a clear Skills section to improve keyword alignment [S1]; without these optimizations, the ATS may not recognize your existing strengths fully. Closing the skill gaps and tailoring your resume wording should raise the score.\n\n---\n**Sources**\n- [S1] knowledge: Raising an ATS match score",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3106.0,
+          "state": {},
+          "tokens": 2477
+        },
+        {
+          "turn": 2,
+          "q": "what should i add to improve it honestly?",
+          "answer": "Add **Tableau, Statistics, stronger Data‑Visualization work, and clear Communication examples** to your resume and skill set.  \n\n1. **Learn Tableau** – complete a beginner‑to‑intermediate online course (e.g., Tableau Desktop Specialist) and build at least two dashboards (one replicating your Power BI sales dashboard, another on a new dataset).  \n2. **Study Statistics fundamentals** – finish a short statistics for data analysis course (cover descriptive stats, hypothesis testing, regression) and apply the concepts to a personal project (e.g., analyze exam scores or sales trends).  \n3. **Create a Data‑Visualization portfolio** – combine Tableau and Power BI projects in a single online portfolio (GitHub Pages, personal site, or a PDF). Highlight the problem, data source, tools, and insights you delivered.  \n4. **Showcase Communication skills** – record short video walkthroughs of your dashboards, write a one‑page “Insights Summary” for each project, and add these links to your resume. If you have any presentation experience (e.g., class presentations, internship reporting), list it explicitly.  \n5. **Tailor your resume to the JD** – copy the exact keywords from the job description (“Python, SQL, Power BI, Tableau, Statistics, Data Visualization, Communication”) into a dedicated Skills section and embed them in bullet points describing your projects.  \n6. **Earn a relevant micro‑credential** – obtain a Tableau Desktop Specialist badge or a Coursera/edX certificate in Statistics for Data Science; list the badge on your resume and LinkedIn.  \n7. **Quantify your existing work** – revise current bullet points to include impact numbers (e.g., “Built a Power BI sales dashboard that reduced reporting time by 30 %”).  \n\nImplementing these steps will directly address the four skill gaps and improve keyword alignment, which should raise your ATS match score.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2157.6,
+          "state": {},
+          "tokens": 2669
+        },
+        {
+          "turn": 3,
+          "q": "make me a plan for it",
+          "answer": "Here is a 60‑minute‑per‑day plan to close your Tableau, Statistics, Data‑Visualization, and Communication gaps and raise your ATS score.\n\n1. **Foundations** – Tableau basics & Statistics fundamentals.  \n2. **Applied projects** – Build dashboards and write a statistical analysis report.  \n3. **Portfolio & communication** – Document work, create presentation videos, and add keywords to your resume.  \n4. **Certification & resume polish** – Earn a micro‑credential and align your resume to the JD.\n\n**Weeks 1‑2 – Foundations (Days 1‑14)**  \n- **Day 1‑3:** Watch a 30‑min Tableau Desktop Intro video each day; practice creating a simple “Sales Overview” dashboard (30 min). *Outcome:* A published Tableau workbook with at least three visual types.  \n- **Day 4‑6:** Complete a free “Statistics for Data Analysis” module (30 min lecture, 30 min quiz). *Outcome:* Quiz score ≥ 80 % and a one‑page summary of mean, median, variance, and hypothesis testing.  \n- **Day 7‑9:** Combine both skills – import the same sales data used in Power BI into Tableau and replicate the dashboard. *Outcome:* Side‑by‑side comparison screenshot.  \n- **Day 10‑12:** Review statistical concepts by applying a t‑test on two product categories in Python (using pandas & scipy). *Outcome:* Jupyter notebook with code, results, and interpretation.  \n- **Day 13‑14:** Write a 200‑word “Insights Summary” for the Tableau dashboard, focusing on business impact. *Outcome:* Text ready to paste into your resume.\n\n**Weeks 3‑4 – Applied Projects & Portfolio (Days 15‑28)**  \n- **Day 15‑18:** Design a second Tableau dashboard on a new dataset (e.g., campus housing expenses). *Outcome:* Interactive workbook published on Tableau Public.  \n- **Day 19‑22:** Conduct a regression analysis on the same dataset in Python; visualize results in Tableau. *Outcome:* Notebook + dashboard page showing regression line.  \n- **Day 23‑25:** Record a 2‑minute video walkthrough of each dashboard (screen‑record + narration). *Outcome:* Two video files uploaded to YouTube (unlisted).  \n- **Day 26‑28:** Create a simple portfolio site (GitHub Pages) with project descriptions, links to workbooks, notebooks, and videos. *Outcome:* Live URL.\n\n**Week 5 – Certification & Resume Polish (Days 29‑35)**  \n- **Day 29‑31:** Study for the Tableau Desktop Specialist exam (30 min review + 30 min practice test each day).  \n- **Day 32:** Take the exam; add the badge to your resume and LinkedIn. *Outcome:* Certification screenshot.  \n- **Day 33‑35:** Rewrite your Skills section using exact JD keywords (Python, SQL, Power BI, Tableau, Statistics, Data Visualization, Communication) and insert the “Insights Summary” bullet points with quantified impact. *Outcome:* Updated PDF resume.\n\n**Week 6 – Final Review (Days 36‑42)**  \n- **Day 36‑38:** Run your resume through an ATS checker; note any missing keywords and adjust.  \n- **Day 39‑41:** Practice a 5‑minute presentation of one dashboard to a friend or mentor; solicit feedback on clarity.  \n- **Day 42:** Incorporate feedback, finalize portfolio, and submit the revised resume to at least one Data Analyst posting.\n\nThis schedule assumes 60 minutes of study each day. **How many minutes per day can you realistically dedicate to this plan?**",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3175.4,
+          "state": {
+            "last_recommendations": [
+              "Learn Tableau",
+              "Study Statistics fundamentals",
+              "Create a Data‑Visualization portfolio",
+              "Showcase Communication skills",
+              "Tailor your resume to the JD",
+              "Earn a relevant micro‑credential",
+              "Quantify your existing work"
+            ]
+          },
+          "tokens": 3758
+        },
+        {
+          "turn": 4,
+          "q": "45 minutes a day, 2 weeks",
+          "answer": "Here’s a 14‑day, 45‑minutes‑per‑day plan to close your Tableau, Statistics, Data‑Visualization, and Communication gaps and raise your ATS score.\n\n1. **Foundations – Tableau & Statistics** – start with basic chart selection, Tableau interface, and core statistical concepts.  \n2. **Applied practice – dashboards & analysis** – build two Tableau dashboards, run a regression/hypothesis test, and write short insight notes.  \n3. **Communication & portfolio** – create brief video walkthroughs, write 200‑word summaries, and add keywords to your resume.  \n4. **Certification & final polish** – finish a Tableau micro‑credential, update the Skills section with exact JD terms, and run an ATS check.\n\n| Day | Task (≈45 min) | Checkable outcome |\n|-----|----------------|-------------------|\n| **Day 1** | Data‑Visualization: classify 10 scenarios to chart types (Storytelling with Data) | 10/10 classifications justified |\n| **Day 2** | Data‑Visualization: redesign 3 bad charts | Before/after versions saved |\n| **Day 3** | Tableau: watch intro video & connect a CSV, create 3 basic charts | Tableau workbook with 3 charts |\n| **Day 4** | Tableau: practice dimensions, measures & filters, build 4 filtered views | Workbook with 4 functional filters |\n| **Day 5** | Statistics: watch Khan Academy intro, compute mean/median/variance on a sample dataset in Python | Jupyter notebook with correct summary table |\n| **Day 6** | Statistics: simulate a normal distribution and plot 2 histograms | Two plots saved |\n| **Day 7** | Review: redo one exercise from Days 1‑6 without notes | All redo tasks completed |\n| **Day 8** | Tableau: create calculated fields (5) for the same dataset | Workbook showing 5 validated calculations |\n| **Day 9** | Tableau: build a 1‑page dashboard answering 3 business questions | Dashboard screenshot with answers |\n| **Day 10** | Statistics: perform a t‑test on two product groups in Python | Notebook with test result and plain‑English interpretation |\n| **Day 11** | Communication: write a 200‑word “Insights Summary” for the dashboard | Text ready to copy into resume |\n| **Day 12** | Communication: record a 2‑minute video walkthrough of the dashboard (screen‑record) | Video uploaded (unlisted) |\n| **Day 13** | Resume polish: add exact keywords (Python, SQL, Power BI, Tableau, Statistics, Data Visualization, Communication) and the new bullet points | Updated PDF resume |\n| **Day 14** | ATS check: run the resume through a free ATS scanner, note any missing terms, and adjust | Screenshot of ATS score improvement (aim > 55) |\n\nFollowing this schedule fits your 45‑minute daily window and targets all four skill gaps, which should noticeably boost your ATS match.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 5067.6,
+          "state": {
+            "last_recommendations": [
+              "Foundations",
+              "Applied projects",
+              "Portfolio & communication",
+              "Certification & resume polish"
+            ],
+            "daily_minutes": 45
+          },
+          "tokens": 6196
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "k07",
+      "goal": "salary + guarantee + change of mind",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "how much do cloud engineers earn as freshers in india?",
+          "answer": "Freshers – cloud engineers in India typically earn roughly **₹3 – 6 lakh per year**, but this is a rough, unverified range that can vary widely by city, company size, and specific cloud‑technology skills.  \n\n**What to do next:**  \n1. Check current listings on job portals such as **Naukri**, **Indeed**, **LinkedIn Jobs**, and salary‑survey sites like **Glassdoor**, **Payscale**, or **PayScale India** for up‑to‑date figures.  \n2. Filter results for “entry‑level” or “fresh graduate” cloud engineer roles to see location‑specific pay.  \n3. Compare offers and consider additional factors (benefits, training, location cost of living) before making decisions.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2598.2,
+          "state": {},
+          "tokens": 2505
+        },
+        {
+          "turn": 2,
+          "q": "if i get AWS certified will i surely get a job?",
+          "answer": "Getting an AWS certification – such as the AWS Certified Solutions Architect or AWS Certified DevOps Engineer – significantly improves your hiring prospects, but it does not guarantee a job.  \n\n1. **Industry relevance:** All the AWS‑focused career profiles (AWS IaaS Developer, AWS Cloud Engineer, AWS Cloud Infrastructure Architect, Cloud Architect – AWS, HBO Cloud Architect) list AWS certifications as “advantageous” or “preferred” and often require them for senior or specialized roles [S1][S2][S3][S4][S5].  \n2. **Skill validation:** Certifications demonstrate that you have the core cloud‑computing, infrastructure‑as‑code, and automation skills employers look for, helping your résumé pass ATS filters and stand out to recruiters.  \n3. **Job market factors:** Hiring still depends on additional elements such as overall experience, project work, soft skills (communication, teamwork), and the demand in your target city or company. Fresh graduates without practical projects may still need internships or personal cloud projects to showcase applied knowledge.  \n\n**Next steps to boost employability:**  \n- Build a portfolio of at least two end‑to‑end AWS projects (e.g., deploying a web app with CloudFormation and CI/CD pipelines).  \n- Pair the certification with hands‑on experience in related tools mentioned in the career profiles (Docker, Terraform, CI/CD tools, monitoring).  \n- Network on platforms like LinkedIn, attend AWS community events, and apply to entry‑level cloud‑engineer or DevOps roles that list “AWS certification preferred.”  \n\nWhile an AWS cert is a strong credential, combining it with practical projects and networking gives you the best chance of securing a job.\n\n---\n**Sources**\n- [S1] careers: AWS IaaS Developer\n- [S2] careers: AWS Cloud Engineer\n- [S3] careers: AWS Cloud Infrastructure Architect\n- [S4] careers: Cloud Architect - AWS\n- [S5] careers: HBO Cloud Architect",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2418.3,
+          "state": {},
+          "tokens": 3788
+        },
+        {
+          "turn": 3,
+          "q": "hmm actually I think I prefer cybersecurity. what's different?",
+          "answer": "Cybersecurity focuses on protecting systems, data, and networks from threats, whereas cloud engineering centers on designing, deploying, and managing cloud‑based infrastructure.  \n\n1. **Core objectives** – Cybersecurity aims to detect, prevent, and respond to attacks; cloud engineering aims to build scalable, reliable, and cost‑effective cloud services.  \n2. **Typical tasks** – Security work includes threat modeling, vulnerability assessments, incident response, and security policy enforcement; cloud work includes provisioning resources, automating deployments, and optimizing performance.  \n3. **Key knowledge areas** – Cybersecurity requires understanding of cryptography, network security, security frameworks (e.g., ISO 27001, NIST), penetration testing, and security monitoring tools; cloud engineering requires expertise in cloud platforms (AWS, Azure, GCP), IaC (Terraform, CloudFormation), container orchestration, and cloud‑native networking.  \n4. **Common tools** – Security professionals use SIEMs (Splunk, QRadar), IDS/IPS, firewalls, and pen‑testing suites (Burp, Metasploit); cloud engineers use Terraform, Kubernetes, CI/CD pipelines, and cloud‑specific services (AWS Lambda, Azure DevOps).  \n5. **Career paths** – Cybersecurity leads to roles like Security Analyst, Penetration Tester, SOC Engineer, or Security Architect; cloud engineering leads to Cloud Engineer, DevOps Engineer, or Cloud Solutions Architect.  \n6. **Certifications** – Relevant security certs include CompTIA Security+, CEH, CISSP, and OSCP; cloud certs include AWS Solutions Architect, Azure Administrator, and Google Cloud Engineer.  \n\nIf you enjoy defending against attacks, analyzing threats, and shaping security policies, a cybersecurity track aligns better with those interests.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2577.4,
+          "state": {
+            "selected_career": "I prefer cybersecurity",
+            "last_recommendations": [
+              "Industry relevance",
+              "Skill validation",
+              "Job market factors"
+            ]
+          },
+          "tokens": 2900
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "k08",
+      "goal": "web dev: knows HTML/CSS -> next steps -> pick by number -> progress with missed days",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I already know HTML and CSS. what should I learn next for frontend jobs? give options",
+          "answer": "After HTML & CSS, the most valuable next skills for frontend jobs are **JavaScript fundamentals**, a **modern JavaScript framework (e.g., React)**, and **Git version‑control** — these are core requirements in front‑end roles such as Front End Developer and Web Developer [S1][S2][S5].\n\n1. JavaScript fundamentals (variables, functions, DOM manipulation, ES6+).  \n2. A modern framework/library – React (components, state, hooks).  \n3. Git & GitHub basics (repositories, commits, branches, pull requests).  \n\n**Assumption:** you can study ≈ 60 minutes per day. Below is a 14‑day plan that keeps any completed days (none yet), adds a short revision block for the hardest topic (JavaScript), and shifts later tasks forward so the schedule still fits.\n\n| Day | Focus & Tasks (≈ 60 min) |\n|-----|--------------------------|\n| Day 1 | **JS Basics – Variables & Types** – read a tutorial, write 3 small snippets. |\n| Day 2 | **JS Basics – Functions & Scope** – create 2 functions (one arrow, one regular). |\n| Day 3 | **JS Basics – Control Flow** – practice loops & conditionals with mini‑exercises. |\n| Day 4 | **JS Basics – DOM Manipulation** – build a simple “to‑do” list page. |\n| Day 5 | **Revision Block** – review Days 1‑4, redo the to‑do list adding a new feature (e.g., delete item). |\n| Day 6 | **ES6+ Features** – practice let/const, spread, destructuring in a small script. |\n| Day 7 | **Git Intro** – create a repo, commit the to‑do project, push to GitHub. |\n| Day 8 | **Git Branching** – make a feature branch, add a new UI element, merge back. |\n| Day 9 | **React Setup** – install Create‑React‑App, run the starter project. |\n| Day 10 | **React Basics** – build a functional component with props. |\n| Day 11 | **State & Events** – implement a counter component using useState. |\n| Day 12 | **Hooks & Effects** – add useEffect to fetch dummy data and display it. |\n| Day 13 | **Project Integration** – migrate the to‑do list into a React app. |\n| Day 14 | **Final Review & Polish** – test all features, write a short README, push final code. |\n\nThis plan keeps the learning flow tight while giving you a focused revision day for JavaScript, the topic that often feels hardest. **How many minutes a day can you really study?**\n\n---\n**Sources**\n- [S1] careers: Front End Developer\n- [S2] careers: Web Developer\n- [S5] careers: Data Experience",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4295.9,
+          "state": {
+            "known_skills": [
+              "CSS",
+              "HTML"
+            ]
+          },
+          "tokens": 4121
+        },
+        {
+          "turn": 2,
+          "q": "lets go with the first one. 30 day plan, 90 minutes a day",
+          "answer": "Here is a 30‑day, 90‑minute‑per‑day plan to master JavaScript fundamentals.\n\n1. Core syntax & data types  \n2. Functions, scope & closures  \n3. Control flow & ES6+ features  \n4. Asynchronous JavaScript (promises, async/await)  \n5. DOM manipulation & events  \n6. Mini‑project integration and review  \n\n| Day | Task (≈ 90 min) | Checkable outcome |\n|-----|----------------|-------------------|\n| Day 1 | Learn variables (`let`, `const`) and primitive types. Write 5 console‑log snippets. | All snippets run without errors. |\n| Day 2 | Study strings, numbers, booleans, type conversion. Create a small “type‑quiz” script. | Quiz prints correct type info for 5 inputs. |\n| Day 3 | Explore arrays & basic methods (`push`, `map`, `filter`). Build an array‑based todo list in the console. | Todo list can add, list, and filter items. |\n| Day 4 | Master objects & property access. Model a “user” object and log formatted data. | Object logs display name, age, and email correctly. |\n| Day 5 | Review Days 1‑4; refactor code using `const`/`let` best practices. | No `var` remains; lint passes. |\n| Day 6 | Functions: declarations, expressions, arrow functions. Write 3 functions (calc, greet, filter). | All functions return expected results. |\n| Day 7 | Scope & closures. Create a closure that generates incrementers. | Incrementer retains its own counter across calls. |\n| Day 8 | Control flow: `if/else`, `switch`, loops. Build a number‑guessing game. | Game runs and ends when guessed correctly. |\n| Day 9 | ES6+ features: template literals, spread/rest, destructuring. Refactor previous scripts. | Refactored code compiles and behaves identically. |\n| Day 10 | Review Days 6‑9; write a summary cheat‑sheet. | Cheat‑sheet saved as `js-summary.md`. |\n| Day 11 | Introduction to promises. Convert a callback‑based timer to a promise. | Promise resolves after 2 s and logs a message. |\n| Day 12 | Async/await basics. Fetch dummy JSON (`https://jsonplaceholder.typicode.com/todos/1`). | Data logged to console using `await`. |\n| Day 13 | Error handling with `try/catch`. Add error handling to the fetch script. | Errors are caught and logged gracefully. |\n| Day 14 | Review async concepts; build a small “weather fetch” demo (no API key needed). | Demo displays mock weather data. |\n| Day 15 | DOM selection (`querySelector`, `getElementById`). Manipulate text/content on a sample HTML page. | Page updates text when script runs. |\n| Day 16 | Event listeners: click, input, submit. Add a button that adds items to the DOM todo list. | Clicking button adds a visible list item. |\n| Day 17 | Form handling & validation. Create a simple contact form with live validation. | Form prevents submission on invalid input. |\n| Day 18 | CSS interaction via JS (class toggling). Build a dark‑mode toggle. | Toggle switches page theme instantly. |\n| Day 19 | Review Days 15‑18; consolidate into a single “interactive page” project. | All features work together on one HTML file. |\n| Day 20 | Mini‑project planning: outline a “budget tracker” app (features, data model). | Written plan saved as `budget-plan.md`. |\n| Day 21 | Set up project folder, initialize Git, commit initial files. | Repo created with first commit. |\n| Day 22 | Implement data structures for income/expense entries. Log sample data. | Console shows correctly formatted entries. |\n| Day 23 | Add functions to calculate totals and display them in the DOM. | Totals update when entries change. |\n| Day 24 | Persist data with `localStorage`. Save and load budget data. | Data persists after page reload. |\n| Day 25 | Add delete/edit capabilities for entries. | User can remove or edit any entry. |\n| Day 26 | Polish UI: responsive layout, basic styling via JS class changes. | Layout adapts to screen size; styles applied. |\n| Day 27 | Write unit‑like tests (simple assertions) for core functions. | All assertions pass in console. |\n| Day 28 | Final code review & documentation (README with usage steps). | README completed and linked in repo. |\n| Day 29 | Deploy to GitHub Pages (or Netlify). Verify live site works. | Live URL accessible and functional. |\n| Day 30 | Reflect & plan next steps (e.g., learning a framework). Write a 200‑word reflection. | Reflection saved as `next‑steps.md`. |\n\nThis schedule respects your 90‑minute daily window and follows the productivity advice of planning focused study blocks [S1]. Let me know if you’d like adjustments for any specific topics.\n\n---\n**Sources**\n- [S1] knowledge: Time management for students and working learners",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4188.4,
+          "state": {
+            "selected_career": "JavaScript fundamentals",
+            "last_recommendations": [
+              "JavaScript fundamentals",
+              "A modern framework/library",
+              "Git & GitHub basics"
+            ],
+            "reference": {
+              "phrase": "the first one",
+              "index": 1,
+              "resolved": "JavaScript fundamentals"
+            },
+            "known_skills": [
+              "CSS",
+              "HTML"
+            ],
+            "daily_minutes": 90
+          },
+          "tokens": 4301
+        },
+        {
+          "turn": 3,
+          "q": "I missed days 5 to 7 because of college fest. what now?",
+          "answer": "You should add a combined revision block for the missed days and shift the remaining topics forward so the schedule still ends on Day 30.\n\n1. **Revision block** – use the next day to review variables, strings, arrays, and objects (original Days 1‑4) plus the material you missed (variables & types, strings, arrays, objects).  \n2. **Catch‑up** – cover the three missed topics (functions, scope & closures, control flow & loops) in the two days after the revision, keeping the same depth as the original plan.  \n3. **Shift everything else** – move each subsequent day forward by three positions, preserving the 90‑minute daily effort and ending with the same final reflection on Day 30.\n\n### Updated 30‑day, 90‑min‑per‑day plan  \n\n| Day | Task (≈ 90 min) | Expected outcome |\n|-----|----------------|------------------|\n| Day 1 | Variables (`let`, `const`) & primitive types. Write 5 console snippets. | Snippets run without errors. |\n| Day 2 | Strings, numbers, booleans & type conversion. Build a “type‑quiz” script. | Quiz prints correct type info. |\n| Day 3 | Arrays & basic methods (`push`, `map`, `filter`). Console‑based todo list. | Todo list can add, list, filter items. |\n| Day 4 | Objects & property access. Model a “user” object and log formatted data. | Object logs display name, age, email. |\n| **Day 5** | **Revision block** – quickly re‑run/clean up Days 1‑4 code and add a short practice exercise for each (e.g., modify a string, push to an array, update an object). | All earlier code works; you’ve reinforced basics. |\n| Day 6 | Functions: declarations, expressions, arrow functions. Write 3 functions (calc, greet, filter). | Functions return expected results. |\n| Day 7 | Scope & closures. Create a closure that generates incrementers. | Incrementer retains its own counter. |\n| Day 8 | Control flow: `if/else`, `switch`, loops. Build a number‑guessing game. | Game runs and ends when guessed correctly. |\n| Day 9 | ES6+ features: template literals, spread/rest, destructuring. Refactor previous scripts. | Refactored code compiles and behaves identically. |\n| Day 10 | Review Days 6‑9; write a summary cheat‑sheet (`js-summary.md`). | Cheat‑sheet saved. |\n| Day 11 | Promises – convert a callback timer to a promise. | Promise resolves after 2 s and logs a message. |\n| Day 12 | Async/await – fetch dummy JSON (`jsonplaceholder.typicode.com/todos/1`). | Data logged using `await`. |\n| Day 13 | Error handling with `try/catch`; add to fetch script. | Errors caught and logged gracefully. |\n| Day 14 | Review async concepts; build a small “weather fetch” demo (mock data). | Demo displays mock weather. |\n| Day 15 | DOM selection (`querySelector`, `getElementById`) & content manipulation. | Page text updates when script runs. |\n| Day 16 | Event listeners (click, input, submit). Add button that adds items to a DOM todo list. | Clicking button adds visible list item. |\n| Day 17 | Form handling & validation – simple contact form with live validation. | Form prevents submission on invalid input. |\n| Day 18 | CSS interaction via JS (class toggling). Build a dark‑mode toggle. | Toggle switches theme instantly. |\n| Day 19 | Review Days 15‑18; combine into one “interactive page” project. | All features work together. |\n| Day 20 | Mini‑project planning: outline a “budget tracker” app (features, data model). | Plan saved as `budget-plan.md`. |\n| Day 21 | Set up project folder, init Git, first commit. | Repo created with initial commit. |\n| Day 22 | Implement data structures for income/expense entries; log sample data. | Console shows correctly formatted entries. |\n| Day 23 | Functions to calculate totals & display them in the DOM. | Totals update when entries change. |\n| Day 24 | Persist data with `localStorage`; save/load budget data. | Data persists after reload. |\n| Day 25 | Add delete/edit capabilities for entries. | User can remove or edit any entry. |\n| Day 26 | Polish UI: responsive layout, basic styling via JS class changes. | Layout adapts; styles applied. |\n| Day 27 | Write simple assertions for core functions (unit‑like tests). | All assertions pass in console. |\n| Day 28 | Final code review & README with usage steps. | README completed and linked. |\n| Day 29 | Deploy to GitHub Pages (or Netlify); verify live site. | Live URL accessible and functional. |\n| Day 30 | Reflect on the 30‑day journey and outline next steps (e.g., learning React). Save as `next‑steps.md`. | 200‑word reflection saved. |\n\nAll days remain 90 minutes, and the plan still concludes on Day 30. Let me know if you’d like to compress any section further or add a specific practice challenge.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4445.9,
+          "state": {
+            "selected_career": "JavaScript fundamentals",
+            "last_recommendations": [
+              "Core syntax & data types",
+              "Functions, scope & closures",
+              "Control flow & ES6+ features",
+              "Asynchronous JavaScript",
+              "DOM manipulation & events",
+              "Mini‑project integration and review"
+            ],
+            "known_skills": [
+              "CSS",
+              "HTML"
+            ],
+            "daily_minutes": 90
+          },
+          "tokens": 5323
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    }
+  ],
+  "model_configured": "groq:openai/gpt-oss-120b",
+  "provider": "api",
+  "expect_model": "openai/gpt-oss-120b",
+  "summary": {
+    "v7+e38": {
+      "journeys": 8,
+      "excluded_model_fallback": 0,
+      "task_success": 1.0,
+      "turn_pass_rate": 1.0,
+      "p95_latency_ms": 5182.2,
+      "avg_latency_ms": 3285,
+      "models": [
+        "None",
+        "openai/gpt-oss-120b"
+      ],
+      "failed_turns": []
+    }
+  }
+}

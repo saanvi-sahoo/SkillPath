@@ -165,6 +165,15 @@ def render_career_advisor(data, uid: str = None) -> None:
         st.markdown("### :material/forum: SkillPath Career Advisor")
         st.caption("Your AI mentor for careers and studies. Answers are grounded in our career knowledge base "
                    "and your analysed profile, with sources you can check.")
+        # Final validation (review 4 §2 items 6-7): say clearly what the current mode can and cannot do
+        from src.utilities.llm_provider import llm_provider as _mode
+        if _mode() == "none":
+            st.info("**Retrieval-only mode (no AI key).** Answers are assembled from our knowledge base, so they can't follow "
+                    "exact counts, word limits or tables, and plans are shown as generated. Add a free key in the sidebar for "
+                    "full conversational answers.", icon=":material/info:")
+        elif _mode() == "local":
+            st.info("**Local model (experimental).** Answers come from a small model on this computer: expect 30-120 seconds per "
+                    "answer and less precise formatting than the hosted model.", icon=":material/info:")
     with ctrl:
         b1, b2, b3 = st.columns(3)
         if b1.button(":material/add_comment: New chat", use_container_width=True, disabled=not msgs):

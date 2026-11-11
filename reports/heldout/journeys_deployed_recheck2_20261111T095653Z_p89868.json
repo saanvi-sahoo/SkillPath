@@ -1,0 +1,401 @@
+{
+  "ts": "20261111T095653Z",
+  "versions": [
+    "v7+e38"
+  ],
+  "set": "v1",
+  "rows": [
+    {
+      "id": "j01",
+      "goal": "review example: background -> pick 2nd option -> gaps -> 30-day plan at 1 h/day -> adapt",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "I have completed B.Tech CSE. I know Python and SQL, but I don't know what career to choose.",
+          "answer": "Here are three career paths that align well with your B.Tech CSE background and your Python + SQL skills:\n\n1. **Python Developer – Data Analysis** – This role leverages Python and SQL for building and maintaining data‑focused applications and web services [S1].  \n2. **Python Integration Engineer** – Requires Python and SQL to design reliable data pipelines and ETL processes, matching your current skill set [S3].  \n3. **Data Analyst** – Uses Python and SQL for data manipulation, analysis, and visualization, fitting the basics you already know [S7].\n\n---\n**Sources**\n- [S1] careers: Python Developer - Data Analysis\n- [S3] careers: Python Integration Engineer\n- [S7] careers: Data Analyst",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3268.5,
+          "state": {
+            "known_skills": [
+              "Python",
+              "SQL"
+            ],
+            "background": "B.Tech CSE"
+          },
+          "tokens": 3753
+        },
+        {
+          "turn": 2,
+          "q": "I prefer the second one. What skills am I missing?",
+          "answer": "I don’t have an analysed profile yet, so I can’t list the exact skill gaps for the Python Integration Engineer role.  \n\n1. Your experience with **ORMs** (e.g., SQLAlchemy or Django ORM).  \n2. Familiarity with **ETL tools or pipelines** (e.g., Airflow, Luigi).  \n3. Use of **version control (Git)** and **Unix/Linux** command‑line basics.  \n4. Knowledge of **testing frameworks** (e.g., pytest) and **software‑engineering best practices**.  \n\nGenerally, Python Integration Engineer positions look for these additional skills beyond Python and SQL.  \n\nWhich of the above areas would you like to share more detail about (or upload your resume) so I can identify your specific gaps?",
+          "passed": true,
+          "failed": [],
+          "item_expected": [
+            "Python Integration Engineer"
+          ],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2347.6,
+          "state": {
+            "selected_career": "Python Integration Engineer",
+            "last_recommendations": [
+              "Python Developer",
+              "Python Integration Engineer",
+              "Data Analyst"
+            ],
+            "reference": {
+              "phrase": "the second one",
+              "index": 2,
+              "resolved": "Python Integration Engineer"
+            },
+            "known_skills": [
+              "Python",
+              "SQL"
+            ],
+            "background": "B.Tech CSE"
+          },
+          "tokens": 3300
+        },
+        {
+          "turn": 3,
+          "q": "No, I don't know Spark or Airflow yet. Make me a 30-day plan. I can study one hour daily.",
+          "answer": "Here is a 30‑day, 1‑hour‑per‑day plan to bring you up to speed on Apache Spark and Apache Airflow for a Python Integration Engineer role.\n\n1. Apache Spark (core data‑processing engine)  \n2. Apache Airflow (workflow orchestration)\n\n**Day‑by‑day schedule** (each task ≈ 60 min; outcome is “completed when …”)\n\n| Day | Task & Outcome |\n|-----|----------------|\n| Day 1 | Spark fundamentals → write a 1‑page cheat‑sheet of 10 key concepts (cheat‑sheet finished). |\n| Day 2 | Spark setup → complete the official “getting‑started” tutorial (tutorial runs locally). |\n| Day 3 | Core techniques → solve 5 small Spark exercises (all solved without hints). |\n| Day 4 | Applied practice → re‑run a tutorial example with your own dataset (runs & explained). |\n| Day 5 | Intermediate topics → refactor Day 4 code with two best practices (improvements noted). |\n| Day 6 | Mini project → build a simple ETL job (read CSV, transform, write Parquet) and push to GitHub with README. |\n| Day 7 | Review → redo one exercise from each previous day (all redone, doubts recorded). |\n| Day 8 | Interview prep → write answers to 10 common Spark interview questions (answers drafted). |\n| Day 9 | Deeper practice → extend Day 3 exercise with a harder variant (extended version works). |\n| Day 10 | Deeper practice → extend Day 4 example with larger data (runs successfully). |\n| Day 11 | Deeper practice → add caching & partitioning to Day 6 job (performance improved). |\n| Day 12 | Deeper practice → implement a Spark SQL query on your dataset (query returns expected results). |\n| Day 13 | Deeper practice → use Spark Structured Streaming on a sample stream (stream processes data). |\n| Day 14 | Review → redo one exercise from each Spark topic (all redone, notes taken). |\n| Day 15 | Interview prep → revise weakest Spark answers from Day 8 (3 answers improved). |\n| Day 16 | Interview prep → practice explaining Day 6 project aloud (clear explanation recorded). |\n| Day 17 | Interview prep → solve a new Spark scenario problem (solution documented). |\n| Day 18 | Interview prep → review Spark performance tuning tips (summary written). |\n| Day 19 | Interview prep → final Spark Q&A mock (10 questions answered confidently). |\n| Day 20 | Spark interview readiness → self‑assessment checklist (all items checked). |\n| Day 21 | Spark interview readiness → mock interview with a peer (feedback incorporated). |\n| Day 22 | Spark interview readiness → final polish of GitHub repo (README updated). |\n| Day 23 | Airflow fundamentals → write a 1‑page cheat‑sheet of 10 Airflow concepts (cheat‑sheet finished). |\n| Day 24 | Airflow setup → complete the official “getting‑started” tutorial (DAG runs). |\n| Day 25 | Core techniques → solve 5 Airflow DAG exercises (all solved). |\n| Day 26 | Applied practice → adapt a tutorial DAG to process your Spark ETL job (DAG runs end‑to‑end). |\n| Day 27 | Intermediate topics → refactor DAG with two best practices (improvements noted). |\n| Day 28 | Review → redo one Airflow exercise from each prior day (all redone). |\n| Day 29 | Capstone → define a mini data‑pipeline (Spark job orchestrated by Airflow), build first version (pipeline runs). |\n| Day 30 | Capstone → polish repo, add a resume bullet (“Built an end‑to‑end Spark + Airflow pipeline”), record a 2‑minute walkthrough (video saved). |\n\nThis plan follows the validated roadmap for Spark (19 days) and Airflow (5 days) plus review and capstone phases [S1].\n\n---\n**Sources**\n- [S1] roadmap: Validated 30-day plan (roadmap generator)",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4571.2,
+          "state": {
+            "selected_career": "Python Integration Engineer",
+            "last_recommendations": [
+              "Your experience with ORMs",
+              "Familiarity with ETL tools or pipelines",
+              "Use of version control",
+              "Knowledge of testing frameworks"
+            ],
+            "known_skills": [
+              "Python",
+              "SQL"
+            ],
+            "missing_skills": [
+              "Apache Airflow",
+              "Apache Spark"
+            ],
+            "daily_minutes": 60,
+            "background": "B.Tech CSE"
+          },
+          "tokens": 5306
+        },
+        {
+          "turn": 4,
+          "q": "I finished the first week but found it hard. adjust the plan",
+          "answer": "Here is an adjusted 30‑day, 1‑hour‑per‑day plan that adds a short revision block after the first week and shifts later tasks so the schedule still ends on Day 30.\n\n1. Apache Spark  \n2. Apache Airflow  \n\n| Day | Task & Checkable Outcome |\n|-----|---------------------------|\n| **Day 1** | Spark fundamentals – create a 1‑page cheat‑sheet of 10 key concepts (cheat‑sheet completed). |\n| **Day 2** | Spark setup – finish the official “getting‑started” tutorial and run it locally (tutorial runs). |\n| **Day 3** | Core techniques – solve 5 basic Spark exercises (all solved without hints). |\n| **Day 4** | Applied practice – run a tutorial example with your own small CSV (example runs, output verified). |\n| **Day 5** | Intermediate best practices – refactor Day 4 code using two recommended practices (refactored code works). |\n| **Day 6** | Mini ETL project – build a simple ETL (CSV → transform → Parquet) and push to GitHub with README (repo live). |\n| **Day 7** | Review – redo one exercise from each previous Spark day (all redone, notes taken). |\n| **Day 8** | **Revision 1** – revisit the cheat‑sheet, add one missing concept, and explain it aloud (explanation recorded). |\n| **Day 9** | **Revision 2** – redo Days 2‑3 exercises with step‑by‑step hints; complete an easier practice: filter a 5‑row CSV (filter works). |\n| **Day 10** | Interview prep – write answers to 10 common Spark interview questions (answers drafted). |\n| **Day 11** | Deeper practice – extend the Day 3 exercise with a harder variant (extended version runs). |\n| **Day 12** | Deeper practice – enlarge Day 4 example with a larger dataset (processes successfully). |\n| **Day 13** | Deeper practice – add caching & partitioning to the Day 6 ETL job (performance improves). |\n| **Day 14** | Deeper practice – write a Spark SQL query on your dataset (query returns expected results). |\n| **Day 15** | Deeper practice – implement a simple Structured Streaming job (stream processes data). |\n| **Day 16** | Review – redo one exercise from each Spark topic (all redone, confidence higher). |\n| **Day 17** | Interview mock – answer 5 Spark scenario questions aloud (recorded, self‑reviewed). |\n| **Day 18** | Airflow fundamentals – create a 1‑page cheat‑sheet of 10 Airflow concepts (cheat‑sheet finished). |\n| **Day 19** | Airflow setup – complete the official “getting‑started” tutorial and run a sample DAG (DAG runs). |\n| **Day 20** | Core techniques – solve 5 Airflow DAG exercises (all solved). |\n| **Day 21** | Applied practice – adapt the tutorial DAG to trigger your Spark ETL job (pipeline runs end‑to‑end). |\n| **Day 22** | Intermediate best practices – refactor the DAG with two recommended patterns (refactored DAG works). |\n| **Day 23** | Review – redo one Airflow exercise from each prior day (all redone). |\n| **Day 24** | Capstone start – design a mini data‑pipeline (Spark job orchestrated by Airflow) on paper (design approved). |\n| **Day 25** | Capstone build – implement the first version of the pipeline (pipeline runs). |\n| **Day 26** | Capstone polish – add error handling & logging, push final code to GitHub (repo updated). |\n| **Day 27** | Resume bullet – write a concise bullet (“Built an end‑to‑end Spark + Airflow pipeline”) and add to your CV. |\n| **Day 28** | Mock interview – 10‑question rapid fire covering both Spark and Airflow (answers recorded). |\n| **Day 29** | Feedback loop – review mock interview feedback, improve any weak answers (revisions made). |\n| **Day 30** | Final showcase – record a 2‑minute walkthrough of the pipeline and store the video (video saved). |\n\n**What shifted:** Days 8‑9 replace the original Day 8 interview prep, pushing that prep to Day 10. All subsequent Spark tasks move forward by +2 days, and the Airflow block starts on Day 18 instead of Day 20, keeping the overall timeline at Day 30. This adds focused revision while preserving the 30‑day end point.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4589.0,
+          "state": {
+            "selected_career": "Python Integration Engineer",
+            "last_recommendations": [
+              "Apache Spark",
+              "Apache Airflow"
+            ],
+            "known_skills": [
+              "Python",
+              "SQL"
+            ],
+            "missing_skills": [
+              "Apache Airflow",
+              "Apache Spark"
+            ],
+            "daily_minutes": 60,
+            "background": "B.Tech CSE"
+          },
+          "tokens": 4939
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "j03",
+      "goal": "profile: gaps -> explain the third -> plan for gaps at 1 h -> missed days",
+      "version": "v7+e38",
+      "user": "persona_be",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "what are my skill gaps?",
+          "answer": "Your skill gaps for the Backend Developer target role are **Microservices, Docker, Kubernetes, and AWS**【S1】.\n\n1. **Microservices** – required but not listed on your resume.  \n2. **Docker** – missing containerisation experience.  \n3. **Kubernetes** – not present in your current skill set.  \n4. **AWS** – cloud deployment expertise is absent.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2326.6,
+          "state": {},
+          "tokens": 2596
+        },
+        {
+          "turn": 2,
+          "q": "explain the third one simply",
+          "answer": "Kubernetes is an open‑source platform that automatically schedules, runs, and manages groups of containers (like Docker images) across many machines, keeping applications alive, scaling them up or down, and handling updates without downtime.  \n\nIt matters for a backend developer because most modern services are deployed as containerised microservices on cloud infrastructure, and employers expect you to orchestrate those containers reliably; for example, a company might use Kubernetes to spin up additional instances of a Java‑based order‑processing service during a sales‑event surge, ensuring the system stays responsive without manual intervention.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [
+            "Kubernetes"
+          ],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 1390.7,
+          "state": {
+            "selected_career": "Kubernetes",
+            "last_recommendations": [
+              "Microservices",
+              "Docker",
+              "Kubernetes",
+              "AWS"
+            ],
+            "reference": {
+              "phrase": "the third one",
+              "index": 3,
+              "resolved": "Kubernetes"
+            }
+          },
+          "tokens": 2755
+        },
+        {
+          "turn": 3,
+          "q": "make a 30 day plan for my gaps, 1 hour daily",
+          "answer": "I couldn't generate an answer, please rephrase.",
+          "passed": false,
+          "failed": [
+            "mentions_day30",
+            "must_include_any"
+          ],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 8621.1,
+          "state": {
+            "selected_career": "Kubernetes",
+            "last_recommendations": [
+              "Microservices",
+              "Docker",
+              "Kubernetes",
+              "AWS"
+            ],
+            "daily_minutes": 60
+          },
+          "tokens": 7043
+        },
+        {
+          "turn": 4,
+          "q": "I missed 3 days this week. what now?",
+          "answer": "Here’s a revised 30‑day, 1‑hour‑per‑day plan that accounts for the three missed days and adds a short Kubernetes revision block.\n\n1. Microservices  \n2. Docker  \n3. Kubernetes  \n4. AWS  \n\n**Assumed progress:** You completed Days 1‑4 (Microservices basics) and missed Days 5‑7. The schedule below shifts the missed days forward, inserts a brief Kubernetes revision after the initial Kubernetes learning, and compresses later “advanced” topics so the plan still ends on Day 30.\n\n| Day | Focus & Task (≈60 min) |\n|-----|------------------------|\n| **Day 1** | Microservices: read “Microservices fundamentals” (2‑page intro) and sketch a service diagram for your order‑management app. |\n| **Day 2** | Microservices: watch a 15‑min video on API gateways; add a simple gateway (Spring Cloud Gateway) to the sketch. |\n| **Day 3** | Microservices: implement a second Spring Boot service (e.g., inventory) and expose a REST endpoint. |\n| **Day 4** | Microservices: test inter‑service calls locally with Postman. |\n| **Day 5** *(missed)* | **Docker – Basics**: install Docker Desktop, run `docker run hello-world`. |\n| **Day 6** *(missed)* | Docker: write a Dockerfile for your order‑management service and build the image. |\n| **Day 7** *(missed)* | Docker: run the container locally, map port 8080, verify the API works. |\n| **Day 8** | Docker: push the image to Docker Hub (create a free account). |\n| **Day 9** | Docker: explore `docker-compose` by linking the order service with a MySQL container. |\n| **Day 10** | Docker: add a health‑check to the Dockerfile. |\n| **Day 11** | **Kubernetes – Intro**: read a 5‑page overview of pods, services, and deployments. |\n| **Day 12** | Kubernetes: set up Minikube (or Kind) and run `kubectl version`. |\n| **Day 13** | Kubernetes: create a Deployment YAML for the order‑service container and apply it. |\n| **Day 14** | Kubernetes: expose the Deployment via a Service (NodePort). |\n| **Day 15** | **Kubernetes Revision** – quick recap (5 min) of pods/services, then **practice task**: scale the Deployment to 3 replicas and verify load‑balancing. |\n| **Day 16** | Kubernetes: add a ConfigMap for DB credentials and mount it as env vars. |\n| **Day 17** | Kubernetes: implement a simple rolling update (change image tag). |\n| **Day 18** | Kubernetes: troubleshoot a failing pod (use `kubectl logs`/`describe`). |\n| **Day 19** | **AWS – Core**: create a free AWS account, explore the console, and launch a t2.micro EC2 instance. |\n| **Day 20** | AWS: install the AWS CLI, configure credentials, and list S3 buckets. |\n| **Day 21** | AWS: create an S3 bucket, upload a test file, set public read permission. |\n| **Day 22** | AWS: set up IAM user with limited permissions for ECR and ECS. |\n| **Day 23** | AWS: push your Docker image to Amazon ECR. |\n| **Day 24** | AWS: create an ECS cluster (Fargate) and run the order‑service task from ECR. |\n| **Day 25** | AWS: expose the ECS service via an Application Load Balancer, test the endpoint. |\n| **Day 26** | AWS: add a simple CI/CD step using GitHub Actions to build and push the image to ECR on push. |\n| **Day 27** | Review: spend 30 min revisiting any weak area (choose between Microservices, Docker, Kubernetes, AWS) and 30 min documenting what you’ve built in a portfolio README. |\n| **Day 28** | Practice interview: answer “Describe how you would containerise and deploy a Java microservice to AWS.” |\n| **Day 29** | Practice interview: answer “Explain rolling updates in Kubernetes and why they matter.” |\n| **Day 30** | Final check: run through the full flow (code → Docker → Kubernetes (Minikube) → AWS ECS) and note any remaining questions for future learning. |\n\nAll tasks stay within a 60‑minute daily window, and the three missed days are now covered without extending the 30‑day horizon.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 4587.1,
+          "state": {
+            "selected_career": "Kubernetes",
+            "last_recommendations": [
+              "Microservices",
+              "Docker",
+              "Kubernetes",
+              "AWS"
+            ],
+            "daily_minutes": 60
+          },
+          "tokens": 3931
+        }
+      ],
+      "success": false,
+      "turn_pass_rate": 0.75
+    },
+    {
+      "id": "j04",
+      "goal": "study: concept -> simpler -> python examples -> quiz",
+      "version": "v7+e38",
+      "user": null,
+      "turns": [
+        {
+          "turn": 1,
+          "q": "explain recursion",
+          "answer": "Recursion is a programming technique where a function calls itself directly or indirectly to solve a problem by breaking it into smaller, similar sub‑problems.  \n\nIt matters because many algorithms—such as searching, sorting, and traversing hierarchical data—are naturally expressed recursively, and understanding it helps you write concise, maintainable code and ace technical interviews.  \n\n**Example:** In a computer‑science degree, the classic recursive solution to compute the n‑th Fibonacci number calls the same function with n‑1 and n‑2 until it reaches the base cases 0 or 1. Knowing recursion lets you implement this quickly, discuss its time‑complexity (O(2ⁿ) naïvely, O(n) with memoization), and explain the trade‑offs to interviewers, which is a common requirement for software‑engineer roles.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 1670.8,
+          "state": {},
+          "tokens": 2054
+        },
+        {
+          "turn": 2,
+          "q": "make it easier, im a beginner",
+          "answer": "Recursion is when a function solves a problem by calling **itself** on a smaller piece of the same problem.  \n\nThink of a set of Russian nesting dolls: you open the biggest doll, find a smaller one inside, open that, and keep going until you reach the tiniest doll that can’t be opened any further. In code, the “biggest doll” is the original call, each inner doll is a recursive call with a simpler input, and the “tiny doll” is the **base case** that stops the calls.\n\n**Simple code example (Python):**\n\n```python\ndef count_down(n):\n    if n == 0:               # base case – stop recursing\n        print(\"Done!\")\n    else:\n        print(n)\n        count_down(n-1)      # recursive call with a smaller number\n```\n\nWhen you run `count_down(3)`, it prints 3, 2, 1, then “Done!”. Each call works on a smaller number until it reaches 0, where the function stops calling itself.  \n\nKey points for beginners:\n1. **Base case** – a condition that ends the recursion (otherwise you’d loop forever).  \n2. **Progress toward the base case** – each recursive step must make the problem smaller.  \n\nUnderstanding recursion lets you solve problems like navigating folders, processing tree‑like data, or writing clean solutions for many interview questions.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2699.0,
+          "state": {
+            "level": "beginner"
+          },
+          "tokens": 2381
+        },
+        {
+          "turn": 3,
+          "q": "give me two examples in python",
+          "answer": "Here are two Python examples of recursion:\n\n1. **Factorial calculation** – a classic example that multiplies a number by the factorial of the previous number until it reaches 1.  \n   ```python\n   def factorial(n):\n       if n == 0:               # base case\n           return 1\n       return n * factorial(n-1)   # recursive call\n   ```\n\n2. **Binary search in a sorted list** – shows how recursion can repeatedly halve a problem space until the target is found or the list is empty.  \n   ```python\n   def binary_search(arr, target, left=0, right=None):\n       if right is None:\n           right = len(arr) - 1\n       if left > right:               # base case: not found\n           return -1\n       mid = (left + right) // 2\n       if arr[mid] == target:\n           return mid\n       elif arr[mid] > target:\n           return binary_search(arr, target, left, mid - 1)\n       else:\n           return binary_search(arr, target, mid + 1, right)\n   ```",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2351.8,
+          "state": {
+            "last_recommendations": [
+              "Base case",
+              "Progress toward the base case"
+            ],
+            "level": "beginner"
+          },
+          "tokens": 2804
+        },
+        {
+          "turn": 4,
+          "q": "quiz me with 3 questions on it",
+          "answer": "Here are three recursion quiz questions for you:\n\n1. **What is the base case in the `factorial` function, and why is it necessary?** – It checks understanding of stopping conditions that prevent infinite recursion.  \n2. **If you call `binary_search([2,4,6,8,10], 6)`, what index does it return and why?** – It tests whether you can trace the recursive halving process.  \n3. **How would you modify the `count_down` function to count up instead of down?** – It assesses ability to adapt a simple recursive pattern to a new requirement.",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2273.6,
+          "state": {
+            "last_recommendations": [
+              "Factorial calculation",
+              "Binary search in a sorted list"
+            ],
+            "level": "beginner"
+          },
+          "tokens": 3033
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    },
+    {
+      "id": "j08",
+      "goal": "profile readiness -> first step -> 2-week plan at 1 h -> honest resume claim",
+      "version": "v7+e38",
+      "user": "persona_da",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "am I ready for a data analyst job?",
+          "answer": "You are partially ready for a Data Analyst role, but you still have several key gaps.  \n\n1. **Already met:** Python, SQL, and Power BI are listed on your resume and match the JD requirements [S2][S3].  \n2. **Missing (exact skill names):** Tableau, Statistics, Data Visualization, Communication [S2][S3].  \n3. **Related background (partly covers gaps):**  \n   - Your Excel and Pandas work give you basic data‑handling and charting experience, which is related to Data Visualization but does not replace formal visualization tools or methods.  \n   - The Power BI sales‑dashboard project shows you can build dashboards, offering related experience for Tableau and presentation skills, yet Tableau‑specific proficiency and structured communication practice are still needed.  \n\n**Verdict:** You meet 3 of the 7 required skills, have 4 gaps, and your ATS estimate is 43/100 (an AI estimate, not an official ATS result).\n\n---\n**Sources**\n- [S2] profile: job description\n- [S3] profile: career summary",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 2450.3,
+          "state": {},
+          "tokens": 3026
+        },
+        {
+          "turn": 2,
+          "q": "what do I learn first?",
+          "answer": "Start with **basic statistics**, then move to **Tableau**, followed by **data‑visualisation techniques**, and finish with **communication skills**.  \n\n1. **Statistics fundamentals** – learn descriptive stats (mean, median, variance), probability basics, and simple hypothesis testing; these are core to interpreting data and are required by the JD [S3].  \n2. **Tableau basics** – complete an introductory tutorial (connect to a sample dataset, create worksheets, build dashboards).  \n3. **Data‑visualisation principles** – study best‑practice guidelines (chart types, colour theory, storytelling with data) and apply them in both Tableau and Power BI projects.  \n4. **Communication & presentation** – practice turning analysis results into clear, concise slide decks or verbal pitches; rehearse explaining a dashboard to a non‑technical audience.\n\n---\n**Sources**\n- [S3] knowledge: Technical preparation",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3376.1,
+          "state": {
+            "last_recommendations": [
+              "Already met",
+              "Missing",
+              "Related background"
+            ]
+          },
+          "tokens": 3150
+        },
+        {
+          "turn": 3,
+          "q": "plan for 2 weeks, 1 hr/day",
+          "answer": "Here’s a 14‑day, 1‑hour‑per‑day learning plan that closes the Tableau, Statistics, Data Visualization, and Communication gaps for a Data Analyst role.  \n\n1. **Day 1 – Statistics: descriptive basics** – Summarise a small dataset (mean, median, variance) in Python; outcome: a notebook with a table matching library output [S1].  \n2. **Day 2 – Statistics: probability** – Solve 8 probability problems; outcome: ≥ 6 correct answers documented [S1].  \n3. **Day 3 – Statistics: hypothesis testing** – Run a t‑test on a real dataset and write a plain‑language interpretation; outcome: a 2‑paragraph memo [S1].  \n4. **Day 4 – Statistics: regression** – Fit a linear regression in Python, explain coefficients; outcome: a screenshot of the model summary and a brief explanation [S1].  \n5. **Day 5 – Tableau: interface & data connection** – Connect a CSV in Tableau and create 3 basic charts; outcome: a Tableau workbook with three worksheets [S1].  \n6. **Day 6 – Tableau: dimensions, measures & filters** – Build 4 filtered views; outcome: a workbook where each filter works correctly [S1].  \n7. **Day 7 – Tableau: calculated fields** – Create 5 calculated fields (e.g., profit ratio); outcome: a workbook with validated calculations [S1].  \n8. **Day 8 – Tableau: interactive dashboard** – Assemble an interactive dashboard with at least 2 actions; outcome: a published dashboard file [S1].  \n9. **Day 9 – Data Visualization: chart selection** – Classify 10 business scenarios to the best chart type; outcome: a checklist with 10 justified matches [S1].  \n10. **Day 10 – Data Visualization: redesign bad charts** – Redesign 3 poor charts following best‑practice rules; outcome: before/after images for each [S1].  \n11. **Day 11 – Data Visualization: build charts** – Create 5 clean charts on a single dataset; outcome: a folder of chart images [S1].  \n12. **Day 12 – Communication: explain a project** – Write a 5‑sentence explanation of one of your Power BI projects for a non‑technical audience; outcome: a peer‑reviewed paragraph [S1].  \n13. **Day 13 – Communication: short presentation** – Record a 3‑minute video presenting insights from the Day 11 charts; outcome: a video file and self‑feedback notes [S1].  \n14. **Day 14 – Review & mini‑project** – Combine one statistical analysis, a Tableau dashboard, and a 2‑minute presentation; push the repo to GitHub with a README; outcome: a public GitHub link listed on your resume [S1].\n\n---\n**Sources**\n- [S1] roadmap: Validated 30-day plan (roadmap generator)",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 3572.6,
+          "state": {
+            "last_recommendations": [
+              "Statistics fundamentals",
+              "Tableau basics",
+              "Data‑visualisation principles",
+              "Communication & presentation"
+            ],
+            "daily_minutes": 60
+          },
+          "tokens": 5345
+        },
+        {
+          "turn": 4,
+          "q": "can i put tableau on my resume now?",
+          "answer": "No, you should wait until you have completed the introductory Tableau training and can demonstrate practical use before listing it on your resume.  \n\n1. **Complete the basics:** finish the Tableau tutorials, connect to data, create worksheets, and build an interactive dashboard (as in the 2‑week plan).  \n2. **Validate proficiency:** have at least one finished Tableau workbook (or a published dashboard) you can discuss in interviews.  \n3. **Add to resume:** list “Tableau (basic‑to‑intermediate proficiency)” with a brief bullet showing the dashboard you built, citing the project date.\n\n*Your profile currently shows Tableau as a skill gap [S4], so adding it now would be inaccurate.*\n\n---\n**Sources**\n- [S4] profile: profile overview",
+          "passed": true,
+          "failed": [],
+          "item_expected": [],
+          "model": "openai/gpt-oss-120b",
+          "latency_ms": 1889.0,
+          "state": {
+            "last_recommendations": [
+              "Day 1",
+              "Day 2",
+              "Day 3",
+              "Day 4",
+              "Day 5",
+              "Day 6",
+              "Day 7",
+              "Day 8",
+              "Day 9",
+              "Day 10",
+              "Day 11",
+              "Day 12",
+              "Day 13",
+              "Day 14"
+            ],
+            "daily_minutes": 60
+          },
+          "tokens": 3975
+        }
+      ],
+      "success": true,
+      "turn_pass_rate": 1.0
+    }
+  ],
+  "model_configured": "groq:openai/gpt-oss-120b",
+  "provider": "api",
+  "expect_model": "openai/gpt-oss-120b",
+  "summary": {
+    "v7+e38": {
+      "journeys": 4,
+      "excluded_model_fallback": 0,
+      "task_success": 0.75,
+      "turn_pass_rate": 0.938,
+      "p95_latency_ms": 4589.0,
+      "avg_latency_ms": 3249,
+      "models": [
+        "openai/gpt-oss-120b"
+      ],
+      "failed_turns": [
+        "j03 t3: mentions_day30, must_include_any"
+      ]
+    }
+  }
+}

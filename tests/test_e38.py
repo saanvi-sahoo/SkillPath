@@ -113,3 +113,29 @@ def test_salary_and_progress_rules():
     from src.backend.task_contract import e38_rules
     assert "do not establish" in e38_rules("what's the starting package for SDE in bangalore", None, None).replace("does not establish", "do not establish")
     assert "Adapt" in e38_rules("I fell behind by a week, what do I do", None, None)
+
+
+def test_empty_model_reply_is_retried_then_falls_back(monkeypatch):
+    """Final validation (journey j03): gpt-oss once returned no text; the student saw 'I couldn't generate an answer'."""
+    import src.utilities.brain as brain
+    from src.backend import chatbot
+
+    class Resp:
+        def __init__(self, t):
+            self.text, self.response_metadata, self.usage_metadata = t, {"model_name": "fake"}, None
+
+    for replies, expect_fallback in ((["", "Docker packages apps into containers."], False), (["", ""], True)):
+        it = iter(replies + ["unused"] * 3)
+
+        class Fake:
+            def invoke(self, msgs):
+                return Resp(next(it))
+        monkeypatch.setattr(brain, "get_robust_llm", lambda *a, **k: Fake())
+        monkeypatch.setenv("LLM_PROVIDER", "api")
+        out = chatbot.answer([{"role": "user", "content": "What is Docker?"}], user_id="test_no_profile",
+                             route_override={"label": "career_study"})
+        assert out.get("empty_retry")
+        if expect_fallback:
+            assert out["generation"] == "retrieval-only (empty model reply)" and "unavailable right now" in out["text"]
+        else:
+            assert out["text"].startswith("Docker packages apps")

@@ -167,6 +167,16 @@ def e38_rules(message: str, intent: Optional[Dict], state: Optional[Dict]) -> st
         L.append("- The student reports progress or difficulty with a plan. Adapt instead of repeating the original timetable: "
                  "keep completed days, add a short revision block for the hard topic (smaller steps + one easier practice task), "
                  "move missed tasks forward, and say which later tasks shift or get compressed so the plan still fits.")
+    # E38 final validation (journeys j01/j03/j08): follow-ups like "the second one" or "I finished Day 8" need numbered
+    # options and explicit day labels; bullets and "| 14 |" table rows made the next turn harder for the student.
+    pi = (intent or {}).get("primary_intent")
+    if pi in ("career_discovery", "profile_analysis", "job_preparation", "learning_plan"):
+        L.append("- When you give several options, careers, skill gaps or steps, ALSO put them in a numbered list (1., 2., 3., one "
+                 "per line) right after your first sentence, even if that sentence already names them, so the student can refer "
+                 "to them by number.")
+    if pi == "learning_plan" or "learning_plan" in ((intent or {}).get("secondary_intents") or []):
+        L.append("- In any plan, label every day explicitly as \"Day N\" (Day 1 ... Day 14 / Day 30), also inside tables, and end "
+                 "with the last day of the requested period.")
     if intent and intent.get("primary_intent") == "concept_explanation":
         L.append("- When explaining types or categories (e.g. IaaS/PaaS/SaaS, kinds of ML), name at least one real, well-known example "
                  "for each type.")

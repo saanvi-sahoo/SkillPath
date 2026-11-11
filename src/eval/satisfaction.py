@@ -59,36 +59,74 @@ def _body(t: str) -> str:
     return t.split("\n\n---\n**Sources**")[0]
 
 
-def export(report: Path, n: int) -> Path:
+# Final validation (review 4): stratified so every area the review names is scored, with the conversation shown.
+STRATA = {"cv_jd": lambda r: r["category"] == "profile",
+          "career_transition": lambda r: "transition" in (r.get("tags") or []),
+          "roadmap": lambda r: bool({"plan", "time_budget", "missing_time", "adaptive_plan"} & set(r.get("tags") or [])),
+          "study": lambda r: r["id"] in {"rw14", "rw15", "rw25", "rw29", "rw36", "rw44", "rw48", "mt04", "mt24", "mt37", "mt47"},
+          "follow_up": lambda r: r["category"] == "multi_turn"}
+
+
+def export(report: Path, n: int, per_stratum: int = 0) -> Path:
     rep = json.loads(report.read_text())
-    ids = sorted({r["id"] for r in rep["rows"]})
-    random.Random(3).shuffle(ids)
-    ids = set(ids[:n])
-    rows = [r for r in rep["rows"] if r["id"] in ids]
+    versions = rep["versions"]
+    rows_all = [r for r in rep["rows"] if r["version"] in versions and r["category"] != "out_of_scope"]
+    if per_stratum:
+        rnd, chosen = random.Random(3), []
+        for name, pred in STRATA.items():
+            pool = sorted({r["id"] for r in rows_all if pred(r)} - set(chosen))
+            rnd.shuffle(pool)
+            chosen += pool[:per_stratum]
+        ids = set(chosen)
+    else:
+        ids = sorted({r["id"] for r in rows_all})
+        random.Random(3).shuffle(ids)
+        ids = set(ids[:n])
+    rows = [r for r in rows_all if r["id"] in ids]
     random.Random(5).shuffle(rows)
-    out = report.with_name(report.stem.replace("heldout_eval", "qsr") + ".csv")
+    try:
+        from src.eval.heldout_eval import SETS, load_cases
+        hist = {c["id"]: c["messages"][:-1] for c in load_cases(SETS[rep.get("set", "heldout")])}
+    except Exception:  # noqa: BLE001
+        hist = {}
+    stratum = {i: next((k for k, p in STRATA.items() if p(r)), "other") for r in rows for i in [r["id"]]}
+    out = report.with_name(report.stem.replace("heldout_eval", "qsr").split("_p")[0] + ".csv")
     key = {}
     with open(out, "w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)
-        w.writerow(["item", "test_id", "question", "answer", "score_0_1_2", "notes"])
+        w.writerow(["item", "area", "conversation_so_far", "question", "answer", "reviewer1_0_1_2", "reviewer2_0_1_2", "notes"])
         for i, r in enumerate(rows, 1):
-            key[f"item{i:03d}"] = r["version"]
-            w.writerow([f"item{i:03d}", r["id"], r["question"], _body(r["answer"]), "", ""])
+            key[f"item{i:03d}"] = {"version": r["version"], "test_id": r["id"]}
+            conv = " || ".join(f"{m['role']}: {m['content'][:300]}" for m in hist.get(r["id"], []))
+            w.writerow([f"item{i:03d}", stratum[r["id"]], conv, r["question"], _body(r["answer"]), "", "", ""])
     out.with_suffix(".key.json").write_text(json.dumps(key, indent=1))
     print(f"{len(rows)} answers -> {out} (key: {out.with_suffix('.key.json').name})")
     return out
 
 
 def score(csv_path: Path) -> dict:
+    """QSR per version (mean of the reviewers' scores / 2), share scored 2/2, and agreement between the two reviewers."""
     key = json.loads(csv_path.with_suffix(".key.json").read_text())
     by_v: dict = {}
+    pairs, by_area = [], {}
     with open(csv_path, encoding="utf-8") as fh:
         for row in csv.DictReader(fh):
-            s = row.get("score_0_1_2", "").strip()
-            if s in ("0", "1", "2"):
-                by_v.setdefault(key[row["item"]], []).append(int(s))
-    res = {v: {"n": len(x), "qsr": round(sum(x) / (2 * len(x)), 3), "share_fully_satisfied": round(x.count(2) / len(x), 3)}
+            k = key[row["item"]]
+            v = k["version"] if isinstance(k, dict) else k
+            sc = [int(row.get(c, "").strip()) for c in ("reviewer1_0_1_2", "reviewer2_0_1_2", "score_0_1_2") if row.get(c, "").strip() in ("0", "1", "2")]
+            if not sc:
+                continue
+            if len(sc) >= 2:
+                pairs.append((sc[0], sc[1]))
+            m = sum(sc) / len(sc)
+            by_v.setdefault(v, []).append(m)
+            by_area.setdefault((v, row.get("area", "")), []).append(m)
+    res = {v: {"n": len(x), "qsr": round(sum(x) / (2 * len(x)), 3), "share_fully_satisfied": round(sum(s == 2 for s in x) / len(x), 3)}
            for v, x in by_v.items()}
+    res["by_area"] = {f"{v} / {a}": round(sum(x) / (2 * len(x)), 3) for (v, a), x in sorted(by_area.items())}
+    if pairs:
+        res["reviewer_agreement"] = {"n": len(pairs), "exact": round(sum(a == b for a, b in pairs) / len(pairs), 3),
+                                     "within_1": round(sum(abs(a - b) <= 1 for a, b in pairs) / len(pairs), 3)}
     print(json.dumps(res, indent=2))
     return res
 
@@ -141,10 +179,11 @@ def main():
     ap.add_argument("cmd", choices=["export", "score", "judge"])
     ap.add_argument("path")
     ap.add_argument("--n", type=int, default=40)
+    ap.add_argument("--per-stratum", type=int, default=0, help="stratified export: N cases per area (CV/JD, transition, roadmap, study, follow-up)")
     ap.add_argument("--judge", default="groq:openai/gpt-oss-120b")
     ap.add_argument("--sleep", type=float, default=3.0)
     a = ap.parse_args()
-    {"export": lambda: export(Path(a.path), a.n), "score": lambda: score(Path(a.path)),
+    {"export": lambda: export(Path(a.path), a.n, a.per_stratum), "score": lambda: score(Path(a.path)),
      "judge": lambda: judge(Path(a.path), a.n, a.judge, a.sleep)}[a.cmd]()
 
 

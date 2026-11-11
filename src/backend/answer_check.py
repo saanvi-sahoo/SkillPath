@@ -66,7 +66,8 @@ def check_answer(text: str, qp: Dict, question: str, memory: Optional[Dict]) -> 
 
 
 REVISE_INSTRUCTION = ("Revise your previous answer to fix ONLY these problems, keeping everything that was correct, "
-                      "the same citations and the same scope rules. Return just the revised answer.\nProblems:\n")
+                      "the same citations and the same scope rules. Return the COMPLETE revised answer (all of it, not only "
+                      "the changed part), with no comments about the revision.\nProblems:\n")
 
 
 # ── E36 (prompt v7): grounding and fact checks ───────────────────────────────────────────────────────────────

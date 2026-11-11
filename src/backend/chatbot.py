@@ -322,6 +322,10 @@ def _answer(chat_history, system_version, router_mode, profile_override, route_o
             out["model"] = (getattr(resp, "response_metadata", {}) or {}).get("model_name")
             out["usage"] = getattr(resp, "usage_metadata", None)
             text = resp.text.strip()
+            if not text:  # final validation (journey j03): gpt-oss sometimes spends its whole budget reasoning and returns no text
+                out["empty_retry"] = True
+                resp = llm.invoke(msgs + [HumanMessage(content="Please give your answer now, directly and completely.")])
+                text = resp.text.strip()
             # E34 (v6): generate -> verify against the answer contract -> revise once if needed
             if text and int(version.lstrip("v")) >= 6 and decision["label"] == "career_study":
                 from src.backend.answer_check import REVISE_INSTRUCTION, check_answer, check_answer_v7
@@ -334,13 +338,23 @@ def _answer(chat_history, system_version, router_mode, profile_override, route_o
                     try:
                         rev = llm.invoke(msgs + [AIMessage(content=text),
                                                  HumanMessage(content=REVISE_INSTRUCTION + "\n".join(f"- {p}" for p in problems))])
-                        if rev.text.strip():
-                            text = rev.text.strip()
+                        rtext = rev.text.strip()
+                        # Final validation (journey j01): a revision once returned only the first 10 days of a 30-day
+                        # plan. Keep the draft when the "revision" is a fragment and no problem asked for a shorter answer.
+                        asks_shorter = any(re.search(r"\b(words?|sentences?|brief|shorter|one sentence|too long)\b", p, re.I) for p in problems)
+                        if rtext and len(rtext) < 0.5 * len(text) and not asks_shorter:
+                            out["revision_discarded"] = {"problems": problems, "draft_chars": len(text), "revision_chars": len(rtext)}
+                        elif rtext:
+                            text = rtext
                             out["revised"] = problems
                     except Exception as e:  # noqa: BLE001 - keep the draft if the revision call fails
                         print(f"[chatbot] revision skipped: {e}")
             out["generation"] = llm_provider()
-            out["text"] = (text + _sources_footer(text, hits)) if text else "I couldn't generate an answer, please rephrase."
+            if not text:  # still empty: retrieval-only answer with the notice instead of a dead end
+                _extractive("empty model reply")
+                text = None
+            if text is not None:
+                out["text"] = text + _sources_footer(text, hits)
         except LookupError:
             _extractive("LLM_PROVIDER=none")
         except Exception as e:  # noqa: BLE001 - every generator failed: degrade to retrieval-only, never a dead end

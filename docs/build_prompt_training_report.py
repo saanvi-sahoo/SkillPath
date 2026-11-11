@@ -133,6 +133,76 @@ def journeys_block(rep, name, intro):
 <div class="tbl"><table><thead><tr><th>Journey</th><th>Path</th>{head}</tr></thead><tbody>{per}</tbody></table></div>"""
 
 
+def final_section() -> str:
+    """Final validation (review 4): fresh journeys, re-checked failures, smoke tests, team kits, readiness."""
+    import csv
+    from collections import Counter
+    fresh = _jrn("reports/heldout/journeys_deployed_fresh_*_p*.json")
+    rc = [load(f) for f in sorted(glob.glob(str(ROOT / "reports/heldout/journeys_deployed_recheck[23]_*_p*.json")))]
+    rows = {}
+    for d in rc:
+        for r in (d or {}).get("rows", []):
+            rows[r["id"]] = r  # later re-check of the same journey replaces the earlier one
+    def _rc(v):
+        fb = [str(t["turn"]) for t in v["turns"] if t.get("model") not in ("openai/gpt-oss-120b", None)]
+        mark = "✓" if v["success"] else "✗ turn " + ",".join(str(t["turn"]) for t in v["turns"] if not t["passed"])
+        return mark + (f" (turn {', '.join(fb)} answered by a fallback model after the Groq quota ran out; not a clean pass)" if fb else "")
+    rc_txt = ", ".join(f"{k} {_rc(v)}" for k, v in sorted(rows.items()))
+    fr = js_summary(fresh)
+    smoke = load(sorted(glob.glob(str(ROOT / "reports/release/smoke_*.json")))[-1]) if glob.glob(str(ROOT / "reports/release/smoke_*.json")) else None
+    srows = "".join(f"<tr><th scope='row'>{esc(r['check'])}</th><td>{'PASS' if r['passed'] else 'FAIL'}</td><td class='small'>{esc(r['evidence'])}</td></tr>"
+                    for r in (smoke or {}).get("results", []))
+    lab = Counter(r.get("first_pass") for r in csv.DictReader(open(ROOT / "reports/data_quality/career_label_review.csv", encoding="utf-8")))
+    return f"""
+<h2>Final validation (review 4)</h2>
+<p>Review 4 asked for a validation round, not a new version: confirm answers are correct and useful, make complete student
+journeys succeed, and check the data behind career recommendations. Everything below was executed; team tasks are prepared
+and marked as open.</p>
+<div class="keys">
+  <div class="key"><b>{esc(fmt(fr.get('task_success')) if fr else '–')}</b><span>Fresh journeys fully successful on the deployed model ({esc(fr.get('journeys', '–') if fr else '–')} new journeys, frozen first)</span></div>
+  <div class="key"><b>{sum(r['passed'] for r in (smoke or {}).get('results', []))}/{len((smoke or {}).get('results', []))}</b><span>Release smoke tests passed</span></div>
+  <div class="key"><b>{esc(fmt(fr.get('p95_latency_ms') / 1000 if fr and fr.get('p95_latency_ms') else None))} s</b><span>P95 turn latency, deployed model (fresh journeys)</span></div>
+</div>
+<h3>Journey failures: reproduced, fixed, re-tested on the deployed model (Groq gpt-oss-120b)</h3>
+<ul>
+  <li>Options and skill gaps now come as a numbered list, so "the second one" works (j01, j03 turn 1).</li>
+  <li>Plans label every day "Day N" (j03, j08); a revision that returned a fragment of a 30-day plan no longer replaces the full draft (j01).</li>
+  <li>"Make it easier" now means shorter (j04); verified on the deployed model.</li>
+  <li>An empty model reply (gpt-oss spent its budget reasoning; j03) is retried once, then answered from the knowledge base with a notice (unit-tested).</li>
+  <li>Hugging Face models load from the local cache first (a first search once waited ~15 min on the hub); 90 s request timeout.</li>
+</ul>
+<p>Re-check of the previously failed journeys after the fixes (these journeys are no longer unseen): {esc(rc_txt or 'not run')}.</p>
+<h3>Release smoke tests</h3>
+<div class="tbl"><table><thead><tr><th>Check</th><th>Result</th><th>Evidence</th></tr></thead><tbody>{srows}</tbody></table></div>
+<h3>Prepared for the team (need people)</h3>
+<ul>
+  <li><b>Citation confirmation:</b> 64 + 58 sampled claims with source text and teammate columns; first pass found no hallucinated facts except two skill miscounts (now checked automatically) and 3 entailment false alarms.</li>
+  <li><b>Human satisfaction (QSR):</b> 50 blinded answers, 10 each for CV/JD, career change, roadmap, study and follow-up, two reviewer columns and an agreement score.</li>
+  <li><b>Career labels:</b> 240 flagged records, first pass {lab.get('likely_mislabeled', 0)} likely mislabeled / {lab.get('ambiguous', 0)} ambiguous; proposed relabels in a versioned file, nothing applied.</li>
+</ul>
+<h3>Local model and keyless mode</h3>
+<p>Local Mistral turns take a median of 26-29 s without and 64-72 s with the self-check revision (the 102 s p95 is a whole
+turn: retrieval, draft and revision; the 90 s timeout applies to hosted APIs, Ollama uses 300 s). The app now labels local
+mode as experimental and keyless mode as retrieval-only (no exact counts, word limits or tables). The hosted model is the
+primary experience.</p>
+<h3>Readiness</h3>
+<div class="tbl"><table><thead><tr><th>Use</th><th>Status</th></tr></thead><tbody>
+<tr><th scope="row">Internal college demonstration</th><td>Ready</td></tr>
+<tr><th scope="row">Internship report and evaluation</th><td>Ready, with the limitations on this page</td></tr>
+<tr><th scope="row">Supervised pilot with students</th><td>Conditional: after the team's QSR scoring and citation confirmation</td></tr>
+<tr><th scope="row">Public production release</th><td>Not yet</td></tr>
+</tbody></table></div>
+"""
+
+
+def js_summary(rep):
+    if not rep:
+        return {}
+    from src.eval.journey_eval import summarise as js
+    S = js(rep)
+    return S.get("v7+e38", {})
+
+
 def e38_section() -> str:
     import csv
     from collections import Counter, defaultdict
@@ -300,7 +370,7 @@ a {{ color: var(--accent); }}
 <header>
   <div class="eyebrow">SkillPath AI · Sabudh Foundation · {date.today().strftime('%d %B %Y')}</div>
   <h1>Prompt training report: making the Career Advisor answer the exact question</h1>
-  <div><span class="chip">live: prompt v7 + E38 pipeline</span> <span class="chip">candidate: v8</span> <span class="chip">experiments E36-E38</span></div>
+  <div><span class="chip">live: prompt v7 + E38 pipeline</span> <span class="chip">candidate: v8</span> <span class="chip">experiments E36-E38 + final validation</span></div>
 </header>
 
 <h2>Summary</h2>
@@ -320,6 +390,7 @@ checks and a focused prompt with task templates (E37, prompt v8).</p>
   <li><b>v8 on the development set:</b> {esc(verdict(devi))}.</li>
 </ul>
 
+{final_section()}
 {e38_section()}
 
 <h2>How prompt training works here</h2>

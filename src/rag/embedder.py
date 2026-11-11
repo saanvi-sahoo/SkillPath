@@ -26,7 +26,8 @@ def get_model():
             if _model is None:
                 from sentence_transformers import SentenceTransformer
 
-                _model = SentenceTransformer(config.EMBEDDING_MODEL)
+                from src.utilities.hf_models import load_cached
+                _model = load_cached(SentenceTransformer, config.EMBEDDING_MODEL)
                 dim = (getattr(_model, "get_embedding_dimension", None) or _model.get_sentence_embedding_dimension)()
                 if dim != config.EMBEDDING_DIM:
                     raise ValueError(

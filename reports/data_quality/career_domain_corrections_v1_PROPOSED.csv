@@ -1,0 +1,128 @@
+career_id,title,current_domain,proposed_domain,evidence,verified_by,apply
+career_0110,Analytics Project Manager (SSS III) - Information Services,Data Analysis and BI,Project and Business Management,title family Project / agile; 3 family skills vs 1 for the label,,no
+career_0132,Architect (fullstack),Data Engineering,Software and Web Development,title family Software / web; 4 family skills vs 1 for the label,,no
+career_0133,Architect (fullstack),Data Engineering,Software and Web Development,title family Software / web; 3 family skills vs 1 for the label,,no
+career_0188,"Associate, Big Data Software Engineer",Machine Learning and AI,Software and Web Development,title family Software / web; 2 family skills vs 0 for the label,,no
+career_0189,"Associate, Big Data Software Engineer",Data Science and Research,Software and Web Development,title family Software / web; 2 family skills vs 0 for the label,,no
+career_0190,"Associate, Big Data Software Engineer",Data Science and Research,Software and Web Development,title family Software / web; 2 family skills vs 0 for the label,,no
+career_0215,BI Developer,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 2 family skills vs 1 for the label,,no
+career_0229,Backend Architect,Cloud and DevOps,Software and Web Development,title family Software / web; 5 family skills vs 1 for the label,,no
+career_0230,Backend Programmer,Cloud and DevOps,Software and Web Development,title family Software / web; 2 family skills vs 0 for the label,,no
+career_0233,Basketball Data Analyst,Machine Learning and AI,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 1 for the label,,no
+career_0251,Big Data Engineer,Machine Learning and AI,Data Architecture and Governance,title family Data engineering; 3 family skills vs 1 for the label,,no
+career_0261,Big Data Software Engineer,Data Science and Research,Software and Web Development,title family Software / web; 2 family skills vs 0 for the label,,no
+career_0263,"Big Data Software Engineer, Senior Associate",Data Science and Research,Software and Web Development,title family Software / web; 2 family skills vs 0 for the label,,no
+career_0280,Boston Data & Analytics Business Intelligence Manager,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 1 for the label,,no
+career_0302,Business Analyst,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 5 family skills vs 1 for the label,,no
+career_0306,Business Analyst,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 0 for the label,,no
+career_0323,Business Analyst BI,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 2 family skills vs 1 for the label,,no
+career_0332,Business Analyst Medicare,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 6 family skills vs 1 for the label,,no
+career_0359,Business Intelligence Analyst,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 1 for the label,,no
+career_0363,Business Intelligence Analyst,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 1 for the label,,no
+career_0364,Business Intelligence Analyst,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 2 family skills vs 1 for the label,,no
+career_0371,Business Intelligence Analyst,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 4 family skills vs 2 for the label,,no
+career_0375,Business Intelligence Analyst,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 2 family skills vs 0 for the label,,no
+career_0378,Business Intelligence Analyst,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 1 for the label,,no
+career_0380,Business Intelligence Analyst,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 6 family skills vs 0 for the label,,no
+career_0385,Business Intelligence Analyst w/ SQL & AWS,Machine Learning and AI,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 1 for the label,,no
+career_0387,"Business Intelligence Analyst, Officer",Data Engineering,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 1 for the label,,no
+career_0390,Business Intelligence Developer,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 1 for the label,,no
+career_0394,Business Intelligence/ETL Engineer - Lead Level Job,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 1 for the label,,no
+career_0518,Cloud Software Engineer,Data Analysis and BI,Software and Web Development,title family Software / web; 2 family skills vs 1 for the label,,no
+career_0524,Cloud Web Developer,Cloud and DevOps,Software and Web Development,title family Software / web; 3 family skills vs 1 for the label,,no
+career_0557,Consultant - Analytics (Microsoft Power BI and Data Science),Machine Learning and AI,Data Analysis and BI,title family Data analysis / BI; 6 family skills vs 1 for the label,,no
+career_0565,Consumer & Community Banking Compliance Data Analyst Associate,Machine Learning and AI,Data Analysis and BI,title family Data analysis / BI; 4 family skills vs 1 for the label,,no
+career_0625,Cyber Security Architect,Machine Learning and AI,Cybersecurity and Networking,title family Cybersecurity; 6 family skills vs 1 for the label,,no
+career_0631,Cybersecurity – Cloud Consulting,Cloud and DevOps,Cybersecurity and Networking,title family Cybersecurity; 8 family skills vs 2 for the label,,no
+career_0667,Data Analyst,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 4 family skills vs 1 for the label,,no
+career_0671,Data Analyst,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 4 family skills vs 1 for the label,,no
+career_0699,Data Analyst Intern,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 1 for the label,,no
+career_0765,Data Engineer,Data Science and Research,Data Architecture and Governance,title family Data engineering; 2 family skills vs 0 for the label,,no
+career_0766,Data Engineer,Machine Learning and AI,Data Architecture and Governance,title family Data engineering; 4 family skills vs 1 for the label,,no
+career_0790,"Data Engineer - Conshohocken, PA",Data Science and Research,Data Architecture and Governance,title family Data engineering; 4 family skills vs 0 for the label,,no
+career_0836,Data Reporting Analyst,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 1 for the label,,no
+career_0909,"Data Visualization Specialist - Consultant (Tableau or Alteryx) - San Francisco, CA",Data Engineering,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 1 for the label,,no
+career_0910,"Data Visualization Specialist - Consultant (Tableau) - Chicago, IL",Data Engineering,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 1 for the label,,no
+career_0915,Data Warehouse/Business Intelligence,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 2 family skills vs 1 for the label,,no
+career_0916,Data Warehouse/Business Intelligence Developer,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 1 for the label,,no
+career_0998,"Development Engineer, Full stack Node JS/React JS",Cloud and DevOps,Software and Web Development,title family Software / web; 5 family skills vs 1 for the label,,no
+career_1094,Engineer - Full Stack,Cloud and DevOps,Software and Web Development,title family Software / web; 8 family skills vs 1 for the label,,no
+career_1119,Enterprise Software Engineer - Big Data,Machine Learning and AI,Software and Web Development,title family Software / web; 2 family skills vs 1 for the label,,no
+career_1130,Epic Business Intelligence Specialist (Mgr: Baker),Data Engineering,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 1 for the label,,no
+career_1183,Full Stack Developer,Cloud and DevOps,Software and Web Development,title family Software / web; 7 family skills vs 2 for the label,,no
+career_1188,Full Stack Developer,Cloud and DevOps,Software and Web Development,title family Software / web; 2 family skills vs 1 for the label,,no
+career_1192,Full Stack Developer (Mindfulness),Cloud and DevOps,Software and Web Development,title family Software / web; 2 family skills vs 1 for the label,,no
+career_1197,Full Stack Engineer,Cloud and DevOps,Software and Web Development,title family Software / web; 4 family skills vs 1 for the label,,no
+career_1202,Full Stack Engineer,Cloud and DevOps,Software and Web Development,title family Software / web; 5 family skills vs 1 for the label,,no
+career_1204,Full Stack Engineers,Cloud and DevOps,Software and Web Development,title family Software / web; 4 family skills vs 1 for the label,,no
+career_1206,Full Stack Java Developer,Cloud and DevOps,Software and Web Development,title family Software / web; 8 family skills vs 2 for the label,,no
+career_1209,"Full Stack Java Developer, Front-End Focused",Data Engineering,Software and Web Development,title family Software / web; 6 family skills vs 2 for the label,,no
+career_1217,Full Stack Software Developer,Cloud and DevOps,Software and Web Development,title family Software / web; 7 family skills vs 1 for the label,,no
+career_1227,Full Stack Web Developer,Cloud and DevOps,Software and Web Development,title family Software / web; 2 family skills vs 1 for the label,,no
+career_1228,Full Stack Web Developer,Data Analysis and BI,Software and Web Development,title family Software / web; 3 family skills vs 1 for the label,,no
+career_1230,"Full Stack Web Developer, Diagnostic Software",Machine Learning and AI,Software and Web Development,title family Software / web; 5 family skills vs 2 for the label,,no
+career_1232,Full Stack Web/Mobile Developer,Cloud and DevOps,Software and Web Development,title family Software / web; 4 family skills vs 1 for the label,,no
+career_1242,Full-Stack Software Developer,Cloud and DevOps,Software and Web Development,title family Software / web; 3 family skills vs 1 for the label,,no
+career_1253,"Game Data Analyst, Monetization",Data Engineering,Data Analysis and BI,title family Data analysis / BI; 2 family skills vs 1 for the label,,no
+career_1281,Global Supplier QA Project Manager,Project and Business Management,Software and Web Development,title family QA / testing; 2 family skills vs 1 for the label,,no
+career_1322,Helpdesk Specialist,Project and Business Management,IT Support and Systems,title family IT support; 5 family skills vs 0 for the label,,no
+career_1379,IT Help Desk Analyst,Cloud and DevOps,IT Support and Systems,title family IT support; 7 family skills vs 2 for the label,,no
+career_1445,Information Security Analyst (Networking Emphasis) 2586~,Cloud and DevOps,Cybersecurity and Networking,title family Cybersecurity; 2 family skills vs 1 for the label,,no
+career_1455,Information Security Architect 2498~,Cloud and DevOps,Cybersecurity and Networking,title family Cybersecurity; 5 family skills vs 1 for the label,,no
+career_1465,Infotainment System Test Engineer - Entry Level (CM),"Design, Engineering and Other Technical",Software and Web Development,title family QA / testing; 3 family skills vs 0 for the label,,no
+career_1536,Jr. Systems Administrator & Desktop Support,Cybersecurity and Networking,IT Support and Systems,title family IT support; 3 family skills vs 0 for the label,,no
+career_1547,Junior Full Stack Developer,Data Analysis and BI,Software and Web Development,title family Software / web; 3 family skills vs 0 for the label,,no
+career_1730,"Manager, Quality Assurance (QA)",Data Architecture and Governance,Software and Web Development,title family QA / testing; 4 family skills vs 0 for the label,,no
+career_1749,Marketing Data Analyst,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 4 family skills vs 1 for the label,,no
+career_1780,Mgr. - Quality Assurance,"Design, Engineering and Other Technical",Software and Web Development,title family QA / testing; 4 family skills vs 0 for the label,,no
+career_1949,Principal Big Data Engineer,Data Science and Research,Data Architecture and Governance,title family Data engineering; 2 family skills vs 1 for the label,,no
+career_1951,Principal Business Intelligence Data Architect,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 1 for the label,,no
+career_1954,Principal Data Engineer,Data Science and Research,Data Architecture and Governance,title family Data engineering; 2 family skills vs 1 for the label,,no
+career_2042,Project Manager Big Data Analytics,Data Engineering,Project and Business Management,title family Project / agile; 3 family skills vs 0 for the label,,no
+career_2046,"Project Manager, Data",Data Analysis and BI,Project and Business Management,title family Project / agile; 2 family skills vs 1 for the label,,no
+career_2062,QA Developer,Cloud and DevOps,Software and Web Development,title family QA / testing; 2 family skills vs 1 for the label,,no
+career_2063,"QA Engineer II, ETL / Data Warehouse",Data Engineering,Software and Web Development,title family QA / testing; 10 family skills vs 3 for the label,,no
+career_2068,Quality Assurance Analyst,Project and Business Management,Software and Web Development,title family QA / testing; 5 family skills vs 1 for the label,,no
+career_2069,Quality Assurance Analyst,"Design, Engineering and Other Technical",Software and Web Development,title family QA / testing; 2 family skills vs 0 for the label,,no
+career_2071,Quality Assurance Manager,Machine Learning and AI,Software and Web Development,title family QA / testing; 3 family skills vs 1 for the label,,no
+career_2073,Quality Assurance Manager,Data Engineering,Software and Web Development,title family QA / testing; 5 family skills vs 1 for the label,,no
+career_2195,Risk Analyst I,Project and Business Management,Finance and Risk,title family Finance; 3 family skills vs 1 for the label,,no
+career_2272,Security Analyst I,Cloud and DevOps,Cybersecurity and Networking,title family Cybersecurity; 5 family skills vs 2 for the label,,no
+career_2296,Senior Business Intelligence Analyst,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 4 family skills vs 2 for the label,,no
+career_2303,Senior Business Intelligence Reporting Analyst,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 4 family skills vs 1 for the label,,no
+career_2311,Senior Data Analyst,Machine Learning and AI,Data Analysis and BI,title family Data analysis / BI; 4 family skills vs 2 for the label,,no
+career_2318,Senior Data Engineer,Data Science and Research,Data Architecture and Governance,title family Data engineering; 3 family skills vs 0 for the label,,no
+career_2340,Senior Full Stack Developer,Cloud and DevOps,Software and Web Development,title family Software / web; 4 family skills vs 1 for the label,,no
+career_2348,Senior Information Security Analyst,Software and Web Development,Cybersecurity and Networking,title family Cybersecurity; 7 family skills vs 0 for the label,,no
+career_2384,Senior Quality Assurance Analyst,Data Engineering,Software and Web Development,title family QA / testing; 4 family skills vs 1 for the label,,no
+career_2385,Senior Security Analyst,Data Analysis and BI,Cybersecurity and Networking,title family Cybersecurity; 3 family skills vs 1 for the label,,no
+career_2436,Software Dev-QA Engineer,Machine Learning and AI,Software and Web Development,title family QA / testing; 4 family skills vs 0 for the label,,no
+career_2444,Software Developer - Performance Test,Data Engineering,Software and Web Development,title family Software / web; 5 family skills vs 2 for the label,,no
+career_2446,Software Developer - Tracer,Cloud and DevOps,Software and Web Development,title family Software / web; 7 family skills vs 1 for the label,,no
+career_2447,Software Developer 1 - Autonomy,Machine Learning and AI,Software and Web Development,title family Software / web; 2 family skills vs 1 for the label,,no
+career_2451,Software Developer Intern,Cloud and DevOps,Software and Web Development,title family Software / web; 4 family skills vs 1 for the label,,no
+career_2457,Software Engineer (Full stack) / Flights,Cloud and DevOps,Software and Web Development,title family Software / web; 6 family skills vs 1 for the label,,no
+career_2462,Software Engineer - Data Flow,Machine Learning and AI,Software and Web Development,title family Software / web; 2 family skills vs 1 for the label,,no
+career_2465,Software Engineer - Full Stack,Cloud and DevOps,Software and Web Development,title family Software / web; 6 family skills vs 1 for the label,,no
+career_2466,Software Engineer - Full Stack,Cloud and DevOps,Software and Web Development,title family Software / web; 4 family skills vs 1 for the label,,no
+career_2467,Software Engineer - Full Stack,Cloud and DevOps,Software and Web Development,title family Software / web; 6 family skills vs 2 for the label,,no
+career_2471,Software Engineer - Innovation Lab,Machine Learning and AI,Software and Web Development,title family Software / web; 2 family skills vs 0 for the label,,no
+career_2485,"Software Engineer, Full Stack",Cloud and DevOps,Software and Web Development,title family Software / web; 2 family skills vs 0 for the label,,no
+career_2490,"Software Engineer, Monetization (Full Stack)",Data Analysis and BI,Software and Web Development,title family Software / web; 6 family skills vs 1 for the label,,no
+career_2494,Software Engineer/Full-Stack Developer - Temporary Employee,Cloud and DevOps,Software and Web Development,title family Software / web; 3 family skills vs 1 for the label,,no
+career_2499,Software Test Engineer,Machine Learning and AI,Software and Web Development,title family QA / testing; 5 family skills vs 1 for the label,,no
+career_2539,"Sr Analyst, Business Intelligence",Data Engineering,Data Analysis and BI,title family Data analysis / BI; 4 family skills vs 1 for the label,,no
+career_2556,Sr Software Test Engineer,Machine Learning and AI,Software and Web Development,title family QA / testing; 4 family skills vs 1 for the label,,no
+career_2558,"Sr Specialist, UX Designer",Data Analysis and BI,"Product, UX and Design",title family UX / design; 4 family skills vs 0 for the label,,no
+career_2566,Sr. Big Data Engineer,Machine Learning and AI,Data Architecture and Governance,title family Data engineering; 5 family skills vs 1 for the label,,no
+career_2569,Sr. Business Intelligence Analyst,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 1 for the label,,no
+career_2571,Sr. Business Intelligence Engineer,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 5 family skills vs 2 for the label,,no
+career_2573,Sr. Data Analyst,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 2 family skills vs 1 for the label,,no
+career_2584,Sr. Full Stack Developer,Cloud and DevOps,Software and Web Development,title family Software / web; 5 family skills vs 2 for the label,,no
+career_2728,Technical Data Analyst,Data Engineering,Data Analysis and BI,title family Data analysis / BI; 3 family skills vs 1 for the label,,no
+career_2783,Test Engineer - Build Pod 1 Automation Tester,Data Engineering,Software and Web Development,title family QA / testing; 4 family skills vs 1 for the label,,no
+career_2814,UX Designer,Software and Web Development,"Product, UX and Design",title family UX / design; 7 family skills vs 2 for the label,,no
+career_2815,UX Strategist,Project and Business Management,"Product, UX and Design",title family UX / design; 4 family skills vs 0 for the label,,no
+career_2821,User Experience Designer,Software and Web Development,"Product, UX and Design",title family UX / design; 3 family skills vs 1 for the label,,no
+career_2822,User Experience Engineer,Software and Web Development,"Product, UX and Design",title family UX / design; 3 family skills vs 1 for the label,,no
+career_2877,Web Developer II,Data Analysis and BI,Software and Web Development,title family Software / web; 8 family skills vs 1 for the label,,no
